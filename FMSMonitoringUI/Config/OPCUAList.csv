@@ -1,0 +1,7 @@
+DeviceID,OPCServerName,PLCName,OPCServerURL,UserID,UserPW
+0,OPCServer01,ConveyorPLC_01,opc.tcp://desktop-8g5uglb:19001,fms,fms@!
+1,OPCServer02,ConveyorPLC_02,opc.tcp://desktop-8g5uglb:19002,fms,fms@!
+2,OPCServer03,ConveyorPLC_03,opc.tcp://desktop-8g5uglb:19003,fms,fms@!
+3,OPCServer04,ConveyorPLC_04,opc.tcp://desktop-8g5uglb:19004,fms,fms@!
+4,OPCServer04,ConveyorPLC_04,opc.tcp://desktop-8g5uglb:19004,fms,fms@!
+5,OPCServer05,ConveyorPLC_05,opc.tcp://desktop-8g5uglb:19005,fms,fms@!

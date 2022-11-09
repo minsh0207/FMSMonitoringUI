@@ -1,0 +1,1731 @@
+﻿namespace MonitoringUI.Monitoring
+{
+    partial class CtrlAging
+    {
+        /// <summary> 
+        /// 필수 디자이너 변수입니다.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// 사용 중인 모든 리소스를 정리합니다.
+        /// </summary>
+        /// <param name="disposing">관리되는 리소스를 삭제해야 하면 true이고, 그렇지 않으면 false입니다.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region 구성 요소 디자이너에서 생성한 코드
+
+        /// <summary> 
+        /// 디자이너 지원에 필요한 메서드입니다. 
+        /// 이 메서드의 내용을 코드 편집기로 수정하지 마세요.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            this.m_timer = new System.Windows.Forms.Timer(this.components);
+            this.cbRTAutoChange = new System.Windows.Forms.CheckBox();
+            this.AgingTab = new System.Windows.Forms.TabControl();
+            this.tpHTAging = new System.Windows.Forms.TabPage();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.ctrlLine5 = new MonitoringUI.Controlls.CtrlLine();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.ctrlLine1 = new MonitoringUI.Controlls.CtrlLine();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label69 = new System.Windows.Forms.Label();
+            this.label70 = new System.Windows.Forms.Label();
+            this.ctrlLine4 = new MonitoringUI.Controlls.CtrlLine();
+            this.label71 = new System.Windows.Forms.Label();
+            this.label60 = new System.Windows.Forms.Label();
+            this.rt022 = new AgingControls.AgingLineControl();
+            this.rt011 = new AgingControls.AgingLineControl();
+            this.rt012 = new AgingControls.AgingLineControl();
+            this.rt021 = new AgingControls.AgingLineControl();
+            this.tpLTAging1 = new System.Windows.Forms.TabPage();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label90 = new System.Windows.Forms.Label();
+            this.ctrlLine9 = new MonitoringUI.Controlls.CtrlLine();
+            this.ctrlLine8 = new MonitoringUI.Controlls.CtrlLine();
+            this.ctrlLine7 = new MonitoringUI.Controlls.CtrlLine();
+            this.label82 = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.rt042 = new AgingControls.AgingLineControl();
+            this.rt031 = new AgingControls.AgingLineControl();
+            this.rt032 = new AgingControls.AgingLineControl();
+            this.rt041 = new AgingControls.AgingLineControl();
+            this.ctrlLine2 = new MonitoringUI.Controlls.CtrlLine();
+            this.tpLTAging2 = new System.Windows.Forms.TabPage();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label101 = new System.Windows.Forms.Label();
+            this.label102 = new System.Windows.Forms.Label();
+            this.label46 = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label103 = new System.Windows.Forms.Label();
+            this.label48 = new System.Windows.Forms.Label();
+            this.ctrlLine10 = new MonitoringUI.Controlls.CtrlLine();
+            this.ctrlLine6 = new MonitoringUI.Controlls.CtrlLine();
+            this.ctrlLine3 = new MonitoringUI.Controlls.CtrlLine();
+            this.label93 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.rt062 = new AgingControls.AgingLineControl();
+            this.rt051 = new AgingControls.AgingLineControl();
+            this.rt052 = new AgingControls.AgingLineControl();
+            this.rt061 = new AgingControls.AgingLineControl();
+            this.ctrlButtonDataView = new MonitoringUI.Controlls.CButton.CtrlButtonRoot();
+            this.Tag19 = new MonitoringUI.Controlls.CtrlTaggingName();
+            this.Tag18 = new MonitoringUI.Controlls.CtrlTaggingName();
+            this.Tag17 = new MonitoringUI.Controlls.CtrlTaggingName();
+            this.Tag16 = new MonitoringUI.Controlls.CtrlTaggingName();
+            this.Tag15 = new MonitoringUI.Controlls.CtrlTaggingName();
+            this.Tag14 = new MonitoringUI.Controlls.CtrlTaggingName();
+            this.Tag13 = new MonitoringUI.Controlls.CtrlTaggingName();
+            this.Tag12 = new MonitoringUI.Controlls.CtrlTaggingName();
+            this.Tag11 = new MonitoringUI.Controlls.CtrlTaggingName();
+            this.Tag10 = new MonitoringUI.Controlls.CtrlTaggingName();
+            this.Tag09 = new MonitoringUI.Controlls.CtrlTaggingName();
+            this.Tag08 = new MonitoringUI.Controlls.CtrlTaggingName();
+            this.Tag07 = new MonitoringUI.Controlls.CtrlTaggingName();
+            this.Tag06 = new MonitoringUI.Controlls.CtrlTaggingName();
+            this.Tag05 = new MonitoringUI.Controlls.CtrlTaggingName();
+            this.Tag04 = new MonitoringUI.Controlls.CtrlTaggingName();
+            this.Tag03 = new MonitoringUI.Controlls.CtrlTaggingName();
+            this.Tag02 = new MonitoringUI.Controlls.CtrlTaggingName();
+            this.Tag01 = new MonitoringUI.Controlls.CtrlTaggingName();
+            this.Tag00 = new MonitoringUI.Controlls.CtrlTaggingName();
+            this.Tag20 = new MonitoringUI.Controlls.CtrlTaggingName();
+            this.TagDelayAlarm = new MonitoringUI.Controlls.CtrlTaggingName();
+            this.TagReserve = new MonitoringUI.Controlls.CtrlTaggingName();
+            this.Tag091 = new MonitoringUI.Controlls.CtrlTaggingName();
+            this.Tag092 = new MonitoringUI.Controlls.CtrlTaggingName();
+            this.ctrlTaggingName1 = new MonitoringUI.Controlls.CtrlTaggingName();
+            this.ctrlTaggingName2 = new MonitoringUI.Controlls.CtrlTaggingName();
+            this.AgingTab.SuspendLayout();
+            this.tpHTAging.SuspendLayout();
+            this.tpLTAging1.SuspendLayout();
+            this.tpLTAging2.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // cbRTAutoChange
+            // 
+            this.cbRTAutoChange.AutoSize = true;
+            this.cbRTAutoChange.Enabled = false;
+            this.cbRTAutoChange.Location = new System.Drawing.Point(16, 854);
+            this.cbRTAutoChange.Name = "cbRTAutoChange";
+            this.cbRTAutoChange.Size = new System.Drawing.Size(78, 17);
+            this.cbRTAutoChange.TabIndex = 25;
+            this.cbRTAutoChange.Text = "自动旋转";
+            this.cbRTAutoChange.UseVisualStyleBackColor = true;
+            this.cbRTAutoChange.Visible = false;
+            // 
+            // AgingTab
+            // 
+            this.AgingTab.Controls.Add(this.tpHTAging);
+            this.AgingTab.Controls.Add(this.tpLTAging1);
+            this.AgingTab.Controls.Add(this.tpLTAging2);
+            this.AgingTab.ItemSize = new System.Drawing.Size(300, 19);
+            this.AgingTab.Location = new System.Drawing.Point(359, 10);
+            this.AgingTab.Name = "AgingTab";
+            this.AgingTab.SelectedIndex = 0;
+            this.AgingTab.Size = new System.Drawing.Size(1541, 894);
+            this.AgingTab.TabIndex = 24;
+            this.AgingTab.SelectedIndexChanged += new System.EventHandler(this.AgingTab_SelectedIndexChanged);
+            // 
+            // tpHTAging
+            // 
+            this.tpHTAging.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.tpHTAging.Controls.Add(this.label13);
+            this.tpHTAging.Controls.Add(this.label14);
+            this.tpHTAging.Controls.Add(this.label15);
+            this.tpHTAging.Controls.Add(this.ctrlLine5);
+            this.tpHTAging.Controls.Add(this.label2);
+            this.tpHTAging.Controls.Add(this.label3);
+            this.tpHTAging.Controls.Add(this.label12);
+            this.tpHTAging.Controls.Add(this.ctrlLine1);
+            this.tpHTAging.Controls.Add(this.label1);
+            this.tpHTAging.Controls.Add(this.label69);
+            this.tpHTAging.Controls.Add(this.label70);
+            this.tpHTAging.Controls.Add(this.ctrlLine4);
+            this.tpHTAging.Controls.Add(this.label71);
+            this.tpHTAging.Controls.Add(this.label60);
+            this.tpHTAging.Controls.Add(this.rt022);
+            this.tpHTAging.Controls.Add(this.rt011);
+            this.tpHTAging.Controls.Add(this.rt012);
+            this.tpHTAging.Controls.Add(this.rt021);
+            this.tpHTAging.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.tpHTAging.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.tpHTAging.Location = new System.Drawing.Point(4, 23);
+            this.tpHTAging.Name = "tpHTAging";
+            this.tpHTAging.Padding = new System.Windows.Forms.Padding(3);
+            this.tpHTAging.Size = new System.Drawing.Size(1533, 867);
+            this.tpHTAging.TabIndex = 0;
+            this.tpHTAging.Text = "HT Aging";
+            // 
+            // label13
+            // 
+            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label13.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label13.ForeColor = System.Drawing.Color.Indigo;
+            this.label13.Location = new System.Drawing.Point(43, 644);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(25, 15);
+            this.label13.TabIndex = 108;
+            this.label13.Text = "1";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label14
+            // 
+            this.label14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label14.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label14.ForeColor = System.Drawing.Color.Indigo;
+            this.label14.Location = new System.Drawing.Point(898, 644);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(25, 15);
+            this.label14.TabIndex = 106;
+            this.label14.Text = "10";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label15
+            // 
+            this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label15.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label15.ForeColor = System.Drawing.Color.Indigo;
+            this.label15.Location = new System.Drawing.Point(420, 644);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(25, 15);
+            this.label15.TabIndex = 105;
+            this.label15.Text = "5";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ctrlLine5
+            // 
+            this.ctrlLine5.BackColor = System.Drawing.Color.Gray;
+            this.ctrlLine5.Location = new System.Drawing.Point(3, 649);
+            this.ctrlLine5.Name = "ctrlLine5";
+            this.ctrlLine5.Size = new System.Drawing.Size(1054, 5);
+            this.ctrlLine5.TabIndex = 107;
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label2.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label2.ForeColor = System.Drawing.Color.Indigo;
+            this.label2.Location = new System.Drawing.Point(43, 427);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(25, 15);
+            this.label2.TabIndex = 104;
+            this.label2.Text = "1";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label3.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label3.ForeColor = System.Drawing.Color.Indigo;
+            this.label3.Location = new System.Drawing.Point(898, 427);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(25, 15);
+            this.label3.TabIndex = 102;
+            this.label3.Text = "10";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label12
+            // 
+            this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label12.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label12.ForeColor = System.Drawing.Color.Indigo;
+            this.label12.Location = new System.Drawing.Point(420, 427);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(25, 15);
+            this.label12.TabIndex = 101;
+            this.label12.Text = "5";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ctrlLine1
+            // 
+            this.ctrlLine1.BackColor = System.Drawing.Color.Gray;
+            this.ctrlLine1.Location = new System.Drawing.Point(3, 433);
+            this.ctrlLine1.Name = "ctrlLine1";
+            this.ctrlLine1.Size = new System.Drawing.Size(1054, 5);
+            this.ctrlLine1.TabIndex = 103;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.ForeColor = System.Drawing.Color.Indigo;
+            this.label1.Location = new System.Drawing.Point(43, 211);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(25, 15);
+            this.label1.TabIndex = 100;
+            this.label1.Text = "1";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label69
+            // 
+            this.label69.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label69.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label69.ForeColor = System.Drawing.Color.Indigo;
+            this.label69.Location = new System.Drawing.Point(898, 211);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(25, 15);
+            this.label69.TabIndex = 78;
+            this.label69.Text = "10";
+            this.label69.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label70
+            // 
+            this.label70.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label70.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label70.ForeColor = System.Drawing.Color.Indigo;
+            this.label70.Location = new System.Drawing.Point(420, 211);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(25, 15);
+            this.label70.TabIndex = 77;
+            this.label70.Text = "5";
+            this.label70.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ctrlLine4
+            // 
+            this.ctrlLine4.BackColor = System.Drawing.Color.Gray;
+            this.ctrlLine4.Location = new System.Drawing.Point(3, 216);
+            this.ctrlLine4.Name = "ctrlLine4";
+            this.ctrlLine4.Size = new System.Drawing.Size(1054, 5);
+            this.ctrlLine4.TabIndex = 99;
+            // 
+            // label71
+            // 
+            this.label71.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.label71.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label71.ForeColor = System.Drawing.Color.Indigo;
+            this.label71.Location = new System.Drawing.Point(1588, 647);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(25, 15);
+            this.label71.TabIndex = 98;
+            this.label71.Text = "55";
+            this.label71.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label60
+            // 
+            this.label60.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.label60.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label60.ForeColor = System.Drawing.Color.Indigo;
+            this.label60.Location = new System.Drawing.Point(1588, 209);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(25, 15);
+            this.label60.TabIndex = 87;
+            this.label60.Text = "55";
+            this.label60.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // rt022
+            // 
+            this.rt022.BackColor = System.Drawing.Color.LightGray;
+            this.rt022.BayCount = 11;
+            this.rt022.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.rt022.BayNoLabelDisplayStep = 5;
+            this.rt022.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.rt022.BoxMargin = 2;
+            this.rt022.DoubleReach = false;
+            this.rt022.DoubleReachLinePrefix = "";
+            this.rt022.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.rt022.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rt022.LinePrefix = "R022";
+            this.rt022.Location = new System.Drawing.Point(3, 664);
+            this.rt022.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rt022.Name = "rt022";
+            this.rt022.RackCount = 10;
+            this.rt022.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.rt022.ShowBayNumber = false;
+            this.rt022.Size = new System.Drawing.Size(1054, 190);
+            this.rt022.TabIndex = 23;
+            // 
+            // rt011
+            // 
+            this.rt011.BackColor = System.Drawing.Color.LightGray;
+            this.rt011.BayCount = 11;
+            this.rt011.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.rt011.BayNoLabelDisplayStep = 5;
+            this.rt011.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.rt011.BoxMargin = 2;
+            this.rt011.DoubleReach = false;
+            this.rt011.DoubleReachLinePrefix = "";
+            this.rt011.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.rt011.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rt011.LinePrefix = "R011";
+            this.rt011.Location = new System.Drawing.Point(3, 15);
+            this.rt011.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rt011.Name = "rt011";
+            this.rt011.RackCount = 10;
+            this.rt011.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.rt011.ShowBayNumber = false;
+            this.rt011.Size = new System.Drawing.Size(1054, 190);
+            this.rt011.TabIndex = 22;
+            // 
+            // rt012
+            // 
+            this.rt012.BackColor = System.Drawing.Color.LightGray;
+            this.rt012.BayCount = 11;
+            this.rt012.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.rt012.BayNoLabelDisplayStep = 5;
+            this.rt012.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.rt012.BoxMargin = 2;
+            this.rt012.DoubleReach = false;
+            this.rt012.DoubleReachLinePrefix = "";
+            this.rt012.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.rt012.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rt012.LinePrefix = "R012";
+            this.rt012.Location = new System.Drawing.Point(3, 232);
+            this.rt012.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rt012.Name = "rt012";
+            this.rt012.RackCount = 10;
+            this.rt012.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.rt012.ShowBayNumber = false;
+            this.rt012.Size = new System.Drawing.Size(1054, 190);
+            this.rt012.TabIndex = 23;
+            // 
+            // rt021
+            // 
+            this.rt021.BackColor = System.Drawing.Color.LightGray;
+            this.rt021.BayCount = 11;
+            this.rt021.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.rt021.BayNoLabelDisplayStep = 5;
+            this.rt021.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.rt021.BoxMargin = 2;
+            this.rt021.DoubleReach = false;
+            this.rt021.DoubleReachLinePrefix = "";
+            this.rt021.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.rt021.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rt021.LinePrefix = "R021";
+            this.rt021.Location = new System.Drawing.Point(3, 449);
+            this.rt021.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rt021.Name = "rt021";
+            this.rt021.RackCount = 10;
+            this.rt021.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.rt021.ShowBayNumber = false;
+            this.rt021.Size = new System.Drawing.Size(1054, 190);
+            this.rt021.TabIndex = 22;
+            // 
+            // tpLTAging1
+            // 
+            this.tpLTAging1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.tpLTAging1.Controls.Add(this.label24);
+            this.tpLTAging1.Controls.Add(this.label25);
+            this.tpLTAging1.Controls.Add(this.label26);
+            this.tpLTAging1.Controls.Add(this.label21);
+            this.tpLTAging1.Controls.Add(this.label22);
+            this.tpLTAging1.Controls.Add(this.label23);
+            this.tpLTAging1.Controls.Add(this.label18);
+            this.tpLTAging1.Controls.Add(this.label19);
+            this.tpLTAging1.Controls.Add(this.label20);
+            this.tpLTAging1.Controls.Add(this.label17);
+            this.tpLTAging1.Controls.Add(this.label16);
+            this.tpLTAging1.Controls.Add(this.label90);
+            this.tpLTAging1.Controls.Add(this.ctrlLine9);
+            this.tpLTAging1.Controls.Add(this.ctrlLine8);
+            this.tpLTAging1.Controls.Add(this.ctrlLine7);
+            this.tpLTAging1.Controls.Add(this.label82);
+            this.tpLTAging1.Controls.Add(this.label49);
+            this.tpLTAging1.Controls.Add(this.label4);
+            this.tpLTAging1.Controls.Add(this.label5);
+            this.tpLTAging1.Controls.Add(this.label6);
+            this.tpLTAging1.Controls.Add(this.label7);
+            this.tpLTAging1.Controls.Add(this.rt042);
+            this.tpLTAging1.Controls.Add(this.rt031);
+            this.tpLTAging1.Controls.Add(this.rt032);
+            this.tpLTAging1.Controls.Add(this.rt041);
+            this.tpLTAging1.Controls.Add(this.ctrlLine2);
+            this.tpLTAging1.Location = new System.Drawing.Point(4, 23);
+            this.tpLTAging1.Name = "tpLTAging1";
+            this.tpLTAging1.Padding = new System.Windows.Forms.Padding(3);
+            this.tpLTAging1.Size = new System.Drawing.Size(1533, 867);
+            this.tpLTAging1.TabIndex = 1;
+            this.tpLTAging1.Text = "LT Aging#1";
+            // 
+            // label24
+            // 
+            this.label24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label24.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label24.ForeColor = System.Drawing.Color.Indigo;
+            this.label24.Location = new System.Drawing.Point(1373, 644);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(25, 15);
+            this.label24.TabIndex = 112;
+            this.label24.Text = "15";
+            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label25
+            // 
+            this.label25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label25.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label25.ForeColor = System.Drawing.Color.Indigo;
+            this.label25.Location = new System.Drawing.Point(1373, 427);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(25, 15);
+            this.label25.TabIndex = 111;
+            this.label25.Text = "15";
+            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label26
+            // 
+            this.label26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label26.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label26.ForeColor = System.Drawing.Color.Indigo;
+            this.label26.Location = new System.Drawing.Point(1373, 211);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(25, 15);
+            this.label26.TabIndex = 110;
+            this.label26.Text = "15";
+            this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label21
+            // 
+            this.label21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label21.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label21.ForeColor = System.Drawing.Color.Indigo;
+            this.label21.Location = new System.Drawing.Point(898, 644);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(25, 15);
+            this.label21.TabIndex = 109;
+            this.label21.Text = "10";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label22
+            // 
+            this.label22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label22.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label22.ForeColor = System.Drawing.Color.Indigo;
+            this.label22.Location = new System.Drawing.Point(898, 427);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(25, 15);
+            this.label22.TabIndex = 108;
+            this.label22.Text = "10";
+            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label23
+            // 
+            this.label23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label23.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label23.ForeColor = System.Drawing.Color.Indigo;
+            this.label23.Location = new System.Drawing.Point(898, 211);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(25, 15);
+            this.label23.TabIndex = 107;
+            this.label23.Text = "10";
+            this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label18
+            // 
+            this.label18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label18.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label18.ForeColor = System.Drawing.Color.Indigo;
+            this.label18.Location = new System.Drawing.Point(420, 644);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(25, 15);
+            this.label18.TabIndex = 106;
+            this.label18.Text = "5";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label19
+            // 
+            this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label19.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label19.ForeColor = System.Drawing.Color.Indigo;
+            this.label19.Location = new System.Drawing.Point(420, 427);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(25, 15);
+            this.label19.TabIndex = 105;
+            this.label19.Text = "5";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label20
+            // 
+            this.label20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label20.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label20.ForeColor = System.Drawing.Color.Indigo;
+            this.label20.Location = new System.Drawing.Point(420, 211);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(25, 15);
+            this.label20.TabIndex = 104;
+            this.label20.Text = "5";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label17
+            // 
+            this.label17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label17.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label17.ForeColor = System.Drawing.Color.Indigo;
+            this.label17.Location = new System.Drawing.Point(43, 644);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(25, 15);
+            this.label17.TabIndex = 103;
+            this.label17.Text = "1";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label16
+            // 
+            this.label16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label16.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label16.ForeColor = System.Drawing.Color.Indigo;
+            this.label16.Location = new System.Drawing.Point(43, 427);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(25, 15);
+            this.label16.TabIndex = 102;
+            this.label16.Text = "1";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label90
+            // 
+            this.label90.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label90.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label90.ForeColor = System.Drawing.Color.Indigo;
+            this.label90.Location = new System.Drawing.Point(43, 211);
+            this.label90.Name = "label90";
+            this.label90.Size = new System.Drawing.Size(25, 15);
+            this.label90.TabIndex = 90;
+            this.label90.Text = "1";
+            this.label90.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ctrlLine9
+            // 
+            this.ctrlLine9.BackColor = System.Drawing.Color.Gray;
+            this.ctrlLine9.Location = new System.Drawing.Point(3, 649);
+            this.ctrlLine9.Name = "ctrlLine9";
+            this.ctrlLine9.Size = new System.Drawing.Size(1528, 5);
+            this.ctrlLine9.TabIndex = 101;
+            // 
+            // ctrlLine8
+            // 
+            this.ctrlLine8.BackColor = System.Drawing.Color.Gray;
+            this.ctrlLine8.Location = new System.Drawing.Point(3, 433);
+            this.ctrlLine8.Name = "ctrlLine8";
+            this.ctrlLine8.Size = new System.Drawing.Size(1528, 5);
+            this.ctrlLine8.TabIndex = 100;
+            // 
+            // ctrlLine7
+            // 
+            this.ctrlLine7.BackColor = System.Drawing.Color.Gray;
+            this.ctrlLine7.Location = new System.Drawing.Point(3, 216);
+            this.ctrlLine7.Name = "ctrlLine7";
+            this.ctrlLine7.Size = new System.Drawing.Size(1528, 5);
+            this.ctrlLine7.TabIndex = 99;
+            // 
+            // label82
+            // 
+            this.label82.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.label82.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label82.ForeColor = System.Drawing.Color.Indigo;
+            this.label82.Location = new System.Drawing.Point(1588, 646);
+            this.label82.Name = "label82";
+            this.label82.Size = new System.Drawing.Size(25, 15);
+            this.label82.TabIndex = 98;
+            this.label82.Text = "55";
+            this.label82.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label49
+            // 
+            this.label49.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.label49.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label49.ForeColor = System.Drawing.Color.Indigo;
+            this.label49.Location = new System.Drawing.Point(1588, 208);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(25, 15);
+            this.label49.TabIndex = 87;
+            this.label49.Text = "55";
+            this.label49.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label4.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.label4.Location = new System.Drawing.Point(-73, 75);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(58, 48);
+            this.label4.TabIndex = 31;
+            this.label4.Text = "R3-1";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label5.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.label5.Location = new System.Drawing.Point(-73, 294);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(58, 48);
+            this.label5.TabIndex = 32;
+            this.label5.Text = "R3-2";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label6.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.label6.Location = new System.Drawing.Point(-73, 515);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(58, 48);
+            this.label6.TabIndex = 33;
+            this.label6.Text = "R4-1";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label7.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.label7.Location = new System.Drawing.Point(-73, 728);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(58, 48);
+            this.label7.TabIndex = 34;
+            this.label7.Text = "R4-2";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // rt042
+            // 
+            this.rt042.BackColor = System.Drawing.Color.LightGray;
+            this.rt042.BayCount = 16;
+            this.rt042.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.rt042.BayNoLabelDisplayStep = 5;
+            this.rt042.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.rt042.BoxMargin = 2;
+            this.rt042.DoubleReach = false;
+            this.rt042.DoubleReachLinePrefix = "";
+            this.rt042.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.rt042.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rt042.LinePrefix = "R042";
+            this.rt042.Location = new System.Drawing.Point(3, 664);
+            this.rt042.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rt042.Name = "rt042";
+            this.rt042.RackCount = 10;
+            this.rt042.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.rt042.ShowBayNumber = false;
+            this.rt042.Size = new System.Drawing.Size(1528, 190);
+            this.rt042.TabIndex = 28;
+            // 
+            // rt031
+            // 
+            this.rt031.BackColor = System.Drawing.Color.LightGray;
+            this.rt031.BayCount = 16;
+            this.rt031.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.rt031.BayNoLabelDisplayStep = 5;
+            this.rt031.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.rt031.BoxMargin = 2;
+            this.rt031.DoubleReach = false;
+            this.rt031.DoubleReachLinePrefix = "";
+            this.rt031.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.rt031.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rt031.LinePrefix = "R031";
+            this.rt031.Location = new System.Drawing.Point(3, 15);
+            this.rt031.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rt031.Name = "rt031";
+            this.rt031.RackCount = 10;
+            this.rt031.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.rt031.ShowBayNumber = false;
+            this.rt031.Size = new System.Drawing.Size(1528, 190);
+            this.rt031.TabIndex = 26;
+            // 
+            // rt032
+            // 
+            this.rt032.BackColor = System.Drawing.Color.LightGray;
+            this.rt032.BayCount = 16;
+            this.rt032.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.rt032.BayNoLabelDisplayStep = 5;
+            this.rt032.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.rt032.BoxMargin = 2;
+            this.rt032.DoubleReach = false;
+            this.rt032.DoubleReachLinePrefix = "";
+            this.rt032.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.rt032.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rt032.LinePrefix = "R032";
+            this.rt032.Location = new System.Drawing.Point(3, 232);
+            this.rt032.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rt032.Name = "rt032";
+            this.rt032.RackCount = 10;
+            this.rt032.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.rt032.ShowBayNumber = false;
+            this.rt032.Size = new System.Drawing.Size(1528, 190);
+            this.rt032.TabIndex = 29;
+            // 
+            // rt041
+            // 
+            this.rt041.BackColor = System.Drawing.Color.LightGray;
+            this.rt041.BayCount = 16;
+            this.rt041.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.rt041.BayNoLabelDisplayStep = 5;
+            this.rt041.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.rt041.BoxMargin = 2;
+            this.rt041.DoubleReach = false;
+            this.rt041.DoubleReachLinePrefix = "";
+            this.rt041.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.rt041.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rt041.LinePrefix = "R041";
+            this.rt041.Location = new System.Drawing.Point(3, 449);
+            this.rt041.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rt041.Name = "rt041";
+            this.rt041.RackCount = 10;
+            this.rt041.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.rt041.ShowBayNumber = false;
+            this.rt041.Size = new System.Drawing.Size(1528, 190);
+            this.rt041.TabIndex = 27;
+            // 
+            // ctrlLine2
+            // 
+            this.ctrlLine2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(231)))), ((int)(((byte)(231)))));
+            this.ctrlLine2.Location = new System.Drawing.Point(62, 464);
+            this.ctrlLine2.Name = "ctrlLine2";
+            this.ctrlLine2.Size = new System.Drawing.Size(1620, 12);
+            this.ctrlLine2.TabIndex = 30;
+            // 
+            // tpLTAging2
+            // 
+            this.tpLTAging2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.tpLTAging2.Controls.Add(this.label30);
+            this.tpLTAging2.Controls.Add(this.label31);
+            this.tpLTAging2.Controls.Add(this.label32);
+            this.tpLTAging2.Controls.Add(this.label27);
+            this.tpLTAging2.Controls.Add(this.label28);
+            this.tpLTAging2.Controls.Add(this.label101);
+            this.tpLTAging2.Controls.Add(this.label102);
+            this.tpLTAging2.Controls.Add(this.label46);
+            this.tpLTAging2.Controls.Add(this.label47);
+            this.tpLTAging2.Controls.Add(this.label29);
+            this.tpLTAging2.Controls.Add(this.label103);
+            this.tpLTAging2.Controls.Add(this.label48);
+            this.tpLTAging2.Controls.Add(this.ctrlLine10);
+            this.tpLTAging2.Controls.Add(this.ctrlLine6);
+            this.tpLTAging2.Controls.Add(this.ctrlLine3);
+            this.tpLTAging2.Controls.Add(this.label93);
+            this.tpLTAging2.Controls.Add(this.label38);
+            this.tpLTAging2.Controls.Add(this.label8);
+            this.tpLTAging2.Controls.Add(this.label9);
+            this.tpLTAging2.Controls.Add(this.label10);
+            this.tpLTAging2.Controls.Add(this.label11);
+            this.tpLTAging2.Controls.Add(this.rt062);
+            this.tpLTAging2.Controls.Add(this.rt051);
+            this.tpLTAging2.Controls.Add(this.rt052);
+            this.tpLTAging2.Controls.Add(this.rt061);
+            this.tpLTAging2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.tpLTAging2.Location = new System.Drawing.Point(4, 23);
+            this.tpLTAging2.Name = "tpLTAging2";
+            this.tpLTAging2.Padding = new System.Windows.Forms.Padding(3);
+            this.tpLTAging2.Size = new System.Drawing.Size(1533, 867);
+            this.tpLTAging2.TabIndex = 2;
+            this.tpLTAging2.Text = "LT Aging#2";
+            // 
+            // label30
+            // 
+            this.label30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label30.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label30.ForeColor = System.Drawing.Color.Indigo;
+            this.label30.Location = new System.Drawing.Point(1373, 427);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(25, 15);
+            this.label30.TabIndex = 96;
+            this.label30.Text = "15";
+            this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label31
+            // 
+            this.label31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label31.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label31.ForeColor = System.Drawing.Color.Indigo;
+            this.label31.Location = new System.Drawing.Point(1373, 644);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(25, 15);
+            this.label31.TabIndex = 95;
+            this.label31.Text = "15";
+            this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label32
+            // 
+            this.label32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label32.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label32.ForeColor = System.Drawing.Color.Indigo;
+            this.label32.Location = new System.Drawing.Point(1373, 211);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(25, 15);
+            this.label32.TabIndex = 94;
+            this.label32.Text = "15";
+            this.label32.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label27
+            // 
+            this.label27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label27.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label27.ForeColor = System.Drawing.Color.Indigo;
+            this.label27.Location = new System.Drawing.Point(898, 427);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(25, 15);
+            this.label27.TabIndex = 90;
+            this.label27.Text = "10";
+            this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label28
+            // 
+            this.label28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label28.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label28.ForeColor = System.Drawing.Color.Indigo;
+            this.label28.Location = new System.Drawing.Point(420, 427);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(25, 15);
+            this.label28.TabIndex = 89;
+            this.label28.Text = "5";
+            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label101
+            // 
+            this.label101.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label101.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label101.ForeColor = System.Drawing.Color.Indigo;
+            this.label101.Location = new System.Drawing.Point(898, 644);
+            this.label101.Name = "label101";
+            this.label101.Size = new System.Drawing.Size(25, 15);
+            this.label101.TabIndex = 79;
+            this.label101.Text = "10";
+            this.label101.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label102
+            // 
+            this.label102.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label102.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label102.ForeColor = System.Drawing.Color.Indigo;
+            this.label102.Location = new System.Drawing.Point(420, 644);
+            this.label102.Name = "label102";
+            this.label102.Size = new System.Drawing.Size(25, 15);
+            this.label102.TabIndex = 78;
+            this.label102.Text = "5";
+            this.label102.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label46
+            // 
+            this.label46.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label46.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label46.ForeColor = System.Drawing.Color.Indigo;
+            this.label46.Location = new System.Drawing.Point(898, 211);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(25, 15);
+            this.label46.TabIndex = 68;
+            this.label46.Text = "10";
+            this.label46.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label47
+            // 
+            this.label47.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label47.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label47.ForeColor = System.Drawing.Color.Indigo;
+            this.label47.Location = new System.Drawing.Point(420, 211);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(25, 15);
+            this.label47.TabIndex = 67;
+            this.label47.Text = "5";
+            this.label47.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label29
+            // 
+            this.label29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label29.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label29.ForeColor = System.Drawing.Color.Indigo;
+            this.label29.Location = new System.Drawing.Point(43, 427);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(25, 15);
+            this.label29.TabIndex = 88;
+            this.label29.Text = "1";
+            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label103
+            // 
+            this.label103.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label103.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label103.ForeColor = System.Drawing.Color.Indigo;
+            this.label103.Location = new System.Drawing.Point(43, 644);
+            this.label103.Name = "label103";
+            this.label103.Size = new System.Drawing.Size(25, 15);
+            this.label103.TabIndex = 77;
+            this.label103.Text = "1";
+            this.label103.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label48
+            // 
+            this.label48.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label48.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label48.ForeColor = System.Drawing.Color.Indigo;
+            this.label48.Location = new System.Drawing.Point(43, 211);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(25, 15);
+            this.label48.TabIndex = 66;
+            this.label48.Text = "1";
+            this.label48.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ctrlLine10
+            // 
+            this.ctrlLine10.BackColor = System.Drawing.Color.Gray;
+            this.ctrlLine10.Location = new System.Drawing.Point(3, 649);
+            this.ctrlLine10.Name = "ctrlLine10";
+            this.ctrlLine10.Size = new System.Drawing.Size(1528, 5);
+            this.ctrlLine10.TabIndex = 93;
+            // 
+            // ctrlLine6
+            // 
+            this.ctrlLine6.BackColor = System.Drawing.Color.Gray;
+            this.ctrlLine6.Location = new System.Drawing.Point(3, 433);
+            this.ctrlLine6.Name = "ctrlLine6";
+            this.ctrlLine6.Size = new System.Drawing.Size(1528, 5);
+            this.ctrlLine6.TabIndex = 92;
+            // 
+            // ctrlLine3
+            // 
+            this.ctrlLine3.BackColor = System.Drawing.Color.Gray;
+            this.ctrlLine3.Location = new System.Drawing.Point(3, 216);
+            this.ctrlLine3.Name = "ctrlLine3";
+            this.ctrlLine3.Size = new System.Drawing.Size(1528, 5);
+            this.ctrlLine3.TabIndex = 91;
+            // 
+            // label93
+            // 
+            this.label93.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.label93.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label93.ForeColor = System.Drawing.Color.Indigo;
+            this.label93.Location = new System.Drawing.Point(1589, 646);
+            this.label93.Name = "label93";
+            this.label93.Size = new System.Drawing.Size(25, 15);
+            this.label93.TabIndex = 87;
+            this.label93.Text = "55";
+            this.label93.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label38
+            // 
+            this.label38.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.label38.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label38.ForeColor = System.Drawing.Color.Indigo;
+            this.label38.Location = new System.Drawing.Point(1589, 207);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(25, 15);
+            this.label38.TabIndex = 76;
+            this.label38.Text = "55";
+            this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label8.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.label8.Location = new System.Drawing.Point(-73, 75);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(58, 48);
+            this.label8.TabIndex = 31;
+            this.label8.Text = "R5-1";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label9
+            // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label9.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.label9.Location = new System.Drawing.Point(-73, 294);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(58, 48);
+            this.label9.TabIndex = 32;
+            this.label9.Text = "R5-2";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label10
+            // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label10.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.label10.Location = new System.Drawing.Point(-73, 515);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(58, 48);
+            this.label10.TabIndex = 33;
+            this.label10.Text = "R6-1";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label11
+            // 
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label11.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.label11.Location = new System.Drawing.Point(-73, 728);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(58, 48);
+            this.label11.TabIndex = 34;
+            this.label11.Text = "R6-2";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // rt062
+            // 
+            this.rt062.BackColor = System.Drawing.Color.LightGray;
+            this.rt062.BayCount = 16;
+            this.rt062.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.rt062.BayNoLabelDisplayStep = 5;
+            this.rt062.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.rt062.BoxMargin = 2;
+            this.rt062.DoubleReach = false;
+            this.rt062.DoubleReachLinePrefix = "";
+            this.rt062.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.rt062.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rt062.LinePrefix = "R062";
+            this.rt062.Location = new System.Drawing.Point(3, 664);
+            this.rt062.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rt062.Name = "rt062";
+            this.rt062.RackCount = 10;
+            this.rt062.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.rt062.ShowBayNumber = false;
+            this.rt062.Size = new System.Drawing.Size(1528, 190);
+            this.rt062.TabIndex = 28;
+            // 
+            // rt051
+            // 
+            this.rt051.BackColor = System.Drawing.Color.LightGray;
+            this.rt051.BayCount = 16;
+            this.rt051.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.rt051.BayNoLabelDisplayStep = 5;
+            this.rt051.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.rt051.BoxMargin = 2;
+            this.rt051.DoubleReach = false;
+            this.rt051.DoubleReachLinePrefix = "";
+            this.rt051.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.rt051.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rt051.LinePrefix = "R051";
+            this.rt051.Location = new System.Drawing.Point(3, 15);
+            this.rt051.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rt051.Name = "rt051";
+            this.rt051.RackCount = 10;
+            this.rt051.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.rt051.ShowBayNumber = false;
+            this.rt051.Size = new System.Drawing.Size(1528, 190);
+            this.rt051.TabIndex = 26;
+            // 
+            // rt052
+            // 
+            this.rt052.BackColor = System.Drawing.Color.LightGray;
+            this.rt052.BayCount = 16;
+            this.rt052.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.rt052.BayNoLabelDisplayStep = 5;
+            this.rt052.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.rt052.BoxMargin = 2;
+            this.rt052.DoubleReach = false;
+            this.rt052.DoubleReachLinePrefix = "";
+            this.rt052.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.rt052.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rt052.LinePrefix = "R052";
+            this.rt052.Location = new System.Drawing.Point(3, 232);
+            this.rt052.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rt052.Name = "rt052";
+            this.rt052.RackCount = 10;
+            this.rt052.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.rt052.ShowBayNumber = false;
+            this.rt052.Size = new System.Drawing.Size(1528, 190);
+            this.rt052.TabIndex = 29;
+            // 
+            // rt061
+            // 
+            this.rt061.BackColor = System.Drawing.Color.LightGray;
+            this.rt061.BayCount = 16;
+            this.rt061.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.rt061.BayNoLabelDisplayStep = 5;
+            this.rt061.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.rt061.BoxMargin = 2;
+            this.rt061.DoubleReach = false;
+            this.rt061.DoubleReachLinePrefix = "";
+            this.rt061.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.rt061.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rt061.LinePrefix = "R061";
+            this.rt061.Location = new System.Drawing.Point(3, 449);
+            this.rt061.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rt061.Name = "rt061";
+            this.rt061.RackCount = 10;
+            this.rt061.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.rt061.ShowBayNumber = false;
+            this.rt061.Size = new System.Drawing.Size(1528, 190);
+            this.rt061.TabIndex = 27;
+            // 
+            // ctrlButtonDataView
+            // 
+            this.ctrlButtonDataView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(69)))), ((int)(((byte)(88)))));
+            this.ctrlButtonDataView.Enabled = false;
+            this.ctrlButtonDataView.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlButtonDataView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.ctrlButtonDataView.LabelText = "托盘信息";
+            this.ctrlButtonDataView.Location = new System.Drawing.Point(115, 842);
+            this.ctrlButtonDataView.Name = "ctrlButtonDataView";
+            this.ctrlButtonDataView.Size = new System.Drawing.Size(100, 38);
+            this.ctrlButtonDataView.TabIndex = 26;
+            this.ctrlButtonDataView.Visible = false;
+            // 
+            // Tag19
+            // 
+            this.Tag19.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Tag19.ColorText = "E";
+            this.Tag19.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Tag19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.Tag19.Location = new System.Drawing.Point(15, 772);
+            this.Tag19.Name = "Tag19";
+            this.Tag19.Size = new System.Drawing.Size(200, 30);
+            this.Tag19.TabIndex = 21;
+            this.Tag19.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.Tag19.TagText = "공출고";
+            this.Tag19.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(238)))), ((int)(((byte)(244)))));
+            // 
+            // Tag18
+            // 
+            this.Tag18.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Tag18.ColorText = "D";
+            this.Tag18.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Tag18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.Tag18.Location = new System.Drawing.Point(15, 735);
+            this.Tag18.Name = "Tag18";
+            this.Tag18.Size = new System.Drawing.Size(200, 30);
+            this.Tag18.TabIndex = 20;
+            this.Tag18.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.Tag18.TagText = "이중입고";
+            this.Tag18.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(238)))), ((int)(((byte)(244)))));
+            // 
+            // Tag17
+            // 
+            this.Tag17.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Tag17.ColorText = "W";
+            this.Tag17.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Tag17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.Tag17.Location = new System.Drawing.Point(153, 803);
+            this.Tag17.Name = "Tag17";
+            this.Tag17.Size = new System.Drawing.Size(200, 30);
+            this.Tag17.TabIndex = 19;
+            this.Tag17.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.Tag17.TagText = "Water";
+            this.Tag17.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(238)))), ((int)(((byte)(244)))));
+            this.Tag17.Visible = false;
+            // 
+            // Tag16
+            // 
+            this.Tag16.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Tag16.ColorText = "F";
+            this.Tag16.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Tag16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.Tag16.Location = new System.Drawing.Point(15, 636);
+            this.Tag16.Name = "Tag16";
+            this.Tag16.Size = new System.Drawing.Size(200, 30);
+            this.Tag16.TabIndex = 18;
+            this.Tag16.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.Tag16.TagText = "화재";
+            this.Tag16.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(238)))), ((int)(((byte)(244)))));
+            // 
+            // Tag15
+            // 
+            this.Tag15.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Tag15.ColorText = "T";
+            this.Tag15.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Tag15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.Tag15.Location = new System.Drawing.Point(15, 600);
+            this.Tag15.Name = "Tag15";
+            this.Tag15.Size = new System.Drawing.Size(200, 30);
+            this.Tag15.TabIndex = 17;
+            this.Tag15.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.Tag15.TagText = "Trouble";
+            this.Tag15.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(238)))), ((int)(((byte)(244)))));
+            // 
+            // Tag14
+            // 
+            this.Tag14.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Tag14.ColorText = "B";
+            this.Tag14.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Tag14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.Tag14.Location = new System.Drawing.Point(15, 563);
+            this.Tag14.Name = "Tag14";
+            this.Tag14.Size = new System.Drawing.Size(200, 30);
+            this.Tag14.TabIndex = 16;
+            this.Tag14.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(48)))), ((int)(((byte)(209)))));
+            this.Tag14.TagText = "Bad Rack";
+            this.Tag14.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(238)))), ((int)(((byte)(244)))));
+            // 
+            // Tag13
+            // 
+            this.Tag13.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Tag13.ColorText = "";
+            this.Tag13.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Tag13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.Tag13.Location = new System.Drawing.Point(15, 461);
+            this.Tag13.Name = "Tag13";
+            this.Tag13.Size = new System.Drawing.Size(200, 30);
+            this.Tag13.TabIndex = 15;
+            this.Tag13.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(251)))), ((int)(((byte)(0)))));
+            this.Tag13.TagText = "출고 대기";
+            this.Tag13.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(238)))), ((int)(((byte)(244)))));
+            // 
+            // Tag12
+            // 
+            this.Tag12.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Tag12.ColorText = "";
+            this.Tag12.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Tag12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.Tag12.Location = new System.Drawing.Point(15, 425);
+            this.Tag12.Name = "Tag12";
+            this.Tag12.Size = new System.Drawing.Size(200, 30);
+            this.Tag12.TabIndex = 14;
+            this.Tag12.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(199)))), ((int)(((byte)(231)))));
+            this.Tag12.TagText = "출고 중";
+            this.Tag12.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(238)))), ((int)(((byte)(244)))));
+            // 
+            // Tag11
+            // 
+            this.Tag11.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Tag11.ColorText = "";
+            this.Tag11.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Tag11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.Tag11.Location = new System.Drawing.Point(157, 390);
+            this.Tag11.Name = "Tag11";
+            this.Tag11.Size = new System.Drawing.Size(200, 30);
+            this.Tag11.TabIndex = 13;
+            this.Tag11.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(165)))), ((int)(((byte)(128)))));
+            this.Tag11.TagText = "Unload";
+            this.Tag11.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(238)))), ((int)(((byte)(244)))));
+            this.Tag11.Visible = false;
+            // 
+            // Tag10
+            // 
+            this.Tag10.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Tag10.ColorText = "";
+            this.Tag10.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Tag10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.Tag10.Location = new System.Drawing.Point(15, 389);
+            this.Tag10.Name = "Tag10";
+            this.Tag10.Size = new System.Drawing.Size(200, 30);
+            this.Tag10.TabIndex = 12;
+            this.Tag10.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(201)))), ((int)(((byte)(188)))));
+            this.Tag10.TagText = "입고 중";
+            this.Tag10.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(238)))), ((int)(((byte)(244)))));
+            // 
+            // Tag09
+            // 
+            this.Tag09.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Tag09.ColorText = "";
+            this.Tag09.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Tag09.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.Tag09.Location = new System.Drawing.Point(16, 285);
+            this.Tag09.Name = "Tag09";
+            this.Tag09.Size = new System.Drawing.Size(200, 30);
+            this.Tag09.TabIndex = 11;
+            this.Tag09.TagColor = System.Drawing.Color.Yellow;
+            this.Tag09.TagText = "강제입고";
+            this.Tag09.TextColor = System.Drawing.Color.Black;
+            // 
+            // Tag08
+            // 
+            this.Tag08.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Tag08.ColorText = "";
+            this.Tag08.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Tag08.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.Tag08.Location = new System.Drawing.Point(15, 249);
+            this.Tag08.Name = "Tag08";
+            this.Tag08.Size = new System.Drawing.Size(200, 30);
+            this.Tag08.TabIndex = 10;
+            this.Tag08.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
+            this.Tag08.TagText = "출고금지";
+            this.Tag08.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(238)))), ((int)(((byte)(244)))));
+            // 
+            // Tag07
+            // 
+            this.Tag07.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Tag07.ColorText = "X";
+            this.Tag07.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Tag07.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.Tag07.Location = new System.Drawing.Point(15, 212);
+            this.Tag07.Name = "Tag07";
+            this.Tag07.Size = new System.Drawing.Size(200, 30);
+            this.Tag07.TabIndex = 9;
+            this.Tag07.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
+            this.Tag07.TagText = "입고금지";
+            this.Tag07.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(238)))), ((int)(((byte)(244)))));
+            // 
+            // Tag06
+            // 
+            this.Tag06.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Tag06.ColorText = "";
+            this.Tag06.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Tag06.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.Tag06.Location = new System.Drawing.Point(157, 284);
+            this.Tag06.Name = "Tag06";
+            this.Tag06.Size = new System.Drawing.Size(200, 30);
+            this.Tag06.TabIndex = 8;
+            this.Tag06.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(65)))), ((int)(((byte)(157)))));
+            this.Tag06.TagText = "RT 5th Aging";
+            this.Tag06.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(238)))), ((int)(((byte)(244)))));
+            this.Tag06.Visible = false;
+            // 
+            // Tag05
+            // 
+            this.Tag05.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Tag05.ColorText = "";
+            this.Tag05.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Tag05.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.Tag05.Location = new System.Drawing.Point(157, 248);
+            this.Tag05.Name = "Tag05";
+            this.Tag05.Size = new System.Drawing.Size(200, 30);
+            this.Tag05.TabIndex = 7;
+            this.Tag05.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(95)))), ((int)(((byte)(255)))));
+            this.Tag05.TagText = "RT 4th Aging";
+            this.Tag05.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(238)))), ((int)(((byte)(244)))));
+            this.Tag05.Visible = false;
+            // 
+            // Tag04
+            // 
+            this.Tag04.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Tag04.ColorText = "";
+            this.Tag04.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Tag04.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.Tag04.Location = new System.Drawing.Point(157, 211);
+            this.Tag04.Name = "Tag04";
+            this.Tag04.Size = new System.Drawing.Size(200, 30);
+            this.Tag04.TabIndex = 6;
+            this.Tag04.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(139)))), ((int)(((byte)(141)))));
+            this.Tag04.TagText = "RT 3rd Aging";
+            this.Tag04.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(238)))), ((int)(((byte)(244)))));
+            this.Tag04.Visible = false;
+            // 
+            // Tag03
+            // 
+            this.Tag03.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Tag03.ColorText = "";
+            this.Tag03.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Tag03.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.Tag03.Location = new System.Drawing.Point(157, 174);
+            this.Tag03.Name = "Tag03";
+            this.Tag03.Size = new System.Drawing.Size(200, 30);
+            this.Tag03.TabIndex = 5;
+            this.Tag03.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(234)))), ((int)(((byte)(233)))));
+            this.Tag03.TagText = "RT 2nd Aging";
+            this.Tag03.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(238)))), ((int)(((byte)(244)))));
+            this.Tag03.Visible = false;
+            // 
+            // Tag02
+            // 
+            this.Tag02.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Tag02.ColorText = "";
+            this.Tag02.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Tag02.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.Tag02.Location = new System.Drawing.Point(157, 139);
+            this.Tag02.Name = "Tag02";
+            this.Tag02.Size = new System.Drawing.Size(200, 30);
+            this.Tag02.TabIndex = 4;
+            this.Tag02.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(178)))), ((int)(((byte)(199)))));
+            this.Tag02.TagText = "RT 1st Aging";
+            this.Tag02.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(238)))), ((int)(((byte)(244)))));
+            this.Tag02.Visible = false;
+            // 
+            // Tag01
+            // 
+            this.Tag01.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Tag01.ColorText = "-";
+            this.Tag01.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Tag01.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.Tag01.Location = new System.Drawing.Point(15, 83);
+            this.Tag01.Name = "Tag01";
+            this.Tag01.Size = new System.Drawing.Size(200, 30);
+            this.Tag01.TabIndex = 3;
+            this.Tag01.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(95)))), ((int)(((byte)(95)))));
+            this.Tag01.TagText = "Empty";
+            this.Tag01.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(238)))), ((int)(((byte)(244)))));
+            // 
+            // Tag00
+            // 
+            this.Tag00.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Tag00.ColorText = "";
+            this.Tag00.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Tag00.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.Tag00.Location = new System.Drawing.Point(16, 48);
+            this.Tag00.Name = "Tag00";
+            this.Tag00.Size = new System.Drawing.Size(200, 30);
+            this.Tag00.TabIndex = 27;
+            this.Tag00.TagColor = System.Drawing.Color.Black;
+            this.Tag00.TagText = "Not Used";
+            this.Tag00.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(238)))), ((int)(((byte)(244)))));
+            // 
+            // Tag20
+            // 
+            this.Tag20.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Tag20.ColorText = "";
+            this.Tag20.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Tag20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.Tag20.Location = new System.Drawing.Point(157, 321);
+            this.Tag20.Name = "Tag20";
+            this.Tag20.Size = new System.Drawing.Size(200, 30);
+            this.Tag20.TabIndex = 28;
+            this.Tag20.TagColor = System.Drawing.Color.DarkOliveGreen;
+            this.Tag20.TagText = "RT 6th Aging";
+            this.Tag20.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(238)))), ((int)(((byte)(244)))));
+            this.Tag20.Visible = false;
+            // 
+            // TagDelayAlarm
+            // 
+            this.TagDelayAlarm.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.TagDelayAlarm.ColorText = "※※※";
+            this.TagDelayAlarm.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.TagDelayAlarm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.TagDelayAlarm.Location = new System.Drawing.Point(157, 36);
+            this.TagDelayAlarm.Name = "TagDelayAlarm";
+            this.TagDelayAlarm.Size = new System.Drawing.Size(200, 30);
+            this.TagDelayAlarm.TabIndex = 29;
+            this.TagDelayAlarm.TagColor = System.Drawing.Color.Red;
+            this.TagDelayAlarm.TagText = "Delay Alarm";
+            this.TagDelayAlarm.TextColor = System.Drawing.Color.White;
+            this.TagDelayAlarm.Visible = false;
+            // 
+            // TagReserve
+            // 
+            this.TagReserve.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.TagReserve.ColorText = "";
+            this.TagReserve.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.TagReserve.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.TagReserve.Location = new System.Drawing.Point(157, 102);
+            this.TagReserve.Name = "TagReserve";
+            this.TagReserve.Size = new System.Drawing.Size(200, 30);
+            this.TagReserve.TabIndex = 30;
+            this.TagReserve.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(87)))), ((int)(((byte)(28)))));
+            this.TagReserve.TagText = "Change RouteID";
+            this.TagReserve.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(238)))), ((int)(((byte)(244)))));
+            this.TagReserve.Visible = false;
+            // 
+            // Tag091
+            // 
+            this.Tag091.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Tag091.ColorText = "305";
+            this.Tag091.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Tag091.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.Tag091.Location = new System.Drawing.Point(157, 466);
+            this.Tag091.Name = "Tag091";
+            this.Tag091.Size = new System.Drawing.Size(200, 30);
+            this.Tag091.TabIndex = 31;
+            this.Tag091.TagColor = System.Drawing.Color.Pink;
+            this.Tag091.TagText = "강제입고(305)";
+            this.Tag091.TextColor = System.Drawing.Color.Black;
+            this.Tag091.Visible = false;
+            // 
+            // Tag092
+            // 
+            this.Tag092.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Tag092.ColorText = "322";
+            this.Tag092.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Tag092.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.Tag092.Location = new System.Drawing.Point(157, 502);
+            this.Tag092.Name = "Tag092";
+            this.Tag092.Size = new System.Drawing.Size(200, 30);
+            this.Tag092.TabIndex = 32;
+            this.Tag092.TagColor = System.Drawing.Color.LightBlue;
+            this.Tag092.TagText = "강제입고(322)";
+            this.Tag092.TextColor = System.Drawing.Color.Black;
+            this.Tag092.Visible = false;
+            // 
+            // ctrlTaggingName1
+            // 
+            this.ctrlTaggingName1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ctrlTaggingName1.ColorText = "Lock";
+            this.ctrlTaggingName1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlTaggingName1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.ctrlTaggingName1.Location = new System.Drawing.Point(157, 69);
+            this.ctrlTaggingName1.Name = "ctrlTaggingName1";
+            this.ctrlTaggingName1.Size = new System.Drawing.Size(200, 30);
+            this.ctrlTaggingName1.TabIndex = 33;
+            this.ctrlTaggingName1.TagColor = System.Drawing.Color.DarkOrchid;
+            this.ctrlTaggingName1.TagText = "Lock by MES";
+            this.ctrlTaggingName1.TextColor = System.Drawing.Color.White;
+            this.ctrlTaggingName1.Visible = false;
+            // 
+            // ctrlTaggingName2
+            // 
+            this.ctrlTaggingName2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ctrlTaggingName2.ColorText = "Tray ID";
+            this.ctrlTaggingName2.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlTaggingName2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.ctrlTaggingName2.Location = new System.Drawing.Point(15, 119);
+            this.ctrlTaggingName2.Name = "ctrlTaggingName2";
+            this.ctrlTaggingName2.Size = new System.Drawing.Size(200, 30);
+            this.ctrlTaggingName2.TabIndex = 34;
+            this.ctrlTaggingName2.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(95)))), ((int)(((byte)(95)))));
+            this.ctrlTaggingName2.TagText = "Tray In";
+            this.ctrlTaggingName2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(238)))), ((int)(((byte)(244)))));
+            // 
+            // CtrlAging
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.Controls.Add(this.ctrlTaggingName2);
+            this.Controls.Add(this.ctrlTaggingName1);
+            this.Controls.Add(this.Tag092);
+            this.Controls.Add(this.Tag091);
+            this.Controls.Add(this.TagDelayAlarm);
+            this.Controls.Add(this.Tag20);
+            this.Controls.Add(this.Tag00);
+            this.Controls.Add(this.ctrlButtonDataView);
+            this.Controls.Add(this.cbRTAutoChange);
+            this.Controls.Add(this.AgingTab);
+            this.Controls.Add(this.Tag19);
+            this.Controls.Add(this.Tag18);
+            this.Controls.Add(this.Tag16);
+            this.Controls.Add(this.Tag15);
+            this.Controls.Add(this.Tag14);
+            this.Controls.Add(this.Tag13);
+            this.Controls.Add(this.Tag12);
+            this.Controls.Add(this.Tag10);
+            this.Controls.Add(this.Tag09);
+            this.Controls.Add(this.Tag08);
+            this.Controls.Add(this.Tag07);
+            this.Controls.Add(this.Tag06);
+            this.Controls.Add(this.Tag05);
+            this.Controls.Add(this.Tag04);
+            this.Controls.Add(this.Tag03);
+            this.Controls.Add(this.Tag02);
+            this.Controls.Add(this.Tag01);
+            this.Controls.Add(this.Tag17);
+            this.Controls.Add(this.TagReserve);
+            this.Controls.Add(this.Tag11);
+            this.Name = "CtrlAging";
+            this.Size = new System.Drawing.Size(1900, 1000);
+            this.AgingTab.ResumeLayout(false);
+            this.tpHTAging.ResumeLayout(false);
+            this.tpLTAging1.ResumeLayout(false);
+            this.tpLTAging2.ResumeLayout(false);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+        private Controlls.CtrlTaggingName Tag01;
+        private Controlls.CtrlTaggingName Tag02;
+        private Controlls.CtrlTaggingName Tag03;
+        private Controlls.CtrlTaggingName Tag04;
+        private Controlls.CtrlTaggingName Tag05;
+        private Controlls.CtrlTaggingName Tag10;
+        private Controlls.CtrlTaggingName Tag09;
+        private Controlls.CtrlTaggingName Tag08;
+        private Controlls.CtrlTaggingName Tag07;
+        private Controlls.CtrlTaggingName Tag06;
+        private Controlls.CtrlTaggingName Tag19;
+        private Controlls.CtrlTaggingName Tag18;
+        private Controlls.CtrlTaggingName Tag17;
+        private Controlls.CtrlTaggingName Tag16;
+        private Controlls.CtrlTaggingName Tag15;
+        private Controlls.CtrlTaggingName Tag14;
+        private Controlls.CtrlTaggingName Tag13;
+        private Controlls.CtrlTaggingName Tag12;
+        private Controlls.CtrlTaggingName Tag11;
+        private AgingControls.AgingLineControl rt011;
+        private System.Windows.Forms.Timer m_timer;
+        private AgingControls.AgingLineControl rt012;
+        private AgingControls.AgingLineControl rt021;
+        private AgingControls.AgingLineControl rt022;
+        private System.Windows.Forms.TabControl AgingTab;
+        private System.Windows.Forms.TabPage tpHTAging;
+        private System.Windows.Forms.TabPage tpLTAging1;
+        private System.Windows.Forms.TabPage tpLTAging2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private AgingControls.AgingLineControl rt042;
+        private AgingControls.AgingLineControl rt031;
+        private AgingControls.AgingLineControl rt032;
+        private AgingControls.AgingLineControl rt041;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private AgingControls.AgingLineControl rt062;
+        private AgingControls.AgingLineControl rt051;
+        private AgingControls.AgingLineControl rt052;
+        private AgingControls.AgingLineControl rt061;
+        private System.Windows.Forms.CheckBox cbRTAutoChange;
+        private Controlls.CButton.CtrlButtonRoot ctrlButtonDataView;
+        private Controlls.CtrlTaggingName Tag00;
+        private System.Windows.Forms.Label label60;
+        private System.Windows.Forms.Label label69;
+        private System.Windows.Forms.Label label70;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.Label label71;
+        private System.Windows.Forms.Label label82;
+        private System.Windows.Forms.Label label93;
+        private System.Windows.Forms.Label label101;
+        private System.Windows.Forms.Label label102;
+        private System.Windows.Forms.Label label103;
+        private Controlls.CtrlTaggingName Tag20;
+        private Controlls.CtrlTaggingName TagDelayAlarm;
+        private Controlls.CtrlTaggingName TagReserve;
+        private Controlls.CtrlTaggingName Tag091;
+        private Controlls.CtrlTaggingName Tag092;
+        private Controlls.CtrlTaggingName ctrlTaggingName1;
+        private Controlls.CtrlLine ctrlLine4;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private Controlls.CtrlLine ctrlLine5;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label12;
+        private Controlls.CtrlLine ctrlLine1;
+        private System.Windows.Forms.Label label90;
+        private Controlls.CtrlLine ctrlLine2;
+        private Controlls.CtrlLine ctrlLine9;
+        private Controlls.CtrlLine ctrlLine8;
+        private Controlls.CtrlLine ctrlLine7;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label32;
+        private Controlls.CtrlLine ctrlLine10;
+        private Controlls.CtrlLine ctrlLine6;
+        private Controlls.CtrlLine ctrlLine3;
+        private Controlls.CtrlTaggingName ctrlTaggingName2;
+    }
+}

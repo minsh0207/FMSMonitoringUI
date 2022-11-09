@@ -1,0 +1,2686 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="lbAgingRackSetting" xml:space="preserve">
+    <value>Aging Rack 설정</value>
+  </data>
+  <data name="msgChgErr" xml:space="preserve">
+    <value>데이터를 변경하는중 오류가 발생하였습니다.</value>
+  </data>
+  <data name="msgDBConectErr" xml:space="preserve">
+    <value>Database에 연결할 수 없습니다. 관리자에게 문의 바랍니다.</value>
+  </data>
+  <data name="msgDelDeleteErr" xml:space="preserve">
+    <value>데이터를 삭제하는중 DELETE 오류가 발생하여, 작업을 취소하였습니다.</value>
+  </data>
+  <data name="msgDelProcErr" xml:space="preserve">
+    <value>데이터를 삭제하는중 PROCESS 오류가 발생하여, 작업을 취소하였습니다.</value>
+  </data>
+  <data name="msgDelte" xml:space="preserve">
+    <value>정상적으로 데이터를 삭제하였습니다.</value>
+  </data>
+  <data name="msgDelUpdateErr" xml:space="preserve">
+    <value>데이터를 삭제하는중 UPDATE 오류가 발생하여, 작업을 취소하였습니다.</value>
+  </data>
+  <data name="msgExcelSaveErr" xml:space="preserve">
+    <value>데이터를 엑셀로 저장하는중 오류가 발생하였습니다.데이터를 엑셀로 저장하는중 오류가 발생하였습니다.</value>
+  </data>
+  <data name="msgLoad" xml:space="preserve">
+    <value>정상적으로 데이터를 불러오기에 성공하였습니다.</value>
+  </data>
+  <data name="msgLoadErr" xml:space="preserve">
+    <value>DB측에서 데이터를 불러오는중 오류가 발생하였습니다.</value>
+  </data>
+  <data name="msgSave" xml:space="preserve">
+    <value>정상적으로 데이터를 저장하였습니다.</value>
+  </data>
+  <data name="msgSaveDeleteErr" xml:space="preserve">
+    <value>데이터를 저장하는중 DELETE 오류가 발생하여, 작업을 취소하였습니다.</value>
+  </data>
+  <data name="msgSaveInsertErr" xml:space="preserve">
+    <value>데이터를 저장하는중 INSERT 오류가 발생하여, 작업을 취소하였습니다.</value>
+  </data>
+  <data name="msgSaveProcErr" xml:space="preserve">
+    <value>데이터를 저장하는중 PROCESS 오류가 발생하여, 작업을 취소하였습니다.</value>
+  </data>
+  <data name="msgSaveUpdata" xml:space="preserve">
+    <value>데이터를 저장하는중 UPDATE 오류가 발생하여, 작업을 취소하였습니다.</value>
+  </data>
+  <data name="msgSeleteErr" xml:space="preserve">
+    <value>데이터를 선택하는중 오류가 발생하였습니다.</value>
+  </data>
+  <data name="msgTheDB" xml:space="preserve">
+    <value>DB측에</value>
+  </data>
+  <data name="strAdd" xml:space="preserve">
+    <value>추가</value>
+  </data>
+  <data name="strBarReadTime" xml:space="preserve">
+    <value>Barcode Read Time</value>
+  </data>
+  <data name="strBarUnitID" xml:space="preserve">
+    <value>Barcode UnitID</value>
+  </data>
+  <data name="strCancel" xml:space="preserve">
+    <value>취소</value>
+  </data>
+  <data name="strCellID" xml:space="preserve">
+    <value>Cell ID</value>
+  </data>
+  <data name="strCellIDChange" xml:space="preserve">
+    <value>Cell ID 변경</value>
+  </data>
+  <data name="strCellList" xml:space="preserve">
+    <value>Cell List</value>
+  </data>
+  <data name="strConfirm" xml:space="preserve">
+    <value>확인</value>
+  </data>
+  <data name="strCurrCell" xml:space="preserve">
+    <value>현재 Cell</value>
+  </data>
+  <data name="strCurrCellCnt" xml:space="preserve">
+    <value>현재 Cell 수량</value>
+  </data>
+  <data name="strCurrOperName" xml:space="preserve">
+    <value>현재공정</value>
+  </data>
+  <data name="strCurrProcessName" xml:space="preserve">
+    <value>현재 공정</value>
+  </data>
+  <data name="strDateRange" xml:space="preserve">
+    <value>조회 기간</value>
+  </data>
+  <data name="strDefaultFlag" xml:space="preserve">
+    <value>Default Flag</value>
+  </data>
+  <data name="strDelete" xml:space="preserve">
+    <value>삭제</value>
+  </data>
+  <data name="strDeleteTray" xml:space="preserve">
+    <value>Delete Tray</value>
+  </data>
+  <data name="strDescription" xml:space="preserve">
+    <value>내용</value>
+  </data>
+  <data name="strEndTime" xml:space="preserve">
+    <value>종료 시간</value>
+  </data>
+  <data name="strEqpName" xml:space="preserve">
+    <value>설비명</value>
+  </data>
+  <data name="strExcel" xml:space="preserve">
+    <value>엑셀 저장</value>
+  </data>
+  <data name="strExcute" xml:space="preserve">
+    <value>실행</value>
+  </data>
+  <data name="strExecution" xml:space="preserve">
+    <value>실행</value>
+  </data>
+  <data name="strExit" xml:space="preserve">
+    <value>종료</value>
+  </data>
+  <data name="strGradeJudge" xml:space="preserve">
+    <value>등급 판정</value>
+  </data>
+  <data name="strGradingRemove" xml:space="preserve">
+    <value>등급 삭제</value>
+  </data>
+  <data name="strInfoType" xml:space="preserve">
+    <value>정보종류</value>
+  </data>
+  <data name="strInit" xml:space="preserve">
+    <value>초기화</value>
+  </data>
+  <data name="strInputCell" xml:space="preserve">
+    <value>투입 Cell</value>
+  </data>
+  <data name="strInputCellCnt" xml:space="preserve">
+    <value>투입 Cell 수량</value>
+  </data>
+  <data name="strInputCellType" xml:space="preserve">
+    <value>공트레이 CellType</value>
+  </data>
+  <data name="strInputDate" xml:space="preserve">
+    <value>Input Date</value>
+  </data>
+  <data name="strInputModelID" xml:space="preserve">
+    <value>Input Model ID</value>
+  </data>
+  <data name="strInputRouteID" xml:space="preserve">
+    <value>Input Route ID</value>
+  </data>
+  <data name="strInputTime" xml:space="preserve">
+    <value>Input Time</value>
+  </data>
+  <data name="strLine" xml:space="preserve">
+    <value>Line ID</value>
+  </data>
+  <data name="strLotID" xml:space="preserve">
+    <value>Lot ID</value>
+  </data>
+  <data name="strManualOutCell" xml:space="preserve">
+    <value>수동Cell배출</value>
+  </data>
+  <data name="strMeasType" xml:space="preserve">
+    <value>측정종류</value>
+  </data>
+  <data name="strModel" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="strModify" xml:space="preserve">
+    <value>정보 수정</value>
+  </data>
+  <data name="strNextOperName" xml:space="preserve">
+    <value>다음공정</value>
+  </data>
+  <data name="strNextProcessName" xml:space="preserve">
+    <value>다음공정</value>
+  </data>
+  <data name="strNgCellCnt" xml:space="preserve">
+    <value>불량수량</value>
+  </data>
+  <data name="strPlanTime" xml:space="preserve">
+    <value>Plan Time</value>
+  </data>
+  <data name="strProcChange" xml:space="preserve">
+    <value>공정 변경</value>
+  </data>
+  <data name="strProcessName" xml:space="preserve">
+    <value>공정명</value>
+  </data>
+  <data name="strProdModel" xml:space="preserve">
+    <value>모델</value>
+  </data>
+  <data name="strRackID" xml:space="preserve">
+    <value>Rack ID</value>
+  </data>
+  <data name="strRouteChange" xml:space="preserve">
+    <value>Route 변경</value>
+  </data>
+  <data name="strRouteID" xml:space="preserve">
+    <value>Route ID</value>
+  </data>
+  <data name="strSave" xml:space="preserve">
+    <value>저장</value>
+  </data>
+  <data name="strSearch" xml:space="preserve">
+    <value>검색</value>
+  </data>
+  <data name="strSearchCondition" xml:space="preserve">
+    <value>조회 조건   &gt;</value>
+  </data>
+  <data name="strSize" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="strStartCell" xml:space="preserve">
+    <value>투입 Cell</value>
+  </data>
+  <data name="strStartTime" xml:space="preserve">
+    <value>시작 시간</value>
+  </data>
+  <data name="strStatus" xml:space="preserve">
+    <value>Delete Flag</value>
+  </data>
+  <data name="strTrayID" xml:space="preserve">
+    <value>Tray ID</value>
+  </data>
+  <data name="strTrayInfoChang" xml:space="preserve">
+    <value>Tray 정보 변경</value>
+  </data>
+  <data name="strUnitName" xml:space="preserve">
+    <value>설비명</value>
+  </data>
+  <data name="titleAgingInfo" xml:space="preserve">
+    <value>Aging Infomation</value>
+  </data>
+  <data name="titleDateProcess" xml:space="preserve">
+    <value>날짜별 공정 정보</value>
+  </data>
+  <data name="titleLotResult" xml:space="preserve">
+    <value>Lot 별 생산실적</value>
+  </data>
+  <data name="titleProcessResult" xml:space="preserve">
+    <value>공정별 생산 현황</value>
+  </data>
+  <data name="titleProcessResultManage" xml:space="preserve">
+    <value>공정실적관리</value>
+  </data>
+  <data name="titleGradeByDayManage" xml:space="preserve">
+    <value>날짜별실적관리</value>
+  </data>
+  <data name="titleProdcutionModel" xml:space="preserve">
+    <value>생산 모델 관리</value>
+  </data>
+  <data name="titleTroubleInfo" xml:space="preserve">
+    <value>Trouble Info 관리</value>
+  </data>
+  <data name="tsMonitoring" xml:space="preserve">
+    <value>모니터링</value>
+  </data>
+  <data name="tsMonitoringFormation" xml:space="preserve">
+    <value>Formation</value>
+  </data>
+  <data name="tsMonitoringHT" xml:space="preserve">
+    <value>HTAging</value>
+  </data>
+  <data name="tsMonitoringRT" xml:space="preserve">
+    <value>RTAging</value>
+  </data>
+  <data name="tsMonitoringTotal" xml:space="preserve">
+    <value>전체 현황도</value>
+  </data>
+  <data name="tsReport" xml:space="preserve">
+    <value>레포트</value>
+  </data>
+  <data name="tsReportCellSearch" xml:space="preserve">
+    <value>Cell 정보 조회</value>
+  </data>
+  <data name="tsReportTraySearch" xml:space="preserve">
+    <value>Tray 정보 조회</value>
+  </data>
+  <data name="strGrade" xml:space="preserve">
+    <value>등급</value>
+  </data>
+  <data name="strUserID" xml:space="preserve">
+    <value>사용자 ID</value>
+  </data>
+  <data name="titleUserManagement" xml:space="preserve">
+    <value>사용자 관리</value>
+  </data>
+  <data name="strPassword" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="strUserName" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+  <data name="strErrorLevel" xml:space="preserve">
+    <value>Error Level</value>
+  </data>
+  <data name="strFailover" xml:space="preserve">
+    <value>장애조치 방법</value>
+  </data>
+  <data name="strFailoverHistory" xml:space="preserve">
+    <value>장애조치 내역</value>
+  </data>
+  <data name="strTroubleCode" xml:space="preserve">
+    <value>Trouble Code</value>
+  </data>
+  <data name="strTroubleName" xml:space="preserve">
+    <value>Trouble Name</value>
+  </data>
+  <data name="titleTroubleMaster" xml:space="preserve">
+    <value>Trouble 관리</value>
+  </data>
+  <data name="strCurrMax" xml:space="preserve">
+    <value>최대 전류(mA)</value>
+  </data>
+  <data name="strCurrMin" xml:space="preserve">
+    <value>최소 전류(mA)</value>
+  </data>
+  <data name="strTimeMin" xml:space="preserve">
+    <value>시간(min)</value>
+  </data>
+  <data name="strVoltageMax" xml:space="preserve">
+    <value>최대 전압(mV)</value>
+  </data>
+  <data name="strVoltageMin" xml:space="preserve">
+    <value>최소 전압(mV)</value>
+  </data>
+  <data name="strCCCurrent" xml:space="preserve">
+    <value>CC 전류치(㎃)</value>
+  </data>
+  <data name="strCVVoltage" xml:space="preserve">
+    <value>CV 전압(㎷)</value>
+  </data>
+  <data name="strEndCapacity" xml:space="preserve">
+    <value>종지용량(㎃H)</value>
+  </data>
+  <data name="strEndCurrent" xml:space="preserve">
+    <value>종지전류(㎃)</value>
+  </data>
+  <data name="strEndTimeMin" xml:space="preserve">
+    <value>종지시간(min)</value>
+  </data>
+  <data name="strEndVoltage" xml:space="preserve">
+    <value>종지전압(㎷)</value>
+  </data>
+  <data name="strJudgmentVolta" xml:space="preserve">
+    <value>판정전압(㎷)</value>
+  </data>
+  <data name="strStep" xml:space="preserve">
+    <value>단계</value>
+  </data>
+  <data name="strWaitTime" xml:space="preserve">
+    <value>대기시간(min)</value>
+  </data>
+  <data name="strEnergizedTime" xml:space="preserve">
+    <value>통전시간(0.1Sec)</value>
+  </data>
+  <data name="DEF_CONTROL_001" xml:space="preserve">
+    <value>모니터링</value>
+  </data>
+  <data name="DEF_CONTROL_002" xml:space="preserve">
+    <value>관리</value>
+  </data>
+  <data name="DEF_CONTROL_003" xml:space="preserve">
+    <value>레포트</value>
+  </data>
+  <data name="DEF_CONTROL_004" xml:space="preserve">
+    <value>실적관리</value>
+  </data>
+  <data name="DEF_CONTROL_005" xml:space="preserve">
+    <value>작업관리</value>
+  </data>
+  <data name="DEF_CONTROL_006" xml:space="preserve">
+    <value>시스템</value>
+  </data>
+  <data name="DEF_CONTROL_007" xml:space="preserve">
+    <value>로그인</value>
+  </data>
+  <data name="DEF_CONTROL_008" xml:space="preserve">
+    <value>로그아웃</value>
+  </data>
+  <data name="DEF_CONTROL_009" xml:space="preserve">
+    <value>종료</value>
+  </data>
+  <data name="DEF_CONTROL_010" xml:space="preserve">
+    <value>전체 현황도</value>
+  </data>
+  <data name="DEF_CONTROL_011" xml:space="preserve">
+    <value>Aging</value>
+  </data>
+  <data name="DEF_CONTROL_012" xml:space="preserve">
+    <value>Formation</value>
+  </data>
+  <data name="DEF_CONTROL_013" xml:space="preserve">
+    <value>생산 모델 관리</value>
+  </data>
+  <data name="DEF_CONTROL_014" xml:space="preserve">
+    <value>Route 관리</value>
+  </data>
+  <data name="DEF_CONTROL_015" xml:space="preserve">
+    <value>Recipe 관리</value>
+  </data>
+  <data name="DEF_CONTROL_016" xml:space="preserve">
+    <value>등급 판정 관리</value>
+  </data>
+  <data name="DEF_CONTROL_017" xml:space="preserve">
+    <value>단일 판정 등급</value>
+  </data>
+  <data name="DEF_CONTROL_018" xml:space="preserve">
+    <value>종합 판정 등급</value>
+  </data>
+  <data name="DEF_CONTROL_019" xml:space="preserve">
+    <value>판정 적용</value>
+  </data>
+  <data name="DEF_CONTROL_020" xml:space="preserve">
+    <value>작업 변환</value>
+  </data>
+  <data name="DEF_CONTROL_021" xml:space="preserve">
+    <value>Manual 작업</value>
+  </data>
+  <data name="DEF_CONTROL_022" xml:space="preserve">
+    <value>Dummy</value>
+  </data>
+  <data name="DEF_CONTROL_023" xml:space="preserve">
+    <value>공정별 생산 현황</value>
+  </data>
+  <data name="DEF_CONTROL_024" xml:space="preserve">
+    <value>불량률 조회</value>
+  </data>
+  <data name="DEF_CONTROL_025" xml:space="preserve">
+    <value>Selecting</value>
+  </data>
+  <data name="DEF_CONTROL_026" xml:space="preserve">
+    <value>Grading</value>
+  </data>
+  <data name="DEF_CONTROL_027" xml:space="preserve">
+    <value>Tray 정보 조회</value>
+  </data>
+  <data name="DEF_CONTROL_028" xml:space="preserve">
+    <value>판정 결과 조회</value>
+  </data>
+  <data name="DEF_CONTROL_029" xml:space="preserve">
+    <value>Trouble 조회</value>
+  </data>
+  <data name="DEF_CONTROL_030" xml:space="preserve">
+    <value>공정별 생산 실적</value>
+  </data>
+  <data name="DEF_CONTROL_031" xml:space="preserve">
+    <value>일자별 생산 실적</value>
+  </data>
+  <data name="DEF_CONTROL_032" xml:space="preserve">
+    <value>충방전기 온도 모니터링</value>
+  </data>
+  <data name="DEF_CONTROL_033" xml:space="preserve">
+    <value>화재 발생 이력 관리</value>
+  </data>
+  <data name="DEF_CONTROL_034" xml:space="preserve">
+    <value>공정별 수동 판정</value>
+  </data>
+  <data name="DEF_CONTROL_035" xml:space="preserve">
+    <value>수동 판정</value>
+  </data>
+  <data name="DEF_CONTROL_036" xml:space="preserve">
+    <value>사용자 설정</value>
+  </data>
+  <data name="DEF_CONTROL_037" xml:space="preserve">
+    <value>조회</value>
+  </data>
+  <data name="DEF_CONTROL_038" xml:space="preserve">
+    <value>추가</value>
+  </data>
+  <data name="DEF_CONTROL_039" xml:space="preserve">
+    <value>저장</value>
+  </data>
+  <data name="DEF_CONTROL_040" xml:space="preserve">
+    <value>삭제</value>
+  </data>
+  <data name="DEF_CONTROL_041" xml:space="preserve">
+    <value>Manual 작업</value>
+  </data>
+  <data name="DEF_CONTROL_042" xml:space="preserve">
+    <value>Tray ID</value>
+  </data>
+  <data name="DEF_CONTROL_043" xml:space="preserve">
+    <value>Line</value>
+  </data>
+  <data name="DEF_CONTROL_044" xml:space="preserve">
+    <value>Lane</value>
+  </data>
+  <data name="DEF_CONTROL_045" xml:space="preserve">
+    <value>Unit</value>
+  </data>
+  <data name="DEF_CONTROL_046" xml:space="preserve">
+    <value>Box</value>
+  </data>
+  <data name="DEF_CONTROL_047" xml:space="preserve">
+    <value>재시작</value>
+  </data>
+  <data name="DEF_CONTROL_048" xml:space="preserve">
+    <value>일시정지</value>
+  </data>
+  <data name="DEF_CONTROL_049" xml:space="preserve">
+    <value>연속시작</value>
+  </data>
+  <data name="DEF_CONTROL_050" xml:space="preserve">
+    <value>작업중지</value>
+  </data>
+  <data name="DEF_CONTROL_051" xml:space="preserve">
+    <value>설비정보 초기화</value>
+  </data>
+  <data name="DEF_CONTROL_052" xml:space="preserve">
+    <value>실행</value>
+  </data>
+  <data name="DEF_CONTROL_053" xml:space="preserve">
+    <value>설비상태</value>
+  </data>
+  <data name="DEF_CONTROL_054" xml:space="preserve">
+    <value>설비 상태 유지</value>
+  </data>
+  <data name="DEF_CONTROL_055" xml:space="preserve">
+    <value>가동중</value>
+  </data>
+  <data name="DEF_CONTROL_056" xml:space="preserve">
+    <value>작업 대기중</value>
+  </data>
+  <data name="DEF_CONTROL_057" xml:space="preserve">
+    <value>Trouble</value>
+  </data>
+  <data name="DEF_CONTROL_058" xml:space="preserve">
+    <value>유지 보수</value>
+  </data>
+  <data name="DEF_CONTROL_059" xml:space="preserve">
+    <value>전원 OFF</value>
+  </data>
+  <data name="DEF_CONTROL_060" xml:space="preserve">
+    <value>운영 Mode</value>
+  </data>
+  <data name="DEF_CONTROL_061" xml:space="preserve">
+    <value>Control</value>
+  </data>
+  <data name="DEF_CONTROL_062" xml:space="preserve">
+    <value>Manual</value>
+  </data>
+  <data name="DEF_CONTROL_063" xml:space="preserve">
+    <value>Tray 정보 확인</value>
+  </data>
+  <data name="DEF_CONTROL_064" xml:space="preserve">
+    <value>Tray 정보 유지</value>
+  </data>
+  <data name="DEF_CONTROL_065" xml:space="preserve">
+    <value>Tray 정보 Clear</value>
+  </data>
+  <data name="DEF_CONTROL_066" xml:space="preserve">
+    <value>Box Info</value>
+  </data>
+  <data name="DEF_CONTROL_067" xml:space="preserve">
+    <value>LOT ID</value>
+  </data>
+  <data name="DEF_CONTROL_068" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="DEF_CONTROL_069" xml:space="preserve">
+    <value>Unit ID</value>
+  </data>
+  <data name="DEF_CONTROL_070" xml:space="preserve">
+    <value>Start Time</value>
+  </data>
+  <data name="DEF_CONTROL_071" xml:space="preserve">
+    <value>Trouble Info</value>
+  </data>
+  <data name="DEF_CONTROL_072" xml:space="preserve">
+    <value>Aging Rack 설정</value>
+  </data>
+  <data name="DEF_CONTROL_073" xml:space="preserve">
+    <value>Rack ID</value>
+  </data>
+  <data name="DEF_CONTROL_074" xml:space="preserve">
+    <value>입고 금지</value>
+  </data>
+  <data name="DEF_CONTROL_075" xml:space="preserve">
+    <value>입고 가능</value>
+  </data>
+  <data name="DEF_CONTROL_076" xml:space="preserve">
+    <value>Rack 정보 삭제</value>
+  </data>
+  <data name="DEF_CONTROL_077" xml:space="preserve">
+    <value>최소 전압(mV)</value>
+  </data>
+  <data name="DEF_CONTROL_078" xml:space="preserve">
+    <value>최대 전압(mV)</value>
+  </data>
+  <data name="DEF_CONTROL_079" xml:space="preserve">
+    <value>시간(min)</value>
+  </data>
+  <data name="DEF_CONTROL_080" xml:space="preserve">
+    <value>입력</value>
+  </data>
+  <data name="DEF_CONTROL_081" xml:space="preserve">
+    <value>삭제</value>
+  </data>
+  <data name="DEF_CONTROL_082" xml:space="preserve">
+    <value>저장시간(분)</value>
+  </data>
+  <data name="DEF_CONTROL_083" xml:space="preserve">
+    <value>1차 Aging</value>
+  </data>
+  <data name="DEF_CONTROL_084" xml:space="preserve">
+    <value>Route 유형</value>
+  </data>
+  <data name="DEF_CONTROL_085" xml:space="preserve">
+    <value>다음공정</value>
+  </data>
+  <data name="DEF_CONTROL_086" xml:space="preserve">
+    <value>Cell 수량</value>
+  </data>
+  <data name="DEF_CONTROL_087" xml:space="preserve">
+    <value>재작업 발생 공정</value>
+  </data>
+  <data name="DEF_CONTROL_088" xml:space="preserve">
+    <value>Selecting</value>
+  </data>
+  <data name="DEF_CONTROL_089" xml:space="preserve">
+    <value>Grading</value>
+  </data>
+  <data name="DEF_CONTROL_090" xml:space="preserve">
+    <value>일반작업</value>
+  </data>
+  <data name="DEF_CONTROL_091" xml:space="preserve">
+    <value>Route Input</value>
+  </data>
+  <data name="DEF_CONTROL_092" xml:space="preserve">
+    <value>Route Type</value>
+  </data>
+  <data name="DEF_CONTROL_093" xml:space="preserve">
+    <value>Route ID</value>
+  </data>
+  <data name="DEF_CONTROL_094" xml:space="preserve">
+    <value>저장시간(분)</value>
+  </data>
+  <data name="DEF_CONTROL_095" xml:space="preserve">
+    <value>공정명</value>
+  </data>
+  <data name="DEF_CONTROL_096" xml:space="preserve">
+    <value>측정유형</value>
+  </data>
+  <data name="DEF_CONTROL_097" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="DEF_CONTROL_098" xml:space="preserve">
+    <value>등급</value>
+  </data>
+  <data name="DEF_CONTROL_099" xml:space="preserve">
+    <value>Or</value>
+  </data>
+  <data name="DEF_CONTROL_100" xml:space="preserve">
+    <value>And</value>
+  </data>
+  <data name="DEF_CONTROL_101" xml:space="preserve">
+    <value>재등록</value>
+  </data>
+  <data name="DEF_CONTROL_102" xml:space="preserve">
+    <value>ALL</value>
+  </data>
+  <data name="DEF_CONTROL_103" xml:space="preserve">
+    <value>Only #1</value>
+  </data>
+  <data name="DEF_CONTROL_104" xml:space="preserve">
+    <value>Only #2</value>
+  </data>
+  <data name="DEF_CONTROL_105" xml:space="preserve">
+    <value>Only #3</value>
+  </data>
+  <data name="DEF_CONTROL_106" xml:space="preserve">
+    <value>ETC</value>
+  </data>
+  <data name="DEF_CONTROL_107" xml:space="preserve">
+    <value>Route</value>
+  </data>
+  <data name="DEF_CONTROL_108" xml:space="preserve">
+    <value>공정 작업순서</value>
+  </data>
+  <data name="DEF_CONTROL_109" xml:space="preserve">
+    <value>공정</value>
+  </data>
+  <data name="DEF_CONTROL_110" xml:space="preserve">
+    <value>Bay</value>
+  </data>
+  <data name="DEF_CONTROL_111" xml:space="preserve">
+    <value>Rack</value>
+  </data>
+  <data name="DEF_CONTROL_112" xml:space="preserve">
+    <value>다음공정 설정</value>
+  </data>
+  <data name="DEF_CONTROL_113" xml:space="preserve">
+    <value>투입 Cell 수량</value>
+  </data>
+  <data name="DEF_CONTROL_114" xml:space="preserve">
+    <value>현재 Cell 수량</value>
+  </data>
+  <data name="DEF_CONTROL_115" xml:space="preserve">
+    <value>변경</value>
+  </data>
+  <data name="DEF_CONTROL_116" xml:space="preserve">
+    <value>확인</value>
+  </data>
+  <data name="DEF_CONTROL_117" xml:space="preserve">
+    <value>취소</value>
+  </data>
+  <data name="DEF_CONTROL_118" xml:space="preserve">
+    <value>Tray 정보 변경</value>
+  </data>
+  <data name="DEF_CONTROL_119" xml:space="preserve">
+    <value>IR/OCV 이전</value>
+  </data>
+  <data name="DEF_CONTROL_120" xml:space="preserve">
+    <value>Tray Total</value>
+  </data>
+  <data name="DEF_CONTROL_121" xml:space="preserve">
+    <value>Cell Total</value>
+  </data>
+  <data name="DEF_CONTROL_122" xml:space="preserve">
+    <value>엑셀 저장</value>
+  </data>
+  <data name="DEF_CONTROL_123" xml:space="preserve">
+    <value>IR/OCV 이후</value>
+  </data>
+  <data name="DEF_CONTROL_124" xml:space="preserve">
+    <value>Tray Infomation</value>
+  </data>
+  <data name="DEF_CONTROL_125" xml:space="preserve">
+    <value>생성시간</value>
+  </data>
+  <data name="DEF_CONTROL_126" xml:space="preserve">
+    <value>측정종류</value>
+  </data>
+  <data name="DEF_CONTROL_127" xml:space="preserve">
+    <value>정보종류</value>
+  </data>
+  <data name="DEF_CONTROL_128" xml:space="preserve">
+    <value>투입 Cell</value>
+  </data>
+  <data name="DEF_CONTROL_129" xml:space="preserve">
+    <value>현재 Cell</value>
+  </data>
+  <data name="DEF_CONTROL_130" xml:space="preserve">
+    <value>Delete History</value>
+  </data>
+  <data name="DEF_CONTROL_131" xml:space="preserve">
+    <value>기능</value>
+  </data>
+  <data name="DEF_CONTROL_132" xml:space="preserve">
+    <value>Reload</value>
+  </data>
+  <data name="DEF_CONTROL_133" xml:space="preserve">
+    <value>Delete Tray</value>
+  </data>
+  <data name="DEF_CONTROL_134" xml:space="preserve">
+    <value>강제출고</value>
+  </data>
+  <data name="DEF_CONTROL_135" xml:space="preserve">
+    <value>정보조회</value>
+  </data>
+  <data name="DEF_CONTROL_136" xml:space="preserve">
+    <value>제번정보</value>
+  </data>
+  <data name="DEF_CONTROL_137" xml:space="preserve">
+    <value>Cell List</value>
+  </data>
+  <data name="DEF_CONTROL_138" xml:space="preserve">
+    <value>Count</value>
+  </data>
+  <data name="DEF_CONTROL_139" xml:space="preserve">
+    <value>Cell 측정치 관리</value>
+  </data>
+  <data name="DEF_CONTROL_140" xml:space="preserve">
+    <value>현재날짜</value>
+  </data>
+  <data name="DEF_CONTROL_141" xml:space="preserve">
+    <value>작업종료</value>
+  </data>
+  <data name="DEF_CONTROL_142" xml:space="preserve">
+    <value>IR/OCV Info</value>
+  </data>
+  <data name="DEF_CONTROL_143" xml:space="preserve">
+    <value>조회기간</value>
+  </data>
+  <data name="DEF_CONTROL_144" xml:space="preserve">
+    <value>IR/OCV 완료</value>
+  </data>
+  <data name="DEF_CONTROL_145" xml:space="preserve">
+    <value>Grading 완료</value>
+  </data>
+  <data name="DEF_CONTROL_146" xml:space="preserve">
+    <value>IR/OCV 등급 판정</value>
+  </data>
+  <data name="DEF_CONTROL_147" xml:space="preserve">
+    <value>Lot별 Tray 관리</value>
+  </data>
+  <data name="DEF_CONTROL_148" xml:space="preserve">
+    <value>Pin Trouble 관리</value>
+  </data>
+  <data name="DEF_CONTROL_149" xml:space="preserve">
+    <value>백분률</value>
+  </data>
+  <data name="DEF_CONTROL_150" xml:space="preserve">
+    <value>삭제 Tray 포함</value>
+  </data>
+  <data name="DEF_CONTROL_151" xml:space="preserve">
+    <value>Trouble Info 관리</value>
+  </data>
+  <data name="DEF_CONTROL_152" xml:space="preserve">
+    <value>설비명</value>
+  </data>
+  <data name="DEF_CONTROL_153" xml:space="preserve">
+    <value>사용자 관리</value>
+  </data>
+  <data name="DEF_CONTROL_154" xml:space="preserve">
+    <value>사용자 ID</value>
+  </data>
+  <data name="DEF_CONTROL_155" xml:space="preserve">
+    <value>최소 전류(mA)</value>
+  </data>
+  <data name="DEF_CONTROL_156" xml:space="preserve">
+    <value>최대 전류(mA)</value>
+  </data>
+  <data name="DEF_CONTROL_157" xml:space="preserve">
+    <value>출고 예약</value>
+  </data>
+  <data name="DEF_CONTROL_158" xml:space="preserve">
+    <value>생산 실적</value>
+  </data>
+  <data name="DEF_CONTROL_159" xml:space="preserve">
+    <value>Tray별 생산 실적</value>
+  </data>
+  <data name="DEF_CONTROL_160" xml:space="preserve">
+    <value>생산중</value>
+  </data>
+  <data name="DEF_CONTROL_161" xml:space="preserve">
+    <value>생산완료</value>
+  </data>
+  <data name="DEF_CONTROL_162" xml:space="preserve">
+    <value>투입시간</value>
+  </data>
+  <data name="DEF_CONTROL_163" xml:space="preserve">
+    <value>완료시간</value>
+  </data>
+  <data name="DEF_CONTROL_164" xml:space="preserve">
+    <value>장애조치</value>
+  </data>
+  <data name="DEF_CONTROL_165" xml:space="preserve">
+    <value>공정 변경</value>
+  </data>
+  <data name="DEF_CONTROL_166" xml:space="preserve">
+    <value>자동 조회</value>
+  </data>
+  <data name="DEF_CONTROL_167" xml:space="preserve">
+    <value>출고 금지 제외</value>
+  </data>
+  <data name="DEF_CONTROL_168" xml:space="preserve">
+    <value>장애 조치 입력</value>
+  </data>
+  <data name="DEF_CONTROL_169" xml:space="preserve">
+    <value>장애등급</value>
+  </data>
+  <data name="DEF_CONTROL_170" xml:space="preserve">
+    <value>장애조치 방법</value>
+  </data>
+  <data name="DEF_CONTROL_171" xml:space="preserve">
+    <value>장애조치 내역</value>
+  </data>
+  <data name="DEF_CONTROL_172" xml:space="preserve">
+    <value>사용 안함</value>
+  </data>
+  <data name="DEF_CONTROL_173" xml:space="preserve">
+    <value>사용 가능</value>
+  </data>
+  <data name="DEF_CONTROL_174" xml:space="preserve">
+    <value>Ocv 연속시작</value>
+  </data>
+  <data name="DEF_CONTROL_175" xml:space="preserve">
+    <value>Ocv Barcode 재읽기</value>
+  </data>
+  <data name="DEF_CONTROL_176" xml:space="preserve">
+    <value>Ocv Tray Unload</value>
+  </data>
+  <data name="DEF_CONTROL_177" xml:space="preserve">
+    <value>출고 가능</value>
+  </data>
+  <data name="DEF_CONTROL_178" xml:space="preserve">
+    <value>입고 금지</value>
+  </data>
+  <data name="DEF_CONTROL_179" xml:space="preserve">
+    <value>정보 수정</value>
+  </data>
+  <data name="DEF_CONTROL_180" xml:space="preserve">
+    <value>출고 금지</value>
+  </data>
+  <data name="DEF_CONTROL_181" xml:space="preserve">
+    <value>입고 완료</value>
+  </data>
+  <data name="DEF_CONTROL_182" xml:space="preserve">
+    <value>통신상태 보고요청</value>
+  </data>
+  <data name="DEF_CONTROL_183" xml:space="preserve">
+    <value>Sample 데이터 보고지시</value>
+  </data>
+  <data name="DEF_CONTROL_184" xml:space="preserve">
+    <value>수정</value>
+  </data>
+  <data name="DEF_CONTROL_185" xml:space="preserve">
+    <value>온도 보상 관리</value>
+  </data>
+  <data name="DEF_CONTROL_186" xml:space="preserve">
+    <value>Trouble 관리</value>
+  </data>
+  <data name="DEF_CONTROL_187" xml:space="preserve">
+    <value>삭제 Tray 포함</value>
+  </data>
+  <data name="DEF_CONTROL_188" xml:space="preserve">
+    <value>공정변경</value>
+  </data>
+  <data name="DEF_CONTROL_189" xml:space="preserve">
+    <value>현재공정</value>
+  </data>
+  <data name="DEF_CONTROL_190" xml:space="preserve">
+    <value>변경</value>
+  </data>
+  <data name="DEF_CONTROL_191" xml:space="preserve">
+    <value>작업모드(Control)</value>
+  </data>
+  <data name="DEF_CONTROL_192" xml:space="preserve">
+    <value>작업모드(Maintenance)</value>
+  </data>
+  <data name="DEF_CONTROL_193" xml:space="preserve">
+    <value>장애 조치</value>
+  </data>
+  <data name="DEF_CONTROL_194" xml:space="preserve">
+    <value>등급 판정</value>
+  </data>
+  <data name="DEF_CONTROL_195" xml:space="preserve">
+    <value>수동예약</value>
+  </data>
+  <data name="DEF_CONTROL_196" xml:space="preserve">
+    <value>수동예약 해제</value>
+  </data>
+  <data name="DEF_CONTROL_197" xml:space="preserve">
+    <value>등급 삭제</value>
+  </data>
+  <data name="DEF_CONTROL_198" xml:space="preserve">
+    <value>선출고 예약</value>
+  </data>
+  <data name="DEF_CONTROL_199" xml:space="preserve">
+    <value>Report Spec 관리</value>
+  </data>
+  <data name="DEF_CONTROL_200" xml:space="preserve">
+    <value>적용</value>
+  </data>
+  <data name="DEF_CONTROL_201" xml:space="preserve">
+    <value>공정 시간 변경</value>
+  </data>
+  <data name="DEF_CONTROL_202" xml:space="preserve">
+    <value>Cell 정보 조회</value>
+  </data>
+  <data name="DEF_CONTROL_203" xml:space="preserve">
+    <value>Route 변경</value>
+  </data>
+  <data name="DEF_CONTROL_204" xml:space="preserve">
+    <value>화면 관리</value>
+  </data>
+  <data name="DEF_CONTROL_205" xml:space="preserve">
+    <value>Log 정보 조회</value>
+  </data>
+  <data name="DEF_CONTROL_206" xml:space="preserve">
+    <value>Report 불량 Spec 관리</value>
+  </data>
+  <data name="DEF_CONTROL_207" xml:space="preserve">
+    <value>Pin 교체 이력 관리</value>
+  </data>
+  <data name="DEF_CONTROL_208" xml:space="preserve">
+    <value>Pin 교체 입력</value>
+  </data>
+  <data name="DEF_CONTROL_209" xml:space="preserve">
+    <value>Cell ID 변경</value>
+  </data>
+  <data name="DEF_CONTROL_210" xml:space="preserve">
+    <value>설비 상태 조회</value>
+  </data>
+  <data name="DEF_CONTROL_211" xml:space="preserve">
+    <value>복원</value>
+  </data>
+  <data name="DEF_CONTROL_212" xml:space="preserve">
+    <value>초기화</value>
+  </data>
+  <data name="DEF_CONTROL_213" xml:space="preserve">
+    <value>Tray별 Cell 정보 조회</value>
+  </data>
+  <data name="DEF_SPREAD_001" xml:space="preserve">
+    <value>User ID</value>
+  </data>
+  <data name="DEF_SPREAD_002" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+  <data name="DEF_SPREAD_003" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="DEF_SPREAD_004" xml:space="preserve">
+    <value>등급</value>
+  </data>
+  <data name="DEF_SPREAD_005" xml:space="preserve">
+    <value>Line</value>
+  </data>
+  <data name="DEF_SPREAD_006" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="DEF_SPREAD_007" xml:space="preserve">
+    <value>Running</value>
+  </data>
+  <data name="DEF_SPREAD_008" xml:space="preserve">
+    <value>Ready</value>
+  </data>
+  <data name="DEF_SPREAD_009" xml:space="preserve">
+    <value>N/A</value>
+  </data>
+  <data name="DEF_SPREAD_010" xml:space="preserve">
+    <value>Input Cells</value>
+  </data>
+  <data name="DEF_SPREAD_011" xml:space="preserve">
+    <value>Route ID</value>
+  </data>
+  <data name="DEF_SPREAD_012" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="DEF_SPREAD_013" xml:space="preserve">
+    <value>Process</value>
+  </data>
+  <data name="DEF_SPREAD_014" xml:space="preserve">
+    <value>Trouble Code</value>
+  </data>
+  <data name="DEF_SPREAD_015" xml:space="preserve">
+    <value>Trouble Name</value>
+  </data>
+  <data name="DEF_SPREAD_016" xml:space="preserve">
+    <value>Count</value>
+  </data>
+  <data name="DEF_SPREAD_017" xml:space="preserve">
+    <value>Input Tray</value>
+  </data>
+  <data name="DEF_SPREAD_018" xml:space="preserve">
+    <value>Aging</value>
+  </data>
+  <data name="DEF_SPREAD_019" xml:space="preserve">
+    <value>Formation</value>
+  </data>
+  <data name="DEF_SPREAD_020" xml:space="preserve">
+    <value>Etc</value>
+  </data>
+  <data name="DEF_SPREAD_021" xml:space="preserve">
+    <value>단계</value>
+  </data>
+  <data name="DEF_SPREAD_022" xml:space="preserve">
+    <value>CC 전류치(㎃)</value>
+  </data>
+  <data name="DEF_SPREAD_023" xml:space="preserve">
+    <value>CV 전압(㎷)</value>
+  </data>
+  <data name="DEF_SPREAD_024" xml:space="preserve">
+    <value>종지시간(min)</value>
+  </data>
+  <data name="DEF_SPREAD_025" xml:space="preserve">
+    <value>판정전압(㎷)</value>
+  </data>
+  <data name="DEF_SPREAD_026" xml:space="preserve">
+    <value>종지전류(㎃)</value>
+  </data>
+  <data name="DEF_SPREAD_027" xml:space="preserve">
+    <value>종지용량(㎃H)</value>
+  </data>
+  <data name="DEF_SPREAD_028" xml:space="preserve">
+    <value>대기시간(min)</value>
+  </data>
+  <data name="DEF_SPREAD_029" xml:space="preserve">
+    <value>종지전압(㎷)</value>
+  </data>
+  <data name="DEF_SPREAD_030" xml:space="preserve">
+    <value>작업 Type</value>
+  </data>
+  <data name="DEF_SPREAD_031" xml:space="preserve">
+    <value>Tab Direction</value>
+  </data>
+  <data name="DEF_SPREAD_032" xml:space="preserve">
+    <value>Pin Limit Count</value>
+  </data>
+  <data name="DEF_SPREAD_033" xml:space="preserve">
+    <value>OCV 불량 검출 상한값(㎷)</value>
+  </data>
+  <data name="DEF_SPREAD_034" xml:space="preserve">
+    <value>OCV 불량 검출 하한값(㎷)</value>
+  </data>
+  <data name="DEF_SPREAD_035" xml:space="preserve">
+    <value>OCV 불량 검출 Delta값(㎷)</value>
+  </data>
+  <data name="DEF_SPREAD_036" xml:space="preserve">
+    <value>Route Type</value>
+  </data>
+  <data name="DEF_SPREAD_037" xml:space="preserve">
+    <value>Default Flag</value>
+  </data>
+  <data name="DEF_SPREAD_038" xml:space="preserve">
+    <value>Route Description</value>
+  </data>
+  <data name="DEF_SPREAD_039" xml:space="preserve">
+    <value>생산모델</value>
+  </data>
+  <data name="DEF_SPREAD_040" xml:space="preserve">
+    <value>공정명</value>
+  </data>
+  <data name="DEF_SPREAD_041" xml:space="preserve">
+    <value>판단</value>
+  </data>
+  <data name="DEF_SPREAD_042" xml:space="preserve">
+    <value>정상반영</value>
+  </data>
+  <data name="DEF_SPREAD_043" xml:space="preserve">
+    <value>측정유형</value>
+  </data>
+  <data name="DEF_SPREAD_044" xml:space="preserve">
+    <value>등급</value>
+  </data>
+  <data name="DEF_SPREAD_045" xml:space="preserve">
+    <value>최소값</value>
+  </data>
+  <data name="DEF_SPREAD_046" xml:space="preserve">
+    <value>최대값</value>
+  </data>
+  <data name="DEF_SPREAD_047" xml:space="preserve">
+    <value>공정</value>
+  </data>
+  <data name="DEF_SPREAD_048" xml:space="preserve">
+    <value>등급 Row수</value>
+  </data>
+  <data name="DEF_SPREAD_049" xml:space="preserve">
+    <value>재작업유무</value>
+  </data>
+  <data name="DEF_SPREAD_050" xml:space="preserve">
+    <value>재작업발생공정</value>
+  </data>
+  <data name="DEF_SPREAD_051" xml:space="preserve">
+    <value>측정유형</value>
+  </data>
+  <data name="DEF_SPREAD_052" xml:space="preserve">
+    <value>시작등급</value>
+  </data>
+  <data name="DEF_SPREAD_053" xml:space="preserve">
+    <value>끝등급</value>
+  </data>
+  <data name="DEF_SPREAD_054" xml:space="preserve">
+    <value>행수</value>
+  </data>
+  <data name="DEF_SPREAD_055" xml:space="preserve">
+    <value>공정수</value>
+  </data>
+  <data name="DEF_SPREAD_056" xml:space="preserve">
+    <value>정상작업</value>
+  </data>
+  <data name="DEF_SPREAD_057" xml:space="preserve">
+    <value>재작업</value>
+  </data>
+  <data name="DEF_SPREAD_058" xml:space="preserve">
+    <value>무시</value>
+  </data>
+  <data name="DEF_SPREAD_059" xml:space="preserve">
+    <value>Route Name</value>
+  </data>
+  <data name="DEF_SPREAD_060" xml:space="preserve">
+    <value>EqpTypeID</value>
+  </data>
+  <data name="DEF_SPREAD_061" xml:space="preserve">
+    <value>공정번호</value>
+  </data>
+  <data name="DEF_SPREAD_062" xml:space="preserve">
+    <value>대기시간</value>
+  </data>
+  <data name="DEF_SPREAD_063" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="DEF_SPREAD_064" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="DEF_SPREAD_065" xml:space="preserve">
+    <value>투입수량</value>
+  </data>
+  <data name="DEF_SPREAD_066" xml:space="preserve">
+    <value>현재수량</value>
+  </data>
+  <data name="DEF_SPREAD_067" xml:space="preserve">
+    <value>양품수</value>
+  </data>
+  <data name="DEF_SPREAD_068" xml:space="preserve">
+    <value>양품률</value>
+  </data>
+  <data name="DEF_SPREAD_069" xml:space="preserve">
+    <value>불량품수</value>
+  </data>
+  <data name="DEF_SPREAD_070" xml:space="preserve">
+    <value>불량품률</value>
+  </data>
+  <data name="DEF_SPREAD_071" xml:space="preserve">
+    <value>Unit</value>
+  </data>
+  <data name="DEF_SPREAD_072" xml:space="preserve">
+    <value>백분율</value>
+  </data>
+  <data name="DEF_SPREAD_073" xml:space="preserve">
+    <value>시작 시간</value>
+  </data>
+  <data name="DEF_SPREAD_074" xml:space="preserve">
+    <value>종료 시간</value>
+  </data>
+  <data name="DEF_SPREAD_075" xml:space="preserve">
+    <value>Input Cell Count</value>
+  </data>
+  <data name="DEF_SPREAD_076" xml:space="preserve">
+    <value>Current Cell Count</value>
+  </data>
+  <data name="DEF_SPREAD_077" xml:space="preserve">
+    <value>종지전압</value>
+  </data>
+  <data name="DEF_SPREAD_078" xml:space="preserve">
+    <value>종지전류</value>
+  </data>
+  <data name="DEF_SPREAD_079" xml:space="preserve">
+    <value>작업대기</value>
+  </data>
+  <data name="DEF_SPREAD_080" xml:space="preserve">
+    <value>Cell</value>
+  </data>
+  <data name="DEF_SPREAD_081" xml:space="preserve">
+    <value>작업중</value>
+  </data>
+  <data name="DEF_SPREAD_082" xml:space="preserve">
+    <value>작업이상</value>
+  </data>
+  <data name="DEF_SPREAD_083" xml:space="preserve">
+    <value>NG</value>
+  </data>
+  <data name="DEF_SPREAD_084" xml:space="preserve">
+    <value>Total Tray</value>
+  </data>
+  <data name="DEF_SPREAD_085" xml:space="preserve">
+    <value>Total Cell</value>
+  </data>
+  <data name="DEF_SPREAD_086" xml:space="preserve">
+    <value>Lot ID</value>
+  </data>
+  <data name="DEF_SPREAD_087" xml:space="preserve">
+    <value>Tray ID</value>
+  </data>
+  <data name="DEF_SPREAD_088" xml:space="preserve">
+    <value>작업시작시간</value>
+  </data>
+  <data name="DEF_SPREAD_089" xml:space="preserve">
+    <value>작업종료시간</value>
+  </data>
+  <data name="DEF_SPREAD_090" xml:space="preserve">
+    <value>Input Date</value>
+  </data>
+  <data name="DEF_SPREAD_091" xml:space="preserve">
+    <value>Unit ID</value>
+  </data>
+  <data name="DEF_SPREAD_092" xml:space="preserve">
+    <value>위치</value>
+  </data>
+  <data name="DEF_SPREAD_093" xml:space="preserve">
+    <value>Box ID</value>
+  </data>
+  <data name="DEF_SPREAD_094" xml:space="preserve">
+    <value>불량수량</value>
+  </data>
+  <data name="DEF_SPREAD_095" xml:space="preserve">
+    <value>비고</value>
+  </data>
+  <data name="DEF_SPREAD_096" xml:space="preserve">
+    <value>생성시간</value>
+  </data>
+  <data name="DEF_SPREAD_097" xml:space="preserve">
+    <value>설명</value>
+  </data>
+  <data name="DEF_SPREAD_098" xml:space="preserve">
+    <value>삭제시간</value>
+  </data>
+  <data name="DEF_SPREAD_099" xml:space="preserve">
+    <value>설비명</value>
+  </data>
+  <data name="DEF_SPREAD_100" xml:space="preserve">
+    <value>Trouble 명</value>
+  </data>
+  <data name="DEF_SPREAD_101" xml:space="preserve">
+    <value>발생 시점</value>
+  </data>
+  <data name="DEF_SPREAD_102" xml:space="preserve">
+    <value>모델</value>
+  </data>
+  <data name="DEF_SPREAD_103" xml:space="preserve">
+    <value>내용</value>
+  </data>
+  <data name="DEF_SPREAD_104" xml:space="preserve">
+    <value>사이즈</value>
+  </data>
+  <data name="DEF_SPREAD_105" xml:space="preserve">
+    <value>투입라인</value>
+  </data>
+  <data name="DEF_SPREAD_106" xml:space="preserve">
+    <value>생산일자</value>
+  </data>
+  <data name="DEF_SPREAD_107" xml:space="preserve">
+    <value>기구부</value>
+  </data>
+  <data name="DEF_SPREAD_108" xml:space="preserve">
+    <value>전원부</value>
+  </data>
+  <data name="DEF_SPREAD_109" xml:space="preserve">
+    <value>화제감지 위치</value>
+  </data>
+  <data name="DEF_SPREAD_110" xml:space="preserve">
+    <value>발생일시</value>
+  </data>
+  <data name="DEF_SPREAD_111" xml:space="preserve">
+    <value>조치일시</value>
+  </data>
+  <data name="DEF_SPREAD_112" xml:space="preserve">
+    <value>조치여부</value>
+  </data>
+  <data name="DEF_SPREAD_113" xml:space="preserve">
+    <value>조치내역</value>
+  </data>
+  <data name="DEF_SPREAD_114" xml:space="preserve">
+    <value>TRAY 유무</value>
+  </data>
+  <data name="DEF_SPREAD_115" xml:space="preserve">
+    <value>설비상태</value>
+  </data>
+  <data name="DEF_SPREAD_116" xml:space="preserve">
+    <value>판정공정</value>
+  </data>
+  <data name="DEF_SPREAD_117" xml:space="preserve">
+    <value>통전시간(0.1Sec)</value>
+  </data>
+  <data name="DEF_SPREAD_118" xml:space="preserve">
+    <value>변경공정</value>
+  </data>
+  <data name="DEF_SPREAD_119" xml:space="preserve">
+    <value>Bad Cell Limit Count</value>
+  </data>
+  <data name="DEF_SPREAD_120" xml:space="preserve">
+    <value>IR 불량 검출 상한값(㏁)</value>
+  </data>
+  <data name="DEF_SPREAD_121" xml:space="preserve">
+    <value>IR 불량 검출 하한값(㏁)</value>
+  </data>
+  <data name="DEF_SPREAD_122" xml:space="preserve">
+    <value>전력량(mWh)</value>
+  </data>
+  <data name="DEF_SPREAD_237" xml:space="preserve">
+    <value>공정(중문)</value>
+  </data>
+  <data name="Start_Tray_CN" xml:space="preserve">
+    <value>Start Tray</value>
+  </data>
+  <data name="DEF_ITEM_01" xml:space="preserve">
+    <value>저장시간(분)</value>
+  </data>
+  <data name="DEF_ITEM_02" xml:space="preserve">
+    <value>대기시간(분)</value>
+  </data>
+  <data name="DEF_ITEM_03" xml:space="preserve">
+    <value>측정범위</value>
+  </data>
+  <data name="DEF_ITEM_04" xml:space="preserve">
+    <value>등급</value>
+  </data>
+  <data name="DEF_ITEM_05" xml:space="preserve">
+    <value>양품</value>
+  </data>
+  <data name="DEF_ITEM_06" xml:space="preserve">
+    <value>불량</value>
+  </data>
+  <data name="DEF_MSG_01" xml:space="preserve">
+    <value>정상적으로 데이터를 불러오기에 성공하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_02" xml:space="preserve">
+    <value>정상적으로 데이터를 저장하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_03" xml:space="preserve">
+    <value>정상적으로 데이터를 삭제하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_04" xml:space="preserve">
+    <value>데이터를 변경하는중 오류가 발생하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_05" xml:space="preserve">
+    <value>데이터를 선택하는중 오류가 발생하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_06" xml:space="preserve">
+    <value>데이터를 엑셀로 저장하는중 오류가 발생하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_07" xml:space="preserve">
+    <value>DB측에서 데이터를 불러오는중 오류가 발생하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_08" xml:space="preserve">
+    <value>DB측에</value>
+  </data>
+  <data name="DEF_MSG_09" xml:space="preserve">
+    <value>데이터를 저장하는중 INSERT 오류가 발생하여, 작업을 취소하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_10" xml:space="preserve">
+    <value>데이터를 저장하는중 DELETE 오류가 발생하여, 작업을 취소하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_11" xml:space="preserve">
+    <value>데이터를 저장하는중 UPDATE 오류가 발생하여, 작업을 취소하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_12" xml:space="preserve">
+    <value>데이터를 저장하는중 PROCESS 오류가 발생하여, 작업을 취소하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_13" xml:space="preserve">
+    <value>데이터를 삭제하는중 DELETE 오류가 발생하여, 작업을 취소하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_14" xml:space="preserve">
+    <value>데이터를 삭제하는중 UPDATE 오류가 발생하여, 작업을 취소하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_15" xml:space="preserve">
+    <value>데이터를 삭제하는중 PROCESS 오류가 발생하여, 작업을 취소하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_16" xml:space="preserve">
+    <value>Database에 연결할 수 없습니다. 관리자에게 문의 바랍니다.</value>
+  </data>
+  <data name="DEF_MSG_17" xml:space="preserve">
+    <value>System을 종료하시겠습니까?</value>
+  </data>
+  <data name="DEF_MSG_18" xml:space="preserve">
+    <value>데이터를 조회하는중 오류가 발생하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_19" xml:space="preserve">
+    <value>데이터를 추가하는중 오류가 발생하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_20" xml:space="preserve">
+    <value>데이터를 삭제하는중 오류가 발생하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_21" xml:space="preserve">
+    <value>데이터를 수정하는중 오류가 발생하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_22" xml:space="preserve">
+    <value>데이터를 복사하는중 오류가 발생하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_23" xml:space="preserve">
+    <value>데이터를 표시하는중 오류가 발생하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_24" xml:space="preserve">
+    <value>데이터를 체크하는중 오류가 발생하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_25" xml:space="preserve">
+    <value>데이터를 설정하는중 오류가 발생하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_26" xml:space="preserve">
+    <value>데이터를 저장하는중 오류가 발생하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_27" xml:space="preserve">
+    <value>데이터를 저장하시겠습니까?</value>
+  </data>
+  <data name="DEF_MSG_28" xml:space="preserve">
+    <value>데이터를 삭제하시겠습니까?</value>
+  </data>
+  <data name="DEF_MSG_29" xml:space="preserve">
+    <value>데이터 변경사항을 저장하시겠습니까?</value>
+  </data>
+  <data name="DEF_MSG_30" xml:space="preserve">
+    <value>Spread 초기화중 오류가 발생하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_31" xml:space="preserve">
+    <value>Spread 데이터 ▲ 이동 설정중 올류가 발생하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_32" xml:space="preserve">
+    <value>Spread 데이터 ▼ 이동 설정중 올류가 발생하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_33" xml:space="preserve">
+    <value>Spread 데이터를 복사 하는중 오류가 발생하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_34" xml:space="preserve">
+    <value>Spread 데이터를 잘라내기 하는중 오류가 발생하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_35" xml:space="preserve">
+    <value>Spread 데이터를 붙여넣기 하는중 오류가 발생하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_36" xml:space="preserve">
+    <value>Spread 데이터를 설정하는중 오류가 발생하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_37" xml:space="preserve">
+    <value>Spread 데이터를 추가하는중 오류가 발생하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_38" xml:space="preserve">
+    <value>번째</value>
+  </data>
+  <data name="DEF_MSG_39" xml:space="preserve">
+    <value>을 입력하여 주십시오.</value>
+  </data>
+  <data name="DEF_MSG_40" xml:space="preserve">
+    <value>을 선택하여 주십시오.</value>
+  </data>
+  <data name="DEF_MSG_41" xml:space="preserve">
+    <value>를 입력하여 주십시오.</value>
+  </data>
+  <data name="DEF_MSG_42" xml:space="preserve">
+    <value>를 선택하여 주십시오.</value>
+  </data>
+  <data name="DEF_MSG_43" xml:space="preserve">
+    <value>사용자ID</value>
+  </data>
+  <data name="DEF_MSG_44" xml:space="preserve">
+    <value>Aging Dummy 정보를 적용 하시겠습니까?</value>
+  </data>
+  <data name="DEF_MSG_45" xml:space="preserve">
+    <value>Route Type을 선택하여 주십시오.</value>
+  </data>
+  <data name="DEF_MSG_46" xml:space="preserve">
+    <value>RouteID</value>
+  </data>
+  <data name="DEF_MSG_47" xml:space="preserve">
+    <value>Route Type</value>
+  </data>
+  <data name="DEF_MSG_48" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="DEF_MSG_49" xml:space="preserve">
+    <value>공정명</value>
+  </data>
+  <data name="DEF_MSG_50" xml:space="preserve">
+    <value>측정 유형</value>
+  </data>
+  <data name="DEF_MSG_51" xml:space="preserve">
+    <value>등급</value>
+  </data>
+  <data name="DEF_MSG_52" xml:space="preserve">
+    <value>Row수</value>
+  </data>
+  <data name="DEF_MSG_53" xml:space="preserve">
+    <value>Col수</value>
+  </data>
+  <data name="DEF_MSG_54" xml:space="preserve">
+    <value>공정</value>
+  </data>
+  <data name="DEF_MSG_55" xml:space="preserve">
+    <value>공정을 확인하여 주십시오.</value>
+  </data>
+  <data name="DEF_MSG_56" xml:space="preserve">
+    <value>현재 공정은</value>
+  </data>
+  <data name="DEF_MSG_57" xml:space="preserve">
+    <value>입니다.</value>
+  </data>
+  <data name="DEF_MSG_58" xml:space="preserve">
+    <value>Tray 정보를 변경 하시겠습니까?</value>
+  </data>
+  <data name="DEF_MSG_59" xml:space="preserve">
+    <value>가동중인 TrayID가 존재합니다.</value>
+  </data>
+  <data name="DEF_MSG_60" xml:space="preserve">
+    <value>Aging Rack에 예약 대기중입니다.</value>
+  </data>
+  <data name="DEF_MSG_61" xml:space="preserve">
+    <value>Chart 초기화중 오류가 발생하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_62" xml:space="preserve">
+    <value>Chart Selecting 데이터를 추가하는중 오류가 발생하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_63" xml:space="preserve">
+    <value>Chart Grading 데이터를 추가하는중 오류가 발생하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_64" xml:space="preserve">
+    <value>Spread Total 데이터를 설정하는중 오류가 발생하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_65" xml:space="preserve">
+    <value>정상적으로 데이터를 변경하였습니다.</value>
+  </data>
+  <data name="DEF_MSG_66" xml:space="preserve">
+    <value>현재 공정의 작업이 완료되었습니다. 그래도 재작업 하시겠습니까?</value>
+  </data>
+  <data name="DEF_MSG_67" xml:space="preserve">
+    <value>Default Route는 하나만 설정 가능합니다.</value>
+  </data>
+  <data name="DEF_MSG_68" xml:space="preserve">
+    <value>가동중인 Route는 변경할수 없습니다. Route 확인후 변경 하십시오.</value>
+  </data>
+  <data name="DEF_MSG_69" xml:space="preserve">
+    <value>데이터를 복원하시겠습니까?</value>
+  </data>
+  <data name="DEF_SPREAD_123" xml:space="preserve">
+    <value>온도보상사용</value>
+  </data>
+  <data name="DEF_SPREAD_124" xml:space="preserve">
+    <value>온도보상</value>
+  </data>
+  <data name="DEF_SPREAD_125" xml:space="preserve">
+    <value>온도(Min)</value>
+  </data>
+  <data name="DEF_SPREAD_126" xml:space="preserve">
+    <value>온도(Max)</value>
+  </data>
+  <data name="DEF_SPREAD_127" xml:space="preserve">
+    <value>평균용량(Min)</value>
+  </data>
+  <data name="DEF_SPREAD_128" xml:space="preserve">
+    <value>평균용량(Max)</value>
+  </data>
+  <data name="DEF_SPREAD_129" xml:space="preserve">
+    <value>평균용량(Delta)</value>
+  </data>
+  <data name="DEF_SPREAD_130" xml:space="preserve">
+    <value>평균전압(Min)</value>
+  </data>
+  <data name="DEF_SPREAD_131" xml:space="preserve">
+    <value>평균전압(Max)</value>
+  </data>
+  <data name="DEF_SPREAD_132" xml:space="preserve">
+    <value>평균전압(Delta)</value>
+  </data>
+  <data name="DEF_CONTROL_214" xml:space="preserve">
+    <value>고온가압</value>
+  </data>
+  <data name="DEF_CONTROL_215" xml:space="preserve">
+    <value>재공정보조회</value>
+  </data>
+  <data name="DEF_CONTROL_216" xml:space="preserve">
+    <value>실적조회</value>
+  </data>
+  <data name="DEF_CONTROL_300" xml:space="preserve">
+    <value>Tray Process Report</value>
+    <comment>G-Prj, FormADD</comment>
+  </data>
+  <data name="DEF_SPREAD_200" xml:space="preserve">
+    <value>WaitDeltaV</value>
+  </data>
+  <data name="DEF_SPREAD_201" xml:space="preserve">
+    <value>WaitDeltaV_Flag</value>
+  </data>
+  <data name="DEF_SPREAD_202" xml:space="preserve">
+    <value>ChgGetVolCheckTime</value>
+  </data>
+  <data name="DEF_SPREAD_203" xml:space="preserve">
+    <value>ChgGetVolUpper</value>
+  </data>
+  <data name="DEF_SPREAD_204" xml:space="preserve">
+    <value>ChgGetVolLower</value>
+  </data>
+  <data name="DEF_SPREAD_205" xml:space="preserve">
+    <value>CoolingPressure</value>
+  </data>
+  <data name="DEF_SPREAD_206" xml:space="preserve">
+    <value>CoolingTemp</value>
+  </data>
+  <data name="DEF_SPREAD_207" xml:space="preserve">
+    <value>CoolingTime</value>
+  </data>
+  <data name="DEF_SPREAD_208" xml:space="preserve">
+    <value>SizeX</value>
+  </data>
+  <data name="DEF_SPREAD_209" xml:space="preserve">
+    <value>SizeY</value>
+  </data>
+  <data name="DEF_SPREAD_210" xml:space="preserve">
+    <value>Pressure</value>
+  </data>
+  <data name="DEF_SPREAD_211" xml:space="preserve">
+    <value>Temp</value>
+  </data>
+  <data name="DEF_SPREAD_212" xml:space="preserve">
+    <value>ProfileVoltDev</value>
+  </data>
+  <data name="DEF_SPREAD_213" xml:space="preserve">
+    <value>통전시간</value>
+  </data>
+  <data name="DEF_SPREAD_214" xml:space="preserve">
+    <value>LimitStepTime</value>
+  </data>
+  <data name="DEF_SPREAD_215" xml:space="preserve">
+    <value>OcvPinLimitCnt</value>
+  </data>
+  <data name="DEF_SPREAD_216" xml:space="preserve">
+    <value>OcvPinBadUpper</value>
+  </data>
+  <data name="DEF_SPREAD_217" xml:space="preserve">
+    <value>OcvPinBadLower</value>
+  </data>
+  <data name="DEF_SPREAD_218" xml:space="preserve">
+    <value>OcvPinBadDelta</value>
+  </data>
+  <data name="DEF_CONTROL_301" xml:space="preserve">
+    <value>관리</value>
+  </data>
+  <data name="DEF_CONTROL_302" xml:space="preserve">
+    <value>설비 상태 조회</value>
+  </data>
+  <data name="DEF_CONTROL_303" xml:space="preserve">
+    <value>온도 모니터링</value>
+  </data>
+  <data name="DEF_CONTROL_304" xml:space="preserve">
+    <value>상태</value>
+  </data>
+  <data name="DEF_CONTROL_305" xml:space="preserve">
+    <value>현재 상태</value>
+  </data>
+  <data name="DEF_CONTROL_306" xml:space="preserve">
+    <value>변경 상태</value>
+  </data>
+  <data name="DEF_CONTROL_307" xml:space="preserve">
+    <value>Tray 상태 변경</value>
+  </data>
+  <data name="strEqpSetting" xml:space="preserve">
+    <value>설비 설정</value>
+  </data>
+  <data name="strEQPStatusReset" xml:space="preserve">
+    <value>설비 상태 초기화</value>
+  </data>
+  <data name="strFireInit" xml:space="preserve">
+    <value>화재정보 초기화</value>
+  </data>
+  <data name="strBarcodeReread" xml:space="preserve">
+    <value>Barcode 재읽기</value>
+  </data>
+  <data name="strEQPUse" xml:space="preserve">
+    <value>장비 사용 여부</value>
+  </data>
+  <data name="strJobKInd" xml:space="preserve">
+    <value>작업종류</value>
+  </data>
+  <data name="strTrayOut" xml:space="preserve">
+    <value>Tray 배출</value>
+  </data>
+  <data name="strOperMode" xml:space="preserve">
+    <value>작업모드</value>
+  </data>
+  <data name="strSCLoadingComplete" xml:space="preserve">
+    <value>SC 입고 완료</value>
+  </data>
+  <data name="strDCIR1" xml:space="preserve">
+    <value>방전전류(A)</value>
+  </data>
+  <data name="strDCIR2" xml:space="preserve">
+    <value>측정시간(sec)</value>
+  </data>
+  <data name="strDCIR3" xml:space="preserve">
+    <value>방전시간(sec)</value>
+  </data>
+  <data name="strDCIR4" xml:space="preserve">
+    <value>Cell Limit Count</value>
+  </data>
+  <data name="strEmptyTray" xml:space="preserve">
+    <value>공 Tray</value>
+  </data>
+  <data name="CalcConstant" xml:space="preserve">
+    <value>상수</value>
+  </data>
+  <data name="CellThicknessDataCH1" xml:space="preserve">
+    <value>Cell Thickness Data(CH1)</value>
+  </data>
+  <data name="CellThicknessDataCH2" xml:space="preserve">
+    <value>Cell Thickness Data(CH2)</value>
+  </data>
+  <data name="CellThicknessDataCH3" xml:space="preserve">
+    <value>Cell Thickness Data(CH3)</value>
+  </data>
+  <data name="CellThicknessDataCH4" xml:space="preserve">
+    <value>Cell Thickness Data(CH4)</value>
+  </data>
+  <data name="CellThicknessDataCH5" xml:space="preserve">
+    <value>Cell Thickness Data(CH5)</value>
+  </data>
+  <data name="CellThicknessPos" xml:space="preserve">
+    <value>Cell Thickness Position</value>
+  </data>
+  <data name="CellThicknessPressure" xml:space="preserve">
+    <value>Cell Thickness pressure</value>
+  </data>
+  <data name="DegasChamberNo" xml:space="preserve">
+    <value>디게싱 챔버 넘버</value>
+  </data>
+  <data name="DegasChamberPos" xml:space="preserve">
+    <value>디게싱 챔버내 위치</value>
+  </data>
+  <data name="DegasFinalVacuum" xml:space="preserve">
+    <value>디게싱 최종 진공값</value>
+  </data>
+  <data name="Dimension1" xml:space="preserve">
+    <value>DIMENSION VISION 측정 데이터#1</value>
+  </data>
+  <data name="Dimension10" xml:space="preserve">
+    <value>DIMENSION VISION 측정 데이터#10</value>
+  </data>
+  <data name="Dimension11" xml:space="preserve">
+    <value>DIMENSION VISION 측정 데이터#11</value>
+  </data>
+  <data name="Dimension12" xml:space="preserve">
+    <value>DIMENSION VISION 측정 데이터#12</value>
+  </data>
+  <data name="Dimension13" xml:space="preserve">
+    <value>DIMENSION VISION 측정 데이터#13</value>
+  </data>
+  <data name="Dimension14" xml:space="preserve">
+    <value>DIMENSION VISION 측정 데이터#14</value>
+  </data>
+  <data name="Dimension15" xml:space="preserve">
+    <value>DIMENSION VISION 측정 데이터#15</value>
+  </data>
+  <data name="Dimension2" xml:space="preserve">
+    <value>DIMENSION VISION 측정 데이터#2</value>
+  </data>
+  <data name="Dimension3" xml:space="preserve">
+    <value>DIMENSION VISION 측정 데이터#3</value>
+  </data>
+  <data name="Dimension4" xml:space="preserve">
+    <value>DIMENSION VISION 측정 데이터#4</value>
+  </data>
+  <data name="Dimension5" xml:space="preserve">
+    <value>DIMENSION VISION 측정 데이터#5</value>
+  </data>
+  <data name="Dimension6" xml:space="preserve">
+    <value>DIMENSION VISION 측정 데이터#6</value>
+  </data>
+  <data name="Dimension7" xml:space="preserve">
+    <value>DIMENSION VISION 측정 데이터#7</value>
+  </data>
+  <data name="Dimension8" xml:space="preserve">
+    <value>DIMENSION VISION 측정 데이터#8</value>
+  </data>
+  <data name="Dimension9" xml:space="preserve">
+    <value>DIMENSION VISION 측정 데이터#9</value>
+  </data>
+  <data name="FilledWeight" xml:space="preserve">
+    <value>주액량</value>
+  </data>
+  <data name="FinalSealingPos" xml:space="preserve">
+    <value>FINAL SEALING 위치</value>
+  </data>
+  <data name="FinalSealingPressure" xml:space="preserve">
+    <value>FINAL SEALING 압력</value>
+  </data>
+  <data name="FinalSealingTempLower" xml:space="preserve">
+    <value>FINAL SEALING 온도(LOWER)</value>
+  </data>
+  <data name="FinalSealingTempUpper" xml:space="preserve">
+    <value>FINAL SEALING 온도(UPPER)</value>
+  </data>
+  <data name="FinalWeight" xml:space="preserve">
+    <value>FINAL WEIGHT 측정값</value>
+  </data>
+  <data name="HipotPos" xml:space="preserve">
+    <value>Hipot Position</value>
+  </data>
+  <data name="HipotResistant" xml:space="preserve">
+    <value>Hipot Resistant</value>
+  </data>
+  <data name="HipotTime" xml:space="preserve">
+    <value>Hipot Time</value>
+  </data>
+  <data name="HipotVolt" xml:space="preserve">
+    <value>Hipot Volt</value>
+  </data>
+  <data name="LossWeight" xml:space="preserve">
+    <value>실액량</value>
+  </data>
+  <data name="PostFillWeight" xml:space="preserve">
+    <value>주액후 중량</value>
+  </data>
+  <data name="RetentionWeight" xml:space="preserve">
+    <value>보액량</value>
+  </data>
+  <data name="Rolling1_Pressure" xml:space="preserve">
+    <value>첫번째 ROLLING 압력</value>
+  </data>
+  <data name="Rolling2_Pressure" xml:space="preserve">
+    <value>두번째 ROLLING 압력</value>
+  </data>
+  <data name="RollingPos" xml:space="preserve">
+    <value>ROLLING 위치</value>
+  </data>
+  <data name="strDeleteWarning" xml:space="preserve">
+    <value>삭제된 Tray정보는 복원할수 없습니다. 진행하시겠습니까?</value>
+  </data>
+  <data name="strCellProStep" xml:space="preserve">
+    <value>Cell 공정 정보</value>
+  </data>
+  <data name="strNGCell" xml:space="preserve">
+    <value>NG 셀</value>
+  </data>
+  <data name="strDistrict1" xml:space="preserve">
+    <value>화성 1 구역</value>
+  </data>
+  <data name="strDistrict2" xml:space="preserve">
+    <value>화성 2 구역</value>
+  </data>
+  <data name="strUsePopUpAlarm" xml:space="preserve">
+    <value>Trouble 팝업 알림 사용</value>
+  </data>
+  <data name="strAgingState" xml:space="preserve">
+    <value>에이징 화재상태</value>
+  </data>
+  <data name="strFire" xml:space="preserve">
+    <value>화재</value>
+  </data>
+  <data name="strFormationState" xml:space="preserve">
+    <value>충방전기 화재상태</value>
+  </data>
+  <data name="strFTag01" xml:space="preserve">
+    <value>Charge</value>
+  </data>
+  <data name="strFTag02" xml:space="preserve">
+    <value>Discharge</value>
+  </data>
+  <data name="strFTag03" xml:space="preserve">
+    <value>OCV</value>
+  </data>
+  <data name="strFTag04" xml:space="preserve">
+    <value>DC Impedance</value>
+  </data>
+  <data name="strFTag05" xml:space="preserve">
+    <value>Power OFF</value>
+  </data>
+  <data name="strFTag06" xml:space="preserve">
+    <value>ON</value>
+  </data>
+  <data name="strFTag07" xml:space="preserve">
+    <value>Maintenance</value>
+  </data>
+  <data name="strFTag08" xml:space="preserve">
+    <value>Pause</value>
+  </data>
+  <data name="strFTag09" xml:space="preserve">
+    <value>Idle</value>
+  </data>
+  <data name="strFTag10" xml:space="preserve">
+    <value>Load Request</value>
+  </data>
+  <data name="strFTag11" xml:space="preserve">
+    <value>Loading</value>
+  </data>
+  <data name="strFTag12" xml:space="preserve">
+    <value>Unload Request</value>
+  </data>
+  <data name="strFTag13" xml:space="preserve">
+    <value>Unloading</value>
+  </data>
+  <data name="strFTag14" xml:space="preserve">
+    <value>Manual Reserve</value>
+  </data>
+  <data name="strFTag15" xml:space="preserve">
+    <value>Trouble</value>
+  </data>
+  <data name="strFTag16" xml:space="preserve">
+    <value>Fire</value>
+  </data>
+  <data name="strFTag17" xml:space="preserve">
+    <value>Abnormal</value>
+  </data>
+  <data name="strFTag18" xml:space="preserve">
+    <value>Data Error</value>
+  </data>
+  <data name="strFTag20" xml:space="preserve">
+    <value>DisConnected</value>
+  </data>
+  <data name="strGood" xml:space="preserve">
+    <value>정상</value>
+  </data>
+  <data name="strHTag02" xml:space="preserve">
+    <value>HT Aging</value>
+  </data>
+  <data name="strTag00" xml:space="preserve">
+    <value>사용안함</value>
+  </data>
+  <data name="strTag01" xml:space="preserve">
+    <value>Empty</value>
+  </data>
+  <data name="strTag02" xml:space="preserve">
+    <value>RT 1st Aging</value>
+  </data>
+  <data name="strTag03" xml:space="preserve">
+    <value>RT 2nd Aging</value>
+  </data>
+  <data name="strTag04" xml:space="preserve">
+    <value>RT 3rd Aging</value>
+  </data>
+  <data name="strTag05" xml:space="preserve">
+    <value>RT 4th Aging</value>
+  </data>
+  <data name="strTag06" xml:space="preserve">
+    <value>RT 5th Aging</value>
+  </data>
+  <data name="strTag07" xml:space="preserve">
+    <value>입고금지</value>
+  </data>
+  <data name="strTag08" xml:space="preserve">
+    <value>출고금지</value>
+  </data>
+  <data name="strTag09" xml:space="preserve">
+    <value>입고</value>
+  </data>
+  <data name="strTag10" xml:space="preserve">
+    <value>입고중</value>
+  </data>
+  <data name="strTag11" xml:space="preserve">
+    <value>출고</value>
+  </data>
+  <data name="strTag12" xml:space="preserve">
+    <value>출고중</value>
+  </data>
+  <data name="strTag13" xml:space="preserve">
+    <value>출고 대기</value>
+  </data>
+  <data name="strTag14" xml:space="preserve">
+    <value>Bad Rack</value>
+  </data>
+  <data name="strTag15" xml:space="preserve">
+    <value>Trouble</value>
+  </data>
+  <data name="strTag16" xml:space="preserve">
+    <value>화재</value>
+  </data>
+  <data name="strTag17" xml:space="preserve">
+    <value>염수통</value>
+  </data>
+  <data name="strTag18" xml:space="preserve">
+    <value>이중입고</value>
+  </data>
+  <data name="strTag19" xml:space="preserve">
+    <value>공출고</value>
+  </data>
+  <data name="strHTag01" xml:space="preserve">
+    <value>고온Aging</value>
+  </data>
+  <data name="AFilledWeight" xml:space="preserve">
+    <value>중량</value>
+  </data>
+  <data name="AForeFillWeight" xml:space="preserve">
+    <value>주액전 중량</value>
+  </data>
+  <data name="APostFillWeight" xml:space="preserve">
+    <value>주액후 중량</value>
+  </data>
+  <data name="strProductOrder" xml:space="preserve">
+    <value>생산 차수</value>
+  </data>
+  <data name="strGradingTray" xml:space="preserve">
+    <value>등급Tray만 검색</value>
+  </data>
+  <data name="strUnderProcessing" xml:space="preserve">
+    <value>공정중</value>
+  </data>
+  <data name="strRackTroubleInit" xml:space="preserve">
+    <value>Trouble 초기화</value>
+  </data>
+  <data name="strEmergencyOut" xml:space="preserve">
+    <value>비상배출</value>
+  </data>
+  <data name="strForcedOut" xml:space="preserve">
+    <value>강제배출</value>
+  </data>
+  <data name="strCellSearchDateRange" xml:space="preserve">
+    <value>검색범위는 24간을 넘을수 없습니다.</value>
+  </data>
+  <data name="strRangeStartTime" xml:space="preserve">
+    <value>(현재 공정 시작시간)</value>
+  </data>
+  <data name="strRangeStartTime2" xml:space="preserve">
+    <value>(마지막 공정 시작시간)</value>
+  </data>
+  <data name="strAllProc" xml:space="preserve">
+    <value>공정했던거</value>
+  </data>
+  <data name="strCurrentProc" xml:space="preserve">
+    <value>현재공정</value>
+  </data>
+  <data name="strProcOption" xml:space="preserve">
+    <value>공정검색 옵션</value>
+  </data>
+  <data name="strRangeStartTime3" xml:space="preserve">
+    <value>(선택한 공정 시작시간)</value>
+  </data>
+  <data name="strAuth" xml:space="preserve">
+    <value>권한</value>
+  </data>
+  <data name="strGradeNameEdit" xml:space="preserve">
+    <value>등급 설정</value>
+  </data>
+  <data name="strCellSearchDateRange2" xml:space="preserve">
+    <value>검색범위는 일주일을 넘을수 없습니다.</value>
+  </data>
+  <data name="strEditGrade" xml:space="preserve">
+    <value>등급편집</value>
+  </data>
+  <data name="strGraderGrade" xml:space="preserve">
+    <value>Grader사용 등급명</value>
+  </data>
+  <data name="strReload" xml:space="preserve">
+    <value>Reload</value>
+  </data>
+  <data name="strTrayOutSetting" xml:space="preserve">
+    <value>배출구별 등급설정</value>
+  </data>
+  <data name="strTrayOutSlot" xml:space="preserve">
+    <value>배출구</value>
+  </data>
+  <data name="strSelectorGrade" xml:space="preserve">
+    <value>Selector 사용 등급명</value>
+  </data>
+  <data name="strNoAuth" xml:space="preserve">
+    <value>권한이 없습니다.</value>
+  </data>
+  <data name="strGInput" xml:space="preserve">
+    <value>강제입고</value>
+  </data>
+  <data name="DEF_CONTROL_308" xml:space="preserve">
+    <value>불량채널재측정</value>
+  </data>
+  <data name="DEF_CONTROL_309" xml:space="preserve">
+    <value>불량채널재측정종료</value>
+  </data>
+  <data name="DEF_CONTROL_310" xml:space="preserve">
+    <value>실처리 재요청</value>
+  </data>
+  <data name="CellThicknessDataAVG" xml:space="preserve">
+    <value>Cell Thickness Data AVG</value>
+  </data>
+  <data name="strInputGradeAllSlot" xml:space="preserve">
+    <value>모든 Slot에 등급을 기입하셔야 합니다.</value>
+  </data>
+  <data name="strNoDuplicatedGrade" xml:space="preserve">
+    <value>중복된 등급은 사용할수 없습니다.</value>
+  </data>
+  <data name="DEF_CONTROL_311" xml:space="preserve">
+    <value>수동입고완료</value>
+  </data>
+  <data name="DEF_CONTROL_312" xml:space="preserve">
+    <value>수동출고완료</value>
+  </data>
+  <data name="strFireRelease" xml:space="preserve">
+    <value>화재오감지 해제</value>
+  </data>
+  <data name="strSearchDateLimit5Day" xml:space="preserve">
+    <value>조회기간(5일)</value>
+  </data>
+  <data name="DEF_SPREAD_219" xml:space="preserve">
+    <value>Cell ID</value>
+  </data>
+  <data name="DEF_SPREAD_220" xml:space="preserve">
+    <value>Cell No</value>
+  </data>
+  <data name="DEF_SPREAD_221" xml:space="preserve">
+    <value>투입일</value>
+  </data>
+  <data name="DEF_SPREAD_222" xml:space="preserve">
+    <value>투입시간</value>
+  </data>
+  <data name="strGradeProc" xml:space="preserve">
+    <value>Grade Proc</value>
+  </data>
+  <data name="strGradeEqp" xml:space="preserve">
+    <value>Grade EQP</value>
+  </data>
+  <data name="lbMonAssem01" xml:space="preserve">
+    <value>Assembly#1</value>
+  </data>
+  <data name="lbMonAssem02" xml:space="preserve">
+    <value>Assembly#2</value>
+  </data>
+  <data name="lbMonAssem03" xml:space="preserve">
+    <value>Assembly#3</value>
+  </data>
+  <data name="lbMonAssem04" xml:space="preserve">
+    <value>Assembly#4</value>
+  </data>
+  <data name="lbMonAssem05" xml:space="preserve">
+    <value>Assembly#5</value>
+  </data>
+  <data name="lbMonCleaner01" xml:space="preserve">
+    <value>TrayCleaner#1</value>
+  </data>
+  <data name="lbMonCleaner02" xml:space="preserve">
+    <value>TrayCleaner#2</value>
+  </data>
+  <data name="lbMonForm01" xml:space="preserve">
+    <value>F #1</value>
+  </data>
+  <data name="lbMonForm02" xml:space="preserve">
+    <value>F #2</value>
+  </data>
+  <data name="lbMonGrader01" xml:space="preserve">
+    <value>Grader#1</value>
+  </data>
+  <data name="lbMonGrader02" xml:space="preserve">
+    <value>Grader#2</value>
+  </data>
+  <data name="lbMonHPC01" xml:space="preserve">
+    <value>HPC #1</value>
+  </data>
+  <data name="lbMonHPC02" xml:space="preserve">
+    <value>HPC #2</value>
+  </data>
+  <data name="lbMonHPC03" xml:space="preserve">
+    <value>HPC #3</value>
+  </data>
+  <data name="lbMonHPC04" xml:space="preserve">
+    <value>HPC #4</value>
+  </data>
+  <data name="lbMonHPC05" xml:space="preserve">
+    <value>HPC #5</value>
+  </data>
+  <data name="lbMonHPC06" xml:space="preserve">
+    <value>HPC #6</value>
+  </data>
+  <data name="lbMonHT" xml:space="preserve">
+    <value>HT</value>
+  </data>
+  <data name="lbMonRT01" xml:space="preserve">
+    <value>RT#1</value>
+  </data>
+  <data name="lbMonRT02" xml:space="preserve">
+    <value>RT#2</value>
+  </data>
+  <data name="lbMonRT03" xml:space="preserve">
+    <value>RT#3</value>
+  </data>
+  <data name="lbMonRT04" xml:space="preserve">
+    <value>RT#4</value>
+  </data>
+  <data name="lbMonRT05" xml:space="preserve">
+    <value>RT#5</value>
+  </data>
+  <data name="lbMonRT06" xml:space="preserve">
+    <value>RT#6</value>
+  </data>
+  <data name="lbMonRT07" xml:space="preserve">
+    <value>RT#7</value>
+  </data>
+  <data name="lbMonRT08" xml:space="preserve">
+    <value>RT#8</value>
+  </data>
+  <data name="lbMonSCFO01" xml:space="preserve">
+    <value>SC-FO #01</value>
+  </data>
+  <data name="lbMonSCFO02" xml:space="preserve">
+    <value>SC-FO #02</value>
+  </data>
+  <data name="lbMonSCHT" xml:space="preserve">
+    <value>SC-HT #01</value>
+  </data>
+  <data name="lbMonSCRT01" xml:space="preserve">
+    <value>SC-RT #01</value>
+  </data>
+  <data name="lbMonSCRT02" xml:space="preserve">
+    <value>SC-RT #02</value>
+  </data>
+  <data name="lbMonSCRT03" xml:space="preserve">
+    <value>SC-RT #03</value>
+  </data>
+  <data name="lbMonSCRT04" xml:space="preserve">
+    <value>SC-RT #04</value>
+  </data>
+  <data name="lbMonSCRT05" xml:space="preserve">
+    <value>SC-RT #05</value>
+  </data>
+  <data name="lbMonSCRT06" xml:space="preserve">
+    <value>SC-RT #06</value>
+  </data>
+  <data name="lbMonSCRT07" xml:space="preserve">
+    <value>SC-RT #07</value>
+  </data>
+  <data name="lbMonSCRT08" xml:space="preserve">
+    <value>SC-RT #08</value>
+  </data>
+  <data name="lbMonSelector01" xml:space="preserve">
+    <value>Selector#1</value>
+  </data>
+  <data name="lbMonSelector02" xml:space="preserve">
+    <value>Selector#2</value>
+  </data>
+  <data name="lbMonTxIdle" xml:space="preserve">
+    <value>Idle</value>
+  </data>
+  <data name="lbMonTxRunning" xml:space="preserve">
+    <value>Running</value>
+  </data>
+  <data name="lbMonTxtEmpty" xml:space="preserve">
+    <value>Empty</value>
+  </data>
+  <data name="lbMonTxtInAging" xml:space="preserve">
+    <value>In Aging</value>
+  </data>
+  <data name="lbMonTxtNoInOut" xml:space="preserve">
+    <value>No In/Out</value>
+  </data>
+  <data name="lbMonTxTotalBox" xml:space="preserve">
+    <value>Total Box</value>
+  </data>
+  <data name="lbMonTxtTotalRack" xml:space="preserve">
+    <value>Total Rack</value>
+  </data>
+  <data name="lbMonTabAging" xml:space="preserve">
+    <value>Aging</value>
+  </data>
+  <data name="DEF_SPREAD_223" xml:space="preserve">
+    <value>Uploading Rack</value>
+  </data>
+  <data name="DEF_SPREAD_224" xml:space="preserve">
+    <value>Aging Type</value>
+  </data>
+  <data name="DEF_SPREAD_225" xml:space="preserve">
+    <value>Total Rac Count</value>
+  </data>
+  <data name="lbMonTextCharge" xml:space="preserve">
+    <value>충방전기</value>
+  </data>
+  <data name="lbMonTxtBoxTemp" xml:space="preserve">
+    <value>Box Temp</value>
+  </data>
+  <data name="lbMonTxtChooseOption" xml:space="preserve">
+    <value>Choose Information</value>
+  </data>
+  <data name="lbMonTxtTrayCount" xml:space="preserve">
+    <value>Tray Count</value>
+  </data>
+  <data name="DEF_MSG_70" xml:space="preserve">
+    <value>재시작하기 위한 공정변경을 하셨나요?</value>
+  </data>
+  <data name="DEF_MSG_71" xml:space="preserve">
+    <value>강제배출 Tray상태를 변경하셨나요?</value>
+  </data>
+  <data name="DEF_SPREAD_226" xml:space="preserve">
+    <value>TrayZone</value>
+  </data>
+  <data name="DEF_SPREAD_227" xml:space="preserve">
+    <value>ProcID</value>
+  </data>
+  <data name="lbReportCurrentCell" xml:space="preserve">
+    <value>Curr Cell</value>
+  </data>
+  <data name="lbReportOutputCell" xml:space="preserve">
+    <value>Output Cell</value>
+  </data>
+  <data name="lbReportProcessHistView" xml:space="preserve">
+    <value>Process Step Hist View</value>
+  </data>
+  <data name="lbReportProcessInfo" xml:space="preserve">
+    <value>Process Step Info</value>
+  </data>
+  <data name="lbReportTrayInfo" xml:space="preserve">
+    <value>Tray Info</value>
+  </data>
+  <data name="DEF_CONTROL_313" xml:space="preserve">
+    <value>Cell수동배출</value>
+  </data>
+  <data name="lbMonTxtNotUse" xml:space="preserve">
+    <value>미사용</value>
+  </data>
+  <data name="lbReportCellInfo" xml:space="preserve">
+    <value>Cell Info</value>
+  </data>
+  <data name="lbReportProcessName" xml:space="preserve">
+    <value>Process Name</value>
+  </data>
+  <data name="lbDay" xml:space="preserve">
+    <value>Day</value>
+  </data>
+  <data name="DEF_SPREAD_228" xml:space="preserve">
+    <value>PinIRBadUpper(mΩ)</value>
+  </data>
+  <data name="DEF_SPREAD_229" xml:space="preserve">
+    <value>PinIRBadLower(mΩ)</value>
+  </data>
+  <data name="strGradingInit" xml:space="preserve">
+    <value>Grade Reset</value>
+  </data>
+  <data name="DEF_CONTROL_314" xml:space="preserve">
+    <value>Trouble Tray정보 삭제</value>
+  </data>
+  <data name="DEF_SPREAD_230" xml:space="preserve">
+    <value>장비종류</value>
+  </data>
+  <data name="DEF_SPREAD_231" xml:space="preserve">
+    <value>장비명</value>
+  </data>
+  <data name="DEF_SPREAD_232" xml:space="preserve">
+    <value>로그 기록 시간</value>
+  </data>
+  <data name="DEF_SPREAD_233" xml:space="preserve">
+    <value>Rest 상한전압(mV)</value>
+  </data>
+  <data name="DEF_SPREAD_234" xml:space="preserve">
+    <value>Rest 하한전압(mV)</value>
+  </data>
+  <data name="DEF_SPREAD_235" xml:space="preserve">
+    <value>가압 상한압력(kgf)</value>
+  </data>
+  <data name="DEF_SPREAD_236" xml:space="preserve">
+    <value>가압 하한압력(kgf)</value>
+  </data>
+  <data name="lbDisplayProcess" xml:space="preserve">
+    <value>보여줄 공정</value>
+  </data>
+  <data name="strSearchOption" xml:space="preserve">
+    <value>검색조건</value>
+  </data>
+  <data name="strEmptyTrayOutImmediately" xml:space="preserve">
+    <value>공 트레이 즉시 출고</value>
+  </data>
+  <data name="DEF_MSG_72" xml:space="preserve">
+    <value>Rack 안에 Tray가 들어있지 않은지 확인 하셨나요?</value>
+  </data>
+  <data name="DEF_MSG_73" xml:space="preserve">
+    <value>등급 판정 조건</value>
+  </data>
+  <data name="strWaitSelector" xml:space="preserve">
+    <value>Selector 공정 대기중</value>
+  </data>
+  <data name="strAddProcData" xml:space="preserve">
+    <value>공정데이터추가</value>
+  </data>
+  <data name="strMainLoopTraffic" xml:space="preserve">
+    <value>Main Loop 점유율관리</value>
+  </data>
+  <data name="strTag20" xml:space="preserve">
+    <value>RT 6th Aging</value>
+  </data>
+  <data name="strTrayGrade" xml:space="preserve">
+    <value>Tray 등급</value>
+  </data>
+  <data name="DEF_SPREAD_238" xml:space="preserve">
+    <value>Aging Type</value>
+  </data>
+  <data name="DEF_SPREAD_239" xml:space="preserve">
+    <value>Hogi</value>
+  </data>
+  <data name="DEF_SPREAD_240" xml:space="preserve">
+    <value>설정된 사용율</value>
+  </data>
+  <data name="DEF_SPREAD_241" xml:space="preserve">
+    <value>사용중인 Rack수</value>
+  </data>
+  <data name="DEF_ITEM_01_01" xml:space="preserve">
+    <value>대기시간(분)</value>
+  </data>
+  <data name="strDelayAlarm" xml:space="preserve">
+    <value>출고지연</value>
+  </data>
+  <data name="strDelayAlarmOFF" xml:space="preserve">
+    <value>출고지연알람해제</value>
+  </data>
+  <data name="strChangeTrayZone" xml:space="preserve">
+    <value>TrayZone 변경</value>
+  </data>
+  <data name="strPastRouteID" xml:space="preserve">
+    <value>공정진행된 모든 Route :</value>
+  </data>
+  <data name="strAgingTime" xml:space="preserve">
+    <value>보관시간(분)</value>
+  </data>
+  <data name="DEF_MSG_74" xml:space="preserve">
+    <value>RouteID 변경 예약을 취소하시겠습니까?</value>
+  </data>
+  <data name="strReserveChangeRouteID" xml:space="preserve">
+    <value>RouteID 변경 예약 정보</value>
+  </data>
+  <data name="strReservedProc" xml:space="preserve">
+    <value>예약된 공정명</value>
+  </data>
+  <data name="strReservedRouteID" xml:space="preserve">
+    <value>예약된 RouteID</value>
+  </data>
+  <data name="strCancelReserveRouteIDChange" xml:space="preserve">
+    <value>변경 예약 취소</value>
+  </data>
+  <data name="strDoReserveRouteIDChange" xml:space="preserve">
+    <value>RouteID 변경 예약</value>
+  </data>
+  <data name="strClearCurrentValue" xml:space="preserve">
+    <value>현재수치를 초기화 하시겠습니까?</value>
+  </data>
+  <data name="strFailASMLimitClear" xml:space="preserve">
+    <value>Tray 갯수 초기화에 실패하였습니다.</value>
+  </data>
+  <data name="strForm1ASMLimitGuide" xml:space="preserve">
+    <value>한꺼번에 많은 공트레이가 조립설비로 향하면 조립동 물류흐름에 많은 영향을 줍니다.  이것을 방지하기 위해 일정 수량이상의 공트레이가 조립설비로 가지 못하도록 하기위해,  설정된 수량이상의 공트레이가 조립설비로 향할 경우 H11 BCR에서 회전 시킵니다.</value>
+  </data>
+  <data name="strForm1Tray" xml:space="preserve">
+    <value>화성 1구역 Tray</value>
+  </data>
+  <data name="strForm2ASMLimitGuide" xml:space="preserve">
+    <value>한꺼번에 많은 공트레이가 조립설비로 향하면 조립동 물류흐름에 많은 영향을 줍니다.  이것을 방지하기 위해 일정 수량이상의 공트레이가 조립설비로 가지 못하도록 하기위해,  설정된 수량이상의 공트레이가 조립설비로 향할 경우 H21 BCR에서 회전 시킵니다.</value>
+  </data>
+  <data name="strForm2Tray" xml:space="preserve">
+    <value>화성 2구역 Tray</value>
+  </data>
+  <data name="strModifyASMLimit" xml:space="preserve">
+    <value>조립설비로 가는 공트레이 갯수설정</value>
+  </data>
+  <data name="strReservedRouteIDTrayOnly" xml:space="preserve">
+    <value>RouteID 변경 예약된 Tray만</value>
+  </data>
+  <data name="strSettingCount" xml:space="preserve">
+    <value>설정수량</value>
+  </data>
+  <data name="strSuccessASMLimitClear" xml:space="preserve">
+    <value>Tray 갯수 초기화에 성공하였습니다.</value>
+  </data>
+  <data name="strCopy" xml:space="preserve">
+    <value>복제</value>
+  </data>
+  <data name="strCopiedRouteID" xml:space="preserve">
+    <value>복제할 RouteID</value>
+  </data>
+  <data name="strCopyRouteID" xml:space="preserve">
+    <value>RouteID 복제</value>
+  </data>
+  <data name="DEF_COPYROUTE_01" xml:space="preserve">
+    <value>같은 이름의 RouteID가 이미 존재합니다.</value>
+  </data>
+  <data name="DEF_COPYROUTE_02" xml:space="preserve">
+    <value>3글자 이상의 RouteID를 입력해 주세요.</value>
+  </data>
+  <data name="DEF_COPYROUTE_03" xml:space="preserve">
+    <value>RouteID 생성에 실패했습니다.</value>
+  </data>
+  <data name="DEF_COPYROUTE_04" xml:space="preserve">
+    <value>복제할 공정목록을 불러오는데 실패하였습니다.</value>
+  </data>
+  <data name="DEF_COPYROUTE_05" xml:space="preserve">
+    <value>공정정보 저장에 실패하였습니다.</value>
+  </data>
+  <data name="DEF_COPYROUTE_06" xml:space="preserve">
+    <value>복제할 Recipe를 불러오는데 실패하였습니다.</value>
+  </data>
+  <data name="DEF_COPYROUTE_08" xml:space="preserve">
+    <value>Recipe 저장에 실패하였습니다.</value>
+  </data>
+  <data name="DEF_COPYROUTE_09" xml:space="preserve">
+    <value>복제할 공통 Recipe를 불러오는데 실패했습니다.</value>
+  </data>
+  <data name="DEF_COPYROUTE_10" xml:space="preserve">
+    <value>공통 Recipe 저장에 실패하였습니다.</value>
+  </data>
+  <data name="DEF_COPYROUTE_11" xml:space="preserve">
+    <value>복제할 등급판정규칙을 가져오는데 실해했습니다.</value>
+  </data>
+  <data name="DEF_COPYROUTE_12" xml:space="preserve">
+    <value>등급판정규칙 저장에 실패하였습니다.</value>
+  </data>
+  <data name="strNoModified" xml:space="preserve">
+    <value>저장할 데이터가 없습니다.</value>
+  </data>
+  <data name="strCheckUserEvent" xml:space="preserve">
+    <value>일부 데이터의 저장에 실패했습니다. User Event 로그를 확인하세요.</value>
+  </data>
+  <data name="strCellType" xml:space="preserve">
+    <value>CellType</value>
+  </data>
+  <data name="DEF_MSG_75" xml:space="preserve">
+    <value>3글자 이상의 Celltype을 입력해 주세요.</value>
+  </data>
+  <data name="strTrayOutManage" xml:space="preserve">
+    <value>출고시간 변경</value>
+  </data>
+</root>
