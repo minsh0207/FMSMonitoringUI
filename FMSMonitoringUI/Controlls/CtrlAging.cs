@@ -693,8 +693,6 @@ namespace MonitoringUI.Monitoring
         private void button1_Click_1(object sender, EventArgs e)
         {
             updateTable();
-
-            // GIT 이전 push버전 테스트
         }
 
         private void updateTable()
