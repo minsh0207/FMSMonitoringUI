@@ -751,6 +751,10 @@
       <Project>{9bf784c3-464b-4468-881c-2a535f319cb9}</Project>
       <Name>CSVMgr</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DBHandler\DBHandler.csproj">
+      <Project>{3c8de403-7ff8-41cd-955b-8fcc628dd122}</Project>
+      <Name>DBHandler</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Logger\Logger.csproj">
       <Project>{571ea494-e0b0-4c80-b87e-92157ad179ee}</Project>
       <Name>Logger</Name>

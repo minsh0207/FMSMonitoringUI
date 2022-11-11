@@ -293,7 +293,7 @@ namespace AgingControls
             Invalidate();
         }
 
-        public void SetDataTable(MySqlConnection mysql)
+        public void SetDataTable(DataSet ds)
         {
             // dt 의 컬럼 중에서 "RackID"로 라인을 구분한다.
             // RackID 라는 이름이 다르거나 없으면, 에러남... (주의하세요)
@@ -306,48 +306,41 @@ namespace AgingControls
             // 10 : OperID
             // 11 : PlanTime
             {
-                mysql.Open();
-
-                string where = string.Format("unit_id LIKE '{0}%'", this.LinePrefix);
-                string orderby = "unit_id ASC";
-
-                //accounts_table의 전체 데이터를 조회합니다.            
-                string selectQuery = string.Format($"SELECT * FROM fms_v.tb_mst_aging WHERE {where} ORDER BY {orderby}");
-
-                MySqlCommand command = new MySqlCommand(selectQuery, mysql);
-                MySqlDataReader table = command.ExecuteReader();
-
-                while (table.Read())
+                foreach (DataRow row in ds.Tables[0].Rows)
                 {
                     string[] trayids = new string[2];
-                    trayids[0] = table["tray_id_1"].ToString();
-                    trayids[1] = table["tray_id_2"].ToString();
+                    trayids[0] = row["tray_id_1"].ToString();
+                    trayids[1] = row["tray_id_2"].ToString();
 
-                    string unitid = table["unit_id"].ToString();
+                    string unitid = row["unit_id"].ToString();
+
+                    string bPlanUnload = "true";
+
+                    if (row["use_flag"].ToString() == "N")
+                    {
+                        bPlanUnload = "false";
+                    }
 
                     AgingRack rack = this.AgingRacks.Find(x => x.RackID == unitid);
 
                     if (null != rack)
                     {
                         rack.SetData(
-                            table["status"].ToString(),       // status (CHAR)
-                            table["fire_status"].ToString(),   // firestatus (CHAR)
-                            table["tray_id_1"].ToString(),       // tTrayCurr trayid
-                            "A",  // opergroupid (CHAR)
-                            "B",       // operid (CHAR)
+                            row["status"].ToString(),       // status (CHAR)
+                            row["fire_status"].ToString(),   // firestatus (CHAR)
+                            row["tray_id_1"].ToString(),       // tTrayCurr trayid
+                            "A",        // opergroupid (CHAR)
+                            "B",        // operid (CHAR)
                             trayids,                          // trayids
-                            "true",  // bPlanUnload
-                            table["update_time"].ToString()      // PlanTime
+                            bPlanUnload,  // bPlanUnload
+                            row["start_time"].ToString()      // PlanTime
                             );
                     }
                 }
-
-                mysql.Close();
             }
 
             Invalidate();
         }
-
 
         #endregion
 
@@ -986,6 +979,7 @@ namespace AgingControls
                 gfx.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
 
                 Font goodFont = FindFont(gfx, str, border.Size, font1);
+                
                 //gfx.DrawString(str, goodFont, brFontBrush, border, sf);
                 if (null != goodFont) gfx.DrawString(str, goodFont, brFontBrush, border, sf);
             }

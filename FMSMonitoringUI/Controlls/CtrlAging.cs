@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -13,6 +14,8 @@ using Newtonsoft.Json;
 using MonitoringUI.Common;
 using MySql.Data.MySqlClient;
 using System.Reflection;
+using DBHandler;
+using MySqlX.XDevAPI;
 
 namespace MonitoringUI.Monitoring
 {
@@ -23,7 +26,7 @@ namespace MonitoringUI.Monitoring
         //DispatcherTimer m_timer;
         #endregion
 
-        private MySqlConnection _mysql;
+        private MySqlManager _mysql;
 
         public CtrlAging()
         {
@@ -42,18 +45,7 @@ namespace MonitoringUI.Monitoring
 
             this.Disposed += CtrlRTAging_Disposed;
 
-            string _server = "210.91.148.176"; //DB 서버 주소, 로컬일 경우 localhost
-            int _port = 33060; //DB 서버 포트
-            string _database = "fms_v"; //DB 이름
-            string _id = "fms_v"; //계정 아이디
-            string _pw = "!q2w3e4r5t"; //계정 비밀번호
-
-            string connectionAddress = string.Format("Server={0};Port={1};Database={2};Uid={3};Pwd={4}", _server, _port, _database, _id, _pw);
-
-            using (_mysql = new MySqlConnection(connectionAddress))
-            {
-
-            }
+            _mysql = new MySqlManager(ConfigurationManager.ConnectionStrings["DB_CONNECTION_STRING"].ConnectionString);
         }
 
         private void CtrlRTAging_Disposed(object sender, EventArgs e)
@@ -109,7 +101,8 @@ namespace MonitoringUI.Monitoring
         {
             try
             {
-                AgingDataView(_mysql);
+                Task task = AgingDataView();
+                await task;
             }
             catch (Exception ex)
             {
@@ -117,137 +110,137 @@ namespace MonitoringUI.Monitoring
             }
         }
 
-        private async Task LoadAgingRackData(int nSelectedTabIndex=0)
-        {
-            try
-            {
+        //private async Task LoadAgingRackData(int nSelectedTabIndex=0)
+        //{
+        //    try
+        //    {
 
-                RESTClient restClinet = new RESTClient();
-                JObject loadRackQuery = new JObject();
+        //        RESTClient restClinet = new RESTClient();
+        //        JObject loadRackQuery = new JObject();
 
-                //20200326 KJY - Join Query로 수정
-                string strSQL = "SELECT A.RackID, ISNULL(A.Status,' ') AS Status , ISNULL(A.FireStatus,' ') AS FireStatus ,A.TrayID, "
-                   + " ISNULL(B.OperGroupID, ' ') OperGroupID, "
-                   + " ISNULL(B.OperID, ' ') OperID, "
-                   + " ISNULL(A.EndTime,'99991231125959') AS PlanTime "
+        //        //20200326 KJY - Join Query로 수정
+        //        string strSQL = "SELECT A.RackID, ISNULL(A.Status,' ') AS Status , ISNULL(A.FireStatus,' ') AS FireStatus ,A.TrayID, "
+        //           + " ISNULL(B.OperGroupID, ' ') OperGroupID, "
+        //           + " ISNULL(B.OperID, ' ') OperID, "
+        //           + " ISNULL(A.EndTime,'99991231125959') AS PlanTime "
 
-                   //20200330 KJY - for DelayTime alarm
-                   + " , A.DelayAlarmFlag "
-                   + " , C.DelayTime "
-                   + " , GetDate() CurrentDBTime "
-                   + " , B.RouteID RouteID "
-                   + " , B.ProdModel ProdModel "
+        //           //20200330 KJY - for DelayTime alarm
+        //           + " , A.DelayAlarmFlag "
+        //           + " , C.DelayTime "
+        //           + " , GetDate() CurrentDBTime "
+        //           + " , B.RouteID RouteID "
+        //           + " , B.ProdModel ProdModel "
 
-                   //20200619 KJY - for RouteID Change Reservation
-                   + " , A.ReserveRouteIDChageFlag "
-                   + " , A.ReservedRouteID "
-                   + " , A.ReservedProcID "
-
-
-                   //20210429 KJY - tTrayCurr의 CellType도 가져온다.. 공트레이일경우 305, 322 구분을 위해
-                   + " , B.CellType "
-
-                   //20211118 KJY - DummyFlag 를 MES의 Marked Tray 구분에 사용한다.
-                   + " , B.DummyFlag "
+        //           //20200619 KJY - for RouteID Change Reservation
+        //           + " , A.ReserveRouteIDChageFlag "
+        //           + " , A.ReservedRouteID "
+        //           + " , A.ReservedProcID "
 
 
-                   + " FROM tMstAgingRack A WITH (NOLOCK) "
-                   + " LEFT OUTER JOIN tTrayCurr B WITH(NOLOCK) "
+        //           //20210429 KJY - tTrayCurr의 CellType도 가져온다.. 공트레이일경우 305, 322 구분을 위해
+        //           + " , B.CellType "
 
-                   // 공트레이는 ObjectID가 없다. 이것때문에 공트레이의 CellType도 가져올수 있게 join where절 바꿔줘야 한다.
-                   //+ $" ON B.ObjectID = '{CDefine.m_strLineID}'+ A.RackID AND B.TrayID = A.TrayID "
-                   + $" ON (B.ObjectID = '{CDefine.m_strLineID}'+ A.RackID AND B.TrayID = A.TrayID) OR ((B.TrayID = A.TrayID AND B.Flag = 'E')) "
-
-
-                   //20200330 KJY tMstRecipe join추가 - for DelayTime alarm
-                   + " LEFT OUTER JOIN tMstRecipe C WITH(NOLOCK) "
-                   + " ON B.ProdModel = c.ProdModel AND C.RouteID = B.RouteID AND C.EqpTypeID = B.EqpTypeID AND C.OperGroupID = B.OperGroupID AND C.OperID = B.OperID "
-
-                   + $" WHERE A.LineID = '{CDefine.m_strLineID}' ";
+        //           //20211118 KJY - DummyFlag 를 MES의 Marked Tray 구분에 사용한다.
+        //           + " , B.DummyFlag "
 
 
-                // 20190920 KJY - 선택된 tab의 데이터만 가져오도록 수정
-                switch (nSelectedTabIndex)
-                {
-                    case 0:
-                        strSQL += " AND ( A.RackID LIKE 'R01%' OR A.RackID LIKE 'R02%' )";
-                        break;
-                    case 1:
-                        strSQL += " AND ( A.RackID LIKE 'R03%' OR A.RackID LIKE 'R04%' )";
-                        break;
-                    case 2:
-                        strSQL += " AND ( A.RackID LIKE 'R05%' OR A.RackID LIKE 'R06%' )";
-                        break;
-                    case 3:
-                        strSQL += " AND ( A.RackID LIKE 'R07%' OR A.RackID LIKE 'R08%' )";
-                        break;
-                    default:
-                        strSQL += " AND ( A.RackID LIKE 'R01%' OR A.RackID LIKE 'R02%' )";
-                        break;
-                }
+        //           + " FROM tMstAgingRack A WITH (NOLOCK) "
+        //           + " LEFT OUTER JOIN tTrayCurr B WITH(NOLOCK) "
+
+        //           // 공트레이는 ObjectID가 없다. 이것때문에 공트레이의 CellType도 가져올수 있게 join where절 바꿔줘야 한다.
+        //           //+ $" ON B.ObjectID = '{CDefine.m_strLineID}'+ A.RackID AND B.TrayID = A.TrayID "
+        //           + $" ON (B.ObjectID = '{CDefine.m_strLineID}'+ A.RackID AND B.TrayID = A.TrayID) OR ((B.TrayID = A.TrayID AND B.Flag = 'E')) "
 
 
+        //           //20200330 KJY tMstRecipe join추가 - for DelayTime alarm
+        //           + " LEFT OUTER JOIN tMstRecipe C WITH(NOLOCK) "
+        //           + " ON B.ProdModel = c.ProdModel AND C.RouteID = B.RouteID AND C.EqpTypeID = B.EqpTypeID AND C.OperGroupID = B.OperGroupID AND C.OperID = B.OperID "
 
-                // 20190919 위 query에서 order by 가 부하가 많이 걸린다.
-                // 이거 빼고, 선택한 탭에서만 데이터 가져오도록 수정하자. TODO
+        //           + $" WHERE A.LineID = '{CDefine.m_strLineID}' ";
 
-                loadRackQuery["query"] = strSQL;
-                var JsonResult = await restClinet.GetJson(JsonApiType.Table, JsonCRUD.SELECT, "query.php", loadRackQuery);
-                JsonAgingRackList Racks = JsonConvert.DeserializeObject<JsonAgingRackList>(JsonResult);
 
-                ///////////////////////////////////////////////////////////////
-                //
-                //20200330 KJY - 여기서 Delay alarm off 결정해야 되지 싶다.
-                //
-                ///////////////////////////////////////////////////////////////
-                foreach (JsonAgingRack rack in Racks.AgingRackList)
-                {
-                    // 상태가 F, U (출고요청) 일경우만 보면 되지 않을까? 
-                    if (rack.Status == "F" || rack.Status == "U")
-                    {
-                        int DelayTime = GetDelayTime(rack.DelayTime);
-                        if (DelayTime > 0) // DelayTime이 0 이상으로 설정되어 있을 경우만 확인
-                        {
-                            if (rack.PlanTime != null && rack.PlanTime.Length == 14)  // 출고 예정시간이 정상적으로 설정되어 있을경우만 확인
-                            {
-                                if (rack.DelayAlarmFlag == null || rack.DelayAlarmFlag == "0")  // 해당 rack의 DelayAlarmFlag가 설정되어 있지 않는 rack만 확인 (null 이거나 0이 아니면 알람없음)
-                                {
-                                    DateTime CurrentDBTime = Convert.ToDateTime(rack.CurrentDBTime);
-                                    if (rack.PlanTime == "99999999999999") rack.PlanTime = "99991231125959";
-                                    DateTime DelayAlarmTime = new DateTime(
-                                        int.Parse(rack.PlanTime.Substring(0, 4)),
-                                        int.Parse(rack.PlanTime.Substring(4, 2)),
-                                        int.Parse(rack.PlanTime.Substring(6, 2)),
-                                        int.Parse(rack.PlanTime.Substring(8, 2)),
-                                        int.Parse(rack.PlanTime.Substring(10, 2)),
-                                        int.Parse(rack.PlanTime.Substring(12, 2))
-                                        );
-                                    DelayAlarmTime = DelayAlarmTime.AddMinutes(DelayTime);
-
-                                    if (DateTime.Compare(CurrentDBTime, DelayAlarmTime) > 0)
-                                    {
-                                        // alarm 대상 (현재DB시간보다 알람시간이 더 빠르다)
-                                        rack.Status = "A"; // status가 "A"면 출고 Delay
-
-                                    }
-                                }
-                            }
-                        }
-
-                    }
-                }
+        //        // 20190920 KJY - 선택된 tab의 데이터만 가져오도록 수정
+        //        switch (nSelectedTabIndex)
+        //        {
+        //            case 0:
+        //                strSQL += " AND ( A.RackID LIKE 'R01%' OR A.RackID LIKE 'R02%' )";
+        //                break;
+        //            case 1:
+        //                strSQL += " AND ( A.RackID LIKE 'R03%' OR A.RackID LIKE 'R04%' )";
+        //                break;
+        //            case 2:
+        //                strSQL += " AND ( A.RackID LIKE 'R05%' OR A.RackID LIKE 'R06%' )";
+        //                break;
+        //            case 3:
+        //                strSQL += " AND ( A.RackID LIKE 'R07%' OR A.RackID LIKE 'R08%' )";
+        //                break;
+        //            default:
+        //                strSQL += " AND ( A.RackID LIKE 'R01%' OR A.RackID LIKE 'R02%' )";
+        //                break;
+        //        }
 
 
 
-                DataTable RackDT = ToDataTable<JsonAgingRack>(Racks.AgingRackList);
+        //        // 20190919 위 query에서 order by 가 부하가 많이 걸린다.
+        //        // 이거 빼고, 선택한 탭에서만 데이터 가져오도록 수정하자. TODO
 
-                AgingDataView(RackDT);
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(string.Format("[Exception:LoadAgingRackData] {0}", ex.ToString()));
-            }
-        }
+        //        loadRackQuery["query"] = strSQL;
+        //        var JsonResult = await restClinet.GetJson(JsonApiType.Table, JsonCRUD.SELECT, "query.php", loadRackQuery);
+        //        JsonAgingRackList Racks = JsonConvert.DeserializeObject<JsonAgingRackList>(JsonResult);
+
+        //        ///////////////////////////////////////////////////////////////
+        //        //
+        //        //20200330 KJY - 여기서 Delay alarm off 결정해야 되지 싶다.
+        //        //
+        //        ///////////////////////////////////////////////////////////////
+        //        foreach (JsonAgingRack rack in Racks.AgingRackList)
+        //        {
+        //            // 상태가 F, U (출고요청) 일경우만 보면 되지 않을까? 
+        //            if (rack.Status == "F" || rack.Status == "U")
+        //            {
+        //                int DelayTime = GetDelayTime(rack.DelayTime);
+        //                if (DelayTime > 0) // DelayTime이 0 이상으로 설정되어 있을 경우만 확인
+        //                {
+        //                    if (rack.PlanTime != null && rack.PlanTime.Length == 14)  // 출고 예정시간이 정상적으로 설정되어 있을경우만 확인
+        //                    {
+        //                        if (rack.DelayAlarmFlag == null || rack.DelayAlarmFlag == "0")  // 해당 rack의 DelayAlarmFlag가 설정되어 있지 않는 rack만 확인 (null 이거나 0이 아니면 알람없음)
+        //                        {
+        //                            DateTime CurrentDBTime = Convert.ToDateTime(rack.CurrentDBTime);
+        //                            if (rack.PlanTime == "99999999999999") rack.PlanTime = "99991231125959";
+        //                            DateTime DelayAlarmTime = new DateTime(
+        //                                int.Parse(rack.PlanTime.Substring(0, 4)),
+        //                                int.Parse(rack.PlanTime.Substring(4, 2)),
+        //                                int.Parse(rack.PlanTime.Substring(6, 2)),
+        //                                int.Parse(rack.PlanTime.Substring(8, 2)),
+        //                                int.Parse(rack.PlanTime.Substring(10, 2)),
+        //                                int.Parse(rack.PlanTime.Substring(12, 2))
+        //                                );
+        //                            DelayAlarmTime = DelayAlarmTime.AddMinutes(DelayTime);
+
+        //                            if (DateTime.Compare(CurrentDBTime, DelayAlarmTime) > 0)
+        //                            {
+        //                                // alarm 대상 (현재DB시간보다 알람시간이 더 빠르다)
+        //                                rack.Status = "A"; // status가 "A"면 출고 Delay
+
+        //                            }
+        //                        }
+        //                    }
+        //                }
+
+        //            }
+        //        }
+
+
+
+        //        DataTable RackDT = ToDataTable<JsonAgingRack>(Racks.AgingRackList);
+
+        //        AgingDataView(RackDT);
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //        Console.WriteLine(string.Format("[Exception:LoadAgingRackData] {0}", ex.ToString()));
+        //    }
+        //}
 
         public int GetDelayTime(string strDelayTime)
         {
@@ -295,34 +288,43 @@ namespace MonitoringUI.Monitoring
         /////////////////////////////////////////////////////////////////////////////
         //  Aging Data View
         //===========================================================================  
-        private bool AgingDataView(MySqlConnection mysql)
+        private async Task<bool> AgingDataView()
         {
             try
             {
-                //선택된 Tab의 데이터만 Load하자.
-                int nSelectedIndex = AgingTab.SelectedIndex;
-
-                // Set RT Aging
-                switch (nSelectedIndex)
+                //if (this.InvokeRequired)
                 {
-                    case 0:
-                        ht011.SetDataTable(mysql);
-                        ht012.SetDataTable(mysql);
-                        ht013.SetDataTable(mysql);
-                        ht014.SetDataTable(mysql);
-                        break;
-                    case 1:
-                        lt011.SetDataTable(mysql);
-                        lt012.SetDataTable(mysql);
-                        lt013.SetDataTable(mysql);
-                        lt014.SetDataTable(mysql);
-                        break;
-                    case 2:
-                        lt021.SetDataTable(mysql);
-                        lt022.SetDataTable(mysql);
-                        lt023.SetDataTable(mysql);
-                        lt024.SetDataTable(mysql);
-                        break;
+                    await Task.Run(() =>
+                    {
+                        this.Invoke(new MethodInvoker(delegate ()
+                        {
+                            //선택된 Tab의 데이터만 Load하자.
+                            int nSelectedIndex = AgingTab.SelectedIndex;
+
+                            // Set RT Aging
+                            switch (nSelectedIndex)
+                            {
+                                case 0:
+                                    ht011.SetDataTable(_mysql.SelectAgingInfo(ht011.LinePrefix));
+                                    ht012.SetDataTable(_mysql.SelectAgingInfo(ht012.LinePrefix));
+                                    ht013.SetDataTable(_mysql.SelectAgingInfo(ht013.LinePrefix));
+                                    ht014.SetDataTable(_mysql.SelectAgingInfo(ht014.LinePrefix));
+                                    break;
+                                case 1:
+                                    lt011.SetDataTable(_mysql.SelectAgingInfo(lt011.LinePrefix));
+                                    lt012.SetDataTable(_mysql.SelectAgingInfo(lt012.LinePrefix));
+                                    lt013.SetDataTable(_mysql.SelectAgingInfo(lt013.LinePrefix));
+                                    lt014.SetDataTable(_mysql.SelectAgingInfo(lt014.LinePrefix));
+                                    break;
+                                case 2:
+                                    lt021.SetDataTable(_mysql.SelectAgingInfo(lt021.LinePrefix));
+                                    lt022.SetDataTable(_mysql.SelectAgingInfo(lt022.LinePrefix));
+                                    lt023.SetDataTable(_mysql.SelectAgingInfo(lt023.LinePrefix));
+                                    lt024.SetDataTable(_mysql.SelectAgingInfo(lt024.LinePrefix));
+                                    break;
+                            }
+                        }));
+                    });
                 }
             }
             catch (Exception ex)        // 예외처리
@@ -665,7 +667,8 @@ namespace MonitoringUI.Monitoring
                     AgingTab.TabPages[i].ForeColor = Color.Black;
                 }
             }
-            LoadAgingRackData(selectedIndex).GetAwaiter().GetResult();
+            //LoadAgingRackData(selectedIndex).GetAwaiter().GetResult();
+            Task task = LoadAgingRackData();
         }
 
         /// <summary>
@@ -692,56 +695,60 @@ namespace MonitoringUI.Monitoring
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            updateTable();
+            //updateTable();
+
+            _mysql.UpdateAgingInfo("status", "G", "unit_id", "H0110103");
+
+            _mysql.UpdateAgingInfo("status", "T", "unit_id", "H0110104");
         }
 
         private void updateTable()
         {
             try
             {
-                _mysql.Open();
+                //_mysql.Open();
 
-                int idx = 1;
-                //accounts_table의 특정 id의 name column과 phone column 데이터를 수정합니다.
-                for (int line = 1; line <= 4; line++)
-                {
-                    for (int bay = 1; bay <= 17; bay++)
-                    {
-                        for (int deck = 1; deck <= 5; deck++)
-                        {
-                            //string trayid1 = string.Format($"F101EEFB101{{0:D5}}", idx);
-                            //string trayid2 = string.Format($"F101FFFB102{{0:D5}}", idx);
-                            //string updateQuery = string.Format($"UPDATE fms_v.tb_mst_aging " +
-                            //                                   $"SET tray_id_1 = '{trayid1}', tray_id_2 = '{trayid2}' " +
-                            //                                   $"WHERE aging_type = 'L' AND line = '02' AND lane = '{line}' AND bay = '{{0:D2}}' AND deck = '{{1:D2}}'", bay, deck);
-
-
-                            //string starttime = DateTime.Now.ToString("yyyy-MM-dd hh-mm-ss");
-                            //string updateQuery = string.Format($"UPDATE fms_v.tb_mst_aging " +
-                            //                                   $"SET start_time = '{starttime}' " +
-                            //                                   $"WHERE aging_type = 'L' AND line = '02' AND lane = '{line}' AND bay = '{{0:D2}}' AND deck = '{{1:D2}}'", bay, deck);
-
-                            string starttime = "G";
-                            string updateQuery = string.Format($"UPDATE fms_v.tb_mst_aging " +
-                                                               $"SET status = '{starttime}' " +
-                                                               $"WHERE aging_type = 'L' AND line = '02' AND lane = '{line}' AND bay = '{{0:D2}}' AND deck = '{{1:D2}}'", bay, deck);
+                //int idx = 1;
+                ////accounts_table의 특정 id의 name column과 phone column 데이터를 수정합니다.
+                //for (int line = 1; line <= 4; line++)
+                //{
+                //    for (int bay = 1; bay <= 17; bay++)
+                //    {
+                //        for (int deck = 1; deck <= 5; deck++)
+                //        {
+                //            //string trayid1 = string.Format($"F101EEFB101{{0:D5}}", idx);
+                //            //string trayid2 = string.Format($"F101FFFB102{{0:D5}}", idx);
+                //            //string updateQuery = string.Format($"UPDATE fms_v.tb_mst_aging " +
+                //            //                                   $"SET tray_id_1 = '{trayid1}', tray_id_2 = '{trayid2}' " +
+                //            //                                   $"WHERE aging_type = 'L' AND line = '02' AND lane = '{line}' AND bay = '{{0:D2}}' AND deck = '{{1:D2}}'", bay, deck);
 
 
+                //            //string starttime = DateTime.Now.ToString("yyyy-MM-dd hh-mm-ss");
+                //            //string updateQuery = string.Format($"UPDATE fms_v.tb_mst_aging " +
+                //            //                                   $"SET start_time = '{starttime}' " +
+                //            //                                   $"WHERE aging_type = 'L' AND line = '02' AND lane = '{line}' AND bay = '{{0:D2}}' AND deck = '{{1:D2}}'", bay, deck);
 
-                            MySqlCommand command = new MySqlCommand(updateQuery, _mysql);
+                //            string starttime = "G";
+                //            string updateQuery = string.Format($"UPDATE fms_v.tb_mst_aging " +
+                //                                               $"SET status = '{starttime}' " +
+                //                                               $"WHERE aging_type = 'L' AND line = '02' AND lane = '{line}' AND bay = '{{0:D2}}' AND deck = '{{1:D2}}'", bay, deck);
 
-                            command.ExecuteNonQuery();
 
-                            //if (command.ExecuteNonQuery() != 1)
-                            //    MessageBox.Show("Failed to delete data.");
 
-                            idx++;
-                        }
+                //            MySqlCommand command = new MySqlCommand(updateQuery, _mysql);
 
-                    }
-                }
+                //            command.ExecuteNonQuery();
 
-                _mysql.Close();
+                //            //if (command.ExecuteNonQuery() != 1)
+                //            //    MessageBox.Show("Failed to delete data.");
+
+                //            idx++;
+                //        }
+
+                //    }
+                //}
+
+                //_mysql.Close();
             }
             catch (Exception exc)
             {
@@ -753,31 +760,31 @@ namespace MonitoringUI.Monitoring
         {
             try
             {
-                using (MySqlConnection mysql = new MySqlConnection(connectionAddress))
-                {
-                    _mysql.Open();
+                //using (MySqlConnection mysql = new MySqlConnection(connectionAddress))
+                //{
+                //    _mysql.Open();
 
-                    string where = string.Format("unit_id LIKE '{0}%'", ht011.LinePrefix);
-                    string orderby = "unit_id ASC";
+                //    string where = string.Format("unit_id LIKE '{0}%'", ht011.LinePrefix);
+                //    string orderby = "unit_id ASC";
 
-                    //accounts_table의 전체 데이터를 조회합니다.            
-                    string selectQuery = string.Format($"SELECT * FROM fms_v.tb_mst_aging WHERE {where} ORDER BY {orderby}");
+                //    //accounts_table의 전체 데이터를 조회합니다.            
+                //    string selectQuery = string.Format($"SELECT * FROM fms_v.tb_mst_aging WHERE {where} ORDER BY {orderby}");
 
-                    MySqlCommand command = new MySqlCommand(selectQuery, _mysql);
-                    MySqlDataReader table = command.ExecuteReader();
+                //    MySqlCommand command = new MySqlCommand(selectQuery, _mysql);
+                //    MySqlDataReader table = command.ExecuteReader();
 
-                    //while (table.Read())
-                    //{
-                    //    string unitid = table["unit_id"].ToString();
-                    //    string trayid1 = table["tray_id_1"].ToString();
-                    //    string trayid2 = table["tray_id_2"].ToString();
-                    //}
+                //    //while (table.Read())
+                //    //{
+                //    //    string unitid = table["unit_id"].ToString();
+                //    //    string trayid1 = table["tray_id_1"].ToString();
+                //    //    string trayid2 = table["tray_id_2"].ToString();
+                //    //}
 
 
-                    //ht011.SetDataTable(ref table);
+                //    //ht011.SetDataTable(ref table);
 
-                    table.Close();
-                }
+                //    table.Close();
+                //}
             }
             catch (Exception exc)
             {
