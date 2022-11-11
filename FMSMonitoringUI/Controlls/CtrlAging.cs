@@ -11,6 +11,8 @@ using System.Windows.Threading;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using MonitoringUI.Common;
+using MySql.Data.MySqlClient;
+using System.Reflection;
 
 namespace MonitoringUI.Monitoring
 {
@@ -20,6 +22,8 @@ namespace MonitoringUI.Monitoring
         // Timer
         //DispatcherTimer m_timer;
         #endregion
+
+        private MySqlConnection _mysql;
 
         public CtrlAging()
         {
@@ -37,6 +41,19 @@ namespace MonitoringUI.Monitoring
             ctrlButtonDataView.Click += CtrlButtonDataView_Click;
 
             this.Disposed += CtrlRTAging_Disposed;
+
+            string _server = "210.91.148.176"; //DB 서버 주소, 로컬일 경우 localhost
+            int _port = 33060; //DB 서버 포트
+            string _database = "fms_v"; //DB 이름
+            string _id = "fms_v"; //계정 아이디
+            string _pw = "!q2w3e4r5t"; //계정 비밀번호
+
+            string connectionAddress = string.Format("Server={0};Port={1};Database={2};Uid={3};Pwd={4}", _server, _port, _database, _id, _pw);
+
+            using (_mysql = new MySqlConnection(connectionAddress))
+            {
+
+            }
         }
 
         private void CtrlRTAging_Disposed(object sender, EventArgs e)
@@ -61,9 +78,10 @@ namespace MonitoringUI.Monitoring
                     MoveNextRTAgingTab();
                 } else
                 {
-                    int selectedIndex = AgingTab.SelectedIndex; 
+                    int selectedIndex = AgingTab.SelectedIndex;
                     // data load
-                    LoadAgingRackData(selectedIndex).GetAwaiter().GetResult();
+                    //LoadAgingRackData(selectedIndex).GetAwaiter().GetResult();
+                    Task task = LoadAgingRackData();
                 }
 
                 if (m_timer.Interval != 5000)
@@ -87,6 +105,18 @@ namespace MonitoringUI.Monitoring
                 AgingTab.SelectTab(nIndex + 1);
         }
 
+        private async Task LoadAgingRackData()
+        {
+            try
+            {
+                AgingDataView(_mysql);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(string.Format("[Exception:LoadAgingRackData] {0}", ex.ToString()));
+            }
+        }
+
         private async Task LoadAgingRackData(int nSelectedTabIndex=0)
         {
             try
@@ -94,13 +124,6 @@ namespace MonitoringUI.Monitoring
 
                 RESTClient restClinet = new RESTClient();
                 JObject loadRackQuery = new JObject();
-                //string strSQL = "SELECT A.RackID, ISNULL(A.Status,' ') AS Status , ISNULL(A.FireStatus,' ') AS FireStatus , "
-                //    + " A.TrayID, "
-                //    + $" (SELECT ISNULL(OperGroupID,' ') FROM tTrayCurr WITH (NOLOCK) WHERE ObjectID = '{CDefine.m_strLineID}' + A.RackID AND TrayID = A.TrayID) OperGroupID , "
-                //    + $" (SELECT ISNULL(OperID,' ') FROM tTrayCurr WITH (NOLOCK) WHERE ObjectID = '{CDefine.m_strLineID}' + A.RackID AND TrayID = A.TrayID) OperID  , "
-                //    //+ $" ISNULL(A.EndTime,'99991231125959') AS PlanTime FROM tMstAgingRack A WITH (NOLOCK) WHERE RackID LIKE 'R%' AND A.LineID = '{CDefine.m_strLineID}' ORDER BY A.RackID";
-                //    + $" ISNULL(A.EndTime,'99991231125959') AS PlanTime FROM tMstAgingRack A WITH (NOLOCK) WHERE A.LineID = '{CDefine.m_strLineID}' ";
-
 
                 //20200326 KJY - Join Query로 수정
                 string strSQL = "SELECT A.RackID, ISNULL(A.Status,' ') AS Status , ISNULL(A.FireStatus,' ') AS FireStatus ,A.TrayID, "
@@ -272,6 +295,46 @@ namespace MonitoringUI.Monitoring
         /////////////////////////////////////////////////////////////////////////////
         //  Aging Data View
         //===========================================================================  
+        private bool AgingDataView(MySqlConnection mysql)
+        {
+            try
+            {
+                //선택된 Tab의 데이터만 Load하자.
+                int nSelectedIndex = AgingTab.SelectedIndex;
+
+                // Set RT Aging
+                switch (nSelectedIndex)
+                {
+                    case 0:
+                        ht011.SetDataTable(mysql);
+                        ht012.SetDataTable(mysql);
+                        ht013.SetDataTable(mysql);
+                        ht014.SetDataTable(mysql);
+                        break;
+                    case 1:
+                        lt011.SetDataTable(mysql);
+                        lt012.SetDataTable(mysql);
+                        lt013.SetDataTable(mysql);
+                        lt014.SetDataTable(mysql);
+                        break;
+                    case 2:
+                        lt021.SetDataTable(mysql);
+                        lt022.SetDataTable(mysql);
+                        lt023.SetDataTable(mysql);
+                        lt024.SetDataTable(mysql);
+                        break;
+                }
+            }
+            catch (Exception ex)        // 예외처리
+            {
+                Console.WriteLine(string.Format("[Exception:AgingDataView] {0}", ex.ToString()));
+                // Return
+                return false;
+            }
+
+            // Return
+            return true;
+        }
         private bool AgingDataView(DataTable dt)
         {
             // Variable
@@ -294,11 +357,7 @@ namespace MonitoringUI.Monitoring
             {
                 try
                 {
-
-                    //System.Diagnostics.Debug.Print(string.Format("### Aging Data View : PlanTime : {0}", row["PlanTime"].ToString()));
-                    //dtPlanTime = DateTime.Parse(m_string.StringToDateTime(row["PlanTime"].ToString()));
                     if (row["PlanTime"].ToString() == "99999999999999" || row["PlanTime"].ToString() == "99991231235959" || row["PlanTime"].ToString() == "99991231125959" || row["PlanTime"].ToString() == "999912311235959")
-                        //dtPlanTime = DateTime.MaxValue;
                         dtPlanTime = DateTime.ParseExact("99981230235959", "yyyyMMddHHmmss", System.Globalization.CultureInfo.InvariantCulture);
                     else
                         dtPlanTime = DateTime.ParseExact(row["PlanTime"].ToString(), "yyyyMMddHHmmss", System.Globalization.CultureInfo.InvariantCulture);
@@ -327,22 +386,22 @@ namespace MonitoringUI.Monitoring
                 switch(nSelectedIndex)
                 {
                     case 0:
-                        rt011.SetDataTable(ref dt);
-                        rt012.SetDataTable(ref dt);
-                        rt021.SetDataTable(ref dt);
-                        rt022.SetDataTable(ref dt);
+                        ht011.SetDataTable(ref dt);
+                        ht012.SetDataTable(ref dt);
+                        ht013.SetDataTable(ref dt);
+                        ht014.SetDataTable(ref dt);
                         break;
                     case 1:
-                        rt031.SetDataTable(ref dt);
-                        rt032.SetDataTable(ref dt);
-                        rt041.SetDataTable(ref dt);
-                        rt042.SetDataTable(ref dt);
+                        lt011.SetDataTable(ref dt);
+                        lt012.SetDataTable(ref dt);
+                        lt013.SetDataTable(ref dt);
+                        lt014.SetDataTable(ref dt);
                         break;
                     case 2:
-                        rt051.SetDataTable(ref dt);
-                        rt052.SetDataTable(ref dt);
-                        rt061.SetDataTable(ref dt);
-                        rt062.SetDataTable(ref dt);
+                        lt021.SetDataTable(ref dt);
+                        lt022.SetDataTable(ref dt);
+                        lt023.SetDataTable(ref dt);
+                        lt024.SetDataTable(ref dt);
                         break;
                 }
 
@@ -364,32 +423,32 @@ namespace MonitoringUI.Monitoring
         private void initAgingRack()
         {
             // 좌 더블클릭 - Rack 설정
-            rt011.MouseDoubleClick += AgingLineControl_DoubleClick;
-            rt012.MouseDoubleClick += AgingLineControl_DoubleClick;
-            rt021.MouseDoubleClick += AgingLineControl_DoubleClick;
-            rt022.MouseDoubleClick += AgingLineControl_DoubleClick;
-            rt031.MouseDoubleClick += AgingLineControl_DoubleClick;
-            rt032.MouseDoubleClick += AgingLineControl_DoubleClick;
-            rt041.MouseDoubleClick += AgingLineControl_DoubleClick;
-            rt042.MouseDoubleClick += AgingLineControl_DoubleClick;
-            rt051.MouseDoubleClick += AgingLineControl_DoubleClick;
-            rt052.MouseDoubleClick += AgingLineControl_DoubleClick;
-            rt061.MouseDoubleClick += AgingLineControl_DoubleClick;
-            rt062.MouseDoubleClick += AgingLineControl_DoubleClick;
+            ht011.MouseDoubleClick += AgingLineControl_DoubleClick;
+            ht012.MouseDoubleClick += AgingLineControl_DoubleClick;
+            ht013.MouseDoubleClick += AgingLineControl_DoubleClick;
+            ht014.MouseDoubleClick += AgingLineControl_DoubleClick;
+            lt011.MouseDoubleClick += AgingLineControl_DoubleClick;
+            lt012.MouseDoubleClick += AgingLineControl_DoubleClick;
+            lt013.MouseDoubleClick += AgingLineControl_DoubleClick;
+            lt014.MouseDoubleClick += AgingLineControl_DoubleClick;
+            lt021.MouseDoubleClick += AgingLineControl_DoubleClick;
+            lt022.MouseDoubleClick += AgingLineControl_DoubleClick;
+            lt023.MouseDoubleClick += AgingLineControl_DoubleClick;
+            lt024.MouseDoubleClick += AgingLineControl_DoubleClick;
 
             // 우클릭 - Trouble
-            rt011.Click += Rack_Click;
-            rt012.Click += Rack_Click;
-            rt021.Click += Rack_Click;
-            rt022.Click += Rack_Click;
-            rt031.Click += Rack_Click;
-            rt032.Click += Rack_Click;
-            rt041.Click += Rack_Click;
-            rt042.Click += Rack_Click;
-            rt051.Click += Rack_Click;
-            rt052.Click += Rack_Click;
-            rt061.Click += Rack_Click;
-            rt062.Click += Rack_Click;
+            ht011.Click += Rack_Click;
+            ht012.Click += Rack_Click;
+            ht013.Click += Rack_Click;
+            ht014.Click += Rack_Click;
+            lt011.Click += Rack_Click;
+            lt012.Click += Rack_Click;
+            lt013.Click += Rack_Click;
+            lt014.Click += Rack_Click;
+            lt021.Click += Rack_Click;
+            lt022.Click += Rack_Click;
+            lt023.Click += Rack_Click;
+            lt024.Click += Rack_Click;
 
             /// 
             /// 화면권한 관련
@@ -631,6 +690,99 @@ namespace MonitoringUI.Monitoring
             }
         }
 
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            updateTable();
+        }
 
+        private void updateTable()
+        {
+            try
+            {
+                _mysql.Open();
+
+                int idx = 1;
+                //accounts_table의 특정 id의 name column과 phone column 데이터를 수정합니다.
+                for (int line = 1; line <= 4; line++)
+                {
+                    for (int bay = 1; bay <= 17; bay++)
+                    {
+                        for (int deck = 1; deck <= 5; deck++)
+                        {
+                            //string trayid1 = string.Format($"F101EEFB101{{0:D5}}", idx);
+                            //string trayid2 = string.Format($"F101FFFB102{{0:D5}}", idx);
+                            //string updateQuery = string.Format($"UPDATE fms_v.tb_mst_aging " +
+                            //                                   $"SET tray_id_1 = '{trayid1}', tray_id_2 = '{trayid2}' " +
+                            //                                   $"WHERE aging_type = 'L' AND line = '02' AND lane = '{line}' AND bay = '{{0:D2}}' AND deck = '{{1:D2}}'", bay, deck);
+
+
+                            //string starttime = DateTime.Now.ToString("yyyy-MM-dd hh-mm-ss");
+                            //string updateQuery = string.Format($"UPDATE fms_v.tb_mst_aging " +
+                            //                                   $"SET start_time = '{starttime}' " +
+                            //                                   $"WHERE aging_type = 'L' AND line = '02' AND lane = '{line}' AND bay = '{{0:D2}}' AND deck = '{{1:D2}}'", bay, deck);
+
+                            string starttime = "G";
+                            string updateQuery = string.Format($"UPDATE fms_v.tb_mst_aging " +
+                                                               $"SET status = '{starttime}' " +
+                                                               $"WHERE aging_type = 'L' AND line = '02' AND lane = '{line}' AND bay = '{{0:D2}}' AND deck = '{{1:D2}}'", bay, deck);
+
+
+
+                            MySqlCommand command = new MySqlCommand(updateQuery, _mysql);
+
+                            command.ExecuteNonQuery();
+
+                            //if (command.ExecuteNonQuery() != 1)
+                            //    MessageBox.Show("Failed to delete data.");
+
+                            idx++;
+                        }
+
+                    }
+                }
+
+                _mysql.Close();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+        }
+
+        private void selectTable(string connectionAddress)
+        {
+            try
+            {
+                using (MySqlConnection mysql = new MySqlConnection(connectionAddress))
+                {
+                    _mysql.Open();
+
+                    string where = string.Format("unit_id LIKE '{0}%'", ht011.LinePrefix);
+                    string orderby = "unit_id ASC";
+
+                    //accounts_table의 전체 데이터를 조회합니다.            
+                    string selectQuery = string.Format($"SELECT * FROM fms_v.tb_mst_aging WHERE {where} ORDER BY {orderby}");
+
+                    MySqlCommand command = new MySqlCommand(selectQuery, _mysql);
+                    MySqlDataReader table = command.ExecuteReader();
+
+                    //while (table.Read())
+                    //{
+                    //    string unitid = table["unit_id"].ToString();
+                    //    string trayid1 = table["tray_id_1"].ToString();
+                    //    string trayid2 = table["tray_id_2"].ToString();
+                    //}
+
+
+                    //ht011.SetDataTable(ref table);
+
+                    table.Close();
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+        }
     }
 }

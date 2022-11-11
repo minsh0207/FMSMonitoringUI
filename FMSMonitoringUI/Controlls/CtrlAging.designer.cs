@@ -47,10 +47,10 @@
             this.ctrlLine4 = new MonitoringUI.Controlls.CtrlLine();
             this.label71 = new System.Windows.Forms.Label();
             this.label60 = new System.Windows.Forms.Label();
-            this.rt022 = new AgingControls.AgingLineControl();
-            this.rt011 = new AgingControls.AgingLineControl();
-            this.rt012 = new AgingControls.AgingLineControl();
-            this.rt021 = new AgingControls.AgingLineControl();
+            this.ht014 = new AgingControls.AgingLineControl();
+            this.ht011 = new AgingControls.AgingLineControl();
+            this.ht012 = new AgingControls.AgingLineControl();
+            this.ht013 = new AgingControls.AgingLineControl();
             this.tpLTAging1 = new System.Windows.Forms.TabPage();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
@@ -73,10 +73,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.rt042 = new AgingControls.AgingLineControl();
-            this.rt031 = new AgingControls.AgingLineControl();
-            this.rt032 = new AgingControls.AgingLineControl();
-            this.rt041 = new AgingControls.AgingLineControl();
+            this.lt014 = new AgingControls.AgingLineControl();
+            this.lt011 = new AgingControls.AgingLineControl();
+            this.lt012 = new AgingControls.AgingLineControl();
+            this.lt013 = new AgingControls.AgingLineControl();
             this.ctrlLine2 = new MonitoringUI.Controlls.CtrlLine();
             this.tpLTAging2 = new System.Windows.Forms.TabPage();
             this.label30 = new System.Windows.Forms.Label();
@@ -100,10 +100,10 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.rt062 = new AgingControls.AgingLineControl();
-            this.rt051 = new AgingControls.AgingLineControl();
-            this.rt052 = new AgingControls.AgingLineControl();
-            this.rt061 = new AgingControls.AgingLineControl();
+            this.lt024 = new AgingControls.AgingLineControl();
+            this.lt021 = new AgingControls.AgingLineControl();
+            this.lt022 = new AgingControls.AgingLineControl();
+            this.lt023 = new AgingControls.AgingLineControl();
             this.ctrlButtonDataView = new MonitoringUI.Controlls.CButton.CtrlButtonRoot();
             this.Tag19 = new MonitoringUI.Controlls.CtrlTaggingName();
             this.Tag18 = new MonitoringUI.Controlls.CtrlTaggingName();
@@ -132,6 +132,7 @@
             this.Tag092 = new MonitoringUI.Controlls.CtrlTaggingName();
             this.ctrlTaggingName1 = new MonitoringUI.Controlls.CtrlTaggingName();
             this.ctrlTaggingName2 = new MonitoringUI.Controlls.CtrlTaggingName();
+            this.button1 = new System.Windows.Forms.Button();
             this.AgingTab.SuspendLayout();
             this.tpHTAging.SuspendLayout();
             this.tpLTAging1.SuspendLayout();
@@ -141,14 +142,12 @@
             // cbRTAutoChange
             // 
             this.cbRTAutoChange.AutoSize = true;
-            this.cbRTAutoChange.Enabled = false;
             this.cbRTAutoChange.Location = new System.Drawing.Point(16, 854);
             this.cbRTAutoChange.Name = "cbRTAutoChange";
             this.cbRTAutoChange.Size = new System.Drawing.Size(78, 17);
             this.cbRTAutoChange.TabIndex = 25;
             this.cbRTAutoChange.Text = "自动旋转";
             this.cbRTAutoChange.UseVisualStyleBackColor = true;
-            this.cbRTAutoChange.Visible = false;
             // 
             // AgingTab
             // 
@@ -180,10 +179,10 @@
             this.tpHTAging.Controls.Add(this.ctrlLine4);
             this.tpHTAging.Controls.Add(this.label71);
             this.tpHTAging.Controls.Add(this.label60);
-            this.tpHTAging.Controls.Add(this.rt022);
-            this.tpHTAging.Controls.Add(this.rt011);
-            this.tpHTAging.Controls.Add(this.rt012);
-            this.tpHTAging.Controls.Add(this.rt021);
+            this.tpHTAging.Controls.Add(this.ht014);
+            this.tpHTAging.Controls.Add(this.ht011);
+            this.tpHTAging.Controls.Add(this.ht012);
+            this.tpHTAging.Controls.Add(this.ht013);
             this.tpHTAging.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.tpHTAging.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.tpHTAging.Location = new System.Drawing.Point(4, 23);
@@ -198,7 +197,7 @@
             this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.label13.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label13.ForeColor = System.Drawing.Color.Indigo;
-            this.label13.Location = new System.Drawing.Point(43, 644);
+            this.label13.Location = new System.Drawing.Point(43, 646);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(25, 15);
             this.label13.TabIndex = 108;
@@ -210,7 +209,7 @@
             this.label14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.label14.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label14.ForeColor = System.Drawing.Color.Indigo;
-            this.label14.Location = new System.Drawing.Point(898, 644);
+            this.label14.Location = new System.Drawing.Point(849, 646);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(25, 15);
             this.label14.TabIndex = 106;
@@ -222,7 +221,7 @@
             this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.label15.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label15.ForeColor = System.Drawing.Color.Indigo;
-            this.label15.Location = new System.Drawing.Point(420, 644);
+            this.label15.Location = new System.Drawing.Point(400, 646);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(25, 15);
             this.label15.TabIndex = 105;
@@ -232,9 +231,9 @@
             // ctrlLine5
             // 
             this.ctrlLine5.BackColor = System.Drawing.Color.Gray;
-            this.ctrlLine5.Location = new System.Drawing.Point(3, 649);
+            this.ctrlLine5.Location = new System.Drawing.Point(3, 650);
             this.ctrlLine5.Name = "ctrlLine5";
-            this.ctrlLine5.Size = new System.Drawing.Size(1054, 5);
+            this.ctrlLine5.Size = new System.Drawing.Size(993, 5);
             this.ctrlLine5.TabIndex = 107;
             // 
             // label2
@@ -242,7 +241,7 @@
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.label2.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label2.ForeColor = System.Drawing.Color.Indigo;
-            this.label2.Location = new System.Drawing.Point(43, 427);
+            this.label2.Location = new System.Drawing.Point(43, 429);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(25, 15);
             this.label2.TabIndex = 104;
@@ -254,7 +253,7 @@
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.label3.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label3.ForeColor = System.Drawing.Color.Indigo;
-            this.label3.Location = new System.Drawing.Point(898, 427);
+            this.label3.Location = new System.Drawing.Point(849, 429);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(25, 15);
             this.label3.TabIndex = 102;
@@ -266,7 +265,7 @@
             this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.label12.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label12.ForeColor = System.Drawing.Color.Indigo;
-            this.label12.Location = new System.Drawing.Point(420, 427);
+            this.label12.Location = new System.Drawing.Point(400, 429);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(25, 15);
             this.label12.TabIndex = 101;
@@ -276,9 +275,9 @@
             // ctrlLine1
             // 
             this.ctrlLine1.BackColor = System.Drawing.Color.Gray;
-            this.ctrlLine1.Location = new System.Drawing.Point(3, 433);
+            this.ctrlLine1.Location = new System.Drawing.Point(3, 434);
             this.ctrlLine1.Name = "ctrlLine1";
-            this.ctrlLine1.Size = new System.Drawing.Size(1054, 5);
+            this.ctrlLine1.Size = new System.Drawing.Size(993, 5);
             this.ctrlLine1.TabIndex = 103;
             // 
             // label1
@@ -286,7 +285,7 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.label1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.ForeColor = System.Drawing.Color.Indigo;
-            this.label1.Location = new System.Drawing.Point(43, 211);
+            this.label1.Location = new System.Drawing.Point(43, 212);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(25, 15);
             this.label1.TabIndex = 100;
@@ -298,7 +297,7 @@
             this.label69.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.label69.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label69.ForeColor = System.Drawing.Color.Indigo;
-            this.label69.Location = new System.Drawing.Point(898, 211);
+            this.label69.Location = new System.Drawing.Point(849, 212);
             this.label69.Name = "label69";
             this.label69.Size = new System.Drawing.Size(25, 15);
             this.label69.TabIndex = 78;
@@ -310,7 +309,7 @@
             this.label70.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.label70.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label70.ForeColor = System.Drawing.Color.Indigo;
-            this.label70.Location = new System.Drawing.Point(420, 211);
+            this.label70.Location = new System.Drawing.Point(400, 212);
             this.label70.Name = "label70";
             this.label70.Size = new System.Drawing.Size(25, 15);
             this.label70.TabIndex = 77;
@@ -320,9 +319,9 @@
             // ctrlLine4
             // 
             this.ctrlLine4.BackColor = System.Drawing.Color.Gray;
-            this.ctrlLine4.Location = new System.Drawing.Point(3, 216);
+            this.ctrlLine4.Location = new System.Drawing.Point(3, 217);
             this.ctrlLine4.Name = "ctrlLine4";
-            this.ctrlLine4.Size = new System.Drawing.Size(1054, 5);
+            this.ctrlLine4.Size = new System.Drawing.Size(993, 5);
             this.ctrlLine4.TabIndex = 99;
             // 
             // label71
@@ -349,93 +348,93 @@
             this.label60.Text = "55";
             this.label60.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // rt022
+            // ht014
             // 
-            this.rt022.BackColor = System.Drawing.Color.LightGray;
-            this.rt022.BayCount = 11;
-            this.rt022.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
-            this.rt022.BayNoLabelDisplayStep = 5;
-            this.rt022.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
-            this.rt022.BoxMargin = 2;
-            this.rt022.DoubleReach = false;
-            this.rt022.DoubleReachLinePrefix = "";
-            this.rt022.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
-            this.rt022.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rt022.LinePrefix = "R022";
-            this.rt022.Location = new System.Drawing.Point(3, 664);
-            this.rt022.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.rt022.Name = "rt022";
-            this.rt022.RackCount = 10;
-            this.rt022.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
-            this.rt022.ShowBayNumber = false;
-            this.rt022.Size = new System.Drawing.Size(1054, 190);
-            this.rt022.TabIndex = 23;
+            this.ht014.BackColor = System.Drawing.Color.LightGray;
+            this.ht014.BayCount = 11;
+            this.ht014.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.ht014.BayNoLabelDisplayStep = 5;
+            this.ht014.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.ht014.BoxMargin = 2;
+            this.ht014.DoubleReach = false;
+            this.ht014.DoubleReachLinePrefix = "";
+            this.ht014.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.ht014.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ht014.LinePrefix = "H014";
+            this.ht014.Location = new System.Drawing.Point(3, 664);
+            this.ht014.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ht014.Name = "ht014";
+            this.ht014.RackCount = 5;
+            this.ht014.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.ht014.ShowBayNumber = false;
+            this.ht014.Size = new System.Drawing.Size(993, 194);
+            this.ht014.TabIndex = 23;
             // 
-            // rt011
+            // ht011
             // 
-            this.rt011.BackColor = System.Drawing.Color.LightGray;
-            this.rt011.BayCount = 11;
-            this.rt011.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
-            this.rt011.BayNoLabelDisplayStep = 5;
-            this.rt011.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
-            this.rt011.BoxMargin = 2;
-            this.rt011.DoubleReach = false;
-            this.rt011.DoubleReachLinePrefix = "";
-            this.rt011.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
-            this.rt011.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rt011.LinePrefix = "R011";
-            this.rt011.Location = new System.Drawing.Point(3, 15);
-            this.rt011.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.rt011.Name = "rt011";
-            this.rt011.RackCount = 10;
-            this.rt011.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
-            this.rt011.ShowBayNumber = false;
-            this.rt011.Size = new System.Drawing.Size(1054, 190);
-            this.rt011.TabIndex = 22;
+            this.ht011.BackColor = System.Drawing.Color.LightGray;
+            this.ht011.BayCount = 11;
+            this.ht011.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.ht011.BayNoLabelDisplayStep = 5;
+            this.ht011.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.ht011.BoxMargin = 2;
+            this.ht011.DoubleReach = false;
+            this.ht011.DoubleReachLinePrefix = "";
+            this.ht011.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.ht011.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ht011.LinePrefix = "H011";
+            this.ht011.Location = new System.Drawing.Point(3, 15);
+            this.ht011.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ht011.Name = "ht011";
+            this.ht011.RackCount = 5;
+            this.ht011.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.ht011.ShowBayNumber = false;
+            this.ht011.Size = new System.Drawing.Size(993, 194);
+            this.ht011.TabIndex = 22;
             // 
-            // rt012
+            // ht012
             // 
-            this.rt012.BackColor = System.Drawing.Color.LightGray;
-            this.rt012.BayCount = 11;
-            this.rt012.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
-            this.rt012.BayNoLabelDisplayStep = 5;
-            this.rt012.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
-            this.rt012.BoxMargin = 2;
-            this.rt012.DoubleReach = false;
-            this.rt012.DoubleReachLinePrefix = "";
-            this.rt012.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
-            this.rt012.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rt012.LinePrefix = "R012";
-            this.rt012.Location = new System.Drawing.Point(3, 232);
-            this.rt012.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.rt012.Name = "rt012";
-            this.rt012.RackCount = 10;
-            this.rt012.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
-            this.rt012.ShowBayNumber = false;
-            this.rt012.Size = new System.Drawing.Size(1054, 190);
-            this.rt012.TabIndex = 23;
+            this.ht012.BackColor = System.Drawing.Color.LightGray;
+            this.ht012.BayCount = 11;
+            this.ht012.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.ht012.BayNoLabelDisplayStep = 5;
+            this.ht012.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.ht012.BoxMargin = 2;
+            this.ht012.DoubleReach = false;
+            this.ht012.DoubleReachLinePrefix = "";
+            this.ht012.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.ht012.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ht012.LinePrefix = "H012";
+            this.ht012.Location = new System.Drawing.Point(3, 232);
+            this.ht012.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ht012.Name = "ht012";
+            this.ht012.RackCount = 5;
+            this.ht012.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.ht012.ShowBayNumber = false;
+            this.ht012.Size = new System.Drawing.Size(993, 194);
+            this.ht012.TabIndex = 23;
             // 
-            // rt021
+            // ht013
             // 
-            this.rt021.BackColor = System.Drawing.Color.LightGray;
-            this.rt021.BayCount = 11;
-            this.rt021.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
-            this.rt021.BayNoLabelDisplayStep = 5;
-            this.rt021.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
-            this.rt021.BoxMargin = 2;
-            this.rt021.DoubleReach = false;
-            this.rt021.DoubleReachLinePrefix = "";
-            this.rt021.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
-            this.rt021.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rt021.LinePrefix = "R021";
-            this.rt021.Location = new System.Drawing.Point(3, 449);
-            this.rt021.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.rt021.Name = "rt021";
-            this.rt021.RackCount = 10;
-            this.rt021.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
-            this.rt021.ShowBayNumber = false;
-            this.rt021.Size = new System.Drawing.Size(1054, 190);
-            this.rt021.TabIndex = 22;
+            this.ht013.BackColor = System.Drawing.Color.LightGray;
+            this.ht013.BayCount = 11;
+            this.ht013.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.ht013.BayNoLabelDisplayStep = 5;
+            this.ht013.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.ht013.BoxMargin = 2;
+            this.ht013.DoubleReach = false;
+            this.ht013.DoubleReachLinePrefix = "";
+            this.ht013.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.ht013.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ht013.LinePrefix = "H013";
+            this.ht013.Location = new System.Drawing.Point(3, 449);
+            this.ht013.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ht013.Name = "ht013";
+            this.ht013.RackCount = 5;
+            this.ht013.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.ht013.ShowBayNumber = false;
+            this.ht013.Size = new System.Drawing.Size(993, 194);
+            this.ht013.TabIndex = 22;
             // 
             // tpLTAging1
             // 
@@ -461,10 +460,10 @@
             this.tpLTAging1.Controls.Add(this.label5);
             this.tpLTAging1.Controls.Add(this.label6);
             this.tpLTAging1.Controls.Add(this.label7);
-            this.tpLTAging1.Controls.Add(this.rt042);
-            this.tpLTAging1.Controls.Add(this.rt031);
-            this.tpLTAging1.Controls.Add(this.rt032);
-            this.tpLTAging1.Controls.Add(this.rt041);
+            this.tpLTAging1.Controls.Add(this.lt014);
+            this.tpLTAging1.Controls.Add(this.lt011);
+            this.tpLTAging1.Controls.Add(this.lt012);
+            this.tpLTAging1.Controls.Add(this.lt013);
             this.tpLTAging1.Controls.Add(this.ctrlLine2);
             this.tpLTAging1.Location = new System.Drawing.Point(4, 23);
             this.tpLTAging1.Name = "tpLTAging1";
@@ -478,7 +477,7 @@
             this.label24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.label24.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label24.ForeColor = System.Drawing.Color.Indigo;
-            this.label24.Location = new System.Drawing.Point(1373, 644);
+            this.label24.Location = new System.Drawing.Point(1290, 646);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(25, 15);
             this.label24.TabIndex = 112;
@@ -490,7 +489,7 @@
             this.label25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.label25.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label25.ForeColor = System.Drawing.Color.Indigo;
-            this.label25.Location = new System.Drawing.Point(1373, 427);
+            this.label25.Location = new System.Drawing.Point(1290, 429);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(25, 15);
             this.label25.TabIndex = 111;
@@ -502,7 +501,7 @@
             this.label26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.label26.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label26.ForeColor = System.Drawing.Color.Indigo;
-            this.label26.Location = new System.Drawing.Point(1373, 211);
+            this.label26.Location = new System.Drawing.Point(1290, 212);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(25, 15);
             this.label26.TabIndex = 110;
@@ -514,7 +513,7 @@
             this.label21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.label21.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label21.ForeColor = System.Drawing.Color.Indigo;
-            this.label21.Location = new System.Drawing.Point(898, 644);
+            this.label21.Location = new System.Drawing.Point(849, 646);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(25, 15);
             this.label21.TabIndex = 109;
@@ -526,7 +525,7 @@
             this.label22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.label22.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label22.ForeColor = System.Drawing.Color.Indigo;
-            this.label22.Location = new System.Drawing.Point(898, 427);
+            this.label22.Location = new System.Drawing.Point(849, 429);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(25, 15);
             this.label22.TabIndex = 108;
@@ -538,7 +537,7 @@
             this.label23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.label23.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label23.ForeColor = System.Drawing.Color.Indigo;
-            this.label23.Location = new System.Drawing.Point(898, 211);
+            this.label23.Location = new System.Drawing.Point(849, 212);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(25, 15);
             this.label23.TabIndex = 107;
@@ -550,7 +549,7 @@
             this.label18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.label18.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label18.ForeColor = System.Drawing.Color.Indigo;
-            this.label18.Location = new System.Drawing.Point(420, 644);
+            this.label18.Location = new System.Drawing.Point(400, 646);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(25, 15);
             this.label18.TabIndex = 106;
@@ -562,7 +561,7 @@
             this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.label19.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label19.ForeColor = System.Drawing.Color.Indigo;
-            this.label19.Location = new System.Drawing.Point(420, 427);
+            this.label19.Location = new System.Drawing.Point(400, 429);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(25, 15);
             this.label19.TabIndex = 105;
@@ -574,7 +573,7 @@
             this.label20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.label20.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label20.ForeColor = System.Drawing.Color.Indigo;
-            this.label20.Location = new System.Drawing.Point(420, 211);
+            this.label20.Location = new System.Drawing.Point(400, 212);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(25, 15);
             this.label20.TabIndex = 104;
@@ -586,7 +585,7 @@
             this.label17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.label17.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label17.ForeColor = System.Drawing.Color.Indigo;
-            this.label17.Location = new System.Drawing.Point(43, 644);
+            this.label17.Location = new System.Drawing.Point(43, 646);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(25, 15);
             this.label17.TabIndex = 103;
@@ -598,7 +597,7 @@
             this.label16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.label16.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label16.ForeColor = System.Drawing.Color.Indigo;
-            this.label16.Location = new System.Drawing.Point(43, 427);
+            this.label16.Location = new System.Drawing.Point(43, 429);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(25, 15);
             this.label16.TabIndex = 102;
@@ -610,7 +609,7 @@
             this.label90.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.label90.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label90.ForeColor = System.Drawing.Color.Indigo;
-            this.label90.Location = new System.Drawing.Point(43, 211);
+            this.label90.Location = new System.Drawing.Point(43, 212);
             this.label90.Name = "label90";
             this.label90.Size = new System.Drawing.Size(25, 15);
             this.label90.TabIndex = 90;
@@ -620,7 +619,7 @@
             // ctrlLine9
             // 
             this.ctrlLine9.BackColor = System.Drawing.Color.Gray;
-            this.ctrlLine9.Location = new System.Drawing.Point(3, 649);
+            this.ctrlLine9.Location = new System.Drawing.Point(3, 650);
             this.ctrlLine9.Name = "ctrlLine9";
             this.ctrlLine9.Size = new System.Drawing.Size(1528, 5);
             this.ctrlLine9.TabIndex = 101;
@@ -628,7 +627,7 @@
             // ctrlLine8
             // 
             this.ctrlLine8.BackColor = System.Drawing.Color.Gray;
-            this.ctrlLine8.Location = new System.Drawing.Point(3, 433);
+            this.ctrlLine8.Location = new System.Drawing.Point(3, 434);
             this.ctrlLine8.Name = "ctrlLine8";
             this.ctrlLine8.Size = new System.Drawing.Size(1528, 5);
             this.ctrlLine8.TabIndex = 100;
@@ -636,7 +635,7 @@
             // ctrlLine7
             // 
             this.ctrlLine7.BackColor = System.Drawing.Color.Gray;
-            this.ctrlLine7.Location = new System.Drawing.Point(3, 216);
+            this.ctrlLine7.Location = new System.Drawing.Point(3, 217);
             this.ctrlLine7.Name = "ctrlLine7";
             this.ctrlLine7.Size = new System.Drawing.Size(1528, 5);
             this.ctrlLine7.TabIndex = 99;
@@ -713,93 +712,93 @@
             this.label7.Text = "R4-2";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // rt042
+            // lt014
             // 
-            this.rt042.BackColor = System.Drawing.Color.LightGray;
-            this.rt042.BayCount = 16;
-            this.rt042.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
-            this.rt042.BayNoLabelDisplayStep = 5;
-            this.rt042.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
-            this.rt042.BoxMargin = 2;
-            this.rt042.DoubleReach = false;
-            this.rt042.DoubleReachLinePrefix = "";
-            this.rt042.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
-            this.rt042.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rt042.LinePrefix = "R042";
-            this.rt042.Location = new System.Drawing.Point(3, 664);
-            this.rt042.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.rt042.Name = "rt042";
-            this.rt042.RackCount = 10;
-            this.rt042.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
-            this.rt042.ShowBayNumber = false;
-            this.rt042.Size = new System.Drawing.Size(1528, 190);
-            this.rt042.TabIndex = 28;
+            this.lt014.BackColor = System.Drawing.Color.LightGray;
+            this.lt014.BayCount = 17;
+            this.lt014.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.lt014.BayNoLabelDisplayStep = 5;
+            this.lt014.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.lt014.BoxMargin = 2;
+            this.lt014.DoubleReach = false;
+            this.lt014.DoubleReachLinePrefix = "";
+            this.lt014.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.lt014.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lt014.LinePrefix = "L014";
+            this.lt014.Location = new System.Drawing.Point(3, 664);
+            this.lt014.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lt014.Name = "lt014";
+            this.lt014.RackCount = 5;
+            this.lt014.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.lt014.ShowBayNumber = false;
+            this.lt014.Size = new System.Drawing.Size(1528, 194);
+            this.lt014.TabIndex = 28;
             // 
-            // rt031
+            // lt011
             // 
-            this.rt031.BackColor = System.Drawing.Color.LightGray;
-            this.rt031.BayCount = 16;
-            this.rt031.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
-            this.rt031.BayNoLabelDisplayStep = 5;
-            this.rt031.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
-            this.rt031.BoxMargin = 2;
-            this.rt031.DoubleReach = false;
-            this.rt031.DoubleReachLinePrefix = "";
-            this.rt031.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
-            this.rt031.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rt031.LinePrefix = "R031";
-            this.rt031.Location = new System.Drawing.Point(3, 15);
-            this.rt031.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.rt031.Name = "rt031";
-            this.rt031.RackCount = 10;
-            this.rt031.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
-            this.rt031.ShowBayNumber = false;
-            this.rt031.Size = new System.Drawing.Size(1528, 190);
-            this.rt031.TabIndex = 26;
+            this.lt011.BackColor = System.Drawing.Color.LightGray;
+            this.lt011.BayCount = 17;
+            this.lt011.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.lt011.BayNoLabelDisplayStep = 5;
+            this.lt011.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.lt011.BoxMargin = 2;
+            this.lt011.DoubleReach = false;
+            this.lt011.DoubleReachLinePrefix = "";
+            this.lt011.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.lt011.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lt011.LinePrefix = "L011";
+            this.lt011.Location = new System.Drawing.Point(3, 15);
+            this.lt011.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lt011.Name = "lt011";
+            this.lt011.RackCount = 5;
+            this.lt011.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.lt011.ShowBayNumber = false;
+            this.lt011.Size = new System.Drawing.Size(1528, 194);
+            this.lt011.TabIndex = 26;
             // 
-            // rt032
+            // lt012
             // 
-            this.rt032.BackColor = System.Drawing.Color.LightGray;
-            this.rt032.BayCount = 16;
-            this.rt032.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
-            this.rt032.BayNoLabelDisplayStep = 5;
-            this.rt032.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
-            this.rt032.BoxMargin = 2;
-            this.rt032.DoubleReach = false;
-            this.rt032.DoubleReachLinePrefix = "";
-            this.rt032.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
-            this.rt032.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rt032.LinePrefix = "R032";
-            this.rt032.Location = new System.Drawing.Point(3, 232);
-            this.rt032.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.rt032.Name = "rt032";
-            this.rt032.RackCount = 10;
-            this.rt032.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
-            this.rt032.ShowBayNumber = false;
-            this.rt032.Size = new System.Drawing.Size(1528, 190);
-            this.rt032.TabIndex = 29;
+            this.lt012.BackColor = System.Drawing.Color.LightGray;
+            this.lt012.BayCount = 17;
+            this.lt012.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.lt012.BayNoLabelDisplayStep = 5;
+            this.lt012.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.lt012.BoxMargin = 2;
+            this.lt012.DoubleReach = false;
+            this.lt012.DoubleReachLinePrefix = "";
+            this.lt012.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.lt012.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lt012.LinePrefix = "L012";
+            this.lt012.Location = new System.Drawing.Point(3, 232);
+            this.lt012.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lt012.Name = "lt012";
+            this.lt012.RackCount = 5;
+            this.lt012.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.lt012.ShowBayNumber = false;
+            this.lt012.Size = new System.Drawing.Size(1528, 194);
+            this.lt012.TabIndex = 29;
             // 
-            // rt041
+            // lt013
             // 
-            this.rt041.BackColor = System.Drawing.Color.LightGray;
-            this.rt041.BayCount = 16;
-            this.rt041.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
-            this.rt041.BayNoLabelDisplayStep = 5;
-            this.rt041.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
-            this.rt041.BoxMargin = 2;
-            this.rt041.DoubleReach = false;
-            this.rt041.DoubleReachLinePrefix = "";
-            this.rt041.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
-            this.rt041.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rt041.LinePrefix = "R041";
-            this.rt041.Location = new System.Drawing.Point(3, 449);
-            this.rt041.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.rt041.Name = "rt041";
-            this.rt041.RackCount = 10;
-            this.rt041.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
-            this.rt041.ShowBayNumber = false;
-            this.rt041.Size = new System.Drawing.Size(1528, 190);
-            this.rt041.TabIndex = 27;
+            this.lt013.BackColor = System.Drawing.Color.LightGray;
+            this.lt013.BayCount = 17;
+            this.lt013.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.lt013.BayNoLabelDisplayStep = 5;
+            this.lt013.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.lt013.BoxMargin = 2;
+            this.lt013.DoubleReach = false;
+            this.lt013.DoubleReachLinePrefix = "";
+            this.lt013.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.lt013.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lt013.LinePrefix = "L013";
+            this.lt013.Location = new System.Drawing.Point(3, 449);
+            this.lt013.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lt013.Name = "lt013";
+            this.lt013.RackCount = 5;
+            this.lt013.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.lt013.ShowBayNumber = false;
+            this.lt013.Size = new System.Drawing.Size(1528, 194);
+            this.lt013.TabIndex = 27;
             // 
             // ctrlLine2
             // 
@@ -833,10 +832,10 @@
             this.tpLTAging2.Controls.Add(this.label9);
             this.tpLTAging2.Controls.Add(this.label10);
             this.tpLTAging2.Controls.Add(this.label11);
-            this.tpLTAging2.Controls.Add(this.rt062);
-            this.tpLTAging2.Controls.Add(this.rt051);
-            this.tpLTAging2.Controls.Add(this.rt052);
-            this.tpLTAging2.Controls.Add(this.rt061);
+            this.tpLTAging2.Controls.Add(this.lt024);
+            this.tpLTAging2.Controls.Add(this.lt021);
+            this.tpLTAging2.Controls.Add(this.lt022);
+            this.tpLTAging2.Controls.Add(this.lt023);
             this.tpLTAging2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.tpLTAging2.Location = new System.Drawing.Point(4, 23);
             this.tpLTAging2.Name = "tpLTAging2";
@@ -850,7 +849,7 @@
             this.label30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.label30.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label30.ForeColor = System.Drawing.Color.Indigo;
-            this.label30.Location = new System.Drawing.Point(1373, 427);
+            this.label30.Location = new System.Drawing.Point(1290, 429);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(25, 15);
             this.label30.TabIndex = 96;
@@ -862,7 +861,7 @@
             this.label31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.label31.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label31.ForeColor = System.Drawing.Color.Indigo;
-            this.label31.Location = new System.Drawing.Point(1373, 644);
+            this.label31.Location = new System.Drawing.Point(1290, 646);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(25, 15);
             this.label31.TabIndex = 95;
@@ -874,7 +873,7 @@
             this.label32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.label32.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label32.ForeColor = System.Drawing.Color.Indigo;
-            this.label32.Location = new System.Drawing.Point(1373, 211);
+            this.label32.Location = new System.Drawing.Point(1290, 212);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(25, 15);
             this.label32.TabIndex = 94;
@@ -886,7 +885,7 @@
             this.label27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.label27.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label27.ForeColor = System.Drawing.Color.Indigo;
-            this.label27.Location = new System.Drawing.Point(898, 427);
+            this.label27.Location = new System.Drawing.Point(849, 429);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(25, 15);
             this.label27.TabIndex = 90;
@@ -898,7 +897,7 @@
             this.label28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.label28.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label28.ForeColor = System.Drawing.Color.Indigo;
-            this.label28.Location = new System.Drawing.Point(420, 427);
+            this.label28.Location = new System.Drawing.Point(400, 429);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(25, 15);
             this.label28.TabIndex = 89;
@@ -910,7 +909,7 @@
             this.label101.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.label101.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label101.ForeColor = System.Drawing.Color.Indigo;
-            this.label101.Location = new System.Drawing.Point(898, 644);
+            this.label101.Location = new System.Drawing.Point(849, 646);
             this.label101.Name = "label101";
             this.label101.Size = new System.Drawing.Size(25, 15);
             this.label101.TabIndex = 79;
@@ -922,7 +921,7 @@
             this.label102.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.label102.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label102.ForeColor = System.Drawing.Color.Indigo;
-            this.label102.Location = new System.Drawing.Point(420, 644);
+            this.label102.Location = new System.Drawing.Point(400, 646);
             this.label102.Name = "label102";
             this.label102.Size = new System.Drawing.Size(25, 15);
             this.label102.TabIndex = 78;
@@ -934,7 +933,7 @@
             this.label46.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.label46.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label46.ForeColor = System.Drawing.Color.Indigo;
-            this.label46.Location = new System.Drawing.Point(898, 211);
+            this.label46.Location = new System.Drawing.Point(849, 212);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(25, 15);
             this.label46.TabIndex = 68;
@@ -946,7 +945,7 @@
             this.label47.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.label47.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label47.ForeColor = System.Drawing.Color.Indigo;
-            this.label47.Location = new System.Drawing.Point(420, 211);
+            this.label47.Location = new System.Drawing.Point(400, 212);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(25, 15);
             this.label47.TabIndex = 67;
@@ -958,7 +957,7 @@
             this.label29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.label29.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label29.ForeColor = System.Drawing.Color.Indigo;
-            this.label29.Location = new System.Drawing.Point(43, 427);
+            this.label29.Location = new System.Drawing.Point(43, 429);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(25, 15);
             this.label29.TabIndex = 88;
@@ -970,7 +969,7 @@
             this.label103.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.label103.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label103.ForeColor = System.Drawing.Color.Indigo;
-            this.label103.Location = new System.Drawing.Point(43, 644);
+            this.label103.Location = new System.Drawing.Point(43, 646);
             this.label103.Name = "label103";
             this.label103.Size = new System.Drawing.Size(25, 15);
             this.label103.TabIndex = 77;
@@ -982,7 +981,7 @@
             this.label48.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.label48.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label48.ForeColor = System.Drawing.Color.Indigo;
-            this.label48.Location = new System.Drawing.Point(43, 211);
+            this.label48.Location = new System.Drawing.Point(43, 212);
             this.label48.Name = "label48";
             this.label48.Size = new System.Drawing.Size(25, 15);
             this.label48.TabIndex = 66;
@@ -992,7 +991,7 @@
             // ctrlLine10
             // 
             this.ctrlLine10.BackColor = System.Drawing.Color.Gray;
-            this.ctrlLine10.Location = new System.Drawing.Point(3, 649);
+            this.ctrlLine10.Location = new System.Drawing.Point(3, 650);
             this.ctrlLine10.Name = "ctrlLine10";
             this.ctrlLine10.Size = new System.Drawing.Size(1528, 5);
             this.ctrlLine10.TabIndex = 93;
@@ -1000,7 +999,7 @@
             // ctrlLine6
             // 
             this.ctrlLine6.BackColor = System.Drawing.Color.Gray;
-            this.ctrlLine6.Location = new System.Drawing.Point(3, 433);
+            this.ctrlLine6.Location = new System.Drawing.Point(3, 434);
             this.ctrlLine6.Name = "ctrlLine6";
             this.ctrlLine6.Size = new System.Drawing.Size(1528, 5);
             this.ctrlLine6.TabIndex = 92;
@@ -1008,7 +1007,7 @@
             // ctrlLine3
             // 
             this.ctrlLine3.BackColor = System.Drawing.Color.Gray;
-            this.ctrlLine3.Location = new System.Drawing.Point(3, 216);
+            this.ctrlLine3.Location = new System.Drawing.Point(3, 217);
             this.ctrlLine3.Name = "ctrlLine3";
             this.ctrlLine3.Size = new System.Drawing.Size(1528, 5);
             this.ctrlLine3.TabIndex = 91;
@@ -1085,98 +1084,97 @@
             this.label11.Text = "R6-2";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // rt062
+            // lt024
             // 
-            this.rt062.BackColor = System.Drawing.Color.LightGray;
-            this.rt062.BayCount = 16;
-            this.rt062.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
-            this.rt062.BayNoLabelDisplayStep = 5;
-            this.rt062.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
-            this.rt062.BoxMargin = 2;
-            this.rt062.DoubleReach = false;
-            this.rt062.DoubleReachLinePrefix = "";
-            this.rt062.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
-            this.rt062.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rt062.LinePrefix = "R062";
-            this.rt062.Location = new System.Drawing.Point(3, 664);
-            this.rt062.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.rt062.Name = "rt062";
-            this.rt062.RackCount = 10;
-            this.rt062.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
-            this.rt062.ShowBayNumber = false;
-            this.rt062.Size = new System.Drawing.Size(1528, 190);
-            this.rt062.TabIndex = 28;
+            this.lt024.BackColor = System.Drawing.Color.LightGray;
+            this.lt024.BayCount = 17;
+            this.lt024.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.lt024.BayNoLabelDisplayStep = 5;
+            this.lt024.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.lt024.BoxMargin = 2;
+            this.lt024.DoubleReach = false;
+            this.lt024.DoubleReachLinePrefix = "";
+            this.lt024.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.lt024.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lt024.LinePrefix = "L024";
+            this.lt024.Location = new System.Drawing.Point(3, 664);
+            this.lt024.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lt024.Name = "lt024";
+            this.lt024.RackCount = 5;
+            this.lt024.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.lt024.ShowBayNumber = false;
+            this.lt024.Size = new System.Drawing.Size(1528, 194);
+            this.lt024.TabIndex = 28;
             // 
-            // rt051
+            // lt021
             // 
-            this.rt051.BackColor = System.Drawing.Color.LightGray;
-            this.rt051.BayCount = 16;
-            this.rt051.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
-            this.rt051.BayNoLabelDisplayStep = 5;
-            this.rt051.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
-            this.rt051.BoxMargin = 2;
-            this.rt051.DoubleReach = false;
-            this.rt051.DoubleReachLinePrefix = "";
-            this.rt051.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
-            this.rt051.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rt051.LinePrefix = "R051";
-            this.rt051.Location = new System.Drawing.Point(3, 15);
-            this.rt051.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.rt051.Name = "rt051";
-            this.rt051.RackCount = 10;
-            this.rt051.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
-            this.rt051.ShowBayNumber = false;
-            this.rt051.Size = new System.Drawing.Size(1528, 190);
-            this.rt051.TabIndex = 26;
+            this.lt021.BackColor = System.Drawing.Color.LightGray;
+            this.lt021.BayCount = 17;
+            this.lt021.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.lt021.BayNoLabelDisplayStep = 5;
+            this.lt021.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.lt021.BoxMargin = 2;
+            this.lt021.DoubleReach = false;
+            this.lt021.DoubleReachLinePrefix = "";
+            this.lt021.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.lt021.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lt021.LinePrefix = "L021";
+            this.lt021.Location = new System.Drawing.Point(3, 15);
+            this.lt021.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lt021.Name = "lt021";
+            this.lt021.RackCount = 5;
+            this.lt021.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.lt021.ShowBayNumber = false;
+            this.lt021.Size = new System.Drawing.Size(1528, 194);
+            this.lt021.TabIndex = 26;
             // 
-            // rt052
+            // lt022
             // 
-            this.rt052.BackColor = System.Drawing.Color.LightGray;
-            this.rt052.BayCount = 16;
-            this.rt052.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
-            this.rt052.BayNoLabelDisplayStep = 5;
-            this.rt052.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
-            this.rt052.BoxMargin = 2;
-            this.rt052.DoubleReach = false;
-            this.rt052.DoubleReachLinePrefix = "";
-            this.rt052.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
-            this.rt052.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rt052.LinePrefix = "R052";
-            this.rt052.Location = new System.Drawing.Point(3, 232);
-            this.rt052.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.rt052.Name = "rt052";
-            this.rt052.RackCount = 10;
-            this.rt052.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
-            this.rt052.ShowBayNumber = false;
-            this.rt052.Size = new System.Drawing.Size(1528, 190);
-            this.rt052.TabIndex = 29;
+            this.lt022.BackColor = System.Drawing.Color.LightGray;
+            this.lt022.BayCount = 17;
+            this.lt022.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.lt022.BayNoLabelDisplayStep = 5;
+            this.lt022.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.lt022.BoxMargin = 2;
+            this.lt022.DoubleReach = false;
+            this.lt022.DoubleReachLinePrefix = "";
+            this.lt022.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.lt022.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lt022.LinePrefix = "L022";
+            this.lt022.Location = new System.Drawing.Point(3, 232);
+            this.lt022.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lt022.Name = "lt022";
+            this.lt022.RackCount = 5;
+            this.lt022.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.lt022.ShowBayNumber = false;
+            this.lt022.Size = new System.Drawing.Size(1528, 194);
+            this.lt022.TabIndex = 29;
             // 
-            // rt061
+            // lt023
             // 
-            this.rt061.BackColor = System.Drawing.Color.LightGray;
-            this.rt061.BayCount = 16;
-            this.rt061.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
-            this.rt061.BayNoLabelDisplayStep = 5;
-            this.rt061.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
-            this.rt061.BoxMargin = 2;
-            this.rt061.DoubleReach = false;
-            this.rt061.DoubleReachLinePrefix = "";
-            this.rt061.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
-            this.rt061.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rt061.LinePrefix = "R061";
-            this.rt061.Location = new System.Drawing.Point(3, 449);
-            this.rt061.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.rt061.Name = "rt061";
-            this.rt061.RackCount = 10;
-            this.rt061.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
-            this.rt061.ShowBayNumber = false;
-            this.rt061.Size = new System.Drawing.Size(1528, 190);
-            this.rt061.TabIndex = 27;
+            this.lt023.BackColor = System.Drawing.Color.LightGray;
+            this.lt023.BayCount = 17;
+            this.lt023.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.lt023.BayNoLabelDisplayStep = 5;
+            this.lt023.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.lt023.BoxMargin = 2;
+            this.lt023.DoubleReach = false;
+            this.lt023.DoubleReachLinePrefix = "";
+            this.lt023.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.lt023.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lt023.LinePrefix = "L023";
+            this.lt023.Location = new System.Drawing.Point(3, 449);
+            this.lt023.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lt023.Name = "lt023";
+            this.lt023.RackCount = 5;
+            this.lt023.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.lt023.ShowBayNumber = false;
+            this.lt023.Size = new System.Drawing.Size(1528, 194);
+            this.lt023.TabIndex = 27;
             // 
             // ctrlButtonDataView
             // 
             this.ctrlButtonDataView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(69)))), ((int)(((byte)(88)))));
-            this.ctrlButtonDataView.Enabled = false;
             this.ctrlButtonDataView.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlButtonDataView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlButtonDataView.LabelText = "托盘信息";
@@ -1184,7 +1182,6 @@
             this.ctrlButtonDataView.Name = "ctrlButtonDataView";
             this.ctrlButtonDataView.Size = new System.Drawing.Size(100, 38);
             this.ctrlButtonDataView.TabIndex = 26;
-            this.ctrlButtonDataView.Visible = false;
             // 
             // Tag19
             // 
@@ -1577,11 +1574,22 @@
             this.ctrlTaggingName2.TagText = "Tray In";
             this.ctrlTaggingName2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(238)))), ((int)(((byte)(244)))));
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(16, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(140, 31);
+            this.button1.TabIndex = 35;
+            this.button1.Text = "TEST";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // CtrlAging
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.ctrlTaggingName2);
             this.Controls.Add(this.ctrlTaggingName1);
             this.Controls.Add(this.Tag092);
@@ -1643,11 +1651,11 @@
         private Controlls.CtrlTaggingName Tag13;
         private Controlls.CtrlTaggingName Tag12;
         private Controlls.CtrlTaggingName Tag11;
-        private AgingControls.AgingLineControl rt011;
+        private AgingControls.AgingLineControl ht011;
         private System.Windows.Forms.Timer m_timer;
-        private AgingControls.AgingLineControl rt012;
-        private AgingControls.AgingLineControl rt021;
-        private AgingControls.AgingLineControl rt022;
+        private AgingControls.AgingLineControl ht012;
+        private AgingControls.AgingLineControl ht013;
+        private AgingControls.AgingLineControl ht014;
         private System.Windows.Forms.TabControl AgingTab;
         private System.Windows.Forms.TabPage tpHTAging;
         private System.Windows.Forms.TabPage tpLTAging1;
@@ -1656,18 +1664,18 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private AgingControls.AgingLineControl rt042;
-        private AgingControls.AgingLineControl rt031;
-        private AgingControls.AgingLineControl rt032;
-        private AgingControls.AgingLineControl rt041;
+        private AgingControls.AgingLineControl lt014;
+        private AgingControls.AgingLineControl lt011;
+        private AgingControls.AgingLineControl lt012;
+        private AgingControls.AgingLineControl lt013;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private AgingControls.AgingLineControl rt062;
-        private AgingControls.AgingLineControl rt051;
-        private AgingControls.AgingLineControl rt052;
-        private AgingControls.AgingLineControl rt061;
+        private AgingControls.AgingLineControl lt024;
+        private AgingControls.AgingLineControl lt021;
+        private AgingControls.AgingLineControl lt022;
+        private AgingControls.AgingLineControl lt023;
         private System.Windows.Forms.CheckBox cbRTAutoChange;
         private Controlls.CButton.CtrlButtonRoot ctrlButtonDataView;
         private Controlls.CtrlTaggingName Tag00;
@@ -1727,5 +1735,6 @@
         private Controlls.CtrlLine ctrlLine6;
         private Controlls.CtrlLine ctrlLine3;
         private Controlls.CtrlTaggingName ctrlTaggingName2;
+        private System.Windows.Forms.Button button1;
     }
 }

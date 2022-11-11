@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -180,16 +182,19 @@ namespace AgingControls
 
 
             {
-                string where = string.Format("RackID LIKE '{0}%'", this.LinePrefix);
-                string orderby = "RackID ASC";
+                //string where = string.Format("RackID LIKE '{0}%'", this.LinePrefix);
+                //string orderby = "RackID ASC";
                 bool isRTAging = false;
-                if (LinePrefix.Substring(0, 1) == "R")
-                    isRTAging = true;
+                //if (LinePrefix.Substring(0, 1) == "R")
+                //    isRTAging = true;
+
+                string where = string.Format("unit_id LIKE '{0}%'", this.LinePrefix);
+                string orderby = "unit_id ASC";
 
 
                 foreach (DataRow row in dt.Select(where, orderby))
                 {
-                    string[] trayids = new string[6];
+                    string[] trayids = new string[2];
                     // TrayID 하나만 존재한다. 20190125 KJY
                     trayids[0] = row["TrayID"].ToString();
 
@@ -202,10 +207,10 @@ namespace AgingControls
                     trayids[5] = row["TrayID_6"].ToString();
                     */
                     trayids[1] = "";
-                    trayids[2] = "";
-                    trayids[3] = "";
-                    trayids[4] = "";
-                    trayids[5] = "";
+                    //trayids[2] = "";
+                    //trayids[3] = "";
+                    //trayids[4] = "";
+                    //trayids[5] = "";
 
 
                     AgingRack rack = this.AgingRacks.Find(x => x.RackID == row["RackID"].ToString());
@@ -260,13 +265,13 @@ namespace AgingControls
                 string orderby = "RackID ASC";
                 foreach (DataRow row in dt.Select(where, orderby))
                 {
-                    string[] trayids = new string[6];
+                    string[] trayids = new string[2];
                     trayids[0] = row["TrayID_1"].ToString();
                     trayids[1] = row["TrayID_2"].ToString();
-                    trayids[2] = row["TrayID_3"].ToString();
-                    trayids[3] = row["TrayID_4"].ToString();
-                    trayids[4] = row["TrayID_5"].ToString();
-                    trayids[5] = row["TrayID_6"].ToString();
+                    //trayids[2] = row["TrayID_3"].ToString();
+                    //trayids[3] = row["TrayID_4"].ToString();
+                    //trayids[4] = row["TrayID_5"].ToString();
+                    //trayids[5] = row["TrayID_6"].ToString();
 
                     AgingRack rack = this.AgingRacksDoubleReach.Find(x => x.RackID == row["RackID"].ToString());
                     if (null != rack)
@@ -287,6 +292,63 @@ namespace AgingControls
 
             Invalidate();
         }
+
+        public void SetDataTable(MySqlConnection mysql)
+        {
+            // dt 의 컬럼 중에서 "RackID"로 라인을 구분한다.
+            // RackID 라는 이름이 다르거나 없으면, 에러남... (주의하세요)
+            // 컬럼의 순서를 아래와 같이 꼭 지켜야 함
+            // 0 : RackID
+            // 1 : Status
+            // 2 : FireStatus
+            // 3~8 : TrayID-1 ~ TrayID-6
+            // 9 : OperGroupID
+            // 10 : OperID
+            // 11 : PlanTime
+            {
+                mysql.Open();
+
+                string where = string.Format("unit_id LIKE '{0}%'", this.LinePrefix);
+                string orderby = "unit_id ASC";
+
+                //accounts_table의 전체 데이터를 조회합니다.            
+                string selectQuery = string.Format($"SELECT * FROM fms_v.tb_mst_aging WHERE {where} ORDER BY {orderby}");
+
+                MySqlCommand command = new MySqlCommand(selectQuery, mysql);
+                MySqlDataReader table = command.ExecuteReader();
+
+                while (table.Read())
+                {
+                    string[] trayids = new string[2];
+                    trayids[0] = table["tray_id_1"].ToString();
+                    trayids[1] = table["tray_id_2"].ToString();
+
+                    string unitid = table["unit_id"].ToString();
+
+                    AgingRack rack = this.AgingRacks.Find(x => x.RackID == unitid);
+
+                    if (null != rack)
+                    {
+                        rack.SetData(
+                            table["status"].ToString(),       // status (CHAR)
+                            table["fire_status"].ToString(),   // firestatus (CHAR)
+                            table["tray_id_1"].ToString(),       // tTrayCurr trayid
+                            "A",  // opergroupid (CHAR)
+                            "B",       // operid (CHAR)
+                            trayids,                          // trayids
+                            "true",  // bPlanUnload
+                            table["update_time"].ToString()      // PlanTime
+                            );
+                    }
+                }
+
+                mysql.Close();
+            }
+
+            Invalidate();
+        }
+
+
         #endregion
 
         /*
@@ -460,7 +522,7 @@ namespace AgingControls
             }
         }
 
-        int _RackCount = 6;
+        int _RackCount = 7;
         [DisplayName("Rack Count"), Description("How Many Racks in a Bay"), Category("Aging Line Layout")]
         public int RackCount
         {
@@ -916,7 +978,7 @@ namespace AgingControls
 
         private void TextDisplay(Graphics gfx, Rectangle border, string str, Brush brFontBrush)
         {
-            using (Font font1 = new Font("Arial", 20, FontStyle.Bold, GraphicsUnit.Pixel))
+            using (Font font1 = new Font("Arial", 14, FontStyle.Bold, GraphicsUnit.Pixel))
             {
                 StringFormat sf = new StringFormat();
                 sf.Alignment = StringAlignment.Center;
@@ -986,7 +1048,7 @@ namespace AgingControls
         public string BPlanUnloadString = string.Empty;
 
         // Hansy
-        public string[] TrayIds = new String[6];
+        public string[] TrayIds = new String[2];
         public string CurrTrayId = string.Empty;
 
         // to show this rack or not
@@ -1012,19 +1074,23 @@ namespace AgingControls
                 TrayIdCount++;
             }
             //DisplayString = TrayIdCount.ToString();
-            //20190409 KJY - TrayID 끝 5자리로 해보자.
+            //20190409 KJY - TrayID 끝 5자리로 해보자.\
+            int lengthLimit = 5;
             if (TrayIdCount < 1)
                 DisplayString = "";
             else
             {
-                if(trays[0].Length > 5)
+                if(trays[0].Length > lengthLimit)
                 {
                     int TrayIDLength = trays[0].Length;
-                    DisplayString = trays[0].Substring(TrayIDLength - 5);
+                    //DisplayString = trays[0].Substring(TrayIDLength - 5);
+                    //2022.11.10 nvmsh : TrayID 두개를 모두 표시해준다.
+                    DisplayString = string.Format($"{trays[0].Substring(TrayIDLength - lengthLimit)}\n{trays[1].Substring(TrayIDLength - lengthLimit)}");
                 }
                 else
                 {
-                    DisplayString = trays[0];
+                    //DisplayString = trays[0];
+                    DisplayString = string.Format($"{trays[0]}\n{trays[1]}");
                 }
             }
         }

@@ -67,16 +67,16 @@ namespace FMSMonitoringUI.Controlls
         /// <param name="e"></param>
         private async void CtrlMain_Load(object sender, EventArgs e)
         {
-            Dictionary<int, List<ItemInfo>> groupTrack = InitControls();
+            Dictionary<int, List<ItemInfo>> ctrlGroupList = InitControls();
 
             List<EqpTagItem> DataList = ReadTagConfig();
             List<COPCUAConfig> opcList = ReadOPCConfig();
 
             _clientFMS = new OPCUAClient[opcList.Count()];
 
-            for (int i = 0; i < groupTrack.Count; i++)
+            for (int i = 0; i < ctrlGroupList.Count; i++)
             {
-                _clientFMS[i] = new OPCUAClient(DataList, groupTrack[i], i);
+                _clientFMS[i] = new OPCUAClient(DataList, ctrlGroupList[i], i);
 
                 bool ret = await _clientFMS[i].ConnectAsync(opcList[i].OPCServerURL, opcList[i].UserID, opcList[i].UserPW);
 
@@ -89,7 +89,7 @@ namespace FMSMonitoringUI.Controlls
                     Dictionary<int, List<BrowsePath>> dictBrowsePath = _clientFMS[i].AddBrowsePath(_clientFMS[i].OPCTagList, i);
                     Dictionary<int, List<BrowsePathResult>> dictResultPath = _clientFMS[i].ReadBrowse(dictBrowsePath);
 
-                    if (groupTrack[i].ElementAt(0).ControlType == EnumCtrlType.CNV)
+                    if (ctrlGroupList[i].ElementAt(0).ControlType == EnumCtrlType.CNV)
                     {
                         _clientFMS[i].AddConveyorNodeID(dictResultPath, dictBrowsePath);
                     }
@@ -98,7 +98,7 @@ namespace FMSMonitoringUI.Controlls
                     dictBrowsePath = _clientFMS[i].AddBrowsePath(_clientFMS[i].SubscribeTagList, i);
                     dictResultPath = _clientFMS[i].ReadBrowse(dictBrowsePath);
 
-                    _clientFMS[i].SubscribeNodes(dictResultPath, dictBrowsePath, _ListSite, groupTrack[i].ElementAt(0));
+                    _clientFMS[i].SubscribeNodes(dictResultPath, dictBrowsePath, _ListSite, ctrlGroupList[i].ElementAt(0));
                     _clientFMS[i].Subscription.DataChanged += Subscription_DataChanged;
                 }
             }
