@@ -43,13 +43,13 @@ namespace FMSMonitoringUI
 
         public static FormationMonCtrl.CtrlFormationBox FindByName(Control root, string strName)
         {
-            for (int i = 0; i < root.Controls.Count; i++)
+            for (int i = 0; i < root.Controls.Count ; i++)
             {
                 if (root.Controls[i] is ElementHost)
                 {
-                    if (((ElementHost)root.Controls[i]).Child is FormationMonCtrl.CtrlFormationBox)
+                    if (((ElementHost)root.Controls[i]).Child is CtrlFormationBox)
                     {
-                        FormationMonCtrl.CtrlFormationBox eh = (FormationMonCtrl.CtrlFormationBox)((ElementHost)root.Controls[i]).Child;
+                        CtrlFormationBox eh = (CtrlFormationBox)((ElementHost)root.Controls[i]).Child;
                         if ((string)eh.Name == strName)
                             return eh;
                     }
@@ -63,7 +63,7 @@ namespace FMSMonitoringUI
         {
             CtrlFormationBox formationCell = null;
 
-            formationCell = FindByName(panelB01, "F101");
+            formationCell = FindByName(panelF02, "F102");
 
 
         }
