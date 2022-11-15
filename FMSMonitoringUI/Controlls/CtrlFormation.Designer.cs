@@ -28,41 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panelB01 = new System.Windows.Forms.Panel();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.components = new System.ComponentModel.Container();
+            this.panelCHG = new System.Windows.Forms.Panel();
+            this.F101 = new System.Windows.Forms.Integration.ElementHost();
+            this.ctrlFormationBox1_01 = new FormationMonCtrl.CtrlFormationBox();
+            this.F102 = new System.Windows.Forms.Integration.ElementHost();
+            this.ctrlFormationBox1_02 = new FormationMonCtrl.CtrlFormationBox();
             this.F103 = new System.Windows.Forms.Integration.ElementHost();
             this.ctrlFormationBox1_03 = new FormationMonCtrl.CtrlFormationBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.F104 = new System.Windows.Forms.Integration.ElementHost();
             this.ctrlFormationBox1_04 = new FormationMonCtrl.CtrlFormationBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.panelB02 = new System.Windows.Forms.Panel();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.elementHost8 = new System.Windows.Forms.Integration.ElementHost();
+            this.F201 = new System.Windows.Forms.Integration.ElementHost();
             this.ctrlFormationBox2_01 = new FormationMonCtrl.CtrlFormationBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.elementHost5 = new System.Windows.Forms.Integration.ElementHost();
-            this.ctrlFormationBox2_04 = new FormationMonCtrl.CtrlFormationBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.elementHost6 = new System.Windows.Forms.Integration.ElementHost();
-            this.ctrlFormationBox2_03 = new FormationMonCtrl.CtrlFormationBox();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.elementHost7 = new System.Windows.Forms.Integration.ElementHost();
+            this.F202 = new System.Windows.Forms.Integration.ElementHost();
             this.ctrlFormationBox2_02 = new FormationMonCtrl.CtrlFormationBox();
-            this.panelB03 = new System.Windows.Forms.Panel();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.elementHost9 = new System.Windows.Forms.Integration.ElementHost();
+            this.F203 = new System.Windows.Forms.Integration.ElementHost();
+            this.ctrlFormationBox2_03 = new FormationMonCtrl.CtrlFormationBox();
+            this.F204 = new System.Windows.Forms.Integration.ElementHost();
+            this.ctrlFormationBox2_04 = new FormationMonCtrl.CtrlFormationBox();
+            this.F301 = new System.Windows.Forms.Integration.ElementHost();
             this.ctrlFormationBox3_01 = new FormationMonCtrl.CtrlFormationBox();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.elementHost10 = new System.Windows.Forms.Integration.ElementHost();
-            this.ctrlFormationBox3_04 = new FormationMonCtrl.CtrlFormationBox();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.elementHost11 = new System.Windows.Forms.Integration.ElementHost();
-            this.ctrlFormationBox3_03 = new FormationMonCtrl.CtrlFormationBox();
-            this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.elementHost12 = new System.Windows.Forms.Integration.ElementHost();
+            this.F302 = new System.Windows.Forms.Integration.ElementHost();
             this.ctrlFormationBox3_02 = new FormationMonCtrl.CtrlFormationBox();
+            this.F303 = new System.Windows.Forms.Integration.ElementHost();
+            this.ctrlFormationBox3_03 = new FormationMonCtrl.CtrlFormationBox();
+            this.F304 = new System.Windows.Forms.Integration.ElementHost();
+            this.ctrlFormationBox3_04 = new FormationMonCtrl.CtrlFormationBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.button1 = new System.Windows.Forms.Button();
             this.splitter2 = new System.Windows.Forms.Splitter();
@@ -77,46 +80,166 @@
             this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.elementHost16 = new System.Windows.Forms.Integration.ElementHost();
             this.ctrlFormationBoxJIG2 = new FormationMonCtrl.CtrlFormationBoxJIG();
-            this.F102 = new System.Windows.Forms.Integration.ElementHost();
-            this.ctrlFormationBox1_02 = new FormationMonCtrl.CtrlFormationBox();
-            this.F101 = new System.Windows.Forms.Integration.ElementHost();
-            this.ctrlFormationBox1_01 = new FormationMonCtrl.CtrlFormationBox();
-            this.panelB01.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.panelB02.SuspendLayout();
-            this.groupBox8.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.panelB03.SuspendLayout();
-            this.groupBox9.SuspendLayout();
-            this.groupBox10.SuspendLayout();
-            this.groupBox11.SuspendLayout();
-            this.groupBox12.SuspendLayout();
+            this.m_timer = new System.Windows.Forms.Timer(this.components);
+            this.panelCHG.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.groupBox14.SuspendLayout();
             this.groupBox15.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panelB01
+            // panelCHG
             // 
-            this.panelB01.Controls.Add(this.groupBox2);
-            this.panelB01.Controls.Add(this.groupBox3);
-            this.panelB01.Controls.Add(this.groupBox4);
-            this.panelB01.Controls.Add(this.groupBox1);
-            this.panelB01.Location = new System.Drawing.Point(322, 0);
-            this.panelB01.Name = "panelB01";
-            this.panelB01.Size = new System.Drawing.Size(525, 616);
-            this.panelB01.TabIndex = 3;
+            this.panelCHG.Controls.Add(this.F101);
+            this.panelCHG.Controls.Add(this.F102);
+            this.panelCHG.Controls.Add(this.F103);
+            this.panelCHG.Controls.Add(this.F104);
+            this.panelCHG.Controls.Add(this.F201);
+            this.panelCHG.Controls.Add(this.F202);
+            this.panelCHG.Controls.Add(this.F203);
+            this.panelCHG.Controls.Add(this.F204);
+            this.panelCHG.Controls.Add(this.F301);
+            this.panelCHG.Controls.Add(this.F302);
+            this.panelCHG.Controls.Add(this.F303);
+            this.panelCHG.Controls.Add(this.F304);
+            this.panelCHG.Controls.Add(this.groupBox1);
+            this.panelCHG.Controls.Add(this.groupBox2);
+            this.panelCHG.Controls.Add(this.groupBox3);
+            this.panelCHG.Controls.Add(this.groupBox4);
+            this.panelCHG.Controls.Add(this.groupBox5);
+            this.panelCHG.Controls.Add(this.groupBox6);
+            this.panelCHG.Controls.Add(this.groupBox7);
+            this.panelCHG.Controls.Add(this.groupBox8);
+            this.panelCHG.Controls.Add(this.groupBox9);
+            this.panelCHG.Controls.Add(this.groupBox11);
+            this.panelCHG.Controls.Add(this.groupBox12);
+            this.panelCHG.Controls.Add(this.groupBox10);
+            this.panelCHG.Location = new System.Drawing.Point(322, 0);
+            this.panelCHG.Name = "panelCHG";
+            this.panelCHG.Size = new System.Drawing.Size(1595, 616);
+            this.panelCHG.TabIndex = 3;
+            // 
+            // F101
+            // 
+            this.F101.Location = new System.Drawing.Point(8, 45);
+            this.F101.Name = "F101";
+            this.F101.Size = new System.Drawing.Size(501, 95);
+            this.F101.TabIndex = 7;
+            this.F101.Text = "F101";
+            this.F101.Child = this.ctrlFormationBox1_01;
+            // 
+            // F102
+            // 
+            this.F102.Location = new System.Drawing.Point(8, 201);
+            this.F102.Name = "F102";
+            this.F102.Size = new System.Drawing.Size(501, 95);
+            this.F102.TabIndex = 7;
+            this.F102.Text = "F102";
+            this.F102.Child = this.ctrlFormationBox1_02;
+            // 
+            // F103
+            // 
+            this.F103.Location = new System.Drawing.Point(8, 357);
+            this.F103.Name = "F103";
+            this.F103.Size = new System.Drawing.Size(501, 95);
+            this.F103.TabIndex = 6;
+            this.F103.Text = "F103";
+            this.F103.Child = this.ctrlFormationBox1_03;
+            // 
+            // F104
+            // 
+            this.F104.Location = new System.Drawing.Point(8, 513);
+            this.F104.Name = "F104";
+            this.F104.Size = new System.Drawing.Size(501, 95);
+            this.F104.TabIndex = 6;
+            this.F104.Text = "F104";
+            this.F104.Child = this.ctrlFormationBox1_04;
+            // 
+            // F201
+            // 
+            this.F201.Location = new System.Drawing.Point(538, 45);
+            this.F201.Name = "F201";
+            this.F201.Size = new System.Drawing.Size(501, 95);
+            this.F201.TabIndex = 6;
+            this.F201.Text = "F201";
+            this.F201.Child = this.ctrlFormationBox2_01;
+            // 
+            // F202
+            // 
+            this.F202.Location = new System.Drawing.Point(538, 201);
+            this.F202.Name = "F202";
+            this.F202.Size = new System.Drawing.Size(501, 95);
+            this.F202.TabIndex = 6;
+            this.F202.Text = "F202";
+            this.F202.Child = this.ctrlFormationBox2_02;
+            // 
+            // F203
+            // 
+            this.F203.Location = new System.Drawing.Point(538, 357);
+            this.F203.Name = "F203";
+            this.F203.Size = new System.Drawing.Size(501, 95);
+            this.F203.TabIndex = 6;
+            this.F203.Text = "F203";
+            this.F203.Child = this.ctrlFormationBox2_03;
+            // 
+            // F204
+            // 
+            this.F204.Location = new System.Drawing.Point(538, 513);
+            this.F204.Name = "F204";
+            this.F204.Size = new System.Drawing.Size(501, 95);
+            this.F204.TabIndex = 6;
+            this.F204.Text = "F204";
+            this.F204.Child = this.ctrlFormationBox2_04;
+            // 
+            // F301
+            // 
+            this.F301.Location = new System.Drawing.Point(1069, 45);
+            this.F301.Name = "F301";
+            this.F301.Size = new System.Drawing.Size(501, 95);
+            this.F301.TabIndex = 6;
+            this.F301.Text = "F301";
+            this.F301.Child = this.ctrlFormationBox3_01;
+            // 
+            // F302
+            // 
+            this.F302.Location = new System.Drawing.Point(1069, 201);
+            this.F302.Name = "F302";
+            this.F302.Size = new System.Drawing.Size(501, 95);
+            this.F302.TabIndex = 6;
+            this.F302.Text = "F302";
+            this.F302.Child = this.ctrlFormationBox3_02;
+            // 
+            // F303
+            // 
+            this.F303.Location = new System.Drawing.Point(1069, 357);
+            this.F303.Name = "F303";
+            this.F303.Size = new System.Drawing.Size(501, 95);
+            this.F303.TabIndex = 6;
+            this.F303.Text = "F303";
+            this.F303.Child = this.ctrlFormationBox3_03;
+            // 
+            // F304
+            // 
+            this.F304.Location = new System.Drawing.Point(1069, 513);
+            this.F304.Name = "F304";
+            this.F304.Size = new System.Drawing.Size(501, 95);
+            this.F304.TabIndex = 6;
+            this.F304.Text = "F304";
+            this.F304.Child = this.ctrlFormationBox3_04;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.ForeColor = System.Drawing.Color.White;
+            this.groupBox1.Location = new System.Drawing.Point(2, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(515, 143);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Rack ID : 1Lane-1Bay-1F";
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.F102);
             this.groupBox2.ForeColor = System.Drawing.Color.White;
-            this.groupBox2.Location = new System.Drawing.Point(3, 159);
+            this.groupBox2.Location = new System.Drawing.Point(2, 159);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(515, 143);
             this.groupBox2.TabIndex = 10;
@@ -125,236 +248,103 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.F103);
             this.groupBox3.ForeColor = System.Drawing.Color.White;
-            this.groupBox3.Location = new System.Drawing.Point(3, 315);
+            this.groupBox3.Location = new System.Drawing.Point(2, 315);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(515, 143);
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Rack ID : 1Lane-1Bay-3F";
             // 
-            // F103
-            // 
-            this.F103.Location = new System.Drawing.Point(8, 41);
-            this.F103.Name = "F103";
-            this.F103.Size = new System.Drawing.Size(501, 95);
-            this.F103.TabIndex = 6;
-            this.F103.Text = "elementHost3";
-            this.F103.Child = this.ctrlFormationBox1_03;
-            // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.F104);
             this.groupBox4.ForeColor = System.Drawing.Color.White;
-            this.groupBox4.Location = new System.Drawing.Point(3, 471);
+            this.groupBox4.Location = new System.Drawing.Point(2, 471);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(515, 143);
             this.groupBox4.TabIndex = 12;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Rack ID : 1Lane-1Bay-4F";
             // 
-            // F104
-            // 
-            this.F104.Location = new System.Drawing.Point(8, 41);
-            this.F104.Name = "F104";
-            this.F104.Size = new System.Drawing.Size(501, 95);
-            this.F104.TabIndex = 6;
-            this.F104.Text = "elementHost4";
-            this.F104.Child = this.ctrlFormationBox1_04;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.F101);
-            this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(515, 143);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Rack ID : 1Lane-1Bay-1F";
-            // 
-            // panelB02
-            // 
-            this.panelB02.Controls.Add(this.groupBox8);
-            this.panelB02.Controls.Add(this.groupBox5);
-            this.panelB02.Controls.Add(this.groupBox6);
-            this.panelB02.Controls.Add(this.groupBox7);
-            this.panelB02.Location = new System.Drawing.Point(850, 0);
-            this.panelB02.Name = "panelB02";
-            this.panelB02.Size = new System.Drawing.Size(525, 616);
-            this.panelB02.TabIndex = 10;
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.elementHost8);
-            this.groupBox8.ForeColor = System.Drawing.Color.White;
-            this.groupBox8.Location = new System.Drawing.Point(6, 3);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(515, 143);
-            this.groupBox8.TabIndex = 17;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Rack ID : 1Lane-2Bay-1F";
-            // 
-            // elementHost8
-            // 
-            this.elementHost8.Location = new System.Drawing.Point(7, 42);
-            this.elementHost8.Name = "elementHost8";
-            this.elementHost8.Size = new System.Drawing.Size(501, 95);
-            this.elementHost8.TabIndex = 6;
-            this.elementHost8.Text = "elementHost8";
-            this.elementHost8.Child = this.ctrlFormationBox2_01;
-            // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.elementHost5);
             this.groupBox5.ForeColor = System.Drawing.Color.White;
-            this.groupBox5.Location = new System.Drawing.Point(6, 471);
+            this.groupBox5.Location = new System.Drawing.Point(531, 471);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(515, 143);
             this.groupBox5.TabIndex = 16;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Rack ID : 1Lane-2Bay-4F";
             // 
-            // elementHost5
-            // 
-            this.elementHost5.Location = new System.Drawing.Point(7, 41);
-            this.elementHost5.Name = "elementHost5";
-            this.elementHost5.Size = new System.Drawing.Size(501, 95);
-            this.elementHost5.TabIndex = 6;
-            this.elementHost5.Text = "elementHost5";
-            this.elementHost5.Child = this.ctrlFormationBox2_04;
-            // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.elementHost6);
             this.groupBox6.ForeColor = System.Drawing.Color.White;
-            this.groupBox6.Location = new System.Drawing.Point(6, 315);
+            this.groupBox6.Location = new System.Drawing.Point(531, 315);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(515, 143);
             this.groupBox6.TabIndex = 15;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Rack ID : 1Lane-2Bay-3F";
             // 
-            // elementHost6
-            // 
-            this.elementHost6.Location = new System.Drawing.Point(7, 41);
-            this.elementHost6.Name = "elementHost6";
-            this.elementHost6.Size = new System.Drawing.Size(501, 95);
-            this.elementHost6.TabIndex = 6;
-            this.elementHost6.Text = "elementHost6";
-            this.elementHost6.Child = this.ctrlFormationBox2_03;
-            // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.elementHost7);
             this.groupBox7.ForeColor = System.Drawing.Color.White;
-            this.groupBox7.Location = new System.Drawing.Point(6, 159);
+            this.groupBox7.Location = new System.Drawing.Point(531, 159);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(515, 143);
             this.groupBox7.TabIndex = 14;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Rack ID : 1Lane-2Bay-2F";
             // 
-            // elementHost7
+            // groupBox8
             // 
-            this.elementHost7.Location = new System.Drawing.Point(7, 41);
-            this.elementHost7.Name = "elementHost7";
-            this.elementHost7.Size = new System.Drawing.Size(501, 95);
-            this.elementHost7.TabIndex = 6;
-            this.elementHost7.Text = "elementHost7";
-            this.elementHost7.Child = this.ctrlFormationBox2_02;
-            // 
-            // panelB03
-            // 
-            this.panelB03.Controls.Add(this.groupBox9);
-            this.panelB03.Controls.Add(this.groupBox10);
-            this.panelB03.Controls.Add(this.groupBox11);
-            this.panelB03.Controls.Add(this.groupBox12);
-            this.panelB03.Location = new System.Drawing.Point(1378, 0);
-            this.panelB03.Name = "panelB03";
-            this.panelB03.Size = new System.Drawing.Size(525, 616);
-            this.panelB03.TabIndex = 18;
+            this.groupBox8.ForeColor = System.Drawing.Color.White;
+            this.groupBox8.Location = new System.Drawing.Point(531, 3);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(515, 143);
+            this.groupBox8.TabIndex = 17;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Rack ID : 1Lane-2Bay-1F";
             // 
             // groupBox9
             // 
-            this.groupBox9.Controls.Add(this.elementHost9);
             this.groupBox9.ForeColor = System.Drawing.Color.White;
-            this.groupBox9.Location = new System.Drawing.Point(6, 3);
+            this.groupBox9.Location = new System.Drawing.Point(1062, 3);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(515, 143);
             this.groupBox9.TabIndex = 17;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Rack ID : 1Lane-3Bay-1F";
             // 
-            // elementHost9
-            // 
-            this.elementHost9.Location = new System.Drawing.Point(7, 42);
-            this.elementHost9.Name = "elementHost9";
-            this.elementHost9.Size = new System.Drawing.Size(501, 95);
-            this.elementHost9.TabIndex = 6;
-            this.elementHost9.Text = "elementHost9";
-            this.elementHost9.Child = this.ctrlFormationBox3_01;
-            // 
-            // groupBox10
-            // 
-            this.groupBox10.Controls.Add(this.elementHost10);
-            this.groupBox10.ForeColor = System.Drawing.Color.White;
-            this.groupBox10.Location = new System.Drawing.Point(6, 471);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(515, 143);
-            this.groupBox10.TabIndex = 16;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "Rack ID : 1Lane-3Bay-4F";
-            // 
-            // elementHost10
-            // 
-            this.elementHost10.Location = new System.Drawing.Point(7, 41);
-            this.elementHost10.Name = "elementHost10";
-            this.elementHost10.Size = new System.Drawing.Size(501, 95);
-            this.elementHost10.TabIndex = 6;
-            this.elementHost10.Text = "elementHost10";
-            this.elementHost10.Child = this.ctrlFormationBox3_04;
-            // 
             // groupBox11
             // 
-            this.groupBox11.Controls.Add(this.elementHost11);
             this.groupBox11.ForeColor = System.Drawing.Color.White;
-            this.groupBox11.Location = new System.Drawing.Point(6, 315);
+            this.groupBox11.Location = new System.Drawing.Point(1062, 315);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Size = new System.Drawing.Size(515, 143);
             this.groupBox11.TabIndex = 15;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Rack ID : 1Lane-3Bay-3F";
             // 
-            // elementHost11
-            // 
-            this.elementHost11.Location = new System.Drawing.Point(7, 41);
-            this.elementHost11.Name = "elementHost11";
-            this.elementHost11.Size = new System.Drawing.Size(501, 95);
-            this.elementHost11.TabIndex = 6;
-            this.elementHost11.Text = "elementHost11";
-            this.elementHost11.Child = this.ctrlFormationBox3_03;
-            // 
             // groupBox12
             // 
-            this.groupBox12.Controls.Add(this.elementHost12);
             this.groupBox12.ForeColor = System.Drawing.Color.White;
-            this.groupBox12.Location = new System.Drawing.Point(6, 159);
+            this.groupBox12.Location = new System.Drawing.Point(1062, 471);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Size = new System.Drawing.Size(515, 143);
             this.groupBox12.TabIndex = 14;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Rack ID : 1Lane-3Bay-2F";
             // 
-            // elementHost12
+            // groupBox10
             // 
-            this.elementHost12.Location = new System.Drawing.Point(7, 41);
-            this.elementHost12.Name = "elementHost12";
-            this.elementHost12.Size = new System.Drawing.Size(501, 95);
-            this.elementHost12.TabIndex = 6;
-            this.elementHost12.Text = "elementHost12";
-            this.elementHost12.Child = this.ctrlFormationBox3_02;
+            this.groupBox10.ForeColor = System.Drawing.Color.White;
+            this.groupBox10.Location = new System.Drawing.Point(1062, 159);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(515, 143);
+            this.groupBox10.TabIndex = 16;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Rack ID : 1Lane-3Bay-4F";
             // 
             // splitter1
             // 
@@ -455,24 +445,6 @@
             this.elementHost16.Text = "elementHost16";
             this.elementHost16.Child = this.ctrlFormationBoxJIG2;
             // 
-            // F102
-            // 
-            this.F102.Location = new System.Drawing.Point(8, 41);
-            this.F102.Name = "F102";
-            this.F102.Size = new System.Drawing.Size(501, 95);
-            this.F102.TabIndex = 7;
-            this.F102.Text = "elementHost2";
-            this.F102.Child = this.ctrlFormationBox1_02;
-            // 
-            // F101
-            // 
-            this.F101.Location = new System.Drawing.Point(8, 42);
-            this.F101.Name = "F101";
-            this.F101.Size = new System.Drawing.Size(501, 95);
-            this.F101.TabIndex = 7;
-            this.F101.Text = "elementHost1";
-            this.F101.Child = this.ctrlFormationBox1_01;
-            // 
             // CtrlFormation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -485,26 +457,10 @@
             this.Controls.Add(this.splitter2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.splitter1);
-            this.Controls.Add(this.panelB03);
-            this.Controls.Add(this.panelB02);
-            this.Controls.Add(this.panelB01);
+            this.Controls.Add(this.panelCHG);
             this.Name = "CtrlFormation";
             this.Size = new System.Drawing.Size(1920, 945);
-            this.panelB01.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.panelB02.ResumeLayout(false);
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
-            this.panelB03.ResumeLayout(false);
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox10.ResumeLayout(false);
-            this.groupBox11.ResumeLayout(false);
-            this.groupBox12.ResumeLayout(false);
+            this.panelCHG.ResumeLayout(false);
             this.groupBox13.ResumeLayout(false);
             this.groupBox14.ResumeLayout(false);
             this.groupBox15.ResumeLayout(false);
@@ -513,7 +469,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Panel panelB01;
+        private System.Windows.Forms.Panel panelCHG;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -522,32 +478,29 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Integration.ElementHost F104;
         private FormationMonCtrl.CtrlFormationBox ctrlFormationBox1_04;
-        private System.Windows.Forms.Panel panelB02;
         private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.Integration.ElementHost elementHost8;
-        private FormationMonCtrl.CtrlFormationBox ctrlFormationBox2_01;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Integration.ElementHost elementHost5;
+        private System.Windows.Forms.Integration.ElementHost F204;
         private FormationMonCtrl.CtrlFormationBox ctrlFormationBox2_04;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Integration.ElementHost F201;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.Integration.ElementHost elementHost6;
-        private FormationMonCtrl.CtrlFormationBox ctrlFormationBox2_03;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.Integration.ElementHost elementHost7;
+        private System.Windows.Forms.Integration.ElementHost F202;
         private FormationMonCtrl.CtrlFormationBox ctrlFormationBox2_02;
-        private System.Windows.Forms.Panel panelB03;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Integration.ElementHost F203;
+        private FormationMonCtrl.CtrlFormationBox ctrlFormationBox2_03;
         private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.Integration.ElementHost elementHost9;
+        private System.Windows.Forms.Integration.ElementHost F301;
         private FormationMonCtrl.CtrlFormationBox ctrlFormationBox3_01;
         private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.Integration.ElementHost elementHost10;
-        private FormationMonCtrl.CtrlFormationBox ctrlFormationBox3_04;
+        private System.Windows.Forms.Integration.ElementHost F302;
+        private FormationMonCtrl.CtrlFormationBox ctrlFormationBox3_02;
         private System.Windows.Forms.GroupBox groupBox11;
-        private System.Windows.Forms.Integration.ElementHost elementHost11;
+        private System.Windows.Forms.Integration.ElementHost F303;
         private FormationMonCtrl.CtrlFormationBox ctrlFormationBox3_03;
         private System.Windows.Forms.GroupBox groupBox12;
-        private System.Windows.Forms.Integration.ElementHost elementHost12;
-        private FormationMonCtrl.CtrlFormationBox ctrlFormationBox3_02;
+        private System.Windows.Forms.Integration.ElementHost F304;
+        private FormationMonCtrl.CtrlFormationBox ctrlFormationBox3_04;
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Splitter splitter2;
@@ -566,5 +519,7 @@
         private FormationMonCtrl.CtrlFormationBox ctrlFormationBox1_02;
         private System.Windows.Forms.Integration.ElementHost F101;
         private FormationMonCtrl.CtrlFormationBox ctrlFormationBox1_01;
+        private FormationMonCtrl.CtrlFormationBox ctrlFormationBox2_01;
+        private System.Windows.Forms.Timer m_timer;
     }
 }

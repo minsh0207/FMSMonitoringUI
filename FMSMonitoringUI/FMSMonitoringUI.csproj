@@ -375,6 +375,12 @@
     <Compile Include="Controlls\CtrlButtonRoot.designer.cs">
       <DependentUpon>CtrlButtonRoot.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controlls\CtrlFormation1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controlls\CtrlFormation1.Designer.cs">
+      <DependentUpon>CtrlFormation1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controlls\CtrlFormation.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -640,6 +646,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controlls\CtrlButtonRoot.resx">
       <DependentUpon>CtrlButtonRoot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controlls\CtrlFormation1.resx">
+      <DependentUpon>CtrlFormation1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controlls\CtrlFormation.resx">
       <DependentUpon>CtrlFormation.cs</DependentUpon>

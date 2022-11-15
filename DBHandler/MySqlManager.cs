@@ -26,11 +26,31 @@ namespace DBHandler
 
             using (MySqlConnection conn = new MySqlConnection(_connectionString))
             {
-                string where = string.Format("unit_id LIKE '{0}%'", linePrefix);
-                string orderby = "unit_id ASC";
+                string where = string.Format("rack_id LIKE '{0}%'", linePrefix);
+                string orderby = "rack_id ASC";
 
                 //tb_mst_aging 전체 데이터를 조회합니다.            
                 string selectQuery = string.Format($"SELECT * FROM fms_v.tb_mst_aging WHERE {where} ORDER BY {orderby}");
+
+                MySqlDataAdapter dataAdapter = new MySqlDataAdapter(selectQuery, conn);
+
+                dataAdapter.Fill(ds);
+
+                return ds;
+            }
+        }
+
+        public DataSet SelectChargerInfo()
+        {
+            DataSet ds = new DataSet();
+
+            using (MySqlConnection conn = new MySqlConnection(_connectionString))
+            {
+                string where = string.Format("eqp_id LIKE '{0}%'", "F1CHG01");
+                string orderby = "eqp_id ASC";
+
+                //tb_mst_aging 전체 데이터를 조회합니다.            
+                string selectQuery = string.Format($"SELECT * FROM fms_v.tb_mst_unit WHERE {where} ORDER BY {orderby}");
 
                 MySqlDataAdapter dataAdapter = new MySqlDataAdapter(selectQuery, conn);
 
@@ -55,7 +75,6 @@ namespace DBHandler
                 string updateQuery = string.Format($"UPDATE fms_v.tb_mst_aging " +
                                                $"SET {updateColumn} = '{updateValue}' " +
                                                $"WHERE {whereName} = '{whereValue}'");
-
 
                 MySqlCommand command = new MySqlCommand(updateQuery, conn);
 

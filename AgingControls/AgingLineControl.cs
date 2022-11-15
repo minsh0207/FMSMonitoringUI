@@ -309,10 +309,10 @@ namespace AgingControls
                 foreach (DataRow row in ds.Tables[0].Rows)
                 {
                     string[] trayids = new string[2];
-                    trayids[0] = row["tray_id_1"].ToString();
+                    trayids[0] = row["tray_id"].ToString();
                     trayids[1] = row["tray_id_2"].ToString();
 
-                    string unitid = row["unit_id"].ToString();
+                    string rackid = row["rack_id"].ToString();
 
                     string bPlanUnload = "true";
 
@@ -321,14 +321,14 @@ namespace AgingControls
                         bPlanUnload = "false";
                     }
 
-                    AgingRack rack = this.AgingRacks.Find(x => x.RackID == unitid);
+                    AgingRack rack = this.AgingRacks.Find(x => x.RackID == rackid);
 
                     if (null != rack)
                     {
                         rack.SetData(
                             row["status"].ToString(),       // status (CHAR)
                             row["fire_status"].ToString(),   // firestatus (CHAR)
-                            row["tray_id_1"].ToString(),       // tTrayCurr trayid
+                            row["tray_id"].ToString(),       // tTrayCurr trayid
                             "A",        // opergroupid (CHAR)
                             "B",        // operid (CHAR)
                             trayids,                          // trayids

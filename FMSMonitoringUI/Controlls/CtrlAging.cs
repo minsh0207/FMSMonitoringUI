@@ -85,7 +85,6 @@ namespace MonitoringUI.Monitoring
             {
                 Console.WriteLine(string.Format("[Exception:OnTimer] {0}", ex.ToString()));
             }
-
         }
 
         private void MoveNextRTAgingTab()

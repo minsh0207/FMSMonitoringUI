@@ -78,6 +78,9 @@
     <Compile Include="Control\CtrlComEquipment.xaml.cs">
       <DependentUpon>CtrlComEquipment.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\CtrlFormationBoxCHG.xaml.cs">
+      <DependentUpon>CtrlFormationBoxCHG.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\CtrlFormationBoxJIG.xaml.cs">
       <DependentUpon>CtrlFormationBoxJIG.xaml</DependentUpon>
     </Compile>
@@ -118,6 +121,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Control\CtrlComEquipment.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\CtrlFormationBoxCHG.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -1199,9 +1199,9 @@
             this.TagDelayAlarm.ColorText = "※※※";
             this.TagDelayAlarm.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.TagDelayAlarm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.TagDelayAlarm.Location = new System.Drawing.Point(171, 29);
+            this.TagDelayAlarm.Location = new System.Drawing.Point(223, 26);
             this.TagDelayAlarm.Name = "TagDelayAlarm";
-            this.TagDelayAlarm.Size = new System.Drawing.Size(200, 30);
+            this.TagDelayAlarm.Size = new System.Drawing.Size(59, 29);
             this.TagDelayAlarm.TabIndex = 55;
             this.TagDelayAlarm.TagColor = System.Drawing.Color.Red;
             this.TagDelayAlarm.TagText = "Delay Alarm";

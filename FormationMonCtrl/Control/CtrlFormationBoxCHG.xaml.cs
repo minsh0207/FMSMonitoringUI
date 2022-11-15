@@ -28,7 +28,7 @@ namespace FormationMonCtrl
 	/////////////////////////////////////////////////////////////////////
     //	Class:  FormationCellControl
     //===================================================================
-    public partial class CtrlFormationBox : UserControl
+    public partial class CtrlFormationBoxCHG : UserControl
     {
         #region [Variable]
         CBoxObject[] m_boBoxObject;
@@ -41,63 +41,48 @@ namespace FormationMonCtrl
         /////////////////////////////////////////////////////////////////////
         //	Constructor
         //===================================================================
-		public CtrlFormationBox()
+		public CtrlFormationBoxCHG()
         {
             // InitializeComponent
             InitializeComponent();
 
-            m_boBoxObject = new CBoxObject[8];
+            m_boBoxObject = new CBoxObject[7];
             for (int nCnt = 0; nCnt < m_boBoxObject.Length; nCnt++)
             {
                 m_boBoxObject[nCnt] = new CBoxObject();
             }
-            m_boBoxObject[0].m_borBoxObject = borBox01;
-            m_boBoxObject[0].m_txtObject = txtBox01;
-            // Display영역 추가
+            
+            //m_boBoxObject[0].m_borBoxObject = borBox01;
+            //m_boBoxObject[0].m_txtObject = txtBox01;
             m_boBoxObject[0].m_borDisplayObject = borBox01_Info;
             m_boBoxObject[0].m_txtDisplayInfo = txtBox01_Info;
 
-            m_boBoxObject[1].m_borBoxObject = borBox02;
-            m_boBoxObject[1].m_txtObject = txtBox02;
-            // Display영역 추가
             m_boBoxObject[1].m_borDisplayObject = borBox02_Info;
             m_boBoxObject[1].m_txtDisplayInfo = txtBox02_Info;
 
-            m_boBoxObject[2].m_borBoxObject = borBox03;
-            m_boBoxObject[2].m_txtObject = txtBox03;
-            // Display영역 추가
+            //m_boBoxObject[2].m_borBoxObject = borBox03;
+            //m_boBoxObject[2].m_txtObject = txtBox03;
             m_boBoxObject[2].m_borDisplayObject = borBox03_Info;
             m_boBoxObject[2].m_txtDisplayInfo = txtBox03_Info;
 
-            m_boBoxObject[3].m_borBoxObject = borBox04;
-            m_boBoxObject[3].m_txtObject = txtBox04;
-            // Display영역 추가
             m_boBoxObject[3].m_borDisplayObject = borBox04_Info;
             m_boBoxObject[3].m_txtDisplayInfo = txtBox04_Info;
 
-            m_boBoxObject[4].m_borBoxObject = borBox05;
-            m_boBoxObject[4].m_txtObject = txtBox05;
-            // Display영역 추가
+            //m_boBoxObject[4].m_borBoxObject = borBox05;
+            //m_boBoxObject[4].m_txtObject = txtBox05;
             m_boBoxObject[4].m_borDisplayObject = borBox05_Info;
             m_boBoxObject[4].m_txtDisplayInfo = txtBox05_Info;
 
-            m_boBoxObject[5].m_borBoxObject = borBox06;
-            m_boBoxObject[5].m_txtObject = txtBox06;
-            // Display영역 추가
+            //m_boBoxObject[5].m_borBoxObject = borBox06;
+            //m_boBoxObject[5].m_txtObject = txtBox06;
             m_boBoxObject[5].m_borDisplayObject = borBox06_Info;
             m_boBoxObject[5].m_txtDisplayInfo = txtBox06_Info;
 
-            m_boBoxObject[6].m_borBoxObject = borBox07;
-            m_boBoxObject[6].m_txtObject = txtBox07;
-            // Display영역 추가
+            //m_boBoxObject[6].m_borBoxObject = borBox07;
+            //m_boBoxObject[6].m_txtObject = txtBox07;
             m_boBoxObject[6].m_borDisplayObject = borBox07_Info;
             m_boBoxObject[6].m_txtDisplayInfo = txtBox07_Info;
 
-            m_boBoxObject[7].m_borBoxObject = borBox08;
-            m_boBoxObject[7].m_txtObject = txtBox08;
-            // Display영역 추가
-            m_boBoxObject[7].m_borDisplayObject = borBox08_Info;
-            m_boBoxObject[7].m_txtDisplayInfo = txtBox08_Info;
         }
         #endregion
 
@@ -162,7 +147,7 @@ namespace FormationMonCtrl
         #region [Route Event]
         // Routed Event
         // 이 이벤트가 발생하면 사용자의 클릭 상자 항목값 인수가 1부터 상자의 개수, 박스 번호는 아래에서 위로 증가
-        public static readonly RoutedEvent BoxClickedEvent = EventManager.RegisterRoutedEvent("BoxClicked", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(CtrlFormationBox));
+        public static readonly RoutedEvent BoxClickedEvent = EventManager.RegisterRoutedEvent("BoxClicked", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(CtrlFormationBoxCHG));
 
 		#region [Box Clicked Event]
 		/////////////////////////////////////////////////////////////////////
@@ -301,15 +286,13 @@ namespace FormationMonCtrl
         public void setBox(string[] trayID, string startTime, string templature, string lotID)
         {
             int nIndex = 0;
-
+            m_boBoxObject[nIndex++].m_txtDisplayInfo.Text = "1";
+            m_boBoxObject[nIndex++].m_txtDisplayInfo.Text = "2";
             m_boBoxObject[nIndex++].m_txtDisplayInfo.Text = trayID[0];
-            m_boBoxObject[nIndex++].m_txtDisplayInfo.Text = startTime;
-            m_boBoxObject[nIndex++].m_txtDisplayInfo.Text = templature;
-            m_boBoxObject[nIndex++].m_txtDisplayInfo.Text = lotID;
             m_boBoxObject[nIndex++].m_txtDisplayInfo.Text = trayID[1];
-            m_boBoxObject[nIndex++].m_txtDisplayInfo.Text = startTime;
-            m_boBoxObject[nIndex++].m_txtDisplayInfo.Text = templature;
             m_boBoxObject[nIndex++].m_txtDisplayInfo.Text = lotID;
+            m_boBoxObject[nIndex++].m_txtDisplayInfo.Text = templature;
+            m_boBoxObject[nIndex++].m_txtDisplayInfo.Text = startTime;
         }
         public void setBox(int nIndex, CBoxObject boxObj)
         {
