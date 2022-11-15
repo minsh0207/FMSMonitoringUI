@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="FormationMonCtrl.CtrlFormationBoxHPC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" d:DesignWidth="103.748" Height="184">
+    <Grid Name="grdBoxContainer" Background="DarkGray">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+
+        <Border Name="borBox01" Grid.Row="0" Margin="1,1,1,0" BorderBrush="Black" BorderThickness="1" Background="Gray" MouseDown="HPCBox_MouseClick">
+            <Viewbox>
+                <TextBlock Name="txtBox01" Text="Tray ID" Tag="" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" Height="19"></TextBlock>
+            </Viewbox>
+        </Border>
+        <Border Name="borBox01_Info" Grid.Row="1" Margin="1,0,1,1" BorderBrush="Black" BorderThickness="1" Background="LightGray" MouseDown="HPCText_MouseClick">
+            <Viewbox>
+                <TextBlock Name="txtBox01_Info" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
+            </Viewbox>
+        </Border>
+
+
+        <Border Name="borBox02" Grid.Row="2" Margin="1,1,1,0" BorderBrush="Black" BorderThickness="1" Background="Gray" MouseDown="HPCBox_MouseClick">
+            <Viewbox>
+                <TextBlock Name="txtBox02" Text="Start Time" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Height="18.96"></TextBlock>
+            </Viewbox>
+        </Border>
+        <Border Name="borBox02_Info" Grid.Row="3" Margin="1,0,1,1" BorderBrush="Black" BorderThickness="1" Background="LightGray" MouseDown="HPCText_MouseClick">
+            <Viewbox>
+                <TextBlock Name="txtBox02_Info" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
+            </Viewbox>
+        </Border>
+
+        <Border Name="borBox03" Grid.Row="4" Margin="1,1,1,0" BorderBrush="Black" BorderThickness="1" Background="Gray" MouseDown="HPCBox_MouseClick">
+            <Viewbox>
+                <TextBlock Name="txtBox03" Text="Templature" Tag="" VerticalAlignment="Center" FontWeight="Bold" Height="18.96" HorizontalAlignment="Center"/>
+            </Viewbox>
+        </Border>
+        <Border Name="borBox03_Info" Grid.Row="5" Margin="1,0,1,1" BorderBrush="Black" BorderThickness="1" Background="LightGray" MouseDown="HPCText_MouseClick">
+            <Viewbox>
+                <TextBlock Name="txtBox03_Info" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
+            </Viewbox>
+        </Border>
+
+        <Border Name="borBox04" Grid.Row="6" Margin="1,1,1,0" BorderBrush="Black" BorderThickness="1" Background="Gray" MouseDown="HPCBox_MouseClick">
+            <Viewbox>
+                <TextBlock Name="txtBox04" Text="Lot ID" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Height="18.96"></TextBlock>
+            </Viewbox>
+        </Border>
+        <Border Name="borBox04_Info" Grid.Row="7" Margin="1,0,1,1" BorderBrush="Black" BorderThickness="1" Background="LightGray" MouseDown="HPCText_MouseClick">
+            <Viewbox>
+                <TextBlock Name="txtBox04_Info" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
+            </Viewbox>
+        </Border>
+
+        <Border Name="borBox05" Grid.Row="8" Margin="1,1,1,0" BorderBrush="Black" BorderThickness="1" Background="Gray" MouseDown="HPCBox_MouseClick">
+            <Viewbox>
+                <TextBlock Name="txtBox05" Text="Presure" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Height="18.96"></TextBlock>
+            </Viewbox>
+        </Border>
+        <Border Name="borBox05_Info" Grid.Row="9" Margin="1,0,1,1" BorderBrush="Black" BorderThickness="1" Background="LightGray" MouseDown="HPCText_MouseClick">
+            <Viewbox>
+                <TextBlock Name="txtBox05_Info" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
+            </Viewbox>
+        </Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CA22DF46-7439-4A72-A0BE-D592F6D154B2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FormationMonCtrl</RootNamespace>
+    <AssemblyName>FormationMonCtrl</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>FormationUI_2.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Controls.DataVisualization.Toolkit.4.0.0.0\lib\net40-Client\System.Windows.Controls.DataVisualization.Toolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\CAgingRackObject.cs" />
+    <Compile Include="Common\CBoxClickedEventArgs.cs" />
+    <Compile Include="Common\CBoxObject.cs" />
+    <Compile Include="Common\CConstants.cs" />
+    <Compile Include="Common\CDefine.cs" />
+    <Compile Include="Common\CTrayObject.cs" />
+    <Compile Include="Control\CtrlAgingBay.xaml.cs">
+      <DependentUpon>CtrlAgingBay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\CtrlBcr.xaml.cs">
+      <DependentUpon>CtrlBcr.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\CtrlBcrAging.xaml.cs">
+      <DependentUpon>CtrlBcrAging.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\CtrlComEquipment.xaml.cs">
+      <DependentUpon>CtrlComEquipment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\CtrlFormationBoxJIG.xaml.cs">
+      <DependentUpon>CtrlFormationBoxJIG.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\CtrlFormationBoxHPC.xaml.cs">
+      <DependentUpon>CtrlFormationBoxHPC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\CtrlFormationBox.xaml.cs">
+      <DependentUpon>CtrlFormationBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\CtrlFormationBoxHorizon.xaml.cs">
+      <DependentUpon>CtrlFormationBoxHorizon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\CtrlSensor.xaml.cs">
+      <DependentUpon>CtrlSensor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\CtrlStackerCrane.xaml.cs">
+      <DependentUpon>CtrlStackerCrane.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\CtrlFireWater.xaml.cs">
+      <DependentUpon>CtrlFireWater.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FormationUI_2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Control\CtrlAgingBay.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\CtrlBcr.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\CtrlBcrAging.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\CtrlComEquipment.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\CtrlFormationBoxJIG.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\CtrlFormationBoxHPC.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\CtrlFormationBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\CtrlFormationBoxHorizon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\CtrlSensor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\CtrlStackerCrane.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\CtrlFireWater.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
