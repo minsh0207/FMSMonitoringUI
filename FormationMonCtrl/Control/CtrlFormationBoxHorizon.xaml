@@ -1,0 +1,69 @@
+﻿<UserControl x:Class="FormationMonCtrl.CtrlFormationBoxHorizon"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="60" Width="326">
+    <Grid Name="grdBoxContainer" Background="DarkGray" Margin="0,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition  />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition Width="3"/>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <!--<Separator Grid.Row="0" Opacity="0" Height="3"/>-->
+
+        <Border Name="borBox07" Grid.Row="0" Grid.Column="0" Margin="1" BorderBrush="Black" BorderThickness="1" Background="Gray" MouseDown="BoxHorizon_MouseClick">
+            <Viewbox>
+                <TextBlock Name="txtBox07" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
+            </Viewbox>
+        </Border>
+
+        <Border Name="borBox06" Grid.Row="0" Grid.Column="1" Margin="1" BorderBrush="Black" BorderThickness="1" Background="Gray" MouseDown="BoxHorizon_MouseClick">
+            <Viewbox>
+                <TextBlock Name="txtBox06" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
+            </Viewbox>
+        </Border>
+
+        <Border Name="borBox05" Grid.Row="0" Grid.Column="2" Margin="1" BorderBrush="Black" BorderThickness="1" Background="Gray" MouseDown="BoxHorizon_MouseClick">
+            <Viewbox>
+                <TextBlock Name="txtBox05" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
+            </Viewbox>
+        </Border>
+
+        <Border Name="borBox04" Grid.Row="0" Grid.Column="3" Margin="1" BorderBrush="Black" BorderThickness="1" Background="Gray" MouseDown="BoxHorizon_MouseClick">
+            <Viewbox>
+                <TextBlock Name="txtBox04" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
+            </Viewbox>
+        </Border>
+
+        <Separator Grid.Row="0" Grid.Column="4" Opacity="0" Height="3"/>
+
+        <Border Name="borBox03" Grid.Row="0" Grid.Column="5" Margin="1" BorderBrush="Black" BorderThickness="1" Background="Gray" MouseDown="BoxHorizon_MouseClick">
+            <Viewbox>
+                <TextBlock Name="txtBox03" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
+            </Viewbox>
+        </Border>
+
+        <Border Name="borBox02" Grid.Row="0" Grid.Column="6" Margin="1" BorderBrush="Black" BorderThickness="1" Background="Gray" MouseDown="BoxHorizon_MouseClick">
+            <Viewbox>
+                <TextBlock Name="txtBox02" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
+            </Viewbox>
+        </Border>
+
+        <Border Name="borBox01" Grid.Row="0" Grid.Column="7" Margin="1" BorderBrush="Black" BorderThickness="1" Background="Gray" MouseDown="BoxHorizon_MouseClick">
+            <Viewbox>
+                <TextBlock Name="txtBox01" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
+            </Viewbox>
+        </Border>
+    </Grid>
+</UserControl>

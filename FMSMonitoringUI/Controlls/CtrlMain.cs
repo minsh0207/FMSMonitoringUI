@@ -3,26 +3,15 @@ using CSVMgr;
 using FMSMonitoringUI.Common;
 //using Microsoft.Office.Interop.Excel;
 using MonitoringUI;
-using Newtonsoft.Json.Linq;
 using Novasoft.Logger;
 using OPCUAClientClassLib;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Security.Policy;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Forms;
-using System.Windows.Interop;
-using System.Windows.Threading;
-using System.Xml.Linq;
 using UnifiedAutomation.UaBase;
 using UnifiedAutomation.UaClient;
 
@@ -259,7 +248,7 @@ namespace FMSMonitoringUI.Controlls
         {
             //Task Ret = MoveRTV(1, 1000);
 
-            
+
 
             //for (int i = 0; i < 1000; i++)
             //{
@@ -411,7 +400,7 @@ namespace FMSMonitoringUI.Controlls
                     if (trayExist)
                     {
                         SiteTagInfo tagInfo = ReadSiteInfo(item);
-                        task = DisplayBCRAsync(item.SiteNo, tagInfo);                        
+                        task = DisplayBCRAsync(item.SiteNo, tagInfo);
                     }
 
                     task = StatusConveyorAsync(item.SiteNo, trayExist);
@@ -441,7 +430,7 @@ namespace FMSMonitoringUI.Controlls
                     }
                 }
             }
-            
+
             // Update the value
             //if (this.InvokeRequired)
             //{
@@ -622,7 +611,7 @@ namespace FMSMonitoringUI.Controlls
                 });
             }
 
-            
+
         }
         #endregion
 
@@ -676,6 +665,6 @@ namespace FMSMonitoringUI.Controlls
         }
         #endregion
 
-        
+
     }
 }

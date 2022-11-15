@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="FormationMonCtrl.CtrlBcrAging"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="320" d:DesignWidth="120">
+	<Grid Name="grdBcrContainer" Background="DarkGray">
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<Viewbox>
+			<TextBlock Name="txtDeviceName" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold">BCR</TextBlock>
+		</Viewbox>
+
+		<Border Name="borTray6" Grid.Row="1" Margin="1" ToolTip="EMPTY" BorderBrush="Black" BorderThickness="1" Background="Orange">
+			<Viewbox>
+				<TextBlock Name="txtTray6" Tag="txtTray6" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3,0"></TextBlock>
+			</Viewbox>
+		</Border>
+		<Border Name="borTray5" Grid.Row="2" Margin="1" ToolTip="EMPTY" BorderBrush="Black" BorderThickness="1" Background="Orange">
+			<Viewbox>
+				<TextBlock Name="txtTray5" Tag="txtTray5" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3,0"></TextBlock>
+			</Viewbox>
+		</Border>
+		<Border Name="borTray4" Grid.Row="3" Margin="1" ToolTip="EMPTY" BorderBrush="Black" BorderThickness="1" Background="Orange">
+			<Viewbox>
+				<TextBlock Name="txtTray4" Tag="txtTray4" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3,0"></TextBlock>
+			</Viewbox>
+		</Border>
+		<Border Name="borTray3" Grid.Row="4" Margin="1" ToolTip="EMPTY" BorderBrush="Black" BorderThickness="1" Background="Orange">
+			<Viewbox>
+				<TextBlock Name="txtTray3" Tag="txtTray3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3,0"></TextBlock>
+			</Viewbox>
+		</Border>
+		<Border Name="borTray2" Grid.Row="5" Margin="1" ToolTip="EMPTY" BorderBrush="Black" BorderThickness="1" Background="Orange">
+			<Viewbox>
+				<TextBlock Name="txtTray2" Tag="txtTray2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3,0"></TextBlock>
+			</Viewbox>
+		</Border>
+		<Border Name="borTray1" Grid.Row="6" Margin="1" ToolTip="EMPTY" BorderBrush="Black" BorderThickness="1" Background="Orange">
+			<Viewbox>
+				<TextBlock Name="txtTray1" Tag="txtTray1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3,0"></TextBlock>
+			</Viewbox>
+		</Border>
+	</Grid>
+</UserControl>
+

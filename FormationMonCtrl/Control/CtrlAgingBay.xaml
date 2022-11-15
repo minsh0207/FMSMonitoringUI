@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="FormationMonCtrl.CtrlAgingBay"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="480" d:DesignWidth="120">
+	<Grid Name="grdRackContainer" Background="DarkGray">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="2"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+
+        <Border MouseDown="Bay_MouseClick" Name="borRack07" Grid.Row="0" Margin="1" ToolTip="RACK_7" BorderBrush="Black" BorderThickness="1" Background="Gray">
+            <Viewbox>
+                <TextBlock Name="txtRack07" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
+            </Viewbox>
+        </Border>
+
+        <Border MouseDown="Bay_MouseClick" Name="borRack06" Grid.Row="1" Margin="1" ToolTip="RACK_6" BorderBrush="Black" BorderThickness="1" Background="Gray">
+            <Viewbox>
+                <TextBlock Name="txtRack06" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
+            </Viewbox>
+        </Border>
+        
+        <Border MouseDown="Bay_MouseClick" Name="borRack05" Grid.Row="2" Margin="1" ToolTip="RACK_5" BorderBrush="Black" BorderThickness="1" Background="Gray">
+			<Viewbox>
+				<TextBlock Name="txtRack05" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
+			</Viewbox>
+		</Border>
+
+        <Separator Grid.Row="3" Opacity="0" Height="2"/>
+
+        
+        <Border MouseDown="Bay_MouseClick" Name="borRack04" Grid.Row="4" Margin="1" ToolTip="RACK_4" BorderBrush="Black" BorderThickness="1" Background="Gray">
+			<Viewbox>
+				<TextBlock Name="txtRack04" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
+			</Viewbox>
+		</Border>
+
+		<Border MouseDown="Bay_MouseClick" Name="borRack03" Grid.Row="5" Margin="1" ToolTip="RACK_3" BorderBrush="Black" BorderThickness="1" Background="Gray">
+			<Viewbox>
+				<TextBlock Name="txtRack03" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
+			</Viewbox>
+		</Border>
+
+		<Border MouseDown="Bay_MouseClick" Name="borRack02" Grid.Row="6" Margin="1" ToolTip="RACK_2" BorderBrush="Black" BorderThickness="1" Background="Gray">
+			<Viewbox>
+				<TextBlock Name="txtRack02" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
+			</Viewbox>
+		</Border>
+
+		<Border MouseDown="Bay_MouseClick" Name="borRack01" Grid.Row="7" Margin="1" ToolTip="RACK_1" BorderBrush="Black" BorderThickness="1" Background="Gray">
+			<Viewbox>
+				<TextBlock Name="txtRack01" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
+			</Viewbox>
+		</Border>
+	</Grid>
+</UserControl>

@@ -66,6 +66,8 @@
     <Reference Include="OxyPlot.WindowsForms, Version=2.1.0.0, Culture=neutral, PublicKeyToken=245eacd6b5d2d338, processorArchitecture=MSIL">
       <HintPath>..\packages\OxyPlot.WindowsForms.2.1.0\lib\net45\OxyPlot.WindowsForms.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
@@ -754,6 +756,10 @@
     <ProjectReference Include="..\DBHandler\DBHandler.csproj">
       <Project>{3c8de403-7ff8-41cd-955b-8fcc628dd122}</Project>
       <Name>DBHandler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FormationMonCtrl\FormationMonCtrl.csproj">
+      <Project>{ca22df46-7439-4a72-a0be-d592f6d154b2}</Project>
+      <Name>FormationMonCtrl</Name>
     </ProjectReference>
     <ProjectReference Include="..\Logger\Logger.csproj">
       <Project>{571ea494-e0b0-4c80-b87e-92157ad179ee}</Project>
