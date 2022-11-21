@@ -45,34 +45,109 @@ namespace FormationMonCtrl
             // InitializeComponent
             InitializeComponent();
 
-            m_boBoxObject = new CBoxObject[4];
+            int boxIdx = 0;
+            m_boBoxObject = new CBoxObject[30];
             for (int nCnt = 0; nCnt < m_boBoxObject.Length; nCnt++)
             {
                 m_boBoxObject[nCnt] = new CBoxObject();
             }
-            m_boBoxObject[0].m_borBoxObject = borBox01;
-            m_boBoxObject[0].m_txtObject = txtBox01;
-            // Display영역 추가
-            m_boBoxObject[0].m_borDisplayObject = borBox01_Info;
-            m_boBoxObject[0].m_txtDisplayInfo = txtBox01_Info;
+            //m_boBoxObject[0].m_borBoxObject = borBox01;
+            //m_boBoxObject[0].m_txtObject = txtBox01;
+            m_boBoxObject[boxIdx].m_borDisplayObject = borBox01_Info;
+            m_boBoxObject[boxIdx++].m_txtDisplayInfo = txtBox01_Info;
 
-            m_boBoxObject[1].m_borBoxObject = borBox02;
-            m_boBoxObject[1].m_txtObject = txtBox02;
-            // Display영역 추가
-            m_boBoxObject[1].m_borDisplayObject = borBox02_Info;
-            m_boBoxObject[1].m_txtDisplayInfo = txtBox02_Info;
+            //m_boBoxObject[1].m_borBoxObject = borBox02;
+            //m_boBoxObject[1].m_txtObject = txtBox02;
+            m_boBoxObject[boxIdx].m_borDisplayObject = borBox02_Info;
+            m_boBoxObject[boxIdx++].m_txtDisplayInfo = txtBox02_Info;
 
-            m_boBoxObject[2].m_borBoxObject = borBox03;
-            m_boBoxObject[2].m_txtObject = txtBox03;
-            // Display영역 추가
-            m_boBoxObject[2].m_borDisplayObject = borBox03_Info;
-            m_boBoxObject[2].m_txtDisplayInfo = txtBox03_Info;
+            //m_boBoxObject[2].m_borBoxObject = borBox03;
+            //m_boBoxObject[2].m_txtObject = txtBox03;
+            m_boBoxObject[boxIdx].m_borDisplayObject = borBox03_Info;
+            m_boBoxObject[boxIdx++].m_txtDisplayInfo = txtBox03_Info;
 
-            m_boBoxObject[3].m_borBoxObject = borBox04;
-            m_boBoxObject[3].m_txtObject = txtBox04;
-            // Display영역 추가
-            m_boBoxObject[3].m_borDisplayObject = borBox04_Info;
-            m_boBoxObject[3].m_txtDisplayInfo = txtBox04_Info;
+            //m_boBoxObject[3].m_borBoxObject = borBox04;
+            //m_boBoxObject[3].m_txtObject = txtBox04;
+            m_boBoxObject[boxIdx].m_borDisplayObject = borBox04_Info;
+            m_boBoxObject[boxIdx++].m_txtDisplayInfo = txtBox04_Info;
+
+            m_boBoxObject[boxIdx].m_borDisplayObject = borBox05_Info;
+            m_boBoxObject[boxIdx++].m_txtDisplayInfo = txtBox05_Info;
+
+            m_boBoxObject[boxIdx].m_borDisplayObject = borBox06_Info;
+            m_boBoxObject[boxIdx++].m_txtDisplayInfo = txtBox06_Info;
+
+            m_boBoxObject[boxIdx].m_borDisplayObject = borBox07_Info;
+            m_boBoxObject[boxIdx++].m_txtDisplayInfo = txtBox07_Info;
+
+            m_boBoxObject[boxIdx].m_borDisplayObject = borBox08_Info;
+            m_boBoxObject[boxIdx++].m_txtDisplayInfo = txtBox08_Info;
+
+            m_boBoxObject[boxIdx].m_borDisplayObject = borBox09_Info;
+            m_boBoxObject[boxIdx++].m_txtDisplayInfo = txtBox09_Info;
+
+            m_boBoxObject[boxIdx].m_borDisplayObject = borBox10_Info;
+            m_boBoxObject[boxIdx++].m_txtDisplayInfo = txtBox10_Info;
+
+            m_boBoxObject[boxIdx].m_borDisplayObject = borBox11_Info;
+            m_boBoxObject[boxIdx++].m_txtDisplayInfo = txtBox11_Info;
+
+            m_boBoxObject[boxIdx].m_borDisplayObject = borBox12_Info;
+            m_boBoxObject[boxIdx++].m_txtDisplayInfo = txtBox12_Info;
+
+            m_boBoxObject[boxIdx].m_borDisplayObject = borBox13_Info;
+            m_boBoxObject[boxIdx++].m_txtDisplayInfo = txtBox13_Info;
+
+            m_boBoxObject[boxIdx].m_borDisplayObject = borBox14_Info;
+            m_boBoxObject[boxIdx++].m_txtDisplayInfo = txtBox14_Info;
+
+            m_boBoxObject[boxIdx].m_borDisplayObject = borBox15_Info;
+            m_boBoxObject[boxIdx++].m_txtDisplayInfo = txtBox15_Info;
+
+            m_boBoxObject[boxIdx].m_borDisplayObject = borBox16_Info;
+            m_boBoxObject[boxIdx++].m_txtDisplayInfo = txtBox16_Info;
+
+            m_boBoxObject[boxIdx].m_borDisplayObject = borBox17_Info;
+            m_boBoxObject[boxIdx++].m_txtDisplayInfo = txtBox17_Info;
+
+            m_boBoxObject[boxIdx].m_borDisplayObject = borBox18_Info;
+            m_boBoxObject[boxIdx++].m_txtDisplayInfo = txtBox18_Info;
+
+            m_boBoxObject[boxIdx].m_borDisplayObject = borBox19_Info;
+            m_boBoxObject[boxIdx++].m_txtDisplayInfo = txtBox19_Info;
+
+            m_boBoxObject[boxIdx].m_borDisplayObject = borBox20_Info;
+            m_boBoxObject[boxIdx++].m_txtDisplayInfo = txtBox20_Info;
+
+            m_boBoxObject[boxIdx].m_borDisplayObject = borBox21_Info;
+            m_boBoxObject[boxIdx++].m_txtDisplayInfo = txtBox21_Info;
+
+            m_boBoxObject[boxIdx].m_borDisplayObject = borBox22_Info;
+            m_boBoxObject[boxIdx++].m_txtDisplayInfo = txtBox22_Info;
+
+            m_boBoxObject[boxIdx].m_borDisplayObject = borBox23_Info;
+            m_boBoxObject[boxIdx++].m_txtDisplayInfo = txtBox23_Info;
+
+            m_boBoxObject[boxIdx].m_borDisplayObject = borBox24_Info;
+            m_boBoxObject[boxIdx++].m_txtDisplayInfo = txtBox24_Info;
+
+            m_boBoxObject[boxIdx].m_borDisplayObject = borBox25_Info;
+            m_boBoxObject[boxIdx++].m_txtDisplayInfo = txtBox25_Info;
+
+            m_boBoxObject[boxIdx].m_borDisplayObject = borBox26_Info;
+            m_boBoxObject[boxIdx++].m_txtDisplayInfo = txtBox26_Info;
+
+            m_boBoxObject[boxIdx].m_borDisplayObject = borBox27_Info;
+            m_boBoxObject[boxIdx++].m_txtDisplayInfo = txtBox27_Info;
+
+            m_boBoxObject[boxIdx].m_borDisplayObject = borBox28_Info;
+            m_boBoxObject[boxIdx++].m_txtDisplayInfo = txtBox28_Info;
+
+            m_boBoxObject[boxIdx].m_borDisplayObject = borBox29_Info;
+            m_boBoxObject[boxIdx++].m_txtDisplayInfo = txtBox29_Info;
+
+            m_boBoxObject[boxIdx].m_borDisplayObject = borBox30_Info;
+            m_boBoxObject[boxIdx++].m_txtDisplayInfo = txtBox30_Info;
         }
         #endregion
 
@@ -273,6 +348,13 @@ namespace FormationMonCtrl
         /////////////////////////////////////////////////////////////////////
         //	Set Box
         //===================================================================
+        public void setBox(string templature)
+        {
+            for (int i = 0; i < 30; i++)
+            {
+                m_boBoxObject[i].m_txtDisplayInfo.Text = templature;
+            }
+        }
         public void setBox(int nIndex, CBoxObject boxObj)
         {
 			setBox(nIndex, boxObj.m_strTrayId, boxObj.m_chrUnitStatus, boxObj.m_chrProcStatus, boxObj.m_chrFireStatus, boxObj.m_chrComStatus, boxObj.m_chrOperMode, boxObj.m_chrOperGroupId, boxObj.m_chrOperId, "", "", "");

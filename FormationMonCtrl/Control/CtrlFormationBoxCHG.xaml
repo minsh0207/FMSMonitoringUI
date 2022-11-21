@@ -3,82 +3,81 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" Height="90" Width="440">
-    <Grid Name="grdBoxContainer" Background="Red">
+             mc:Ignorable="d" Height="78" Width="440">
+    <Grid Name="grdBoxContainer" Background="Black">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" MinWidth="50"/>
             <ColumnDefinition Width="Auto" MinWidth="130"/>
-            <ColumnDefinition Width="Auto" MinWidth="100
-                              "/>
+            <ColumnDefinition Width="Auto" MinWidth="100"/>
             <ColumnDefinition Width="Auto" MinWidth="160"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30*"/>
-            <RowDefinition Height="30*"/>
-            <RowDefinition Height="30*"/>
+            <RowDefinition Height="26*"/>
+            <RowDefinition Height="26*"/>
+            <RowDefinition Height="26*"/>
         </Grid.RowDefinitions>
 
         <Border Name="borBox01" Grid.Row="0" BorderBrush="Black" BorderThickness="1" Background="Gray" MouseDown="Box_MouseClick">
             <Grid Margin="0,0,0,0">
-                <TextBlock Name="txtBox01" Text="Level" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontFamily="Arial"/>
+                <TextBlock Name="txtBox01" Text="Level" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Arial" FontSize="11"/>
             </Grid>
         </Border>
         <Border Name="borBox01_Info" BorderBrush="Black" BorderThickness="1" Background="LightGray" MouseDown="Text_MouseClick" Grid.Row="1" >
-            <Viewbox Margin="2,6,2,6">
-                <TextBlock Name="txtBox01_Info" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontFamily="Arial" FontSize="4" TextAlignment="Center"/>
+            <Viewbox Margin="2,7,2,7">
+                <TextBlock Name="txtBox01_Info" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Arial" TextAlignment="Center"/>
             </Viewbox>
         </Border>
         <Border Name="borBox02_Info" BorderBrush="Black" BorderThickness="1" Background="LightGray" MouseDown="Text_MouseClick" Grid.Row="2" >
-            <Viewbox Margin="2,6,2,6">
-                <TextBlock Name="txtBox02_Info" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontFamily="Arial" FontSize="8"></TextBlock>
+            <Viewbox Margin="2,7,2,7">
+                <TextBlock Name="txtBox02_Info" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Arial"></TextBlock>
             </Viewbox>
         </Border>
         <Border Name="borBox03" Grid.Row="0" BorderBrush="Black" BorderThickness="1" Background="Gray" MouseDown="Box_MouseClick" Grid.Column="1">
             <Grid Margin="0,0,0,0">
-                <TextBlock Name="txtBox03" Text="Tray ID" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontFamily="Arial"/>
+                <TextBlock Name="txtBox03" Text="Tray ID" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Arial" FontSize="11"/>
             </Grid>
         </Border>
         <Border Name="borBox03_Info" BorderBrush="Black" BorderThickness="1" Background="LightGray" MouseDown="Text_MouseClick" Grid.Row="1" Grid.Column="1">
-            <Viewbox Margin="2,6,2,6">
-                <TextBlock Name="txtBox03_Info" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontFamily="Arial" FontSize="8"></TextBlock>
+            <Viewbox Margin="2,7,2,7">
+                <TextBlock Name="txtBox03_Info" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Arial"></TextBlock>
             </Viewbox>
         </Border>
         <Border Name="borBox04_Info" BorderBrush="Black" BorderThickness="1" Background="LightGray" MouseDown="Text_MouseClick" Grid.Row="2" Grid.Column="1">
-            <Viewbox Margin="2,6,2,6">
-                <TextBlock Name="txtBox04_Info" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontFamily="Arial" FontSize="8"></TextBlock>
+            <Viewbox Margin="2,7,2,7">
+                <TextBlock Name="txtBox04_Info" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Arial"></TextBlock>
             </Viewbox>
         </Border>
 
         <Border Name="borBox05" Grid.Row="0" BorderBrush="Black" BorderThickness="1" Background="Gray" MouseDown="Box_MouseClick" Grid.Column="2">
             <Grid Margin="0,0,0,0">
-                <TextBlock Name="txtBox05" Text="Lot ID" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontFamily="Arial"/>
+                <TextBlock Name="txtBox05" Text="Lot ID" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Arial" FontSize="11"/>
             </Grid>
         </Border>
         <Border Name="borBox05_Info" BorderBrush="Black" BorderThickness="1" Background="LightGray" MouseDown="Text_MouseClick" Grid.Row="0" Grid.Column="3">
-            <Viewbox Margin="2,6,2,6">
-                <TextBlock Name="txtBox05_Info" Tag="" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontFamily="Arial" FontSize="6"></TextBlock>
+            <Viewbox Margin="2,7,2,7">
+                <TextBlock Name="txtBox05_Info" Tag="" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Arial"></TextBlock>
             </Viewbox>
         </Border>
 
         <Border Name="borBox06" Grid.Row="1" BorderBrush="Black" BorderThickness="1" Background="Gray" MouseDown="Box_MouseClick" Grid.Column="2">
             <Grid Margin="0,0,0,0">
-                <TextBlock Name="txtBox06" Text="Templature" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontFamily="Arial"/>
+                <TextBlock Name="txtBox06" Text="Templature" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Arial" FontSize="11"/>
             </Grid>
         </Border>
         <Border Name="borBox06_Info" BorderBrush="Black" BorderThickness="1" Background="LightGray" MouseDown="Text_MouseClick" Grid.Row="1" Grid.Column="3">
-            <Viewbox Margin="2,6,2,6">
-                <TextBlock Name="txtBox06_Info" Tag="" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontFamily="Arial" FontSize="8"></TextBlock>
+            <Viewbox Margin="2,7,2,7">
+                <TextBlock Name="txtBox06_Info" Tag="" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Arial"></TextBlock>
             </Viewbox>
         </Border>
 
         <Border Name="borBox07" Grid.Row="2" BorderBrush="Black" BorderThickness="1" Background="Gray" MouseDown="Box_MouseClick" Grid.Column="2">
             <Grid Margin="0,0,0,0">
-                <TextBlock Name="txtBox07" Text="Start Time" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontFamily="Arial"/>
+                <TextBlock Name="txtBox07" Text="Start Time" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Arial" FontSize="11"/>
             </Grid>
         </Border>
         <Border Name="borBox07_Info" BorderBrush="Gray" BorderThickness="1" Background="LightGray" MouseDown="Text_MouseClick" Grid.Row="2" Grid.Column="3">
-            <Viewbox Margin="2,6,2,6">
-                <TextBlock Name="txtBox07_Info" Tag="" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontFamily="Arial"></TextBlock>
+            <Viewbox Margin="2,7,2,7">
+                <TextBlock Name="txtBox07_Info" Tag="" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Arial"></TextBlock>
             </Viewbox>
         </Border>
 

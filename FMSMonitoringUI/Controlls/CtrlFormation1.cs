@@ -1,8 +1,10 @@
 ﻿using ControlGallery;
 using DBHandler;
+using FMSMonitoringUI.Controlls;
 using FormationMonCtrl;
 using MonitoringUI;
 using MySqlX.XDevAPI;
+using OPCUAClientClassLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -45,43 +47,69 @@ namespace FMSMonitoringUI
             ctrlFormationBoxCHG1_02.Name = "F102";
             ctrlFormationBoxCHG1_03.Name = "F103";
             ctrlFormationBoxCHG1_04.Name = "F104";
-            //ctrlFormationBox2_01.Name = "F201";
-            //ctrlFormationBox2_02.Name = "F202";
-            //ctrlFormationBox2_03.Name = "F203";
-            //ctrlFormationBox2_04.Name = "F204";
-            //ctrlFormationBox3_01.Name = "F301";
-            //ctrlFormationBox3_02.Name = "F302";
-            //ctrlFormationBox3_03.Name = "F303";
-            //ctrlFormationBox3_04.Name = "F304";
+            ctrlFormationBoxCHG2_01.Name = "F201";
+            ctrlFormationBoxCHG2_02.Name = "F202";
+            ctrlFormationBoxCHG2_03.Name = "F203";
+            ctrlFormationBoxCHG2_04.Name = "F204";
+            ctrlFormationBoxCHG3_01.Name = "F301";
+            ctrlFormationBoxCHG3_02.Name = "F302";
+            ctrlFormationBoxCHG3_03.Name = "F303";
+            ctrlFormationBoxCHG3_04.Name = "F304";
 
-
-            //ctrlFormationBox1_01.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
-            //ctrlFormationBox1_02.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
-            //ctrlFormationBox1_03.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
-            //ctrlFormationBox1_04.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
-            //ctrlFormationBox2_01.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
-            //ctrlFormationBox2_02.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
-            //ctrlFormationBox2_03.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
-            //ctrlFormationBox2_04.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
-            //ctrlFormationBox3_01.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
-            //ctrlFormationBox3_02.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
-            //ctrlFormationBox3_03.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
-            //ctrlFormationBox3_04.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
+            ctrlFormationBoxCHG1_01.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
+            ctrlFormationBoxCHG1_02.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
+            ctrlFormationBoxCHG1_03.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
+            ctrlFormationBoxCHG1_04.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
+            ctrlFormationBoxCHG2_01.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
+            ctrlFormationBoxCHG2_02.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
+            ctrlFormationBoxCHG2_03.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
+            ctrlFormationBoxCHG2_04.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
+            ctrlFormationBoxCHG3_01.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
+            ctrlFormationBoxCHG3_02.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
+            ctrlFormationBoxCHG3_03.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
+            ctrlFormationBoxCHG3_04.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
 
             this.HandleDestroyed += CtrlFormation_HandleDestroyed;
 
         }
 
+        private void InitControls()
+        {
+            string trayID1 = string.Format($"TrayID0001");
+            string startTime1 = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
+            string templature1 = string.Format($"{40}℃");
+            string pressure1 = string.Format($"{40}kgf");
+            string lotID1 = string.Format($"LotID0001");
+
+            CtrlFormationBoxJIG jig = null; // (CtrlFormationBoxHPC)HPC1.Child;
+            //hpc.setBox(trayID1, lotID1, templature1, pressure1, startTime1);
+
+            foreach (var ctl in splitterHPC.Controls)
+            {
+                if (ctl is CtrlFormationBoxJIG)
+                {
+                    jig = (CtrlFormationBoxJIG)JIG2.Child;
+                    jig.setBox(templature1);
+                }
+                if (ctl.GetType() == typeof(CtrlFormationBoxJIG))
+                {
+                    jig = (CtrlFormationBoxJIG)JIG2.Child;
+                    jig.setBox(templature1);
+                }
+
+            }
+        }
+
         public static CtrlFormationBoxCHG FindByName(Control root, string strName)
         {
-            for (int i = 0; i < root.Controls.Count ; i++)
+            for (int i = 0; i < root.Controls.Count; i++)
             {
                 if (root.Controls[i] is ElementHost)
                 {
                     if (((ElementHost)root.Controls[i]).Child is CtrlFormationBoxCHG)
                     {
                         CtrlFormationBoxCHG eh = (CtrlFormationBoxCHG)((ElementHost)root.Controls[i]).Child;
-                        if ((string)eh.Name == strName)
+                        if (eh.Name == strName)
                             return eh;
                     }
                 }
@@ -92,25 +120,53 @@ namespace FMSMonitoringUI
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            CtrlFormationBoxCHG formationCell = null;
+            //InitControls();
 
-            formationCell = FindByName(panelCHG, "F104");
-
-            string[] trayID = { "trayid0001", "trayid0002" };
-            string startTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
-            string templature = "45.C";
-            string lotID = "lotid0001";
-
-            formationCell.setBox(trayID, startTime, templature, lotID);
-
-            //DataSet ds = _mysql.SelectChargerInfo();
-
-            //foreach (DataRow row in ds.Tables[0].Rows)
+            //for (int i = 1; i <= 3; i++)
             //{
-            //    string[] trayids = new string[2];
-            //    trayids[0] = row["unit_id"].ToString();
-            //    trayids[1] = row["unit_name"].ToString();
+            //    for (int j = 1; j <= 4; j++)
+            //    {
+            //        string rackid = string.Format($"F{i}0{j}");
+            //        CtrlFormationBoxCHG formationCell = FindByName(panelCHG, rackid);
+
+            //        string[] trayID = { $"TrayIDTT{i}00{j}", $"TrayIDBB{i}00{j}" };
+            //        string startTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
+            //        string templature = string.Format($"{i+40}℃");
+            //        string lotID = string.Format($"LotID{i}00{j}");
+
+            //        formationCell.setBox(trayID, startTime, templature, lotID);
+            //    }
             //}
+
+            //string trayID1 = string.Format($"TrayID0001");
+            //string startTime1 = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
+            //string templature1 = string.Format($"{40}℃");
+            //string pressure1 = string.Format($"{40}kgf");
+            //string lotID1 = string.Format($"LotID0001");
+
+            //CtrlFormationBoxHPC hpc = (CtrlFormationBoxHPC)HPC1.Child;
+            //hpc.setBox(trayID1, lotID1, templature1, pressure1, startTime1);
+
+            //hpc = (CtrlFormationBoxHPC)HPC2.Child;
+            //hpc.setBox(trayID1, lotID1, templature1, pressure1, startTime1);
+
+            //CtrlFormationBoxJIG jig = (CtrlFormationBoxJIG)JIG1.Child;
+            //jig.setBox(templature1);
+
+            //jig = (CtrlFormationBoxJIG)JIG2.Child;
+            //jig.setBox(templature1);
+
+
+
+
+            DataSet ds = _mysql.SelectChargerInfo();
+
+            foreach (DataRow row in ds.Tables[0].Rows)
+            {
+                string[] trayids = new string[2];
+                trayids[0] = row["unit_id"].ToString();
+                trayids[1] = row["unit_name"].ToString();
+            }
 
 
         }

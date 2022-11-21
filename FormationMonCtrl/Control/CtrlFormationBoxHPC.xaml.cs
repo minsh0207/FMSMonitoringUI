@@ -50,29 +50,35 @@ namespace FormationMonCtrl
             {
                 m_boBoxObject[nCnt] = new CBoxObject();
             }
-            m_boBoxObject[0].m_borBoxObject = borBox01;
-            m_boBoxObject[0].m_txtObject = txtBox01;
+            //m_boBoxObject[0].m_borBoxObject = borBox01;
+            //m_boBoxObject[0].m_txtObject = txtBox01;
             // Display영역 추가
             m_boBoxObject[0].m_borDisplayObject = borBox01_Info;
             m_boBoxObject[0].m_txtDisplayInfo = txtBox01_Info;
 
-            m_boBoxObject[1].m_borBoxObject = borBox02;
-            m_boBoxObject[1].m_txtObject = txtBox02;
+            //m_boBoxObject[1].m_borBoxObject = borBox02;
+            //m_boBoxObject[1].m_txtObject = txtBox02;
             // Display영역 추가
             m_boBoxObject[1].m_borDisplayObject = borBox02_Info;
             m_boBoxObject[1].m_txtDisplayInfo = txtBox02_Info;
 
-            m_boBoxObject[2].m_borBoxObject = borBox03;
-            m_boBoxObject[2].m_txtObject = txtBox03;
+            //m_boBoxObject[2].m_borBoxObject = borBox03;
+            //m_boBoxObject[2].m_txtObject = txtBox03;
             // Display영역 추가
             m_boBoxObject[2].m_borDisplayObject = borBox03_Info;
             m_boBoxObject[2].m_txtDisplayInfo = txtBox03_Info;
 
-            m_boBoxObject[3].m_borBoxObject = borBox04;
-            m_boBoxObject[3].m_txtObject = txtBox04;
+            //m_boBoxObject[3].m_borBoxObject = borBox04;
+            //m_boBoxObject[3].m_txtObject = txtBox04;
             // Display영역 추가
             m_boBoxObject[3].m_borDisplayObject = borBox04_Info;
             m_boBoxObject[3].m_txtDisplayInfo = txtBox04_Info;
+
+            //m_boBoxObject[4].m_borBoxObject = borBox05;
+            //m_boBoxObject[4].m_txtObject = txtBox05;
+            // Display영역 추가
+            m_boBoxObject[4].m_borDisplayObject = borBox05_Info;
+            m_boBoxObject[4].m_txtDisplayInfo = txtBox05_Info;
         }
         #endregion
 
@@ -297,7 +303,7 @@ namespace FormationMonCtrl
             args.RoutedEvent = BoxClickedEvent;
             RaiseEvent(this, args);
         }
-        
+
         #endregion
         #endregion
 
@@ -306,6 +312,15 @@ namespace FormationMonCtrl
         /////////////////////////////////////////////////////////////////////
         //	Set Box
         //===================================================================
+        public void setBox(string trayID, string lotID, string templature, string pressure, string startTime)
+        {
+            int nIndex = 0;
+            m_boBoxObject[nIndex++].m_txtDisplayInfo.Text = trayID;
+            m_boBoxObject[nIndex++].m_txtDisplayInfo.Text = lotID;
+            m_boBoxObject[nIndex++].m_txtDisplayInfo.Text = templature;
+            m_boBoxObject[nIndex++].m_txtDisplayInfo.Text = pressure;
+            m_boBoxObject[nIndex++].m_txtDisplayInfo.Text = startTime;
+        }
         public void setBox(int nIndex, CBoxObject boxObj)
         {
 			setBox(nIndex, boxObj.m_strTrayId, boxObj.m_chrUnitStatus, boxObj.m_chrProcStatus, boxObj.m_chrFireStatus, boxObj.m_chrComStatus, boxObj.m_chrOperMode, boxObj.m_chrOperGroupId, boxObj.m_chrOperId, "", "", "");

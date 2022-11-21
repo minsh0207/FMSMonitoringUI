@@ -375,6 +375,18 @@
     <Compile Include="Controlls\CtrlButtonRoot.designer.cs">
       <DependentUpon>CtrlButtonRoot.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controlls\CtrlCharger.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controlls\CtrlCharger.Designer.cs">
+      <DependentUpon>CtrlCharger.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controlls\CtrlFormation2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controlls\CtrlFormation2.Designer.cs">
+      <DependentUpon>CtrlFormation2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controlls\CtrlFormation1.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -428,6 +440,12 @@
     </Compile>
     <Compile Include="Controlls\CtrlSiteTrack.Designer.cs">
       <DependentUpon>CtrlSiteTrack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controlls\CtrlTaggingNameLong.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controlls\CtrlTaggingNameLong.Designer.cs">
+      <DependentUpon>CtrlTaggingNameLong.cs</DependentUpon>
     </Compile>
     <Compile Include="Controlls\CtrlTaggingName.cs">
       <SubType>UserControl</SubType>
@@ -647,6 +665,12 @@
     <EmbeddedResource Include="Controlls\CtrlButtonRoot.resx">
       <DependentUpon>CtrlButtonRoot.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controlls\CtrlCharger.resx">
+      <DependentUpon>CtrlCharger.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controlls\CtrlFormation2.resx">
+      <DependentUpon>CtrlFormation2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controlls\CtrlFormation1.resx">
       <DependentUpon>CtrlFormation1.cs</DependentUpon>
     </EmbeddedResource>
@@ -664,6 +688,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controlls\CtrlSCrane.resx">
       <DependentUpon>CtrlSCrane.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controlls\CtrlTaggingNameLong.resx">
+      <DependentUpon>CtrlTaggingNameLong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controlls\CtrlTaggingName.resx">
       <DependentUpon>CtrlTaggingName.cs</DependentUpon>

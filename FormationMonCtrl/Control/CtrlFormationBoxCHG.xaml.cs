@@ -286,10 +286,10 @@ namespace FormationMonCtrl
         public void setBox(string[] trayID, string startTime, string templature, string lotID)
         {
             int nIndex = 0;
-            m_boBoxObject[nIndex++].m_txtDisplayInfo.Text = "1";
             m_boBoxObject[nIndex++].m_txtDisplayInfo.Text = "2";
-            m_boBoxObject[nIndex++].m_txtDisplayInfo.Text = trayID[0];
+            m_boBoxObject[nIndex++].m_txtDisplayInfo.Text = "1";
             m_boBoxObject[nIndex++].m_txtDisplayInfo.Text = trayID[1];
+            m_boBoxObject[nIndex++].m_txtDisplayInfo.Text = trayID[0];
             m_boBoxObject[nIndex++].m_txtDisplayInfo.Text = lotID;
             m_boBoxObject[nIndex++].m_txtDisplayInfo.Text = templature;
             m_boBoxObject[nIndex++].m_txtDisplayInfo.Text = startTime;
