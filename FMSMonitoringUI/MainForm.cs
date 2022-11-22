@@ -1,4 +1,5 @@
 ﻿using FMSMonitoringUI.Controlls;
+using MonitoringUI;
 using MonitoringUI.Common;
 using MonitoringUI.Controlls;
 using MonitoringUI.Monitoring;
@@ -13,7 +14,9 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
+using System.Resources;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UnifiedAutomation.UaBase;
@@ -53,7 +56,10 @@ namespace FMSMonitoringUI
             _Logger = new Logger(logPath, LogMode.Hour);
 
             Title_ClickEvnet("Main");
-            
+
+            SetLocalizaion(enLoginLanguage.Chinese);
+
+
         }
 
         /// <summary>
@@ -132,5 +138,24 @@ namespace FMSMonitoringUI
 
             //_clientFMS.Write(info);
         }
+
+        #region language세팅
+        private void SetLocalizaion(enLoginLanguage enLanguage)
+        {
+            switch (enLanguage)
+            {
+                case enLoginLanguage.Chinese:
+                    Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("zh-CN");
+                    break;
+                case enLoginLanguage.Korean:
+                    Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("ko-KR");
+                    break;
+                case enLoginLanguage.English:
+                    Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
+                    break;
+            }
+            LocalLanguage.resxLanguage = new ResourceManager("MonitoringUI.WinFormRoot", typeof(WinFormRoot).Assembly);
+        }
+        #endregion
     }
 }

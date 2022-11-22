@@ -66,18 +66,6 @@
     <Compile Include="Common\CConstants.cs" />
     <Compile Include="Common\CDefine.cs" />
     <Compile Include="Common\CTrayObject.cs" />
-    <Compile Include="Control\CtrlAgingBay.xaml.cs">
-      <DependentUpon>CtrlAgingBay.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Control\CtrlBcr.xaml.cs">
-      <DependentUpon>CtrlBcr.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Control\CtrlBcrAging.xaml.cs">
-      <DependentUpon>CtrlBcrAging.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Control\CtrlComEquipment.xaml.cs">
-      <DependentUpon>CtrlComEquipment.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Control\CtrlFormationBoxCHG.xaml.cs">
       <DependentUpon>CtrlFormationBoxCHG.xaml</DependentUpon>
     </Compile>
@@ -90,40 +78,12 @@
     <Compile Include="Control\CtrlFormationBox.xaml.cs">
       <DependentUpon>CtrlFormationBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Control\CtrlFormationBoxHorizon.xaml.cs">
-      <DependentUpon>CtrlFormationBoxHorizon.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Control\CtrlSensor.xaml.cs">
-      <DependentUpon>CtrlSensor.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Control\CtrlStackerCrane.xaml.cs">
-      <DependentUpon>CtrlStackerCrane.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Control\CtrlFireWater.xaml.cs">
-      <DependentUpon>CtrlFireWater.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="FormationUI_2.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Control\CtrlAgingBay.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Control\CtrlBcr.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Control\CtrlBcrAging.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Control\CtrlComEquipment.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Control\CtrlFormationBoxCHG.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -137,22 +97,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Control\CtrlFormationBox.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Control\CtrlFormationBoxHorizon.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Control\CtrlSensor.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Control\CtrlStackerCrane.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Control\CtrlFireWater.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -38,9 +38,9 @@
             this.TextBoxData.BackColor = System.Drawing.Color.White;
             this.TextBoxData.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.TextBoxData.HideSelection = false;
-            this.TextBoxData.Location = new System.Drawing.Point(109, 2);
+            this.TextBoxData.Location = new System.Drawing.Point(110, 4);
             this.TextBoxData.Name = "TextBoxData";
-            this.TextBoxData.Size = new System.Drawing.Size(150, 22);
+            this.TextBoxData.Size = new System.Drawing.Size(167, 22);
             this.TextBoxData.TabIndex = 4;
             this.TextBoxData.WordWrap = false;
             this.TextBoxData.TextChanged += new System.EventHandler(this.TextBoxData_TextChanged);
@@ -49,11 +49,12 @@
             // 
             // lbTitle
             // 
+            this.lbTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.lbTitle.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.lbTitle.Location = new System.Drawing.Point(1, 1);
+            this.lbTitle.ForeColor = System.Drawing.Color.White;
+            this.lbTitle.Location = new System.Drawing.Point(1, 3);
             this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(100, 25);
+            this.lbTitle.Size = new System.Drawing.Size(103, 22);
             this.lbTitle.TabIndex = 0;
             this.lbTitle.Text = "Title";
             this.lbTitle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -62,11 +63,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightGray;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.TextBoxData);
             this.Controls.Add(this.lbTitle);
             this.Name = "CtrlTextBoxRoot";
-            this.Size = new System.Drawing.Size(260, 27);
+            this.Size = new System.Drawing.Size(282, 28);
             this.Resize += new System.EventHandler(this.CtrlTextBoxRoot_Resize);
             this.ResumeLayout(false);
             this.PerformLayout();

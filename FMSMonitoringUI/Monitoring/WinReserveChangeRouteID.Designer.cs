@@ -107,7 +107,7 @@
             this.cbProdModel.BackColor = System.Drawing.Color.LightGray;
             this.cbProdModel.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cbProdModel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.cbProdModel.Location = new System.Drawing.Point(28, 76);
+            this.cbProdModel.Location = new System.Drawing.Point(28, 67);
             this.cbProdModel.MaxLength = 32767;
             this.cbProdModel.Name = "cbProdModel";
             this.cbProdModel.PasswordChar = '\0';

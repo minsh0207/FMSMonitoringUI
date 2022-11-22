@@ -408,9 +408,9 @@
             // 
             this.btCancelReserve.BackColor = System.Drawing.Color.Red;
             this.btCancelReserve.ForeColor = System.Drawing.Color.White;
-            this.btCancelReserve.Location = new System.Drawing.Point(342, 59);
+            this.btCancelReserve.Location = new System.Drawing.Point(342, 50);
             this.btCancelReserve.Name = "btCancelReserve";
-            this.btCancelReserve.Size = new System.Drawing.Size(151, 23);
+            this.btCancelReserve.Size = new System.Drawing.Size(151, 27);
             this.btCancelReserve.TabIndex = 3;
             this.btCancelReserve.Text = "예약취소";
             this.btCancelReserve.UseVisualStyleBackColor = false;
@@ -418,11 +418,11 @@
             // 
             // btReserve
             // 
-            this.btReserve.BackColor = System.Drawing.Color.Blue;
-            this.btReserve.ForeColor = System.Drawing.Color.White;
-            this.btReserve.Location = new System.Drawing.Point(342, 30);
+            this.btReserve.BackColor = System.Drawing.Color.Gray;
+            this.btReserve.ForeColor = System.Drawing.Color.Black;
+            this.btReserve.Location = new System.Drawing.Point(342, 21);
             this.btReserve.Name = "btReserve";
-            this.btReserve.Size = new System.Drawing.Size(151, 23);
+            this.btReserve.Size = new System.Drawing.Size(151, 32);
             this.btReserve.TabIndex = 2;
             this.btReserve.Text = "변경예약";
             this.btReserve.UseVisualStyleBackColor = false;

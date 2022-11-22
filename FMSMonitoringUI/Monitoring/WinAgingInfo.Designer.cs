@@ -35,7 +35,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ctrlLine1 = new MonitoringUI.Controlls.CtrlLine();
             this.btnExit = new MonitoringUI.Controlls.CButton.CtrlButtonExit();
-            //this.btnExcel = new MonitoringUI.Controlls.CButton.CtrlButtonExcel();
             this.btnSearch = new MonitoringUI.Controlls.CButton.CtrlButtonSearch();
             this.titBar = new MonitoringUI.Controlls.CtrlTitleBar();
             this.cboModel = new MonitoringUI.Controlls.CComboBox.CtrlComboModel();
@@ -84,19 +83,6 @@
             this.btnExit.Size = new System.Drawing.Size(100, 38);
             this.btnExit.TabIndex = 10;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // btnExcel
-            // 
-            //this.btnExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(69)))), ((int)(((byte)(88)))));
-            //this.btnExcel.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            //this.btnExcel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            //this.btnExcel.LabelText = "strExcel";
-            //this.btnExcel.Location = new System.Drawing.Point(1323, 76);
-            //this.btnExcel.Margin = new System.Windows.Forms.Padding(4);
-            //this.btnExcel.Name = "btnExcel";
-            //this.btnExcel.Size = new System.Drawing.Size(100, 38);
-            //this.btnExcel.TabIndex = 9;
-            //this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
             // btnSearch
             // 
@@ -255,6 +241,7 @@
             // txtTrayID
             // 
             this.txtTrayID.BackColor = System.Drawing.Color.LightGray;
+            this.txtTrayID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTrayID.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtTrayID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.txtTrayID.Location = new System.Drawing.Point(707, 93);
@@ -384,7 +371,6 @@
             this.Controls.Add(this.titBar);
             this.Controls.Add(this.ctrlLine1);
             this.Controls.Add(this.btnExit);
-            //this.Controls.Add(this.btnExcel);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtTrayID);
             this.Controls.Add(this.dtpDate);
@@ -397,7 +383,6 @@
             this.Controls.SetChildIndex(this.dtpDate, 0);
             this.Controls.SetChildIndex(this.txtTrayID, 0);
             this.Controls.SetChildIndex(this.btnSearch, 0);
-            //this.Controls.SetChildIndex(this.btnExcel, 0);
             this.Controls.SetChildIndex(this.btnExit, 0);
             this.Controls.SetChildIndex(this.ctrlLine1, 0);
             this.Controls.SetChildIndex(this.titBar, 0);

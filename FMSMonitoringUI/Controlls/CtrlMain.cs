@@ -1,6 +1,7 @@
 ﻿using ControlGallery;
 using CSVMgr;
 using FMSMonitoringUI.Common;
+using FMSMonitoringUI.Monitoring;
 //using Microsoft.Office.Interop.Excel;
 using MonitoringUI;
 using Novasoft.Logger;
@@ -89,6 +90,10 @@ namespace FMSMonitoringUI.Controlls
 
                     _clientFMS[i].SubscribeNodes(dictResultPath, dictBrowsePath, _ListSite, ctrlGroupList[i].ElementAt(0));
                     _clientFMS[i].Subscription.DataChanged += Subscription_DataChanged;
+                }
+                else
+                {
+                    _clientFMS[i] = null;
                 }
             }
         }
@@ -338,27 +343,33 @@ namespace FMSMonitoringUI.Controlls
 
                 int groupno = arg.DeviceInfo.CVPLCListDeviceID;
                 int trackno = arg.DeviceInfo.SiteNo;
-                string info;
+                string info = string.Empty;
 
                 try
                 {
-                    List<ReadValueId> cvInfo = _clientFMS[groupno].ConveyorNodeID[trackno];
-                    List<DataValue> data = _clientFMS[groupno].ReadNodeID(cvInfo);
-
-                    SiteTagInfo tagInfo = new SiteTagInfo()
+                    if (_clientFMS[groupno] != null)
                     {
-                        TrayIdL1 = data[(int)EnumSite.TrayIdL1].Value.ToString(),
-                        TrayIdL2 = data[(int)EnumSite.TrayIdL2].Value.ToString()
-                    };
+                        List<ReadValueId> cvInfo = _clientFMS[groupno].ConveyorNodeID[trackno];
+                        List<DataValue> data = _clientFMS[groupno].ReadNodeID(cvInfo);
 
-                    info = string.Format($"TrackNo={trackno}, TrayIdL1={tagInfo.TrayIdL1}, TrayIdL2={tagInfo.TrayIdL2}");
+                        SiteTagInfo tagInfo = new SiteTagInfo()
+                        {
+                            TrayIdL1 = data[(int)EnumSite.TrayIdL1].Value.ToString(),
+                            TrayIdL2 = data[(int)EnumSite.TrayIdL2].Value.ToString()
+                        };
+
+                        info = string.Format($"TrackNo={trackno}, TrayIdL1={tagInfo.TrayIdL1}, TrayIdL2={tagInfo.TrayIdL2}");
+                    }                   
                 }
                 catch (Exception ex)
                 {
                     info = string.Format($"Error={ex}");
                 }
 
-                MessageBox.Show(info.ToString());
+                WinTrayInfo winTray = new WinTrayInfo();
+                winTray.ShowDialog();
+
+                //MessageBox.Show(info.ToString());
             }
         }
 

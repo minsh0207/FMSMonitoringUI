@@ -30,11 +30,12 @@
         {
             this.SuspendLayout();
             // 
-            // CtrlTextBoxTrayID
+            // CtrlTextBoxInputRouteID
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "CtrlTextBoxInputRouteID";
+            this.Size = new System.Drawing.Size(260, 23);
             this.Load += new System.EventHandler(this.CtrlTextBoxInputRouteID_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

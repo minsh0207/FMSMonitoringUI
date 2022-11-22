@@ -273,6 +273,12 @@
     <Compile Include="Controlls\CraneCarriageSmall.Designer.cs">
       <DependentUpon>CraneCarriageSmall.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controlls\CTextBox\CtrlTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controlls\CTextBox\CtrlTextBox.Designer.cs">
+      <DependentUpon>CtrlTextBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controlls\CTextBox\CtrlTextBoxCurrProcess.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -514,6 +520,12 @@
     <Compile Include="Monitoring\WinReserveChangeRouteID.Designer.cs">
       <DependentUpon>WinReserveChangeRouteID.cs</DependentUpon>
     </Compile>
+    <Compile Include="Monitoring\WinTrayInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Monitoring\WinTrayInfo.Designer.cs">
+      <DependentUpon>WinTrayInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Monitoring\WinTroubleInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -613,6 +625,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controlls\CDateTime\CtrlDateTimePlanTime.resx">
       <DependentUpon>CtrlDateTimePlanTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controlls\CTextBox\CtrlTextBox.resx">
+      <DependentUpon>CtrlTextBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controlls\CTextBox\CtrlTextBoxCurrProcess.resx">
       <DependentUpon>CtrlTextBoxCurrProcess.cs</DependentUpon>
@@ -722,6 +737,9 @@
     <EmbeddedResource Include="Monitoring\WinReserveChangeRouteID.resx">
       <DependentUpon>WinReserveChangeRouteID.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Monitoring\WinTrayInfo.resx">
+      <DependentUpon>WinTrayInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Monitoring\WinTroubleInfo.resx">
       <DependentUpon>WinTroubleInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -758,6 +776,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Monitoring\WinFormRoot.zh-CN.resx">
       <DependentUpon>WinFormRoot.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="License\License.lic" />
     <None Include="Config\OPCUAList.csv">

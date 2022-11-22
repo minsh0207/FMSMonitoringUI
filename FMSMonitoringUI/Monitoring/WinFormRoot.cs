@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using System.Resources;
+using MonitoringUI.Common;
 
 namespace MonitoringUI
 {
