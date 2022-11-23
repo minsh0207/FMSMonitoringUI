@@ -1,4 +1,5 @@
 ﻿using FMSMonitoringUI.Controlls;
+using FMSMonitoringUI.Monitoring;
 using MonitoringUI;
 using MonitoringUI.Common;
 using MonitoringUI.Controlls;
@@ -39,11 +40,17 @@ namespace FMSMonitoringUI
         {
             InitializeComponent();
 
+            string logPath = ConfigurationManager.AppSettings["LOG_PATH"];
+            _Logger = new Logger(logPath, LogMode.Hour);
+
+            string msg = $"============== Start the FMS Monitoring System  ==============";
+            _Logger.Write(LogLevel.Info, msg, LogFileName.AllLog);
+
             _Application = applicationInstance;
             // Register for the UntrustedCertificate event. Opens trust certificate dialog to trust or reject server certificate
             _Application.UntrustedCertificate += new UntrustedCertificateEventHandler(Application_UntrustedCertificate);
 
-            #region Title Click
+            #region Title Click Event
             barMain.Click_Evnet += Title_ClickEvnet;
             barAging.Click_Evnet += Title_ClickEvnet;
             barFormation.Click_Evnet += Title_ClickEvnet;
@@ -52,12 +59,11 @@ namespace FMSMonitoringUI
             FormBorderStyle = FormBorderStyle.Sizable;
             WindowState = FormWindowState.Maximized;
 
-            string logPath = ConfigurationManager.AppSettings["LOG_PATH"];
-            _Logger = new Logger(logPath, LogMode.Hour);
+            
 
             Title_ClickEvnet("Main");
 
-            SetLocalizaion(enLoginLanguage.Chinese);
+            SetLocalizaion(enLoginLanguage.English);
 
 
         }
@@ -71,7 +77,7 @@ namespace FMSMonitoringUI
             switch (title)
             {
                 case "Main":
-                    CtrlMain ctrlMain = new CtrlMain();
+                    CtrlMain ctrlMain = new CtrlMain(_Application);
                     if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls[0].Dispose();
                     if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
                     scMainPanel.Panel2.Controls.Add(ctrlMain);
@@ -90,7 +96,7 @@ namespace FMSMonitoringUI
                     break;
             }
 
-            _Logger.Write(LogLevel.Information, $"MonitoringUI - {title}", LogFileName.AllLog);
+            _Logger.Write(LogLevel.Info, $"MonitoringUI - {title}", LogFileName.AllLog);
         }
 
         public void Application_UntrustedCertificate(object sender, UntrustedCertificateEventArgs e)

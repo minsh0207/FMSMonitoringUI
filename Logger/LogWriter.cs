@@ -20,7 +20,7 @@ namespace Novasoft.Logger
         private bool _threadFlag;
 
         #region Constructor
-        public LogWriter(string logPath, LogMode logMode, LogLevel level = LogLevel.Information)
+        public LogWriter(string logPath, LogMode logMode, LogLevel level = LogLevel.Info)
         {
             this._que = new Queue<LogData>();
 

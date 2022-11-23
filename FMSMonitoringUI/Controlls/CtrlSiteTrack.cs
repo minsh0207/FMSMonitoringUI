@@ -404,7 +404,10 @@ namespace ControlGallery
                             g.FillRectangle(b, sitebox.Rect);
                             g.DrawRectangle(p, sitebox.Rect);
                             //g.DrawString((sitebox.SiteNo % 100).ToString(), this.Font, Brushes.Black, sitebox.Rect);
-                            g.DrawString((sitebox.SiteNo).ToString(), this.Font, Brushes.Black, sitebox.Rect);
+                            if (sitebox.SiteNo > 0)
+                            {
+                                g.DrawString((sitebox.SiteNo).ToString(), this.Font, Brushes.Black, sitebox.Rect);
+                            }
                         }
                     }
                 }

@@ -115,6 +115,7 @@
             this.cranebox = new ControlGallery.CraneCarriageSmall(this.components);
             this.ctrlSCraneH4 = new ControlGallery.CtrlSCraneH();
             this.object_153bd2de_46ce_40dc_9d66_b9749d974916 = new ControlGallery.CraneCarriageSmall(this.components);
+            this.bcrMarker20 = new ControlGallery.BCRMarker();
             this.SuspendLayout();
             // 
             // label1
@@ -124,9 +125,9 @@
             this.label1.CausesValidation = false;
             this.label1.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
             this.label1.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label1.Location = new System.Drawing.Point(161, 322);
+            this.label1.Location = new System.Drawing.Point(167, 236);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 79);
+            this.label1.Size = new System.Drawing.Size(112, 165);
             this.label1.TabIndex = 6;
             this.label1.Text = "PACKING";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -367,8 +368,9 @@
             // 
             this.ctrlSCraneV1.BackColor = System.Drawing.SystemColors.Control;
             this.ctrlSCraneV1.CraneDirection = ControlGallery.EnumCraneDirection.Down;
+            this.ctrlSCraneV1.CraneID = 0;
             this.ctrlSCraneV1.CurrentBay = 0;
-            this.ctrlSCraneV1.DeviceID = null;
+            this.ctrlSCraneV1.DeviceID = -1;
             this.ctrlSCraneV1.DisplayText = "";
             this.ctrlSCraneV1.Font = new System.Drawing.Font("Segoe UI Emoji", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ctrlSCraneV1.Location = new System.Drawing.Point(1085, 145);
@@ -1589,7 +1591,7 @@
             // bcrMarker1
             // 
             this.bcrMarker1.BCRLevel = 2;
-            this.bcrMarker1.BCRMarkColor = System.Drawing.Color.Blue;
+            this.bcrMarker1.BCRMarkColor = System.Drawing.Color.CornflowerBlue;
             this.bcrMarker1.BCRMarkPosition = ControlGallery.BCRMarkPosition.Top;
             this.bcrMarker1.BCRMarkThickness = 4;
             this.bcrMarker1.BCRUseYN = true;
@@ -1610,7 +1612,7 @@
             // bcrMarker2
             // 
             this.bcrMarker2.BCRLevel = 1;
-            this.bcrMarker2.BCRMarkColor = System.Drawing.Color.Blue;
+            this.bcrMarker2.BCRMarkColor = System.Drawing.Color.CornflowerBlue;
             this.bcrMarker2.BCRMarkPosition = ControlGallery.BCRMarkPosition.Top;
             this.bcrMarker2.BCRMarkThickness = 4;
             this.bcrMarker2.BCRUseYN = true;
@@ -1644,7 +1646,7 @@
             // bcrMarker3
             // 
             this.bcrMarker3.BCRLevel = 1;
-            this.bcrMarker3.BCRMarkColor = System.Drawing.Color.Blue;
+            this.bcrMarker3.BCRMarkColor = System.Drawing.Color.CornflowerBlue;
             this.bcrMarker3.BCRMarkPosition = ControlGallery.BCRMarkPosition.Bottom;
             this.bcrMarker3.BCRMarkThickness = 4;
             this.bcrMarker3.BCRUseYN = true;
@@ -1664,7 +1666,7 @@
             // bcrMarker4
             // 
             this.bcrMarker4.BCRLevel = 2;
-            this.bcrMarker4.BCRMarkColor = System.Drawing.Color.Blue;
+            this.bcrMarker4.BCRMarkColor = System.Drawing.Color.CornflowerBlue;
             this.bcrMarker4.BCRMarkPosition = ControlGallery.BCRMarkPosition.Bottom;
             this.bcrMarker4.BCRMarkThickness = 4;
             this.bcrMarker4.BCRUseYN = true;
@@ -1672,20 +1674,20 @@
             this.bcrMarker4.CVPLCListDeviceID = 0;
             this.bcrMarker4.DisplayText = "";
             this.bcrMarker4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker4.Location = new System.Drawing.Point(1043, 727);
+            this.bcrMarker4.Location = new System.Drawing.Point(1044, 727);
             this.bcrMarker4.Name = "bcrMarker4";
             this.bcrMarker4.PLCNo = 75;
             this.bcrMarker4.ShowSiteNo = false;
             this.bcrMarker4.ShowTroubleState = false;
             this.bcrMarker4.SiteNo = 0;
-            this.bcrMarker4.Size = new System.Drawing.Size(38, 4);
+            this.bcrMarker4.Size = new System.Drawing.Size(37, 4);
             this.bcrMarker4.TabIndex = 61;
             this.bcrMarker4.TextRotateAngle = 0;
             // 
             // bcrMarker5
             // 
             this.bcrMarker5.BCRLevel = 2;
-            this.bcrMarker5.BCRMarkColor = System.Drawing.Color.Blue;
+            this.bcrMarker5.BCRMarkColor = System.Drawing.Color.CornflowerBlue;
             this.bcrMarker5.BCRMarkPosition = ControlGallery.BCRMarkPosition.Bottom;
             this.bcrMarker5.BCRMarkThickness = 4;
             this.bcrMarker5.BCRUseYN = true;
@@ -1693,20 +1695,20 @@
             this.bcrMarker5.CVPLCListDeviceID = 0;
             this.bcrMarker5.DisplayText = "";
             this.bcrMarker5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker5.Location = new System.Drawing.Point(1043, 838);
+            this.bcrMarker5.Location = new System.Drawing.Point(1044, 838);
             this.bcrMarker5.Name = "bcrMarker5";
             this.bcrMarker5.PLCNo = 100;
             this.bcrMarker5.ShowSiteNo = false;
             this.bcrMarker5.ShowTroubleState = false;
             this.bcrMarker5.SiteNo = 0;
-            this.bcrMarker5.Size = new System.Drawing.Size(38, 4);
+            this.bcrMarker5.Size = new System.Drawing.Size(37, 4);
             this.bcrMarker5.TabIndex = 62;
             this.bcrMarker5.TextRotateAngle = 0;
             // 
             // bcrMarker6
             // 
             this.bcrMarker6.BCRLevel = 2;
-            this.bcrMarker6.BCRMarkColor = System.Drawing.Color.Blue;
+            this.bcrMarker6.BCRMarkColor = System.Drawing.Color.CornflowerBlue;
             this.bcrMarker6.BCRMarkPosition = ControlGallery.BCRMarkPosition.Top;
             this.bcrMarker6.BCRMarkThickness = 4;
             this.bcrMarker6.BCRUseYN = true;
@@ -1727,7 +1729,7 @@
             // bcrMarker7
             // 
             this.bcrMarker7.BCRLevel = 2;
-            this.bcrMarker7.BCRMarkColor = System.Drawing.Color.Blue;
+            this.bcrMarker7.BCRMarkColor = System.Drawing.Color.CornflowerBlue;
             this.bcrMarker7.BCRMarkPosition = ControlGallery.BCRMarkPosition.Top;
             this.bcrMarker7.BCRMarkThickness = 4;
             this.bcrMarker7.BCRUseYN = true;
@@ -1748,7 +1750,7 @@
             // bcrMarker8
             // 
             this.bcrMarker8.BCRLevel = 2;
-            this.bcrMarker8.BCRMarkColor = System.Drawing.Color.Blue;
+            this.bcrMarker8.BCRMarkColor = System.Drawing.Color.CornflowerBlue;
             this.bcrMarker8.BCRMarkPosition = ControlGallery.BCRMarkPosition.Top;
             this.bcrMarker8.BCRMarkThickness = 4;
             this.bcrMarker8.BCRUseYN = true;
@@ -1769,7 +1771,7 @@
             // bcrMarker9
             // 
             this.bcrMarker9.BCRLevel = 2;
-            this.bcrMarker9.BCRMarkColor = System.Drawing.Color.Blue;
+            this.bcrMarker9.BCRMarkColor = System.Drawing.Color.CornflowerBlue;
             this.bcrMarker9.BCRMarkPosition = ControlGallery.BCRMarkPosition.Bottom;
             this.bcrMarker9.BCRMarkThickness = 4;
             this.bcrMarker9.BCRUseYN = true;
@@ -1790,7 +1792,7 @@
             // bcrMarker10
             // 
             this.bcrMarker10.BCRLevel = 1;
-            this.bcrMarker10.BCRMarkColor = System.Drawing.Color.Blue;
+            this.bcrMarker10.BCRMarkColor = System.Drawing.Color.CornflowerBlue;
             this.bcrMarker10.BCRMarkPosition = ControlGallery.BCRMarkPosition.Bottom;
             this.bcrMarker10.BCRMarkThickness = 4;
             this.bcrMarker10.BCRUseYN = true;
@@ -1798,20 +1800,20 @@
             this.bcrMarker10.CVPLCListDeviceID = 0;
             this.bcrMarker10.DisplayText = "";
             this.bcrMarker10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker10.Location = new System.Drawing.Point(963, 727);
+            this.bcrMarker10.Location = new System.Drawing.Point(964, 727);
             this.bcrMarker10.Name = "bcrMarker10";
             this.bcrMarker10.PLCNo = 73;
             this.bcrMarker10.ShowSiteNo = false;
             this.bcrMarker10.ShowTroubleState = false;
             this.bcrMarker10.SiteNo = 0;
-            this.bcrMarker10.Size = new System.Drawing.Size(38, 4);
+            this.bcrMarker10.Size = new System.Drawing.Size(37, 4);
             this.bcrMarker10.TabIndex = 67;
             this.bcrMarker10.TextRotateAngle = 0;
             // 
             // bcrMarker11
             // 
             this.bcrMarker11.BCRLevel = 1;
-            this.bcrMarker11.BCRMarkColor = System.Drawing.Color.Blue;
+            this.bcrMarker11.BCRMarkColor = System.Drawing.Color.CornflowerBlue;
             this.bcrMarker11.BCRMarkPosition = ControlGallery.BCRMarkPosition.Top;
             this.bcrMarker11.BCRMarkThickness = 4;
             this.bcrMarker11.BCRUseYN = true;
@@ -1831,7 +1833,7 @@
             // bcrMarker12
             // 
             this.bcrMarker12.BCRLevel = 1;
-            this.bcrMarker12.BCRMarkColor = System.Drawing.Color.Blue;
+            this.bcrMarker12.BCRMarkColor = System.Drawing.Color.CornflowerBlue;
             this.bcrMarker12.BCRMarkPosition = ControlGallery.BCRMarkPosition.Top;
             this.bcrMarker12.BCRMarkThickness = 4;
             this.bcrMarker12.BCRUseYN = true;
@@ -1851,7 +1853,7 @@
             // bcrMarker13
             // 
             this.bcrMarker13.BCRLevel = 1;
-            this.bcrMarker13.BCRMarkColor = System.Drawing.Color.Blue;
+            this.bcrMarker13.BCRMarkColor = System.Drawing.Color.CornflowerBlue;
             this.bcrMarker13.BCRMarkPosition = ControlGallery.BCRMarkPosition.Top;
             this.bcrMarker13.BCRMarkThickness = 4;
             this.bcrMarker13.BCRUseYN = true;
@@ -1871,7 +1873,7 @@
             // bcrMarker14
             // 
             this.bcrMarker14.BCRLevel = 1;
-            this.bcrMarker14.BCRMarkColor = System.Drawing.Color.Blue;
+            this.bcrMarker14.BCRMarkColor = System.Drawing.Color.CornflowerBlue;
             this.bcrMarker14.BCRMarkPosition = ControlGallery.BCRMarkPosition.Right;
             this.bcrMarker14.BCRMarkThickness = 4;
             this.bcrMarker14.BCRUseYN = true;
@@ -1891,7 +1893,7 @@
             // bcrMarker15
             // 
             this.bcrMarker15.BCRLevel = 1;
-            this.bcrMarker15.BCRMarkColor = System.Drawing.Color.Blue;
+            this.bcrMarker15.BCRMarkColor = System.Drawing.Color.CornflowerBlue;
             this.bcrMarker15.BCRMarkPosition = ControlGallery.BCRMarkPosition.Right;
             this.bcrMarker15.BCRMarkThickness = 4;
             this.bcrMarker15.BCRUseYN = true;
@@ -1911,7 +1913,7 @@
             // bcrMarker16
             // 
             this.bcrMarker16.BCRLevel = 1;
-            this.bcrMarker16.BCRMarkColor = System.Drawing.Color.Blue;
+            this.bcrMarker16.BCRMarkColor = System.Drawing.Color.CornflowerBlue;
             this.bcrMarker16.BCRMarkPosition = ControlGallery.BCRMarkPosition.Left;
             this.bcrMarker16.BCRMarkThickness = 4;
             this.bcrMarker16.BCRUseYN = true;
@@ -1931,7 +1933,7 @@
             // bcrMarker17
             // 
             this.bcrMarker17.BCRLevel = 2;
-            this.bcrMarker17.BCRMarkColor = System.Drawing.Color.Blue;
+            this.bcrMarker17.BCRMarkColor = System.Drawing.Color.CornflowerBlue;
             this.bcrMarker17.BCRMarkPosition = ControlGallery.BCRMarkPosition.Bottom;
             this.bcrMarker17.BCRMarkThickness = 4;
             this.bcrMarker17.BCRUseYN = true;
@@ -1939,20 +1941,20 @@
             this.bcrMarker17.CVPLCListDeviceID = 0;
             this.bcrMarker17.DisplayText = "";
             this.bcrMarker17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker17.Location = new System.Drawing.Point(122, 727);
+            this.bcrMarker17.Location = new System.Drawing.Point(124, 727);
             this.bcrMarker17.Name = "bcrMarker17";
             this.bcrMarker17.PLCNo = 43;
             this.bcrMarker17.ShowSiteNo = false;
             this.bcrMarker17.ShowTroubleState = false;
             this.bcrMarker17.SiteNo = 0;
-            this.bcrMarker17.Size = new System.Drawing.Size(38, 4);
+            this.bcrMarker17.Size = new System.Drawing.Size(37, 4);
             this.bcrMarker17.TabIndex = 74;
             this.bcrMarker17.TextRotateAngle = 0;
             // 
             // bcrMarker18
             // 
             this.bcrMarker18.BCRLevel = 1;
-            this.bcrMarker18.BCRMarkColor = System.Drawing.Color.Blue;
+            this.bcrMarker18.BCRMarkColor = System.Drawing.Color.CornflowerBlue;
             this.bcrMarker18.BCRMarkPosition = ControlGallery.BCRMarkPosition.Bottom;
             this.bcrMarker18.BCRMarkThickness = 4;
             this.bcrMarker18.BCRUseYN = true;
@@ -1960,20 +1962,20 @@
             this.bcrMarker18.CVPLCListDeviceID = 0;
             this.bcrMarker18.DisplayText = "";
             this.bcrMarker18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker18.Location = new System.Drawing.Point(523, 727);
+            this.bcrMarker18.Location = new System.Drawing.Point(524, 727);
             this.bcrMarker18.Name = "bcrMarker18";
             this.bcrMarker18.PLCNo = 62;
             this.bcrMarker18.ShowSiteNo = false;
             this.bcrMarker18.ShowTroubleState = false;
             this.bcrMarker18.SiteNo = 0;
-            this.bcrMarker18.Size = new System.Drawing.Size(38, 4);
+            this.bcrMarker18.Size = new System.Drawing.Size(37, 4);
             this.bcrMarker18.TabIndex = 75;
             this.bcrMarker18.TextRotateAngle = 0;
             // 
             // bcrMarker19
             // 
             this.bcrMarker19.BCRLevel = 1;
-            this.bcrMarker19.BCRMarkColor = System.Drawing.Color.Blue;
+            this.bcrMarker19.BCRMarkColor = System.Drawing.Color.CornflowerBlue;
             this.bcrMarker19.BCRMarkPosition = ControlGallery.BCRMarkPosition.Bottom;
             this.bcrMarker19.BCRMarkThickness = 4;
             this.bcrMarker19.BCRUseYN = true;
@@ -1981,13 +1983,13 @@
             this.bcrMarker19.CVPLCListDeviceID = 0;
             this.bcrMarker19.DisplayText = "";
             this.bcrMarker19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker19.Location = new System.Drawing.Point(603, 727);
+            this.bcrMarker19.Location = new System.Drawing.Point(604, 727);
             this.bcrMarker19.Name = "bcrMarker19";
             this.bcrMarker19.PLCNo = 65;
             this.bcrMarker19.ShowSiteNo = false;
             this.bcrMarker19.ShowTroubleState = false;
             this.bcrMarker19.SiteNo = 0;
-            this.bcrMarker19.Size = new System.Drawing.Size(38, 4);
+            this.bcrMarker19.Size = new System.Drawing.Size(37, 4);
             this.bcrMarker19.TabIndex = 76;
             this.bcrMarker19.TextRotateAngle = 0;
             // 
@@ -2008,8 +2010,9 @@
             // ctrlSCraneH1
             // 
             this.ctrlSCraneH1.CraneDirection = ControlGallery.EnumCraneDirection.Right;
+            this.ctrlSCraneH1.CraneID = 0;
             this.ctrlSCraneH1.CurrentBay = 0;
-            this.ctrlSCraneH1.DeviceID = "0";
+            this.ctrlSCraneH1.DeviceID = 2;
             this.ctrlSCraneH1.DisplayText = "";
             this.ctrlSCraneH1.Font = new System.Drawing.Font("Segoe UI Emoji", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ctrlSCraneH1.Location = new System.Drawing.Point(1288, 200);
@@ -2036,8 +2039,9 @@
             // ctrlSCraneH3
             // 
             this.ctrlSCraneH3.CraneDirection = ControlGallery.EnumCraneDirection.Right;
+            this.ctrlSCraneH3.CraneID = 2;
             this.ctrlSCraneH3.CurrentBay = 0;
-            this.ctrlSCraneH3.DeviceID = "2";
+            this.ctrlSCraneH3.DeviceID = 3;
             this.ctrlSCraneH3.DisplayText = "";
             this.ctrlSCraneH3.Font = new System.Drawing.Font("Segoe UI Emoji", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ctrlSCraneH3.Location = new System.Drawing.Point(1244, 625);
@@ -2064,8 +2068,9 @@
             // ctrlSCraneH2
             // 
             this.ctrlSCraneH2.CraneDirection = ControlGallery.EnumCraneDirection.Right;
+            this.ctrlSCraneH2.CraneID = 1;
             this.ctrlSCraneH2.CurrentBay = 0;
-            this.ctrlSCraneH2.DeviceID = "1";
+            this.ctrlSCraneH2.DeviceID = 3;
             this.ctrlSCraneH2.DisplayText = "";
             this.ctrlSCraneH2.Font = new System.Drawing.Font("Segoe UI Emoji", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ctrlSCraneH2.Location = new System.Drawing.Point(1244, 423);
@@ -2089,8 +2094,9 @@
             // ctrlSCraneH4
             // 
             this.ctrlSCraneH4.CraneDirection = ControlGallery.EnumCraneDirection.Right;
+            this.ctrlSCraneH4.CraneID = 3;
             this.ctrlSCraneH4.CurrentBay = 0;
-            this.ctrlSCraneH4.DeviceID = "3";
+            this.ctrlSCraneH4.DeviceID = 4;
             this.ctrlSCraneH4.DisplayText = "";
             this.ctrlSCraneH4.Font = new System.Drawing.Font("Segoe UI Emoji", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ctrlSCraneH4.Location = new System.Drawing.Point(1325, 896);
@@ -2111,11 +2117,33 @@
             this.object_153bd2de_46ce_40dc_9d66_b9749d974916.Text = "C";
             this.object_153bd2de_46ce_40dc_9d66_b9749d974916.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // bcrMarker20
+            // 
+            this.bcrMarker20.BCRLevel = 1;
+            this.bcrMarker20.BCRMarkColor = System.Drawing.Color.CornflowerBlue;
+            this.bcrMarker20.BCRMarkPosition = ControlGallery.BCRMarkPosition.Bottom;
+            this.bcrMarker20.BCRMarkThickness = 4;
+            this.bcrMarker20.BCRUseYN = true;
+            this.bcrMarker20.BubbleText = "";
+            this.bcrMarker20.CVPLCListDeviceID = 0;
+            this.bcrMarker20.DisplayText = "";
+            this.bcrMarker20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.bcrMarker20.Location = new System.Drawing.Point(444, 727);
+            this.bcrMarker20.Name = "bcrMarker20";
+            this.bcrMarker20.PLCNo = 60;
+            this.bcrMarker20.ShowSiteNo = false;
+            this.bcrMarker20.ShowTroubleState = false;
+            this.bcrMarker20.SiteNo = 0;
+            this.bcrMarker20.Size = new System.Drawing.Size(37, 4);
+            this.bcrMarker20.TabIndex = 85;
+            this.bcrMarker20.TextRotateAngle = 0;
+            // 
             // CtrlMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.Controls.Add(this.bcrMarker20);
             this.Controls.Add(this.ctrlSCraneH4);
             this.Controls.Add(this.ctrlSCraneH2);
             this.Controls.Add(this.label25);
@@ -2201,7 +2229,7 @@
             this.Controls.Add(this.ctrlSiteTrack4);
             this.Controls.Add(this.ctrlSiteTrack3);
             this.Name = "CtrlMain";
-            this.Size = new System.Drawing.Size(1900, 1000);
+            this.Size = new System.Drawing.Size(1899, 1000);
             this.Load += new System.EventHandler(this.CtrlMain_Load);
             this.ResumeLayout(false);
 
@@ -2295,5 +2323,6 @@
         private ControlGallery.CraneCarriageSmall cranebox;
         private ControlGallery.CtrlSCraneH ctrlSCraneH4;
         private ControlGallery.CraneCarriageSmall object_153bd2de_46ce_40dc_9d66_b9749d974916;
+        private ControlGallery.BCRMarker bcrMarker20;
     }
 }

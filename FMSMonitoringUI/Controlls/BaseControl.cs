@@ -103,7 +103,7 @@ namespace ControlGallery
         }
 
         int _CVPLCListDeviceID;
-        [DisplayName("CVPLCListDeviceID"), Description("PLC Reader ID"), Category("UBI Property")]
+        [DisplayName("CVPLCListDeviceID"), Description("PLC OPCServer ID"), Category("UBI Property")]
         public int CVPLCListDeviceID
         {
             get { return _CVPLCListDeviceID; }

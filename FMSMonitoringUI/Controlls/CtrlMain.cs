@@ -6,10 +6,14 @@ using FMSMonitoringUI.Monitoring;
 using MonitoringUI;
 using Novasoft.Logger;
 using OPCUAClientClassLib;
+using Org.BouncyCastle.Asn1.Tsp;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Drawing;
+using System.Globalization;
 using System.Linq;
+using System.Security.Policy;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -39,11 +43,20 @@ namespace FMSMonitoringUI.Controlls
         /// </summary>
         private Dictionary<int, BCRMarker> _ListBCR = new Dictionary<int, BCRMarker>();
 
+        /// <summary>
+        /// First=Equipment ID, Second=Control Index
+        /// </summary>
+        private Dictionary<string, ItemInfo> _ControlIdx = new Dictionary<string, ItemInfo>();
+
         private Logger _Logger; // { get; set; }
 
-        public CtrlMain()
+        private ApplicationInstance _Application = null;
+
+        public CtrlMain(ApplicationInstance applicationInstance)
         {
             InitializeComponent();
+
+            _Application = applicationInstance;
 
             string logPath = ConfigurationManager.AppSettings["LOG_PATH"];
             _Logger = new Logger(logPath, LogMode.Hour);
@@ -64,31 +77,37 @@ namespace FMSMonitoringUI.Controlls
 
             _clientFMS = new OPCUAClient[opcList.Count()];
 
-            for (int i = 0; i < ctrlGroupList.Count; i++)
+            for (int i = 0; i < opcList.Count; i++)
             {
-                _clientFMS[i] = new OPCUAClient(DataList, ctrlGroupList[i], i);
-
+                _clientFMS[i] = new OPCUAClient(DataList, ctrlGroupList[i], _Application);
+                
                 bool ret = await _clientFMS[i].ConnectAsync(opcList[i].OPCServerURL, opcList[i].UserID, opcList[i].UserPW);
 
                 if (ret)
                 {
+                    _Logger.Write(LogLevel.Info, $"Connected to {opcList[i].OPCServerURL}", LogFileName.AllLog);
+
                     // Start NodeID
-                    _clientFMS[i].GetStartNodeID();
+                    _clientFMS[i].GetStartNodeID(opcList[i].FirstNodeID);
 
                     // Tag List
-                    Dictionary<int, List<BrowsePath>> dictBrowsePath = _clientFMS[i].AddBrowsePath(_clientFMS[i].OPCTagList, i);
+                    Dictionary<int, List<BrowsePath>> dictBrowsePath = _clientFMS[i].AddBrowsePath(_clientFMS[i].OPCTagList);
                     Dictionary<int, List<BrowsePathResult>> dictResultPath = _clientFMS[i].ReadBrowse(dictBrowsePath);
 
-                    if (ctrlGroupList[i].ElementAt(0).ControlType == EnumCtrlType.CNV)
+                    if (ctrlGroupList[i].ElementAt(0).ControlType == enEqpType.CNV)
                     {
                         _clientFMS[i].AddConveyorNodeID(dictResultPath, dictBrowsePath);
                     }
+                    else if (ctrlGroupList[i].ElementAt(0).ControlType == enEqpType.STC)
+                    {
+                        _clientFMS[i].AddCraneNodeID(dictResultPath, dictBrowsePath, _ControlIdx);
+                    }
 
                     // Subscribe List
-                    dictBrowsePath = _clientFMS[i].AddBrowsePath(_clientFMS[i].SubscribeTagList, i);
+                    dictBrowsePath = _clientFMS[i].AddBrowsePath(_clientFMS[i].SubscribeTagList);
                     dictResultPath = _clientFMS[i].ReadBrowse(dictBrowsePath);
 
-                    _clientFMS[i].SubscribeNodes(dictResultPath, dictBrowsePath, _ListSite, ctrlGroupList[i].ElementAt(0));
+                    _clientFMS[i].SubscribeNodes(dictResultPath, dictBrowsePath, _ListSite, _ControlIdx);
                     _clientFMS[i].Subscription.DataChanged += Subscription_DataChanged;
                 }
                 else
@@ -110,8 +129,9 @@ namespace FMSMonitoringUI.Controlls
             _ListSCrane.Clear();
             _ListSite.Clear();
             _ListBCR.Clear();
+            _ControlIdx.Clear();
 
-            int craneCnt = 0;
+            //int craneCnt = 0;
 
             // First=OPCUA Server로 구성된 Conveyor, Second=Site정보
             Dictionary<int, List<ItemInfo>> groupCtrl = new Dictionary<int, List<ItemInfo>>();
@@ -138,9 +158,11 @@ namespace FMSMonitoringUI.Controlls
                                 itemInfo = new ItemInfo()
                                 {
                                     SiteNo = site.SiteNo,
-                                    ControlType = EnumCtrlType.RTV,
+                                    ControlType = enEqpType.RTV,
                                     GroupNo = deviceID,
-                                    ConveyorNo = conveyor.PLCNo
+                                    ConveyorNo = conveyor.PLCNo,
+                                    EqpID = GetConveyorEqpID(deviceID)
+                                    
                                 };
                             }
                             else
@@ -148,9 +170,10 @@ namespace FMSMonitoringUI.Controlls
                                 itemInfo = new ItemInfo()
                                 {
                                     SiteNo = site.SiteNo,
-                                    ControlType = EnumCtrlType.CNV,
+                                    ControlType = enEqpType.CNV,
                                     GroupNo = deviceID,
-                                    ConveyorNo = conveyor.PLCNo
+                                    ConveyorNo = conveyor.PLCNo,
+                                    EqpID = GetConveyorEqpID(deviceID)
                                 };
                             }
 
@@ -163,6 +186,11 @@ namespace FMSMonitoringUI.Controlls
                             else
                             {
                                 groupCtrl[deviceID] = new List<ItemInfo> { itemInfo };
+                            }
+
+                            if (!_ControlIdx.ContainsKey(itemInfo.EqpID))
+                            {
+                                _ControlIdx[itemInfo.EqpID] = itemInfo;
                             }
                         }
                     }
@@ -187,6 +215,7 @@ namespace FMSMonitoringUI.Controlls
                     CtrlSCraneV crane = ctl as CtrlSCraneV;
                     //crane.SetSCHandler(GlobalArea.g_SCHandlerList.Find(x => x.DeviceID == crane.DeviceID));
                     crane.MouseDoubleClick += Crane_MouseDoubleClick;
+                    
                     //_ListCrane.Add(crane);
                 }
 
@@ -195,28 +224,50 @@ namespace FMSMonitoringUI.Controlls
                     CtrlSCraneH crane = ctl as CtrlSCraneH;
                     //crane.SetSCHandler(GlobalArea.g_SCHandlerList.Find(x => x.DeviceID == crane.DeviceID));
                     crane.MouseDoubleClick += Crane_MouseDoubleClick;
-                    _ListSCrane.Add(int.Parse(crane.DeviceID), crane);
+                    _ListSCrane.Add(crane.CraneID, crane);
 
-                    craneCnt++;
+                    ItemInfo itemInfo = new ItemInfo()
+                    {
+                        CraneNo = crane.CraneID,
+                        ControlType = enEqpType.STC,
+                        GroupNo = crane.DeviceID,
+                        EqpID = GetCraneEqpID(crane.CraneID)
+                    };
+
+                    if (groupCtrl.ContainsKey(itemInfo.GroupNo))
+                    {
+                        groupCtrl[itemInfo.GroupNo].Add(itemInfo);
+                    }
+                    else
+                    {
+                        groupCtrl[itemInfo.GroupNo] = new List<ItemInfo> { itemInfo };
+                    }
+
+                    if (!_ControlIdx.ContainsKey(itemInfo.EqpID))
+                    {
+                        _ControlIdx[itemInfo.EqpID] = itemInfo;
+                    }
+
+                    //craneCnt++;
                 }
             }
 
-            int idx = 0;
-            int groupCnt = groupCtrl.Count();
-            for (int i = groupCnt; i < groupCnt + craneCnt; i++, idx++)
-            {
-                ItemInfo itemInfo = new ItemInfo()
-                {
-                    CraneNo = idx,
-                    ControlType = EnumCtrlType.STC,
-                    GroupNo = i
-                };
+            //int idx = 0;
+            //int groupCnt = groupCtrl.Count();
+            //for (int i = groupCnt; i < groupCnt + craneCnt; i++, idx++)
+            //{
+            //    ItemInfo itemInfo = new ItemInfo()
+            //    {
+            //        CraneNo = idx,
+            //        ControlType = enEqpType.STC,
+            //        GroupNo = i
+            //    };
 
-                groupCtrl[i] = new List<ItemInfo> { itemInfo };
-            }
+            //    groupCtrl[i] = new List<ItemInfo> { itemInfo };
+            //}
 
             string log = $"Initialize the Controls";
-            _Logger.Write(LogLevel.Information, log, LogFileName.AllLog);
+            _Logger.Write(LogLevel.Info, log, LogFileName.AllLog);
 
             return groupCtrl;
         }
@@ -332,18 +383,10 @@ namespace FMSMonitoringUI.Controlls
         #region [Mouse DBLCLK Event]
         private void OnObjectDoubleClick(object sender, ObjectDoubleClickEventArgs arg)
         {
-            if (arg.DeviceInfo.IsControled) // 장비 안쪽에 Conveyor 는 제어 안하는거다
+            if (arg.DeviceInfo.SiteNo > 0)
             {
-                //SiteMonitor f = new SiteMonitor();
-                //f.SetSiteNo(arg.DeviceInfo.SiteNo);
-                //f.SetPLC(GlobalArea.g_CVPLCList.GetCVPLC(arg.DeviceInfo.CVPLCListDeviceID));
-                //f.SetBCRHandler(GlobalArea.g_BCRHandlerList.GetBCRHandler(arg.DeviceInfo.SiteNo));
-                //f.StartPosition = FormStartPosition.CenterScreen;
-                //f.Show(this);
-
                 int groupno = arg.DeviceInfo.CVPLCListDeviceID;
                 int trackno = arg.DeviceInfo.SiteNo;
-                string info = string.Empty;
 
                 try
                 {
@@ -352,34 +395,72 @@ namespace FMSMonitoringUI.Controlls
                         List<ReadValueId> cvInfo = _clientFMS[groupno].ConveyorNodeID[trackno];
                         List<DataValue> data = _clientFMS[groupno].ReadNodeID(cvInfo);
 
-                        SiteTagInfo tagInfo = new SiteTagInfo()
+                        SiteTagInfo siteInfo = new SiteTagInfo()
                         {
-                            TrayIdL1 = data[(int)EnumSite.TrayIdL1].Value.ToString(),
-                            TrayIdL2 = data[(int)EnumSite.TrayIdL2].Value.ToString()
+                            ConveyorNo = int.Parse(data[(int)enSiteTagList.ConveyorNo].Value.ToString()),
+                            ConveyorType = int.Parse(data[(int)enSiteTagList.ConveyorType].Value.ToString()),
+                            StationStatus = int.Parse(data[(int)enSiteTagList.StationStatus].Value.ToString()),
+                            TrayIdL1 = data[(int)enSiteTagList.TrayIdL1].Value.ToString(),
+                            TrayIdL2 = data[(int)enSiteTagList.TrayIdL2].Value.ToString(),
+                            TrayCount = int.Parse(data[(int)enSiteTagList.TrayCount].Value.ToString()),
+                            TrayExist = bool.Parse(data[(int)enSiteTagList.TrayExist].Value.ToString()),
+                            TrayType = int.Parse(data[(int)enSiteTagList.TrayType].Value.ToString())
                         };
 
-                        info = string.Format($"TrackNo={trackno}, TrayIdL1={tagInfo.TrayIdL1}, TrayIdL2={tagInfo.TrayIdL2}");
+                        string msg = $"Track No : {trackno}, TrayIdL1 : {siteInfo.TrayIdL1}, TrayIdL2 : {siteInfo.TrayIdL2}";
+                        _Logger.Write(LogLevel.Info, "", LogFileName.ButtonClick);
+
+                        WinTrayInfo winTray = new WinTrayInfo();
+                        winTray.SetTrayInfo(siteInfo);
+                        winTray.Show();
+
                     }                   
                 }
                 catch (Exception ex)
                 {
-                    info = string.Format($"Error={ex}");
+                    string info = string.Format($"Error={ex}");
+                    MessageBox.Show(info);
                 }
-
-                WinTrayInfo winTray = new WinTrayInfo();
-                winTray.ShowDialog();
-
-                //MessageBox.Show(info.ToString());
             }
         }
 
         private void Crane_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            //SCrane crane = sender as SCrane;
-            //CraneHandler.SCHandler h = crane.GetSCHandler();
-            //h.ShowStatusForm(this);
+            CtrlSCrane crane = sender as CtrlSCrane;
 
-            MessageBox.Show("Crane_MouseDoubleClick");
+            if (crane.DeviceID > 0)
+            {
+                try
+                {
+                    if (_clientFMS[crane.DeviceID] != null)
+                    {
+                        List<ReadValueId> craneInfo = _clientFMS[crane.DeviceID].CraneNodeID[crane.CraneID];
+                        List<DataValue> data = _clientFMS[crane.DeviceID].ReadNodeID(craneInfo);
+
+                        CraneTagInfo item = new CraneTagInfo()
+                        {
+                            TrayIdL1 = data[(int)enCraneTagList.TrayIdL1].Value.ToString(),
+                            TrayIdL2 = data[(int)enCraneTagList.TrayIdL2].Value.ToString(),
+                            TrayCount = int.Parse(data[(int)enCraneTagList.TrayCount].Value.ToString()),
+                            TrayExist = bool.Parse(data[(int)enCraneTagList.TrayExist].Value.ToString()),
+                            JobType = int.Parse(data[(int)enCraneTagList.JobType].Value.ToString())
+                        };
+
+                        string msg = $"Crane No : {crane.CraneID}, TrayIdL1 : {item.TrayIdL1}, TrayIdL2 : {item.TrayIdL2}";
+                        _Logger.Write(LogLevel.Info, "", LogFileName.ButtonClick);
+
+                        WinCraneInfo winCrane = new WinCraneInfo();
+                        winCrane.SetTrayInfo(item);
+                        winCrane.Show();
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    string info = string.Format($"Error={ex}");
+                    MessageBox.Show(info);
+                }
+            }
         }
         #endregion
 
@@ -403,10 +484,12 @@ namespace FMSMonitoringUI.Controlls
             {
                 ItemInfo item = change.MonitoredItem.UserData as ItemInfo;
 
+                string msg = string.Empty;
+
                 if (item.BrowseName == "TrayExist")
                     trayExist = bool.Parse(change.Value.ToString());
 
-                if (item.ControlType == EnumCtrlType.CNV)
+                if (item.ControlType == enEqpType.CNV)
                 {
                     if (trayExist)
                     {
@@ -415,8 +498,11 @@ namespace FMSMonitoringUI.Controlls
                     }
 
                     task = StatusConveyorAsync(item.SiteNo, trayExist);
+
+                    msg = string.Format("[{0}-CNV{1:D4}] {2} = {3}", 
+                        item.ControlType, item.SiteNo, item.BrowseName, change.Value);
                 }
-                else if (item.ControlType == EnumCtrlType.STC)
+                else if (item.ControlType == enEqpType.STC)
                 {
                     if (item.BrowseName == "PosBay")
                     {
@@ -427,8 +513,11 @@ namespace FMSMonitoringUI.Controlls
                     {
                         task = StatusCraneAsync(_ListSCrane[item.CraneNo], trayExist, "C");
                     }
+
+                    msg = string.Format("[{0}-CraneNo{1:D2}] {2} = {3}", 
+                        item.ControlType, item.CraneNo+1, item.BrowseName, change.Value);
                 }
-                else if (item.ControlType == EnumCtrlType.RTV)
+                else if (item.ControlType == enEqpType.RTV)
                 {
                     if (item.BrowseName == "CarriagePos")
                     {
@@ -438,61 +527,22 @@ namespace FMSMonitoringUI.Controlls
                     else
                     {
                         task = StatusCraneAsync(ctrlSCraneV1, trayExist, "RTV");
+
+                        //if (trayExist)
+                        //{
+                        //    SiteTagInfo tagInfo = ReadSiteInfo(item);
+                        //    task = DisplayBCRAsync(item.SiteNo, tagInfo);
+                        //}
+
+                        //task = StatusConveyorAsync(item.SiteNo, trayExist);
                     }
+
+                    msg = string.Format("[{0}-{1:D2}] {2} = {3}",
+                        item.ControlType, 1, item.BrowseName, change.Value);
                 }
+
+                _Logger.Write(LogLevel.Receive, msg, LogFileName.AllLog);
             }
-
-            // Update the value
-            //if (this.InvokeRequired)
-            //{
-            //    this.Invoke(new MethodInvoker(delegate ()
-            //    {
-            //        bool trayExist = false;
-            //        int pos = 0;
-
-            //        foreach (DataChange change in e.DataChanges)
-            //        {
-            //            ItemInfo item = change.MonitoredItem.UserData as ItemInfo;
-
-            //            if (item.BrowseName == "TrayExist")
-            //                trayExist = bool.Parse(change.Value.ToString());                            
-
-            //            if (item.ControlType == EnumCtrlType.CNV)
-            //            {
-            //                if (trayExist)
-            //                {
-            //                    ConveyorData conveyor = ReadConveyorInfo(item);
-            //                    BCRUpdateUI(item.TrackNo, conveyor);
-
-            //                    ctrlSCraneV1.UpdateUI(trayExist, "RTV");
-            //                }
-
-            //                if (item.BrowseName == "CarriagePos")
-            //                {
-            //                    pos = int.Parse(change.Value.ToString());
-            //                    Task ret = MoveRTV(ctrlSCraneV1, pos);
-            //                }
-            //                else
-            //                {
-            //                    ConveyorUpdateUI(item.TrackNo, trayExist);
-            //                }
-            //            }
-            //            else
-            //            {
-            //                if (item.BrowseName == "PosBay")
-            //                {
-            //                    pos = int.Parse(change.Value.ToString());
-            //                    Task ret = MoveCrane(_ListSCrane[item.CraneNo], pos);
-            //                    //Task ret = Start(_ListSCrane[item.CraneNo], pos);
-            //                }
-            //                else
-            //                {
-            //                    _ListSCrane[item.CraneNo].UpdateUI(trayExist, "C");
-            //                }
-            //            }
-            //        }
-            //    }));
-            //}
         }
         #endregion
 
@@ -509,8 +559,8 @@ namespace FMSMonitoringUI.Controlls
 
             SiteTagInfo tagInfo = new SiteTagInfo()
             {
-                TrayIdL1 = data[(int)EnumSite.TrayIdL1].Value.ToString(),
-                TrayIdL2 = data[(int)EnumSite.TrayIdL2].Value.ToString()
+                TrayIdL1 = data[(int)enSiteTagList.TrayIdL1].Value.ToString(),
+                TrayIdL2 = data[(int)enSiteTagList.TrayIdL2].Value.ToString()
             };
 
             return tagInfo;
@@ -676,6 +726,71 @@ namespace FMSMonitoringUI.Controlls
         }
         #endregion
 
+        #region WinTrayInfo
+        /// <summary>
+        /// Crane 동작 처리
+        /// </summary>
+        /// <param name="crane"></param>
+        /// <param name="endPos"></param>
+        /// <returns></returns>
+        private async Task CallWinTrayInfoAsync(SiteTagInfo tagInfo)
+        {
+            Task task = TrayInfoPopup(tagInfo);
 
+            await task;
+        }
+        private async Task TrayInfoPopup(SiteTagInfo tagInfo)
+        {
+            //if (this.InvokeRequired)
+            {
+                await Task.Run(() =>
+                {
+                    WinTrayInfo winTray = new WinTrayInfo();
+                    winTray.SetTrayInfo(tagInfo);
+                    winTray.Show();
+                });
+            }
+        }
+        #endregion
+
+        private string GetConveyorEqpID(int eqpIdx)
+        {
+            string eqp = string.Empty;
+
+            switch (eqpIdx)
+            {
+                case 0:
+                    eqp = "F01CNV10010";
+                    break;
+                case 1:
+                    eqp = "F01CNV10020";
+                    break;
+            }
+
+            return eqp;
+        }
+
+        private string GetCraneEqpID(int eqpIdx)
+        {
+            string eqp = string.Empty;
+
+            switch (eqpIdx)
+            {
+                case 0:
+                    eqp = "F01STCH0010";
+                    break;
+                case 1:
+                    eqp = "F01STCL0010";
+                    break;
+                case 2:
+                    eqp = "F01STCL0020";
+                    break;
+                case 3:
+                    eqp = "F01STCF0010";
+                    break;
+            }
+
+            return eqp;
+        }
     }
 }

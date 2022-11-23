@@ -68,7 +68,7 @@ namespace OPCUAClientClassLib
         public void SubscribeNodes(Dictionary<int, List<BrowsePathResult>> results, 
                                    Dictionary<int, List<BrowsePath>> dictBrowsePath,
                                    Dictionary<int, ItemInfo> siteInfo,
-                                   ItemInfo groupInfo)
+                                   Dictionary<string, ItemInfo> controlInfo)
         {
             // Create the subscription if it does not already exist.
             if (_Subscription == null)
@@ -97,29 +97,26 @@ namespace OPCUAClientClassLib
 
                     string[] taglevel = browsePath[j].ToString().Replace("/2:", ".").Split('.');
 
+                    ItemInfo groupInfo = controlInfo[taglevel[1].ToString()];
+
                     ItemInfo item = new ItemInfo();
                     
-                    if (groupInfo.ControlType == EnumCtrlType.STC)
+                    if (groupInfo.ControlType == enEqpType.STC)
                     {
-                        item.SiteNo = groupInfo.CraneNo;
+                        item.CraneNo = groupInfo.CraneNo;
                         item.GroupNo = groupInfo.GroupNo;
                         item.BrowseName = taglevel[taglevel.Count() - 1];
                         item.ControlType = groupInfo.ControlType;
                     }
                     else
                     {
-                        int siteno = int.Parse(taglevel[1].Substring(3));
+                        int siteno = int.Parse(taglevel[2].Substring(3));
 
                         item.SiteNo = siteno;
                         item.GroupNo = groupInfo.GroupNo;
                         item.BrowseName = taglevel[taglevel.Count() - 1];
                         item.ControlType = siteInfo[siteno].ControlType;
-                        item.BrowseName = taglevel[taglevel.Count() - 1];
-
-                        if (siteno != siteInfo[siteno].SiteNo)
-                        {
-                            ;
-                        }
+                        //item.ControlType = groupInfo.ControlType;
                     }
 
                     monitoredItems.Add(new DataMonitoredItem(NodeId.Parse(sNodeId))
@@ -131,7 +128,7 @@ namespace OPCUAClientClassLib
                         // DataChangeTrigger.Status                 : Status 가 변경되었을 때에만 감지 (PLC와의 연결 상태에 대한 것만을 감지한다고 보면 됨)
                         // DataChangeTrigger.StatusValue            : Status 또는 Value 가 변경되었을 때에만 감지(위의 것 + 값이 변경되었을 때만 감지함.True->True 로 새로 write 하더라도 감지 안됨)
                         // DataChangeTrigger.StatusValueTimestamp   : Status, Value, 또는 Timestamp 가 변경되었을 때에만 감지(연결상태, 값, write 모두에 대해 감지함)
-                        DataChangeTrigger = DataChangeTrigger.StatusValue,
+                        DataChangeTrigger = DataChangeTrigger.StatusValue                        
                     });
                 }
             }

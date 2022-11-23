@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Net;
@@ -13,6 +14,7 @@ using UnifiedAutomation.UaClient;
 using UnifiedAutomation.UaClient.Controls;
 using static System.Net.Mime.MediaTypeNames;
 using Application = System.Windows.Forms.Application;
+using Novasoft.Logger;
 
 namespace OPCUAClientClassLib
 {
@@ -20,8 +22,10 @@ namespace OPCUAClientClassLib
     {
 
         private static int BROWSEPATH_MAXCOUNT = 999;
+        private Logger _Logger;
+
         #region [public props]
-        public string FIRST_NODEID = "ns=2;i=1000";
+        //public string FIRST_NODEID = "ns=2;i=1000";
 
         /// <summary>
         /// Tag의 Start NodeID
@@ -68,6 +72,13 @@ namespace OPCUAClientClassLib
             set => _ConveyorNodeID = value;
         }
 
+        Dictionary<int, List<ReadValueId>> _CraneNodeID;
+        public Dictionary<int, List<ReadValueId>> CraneNodeID
+        {
+            get => _CraneNodeID;
+            set => _CraneNodeID = value;
+        }
+
         Dictionary<int, OPCTagItem> _BrowseNodeID; 
         public Dictionary<int, OPCTagItem> BrowseNodeID
         {
@@ -84,6 +95,16 @@ namespace OPCUAClientClassLib
             get => _EqpID;
             set => _EqpID = value;
         }
+
+        /// <summary>
+        /// FMS에서 수신된 장비 Type
+        /// </summary>
+        string _EqpType;
+        public string EqpType
+        {
+            get => _EqpType;
+            set => _EqpType = value;
+        }
         /// <summary>
         /// Provides access to the OPC UA server and its services.
         /// </summary>
@@ -95,15 +116,8 @@ namespace OPCUAClientClassLib
         Session _session;
         public Session Session
         {
-            get
-            {
-                return _session;
-            }
-
-            set
-            {
-                _session = value;
-            }
+            get => _session;
+            set => _session = value;
         }
 
         /// <summary>
@@ -121,8 +135,8 @@ namespace OPCUAClientClassLib
         private bool _PublishingEnabled = true;
         public bool PublishingEnabled
         {
-            get { return _PublishingEnabled; }
-            set { _PublishingEnabled = value; }
+            get => _PublishingEnabled;
+            set => _PublishingEnabled = value;
         }
         /// <summary>
         /// The publishing interval for the subscription
@@ -130,35 +144,8 @@ namespace OPCUAClientClassLib
         private double _PublishingInterval = 500;        // Default 500
         public double PublishingInterval
         {
-            get { return _PublishingInterval; }
-            set { _PublishingInterval = value; }
-        }
-
-        //public ApplicationConfiguration App_config
-        //{
-        //    get
-        //    {
-        //        return _app_config;
-        //    }
-
-        //    set
-        //    {
-        //        _app_config = value;
-        //    }
-        //}
-
-        string _connect_uri;
-        public string Connect_uri
-        {
-            get
-            {
-                return _connect_uri;
-            }
-
-            set
-            {
-                _connect_uri = value;
-            }
+            get => _PublishingInterval;
+            set => _PublishingInterval = value;
         }
 
         private bool _Connected = false;
@@ -173,9 +160,15 @@ namespace OPCUAClientClassLib
                 if (value != _Connected)
                 {
                     _Connected = value;
-                    _LOG_($"OPCUAClient.Connected: {_Connected}");
                 }
             }
+        }
+
+        private ApplicationInstance _Application;
+        public ApplicationInstance Application
+        {
+            get => _Application;
+            set => _Application = value;
         }
 
         #endregion
@@ -207,9 +200,14 @@ namespace OPCUAClientClassLib
         //public delegate void EventHandler(string value);
         //public event EventHandler Subscription_Event = null;
 
-        public OPCUAClient(List<EqpTagItem> dataList, List<ItemInfo> trackList, int group)
+        public OPCUAClient(List<EqpTagItem> dataList, List<ItemInfo> trackList, ApplicationInstance application)
         {
-            LoadTagList(dataList, trackList, group);
+            _Application = application;
+
+            string logPath = ConfigurationManager.AppSettings["LOG_PATH"];
+            _Logger = new Logger(logPath, LogMode.Hour);
+
+            LoadTagList(dataList, trackList);
         }
 
         /// <summary>
@@ -342,7 +340,7 @@ namespace OPCUAClientClassLib
         {
             try
             {
-                _session = new Session();
+                _session = new Session(_Application);
             }
             catch (Exception ex)
             {
@@ -517,21 +515,22 @@ namespace OPCUAClientClassLib
         /// </summary>
         /// <param name="trackList"></param>
         /// <param name="group"></param>
-        private void LoadTagList(List<EqpTagItem> dataList, List<ItemInfo> trackList, int group)
+        private void LoadTagList(List<EqpTagItem> dataList, List<ItemInfo> trackList)
         {
             //List<EqpTagItem> DataList = ReadConfig();
 
-            foreach (var eqpList in dataList)
+            //foreach (var eqpList in dataList)
             {
-                _EqpID = eqpList.Children[group].TagName;
+                _EqpType = trackList[0].ControlType.ToString();     // eqpList.Children[group].TagName;
+                _EqpID = trackList[0].EqpID;
 
-                if (_EqpID.Substring(3, 3) == "CNV")
+                if (_EqpType == "CNV")
                 {
-                    ConveyorTag(trackList, eqpList, group);
+                    ConveyorTag(trackList, dataList[0].Children[0]);
                 }
-                else if (_EqpID.Substring(3, 3) == "STC")
+                else if (_EqpType == "STC")
                 {
-                    CraneTag(trackList, eqpList, group);
+                    CraneTag(trackList, dataList[0].Children[1]);
                 }
             }
         }
@@ -542,14 +541,15 @@ namespace OPCUAClientClassLib
         /// <param name="trackList"></param>
         /// <param name="eqpList"></param>
         /// <param name="group"></param>
-        private void ConveyorTag(List<ItemInfo> trackList, EqpTagItem eqpList, int group)
+        private void ConveyorTag(List<ItemInfo> trackList, EqpTagItem eqpList)
         {
             string trackno;
 
             _OPCTagList = new List<string>();
             _SubscribeTagList = new List<string>();
 
-            foreach (var item in eqpList.Children[group].Children)
+            //foreach (var item in eqpList.Children[group].Children)
+            foreach (var item in eqpList.Children)
             {
                 for (int i = 0; i < trackList.Count; i++)
                 {
@@ -561,26 +561,27 @@ namespace OPCUAClientClassLib
                     {
                         foreach (var itemLv2 in itemLv1.Children)
                         {
-                            if (itemLv2.Children.Count == 0)
+                            foreach (var itemLv3 in itemLv2.Children)
                             {
-                                //_OPCTagList.Add(string.Format($"{eqp_id}.{trackno}.{itemLv1.TagName}.{itemLv2.TagName}"));
-                                _OPCTagList.Add(string.Format($"{trackno}.{itemLv1.TagName}.{itemLv2.TagName}"));
-
-                                if (itemLv2.Subscribe == true)
+                                if (itemLv3.Children.Count == 0)
                                 {
-                                    _SubscribeTagList.Add(string.Format($"{trackno}.{itemLv1.TagName}.{itemLv2.TagName}"));
-                                }
-                            }
-                            else
-                            {
-                                foreach (var itemLv3 in itemLv2.Children)
-                                {
-                                    //_OPCTagList.Add(string.Format($"{eqp_id}.{trackno}.{itemLv1.TagName}.{itemLv2.TagName}.{itemLv3.TagName}"));
-                                    _OPCTagList.Add(string.Format($"{trackno}.{itemLv1.TagName}.{itemLv2.TagName}.{itemLv3.TagName}"));
+                                    _OPCTagList.Add(string.Format($"{trackList[i].EqpID}.{trackno}.{itemLv2.TagName}.{itemLv3.TagName}"));
 
-                                    if (itemLv2.Subscribe == true)
+                                    if (itemLv3.Subscribe == true)
                                     {
-                                        _SubscribeTagList.Add(string.Format($"{trackno}.{itemLv1.TagName}.{itemLv2.TagName}.{itemLv3.TagName}"));
+                                        _SubscribeTagList.Add(string.Format($"{trackList[i].EqpID}.{trackno}.{itemLv2.TagName}.{itemLv3.TagName}"));
+                                    }
+                                }
+                                else
+                                {
+                                    foreach (var itemLv4 in itemLv3.Children)
+                                    {
+                                        _OPCTagList.Add(string.Format($"{trackList[i].EqpID}.{trackno}.{itemLv2.TagName}.{itemLv3.TagName}.{itemLv4.TagName}"));
+
+                                        if (itemLv2.Subscribe == true)
+                                        {
+                                            _SubscribeTagList.Add(string.Format($"{trackList[i].EqpID}.{trackno}.{itemLv2.TagName}.{itemLv3.TagName}.{itemLv4.TagName}"));
+                                        }
                                     }
                                 }
                             }
@@ -596,35 +597,40 @@ namespace OPCUAClientClassLib
         /// <param name="trackList"></param>
         /// <param name="eqpList"></param>
         /// <param name="group"></param>
-        private void CraneTag(List<ItemInfo> craneList, EqpTagItem eqpList, int group)
+        private void CraneTag(List<ItemInfo> craneList, EqpTagItem eqpList)
         {
             _OPCTagList = new List<string>();
             _SubscribeTagList = new List<string>();
 
-            foreach (var itemLv1 in eqpList.Children[group].Children)
+            //foreach (var itemLv1 in eqpList.Children[group].Children)
+            foreach (var itemLv1 in eqpList.Children)
             {
-                foreach (var itemLv2 in itemLv1.Children)
+                for (int i = 0; i < craneList.Count; i++)
                 {
-                    if (itemLv2.Children.Count == 0)
-                    {
-                        //_OPCTagList.Add(string.Format($"{eqp_id}.{trackno}.{itemLv1.TagName}.{itemLv2.TagName}"));
-                        _OPCTagList.Add(string.Format($"{itemLv1.TagName}.{itemLv2.TagName}"));
-
-                        if (itemLv2.Subscribe == true)
-                        {
-                            _SubscribeTagList.Add(string.Format($"{itemLv1.TagName}.{itemLv2.TagName}"));
-                        }
-                    }
-                    else
+                    foreach (var itemLv2 in itemLv1.Children)
                     {
                         foreach (var itemLv3 in itemLv2.Children)
                         {
-                            //_OPCTagList.Add(string.Format($"{eqp_id}.{trackno}.{itemLv1.TagName}.{itemLv2.TagName}.{itemLv3.TagName}"));
-                            _OPCTagList.Add(string.Format($"{itemLv1.TagName}.{itemLv2.TagName}.{itemLv3.TagName}"));
-
-                            if (itemLv3.Subscribe == true)
+                            if (itemLv3.Children.Count == 0)
                             {
-                                _SubscribeTagList.Add(string.Format($"{itemLv1.TagName}.{itemLv2.TagName}.{itemLv3.TagName}"));
+                                _OPCTagList.Add(string.Format($"{craneList[i].EqpID}.{itemLv2.TagName}.{itemLv3.TagName}"));
+
+                                if (itemLv3.Subscribe == true)
+                                {
+                                    _SubscribeTagList.Add(string.Format($"{craneList[i].EqpID}.{itemLv2.TagName}.{itemLv3.TagName}"));
+                                }
+                            }
+                            else
+                            {
+                                foreach (var itemLv4 in itemLv3.Children)
+                                {
+                                    _OPCTagList.Add(string.Format($"{craneList[i].EqpID}.{itemLv2.TagName}.{itemLv3.TagName}.{itemLv4.TagName}"));
+
+                                    if (itemLv4.Subscribe == true)
+                                    {
+                                        _SubscribeTagList.Add(string.Format($"{craneList[i].EqpID}.{itemLv2.TagName}.{itemLv3.TagName}.{itemLv4.TagName}"));
+                                    }
+                                }
                             }
                         }
                     }
@@ -660,20 +666,24 @@ namespace OPCUAClientClassLib
 
         #region GetStartNodeID
         /// <summary>
-        /// OPCServer에 시작 TagNode를 가져온다.
+        /// OPCServer에 시작 Tag NodeID를 가져온다.
         /// </summary>
-        public void GetStartNodeID()
+        public void GetStartNodeID(string firstNodeID)
         {
             // parse the node id.
-            NodeId startingNodeId = NodeId.Parse(FIRST_NODEID);
+            NodeId startingNodeId = NodeId.Parse(firstNodeID);
 
             List<BrowsePath> browsePath = new List<BrowsePath>();
 
-            browsePath.Add(GetBrowsePath(startingNodeId, AbsoluteName.ToQualifiedNames($"/2:{_EqpID}")));
+            //browsePath.Add(GetBrowsePath(startingNodeId, AbsoluteName.ToQualifiedNames($"/2:{_EqpID}")));
+            browsePath.Add(GetBrowsePath(startingNodeId, AbsoluteName.ToQualifiedNames($"/2:{_EqpType}")));
 
             List<BrowsePathResult> browerResult = ReadBrowse(browsePath);
 
             StartNodeID = browerResult[0].Targets[0].TargetId.ToString();
+
+            string msg = string.Format($"[{EQP_ID}] Start NodeID : {StartNodeID}");
+            _Logger.Write(LogLevel.Info, msg, LogFileName.AllLog);
         }
         #endregion
 
@@ -784,6 +794,8 @@ namespace OPCUAClientClassLib
 #if DEBUG
             Console.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss.ffff}, {msg}");
 #endif
+
+
         }
 
         

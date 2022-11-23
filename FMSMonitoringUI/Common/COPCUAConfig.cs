@@ -57,6 +57,13 @@ namespace FMSMonitoringUI.Common
             set => _UserPW = value;
         }
 
+        string _FirstNodeID;
+        public string FirstNodeID
+        {
+            get => _FirstNodeID;
+            set => _FirstNodeID = value;
+        }
+
         List<COPCUAConfig> _Items;
         public List<COPCUAConfig> Items
         {

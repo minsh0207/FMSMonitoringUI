@@ -7,7 +7,7 @@ namespace Novasoft.Logger
 {
     public enum LogLevel
     {
-        Information = 0,
+        Info = 0,
         Send = 1,
         Write = 2,
         Receive = 3,
@@ -41,7 +41,7 @@ namespace Novasoft.Logger
         private LogWriter _logger;
         #endregion
 
-        public Logger(string logPath, LogMode logMode, LogLevel level = LogLevel.Information)
+        public Logger(string logPath, LogMode logMode, LogLevel level = LogLevel.Info)
         {
             this._logger = new LogWriter(logPath, logMode, level);
         }

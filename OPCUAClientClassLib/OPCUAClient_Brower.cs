@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Novasoft.Logger;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace OPCUAClientClassLib
         {
             BrowsePath browsePath = new BrowsePath();
             browsePath.StartingNode = startingNodeId;
+            browsePath.UserData = "";
 
             foreach (QualifiedName qname in qnames)
             {
@@ -30,7 +32,7 @@ namespace OPCUAClientClassLib
             return browsePath;
         }
 
-        public Dictionary<int, List<BrowsePath>> AddBrowsePath(List<string> taglist, int group)
+        public Dictionary<int, List<BrowsePath>> AddBrowsePath(List<string> taglist)
         {
             int idx = 0;
             // parse the node id.
@@ -50,7 +52,7 @@ namespace OPCUAClientClassLib
                     sb.Append($"/2:{taglevel[i]}");
                 }
 
-                browsePath.Add(GetBrowsePath(startingNodeId, AbsoluteName.ToQualifiedNames($"{sb}/2:Address Space.{_EqpID}.{item}")));
+                browsePath.Add(GetBrowsePath(startingNodeId, AbsoluteName.ToQualifiedNames($"{sb}/2:Address Space.{EqpType}.{item}")));
 
                 if (browsePath.Count > BROWSEPATH_MAXCOUNT)
                 {
@@ -58,7 +60,6 @@ namespace OPCUAClientClassLib
                     browsePath = new List<BrowsePath>();
                     idx++;
                 }
-                //paths.Add(GetBrowsePath(startingNodeId, AbsoluteName.ToQualifiedNames($"{EQP_ID}.{item}")));
             }
 
             dictBrowsePath.Add(idx, browsePath);
@@ -66,7 +67,8 @@ namespace OPCUAClientClassLib
             return dictBrowsePath;
         }
 
-        public void AddConveyorNodeID(Dictionary<int, List<BrowsePathResult>> dictResultPath, Dictionary<int, List<BrowsePath>> dictBrowsePath)
+        public void AddConveyorNodeID(Dictionary<int, List<BrowsePathResult>> dictResultPath, 
+                                      Dictionary<int, List<BrowsePath>> dictBrowsePath)
         {
             // build a list of values to read.
             List<ReadValueId> nodesToRead = new List<ReadValueId>();
@@ -82,13 +84,57 @@ namespace OPCUAClientClassLib
                     string sNodeId = browerResult[j].Targets[0].TargetId.ToString();
                     string[] taglevel = browsePath[j].ToString().Replace("/2:", ".").Split('.');
 
-                    int cv_no = int.Parse(taglevel[1].Substring(3));
+                    int cv_no = int.Parse(taglevel[2].Substring(3));
 
                     nodesToRead.Add(new ReadValueId() { NodeId = NodeId.Parse(sNodeId), AttributeId = Attributes.Value });
 
                     if (taglevel[taglevel.Count() - 1] == "MagazineCommand")
                     {
                         _ConveyorNodeID.Add(cv_no, nodesToRead);
+                        nodesToRead = new List<ReadValueId>();
+                    }
+                }
+            }
+        }
+
+        public void AddCraneNodeID(Dictionary<int, List<BrowsePathResult>> dictResultPath, 
+                                   Dictionary<int, List<BrowsePath>> dictBrowsePath,
+                                   Dictionary<string, ItemInfo> controlInfo)
+        {
+            // build a list of values to read.
+            List<ReadValueId> nodesToRead = new List<ReadValueId>();
+            _CraneNodeID = new Dictionary<int, List<ReadValueId>>();
+
+            for (int i = 0; i < dictResultPath.Count(); i++)
+            {
+                List<BrowsePathResult> browerResult = dictResultPath[i];
+                List<BrowsePath> browsePath = dictBrowsePath[i];
+
+                for (int j = 0; j < browerResult.Count; j++)
+                {
+                    string sNodeId = browerResult[j].Targets[0].TargetId.ToString();
+                    string[] taglevel = browsePath[j].ToString().Replace("/2:", ".").Split('.');
+
+                    string tagLevel1 = taglevel[taglevel.Count() - 2];
+                    string tagLevel2 = taglevel[taglevel.Count() - 1];
+
+                    if ( (tagLevel1 == "CraneCommand") &&
+                        ((tagLevel2 == "JobType") || (tagLevel2 == "TrayIdL1") ||
+                         (tagLevel2 == "TrayIdL2") || (tagLevel2 == "TrayExist") || 
+                         (tagLevel2 == "TrayCount")) )
+                    {
+                        nodesToRead.Add(new ReadValueId() 
+                        {
+                            NodeId = NodeId.Parse(sNodeId), 
+                            AttributeId = Attributes.Value
+                        });
+                    }
+
+                    if (taglevel[taglevel.Count() - 1] == "RestockButtonPressed")
+                    {
+                        ItemInfo crane = controlInfo[taglevel[1].ToString()];
+                        _CraneNodeID.Add(crane.CraneNo, nodesToRead);
+
                         nodesToRead = new List<ReadValueId>();
                     }
                 }

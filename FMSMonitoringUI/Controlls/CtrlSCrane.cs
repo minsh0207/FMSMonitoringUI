@@ -19,9 +19,9 @@ namespace ControlGallery
 
         #region [Properties]
 
-        string _DeviceID;
-        [DisplayName("DeviceID"), Description("Crane Device ID"), Category("UBI Property")]
-        public string DeviceID
+        int _DeviceID;
+        [DisplayName("DeviceID"), Description("Crane OPCServer ID"), Category("UBI Property")]
+        public int DeviceID
         {
             get { return _DeviceID; }
             set
@@ -93,6 +93,20 @@ namespace ControlGallery
                     _currBay = value;
                     CalcCarriagePosition();
                     Refresh();
+                }
+            }
+        }
+
+        int _CraneID = 0;
+        [DisplayName("Crane ID"), Description("Crane Number"), Category("UBI Property")]
+        public int CraneID
+        {
+            get { return _CraneID; }
+            set
+            {
+                if (_CraneID != value)
+                {
+                    _CraneID = value;
                 }
             }
         }

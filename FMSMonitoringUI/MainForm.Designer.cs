@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.scMainPanel = new System.Windows.Forms.SplitContainer();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.barMain = new MonitoringUI.Controlls.CtrlTitleBar();
-            this.barAging = new MonitoringUI.Controlls.CtrlTitleBar();
-            this.barFormation = new MonitoringUI.Controlls.CtrlTitleBar();
+            this.barAging = new MonitoringUI.Controlls.CtrlTitleBarLabel();
+            this.barFormation = new MonitoringUI.Controlls.CtrlTitleBarLabel();
             this.button1 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.barMain = new MonitoringUI.Controlls.CtrlTitleBarLabel();
             ((System.ComponentModel.ISupportInitialize)(this.scMainPanel)).BeginInit();
             this.scMainPanel.Panel1.SuspendLayout();
             this.scMainPanel.Panel2.SuspendLayout();
@@ -62,30 +62,6 @@
             this.scMainPanel.Size = new System.Drawing.Size(1904, 1041);
             this.scMainPanel.SplitterDistance = 68;
             this.scMainPanel.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::FMSMonitoringUI.Properties.Resources.VerkorIcon;
-            this.pictureBox1.Location = new System.Drawing.Point(37, 10);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(136, 54);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // barMain
-            // 
-            this.barMain.AccessibleName = "";
-            this.barMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.barMain.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.barMain.ForeColor = System.Drawing.Color.White;
-            this.barMain.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.barMain.Location = new System.Drawing.Point(212, 10);
-            this.barMain.Margin = new System.Windows.Forms.Padding(4);
-            this.barMain.Name = "barMain";
-            this.barMain.Size = new System.Drawing.Size(134, 50);
-            this.barMain.TabIndex = 1;
-            this.barMain.TitleText = "Main";
             // 
             // barAging
             // 
@@ -123,6 +99,30 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::FMSMonitoringUI.Properties.Resources.VerkorIcon;
+            this.pictureBox1.Location = new System.Drawing.Point(37, 10);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(136, 54);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // barMain
+            // 
+            this.barMain.AccessibleName = "";
+            this.barMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.barMain.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.barMain.ForeColor = System.Drawing.Color.White;
+            this.barMain.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.barMain.Location = new System.Drawing.Point(212, 10);
+            this.barMain.Margin = new System.Windows.Forms.Padding(4);
+            this.barMain.Name = "barMain";
+            this.barMain.Size = new System.Drawing.Size(134, 50);
+            this.barMain.TabIndex = 1;
+            this.barMain.TitleText = "Main";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -146,10 +146,10 @@
 
         private System.Windows.Forms.SplitContainer scMainPanel;
         private System.Windows.Forms.PictureBox pictureBox1;
-        public MonitoringUI.Controlls.CtrlTitleBar barMain;
-        private MonitoringUI.Controlls.CtrlTitleBar barFormation;
-        private MonitoringUI.Controlls.CtrlTitleBar barAging;
+        private MonitoringUI.Controlls.CtrlTitleBarLabel barFormation;
+        private MonitoringUI.Controlls.CtrlTitleBarLabel barAging;
         private System.Windows.Forms.Button button1;
+        public MonitoringUI.Controlls.CtrlTitleBarLabel barMain;
     }
 }
 

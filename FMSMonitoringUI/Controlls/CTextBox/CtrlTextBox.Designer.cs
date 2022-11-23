@@ -36,6 +36,7 @@
             // 
             // tableLayoutPanel
             // 
+            this.tableLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tableLayoutPanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
             this.tableLayoutPanel.ColumnCount = 2;
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -43,6 +44,7 @@
             this.tableLayoutPanel.Controls.Add(this.lbTitle, 0, 0);
             this.tableLayoutPanel.Controls.Add(this.lbText, 1, 0);
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             this.tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
             this.tableLayoutPanel.RowCount = 1;
@@ -52,24 +54,28 @@
             // 
             // lbTitle
             // 
+            this.lbTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.lbTitle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbTitle.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lbTitle.ForeColor = System.Drawing.Color.White;
-            this.lbTitle.Location = new System.Drawing.Point(5, 2);
+            this.lbTitle.Location = new System.Drawing.Point(2, 2);
+            this.lbTitle.Margin = new System.Windows.Forms.Padding(0);
             this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(126, 33);
+            this.lbTitle.Size = new System.Drawing.Size(132, 33);
             this.lbTitle.TabIndex = 0;
             this.lbTitle.Text = "label1";
             this.lbTitle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lbText
             // 
+            this.lbText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.lbText.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbText.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lbText.ForeColor = System.Drawing.Color.White;
-            this.lbText.Location = new System.Drawing.Point(139, 2);
+            this.lbText.Location = new System.Drawing.Point(136, 2);
+            this.lbText.Margin = new System.Windows.Forms.Padding(0);
             this.lbText.Name = "lbText";
-            this.lbText.Size = new System.Drawing.Size(229, 33);
+            this.lbText.Size = new System.Drawing.Size(235, 33);
             this.lbText.TabIndex = 1;
             this.lbText.Text = "label2";
             this.lbText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

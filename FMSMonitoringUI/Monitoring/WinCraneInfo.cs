@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace FMSMonitoringUI.Monitoring
 {
-    public partial class WinTrayInfo : Form
+    public partial class WinCraneInfo : Form
     {
         private Point point = new Point();
 
-        public WinTrayInfo()
+        public WinCraneInfo()
         {
             InitializeComponent();
 
@@ -25,16 +25,13 @@ namespace FMSMonitoringUI.Monitoring
             #endregion
         }
 
-        public void SetTrayInfo(SiteTagInfo tagInfo)
+        public void SetTrayInfo(CraneTagInfo tagInfo)
         {
-            _ConveyorNo.TextData = tagInfo.ConveyorNo.ToString();
-            _ConveyorType.TextData = GetConveyorType(tagInfo.ConveyorType);
             _TrayIdL1.TextData = tagInfo.TrayIdL1;
             _TrayIdL2.TextData = tagInfo.TrayIdL2;
             _TrayExist.TextData = (tagInfo.TrayExist == true? "Exist" : "Not Exist");
             _TrayCount.TextData = tagInfo.TrayCount.ToString();
-            _TrayType.TextData = GetTrayType(tagInfo.TrayType);
-            _StationStatus.TextData = GetStationStatus(tagInfo.StationStatus);
+            _TrayType.TextData = GetJobType(tagInfo.JobType);
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -62,75 +59,26 @@ namespace FMSMonitoringUI.Monitoring
         }
 
         #region Tray Tag Value
-        private string GetConveyorType(int idx)
+        private string GetJobType(int idx)
         {
             string ret = string.Empty;
 
             switch (idx)
             {
                 case 1:
-                    ret = "Conveyor Unit";
+                    ret = "Input";
                     break;
                 case 2:
-                    ret = "InStation";
+                    ret = "OutPut";
+                    break;
+                case 3:
+                    ret = "Move";
                     break;
                 case 4:
-                    ret = "OutStation";
+                    ret = "Pass";
                     break;
-                case 8:
-                    ret = "InOutStation";
-                    break;
-                case 16:
-                    ret = "BufferStation";
-                    break;
-                case 32:
-                    ret = "Diverter";
-                    break;
-                case 64:
-                    ret = "Magazine";
-                    break;
-                case 128:
-                    ret = "Dispenser";
-                    break;
-                case 256:
-                    ret = "MZ / DP";
-                    break;
-            }
-
-            return ret;
-        }
-
-        private string GetStationStatus(int idx)
-        {
-            string ret = string.Empty;
-
-            switch (idx)
-            {
-                case 0:
-                    ret = "Not Used";
-                    break;
-                case 1:
-                    ret = "Station Down";
-                    break;
-                case 2:
-                    ret = "Station Up";
-                    break;
-            }
-
-            return ret;
-        }
-
-        private string GetTrayType(int idx)
-        {
-            string ret = string.Empty;
-
-            switch (idx)
-            {
-                case 1:
-                    ret = "BD - Before Degas Long Tray";
-                    break;
-                case 2:
-                    ret = "AD - After Degas Short Tray";
+                case 5:
+                    ret = "Position";
                     break;
             }
 

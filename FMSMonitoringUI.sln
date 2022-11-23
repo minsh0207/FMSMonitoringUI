@@ -19,6 +19,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunningEnv", "RunningEnv\RunningEnv.csproj", "{E6738FB0-8152-49A5-AC7C-DB4C061CBE50}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OPCUAClientClassLib", "OPCUAClientClassLib\OPCUAClientClassLib.csproj", "{065D7112-F84A-4864-868E-9B8FC35696CA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{571EA494-E0B0-4C80-B87E-92157AD179EE} = {571EA494-E0B0-4C80-B87E-92157AD179EE}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSVMgr", "CSVMgr\CSVMgr.csproj", "{9BF784C3-464B-4468-881C-2A535F319CB9}"
 EndProject

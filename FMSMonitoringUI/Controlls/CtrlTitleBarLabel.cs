@@ -10,16 +10,10 @@ using System.Windows.Forms;
 
 namespace MonitoringUI.Controlls
 {
-    public partial class CtrlTitleBar : UserControl
+    public partial class CtrlTitleBarLabel : UserControl
     {
         public delegate void EventHandler(string title);
         public event EventHandler Click_Evnet = null;
-
-        public delegate void MouseMoveEventHandler(object sender, MouseEventArgs e);
-        public event MouseMoveEventHandler MouseMove_Evnet = null;
-
-        public delegate void MouseDownEventHandler(object sender, MouseEventArgs e);
-        public event MouseDownEventHandler MouseDown_Evnet = null;
 
         #region Properties
         string _labelText = "";
@@ -38,7 +32,7 @@ namespace MonitoringUI.Controlls
         }
         #endregion
 
-        public CtrlTitleBar()
+        public CtrlTitleBarLabel()
         {
             InitializeComponent();
         }
@@ -51,14 +45,12 @@ namespace MonitoringUI.Controlls
 
         private void LbTitle_MouseMove(object sender, MouseEventArgs e)
         {
-            if (this.MouseMove_Evnet != null)
-                MouseMove_Evnet(sender, e);
+            lbTitle.ForeColor = Color.FromArgb(0,129,110);
         }
 
-        private void lbTitle_MouseDown(object sender, MouseEventArgs e)
+        private void LbTitle_MouseLeave(object sender, EventArgs e)
         {
-            if (this.MouseDown_Evnet != null)
-                MouseDown_Evnet(sender, e);
+            lbTitle.ForeColor = Color.White;
         }
     }
 }

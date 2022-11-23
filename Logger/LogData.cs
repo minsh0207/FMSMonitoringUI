@@ -51,7 +51,7 @@ namespace Novasoft.Logger
 
             switch (this.Level)
             {
-                case LogLevel.Information:
+                case LogLevel.Info:
                     sb.Append("[INFO] ");
                     break;
                 case LogLevel.Send:

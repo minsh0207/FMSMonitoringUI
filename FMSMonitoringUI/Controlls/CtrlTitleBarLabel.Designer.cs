@@ -1,6 +1,6 @@
 ﻿namespace MonitoringUI.Controlls
 {
-    partial class CtrlTitleBar
+    partial class CtrlTitleBarLabel
     {
         /// <summary> 
         /// 필수 디자이너 변수입니다.
@@ -42,7 +42,7 @@
             this.lbTitle.Text = "Window Name";
             this.lbTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbTitle.Click += new System.EventHandler(this.LbTitle_Click);
-            this.lbTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbTitle_MouseDown);
+            this.lbTitle.MouseLeave += new System.EventHandler(this.LbTitle_MouseLeave);
             this.lbTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.LbTitle_MouseMove);
             // 
             // CtrlTitleBar
