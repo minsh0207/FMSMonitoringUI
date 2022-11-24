@@ -286,7 +286,8 @@ namespace OPCUAClientClassLib
                 //}
 
                 // Session created successfully.
-                _LOG_($"[{connect_uri}] Connected, SessionName = {_session.SessionName}");
+                string msg = ($"[{connect_uri}] Connected, SessionName = {_session.SessionName}");
+                _Logger.Write(LogLevel.Info, msg, LogFileName.AllLog);
             }
             catch (Exception ex)
             {

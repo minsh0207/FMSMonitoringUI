@@ -85,8 +85,6 @@ namespace FMSMonitoringUI.Controlls
 
                 if (ret)
                 {
-                    _Logger.Write(LogLevel.Info, $"Connected to {opcList[i].OPCServerURL}", LogFileName.AllLog);
-
                     // Start NodeID
                     _clientFMS[i].GetStartNodeID(opcList[i].FirstNodeID);
 
@@ -153,19 +151,19 @@ namespace FMSMonitoringUI.Controlls
                             int deviceID = conveyor.CVPLCListDeviceID;
                             ItemInfo itemInfo;
 
-                            if (site.SiteNo == 1)
-                            {
-                                itemInfo = new ItemInfo()
-                                {
-                                    SiteNo = site.SiteNo,
-                                    ControlType = enEqpType.RTV,
-                                    GroupNo = deviceID,
-                                    ConveyorNo = conveyor.PLCNo,
-                                    EqpID = GetConveyorEqpID(deviceID)
-                                    
-                                };
-                            }
-                            else
+                            //if (site.SiteNo == 1)
+                            //{
+                            //    itemInfo = new ItemInfo()
+                            //    {
+                            //        SiteNo = site.SiteNo,
+                            //        ControlType = enEqpType.CNV,
+                            //        GroupNo = deviceID,
+                            //        ConveyorNo = conveyor.PLCNo,
+                            //        EqpID = GetConveyorEqpID(deviceID)
+
+                            //    };
+                            //}
+                            //else
                             {
                                 itemInfo = new ItemInfo()
                                 {
@@ -296,90 +294,6 @@ namespace FMSMonitoringUI.Controlls
         }
         #endregion
 
-        //private int nIdx = 0;
-        //private int nRTVIdxH = 0;
-        //private int nRTVIdxV = 0;
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //Task Ret = MoveRTV(1, 1000);
-
-
-
-            //for (int i = 0; i < 1000; i++)
-            //{
-            //    ctrlSCraneV1.CurrentBay = i;
-            //    ctrlSCraneV1.UpdateUI("RTV");
-            //    Thread.Sleep(50);
-
-            //}
-            //int[] nRTVPosV = { 1, 11, 21, 32, 44, 60, 74, 90, 98 };
-            //int[] nRTVPosH = { 1, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 };
-
-            //if (nRTVIdxV > 8) nRTVIdxV = 0;
-            //ctrlSCraneV1.CurrentBay = nRTVPosV[nRTVIdxV];
-            //ctrlSCraneV1.UpdateUI("RTV");
-
-            //if (nRTVIdxH > 10) nRTVIdxH = 0;
-            //_ListSCrane[1].CurrentBay = nRTVPosH[nRTVIdxH];
-            //_ListSCrane[1].UpdateUI("In");
-
-            //ctrlSCraneH2.CurrentBay = nRTVPosH[nRTVIdxH];
-            //ctrlSCraneH2.UpdateUI("In");
-
-            //ctrlSCraneH3.CurrentBay = nRTVPosH[nRTVIdxH];
-            //ctrlSCraneH3.UpdateUI("In");
-
-            //nRTVIdxV++;
-            //nRTVIdxH++;
-
-            //if (true)
-            //{
-            //    if (_ListSite.ContainsKey(nIdx))
-            //    {
-            //        int nCVNo = _ListSite[nIdx];
-
-            //        if (nCVNo > 0)
-            //        {
-            //            if (_ListSite.ContainsKey(nCVNo))
-            //            {
-            //                _ListConveyor[nCVNo].UpdateTrackStatus(nIdx);
-
-            //                if (_ListBCR.ContainsKey(nIdx))
-            //                {
-            //                    BCRMarker bcr_ui = _ListBCR[nIdx];
-
-            //                    if (bcr_ui.BCRLevel == 1)
-            //                    {
-            //                        bcr_ui.BubbleText = "F101AAFB1010683";
-            //                    }
-            //                    else
-            //                    {
-            //                        bcr_ui.BubbleText = "F101AAFB1010683\nF101AAFB1010684";
-            //                    }
-
-            //                    if (bcr_ui.BubbleText != null && bcr_ui.BubbleText.Length > 0)
-            //                    {
-            //                        bcr_ui.ShowToolTip();
-            //                        bcr_ui.BubbleText = string.Empty;
-            //                    }
-
-            //                    bcr_ui.BCRUseYN = true;
-            //                }
-
-            //                Refresh();
-            //            }
-            //        }
-            //    }
-
-            //    nIdx++;
-            //}
-            //else
-            //{
-            //    //ctrlSiteTrack1.DemoSiteStatus();
-            //}
-        }
-
         #region [Mouse DBLCLK Event]
         private void OnObjectDoubleClick(object sender, ObjectDoubleClickEventArgs arg)
         {
@@ -472,7 +386,7 @@ namespace FMSMonitoringUI.Controlls
         /// <param name="e"></param>
         private void Subscription_DataChanged(Subscription subscription, DataChangedEventArgs e)
         {
-            //if (e.DataChanges.Count > 1)        // 프로그램 기동시 모든 구독목록이 들어온다. 처음연결시 들어오는 event는 무시한다.
+            //if (e.DataChanges.Count > 1)        // 프로그램 기동시 모든 구독목록이 들어온다.
             //{
             //    return;
             //}
@@ -753,6 +667,7 @@ namespace FMSMonitoringUI.Controlls
         }
         #endregion
 
+        #region GetEqpID
         private string GetConveyorEqpID(int eqpIdx)
         {
             string eqp = string.Empty;
@@ -792,5 +707,6 @@ namespace FMSMonitoringUI.Controlls
 
             return eqp;
         }
+        #endregion
     }
 }

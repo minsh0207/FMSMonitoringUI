@@ -851,6 +851,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="res\Bottom_1.png" />
+    <Content Include="res\Bottom_2.png" />
+    <Content Include="res\DP.PNG" />
+    <Content Include="res\Left_1.png" />
+    <Content Include="res\Left_2.png" />
+    <Content Include="res\MZ.PNG" />
+    <Content Include="res\MZ_DP.PNG" />
+    <Content Include="res\Right_1.png" />
+    <Content Include="res\Right_2.png" />
+    <Content Include="res\Top_1.png" />
+    <Content Include="res\Top_2.png" />
     <Content Include="res\VerkorIcon.png" />
   </ItemGroup>
   <ItemGroup>
