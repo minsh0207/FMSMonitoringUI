@@ -4,6 +4,7 @@ using FMSMonitoringUI.Common;
 using FMSMonitoringUI.Monitoring;
 //using Microsoft.Office.Interop.Excel;
 using MonitoringUI;
+using MonitoringUI.Common;
 using Novasoft.Logger;
 using OPCUAClientClassLib;
 using Org.BouncyCastle.Asn1.Tsp;
@@ -52,6 +53,7 @@ namespace FMSMonitoringUI.Controlls
 
         private ApplicationInstance _Application = null;
 
+        #region CtrlMain
         public CtrlMain(ApplicationInstance applicationInstance)
         {
             InitializeComponent();
@@ -61,6 +63,7 @@ namespace FMSMonitoringUI.Controlls
             string logPath = ConfigurationManager.AppSettings["LOG_PATH"];
             _Logger = new Logger(logPath, LogMode.Hour);
         }
+        #endregion
 
         #region CtrlMain_Load
         /// <summary>
@@ -280,7 +283,7 @@ namespace FMSMonitoringUI.Controlls
         {
             System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(Application.StartupPath + @"\TagList");
 
-            FMSTagConfigReader reader = new FMSTagConfigReader($"{di}{RunningEnv.StaticParamClass.CONFIG_FILENAME_TAG}");
+            FMSTagConfigReader reader = new FMSTagConfigReader($"{di}{CDefine.CONFIG_FILENAME_TAG}");
             return reader.Read();
         }
         /// <summary>
@@ -289,7 +292,7 @@ namespace FMSMonitoringUI.Controlls
         /// <returns></returns>
         private List<COPCUAConfig> ReadOPCConfig()
         {
-            CSVLoader csv_opc = new CSVLoader(RunningEnv.StaticParamClass.CONFIG_FILENAME_OPCUA);
+            CSVLoader csv_opc = new CSVLoader(CDefine.CONFIG_FILENAME_OPCUA);
             return csv_opc.Load<COPCUAConfig>();
         }
         #endregion
@@ -708,5 +711,11 @@ namespace FMSMonitoringUI.Controlls
             return eqp;
         }
         #endregion
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string node = "ns=2;i=1000";
+            _clientFMS[0].GetNodeID(node);
+        }
     }
 }

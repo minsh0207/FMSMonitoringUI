@@ -54,12 +54,6 @@
     <Compile Include="LogWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\RunningEnv\RunningEnv.csproj">
-      <Project>{e6738fb0-8152-49a5-ac7c-db4c061cbe50}</Project>
-      <Name>RunningEnv</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CtrlMain));
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -41,8 +40,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -88,7 +85,6 @@
             this.ctrlSiteTrack34 = new ControlGallery.CtrlSiteTrack();
             this.bcrMarker1 = new ControlGallery.BCRMarker();
             this.bcrMarker2 = new ControlGallery.BCRMarker();
-            this.label22 = new System.Windows.Forms.Label();
             this.bcrMarker3 = new ControlGallery.BCRMarker();
             this.bcrMarker4 = new ControlGallery.BCRMarker();
             this.bcrMarker5 = new ControlGallery.BCRMarker();
@@ -254,6 +250,11 @@
             this.ctrlTaggingName1 = new MonitoringUI.Controlls.CtrlTaggingName();
             this.pictureBox38 = new System.Windows.Forms.PictureBox();
             this.label29 = new System.Windows.Forms.Label();
+            this.ctrlPacking1 = new FMSMonitoringUI.Controlls.CtrlEqpPacking();
+            this.ctrlEqpLeakCheck1 = new FMSMonitoringUI.Controlls.CtrlEqpLeakCheck();
+            this.ctrlEqpMicroCurrent1 = new FMSMonitoringUI.Controlls.CtrlEqpMicroCurrent();
+            this.ctrlEqpDegas1 = new FMSMonitoringUI.Controlls.CtrlEqpDegas();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -378,20 +379,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox38)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.CausesValidation = false;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
-            this.label1.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label1.Location = new System.Drawing.Point(153, 204);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(122, 165);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "PACKING";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
@@ -526,34 +513,6 @@
             this.label11.TabIndex = 23;
             this.label11.Text = "VISION INSPECTION";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label12
-            // 
-            this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
-            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label12.CausesValidation = false;
-            this.label12.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
-            this.label12.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label12.Location = new System.Drawing.Point(782, 358);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(69, 52);
-            this.label12.TabIndex = 26;
-            this.label12.Text = "MIC";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label13
-            // 
-            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
-            this.label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label13.CausesValidation = false;
-            this.label13.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
-            this.label13.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label13.Location = new System.Drawing.Point(828, 205);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(177, 102);
-            this.label13.TabIndex = 31;
-            this.label13.Text = "DEGASSING";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label14
             // 
@@ -1881,20 +1840,6 @@
             this.bcrMarker2.TabIndex = 58;
             this.bcrMarker2.TextRotateAngle = 0;
             // 
-            // label22
-            // 
-            this.label22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
-            this.label22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label22.CausesValidation = false;
-            this.label22.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
-            this.label22.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label22.Location = new System.Drawing.Point(392, 359);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(176, 50);
-            this.label22.TabIndex = 59;
-            this.label22.Text = "LEAK CHECK";
-            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // bcrMarker3
             // 
             this.bcrMarker3.BCRLevel = 1;
@@ -2423,7 +2368,7 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(982, 199);
+            this.pictureBox4.Location = new System.Drawing.Point(982, 200);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(12, 4);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3909,11 +3854,66 @@
             this.label29.TabIndex = 264;
             this.label29.Text = "Rework";
             // 
+            // ctrlPacking1
+            // 
+            this.ctrlPacking1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlPacking1.EqpType = "PAC";
+            this.ctrlPacking1.Location = new System.Drawing.Point(152, 228);
+            this.ctrlPacking1.Name = "ctrlPacking1";
+            this.ctrlPacking1.Size = new System.Drawing.Size(127, 143);
+            this.ctrlPacking1.TabIndex = 265;
+            // 
+            // ctrlEqpLeakCheck1
+            // 
+            this.ctrlEqpLeakCheck1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlEqpLeakCheck1.EqpType = "LCK";
+            this.ctrlEqpLeakCheck1.Location = new System.Drawing.Point(376, 329);
+            this.ctrlEqpLeakCheck1.Name = "ctrlEqpLeakCheck1";
+            this.ctrlEqpLeakCheck1.Size = new System.Drawing.Size(195, 81);
+            this.ctrlEqpLeakCheck1.TabIndex = 266;
+            this.ctrlEqpLeakCheck1.Tag = "";
+            // 
+            // ctrlEqpMicroCurrent1
+            // 
+            this.ctrlEqpMicroCurrent1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlEqpMicroCurrent1.EqpType = "MIC";
+            this.ctrlEqpMicroCurrent1.Location = new System.Drawing.Point(732, 329);
+            this.ctrlEqpMicroCurrent1.Name = "ctrlEqpMicroCurrent1";
+            this.ctrlEqpMicroCurrent1.Size = new System.Drawing.Size(161, 82);
+            this.ctrlEqpMicroCurrent1.TabIndex = 267;
+            // 
+            // ctrlEqpDegas1
+            // 
+            this.ctrlEqpDegas1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlEqpDegas1.EqpType = "DGS";
+            this.ctrlEqpDegas1.Location = new System.Drawing.Point(812, 202);
+            this.ctrlEqpDegas1.Name = "ctrlEqpDegas1";
+            this.ctrlEqpDegas1.Size = new System.Drawing.Size(195, 105);
+            this.ctrlEqpDegas1.TabIndex = 268;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(77, 814);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(191, 63);
+            this.button1.TabIndex = 269;
+            this.button1.Text = "TEST";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // CtrlMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.pictureBox11);
+            this.Controls.Add(this.pictureBox5);
+            this.Controls.Add(this.pictureBox4);
+            this.Controls.Add(this.ctrlEqpDegas1);
+            this.Controls.Add(this.ctrlEqpMicroCurrent1);
+            this.Controls.Add(this.ctrlEqpLeakCheck1);
+            this.Controls.Add(this.ctrlPacking1);
             this.Controls.Add(this.label29);
             this.Controls.Add(this.pictureBox38);
             this.Controls.Add(this.groupBox1);
@@ -3928,7 +3928,6 @@
             this.Controls.Add(this.ctrlSiteTrack36);
             this.Controls.Add(this.ctrlSiteTrack35);
             this.Controls.Add(this.pictureBox13);
-            this.Controls.Add(this.pictureBox11);
             this.Controls.Add(this.pictureBox10);
             this.Controls.Add(this.pictureBox9);
             this.Controls.Add(this.pictureBox8);
@@ -4035,8 +4034,6 @@
             this.Controls.Add(this.pictureBox14);
             this.Controls.Add(this.pictureBox12);
             this.Controls.Add(this.pictureBox6);
-            this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
@@ -4065,7 +4062,6 @@
             this.Controls.Add(this.bcrMarker5);
             this.Controls.Add(this.bcrMarker4);
             this.Controls.Add(this.bcrMarker3);
-            this.Controls.Add(this.label22);
             this.Controls.Add(this.bcrMarker2);
             this.Controls.Add(this.bcrMarker1);
             this.Controls.Add(this.ctrlSiteTrack34);
@@ -4089,12 +4085,10 @@
             this.Controls.Add(this.label14);
             this.Controls.Add(this.ctrlSiteTrack20);
             this.Controls.Add(this.ctrlSiteTrack19);
-            this.Controls.Add(this.label13);
             this.Controls.Add(this.ctrlSiteTrack18);
             this.Controls.Add(this.ctrlSiteTrack17);
             this.Controls.Add(this.ctrlSiteTrack16);
             this.Controls.Add(this.ctrlSiteTrack15);
-            this.Controls.Add(this.label12);
             this.Controls.Add(this.ctrlSiteTrack14);
             this.Controls.Add(this.ctrlSCraneV1);
             this.Controls.Add(this.label11);
@@ -4114,7 +4108,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.ctrlSiteTrack7);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.ctrlSiteTrack6);
             this.Controls.Add(this.ctrlSiteTrack5);
             this.Controls.Add(this.ctrlSiteTrack4);
@@ -4126,6 +4119,7 @@
             this.Controls.Add(this.ctrlSiteTrack3);
             this.Name = "CtrlMain";
             this.Size = new System.Drawing.Size(1899, 995);
+            this.Tag = "LCK";
             this.Load += new System.EventHandler(this.CtrlMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -4264,7 +4258,6 @@
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack4;
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack5;
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack6;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack7;
         private System.Windows.Forms.Label label3;
@@ -4284,12 +4277,10 @@
         private System.Windows.Forms.Label label11;
         private ControlGallery.CtrlSCraneV ctrlSCraneV1;
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack14;
-        private System.Windows.Forms.Label label12;
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack15;
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack16;
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack17;
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack18;
-        private System.Windows.Forms.Label label13;
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack19;
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack20;
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack21;
@@ -4316,7 +4307,6 @@
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack34;
         private ControlGallery.BCRMarker bcrMarker1;
         private ControlGallery.BCRMarker bcrMarker2;
-        private System.Windows.Forms.Label label22;
         private ControlGallery.BCRMarker bcrMarker3;
         private ControlGallery.BCRMarker bcrMarker4;
         private ControlGallery.BCRMarker bcrMarker5;
@@ -4482,5 +4472,10 @@
         private System.Windows.Forms.PictureBox pictureBox25;
         private System.Windows.Forms.PictureBox pictureBox38;
         private System.Windows.Forms.Label label29;
+        private CtrlEqpPacking ctrlPacking1;
+        private CtrlEqpLeakCheck ctrlEqpLeakCheck1;
+        private CtrlEqpMicroCurrent ctrlEqpMicroCurrent1;
+        private CtrlEqpDegas ctrlEqpDegas1;
+        private System.Windows.Forms.Button button1;
     }
 }

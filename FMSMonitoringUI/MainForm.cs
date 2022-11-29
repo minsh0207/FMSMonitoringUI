@@ -89,7 +89,7 @@ namespace FMSMonitoringUI
                     scMainPanel.Panel2.Controls.Add(ctrlAging);
                     break;
                 case "Formation":
-                    CtrlFormation2 ctrlFormation = new CtrlFormation2();
+                    CtrlFormation ctrlFormation = new CtrlFormation();
                     if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls[0].Dispose();
                     if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
                     scMainPanel.Panel2.Controls.Add(ctrlFormation);

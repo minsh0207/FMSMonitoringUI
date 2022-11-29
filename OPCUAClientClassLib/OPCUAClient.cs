@@ -710,6 +710,13 @@ namespace OPCUAClientClassLib
                 context,
                 new RequestSettings() { OperationTimeout = 10000 },
                 out continuationPoint);
+
+            //foreach (var item in references)
+            //{
+            //    nodeId = NodeId.Parse(item.NodeId.ToString());
+            //}
+
+
         }
         #endregion        
 

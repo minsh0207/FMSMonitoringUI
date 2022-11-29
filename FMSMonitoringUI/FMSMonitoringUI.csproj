@@ -381,23 +381,35 @@
     <Compile Include="Controlls\CtrlButtonRoot.designer.cs">
       <DependentUpon>CtrlButtonRoot.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controlls\CtrlEqpDegas.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controlls\CtrlEqpDegas.Designer.cs">
+      <DependentUpon>CtrlEqpDegas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controlls\CtrlEqpMicroCurrent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controlls\CtrlEqpMicroCurrent.Designer.cs">
+      <DependentUpon>CtrlEqpMicroCurrent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controlls\CtrlEqpLeakCheck.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controlls\CtrlEqpLeakCheck.Designer.cs">
+      <DependentUpon>CtrlEqpLeakCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controlls\CtrlEqpPacking.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controlls\CtrlEqpPacking.Designer.cs">
+      <DependentUpon>CtrlEqpPacking.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controlls\CtrlCharger.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controlls\CtrlCharger.Designer.cs">
       <DependentUpon>CtrlCharger.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CtrlFormation2.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CtrlFormation2.Designer.cs">
-      <DependentUpon>CtrlFormation2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CtrlFormation1.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CtrlFormation1.Designer.cs">
-      <DependentUpon>CtrlFormation1.cs</DependentUpon>
     </Compile>
     <Compile Include="Controlls\CtrlFormation.cs">
       <SubType>UserControl</SubType>
@@ -692,14 +704,20 @@
     <EmbeddedResource Include="Controlls\CtrlButtonRoot.resx">
       <DependentUpon>CtrlButtonRoot.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controlls\CtrlEqpDegas.resx">
+      <DependentUpon>CtrlEqpDegas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controlls\CtrlEqpMicroCurrent.resx">
+      <DependentUpon>CtrlEqpMicroCurrent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controlls\CtrlEqpLeakCheck.resx">
+      <DependentUpon>CtrlEqpLeakCheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controlls\CtrlEqpPacking.resx">
+      <DependentUpon>CtrlEqpPacking.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controlls\CtrlCharger.resx">
       <DependentUpon>CtrlCharger.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CtrlFormation2.resx">
-      <DependentUpon>CtrlFormation2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CtrlFormation1.resx">
-      <DependentUpon>CtrlFormation1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controlls\CtrlFormation.resx">
       <DependentUpon>CtrlFormation.cs</DependentUpon>
@@ -844,10 +862,6 @@
     <ProjectReference Include="..\OPCUAClientClassLib\OPCUAClientClassLib.csproj">
       <Project>{065d7112-f84a-4864-868e-9b8fc35696ca}</Project>
       <Name>OPCUAClientClassLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RunningEnv\RunningEnv.csproj">
-      <Project>{e6738fb0-8152-49a5-ac7c-db4c061cbe50}</Project>
-      <Name>RunningEnv</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

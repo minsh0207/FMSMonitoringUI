@@ -25,6 +25,16 @@ namespace MonitoringUI.Common
     public class CDefine
     {
         /////////////////////////////////////////////////////////////////////
+        //	OPCServer List Define
+        //=================================================================== 
+        public static string CONFIG_FILENAME_OPCUA = @".\Config\OPCUAList.csv";
+
+        /////////////////////////////////////////////////////////////////////
+        //	Tag List Define
+        //=================================================================== 
+        public static string CONFIG_FILENAME_TAG = @"\TAGS_CLIENT_V1.xlsx";
+
+        /////////////////////////////////////////////////////////////////////
         //	LogIn Define
         //=================================================================== 
         public static string m_strLoginID = "";         // Login ID

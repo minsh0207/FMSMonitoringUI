@@ -69,6 +69,12 @@
     <Compile Include="Control\CtrlFormationBoxCHG.xaml.cs">
       <DependentUpon>CtrlFormationBoxCHG.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\CtrlMainLeakCheck.xaml.cs">
+      <DependentUpon>CtrlMainLeakCheck.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\CtrlMainPacing.xaml.cs">
+      <DependentUpon>CtrlMainPacing.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\CtrlFormationBoxJIG.xaml.cs">
       <DependentUpon>CtrlFormationBoxJIG.xaml</DependentUpon>
     </Compile>
@@ -85,6 +91,14 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Control\CtrlFormationBoxCHG.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\CtrlMainLeakCheck.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\CtrlMainPacing.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

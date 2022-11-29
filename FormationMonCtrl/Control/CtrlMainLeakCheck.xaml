@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="FormationMonCtrl.CtrlMainLeakCheck"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" d:DesignWidth="80" Height="30">
+    <Grid Name="grdBoxContainer" Background="DarkGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="15*"/>
+        </Grid.RowDefinitions>
+
+
+        <Border Name="borBox01" Grid.Row="0" Margin="0,0,0,0" BorderBrush="Black" BorderThickness="1" Background="Gray" MouseDown="Box_MouseClick">
+            <Grid>
+                <TextBlock Name="txtBox01" Text="Tray ID" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Arial" FontSize="11"/>
+            </Grid>
+        </Border>
+        <Border Name="borBox01_Info" Grid.Row="1" Margin="0,0,0,0" BorderBrush="Black" BorderThickness="1" Background="LightGray" MouseDown="Text_MouseClick">
+            <Viewbox Margin="2,0,2,4" Height="15" VerticalAlignment="Bottom">
+                <TextBlock Name="txtBox01_Info" Tag="" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Arial"></TextBlock>
+            </Viewbox>
+        </Border>
+    </Grid>
+</UserControl>
