@@ -15,11 +15,31 @@ using UnifiedAutomation.UaClient.Controls;
 using static System.Net.Mime.MediaTypeNames;
 using Application = System.Windows.Forms.Application;
 using Novasoft.Logger;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
+using System.IO;
 
 namespace OPCUAClientClassLib
 {
     public partial class OPCUAClient : IDisposable
     {
+        /// <summary>
+        /// Subscription_DataChanged
+        /// </summary>
+        public delegate void SubscriptionEventHandler(int opcIdx, string url);
+        /// <summary>
+        /// Use the delegate as event.
+        /// </summary>
+        public event SubscriptionEventHandler SubscriptionEvent = null;
+        /// <summary>
+        /// Subscription_DataChanged
+        /// </summary>
+        public void OnSubscriptionEvent(int opcIdx, string url)
+        {
+            if (SubscriptionEvent != null)
+            {
+                SubscriptionEvent(opcIdx, url);
+            }
+        }
 
         private static int BROWSEPATH_MAXCOUNT = 999;
         private Logger _Logger;
@@ -58,13 +78,6 @@ namespace OPCUAClientClassLib
             set => _PathsToTranslate = value;
         }
 
-        //Dictionary<string, NodeId> _BrowseNodeID;
-        //public Dictionary<string, NodeId> BrowseNodeID
-        //{
-        //    get => _BrowseNodeID;
-        //    set => _BrowseNodeID = value;
-        //}
-
         Dictionary<int, List<ReadValueId>> _ConveyorNodeID;
         public Dictionary<int, List<ReadValueId>> ConveyorNodeID
         {
@@ -79,12 +92,12 @@ namespace OPCUAClientClassLib
             set => _CraneNodeID = value;
         }
 
-        Dictionary<int, OPCTagItem> _BrowseNodeID; 
-        public Dictionary<int, OPCTagItem> BrowseNodeID
-        {
-            get => _BrowseNodeID;
-            set => _BrowseNodeID = value;
-        }
+        //Dictionary<int, OPCTagItem> _BrowseNodeID; 
+        //public Dictionary<int, OPCTagItem> BrowseNodeID
+        //{
+        //    get => _BrowseNodeID;
+        //    set => _BrowseNodeID = value;
+        //}
 
         /// <summary>
         /// FMS에서 수신된 장비 ID
@@ -133,20 +146,20 @@ namespace OPCUAClientClassLib
         /// Publishing enabled for the subscription
         /// </summary>
         private bool _PublishingEnabled = true;
-        public bool PublishingEnabled
-        {
-            get => _PublishingEnabled;
-            set => _PublishingEnabled = value;
-        }
+        //public bool PublishingEnabled
+        //{
+        //    get => _PublishingEnabled;
+        //    set => _PublishingEnabled = value;
+        //}
         /// <summary>
         /// The publishing interval for the subscription
         /// </summary>
         private double _PublishingInterval = 500;        // Default 500
-        public double PublishingInterval
-        {
-            get => _PublishingInterval;
-            set => _PublishingInterval = value;
-        }
+        //public double PublishingInterval
+        //{
+        //    get => _PublishingInterval;
+        //    set => _PublishingInterval = value;
+        //}
 
         private bool _Connected = false;
         public bool Connected
@@ -164,12 +177,15 @@ namespace OPCUAClientClassLib
             }
         }
 
-        private ApplicationInstance _Application;
-        public ApplicationInstance Application
-        {
-            get => _Application;
-            set => _Application = value;
-        }
+        private ApplicationInstance _OPCApplication;
+
+        private List<ItemInfo> _TrackList;
+
+        private Dictionary<string, ItemInfo> _ControlIdx;
+
+        private Dictionary<int, ItemInfo> _ListSite;
+
+        private string _FirstNodeID;
 
         #endregion
 
@@ -200,14 +216,22 @@ namespace OPCUAClientClassLib
         //public delegate void EventHandler(string value);
         //public event EventHandler Subscription_Event = null;
 
-        public OPCUAClient(List<EqpTagItem> dataList, List<ItemInfo> trackList, ApplicationInstance application)
+        public OPCUAClient(
+            List<EqpTagItem> dataList, 
+            List<ItemInfo> trackList, 
+            ApplicationInstance application,
+            Dictionary<string, ItemInfo> controlIndex,
+            Dictionary<int, ItemInfo> listSite)
         {
-            _Application = application;
+            _OPCApplication = application;
+            _TrackList = trackList;
+            _ControlIdx = controlIndex;
+            _ListSite = listSite;
 
             string logPath = ConfigurationManager.AppSettings["LOG_PATH"];
             _Logger = new Logger(logPath, LogMode.Hour);
 
-            LoadTagList(dataList, trackList);
+            LoadTagList(dataList, _TrackList);
         }
 
         /// <summary>
@@ -217,13 +241,14 @@ namespace OPCUAClientClassLib
         /// <param name="user_id"></param>
         /// <param name="user_pw"></param>
         /// <returns></returns>
-        public async Task<bool> ConnectAsync(string connect_uri, string user_id, string user_pw)
+        public async Task ConnectAsync(string connect_uri, string user_id, string user_pw, string firstNodeID)
         {
-            var task1 = Task.Run(() => Connect(connect_uri, user_id, user_pw));
+            _FirstNodeID = firstNodeID;
 
-            bool status = await task1;
+            //Task task = Task.Run(() => Connect(connect_uri, user_id, user_pw));
+            //await task;
 
-            return status;
+            await Task.Run(() => Connect(connect_uri, user_id, user_pw));
         }
 
         /// <summary>
@@ -233,15 +258,15 @@ namespace OPCUAClientClassLib
         /// <param name="user_id"></param>
         /// <param name="user_pw"></param>
         /// <returns></returns>
-        private bool Connect(string connect_uri, string user_id, string user_pw)
-        {
+        private void Connect(string connect_uri, string user_id, string user_pw)
+        {            
             try
             {
                 //
                 DisconnectIfRequired();
 
                 //
-                _LOG_("Connecting...");
+                _LOG_(LogLevel.OPCUA, $"Connecting to [{connect_uri}]");
 
                 // Get the endpoint by connecting to server's discovery endpoint.
                 // Try to find the first endopint without security.
@@ -250,6 +275,9 @@ namespace OPCUAClientClassLib
                 {
                     EndpointDescription endpoint;
                     endpoint = GetEndPoint(connect_uri);
+
+                    _LOG_(LogLevel.OPCUA, $"EndPoint [{endpoint}]");
+
                     if (endpoint != null)
                         ConnectToSelectedEndpoint(endpoint, user_id, user_pw);
                 }
@@ -257,7 +285,7 @@ namespace OPCUAClientClassLib
                 {
                     // 원격 uri접속
                     ConnectWithDiscoveryUrl(connect_uri);
-                }                
+                }
 
                 //EndpointConfiguration endpointConfiguration = EndpointConfiguration.Create(_app_config);
                 //ConfiguredEndpoint endpoint = new ConfiguredEndpoint(null, endpointDescription, endpointConfiguration);
@@ -286,17 +314,13 @@ namespace OPCUAClientClassLib
                 //}
 
                 // Session created successfully.
-                string msg = ($"[{connect_uri}] Connected, SessionName = {_session.SessionName}");
-                _Logger.Write(LogLevel.Info, msg, LogFileName.AllLog);
+                //msg = ($"[{connect_uri}] Connected, SessionName = {_session.SessionName}");
             }
             catch (Exception ex)
             {
                 // Log Error
                 _EX_LOG_(ex);
-                Connected = false;
             }
-
-            return Connected;
         }
 
         private void Disconnect()
@@ -305,7 +329,7 @@ namespace OPCUAClientClassLib
             {
                 if (_session != null)
                 {
-                    _LOG_("Disconnecting...");
+                    _LOG_(LogLevel.OPCUA, "Disconnecting...");
 
                     // Call the disconnect service of the server.
                     _session.Disconnect(SubscriptionCleanupPolicy.Delete, null);
@@ -316,11 +340,11 @@ namespace OPCUAClientClassLib
                     Connected = false;
 
                     // Log Session Disconnected event
-                    _LOG_("Session Disconnected.");
+                    _LOG_(LogLevel.OPCUA, "Session Disconnected.");
                 }
                 else
                 {
-                    _LOG_("Session not created!");
+                    _LOG_(LogLevel.Error, "Session not created!");
                 }
             }
             catch (Exception ex)
@@ -329,7 +353,7 @@ namespace OPCUAClientClassLib
             }
         }
 
-        private void DisconnectIfRequired()
+        public void DisconnectIfRequired()
         {
             if (_session != null)
             {
@@ -341,7 +365,7 @@ namespace OPCUAClientClassLib
         {
             try
             {
-                _session = new Session(_Application);
+                _session = new Session(_OPCApplication);
             }
             catch (Exception ex)
             {
@@ -368,7 +392,7 @@ namespace OPCUAClientClassLib
                 };
 
                 _session.Connect(endpoint, RetryInitialConnect.Yes, null);
-
+                
             }
             else
             {
@@ -419,13 +443,40 @@ namespace OPCUAClientClassLib
 
             lock (this)
             {
+                string msg = string.Empty;
+
                 switch (e.Status)
                 {
                     case ServerConnectionStatus.Disconnected:
-                        UpdateAfterDisconnect();
+                        _LOG_(LogLevel.OPCUA, $"Disconnected to [{_session.EndpointDescription.EndpointUrl}]");
+                        UpdateAfterDisconnect();                                               
                         break;
                     case ServerConnectionStatus.Connected:
                         Connected = true;
+
+                        GetStartNodeID();
+
+                        Dictionary<int, List<BrowsePath>> dictBrowsePath = AddBrowsePath(OPCTagList);
+                        Dictionary<int, List<BrowsePathResult>> dictResultPath = ReadBrowse(dictBrowsePath);
+
+                        if (_TrackList[0].ControlType == enEqpType.CNV)
+                        {
+                            AddConveyorNodeID(dictResultPath, dictBrowsePath);
+                        }
+                        else if (_TrackList[0].ControlType == enEqpType.STC)
+                        {
+                            AddCraneNodeID(dictResultPath, dictBrowsePath, _ControlIdx);
+                        }
+
+                        dictBrowsePath = AddBrowsePath(SubscribeTagList);
+                        dictResultPath = ReadBrowse(dictBrowsePath);
+
+                        SubscribeNodes(dictResultPath, dictBrowsePath, _ListSite, _ControlIdx);
+
+                        OnSubscriptionEvent(_TrackList[0].GroupNo, _session.EndpointDescription.EndpointUrl);
+
+                        _LOG_(LogLevel.OPCUA, $"Connected to [{_session.EndpointDescription.EndpointUrl}]");
+
 
                         // Update ToolStripMenu
                         //connectToolStripMenuItem.Enabled = false;
@@ -461,33 +512,39 @@ namespace OPCUAClientClassLib
 
                         break;
                     case ServerConnectionStatus.ConnectionWarningWatchdogTimeout:
-                    //    // Update status label.
-                    //    toolStripStatusLabel.Text = "Watchdog timed out";
-                    //    //toolStripStatusLabel.Image = global::OPCUAClientClassLib.Properties.Resources.warning;
+                        _LOG_(LogLevel.OPCUA, $"Watchdog timed out to [{_session.EndpointDescription.EndpointUrl}]");
+                        //    // Update status label.
+                        //    toolStripStatusLabel.Text = "Watchdog timed out";
+                        //    //toolStripStatusLabel.Image = global::OPCUAClientClassLib.Properties.Resources.warning;
                         break;
                     case ServerConnectionStatus.ConnectionErrorClientReconnect:
-                    //    // Update status label.
-                    //    toolStripStatusLabel.Text = "Trying to reconnect";
-                    //    //toolStripStatusLabel.Image = global::OPCUAClientClassLib.Properties.Resources.warning;
+                        _LOG_(LogLevel.OPCUA, $"Trying to reconnect to [{_session.EndpointDescription.EndpointUrl}]");
+                        //    // Update status label.
+                        //    toolStripStatusLabel.Text = "Trying to reconnect";
+                        //    //toolStripStatusLabel.Image = global::OPCUAClientClassLib.Properties.Resources.warning;
                         break;
                     case ServerConnectionStatus.ServerShutdownInProgress:
-                    //    // Update status label.
-                    //    toolStripStatusLabel.Text = "Server is shutting down";
-                    //    //toolStripStatusLabel.Image = global::OPCUAClientClassLib.Properties.Resources.warning;
+                        _LOG_(LogLevel.OPCUA, $"Server is shutting down to [{_session.EndpointDescription.EndpointUrl}]");
+                        //    // Update status label.
+                        //    toolStripStatusLabel.Text = "Server is shutting down";
+                        //    //toolStripStatusLabel.Image = global::OPCUAClientClassLib.Properties.Resources.warning;
                         break;
                     case ServerConnectionStatus.ServerShutdown:
-                    //    // Update status label.
-                    //    toolStripStatusLabel.Text = "Server has shut down";
-                    //    //toolStripStatusLabel.Image = global::OPCUAClientClassLib.Properties.Resources.warning;
+                        _LOG_(LogLevel.OPCUA, $"Server has shut down to [{_session.EndpointDescription.EndpointUrl}]");
+                        //    // Update status label.
+                        //    toolStripStatusLabel.Text = "Server has shut down";
+                        //    //toolStripStatusLabel.Image = global::OPCUAClientClassLib.Properties.Resources.warning;
                         break;
                     case ServerConnectionStatus.SessionAutomaticallyRecreated:
-                    //    // Update status label.
-                    //    toolStripStatusLabel.Text = "A new Session was created";
-                    //    //toolStripStatusLabel.Image = global::OPCUAClientClassLib.Properties.Resources.success;
-                    //    // clear controls
-                    //    bClearControls = true;
+                        _LOG_(LogLevel.OPCUA, $"A new Session was created to [{_session.EndpointDescription.EndpointUrl}]");
+                        //    // Update status label.
+                        //    toolStripStatusLabel.Text = "A new Session was created";
+                        //    //toolStripStatusLabel.Image = global::OPCUAClientClassLib.Properties.Resources.success;
+                        //    // clear controls
+                        //    bClearControls = true;
                         break;
                     case ServerConnectionStatus.Connecting:
+                        //_LOG_(LogLevel.OPCUA, $"Trying to Connecting");
                         //    // Update status label.
                         //    EndpointDescription endpoint;
                         //    string endpointUrl;
@@ -554,9 +611,13 @@ namespace OPCUAClientClassLib
             {
                 for (int i = 0; i < trackList.Count; i++)
                 {
-                    if (trackList[i].SiteNo > 50) continue;
+                    if (trackList[i].SiteNo > 300) continue;
+//#if DEBUG
+                    trackno = string.Format($"CNV_{{0}}", trackList[i].SiteNo);
+//#else
+//                    trackno = string.Format($"CNV00{{0:D2}}", trackList[i].SiteNo);
+//#endif
 
-                    trackno = string.Format($"CNV00{{0:D2}}", trackList[i].SiteNo);
 
                     foreach (var itemLv1 in item.Children)
                     {
@@ -638,7 +699,7 @@ namespace OPCUAClientClassLib
                 }
             }
         }
-        #endregion
+#endregion
 
         private void GetAllByNodeIDRecursive(List<EqpTagItem> list, EqpTagItem item)
         {
@@ -665,14 +726,14 @@ namespace OPCUAClientClassLib
             }            
         }
 
-        #region GetStartNodeID
+#region GetStartNodeID
         /// <summary>
         /// OPCServer에 시작 Tag NodeID를 가져온다.
         /// </summary>
-        public void GetStartNodeID(string firstNodeID)
+        private void GetStartNodeID()
         {
             // parse the node id.
-            NodeId startingNodeId = NodeId.Parse(firstNodeID);
+            NodeId startingNodeId = NodeId.Parse(_FirstNodeID);
 
             List<BrowsePath> browsePath = new List<BrowsePath>();
 
@@ -683,17 +744,16 @@ namespace OPCUAClientClassLib
 
             StartNodeID = browerResult[0].Targets[0].TargetId.ToString();
 
-            string msg = string.Format($"[{EQP_ID}] Start NodeID : {StartNodeID}");
-            _Logger.Write(LogLevel.Info, msg, LogFileName.AllLog);
+            _LOG_(LogLevel.OPCUA, $"[{EQP_ID}] Start NodeID : {StartNodeID}");
         }
-        #endregion
+#endregion
 
-        #region GetNodeID
+#region GetNodeID
         /// <summary>
         /// NodeID를 가지고 BrowerName을 가져온다.
         /// </summary>
         /// <param name="nodeid"></param>
-        public void GetNodeID(string nodeid)
+        public void GetBrowerName(string nodeid)
         {
             /// [Browse 1]
             // set up the browse filters.
@@ -718,9 +778,21 @@ namespace OPCUAClientClassLib
 
 
         }
-        #endregion        
 
-        #region [IDisposable Impl.]
+        /// <summary>
+        /// BrowerName에 해당되는 NodeID를 가져온다.
+        /// </summary>
+        /// <param name="brower"></param>
+        /// <returns></returns>
+        public NodeId GetNodeID(string brower)
+        {
+            BaseNode bNode = BrowsedNodeList.Find(x => x.Path == brower);
+            return NodeId.Parse(bNode.NodeId);
+        }
+        
+#endregion
+
+#region [IDisposable Impl.]
         // Track whether Dispose has been called.
         private bool disposed = false;
 
@@ -793,30 +865,31 @@ namespace OPCUAClientClassLib
             // readability and maintainability.
             Dispose(disposing: false);
         }
-        #endregion
+#endregion
 
-        #region [Logger]
+#region [Logger]
 
-        private void _LOG_(string msg)
+        private void _LOG_(LogLevel level, string msg)
         {
-#if DEBUG
-            Console.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss.ffff}, {msg}");
-#endif
-
-
+//#if DEBUG
+//            Console.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss.ffff}, {msg}");
+//#endif
+            _Logger.Write(level, msg, LogFileName.OPCUA);
         }
 
         
 
         private void _EX_LOG_(Exception ex)
         {
-            _LOG_(ex.Message);
-            _LOG_(ex.StackTrace);
+            //_LOG_(ex.Message);
+            //_LOG_(ex.StackTrace);
+            _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+            _Logger.Write(LogLevel.Error, ex.StackTrace, LogFileName.ErrorLog);
         }
 
-        #endregion
+#endregion
 
-        #region GetEndPoint
+#region GetEndPoint
         private EndpointDescription GetEndPoint(string connect_uri)
         {
             CreateSession();
@@ -886,6 +959,131 @@ namespace OPCUAClientClassLib
                 //Cursor = Cursors.Default;
             }
         }
-        #endregion
+#endregion
+
+#region ScanOPCServer
+        public void ScanOPCServer(NodeId nodeToBrowse)
+        {
+            byte[] continuationPoint;
+            List<ReferenceDescription> results;
+
+            BrowsedNodeList.Clear();
+
+            BrowseContext browseContext = new BrowseContext()
+            {
+                BrowseDirection = BrowseDirection.Forward,
+                ReferenceTypeId = ReferenceTypeIds.HierarchicalReferences,
+                IncludeSubtypes = true,
+                NodeClassMask = 0,
+                ResultMask = (uint)BrowseResultMask.All,
+                MaxReferencesToReturn = 100
+            };
+
+            try
+            {
+                
+                // Call browse service.
+                results = _session.Browse(
+                    nodeToBrowse,
+                    browseContext,
+                    out continuationPoint);
+
+
+                foreach (var item in results)
+                {
+                    string nodeName = item.DisplayName.ToString();
+
+                    //if (nodeName == "Types" || nodeName == "Views" || nodeName == "Aliases" || nodeName == "Server") continue;
+
+                    if (!NodeListCheckPass(nodeName)) continue;
+
+                    // Get the data about the parent tree node
+                    //ReferenceDescription parentRefDescription = item;
+
+                    // set nodeid
+                    nodeToBrowse = ExpandedNodeId.ToNodeId(item.NodeId, Session.NamespaceUris);
+
+                    BaseNode parent = new BaseNode();
+                    parent.NodeId = item.NodeId.ToString();
+
+                    BrowseNodesRecursive(parent);
+                }
+
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void BrowseNodesRecursive(BaseNode parent, char path_sep = '.')
+        {
+            byte[] continuationPoint;
+            List<ReferenceDescription> browseResults;
+            NodeId nodeToBrowse;
+
+            BrowseContext browseContext = new BrowseContext()
+            {
+                BrowseDirection = BrowseDirection.Forward,
+                ReferenceTypeId = ReferenceTypeIds.HierarchicalReferences,
+                IncludeSubtypes = true,
+                NodeClassMask = 0,
+                ResultMask = (uint)BrowseResultMask.All,
+                MaxReferencesToReturn = 100
+            };
+
+            nodeToBrowse = NodeId.Parse(parent.NodeId);
+
+            browseResults = _session.Browse(
+                    nodeToBrowse,
+                    browseContext,
+                    out continuationPoint);
+
+            foreach (var node in browseResults)
+            {
+
+                string path = $"{parent.Path}{path_sep}{node.DisplayName.Text}";
+                //if (!WhiteAndBlackListCheckPass(path)) continue;
+
+                BaseNode child = new BaseNode();
+                child.Parent = parent;
+                child.NodeId = node.NodeId.ToString();
+                child.NodeClassString = node.NodeClass.ToString();
+                child.TypeString = node.TypeDefinition.ToString();
+                child.DisplayName = node.DisplayName.Text;
+                child.Path = path;
+                child.BrowseName = child.Path; // node.BrowseName.Name;
+                BrowsedNodeList.Add(child);
+
+
+                //_LOG_($"BrowsedAdded: {child.Path}");
+
+                /* -- METHOD args 들을 browsing 하고 싶다면... 아래 코드 사용하세요
+                 
+                if(child.NodeClassString == "Method")
+                {
+                    //System.Console.WriteLine($"\nMethod: {child.BrowseName}");
+                }
+                else if (child.DisplayName == "InputArguments" || child.DisplayName == "OutputArguments")
+                {
+                    //System.Console.WriteLine($"\nMethod: {child.BrowseName}");
+                    //GetArgumentsAsChildNodes(child, path_sep);
+                }
+
+                */
+
+                //
+                BrowseNodesRecursive(child, path_sep);
+            }
+        }
+
+        private bool NodeListCheckPass(string path)
+        {
+            if (path.StartsWith("Server")) return false;
+            if (path.StartsWith("Aliases")) return false;
+
+            return true;
+        }
+#endregion
+
     }
 }

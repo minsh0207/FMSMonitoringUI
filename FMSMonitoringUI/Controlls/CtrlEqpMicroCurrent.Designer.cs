@@ -33,7 +33,7 @@
             this.opStatus = new System.Windows.Forms.Label();
             this.eqpStatus = new System.Windows.Forms.Label();
             this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
-            this.ctrlMainLeakCheck1 = new FormationMonCtrl.CtrlMainLeakCheck();
+            this.ctrlMainTrayLevel1 = new FormationMonCtrl.CtrlMainTrayLevel1();
             this.groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -96,7 +96,7 @@
             this.elementHost1.Size = new System.Drawing.Size(144, 38);
             this.elementHost1.TabIndex = 5;
             this.elementHost1.Text = "elementHost1";
-            this.elementHost1.Child = this.ctrlMainLeakCheck1;
+            this.elementHost1.Child = this.ctrlMainTrayLevel1;
             // 
             // CtrlEqpMicroCurrent
             // 
@@ -119,6 +119,6 @@
         private System.Windows.Forms.Label opStatus;
         private System.Windows.Forms.Label lbTitle;
         private System.Windows.Forms.Integration.ElementHost elementHost1;
-        private FormationMonCtrl.CtrlMainLeakCheck ctrlMainLeakCheck1;
+        private FormationMonCtrl.CtrlMainTrayLevel1 ctrlMainTrayLevel1;
     }
 }

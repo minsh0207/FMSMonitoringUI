@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Novasoft.Logger;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -46,7 +47,7 @@ namespace OPCUAClientClassLib
 
             if (_session == null)
             {
-                _LOG_("Session not connected!");
+                _LOG_(LogLevel.Error, "Session not connected!");
                 return 1;
             }
 
@@ -80,7 +81,7 @@ namespace OPCUAClientClassLib
 
             if (_session == null)
             {
-                _LOG_("Session not connected!");
+                _LOG_(LogLevel.OPCUA, "Session not connected!");
                 return null;
             }
 

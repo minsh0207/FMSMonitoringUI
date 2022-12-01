@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Novasoft.Logger;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,7 @@ namespace OPCUAClientClassLib
         {
             if (Connected == false)
             {
-                _LOG_("Session not connected!");
+                _LOG_(LogLevel.OPCUA, "Session not connected!");
                 return null;
             }
             Dictionary<int, List<BrowsePathResult>> dicResult = new Dictionary<int, List<BrowsePathResult>>();
@@ -28,7 +29,7 @@ namespace OPCUAClientClassLib
             {
                 if (pathsToTranslate[i] == null || pathsToTranslate[i].Count == 0)
                 {
-                    _LOG_("List Of Tags To Read Is Empty.");
+                    _LOG_(LogLevel.OPCUA, "List Of Tags To Read Is Empty.");
                     return null;
                 }
 
@@ -46,13 +47,13 @@ namespace OPCUAClientClassLib
         {
             if (Connected == false)
             {
-                _LOG_("Session not connected!");
+                _LOG_(LogLevel.Error, "Session not connected!");
                 return null;
             }
 
             if (pathsToTranslate == null || pathsToTranslate.Count == 0)
             {
-                _LOG_("List Of Tags To Read Is Empty.");
+                _LOG_(LogLevel.Error, "List Of Tags To Read Is Empty.");
                 return null;
             }
 
@@ -98,13 +99,13 @@ namespace OPCUAClientClassLib
         {
             if (nodesToRead == null || nodesToRead.Count == 0)
             {
-                _LOG_("List Of Tags To Read Is Empty..");
+                _LOG_(LogLevel.Error, "List Of Tags To Read Is Empty..");
                 return null;
             }
 
             if (Connected == false)
             {
-                _LOG_("Session not connected!!");
+                _LOG_(LogLevel.Error, "Session not connected!!");
                 return null;
             }
 

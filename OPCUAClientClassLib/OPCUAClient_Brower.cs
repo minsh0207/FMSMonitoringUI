@@ -12,6 +12,15 @@ namespace OPCUAClientClassLib
 {
     public partial class OPCUAClient
     {
+        List<BaseNode> _nodelist_browsed = new List<BaseNode>();
+        public List<BaseNode> BrowsedNodeList
+        {
+            get
+            {
+                return _nodelist_browsed;
+            }
+        }
+
         private BrowsePath GetBrowsePath(NodeId startingNodeId, IList<QualifiedName> qnames)
         {
             BrowsePath browsePath = new BrowsePath();
@@ -74,26 +83,36 @@ namespace OPCUAClientClassLib
             List<ReadValueId> nodesToRead = new List<ReadValueId>();
             _ConveyorNodeID = new Dictionary<int, List<ReadValueId>>();
 
-            for (int i = 0; i < dictResultPath.Count(); i++)
+            try
             {
-                List<BrowsePathResult> browerResult = dictResultPath[i];
-                List<BrowsePath> browsePath = dictBrowsePath[i];
-
-                for (int j = 0; j < browerResult.Count; j++)
+                for (int i = 0; i < dictResultPath.Count(); i++)
                 {
-                    string sNodeId = browerResult[j].Targets[0].TargetId.ToString();
-                    string[] taglevel = browsePath[j].ToString().Replace("/2:", ".").Split('.');
+                    List<BrowsePathResult> browerResult = dictResultPath[i];
+                    List<BrowsePath> browsePath = dictBrowsePath[i];
 
-                    int cv_no = int.Parse(taglevel[2].Substring(3));
-
-                    nodesToRead.Add(new ReadValueId() { NodeId = NodeId.Parse(sNodeId), AttributeId = Attributes.Value });
-
-                    if (taglevel[taglevel.Count() - 1] == "MagazineCommand")
+                    for (int j = 0; j < browerResult.Count; j++)
                     {
-                        _ConveyorNodeID.Add(cv_no, nodesToRead);
-                        nodesToRead = new List<ReadValueId>();
+                        string sNodeId = browerResult[j].Targets[0].TargetId.ToString();
+                        string[] taglevel = browsePath[j].ToString().Replace("/2:", ".").Split('.');
+//#if DEBUG
+                        string[] temp_no = taglevel[2].ToString().Split('_');
+                        int cv_no = int.Parse(temp_no[1]);
+//#else
+//                    int cv_no = int.Parse(taglevel[2].Substring(3));
+//#endif
+                        nodesToRead.Add(new ReadValueId() { NodeId = NodeId.Parse(sNodeId), AttributeId = Attributes.Value });
+
+                        if (taglevel[taglevel.Count() - 1] == "MagazineCommand")
+                        {
+                            _ConveyorNodeID.Add(cv_no, nodesToRead);
+                            nodesToRead = new List<ReadValueId>();
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                _EX_LOG_(ex);
             }
         }
 

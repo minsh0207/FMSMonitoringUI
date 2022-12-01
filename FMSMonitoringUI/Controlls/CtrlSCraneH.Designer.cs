@@ -33,19 +33,19 @@
             // lbRail
             // 
             this.lbRail.Location = new System.Drawing.Point(3, 13);
-            this.lbRail.Size = new System.Drawing.Size(261, 8);
+            this.lbRail.Size = new System.Drawing.Size(231, 8);
             // 
             // cranebox
             // 
             this.cranebox.Location = new System.Drawing.Point(3, 4);
             // 
-            // SCraneH
+            // CtrlSCraneH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(5F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CraneDirection = ControlGallery.EnumCraneDirection.Right;
-            this.Name = "SCraneH";
-            this.Size = new System.Drawing.Size(280, 32);
+            this.Name = "CtrlSCraneH";
+            this.Size = new System.Drawing.Size(250, 32);
             this.ResumeLayout(false);
 
         }

@@ -1,6 +1,6 @@
 ﻿namespace FMSMonitoringUI.Controlls
 {
-    partial class CtrlEqpLeakCheck
+    partial class CtrlEqpHPC
     {
         /// <summary> 
         /// 필수 디자이너 변수입니다.
@@ -33,7 +33,7 @@
             this.opStatus = new System.Windows.Forms.Label();
             this.eqpStatus = new System.Windows.Forms.Label();
             this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
-            this.ctrlMainTrayLevel1 = new FormationMonCtrl.CtrlMainTrayLevel1();
+            this.ctrlMainTrayLevel21 = new FormationMonCtrl.CtrlMainTrayLevel2();
             this.groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,7 +51,7 @@
             this.groupBox.Margin = new System.Windows.Forms.Padding(0);
             this.groupBox.Name = "groupBox";
             this.groupBox.Padding = new System.Windows.Forms.Padding(0);
-            this.groupBox.Size = new System.Drawing.Size(188, 78);
+            this.groupBox.Size = new System.Drawing.Size(111, 121);
             this.groupBox.TabIndex = 0;
             this.groupBox.TabStop = false;
             // 
@@ -60,19 +60,19 @@
             this.lbTitle.AutoSize = true;
             this.lbTitle.Location = new System.Drawing.Point(4, 11);
             this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(30, 15);
+            this.lbTitle.Size = new System.Drawing.Size(31, 15);
             this.lbTitle.TabIndex = 4;
-            this.lbTitle.Text = "LCK";
+            this.lbTitle.Text = "HPC";
             // 
             // opStatus
             // 
             this.opStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.opStatus.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.opStatus.ForeColor = System.Drawing.Color.Black;
-            this.opStatus.Location = new System.Drawing.Point(98, 13);
+            this.opStatus.Location = new System.Drawing.Point(36, 29);
             this.opStatus.Margin = new System.Windows.Forms.Padding(1);
             this.opStatus.Name = "opStatus";
-            this.opStatus.Size = new System.Drawing.Size(84, 19);
+            this.opStatus.Size = new System.Drawing.Size(70, 19);
             this.opStatus.TabIndex = 3;
             this.opStatus.Text = "Processing";
             this.opStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -81,7 +81,7 @@
             // 
             this.eqpStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.eqpStatus.ForeColor = System.Drawing.Color.Black;
-            this.eqpStatus.Location = new System.Drawing.Point(69, 13);
+            this.eqpStatus.Location = new System.Drawing.Point(7, 29);
             this.eqpStatus.Margin = new System.Windows.Forms.Padding(1);
             this.eqpStatus.Name = "eqpStatus";
             this.eqpStatus.Size = new System.Drawing.Size(26, 19);
@@ -91,21 +91,21 @@
             // 
             // elementHost1
             // 
-            this.elementHost1.Location = new System.Drawing.Point(6, 35);
+            this.elementHost1.Location = new System.Drawing.Point(5, 51);
             this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Size = new System.Drawing.Size(177, 38);
+            this.elementHost1.Size = new System.Drawing.Size(102, 66);
             this.elementHost1.TabIndex = 5;
             this.elementHost1.Text = "elementHost1";
-            this.elementHost1.Child = this.ctrlMainTrayLevel1;
+            this.elementHost1.Child = this.ctrlMainTrayLevel21;
             // 
-            // CtrlEqpLeakCheck
+            // CtrlEqpHPC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.Controls.Add(this.groupBox);
-            this.Name = "CtrlEqpLeakCheck";
-            this.Size = new System.Drawing.Size(195, 77);
+            this.Name = "CtrlEqpHPC";
+            this.Size = new System.Drawing.Size(149, 133);
             this.groupBox.ResumeLayout(false);
             this.groupBox.PerformLayout();
             this.ResumeLayout(false);
@@ -119,6 +119,6 @@
         private System.Windows.Forms.Label opStatus;
         private System.Windows.Forms.Label lbTitle;
         private System.Windows.Forms.Integration.ElementHost elementHost1;
-        private FormationMonCtrl.CtrlMainTrayLevel1 ctrlMainTrayLevel1;
+        private FormationMonCtrl.CtrlMainTrayLevel2 ctrlMainTrayLevel21;
     }
 }

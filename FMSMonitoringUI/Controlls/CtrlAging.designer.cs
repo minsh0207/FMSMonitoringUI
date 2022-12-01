@@ -1595,6 +1595,7 @@
             this.Controls.Add(this.AgingTab);
             this.Name = "CtrlAging";
             this.Size = new System.Drawing.Size(1920, 945);
+            this.Load += new System.EventHandler(this.CtrlAging_Load);
             this.AgingTab.ResumeLayout(false);
             this.tpHTAging.ResumeLayout(false);
             this.tpLTAging1.ResumeLayout(false);

@@ -35,6 +35,10 @@ namespace FMSMonitoringUI
 
         private Logger _Logger; // { get; set; }
 
+        CtrlMain ctrlMain = null;
+        CtrlAging ctrlAging = null;
+        CtrlFormation ctrlFormation = null;
+
         #endregion
         public MainForm(ApplicationInstance applicationInstance)
         {
@@ -59,7 +63,10 @@ namespace FMSMonitoringUI
             FormBorderStyle = FormBorderStyle.Sizable;
             WindowState = FormWindowState.Maximized;
 
-            
+
+            ctrlMain = new CtrlMain(_Application);
+            ctrlAging = new CtrlAging();
+            ctrlFormation = new CtrlFormation();
 
             Title_ClickEvnet("Main");
 
@@ -74,27 +81,31 @@ namespace FMSMonitoringUI
         /// <param name="title"></param>
         private void Title_ClickEvnet(string title)
         {
+            if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
+
             switch (title)
             {
                 case "Main":
-                    CtrlMain ctrlMain = new CtrlMain(_Application);
-                    if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls[0].Dispose();
-                    if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
+
+                    //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls[0].Dispose();
+                    //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
                     scMainPanel.Panel2.Controls.Add(ctrlMain);
                     break;
                 case "Aging":
-                    CtrlAging ctrlAging = new CtrlAging();
-                    if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls[0].Dispose();
-                    if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
+                   
+                    //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls[0].Dispose();
+                    //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
                     scMainPanel.Panel2.Controls.Add(ctrlAging);
                     break;
                 case "Formation":
-                    CtrlFormation ctrlFormation = new CtrlFormation();
-                    if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls[0].Dispose();
-                    if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
+                    
+                    //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls[0].Dispose();
+                    //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
                     scMainPanel.Panel2.Controls.Add(ctrlFormation);
                     break;
             }
+
+            
 
             _Logger.Write(LogLevel.Info, $"MonitoringUI - {title}", LogFileName.AllLog);
         }
@@ -132,18 +143,18 @@ namespace FMSMonitoringUI
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //string node = "ns=2;i=3562";
-            //WriteValueInfo info = new WriteValueInfo()
-            //{
-            //    Value = 20,
-            //    DataType = BuiltInType.UInt16,
-            //    NodeId = NodeId.Parse(node)
-            //};
+        //private void button1_Click(object sender, EventArgs e)
+        //{
+        //    //string node = "ns=2;i=3562";
+        //    //WriteValueInfo info = new WriteValueInfo()
+        //    //{
+        //    //    Value = 20,
+        //    //    DataType = BuiltInType.UInt16,
+        //    //    NodeId = NodeId.Parse(node)
+        //    //};
 
-            //_clientFMS.Write(info);
-        }
+        //    //_clientFMS.Write(info);
+        //}
 
         #region language세팅
         private void SetLocalizaion(enLoginLanguage enLanguage)
@@ -163,5 +174,10 @@ namespace FMSMonitoringUI
             LocalLanguage.resxLanguage = new ResourceManager("MonitoringUI.WinFormRoot", typeof(WinFormRoot).Assembly);
         }
         #endregion
+
+        private void barMain_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

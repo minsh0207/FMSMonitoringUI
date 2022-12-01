@@ -7,13 +7,14 @@ namespace Novasoft.Logger
 {
     public enum LogLevel
     {
-        Info = 0,
-        Send = 1,
-        Write = 2,
-        Receive = 3,
-        Read = 4,
-        Warning = 5,
-        Error = 6
+        Info,
+        Send,
+        Write,
+        Receive,
+        Read,
+        Warning,
+        OPCUA,
+        Error
     }
 
     public enum LogMode
@@ -30,8 +31,8 @@ namespace Novasoft.Logger
         public const string TestLog = "TestLog";                //Test Log 파일...
         public const string DataException = "DBException";      //DB Exception 관련 기록 파일
         public const string AllLog = "AllLog";                  //모든 Log 기록 파일
+        public const string OPCUA = "OPCUA";                    // OPCUA에 대한 기록 파일
         public const string ErrorLog = "ErrorLog";              //Error에 대한 모든 기록 파일
-
         public const string SqlLog = "SQL_LOG";                  //SQL 실행시 Log 기록
     }
 
@@ -64,6 +65,12 @@ namespace Novasoft.Logger
         public void Write(LogLevel level, string logText, string strLogFileName)
         {
             //Operation FIle이 아닐 경우 Operation 파일에 추가
+            if (strLogFileName == LogFileName.OPCUA)
+            {
+                this._logger.Add(level, logText, LogFileName.OPCUA);
+                return;
+            }
+
             if (strLogFileName != LogFileName.AllLog)
             {
                 this._logger.Add(level, logText, LogFileName.AllLog);

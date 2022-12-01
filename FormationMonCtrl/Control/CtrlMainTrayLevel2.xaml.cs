@@ -23,11 +23,11 @@ using System.ComponentModel;
 //===================================================================
 namespace FormationMonCtrl
 {
-    #region [Class CtrlMainLeakCheck]
+    #region [Class CtrlMainTrayLevel2]
     /////////////////////////////////////////////////////////////////////
     //	Class:  CtrlFormationBoxHPC
     //===================================================================
-    public partial class CtrlMainLeakCheck : UserControl
+    public partial class CtrlMainTrayLevel2 : UserControl
     {
         #region [Variable]
         CBoxObject[] m_boBoxObject;
@@ -40,12 +40,12 @@ namespace FormationMonCtrl
         /////////////////////////////////////////////////////////////////////
         //	Constructor
         //===================================================================
-        public CtrlMainLeakCheck()
+        public CtrlMainTrayLevel2()
         {
             // InitializeComponent
             InitializeComponent();
 
-            m_boBoxObject = new CBoxObject[1];
+            m_boBoxObject = new CBoxObject[2];
             for (int nCnt = 0; nCnt < m_boBoxObject.Length; nCnt++)
             {
                 m_boBoxObject[nCnt] = new CBoxObject();
@@ -55,6 +55,12 @@ namespace FormationMonCtrl
             // Display영역 추가
             m_boBoxObject[0].m_borDisplayObject = borBox01_Info;
             m_boBoxObject[0].m_txtDisplayInfo = txtBox01_Info;
+
+            //m_boBoxObject[1].m_borBoxObject = borBox02;
+            //m_boBoxObject[1].m_txtObject = txtBox02;
+            // Display영역 추가
+            m_boBoxObject[1].m_borDisplayObject = borBox02_Info;
+            m_boBoxObject[1].m_txtDisplayInfo = txtBox02_Info;
         }
         #endregion
 
@@ -119,7 +125,7 @@ namespace FormationMonCtrl
         #region [Route Event]
         // Routed Event
         // 이 이벤트가 발생하면 사용자의 클릭 상자 항목값 인수가 1부터 상자의 개수, 박스 번호는 아래에서 위로 증가
-        public static readonly RoutedEvent BoxClickedEvent = EventManager.RegisterRoutedEvent("BoxClicked", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(CtrlMainLeakCheck));
+        public static readonly RoutedEvent BoxClickedEvent = EventManager.RegisterRoutedEvent("BoxClicked", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(CtrlMainTrayLevel2));
 
 		#region [Box Clicked Event]
 		/////////////////////////////////////////////////////////////////////
@@ -288,10 +294,11 @@ namespace FormationMonCtrl
         /////////////////////////////////////////////////////////////////////
         //	Set Box
         //===================================================================
-        public void setBox(string trayID)
+        public void setBox(string trayIDL1, string trayIDL2)
         {
             int nIndex = 0;
-            m_boBoxObject[nIndex++].m_txtDisplayInfo.Text = trayID;
+            m_boBoxObject[nIndex++].m_txtDisplayInfo.Text = trayIDL1;
+            m_boBoxObject[nIndex++].m_txtDisplayInfo.Text = trayIDL2;
         }
         #endregion
         #endregion

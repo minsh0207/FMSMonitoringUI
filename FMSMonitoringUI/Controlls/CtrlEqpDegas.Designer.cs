@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.groupBox = new System.Windows.Forms.GroupBox();
-            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
-            this.ctrlMainLeakCheck1 = new FormationMonCtrl.CtrlMainLeakCheck();
             this.lbTitle = new System.Windows.Forms.Label();
             this.opStatus = new System.Windows.Forms.Label();
             this.eqpStatus = new System.Windows.Forms.Label();
+            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
+            this.ctrlMainTrayLevel21 = new FormationMonCtrl.CtrlMainTrayLevel2();
             this.groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,15 +55,6 @@
             this.groupBox.TabIndex = 0;
             this.groupBox.TabStop = false;
             // 
-            // elementHost1
-            // 
-            this.elementHost1.Location = new System.Drawing.Point(6, 56);
-            this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Size = new System.Drawing.Size(177, 38);
-            this.elementHost1.TabIndex = 5;
-            this.elementHost1.Text = "elementHost1";
-            this.elementHost1.Child = this.ctrlMainLeakCheck1;
-            // 
             // lbTitle
             // 
             this.lbTitle.AutoSize = true;
@@ -78,7 +69,7 @@
             this.opStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.opStatus.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.opStatus.ForeColor = System.Drawing.Color.Black;
-            this.opStatus.Location = new System.Drawing.Point(98, 33);
+            this.opStatus.Location = new System.Drawing.Point(98, 11);
             this.opStatus.Margin = new System.Windows.Forms.Padding(1);
             this.opStatus.Name = "opStatus";
             this.opStatus.Size = new System.Drawing.Size(84, 19);
@@ -90,13 +81,22 @@
             // 
             this.eqpStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.eqpStatus.ForeColor = System.Drawing.Color.Black;
-            this.eqpStatus.Location = new System.Drawing.Point(69, 33);
+            this.eqpStatus.Location = new System.Drawing.Point(69, 11);
             this.eqpStatus.Margin = new System.Windows.Forms.Padding(1);
             this.eqpStatus.Name = "eqpStatus";
             this.eqpStatus.Size = new System.Drawing.Size(26, 19);
             this.eqpStatus.TabIndex = 2;
             this.eqpStatus.Text = "R";
             this.eqpStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // elementHost1
+            // 
+            this.elementHost1.Location = new System.Drawing.Point(6, 33);
+            this.elementHost1.Name = "elementHost1";
+            this.elementHost1.Size = new System.Drawing.Size(177, 61);
+            this.elementHost1.TabIndex = 5;
+            this.elementHost1.Text = "elementHost1";
+            this.elementHost1.Child = this.ctrlMainTrayLevel21;
             // 
             // CtrlEqpDegas
             // 
@@ -119,6 +119,6 @@
         private System.Windows.Forms.Label opStatus;
         private System.Windows.Forms.Label lbTitle;
         private System.Windows.Forms.Integration.ElementHost elementHost1;
-        private FormationMonCtrl.CtrlMainLeakCheck ctrlMainLeakCheck1;
+        private FormationMonCtrl.CtrlMainTrayLevel2 ctrlMainTrayLevel21;
     }
 }

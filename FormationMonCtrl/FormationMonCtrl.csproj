@@ -69,8 +69,11 @@
     <Compile Include="Control\CtrlFormationBoxCHG.xaml.cs">
       <DependentUpon>CtrlFormationBoxCHG.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Control\CtrlMainLeakCheck.xaml.cs">
-      <DependentUpon>CtrlMainLeakCheck.xaml</DependentUpon>
+    <Compile Include="Control\CtrlMainTrayLevel1.xaml.cs">
+      <DependentUpon>CtrlMainTrayLevel1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\CtrlMainTrayLevel2.xaml.cs">
+      <DependentUpon>CtrlMainTrayLevel2.xaml</DependentUpon>
     </Compile>
     <Compile Include="Control\CtrlMainPacing.xaml.cs">
       <DependentUpon>CtrlMainPacing.xaml</DependentUpon>
@@ -94,7 +97,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Control\CtrlMainLeakCheck.xaml">
+    <Page Include="Control\CtrlMainTrayLevel1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Control\CtrlMainTrayLevel2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -16,6 +16,7 @@ using MySql.Data.MySqlClient;
 using System.Reflection;
 using DBHandler;
 using MySqlX.XDevAPI;
+using Novasoft.Logger;
 
 namespace MonitoringUI.Monitoring
 {
@@ -36,17 +37,28 @@ namespace MonitoringUI.Monitoring
 
 
             // Timer 
-            //m_timer = new DispatcherTimer();
             //m_timer.Tick += new EventHandler(OnTimer);
-            m_timer.Tick += new EventHandler(OnTimer);
-            m_timer.Start();
+            //m_timer.Start();
 
-            ctrlButtonDataView.Click += CtrlButtonDataView_Click;
+            //ctrlButtonDataView.Click += CtrlButtonDataView_Click;
 
-            this.Disposed += CtrlRTAging_Disposed;
+            //this.Disposed += CtrlRTAging_Disposed;
 
-            _mysql = new MySqlManager(ConfigurationManager.ConnectionStrings["DB_CONNECTION_STRING"].ConnectionString);
+            //_mysql = new MySqlManager(ConfigurationManager.ConnectionStrings["DB_CONNECTION_STRING"].ConnectionString);
         }
+
+        #region CtrlAging_Load
+        /// <summary>
+        /// Total MonitoringUI
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CtrlAging_Load(object sender, EventArgs e)
+        {
+            //string log = $"Aging Monitoring";
+            //_Logger.Write(LogLevel.Info, log, LogFileName.AllLog);
+        }
+        #endregion
 
         private void CtrlRTAging_Disposed(object sender, EventArgs e)
         {

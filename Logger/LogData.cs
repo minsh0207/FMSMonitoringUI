@@ -69,6 +69,9 @@ namespace Novasoft.Logger
                 case LogLevel.Warning:
                     sb.Append("[WARN] ");
                     break;
+                case LogLevel.OPCUA:
+                    sb.Append("[OPCUA] ");
+                    break;
                 case LogLevel.Error:
                     sb.Append("[EXCP] ");
                     break;

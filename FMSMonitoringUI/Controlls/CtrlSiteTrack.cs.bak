@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-//using System.Windows.Shapes;
-using UnifiedAutomation.UaBase;
-using UnifiedAutomation.UaGds;
 
 namespace ControlGallery
 {
@@ -253,16 +247,18 @@ namespace ControlGallery
             }
         }
 
-        string[] _siteTextDisp;
-        [DisplayName("SiteText Disp"), Description("SiteNo=SiteText"), Category("UBI Property")]
-        public string[] SiteTextDisp
+        string[] _siteNoDisp;
+        [DisplayName("SiteNo Display"), Description("트랙에 있는 Site Box에 Text입력시 사용함"), Category("UBI Property")]
+        public string[] siteNoDisp
         {
-            get { return _siteTextDisp; }
+            get { return _siteNoDisp; }
             set
             {
-                if (value != _siteTextDisp)
+                if (value != _siteNoDisp)
                 {
-                    _siteTextDisp = value;
+                    _siteNoDisp = value;
+                    CalcSiteRects();
+                    Refresh();
                 }
             }
         }
@@ -312,7 +308,7 @@ namespace ControlGallery
         private void CalcSiteRects()
         {
             if (_siteBoxes == null || _siteBoxes.Length <= 0) return;
-                        
+
             for (int i = 0; i < _siteBoxes.Length; i++)
             {
 
@@ -363,6 +359,7 @@ namespace ControlGallery
                 _siteBoxes[i].DeviceInfo.SetData(PLCNo, CVPLCListDeviceID, _siteBoxes[i].SiteNo);
 
             }
+
         }
 
         #endregion
@@ -426,7 +423,6 @@ namespace ControlGallery
                             if (sitebox.SiteNo > 0)
                             {
                                 g.DrawString((sitebox.SiteNo).ToString(), this.Font, Brushes.Black, sitebox.Rect);
-
                             }
                         }
                     }
@@ -437,18 +433,6 @@ namespace ControlGallery
                 using (Pen p = new Pen(SiteBorderColor))
                 {
                     if (!_isControled) p.DashStyle = System.Drawing.Drawing2D.DashStyle.DashDot; // 내꺼 아님
-
-                    Dictionary<int, string> siteTitle = new Dictionary<int, string>();
-
-                    if (SiteTextDisp != null)
-                    {
-                        foreach (var item in SiteTextDisp)
-                        {
-                            string[] title = item.Split('=');
-                            siteTitle.Add(int.Parse(title[0].ToString()), title[1].ToString());
-                        }
-                    }                    
-
                     foreach (SiteBox sitebox in _siteBoxes)
                     {
                         using (SolidBrush b = new SolidBrush(GetStatusColor(sitebox.DeviceInfo.DeviceStatus, SiteBoxColor, sitebox.SiteNo)))
@@ -459,31 +443,8 @@ namespace ControlGallery
                             if (IsUpperStage)
                             {
                                 Rectangle r = sitebox.Rect;
+                                r.Inflate(-2, -2);
                                 g.DrawRectangle(p, r);
-                            }
-
-                            if (siteTitle.ContainsKey(sitebox.SiteNo))
-                            {
-                                Rectangle rectangle = new Rectangle();
-
-                                switch (SiteNoDirection)
-                                {
-                                    case SiteTrackDirection.LeftToRight:
-                                        rectangle = new Rectangle(sitebox.Rect.X + 10, sitebox.Rect.Y + 10, 0, 0);
-                                        break;
-
-                                    case SiteTrackDirection.RightToLeft:
-                                        break;
-
-                                    case SiteTrackDirection.TopToBottom:
-                                        rectangle = new Rectangle(10, sitebox.Rect.Y + 10, 0, 0);
-                                        break;
-
-                                    case SiteTrackDirection.BottomToTop:
-                                        break;
-                                }
-
-                                g.DrawString(siteTitle[sitebox.SiteNo], this.Font, Brushes.White, rectangle);
                             }
                         }
                     }

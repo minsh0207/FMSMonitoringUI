@@ -208,7 +208,8 @@ namespace ControlGallery
             {
                 case EnumCraneDirection.Left:
                 case EnumCraneDirection.Right:
-                    lbRail.Width = DisplayRectangle.Width - lbRail.Location.X - 16;
+                    //lbRail.Width = DisplayRectangle.Width - lbRail.Location.X - 16;
+                    lbRail.Width = DisplayRectangle.Width - lbRail.Location.X - 5;
                     break;
 
                 case EnumCraneDirection.Up:

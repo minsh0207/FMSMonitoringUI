@@ -300,7 +300,7 @@ namespace ControlGallery
             //
             if (status.HasFlag(EnumDeviceStatus.StationReady))
             {
-                if (status.HasFlag(EnumDeviceStatus.TrayOn)) return Color.Green;
+                if (status.HasFlag(EnumDeviceStatus.TrayOn)) return Color.SpringGreen;
                 else return Color.Yellow;
             }
 
