@@ -76,6 +76,25 @@ namespace DBHandler
             }
         }
 
+        public DataSet SelectRackInfo(string rackid)
+        {
+            DataSet ds = new DataSet();
+
+            using (MySqlConnection conn = new MySqlConnection(_connectionString))
+            {
+                string where = string.Format("rack_id = '{0}'", rackid);
+
+                //tb_mst_aging 전체 데이터를 조회합니다.            
+                string selectQuery = string.Format($"SELECT * FROM fms_v.tb_mst_aging WHERE {where}");
+
+                MySqlDataAdapter dataAdapter = new MySqlDataAdapter(selectQuery, conn);
+
+                dataAdapter.Fill(ds);
+
+                return ds;
+            }
+        }
+
         /// <summary>
         /// tb_mst_aging Table에 값을 Update시킨다.
         /// </summary>

@@ -26,6 +26,9 @@ namespace AgingControls
         //public static Brush RackStatusBrush_Empty = new SolidBrush(Color.FromArgb(66, 73, 89));
         //20190409 KJY - Empty 흰색으로
         public static Brush RackStatusBrush_Empty = Brushes.White;
+        //20221205 MSH - 바탱색으로 변경
+        //public static Brush RackStatusBrush_Empty = new SolidBrush(Color.FromArgb(27, 27, 27));
+
         //public static Brush RackStatusBrush_Empty_fg = Brushes.White;
         // White 너무 튄다.
         public static Brush RackStatusBrush_Empty_fg = Brushes.Black;

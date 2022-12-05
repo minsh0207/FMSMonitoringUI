@@ -1,6 +1,6 @@
 ﻿namespace FMSMonitoringUI.Controlls
 {
-    partial class CtrlMain
+    partial class CtrlMonitoring
     {
         /// <summary> 
         /// 필수 디자이너 변수입니다.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CtrlMain));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CtrlMonitoring));
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -261,6 +261,7 @@
             this.ctrlSCraneH4 = new ControlGallery.CtrlSCraneH();
             this.craneCarriageSmall2 = new ControlGallery.CraneCarriageSmall(this.components);
             this.craneCarriageSmall3 = new ControlGallery.CraneCarriageSmall(this.components);
+            this.m_timer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -3988,7 +3989,7 @@
             this.craneCarriageSmall3.Text = "C";
             this.craneCarriageSmall3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // CtrlMain
+            // CtrlMonitoring
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -4208,7 +4209,7 @@
             this.Controls.Add(this.ctrlEqpLTAging1);
             this.Controls.Add(this.ctrlEqpLTAging2);
             this.Controls.Add(this.ctrlEqpCharger1);
-            this.Name = "CtrlMain";
+            this.Name = "CtrlMonitoring";
             this.Size = new System.Drawing.Size(1899, 995);
             this.Tag = "LCK";
             this.Load += new System.EventHandler(this.CtrlMain_Load);
@@ -4575,5 +4576,6 @@
         private ControlGallery.CtrlSCraneH ctrlSCraneH4;
         private ControlGallery.CraneCarriageSmall craneCarriageSmall2;
         private ControlGallery.CraneCarriageSmall craneCarriageSmall3;
+        private System.Windows.Forms.Timer m_timer;
     }
 }

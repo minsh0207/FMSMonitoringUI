@@ -17,6 +17,7 @@ using System.Linq;
 using System.Security.Policy;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 using System.Windows.Interop;
 using UnifiedAutomation.UaBase;
@@ -24,7 +25,7 @@ using UnifiedAutomation.UaClient;
 
 namespace FMSMonitoringUI.Controlls
 {
-    public partial class CtrlMain : UserControlRoot
+    public partial class CtrlMonitoring : UserControlRoot
     {
         private OPCUAClient[] _clientFMS;
 
@@ -60,11 +61,15 @@ namespace FMSMonitoringUI.Controlls
         //}
 
         #region CtrlMain
-        public CtrlMain(ApplicationInstance applicationInstance)
+        public CtrlMonitoring(ApplicationInstance applicationInstance)
         {
             InitializeComponent();
 
             _OPCApplication = applicationInstance;
+
+            // Timer 
+            m_timer.Tick += new EventHandler(OnTimer);
+            m_timer.Stop();
 
             string logPath = ConfigurationManager.AppSettings["LOG_PATH"];
             _Logger = new Logger(logPath, LogMode.Hour);
@@ -83,6 +88,15 @@ namespace FMSMonitoringUI.Controlls
             _Logger.Write(LogLevel.Info, msg, LogFileName.AllLog);
 
             InitMonitoring();
+        }
+        #endregion
+
+        #region MonitoringTimer
+        public void MonitoringTimer(bool onoff)
+        {
+            // Timer
+            if (onoff) m_timer.Start();
+            else m_timer.Stop();
         }
         #endregion
 
@@ -319,6 +333,26 @@ namespace FMSMonitoringUI.Controlls
             _Logger.Write(LogLevel.Info, "Initialize the Controls", LogFileName.AllLog);
 
             return groupCtrl;
+        }
+        #endregion
+
+        #region OnTimer
+        private void OnTimer(object sender, EventArgs e)
+        {
+            try
+            {
+                m_timer.Stop();
+
+                //Task task = LoadChargerRackData();
+
+                if (m_timer.Interval != 5000)
+                    m_timer.Interval = 5000;
+                m_timer.Start();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(string.Format("[Exception:OnTimer] {0}", ex.ToString()));
+            }
         }
         #endregion
 

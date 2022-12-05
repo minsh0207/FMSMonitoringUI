@@ -17,6 +17,9 @@ using System.Reflection;
 using DBHandler;
 using MySqlX.XDevAPI;
 using Novasoft.Logger;
+using System.Threading;
+using FMSMonitoringUI.Monitoring;
+using OPCUAClientClassLib;
 
 namespace MonitoringUI.Monitoring
 {
@@ -33,20 +36,19 @@ namespace MonitoringUI.Monitoring
         {
             InitializeComponent();
             InitTag();
-            initAgingRack();
-
+            InitAgingRack();
+            InitGridView();
 
             // Timer 
-            //m_timer.Tick += new EventHandler(OnTimer);
-            //m_timer.Start();
+            m_timer.Tick += new EventHandler(OnTimer);
+            m_timer.Stop();
 
-            //ctrlButtonDataView.Click += CtrlButtonDataView_Click;
+            _mysql = new MySqlManager(ConfigurationManager.ConnectionStrings["DB_CONNECTION_STRING"].ConnectionString);
 
-            //this.Disposed += CtrlRTAging_Disposed;
+            ctrlButtonDataView.Click += CtrlButtonDataView_Click;
 
-            //_mysql = new MySqlManager(ConfigurationManager.ConnectionStrings["DB_CONNECTION_STRING"].ConnectionString);
+            this.Disposed += CtrlRTAging_Disposed;
         }
-
         #region CtrlAging_Load
         /// <summary>
         /// Total MonitoringUI
@@ -57,6 +59,15 @@ namespace MonitoringUI.Monitoring
         {
             //string log = $"Aging Monitoring";
             //_Logger.Write(LogLevel.Info, log, LogFileName.AllLog);
+        }
+        #endregion
+
+        #region AgingTimer
+        public void AgingTimer(bool onoff)
+        {
+            // Timer
+            if (onoff) m_timer.Start();
+            else m_timer.Stop();
         }
         #endregion
 
@@ -433,7 +444,7 @@ namespace MonitoringUI.Monitoring
         }
         #endregion
 
-        private void initAgingRack()
+        private void InitAgingRack()
         {
             // 좌 더블클릭 - Rack 설정
             ht011.MouseDoubleClick += AgingLineControl_DoubleClick;
@@ -450,18 +461,18 @@ namespace MonitoringUI.Monitoring
             lt024.MouseDoubleClick += AgingLineControl_DoubleClick;
 
             // 우클릭 - Trouble
-            ht011.Click += Rack_Click;
-            ht012.Click += Rack_Click;
-            ht013.Click += Rack_Click;
-            ht014.Click += Rack_Click;
-            lt011.Click += Rack_Click;
-            lt012.Click += Rack_Click;
-            lt013.Click += Rack_Click;
-            lt014.Click += Rack_Click;
-            lt021.Click += Rack_Click;
-            lt022.Click += Rack_Click;
-            lt023.Click += Rack_Click;
-            lt024.Click += Rack_Click;
+            //ht011.Click += Rack_Click;
+            //ht012.Click += Rack_Click;
+            //ht013.Click += Rack_Click;
+            //ht014.Click += Rack_Click;
+            //lt011.Click += Rack_Click;
+            //lt012.Click += Rack_Click;
+            //lt013.Click += Rack_Click;
+            //lt014.Click += Rack_Click;
+            //lt021.Click += Rack_Click;
+            //lt022.Click += Rack_Click;
+            //lt023.Click += Rack_Click;
+            //lt024.Click += Rack_Click;
 
             /// 
             /// 화면권한 관련
@@ -480,9 +491,42 @@ namespace MonitoringUI.Monitoring
             initAgingTab_Language();
         }
 
+        private void InitGridView()
+        {
+            string[] columnName = { "Total Rack Count", "In Aging", "Empty Rack", "Unloading Rack", "No Input Rack","No Output Rack","Bad Rack", "Tatal Trouble"}; 
+
+            AgingInfoView.EnableHeadersVisualStyles = false;
+            AgingInfoView.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(27, 27, 27);
+
+            AgingInfoView.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            for (int i = 0; i < AgingInfoView.ColumnCount; i++)
+            {
+                AgingInfoView.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+
+            for (int i = 0; i < columnName.Length; i++)
+            {
+                AgingInfoView.Rows.Add(new string[] { columnName[i], "", "", "" });
+                
+            }
+
+            //AgingInfoView.Rows.Add(new string[] { "Total Rack Count", "", "", "" });
+            //AgingInfoView.Rows.Add(new string[] { "In Aging", "", "", "" });
+            //AgingInfoView.Rows.Add(new string[] { "Empty Rack", "", "", "" });
+            //AgingInfoView.Rows.Add(new string[] { "Unloading Rack", "", "", "" });
+            //AgingInfoView.Rows.Add(new string[] { "No Input Rack", "", "", "" });
+            //AgingInfoView.Rows.Add(new string[] { "No Output Rack", "", "", "" });
+            //AgingInfoView.Rows.Add(new string[] { "Bad Rack", "", "", "" });
+            //AgingInfoView.Rows.Add(new string[] { "Tatal Trouble", "", "", "" });
+
+            AgingInfoView.CurrentCell = null;
+            AgingInfoView.ClearSelection();
+        }
+
         private void Rack_Click(object sender, EventArgs e)
         {
-            if (((MouseEventArgs)e).Button == System.Windows.Forms.MouseButtons.Right)
+            if (((MouseEventArgs)e).Button == MouseButtons.Right)
             {
                 // MessageBox.Show("show box");
                 // Variable
@@ -525,16 +569,8 @@ namespace MonitoringUI.Monitoring
 
         private void AgingLineControl_DoubleClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
-                // MessageBox.Show("show box");
-                // Variable
-                string strUnitID = "";
-                string strTrayID = "";
-
-                //20200401 KJY for Status (출고지연 알람상태전달을 위해)
-                string strStatus = string.Empty;
-
                 try
                 {
                     //timer Stop
@@ -546,18 +582,24 @@ namespace MonitoringUI.Monitoring
 
                     if (rack != null)
                     {
-                        strUnitID = rack.RackID; 
-                        strTrayID = rack.TrayId;
-
-                        //20200401 KJY for Status (출고지연 알람상태전달을 위해)
-                        strStatus = rack.StatusString; 
+                        string strRackID = rack.RackID;
 
                         // Data Check
-                        if (strUnitID.Length < 1) return;
+                        if (strRackID.Length < 1) return;
 
                         // Rack 설정
-                        WinAgingRackSetting winAgingRackSetting = new WinAgingRackSetting(CDefine.DEF_AGING_TYPE_RT, strUnitID, strTrayID, strStatus);
-                        winAgingRackSetting.ShowDialog();
+                        //WinAgingRackSetting winAgingRackSetting = new WinAgingRackSetting(CDefine.DEF_AGING_TYPE_RT, strUnitID, strTrayID, strStatus);
+                        //winAgingRackSetting.ShowDialog();
+
+                        // Rack Info
+                        DataSet ds = _mysql.SelectRackInfo(strRackID);
+
+                        //string msg = $"Track No : {trackno}, TrayIdL1 : {siteInfo.TrayIdL1}, TrayIdL2 : {siteInfo.TrayIdL2}";
+                        //_Logger.Write(LogLevel.Info, "", LogFileName.ButtonClick);
+
+                        WinRackInfo winRack = new WinRackInfo();
+                        winRack.SetRackInfo(ds);
+                        winRack.Show();
                     }
 
                     //timer Start
@@ -626,27 +668,27 @@ namespace MonitoringUI.Monitoring
 
         private void CtrlButtonDataView_Click(object sender, EventArgs e)
         {
-            m_timer.Stop();
-            WinAgingInfo winAgingInfo = new WinAgingInfo(CDefine.DEF_AGING_TYPE_RT);
-            winAgingInfo.ShowDialog();
-            m_timer.Start();
+            //m_timer.Stop();
+            //WinAgingInfo winAgingInfo = new WinAgingInfo(CDefine.DEF_AGING_TYPE_RT);
+            //winAgingInfo.ShowDialog();
+            //m_timer.Start();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            m_timer.Stop();
-            WinAgingRackSetting winAgingRackSetting = new WinAgingRackSetting();
-            winAgingRackSetting.ShowDialog();
-            m_timer.Start();
-        }
+        //private void button1_Click(object sender, EventArgs e)
+        //{
+        //    m_timer.Stop();
+        //    WinAgingRackSetting winAgingRackSetting = new WinAgingRackSetting();
+        //    winAgingRackSetting.ShowDialog();
+        //    m_timer.Start();
+        //}
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            m_timer.Stop();
-            WinTroubleInfo winTroubleInfo = new WinTroubleInfo();
-            winTroubleInfo.ShowDialog();
-            m_timer.Start();
-        }
+        //private void button2_Click(object sender, EventArgs e)
+        //{
+        //    m_timer.Stop();
+        //    WinTroubleInfo winTroubleInfo = new WinTroubleInfo();
+        //    winTroubleInfo.ShowDialog();
+        //    m_timer.Start();
+        //}
 
 
         // 탭을 선택하면 눈에 띄게 좀 바꿀라고 했는데 안되네.. 쩝.
@@ -706,58 +748,99 @@ namespace MonitoringUI.Monitoring
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            AgingInfoView.EnableHeadersVisualStyles = false;
+            AgingInfoView.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(95, 95, 95);
+
+            AgingInfoView.Rows.Add(new String[] { "Total Rack Count", "a", "b", "c" });
+            AgingInfoView.Rows.Add(new String[] { "In Aging", "a", "b", "c" });
+            AgingInfoView.Rows.Add(new String[] { "Empty Rack", "a", "b", "c" });
+            AgingInfoView.Rows.Add(new String[] { "Unloading Rack", "a", "b", "c" });
+            AgingInfoView.Rows.Add(new String[] { "No Input Rack", "a", "b", "c" });
+            AgingInfoView.Rows.Add(new String[] { "No Output Rack", "a", "b", "c" });
+            AgingInfoView.Rows.Add(new String[] { "Bad Rack", "a", "b", "c" });
+            AgingInfoView.Rows.Add(new String[] { "Tatal Trouble", "a", "b", "c" });
+
+            AgingInfoView.CurrentCell = null;
+            AgingInfoView.ClearSelection();
+
+
+
+
             //updateTable();
 
-            _mysql.UpdateAgingInfo("status", "G", "unit_id", "H0110103");
+            //_mysql.UpdateAgingInfo("status", "G", "aging_type", "L");
+            //_mysql.UpdateAgingInfo("status", "G", "aging_type", "H");
 
-            _mysql.UpdateAgingInfo("status", "T", "unit_id", "H0110104");
+            //string starttime = DateTime.Now.ToString("yyyy-MM-dd hh-mm-ss");
+            //_mysql.UpdateAgingInfo("start_time", starttime, "aging_type", "H");
+            //_mysql.UpdateAgingInfo("start_time", starttime, "aging_type", "L");
+
+            //Thread.Sleep(5000);
+
+            //starttime = DateTime.Now.ToString("yyyy-MM-dd hh-mm-ss");
+            //_mysql.UpdateAgingInfo("end_time", starttime, "aging_type", "H");
+            //_mysql.UpdateAgingInfo("end_time", starttime, "aging_type", "L");
+
+            //_mysql.UpdateAgingInfo("tray_cnt", "2", "aging_type", "H");
+            //_mysql.UpdateAgingInfo("tray_cnt", "2", "aging_type", "L");
         }
 
         private void updateTable()
         {
             try
             {
-                //_mysql.Open();
+                
 
-                //int idx = 1;
-                ////accounts_table의 특정 id의 name column과 phone column 데이터를 수정합니다.
-                //for (int line = 1; line <= 4; line++)
-                //{
-                //    for (int bay = 1; bay <= 17; bay++)
-                //    {
-                //        for (int deck = 1; deck <= 5; deck++)
-                //        {
-                //            //string trayid1 = string.Format($"F101EEFB101{{0:D5}}", idx);
-                //            //string trayid2 = string.Format($"F101FFFB102{{0:D5}}", idx);
-                //            //string updateQuery = string.Format($"UPDATE fms_v.tb_mst_aging " +
-                //            //                                   $"SET tray_id_1 = '{trayid1}', tray_id_2 = '{trayid2}' " +
-                //            //                                   $"WHERE aging_type = 'L' AND line = '02' AND lane = '{line}' AND bay = '{{0:D2}}' AND deck = '{{1:D2}}'", bay, deck);
+                string connection = ConfigurationManager.ConnectionStrings["DB_CONNECTION_STRING"].ConnectionString;
 
+                int idx = 1;
+                //accounts_table의 특정 id의 name column과 phone column 데이터를 수정합니다.
 
-                //            //string starttime = DateTime.Now.ToString("yyyy-MM-dd hh-mm-ss");
-                //            //string updateQuery = string.Format($"UPDATE fms_v.tb_mst_aging " +
-                //            //                                   $"SET start_time = '{starttime}' " +
-                //            //                                   $"WHERE aging_type = 'L' AND line = '02' AND lane = '{line}' AND bay = '{{0:D2}}' AND deck = '{{1:D2}}'", bay, deck);
-
-                //            string starttime = "G";
-                //            string updateQuery = string.Format($"UPDATE fms_v.tb_mst_aging " +
-                //                                               $"SET status = '{starttime}' " +
-                //                                               $"WHERE aging_type = 'L' AND line = '02' AND lane = '{line}' AND bay = '{{0:D2}}' AND deck = '{{1:D2}}'", bay, deck);
+                using (MySqlConnection conn = new MySqlConnection(connection))
+                {
+                    for (int line = 1; line <= 4; line++)
+                    {
+                        for (int bay = 1; bay <= 11; bay++)
+                        {
+                            for (int deck = 1; deck <= 5; deck++)
+                            {
+                                //string trayid1 = string.Format($"F101EEFB101{{0:D5}}", idx);
+                                //string trayid2 = string.Format($"F101FFFB102{{0:D5}}", idx);
+                                //string updateQuery = string.Format($"UPDATE fms_v.tb_mst_aging " +
+                                //                                   $"SET tray_id = '{trayid1}', tray_id_2 = '{trayid2}' " +
+                                //                                   $"WHERE aging_type = 'H' AND line = '01' AND lane = '{line}' AND bay = '{{0:D2}}' AND deck = '{{1:D2}}'", bay, deck);
 
 
+                                //string starttime = DateTime.Now.ToString("yyyy-MM-dd hh-mm-ss");
+                                //string updateQuery = string.Format($"UPDATE fms_v.tb_mst_aging " +
+                                //                                   $"SET start_time = '{starttime}' " +
+                                //                                   $"WHERE aging_type = 'L' AND line = '02' AND lane = '{line}' AND bay = '{{0:D2}}' AND deck = '{{1:D2}}'", bay, deck);
 
-                //            MySqlCommand command = new MySqlCommand(updateQuery, _mysql);
+                                //string starttime = "G";
+                                //string updateQuery = string.Format($"UPDATE fms_v.tb_mst_aging " +
+                                //                                   $"SET status = '{starttime}' " +
+                                //                                   $"WHERE aging_type = 'L' AND line = '02' AND lane = '{line}' AND bay = '{{0:D2}}' AND deck = '{{1:D2}}'", bay, deck);
 
-                //            command.ExecuteNonQuery();
 
-                //            //if (command.ExecuteNonQuery() != 1)
-                //            //    MessageBox.Show("Failed to delete data.");
 
-                //            idx++;
-                //        }
+                                //MySqlCommand command = new MySqlCommand(updateQuery, conn);
 
-                //    }
-                //}
+                                //command.Connection.Open();
+
+                                //command.ExecuteNonQuery();
+
+                                //command.Connection.Close();
+
+                                //if (command.ExecuteNonQuery() != 1)
+                                //    MessageBox.Show("Failed to delete data.");
+
+                                idx++;
+                            }
+
+                        }
+                    }
+                }
+                
 
                 //_mysql.Close();
             }
@@ -801,6 +884,14 @@ namespace MonitoringUI.Monitoring
             {
                 MessageBox.Show(exc.Message);
             }
+        }
+
+        private void AgingTab_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            int tabIdx = int.Parse(btn.Tag.ToString());
+
+            AgingTab.SelectedTab = AgingTab.TabPages[tabIdx];
         }
     }
 }

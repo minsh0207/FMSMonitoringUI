@@ -471,11 +471,11 @@
     <Compile Include="Controlls\CtrlLine.Designer.cs">
       <DependentUpon>CtrlLine.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controlls\CtrlMain.cs">
+    <Compile Include="Controlls\CtrlMonitoring.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controlls\CtrlMain.Designer.cs">
-      <DependentUpon>CtrlMain.cs</DependentUpon>
+    <Compile Include="Controlls\CtrlMonitoring.Designer.cs">
+      <DependentUpon>CtrlMonitoring.cs</DependentUpon>
     </Compile>
     <Compile Include="Controlls\CtrlRackDescription.cs">
       <SubType>UserControl</SubType>
@@ -562,12 +562,6 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Monitoring\WinAgingInfo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Monitoring\WinAgingInfo.Designer.cs">
-      <DependentUpon>WinAgingInfo.cs</DependentUpon>
-    </Compile>
     <Compile Include="Monitoring\WinAgingRackOutManage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -591,6 +585,12 @@
     </Compile>
     <Compile Include="Monitoring\WinCraneInfo.Designer.cs">
       <DependentUpon>WinCraneInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Monitoring\WinRackInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Monitoring\WinRackInfo.Designer.cs">
+      <DependentUpon>WinRackInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Monitoring\WinTrayInfo.cs">
       <SubType>Form</SubType>
@@ -797,8 +797,8 @@
     <EmbeddedResource Include="Controlls\CtrlLine.resx">
       <DependentUpon>CtrlLine.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CtrlMain.resx">
-      <DependentUpon>CtrlMain.cs</DependentUpon>
+    <EmbeddedResource Include="Controlls\CtrlMonitoring.resx">
+      <DependentUpon>CtrlMonitoring.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controlls\CtrlRackDescription.resx">
       <DependentUpon>CtrlRackDescription.cs</DependentUpon>
@@ -836,9 +836,6 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Monitoring\WinAgingInfo.resx">
-      <DependentUpon>WinAgingInfo.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Monitoring\WinAgingRackOutManage.resx">
       <DependentUpon>WinAgingRackOutManage.cs</DependentUpon>
     </EmbeddedResource>
@@ -850,6 +847,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Monitoring\WinCraneInfo.resx">
       <DependentUpon>WinCraneInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Monitoring\WinRackInfo.resx">
+      <DependentUpon>WinRackInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Monitoring\WinTrayInfo.resx">
       <DependentUpon>WinTrayInfo.cs</DependentUpon>

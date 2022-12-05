@@ -74,6 +74,40 @@ namespace OPCUAClientClassLib
         public string TrayIdL2 { get; set; }
     }
 
+    public class RackTagInfo
+    {
+        public RackTagInfo()
+        {
+            //
+        }
+
+        public string RackID { get; set; }
+
+        public string TrayIdL1 { get; set; }
+
+        public string TrayIdL2 { get; set; }
+
+        public string ModelID { get; set; }
+
+        public string RouteID { get; set; }
+
+        public string LotID { get; set; }
+
+        public string RackStatus { get; set; }
+
+        public string TrayZone { get; set; }
+
+        public string CellType { get; set; }
+
+        public string StartTime { get; set; }
+
+        public string EndTime { get; set; }
+
+        public string TroubleCode { get; set; }
+
+        public string TroubleName { get; set; }
+    }
+
     public class ItemInfo
     {
         public ItemInfo()

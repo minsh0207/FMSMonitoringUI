@@ -45,13 +45,13 @@
             this._TrayType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this._TrayType.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this._TrayType.LanguageID = "";
-            this._TrayType.Location = new System.Drawing.Point(6, 264);
+            this._TrayType.Location = new System.Drawing.Point(6, 246);
             this._TrayType.Margin = new System.Windows.Forms.Padding(30);
             this._TrayType.Name = "_TrayType";
             this._TrayType.Size = new System.Drawing.Size(337, 37);
             this._TrayType.TabIndex = 11;
             this._TrayType.TextData = "";
-            this._TrayType.TitleText = "Tray Type :";
+            this._TrayType.TitleText = "Tray Type ";
             this._TrayType.TitleWidth = 180F;
             // 
             // ctrlButtonExit1
@@ -60,7 +60,7 @@
             this.ctrlButtonExit1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlButtonExit1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlButtonExit1.LabelText = "Exit";
-            this.ctrlButtonExit1.Location = new System.Drawing.Point(167, 349);
+            this.ctrlButtonExit1.Location = new System.Drawing.Point(167, 324);
             this.ctrlButtonExit1.Name = "ctrlButtonExit1";
             this.ctrlButtonExit1.Size = new System.Drawing.Size(164, 38);
             this.ctrlButtonExit1.TabIndex = 10;
@@ -71,13 +71,13 @@
             this._StationStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this._StationStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this._StationStatus.LanguageID = "";
-            this._StationStatus.Location = new System.Drawing.Point(6, 301);
+            this._StationStatus.Location = new System.Drawing.Point(6, 280);
             this._StationStatus.Margin = new System.Windows.Forms.Padding(30);
             this._StationStatus.Name = "_StationStatus";
             this._StationStatus.Size = new System.Drawing.Size(337, 37);
             this._StationStatus.TabIndex = 6;
             this._StationStatus.TextData = "";
-            this._StationStatus.TitleText = "Station Status :";
+            this._StationStatus.TitleText = "Station Status ";
             this._StationStatus.TitleWidth = 180F;
             // 
             // _TrayCount
@@ -85,13 +85,13 @@
             this._TrayCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this._TrayCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this._TrayCount.LanguageID = "";
-            this._TrayCount.Location = new System.Drawing.Point(6, 227);
+            this._TrayCount.Location = new System.Drawing.Point(6, 212);
             this._TrayCount.Margin = new System.Windows.Forms.Padding(30);
             this._TrayCount.Name = "_TrayCount";
             this._TrayCount.Size = new System.Drawing.Size(337, 37);
             this._TrayCount.TabIndex = 9;
             this._TrayCount.TextData = "";
-            this._TrayCount.TitleText = "Tray Count :";
+            this._TrayCount.TitleText = "Tray Count ";
             this._TrayCount.TitleWidth = 180F;
             // 
             // _TrayExist
@@ -99,13 +99,13 @@
             this._TrayExist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this._TrayExist.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this._TrayExist.LanguageID = "";
-            this._TrayExist.Location = new System.Drawing.Point(6, 194);
+            this._TrayExist.Location = new System.Drawing.Point(6, 182);
             this._TrayExist.Margin = new System.Windows.Forms.Padding(30);
             this._TrayExist.Name = "_TrayExist";
             this._TrayExist.Size = new System.Drawing.Size(337, 33);
             this._TrayExist.TabIndex = 7;
             this._TrayExist.TextData = "";
-            this._TrayExist.TitleText = "Tray Exist :";
+            this._TrayExist.TitleText = "Tray Exist ";
             this._TrayExist.TitleWidth = 180F;
             // 
             // _TrayIdL2
@@ -113,13 +113,13 @@
             this._TrayIdL2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this._TrayIdL2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this._TrayIdL2.LanguageID = "";
-            this._TrayIdL2.Location = new System.Drawing.Point(6, 161);
+            this._TrayIdL2.Location = new System.Drawing.Point(6, 152);
             this._TrayIdL2.Margin = new System.Windows.Forms.Padding(30);
             this._TrayIdL2.Name = "_TrayIdL2";
             this._TrayIdL2.Size = new System.Drawing.Size(337, 33);
             this._TrayIdL2.TabIndex = 3;
             this._TrayIdL2.TextData = "";
-            this._TrayIdL2.TitleText = "Tray ID L2 :";
+            this._TrayIdL2.TitleText = "Tray ID L2 ";
             this._TrayIdL2.TitleWidth = 180F;
             // 
             // _TrayIdL1
@@ -127,13 +127,13 @@
             this._TrayIdL1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this._TrayIdL1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this._TrayIdL1.LanguageID = "";
-            this._TrayIdL1.Location = new System.Drawing.Point(6, 128);
+            this._TrayIdL1.Location = new System.Drawing.Point(6, 122);
             this._TrayIdL1.Margin = new System.Windows.Forms.Padding(30);
             this._TrayIdL1.Name = "_TrayIdL1";
             this._TrayIdL1.Size = new System.Drawing.Size(337, 33);
             this._TrayIdL1.TabIndex = 3;
             this._TrayIdL1.TextData = "";
-            this._TrayIdL1.TitleText = "Tray ID L1 :";
+            this._TrayIdL1.TitleText = "Tray ID L1 ";
             this._TrayIdL1.TitleWidth = 180F;
             // 
             // _ConveyorType
@@ -141,13 +141,13 @@
             this._ConveyorType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this._ConveyorType.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this._ConveyorType.LanguageID = "";
-            this._ConveyorType.Location = new System.Drawing.Point(6, 95);
+            this._ConveyorType.Location = new System.Drawing.Point(6, 92);
             this._ConveyorType.Margin = new System.Windows.Forms.Padding(30);
             this._ConveyorType.Name = "_ConveyorType";
             this._ConveyorType.Size = new System.Drawing.Size(337, 33);
             this._ConveyorType.TabIndex = 2;
             this._ConveyorType.TextData = "";
-            this._ConveyorType.TitleText = "Conveyor Type :";
+            this._ConveyorType.TitleText = "Conveyor Type ";
             this._ConveyorType.TitleWidth = 180F;
             // 
             // _ConveyorNo
@@ -161,7 +161,7 @@
             this._ConveyorNo.Size = new System.Drawing.Size(337, 33);
             this._ConveyorNo.TabIndex = 1;
             this._ConveyorNo.TextData = "";
-            this._ConveyorNo.TitleText = "Conveyor No :";
+            this._ConveyorNo.TitleText = "Conveyor No ";
             this._ConveyorNo.TitleWidth = 180F;
             // 
             // ctrlTitleBar
@@ -181,7 +181,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(349, 398);
+            this.ClientSize = new System.Drawing.Size(349, 370);
             this.Controls.Add(this._TrayType);
             this.Controls.Add(this.ctrlButtonExit1);
             this.Controls.Add(this._StationStatus);

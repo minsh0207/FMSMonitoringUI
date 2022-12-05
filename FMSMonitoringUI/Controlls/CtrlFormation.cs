@@ -39,14 +39,23 @@ namespace FMSMonitoringUI
             InitControls();
 
             // Timer
-            //m_timer.Tick += new EventHandler(OnTimer);
-            //m_timer.Start();
+            m_timer.Tick += new EventHandler(OnTimer);
+            m_timer.Stop();
         }
         
         private void CtrlFormationBox_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             
         }
+
+        #region FormationTimer
+        public void FormationTimer(bool onoff)
+        {
+            // Timer
+            if (onoff) m_timer.Start();
+            else m_timer.Stop();
+        }
+        #endregion
 
         private void InitFormationBox()
         {

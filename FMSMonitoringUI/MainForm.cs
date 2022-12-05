@@ -35,7 +35,7 @@ namespace FMSMonitoringUI
 
         private Logger _Logger; // { get; set; }
 
-        CtrlMain ctrlMain = null;
+        CtrlMonitoring ctrlMonitoring = null;
         CtrlAging ctrlAging = null;
         CtrlFormation ctrlFormation = null;
 
@@ -64,7 +64,7 @@ namespace FMSMonitoringUI
             WindowState = FormWindowState.Maximized;
 
 
-            ctrlMain = new CtrlMain(_Application);
+            ctrlMonitoring = new CtrlMonitoring(_Application);
             ctrlAging = new CtrlAging();
             ctrlFormation = new CtrlFormation();
 
@@ -83,25 +83,32 @@ namespace FMSMonitoringUI
         {
             if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
 
+            ctrlMonitoring.MonitoringTimer(false);
+            ctrlAging.AgingTimer(false);
+            ctrlFormation.FormationTimer(false);
+
             switch (title)
             {
                 case "Main":
 
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls[0].Dispose();
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
-                    scMainPanel.Panel2.Controls.Add(ctrlMain);
+                    scMainPanel.Panel2.Controls.Add(ctrlMonitoring);
+                    ctrlMonitoring.MonitoringTimer(true);
                     break;
                 case "Aging":
                    
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls[0].Dispose();
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
                     scMainPanel.Panel2.Controls.Add(ctrlAging);
+                    ctrlAging.AgingTimer(true);
                     break;
                 case "Formation":
                     
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls[0].Dispose();
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
                     scMainPanel.Panel2.Controls.Add(ctrlFormation);
+                    ctrlFormation.FormationTimer(true);
                     break;
             }
 
@@ -174,10 +181,5 @@ namespace FMSMonitoringUI
             LocalLanguage.resxLanguage = new ResourceManager("MonitoringUI.WinFormRoot", typeof(WinFormRoot).Assembly);
         }
         #endregion
-
-        private void barMain_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
