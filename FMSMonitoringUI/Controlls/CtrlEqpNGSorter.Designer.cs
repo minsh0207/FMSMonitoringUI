@@ -1,6 +1,6 @@
 ﻿namespace FMSMonitoringUI.Controlls
 {
-    partial class CtrlNGSorter
+    partial class CtrlEqpNGSorter
     {
         /// <summary> 
         /// 필수 디자이너 변수입니다.
@@ -28,96 +28,110 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox = new System.Windows.Forms.GroupBox();
-            this.lbTitle = new System.Windows.Forms.Label();
-            this.opStatus = new System.Windows.Forms.Label();
-            this.eqpStatus = new System.Windows.Forms.Label();
-            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
-            this.ctrlMainTrayLevel21 = new FormationMonCtrl.CtrlMainTrayLevel2();
-            this.groupBox.SuspendLayout();
+            this.lbOPStatus = new System.Windows.Forms.Label();
+            this.lbEqpStatus = new System.Windows.Forms.Label();
+            this.lbEqpType = new System.Windows.Forms.Label();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.TrayInfoView = new FMSMonitoringUI.Controlls.CtrlDataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox
+            // lbOPStatus
             // 
-            this.groupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.groupBox.Controls.Add(this.elementHost1);
-            this.groupBox.Controls.Add(this.lbTitle);
-            this.groupBox.Controls.Add(this.opStatus);
-            this.groupBox.Controls.Add(this.eqpStatus);
-            this.groupBox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox.ForeColor = System.Drawing.Color.White;
-            this.groupBox.Location = new System.Drawing.Point(0, 0);
-            this.groupBox.Margin = new System.Windows.Forms.Padding(0);
-            this.groupBox.Name = "groupBox";
-            this.groupBox.Padding = new System.Windows.Forms.Padding(0);
-            this.groupBox.Size = new System.Drawing.Size(153, 103);
-            this.groupBox.TabIndex = 0;
-            this.groupBox.TabStop = false;
+            this.lbOPStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.lbOPStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbOPStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbOPStatus.ForeColor = System.Drawing.Color.Black;
+            this.lbOPStatus.Location = new System.Drawing.Point(90, 0);
+            this.lbOPStatus.Name = "lbOPStatus";
+            this.lbOPStatus.Size = new System.Drawing.Size(80, 25);
+            this.lbOPStatus.TabIndex = 3;
+            this.lbOPStatus.Text = "Processing";
+            this.lbOPStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbOPStatus.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseDoubleClick);
             // 
-            // lbTitle
+            // lbEqpStatus
             // 
-            this.lbTitle.AutoSize = true;
-            this.lbTitle.Location = new System.Drawing.Point(4, 11);
-            this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(31, 15);
-            this.lbTitle.TabIndex = 4;
-            this.lbTitle.Text = "NGS";
+            this.lbEqpStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.lbEqpStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbEqpStatus.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lbEqpStatus.ForeColor = System.Drawing.Color.Black;
+            this.lbEqpStatus.Location = new System.Drawing.Point(55, 0);
+            this.lbEqpStatus.Name = "lbEqpStatus";
+            this.lbEqpStatus.Size = new System.Drawing.Size(35, 25);
+            this.lbEqpStatus.TabIndex = 2;
+            this.lbEqpStatus.Text = "R";
+            this.lbEqpStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbEqpStatus.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseDoubleClick);
             // 
-            // opStatus
+            // lbEqpType
             // 
-            this.opStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.opStatus.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.opStatus.ForeColor = System.Drawing.Color.Black;
-            this.opStatus.Location = new System.Drawing.Point(67, 11);
-            this.opStatus.Margin = new System.Windows.Forms.Padding(1);
-            this.opStatus.Name = "opStatus";
-            this.opStatus.Size = new System.Drawing.Size(81, 19);
-            this.opStatus.TabIndex = 3;
-            this.opStatus.Text = "Processing";
-            this.opStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbEqpType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.lbEqpType.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lbEqpType.ForeColor = System.Drawing.Color.White;
+            this.lbEqpType.Location = new System.Drawing.Point(0, 0);
+            this.lbEqpType.Name = "lbEqpType";
+            this.lbEqpType.Size = new System.Drawing.Size(55, 25);
+            this.lbEqpType.TabIndex = 1;
+            this.lbEqpType.Text = "  EQP";
+            this.lbEqpType.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbEqpType.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseDoubleClick);
             // 
-            // eqpStatus
+            // splitContainer1
             // 
-            this.eqpStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.eqpStatus.ForeColor = System.Drawing.Color.Black;
-            this.eqpStatus.Location = new System.Drawing.Point(38, 11);
-            this.eqpStatus.Margin = new System.Windows.Forms.Padding(1);
-            this.eqpStatus.Name = "eqpStatus";
-            this.eqpStatus.Size = new System.Drawing.Size(26, 19);
-            this.eqpStatus.TabIndex = 2;
-            this.eqpStatus.Text = "R";
-            this.eqpStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.splitContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainer1.IsSplitterFixed = true;
+            this.splitContainer1.Location = new System.Drawing.Point(1, 1);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // elementHost1
+            // splitContainer1.Panel1
             // 
-            this.elementHost1.Location = new System.Drawing.Point(6, 33);
-            this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Size = new System.Drawing.Size(142, 64);
-            this.elementHost1.TabIndex = 5;
-            this.elementHost1.Text = "elementHost1";
-            this.elementHost1.Child = this.ctrlMainTrayLevel21;
+            this.splitContainer1.Panel1.Controls.Add(this.lbOPStatus);
+            this.splitContainer1.Panel1.Controls.Add(this.lbEqpStatus);
+            this.splitContainer1.Panel1.Controls.Add(this.lbEqpType);
             // 
-            // CtrlNGSorter
+            // splitContainer1.Panel2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.splitContainer1.Panel2.Controls.Add(this.TrayInfoView);
+            this.splitContainer1.Size = new System.Drawing.Size(172, 111);
+            this.splitContainer1.SplitterDistance = 27;
+            this.splitContainer1.TabIndex = 1;
+            // 
+            // TrayInfoView
+            // 
+            this.TrayInfoView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TrayInfoView.Location = new System.Drawing.Point(0, 0);
+            this.TrayInfoView.Name = "TrayInfoView";
+            this.TrayInfoView.Size = new System.Drawing.Size(170, 78);
+            this.TrayInfoView.TabIndex = 0;
+            // 
+            // CtrlEqpNGSorter
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.Controls.Add(this.groupBox);
-            this.Name = "CtrlNGSorter";
-            this.Size = new System.Drawing.Size(159, 106);
-            this.groupBox.ResumeLayout(false);
-            this.groupBox.PerformLayout();
+            this.BackColor = System.Drawing.Color.DimGray;
+            this.Controls.Add(this.splitContainer1);
+            this.Name = "CtrlEqpNGSorter";
+            this.Size = new System.Drawing.Size(177, 118);
+            this.Load += new System.EventHandler(this.CtrlEqpControl_Load);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox groupBox;
-        private System.Windows.Forms.Label eqpStatus;
-        private System.Windows.Forms.Label opStatus;
-        private System.Windows.Forms.Label lbTitle;
-        private System.Windows.Forms.Integration.ElementHost elementHost1;
-        private FormationMonCtrl.CtrlMainTrayLevel2 ctrlMainTrayLevel21;
+        private System.Windows.Forms.Label lbOPStatus;
+        private System.Windows.Forms.Label lbEqpStatus;
+        private System.Windows.Forms.Label lbEqpType;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private CtrlDataGridView TrayInfoView;
     }
 }

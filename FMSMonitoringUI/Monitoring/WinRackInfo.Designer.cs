@@ -131,7 +131,7 @@
             // 
             this._TrayIdL1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this._TrayIdL1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this._TrayIdL1.LanguageID = "";
+            this._TrayIdL1.LanguageID = "Tray ID";
             this._TrayIdL1.Location = new System.Drawing.Point(6, 92);
             this._TrayIdL1.Margin = new System.Windows.Forms.Padding(30);
             this._TrayIdL1.Name = "_TrayIdL1";

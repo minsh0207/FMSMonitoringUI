@@ -40,6 +40,7 @@ namespace FMSMonitoringUI
         CtrlFormation ctrlFormation = null;
 
         #endregion
+
         public MainForm(ApplicationInstance applicationInstance)
         {
             InitializeComponent();
@@ -104,11 +105,18 @@ namespace FMSMonitoringUI
                     ctrlAging.AgingTimer(true);
                     break;
                 case "Formation":
-                    
+
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls[0].Dispose();
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
-                    scMainPanel.Panel2.Controls.Add(ctrlFormation);
-                    ctrlFormation.FormationTimer(true);
+                    //scMainPanel.Panel2.Controls.Add(ctrlFormation);
+                    //ctrlFormation.FormationTimer(true);
+
+                    this.Invoke(new MethodInvoker(delegate ()
+                    {
+                        ctrlMonitoring.Refresh();
+                    }));
+                    
+
                     break;
             }
 

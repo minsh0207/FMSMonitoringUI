@@ -46,12 +46,12 @@ namespace MonitoringUI
     }
 
     
-    public class RESTClient
+    public class RESTClient_old
     {
         static HttpClient httpClient = null;
 
 
-        public RESTClient()
+        public RESTClient_old()
         {
             //
             httpClient = new HttpClient();
@@ -67,7 +67,7 @@ namespace MonitoringUI
 
         }
 
-        public RESTClient(bool ManualCommandFlag) // for Formation Biz (수동명령시)
+        public RESTClient_old(bool ManualCommandFlag) // for Formation Biz (수동명령시)
         {
             //
             httpClient = new HttpClient();
@@ -81,7 +81,7 @@ namespace MonitoringUI
 
         }
 
-        public RESTClient(RestServerType restServerType, RestServerVersion restServerVersion = RestServerVersion.V1) // 
+        public RESTClient_old(RestServerType restServerType, RestServerVersion restServerVersion = RestServerVersion.V1) // 
         {
             //공통
             httpClient = new HttpClient();
@@ -338,7 +338,7 @@ namespace MonitoringUI
             {
                 string strSQL = "";
 
-                RESTClient restClinet = new RESTClient();
+                RESTClient_old restClinet = new RESTClient_old();
                 JObject getDBGetDateTimeQyery = new JObject();
                 if(nFlag == 0)
                     strSQL = "SELECT CONVERT(VARCHAR(30), GETDATE(), 120) AS RetString";

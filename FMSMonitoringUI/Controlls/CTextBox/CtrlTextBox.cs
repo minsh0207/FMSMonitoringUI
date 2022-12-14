@@ -45,10 +45,7 @@ namespace FMSMonitoringUI.Controlls.CTextBox
             set
             {
                 _labelText = value;
-                if (LanguageID == "")
-                {
-                    lbTitle.Text = _labelText;
-                }
+                lbTitle.Text = _labelText;
             }
         }
 
@@ -78,15 +75,24 @@ namespace FMSMonitoringUI.Controlls.CTextBox
             set
             {
                 _LanguageID = value;
-                lbTitle.Text = LocalLanguage.GetItemString(_LanguageID);
-                Refresh();
-               
             }
         }
         #endregion
         public CtrlTextBox()
         {
             InitializeComponent();
+        }
+
+        private void CtrlTextBox_Load(object sender, EventArgs e)
+        {
+            if (LanguageID == "")
+            {
+                lbTitle.Text = _labelText;
+            }
+            else
+            {
+                lbTitle.Text = LocalLanguage.GetItemString(_LanguageID);
+            }
         }
     }
 }

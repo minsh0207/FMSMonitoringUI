@@ -265,13 +265,15 @@ namespace ControlGallery
             switch (siteNo)
             {
                 case -1:
-                    def_color = Color.Gray;
+                    def_color = SiteNoneColor;
+                    //def_color = Color.Gray;
                     break;
                 case -2:
                     def_color = SiteNoneColor;
                     break;
                 default:
-                    def_color = SiteDefaultColor;
+                    def_color = Color.FromArgb(37, 37, 37);
+                    //def_color = SiteDefaultColor;
                     break;
             }
 

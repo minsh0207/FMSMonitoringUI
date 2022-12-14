@@ -499,6 +499,7 @@ namespace MonitoringUI.Monitoring
             AgingInfoView.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(27, 27, 27);
 
             AgingInfoView.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            AgingInfoView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 
             for (int i = 0; i < AgingInfoView.ColumnCount; i++)
             {
@@ -511,14 +512,7 @@ namespace MonitoringUI.Monitoring
                 
             }
 
-            //AgingInfoView.Rows.Add(new string[] { "Total Rack Count", "", "", "" });
-            //AgingInfoView.Rows.Add(new string[] { "In Aging", "", "", "" });
-            //AgingInfoView.Rows.Add(new string[] { "Empty Rack", "", "", "" });
-            //AgingInfoView.Rows.Add(new string[] { "Unloading Rack", "", "", "" });
-            //AgingInfoView.Rows.Add(new string[] { "No Input Rack", "", "", "" });
-            //AgingInfoView.Rows.Add(new string[] { "No Output Rack", "", "", "" });
-            //AgingInfoView.Rows.Add(new string[] { "Bad Rack", "", "", "" });
-            //AgingInfoView.Rows.Add(new string[] { "Tatal Trouble", "", "", "" });
+            //AgingInfoView[1, 1].Style.BackColor = Color.White;
 
             AgingInfoView.CurrentCell = null;
             AgingInfoView.ClearSelection();
@@ -892,6 +886,12 @@ namespace MonitoringUI.Monitoring
             int tabIdx = int.Parse(btn.Tag.ToString());
 
             AgingTab.SelectedTab = AgingTab.TabPages[tabIdx];
+        }
+
+        private void AgingInfoView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            AgingInfoView.CurrentCell = null;
+            AgingInfoView.ClearSelection();
         }
     }
 }

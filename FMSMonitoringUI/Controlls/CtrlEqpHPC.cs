@@ -1,4 +1,5 @@
 ﻿using FormationMonCtrl;
+using MonitoringUI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,11 +12,11 @@ using System.Windows.Forms;
 
 namespace FMSMonitoringUI.Controlls
 {
-    public partial class CtrlEqpHPC : UserControl
+    public partial class CtrlEqpHPC : UserControlEqp
     {
         public CtrlEqpHPC()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         #region Properties
@@ -30,39 +31,79 @@ namespace FMSMonitoringUI.Controlls
             set
             {
                 _EqpType = value;
-                lbTitle.Text = _EqpType;
+                lbEqpType.Text = _EqpType;                
             }
         }
         #endregion
 
+        private void InitGridView()
+        {
+            List<string> lstTitle = new List<string>();
+            lstTitle.Add("JIG #1");
+            TrayInfoView.AddColumnHeaderList(lstTitle);
+
+            lstTitle = new List<string>();
+            lstTitle.Add("");
+            lstTitle.Add("JIG #2");
+            lstTitle.Add("");
+            TrayInfoView.AddRowsHeaderList(lstTitle);
+
+            TrayInfoView.ColumnHeadersHeight(21);
+            TrayInfoView.RowsHeight(20);
+
+            TrayInfoView.SetGridViewStyles();
+
+            //TrayInfoView.Rows.Add(new string[] { "" });
+            //TrayInfoView.Rows.Add(new string[] { " JIG #2" });
+            //TrayInfoView.Rows.Add(new string[] { "" });
+
+            //TrayInfoView.EnableHeadersVisualStyles = false;
+            //TrayInfoView.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(27, 27, 27);
+
+            //TrayInfoView.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //TrayInfoView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+
+            //for (int i = 0; i < TrayInfoView.ColumnCount; i++)
+            //{
+            //    TrayInfoView.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //    TrayInfoView.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            //}
+
+            //TrayInfoView.CurrentCell = null;
+            //TrayInfoView.ClearSelection();
+        }
+
         #region setData
-        public void setData(DataRow row)
+        public override void SetData(DataRow row)
         {
-            //string[] trayID = { $"{row["tray_id"]}", $"{row["tray_id_2"]}" };
-            //string startTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");    //row["start_time"].ToString();
-            //string templature = string.Format($"{40}℃");            //row["jig_avg"].ToString();
-            //string lotID = string.Format($"LotID001");              //row["lot_id"].ToString();
-            //string eqpStatus = "N";             //row["eqp_status"].ToString();
-            //string opStatus = "Discharge";             //row["eqp_status"].ToString();
+            int nLocation = int.Parse(row["Location"].ToString());
 
-            //SetEqpStatus(eqpStatus);
-            //SetOperationStatus(opStatus);
-
-            //CtrlFormationBoxCHG chg = (CtrlFormationBoxCHG)formationCHG.Child;
-            //chg.setBox(trayID, startTime, templature, lotID);
+            int nRow = (nLocation == 0 ? 0 : 2); 
+            TrayInfoView.SetValue(0, nRow, row["tray_id"].ToString());
+            TrayInfoView.SetReworkTray(0, nRow, row["rework_flag"].ToString());
         }
 
-        public void SetEqpStatus(string eqp_status)
+        public void SetEqpStatus(string eqp_status, Color color)
         {
-            eqpStatus.Text = eqp_status;
-            eqpStatus.BackColor = Color.Red;
+            lbEqpStatus.Text = eqp_status;
+            lbEqpStatus.BackColor = color;
         }
 
-        public void SetOperationStatus(string op_status)
+        public void SetOperationStatus(string op_status, Color color)
         {
-            opStatus.Text = op_status;
-            opStatus.BackColor = Color.Yellow;
+            lbOPStatus.Text = op_status;
+            lbOPStatus.BackColor = color;
         }
         #endregion
+
+        private void CtrlEqpControl_Load(object sender, EventArgs e)
+        {
+            InitGridView();
+        }
+
+        private void lbEqpType_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            MessageBox.Show($"EqpType DoubleClick {EqpType}");
+        }
     }
 }

@@ -43,6 +43,7 @@
             // 
             this.scMainPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.scMainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scMainPanel.IsSplitterFixed = true;
             this.scMainPanel.Location = new System.Drawing.Point(0, 0);
             this.scMainPanel.Name = "scMainPanel";
             this.scMainPanel.Orientation = System.Windows.Forms.Orientation.Horizontal;

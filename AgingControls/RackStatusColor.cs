@@ -97,7 +97,9 @@ namespace AgingControls
         public static Brush RackStatusBrush_Unloading_fg = Brushes.White;
         // Plan Unloading
         //public static Brush RackStatusBrush_UnloadPlanned_bg = Brushes.LightGreen;
-        public static Brush RackStatusBrush_UnloadPlanned_bg = new SolidBrush(Color.FromArgb(0, 251, 0));
+        //public static Brush RackStatusBrush_UnloadPlanned_bg = new SolidBrush(Color.FromArgb(0, 251, 0));
+        //20221205 nvmsh : 색상변경
+        public static Brush RackStatusBrush_UnloadPlanned_bg = new SolidBrush(Color.FromArgb(128, 255, 128));        
         public static Brush RackStatusBrush_UnloadPlanned_fg = Brushes.Black;
 
 

@@ -318,27 +318,27 @@ namespace FormationMonCtrl
 		//===================================================================
 		protected void Box_MouseClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
 		{
-			string strObjectName = ((Border)sender).Name;
-			int nBoxNumber = System.Convert.ToInt16(strObjectName.Substring(strObjectName.Length - 2));
-			this.m_strUnitId = m_boBoxObject[nBoxNumber - 1].m_txtObject.Tag.ToString();
-            this.m_nBoxIndex = 0;
+			//string strObjectName = ((Border)sender).Name;
+			//int nBoxNumber = System.Convert.ToInt16(strObjectName.Substring(strObjectName.Length - 2));
+			//this.m_strUnitId = m_boBoxObject[nBoxNumber - 1].m_txtObject.Tag.ToString();
+   //         this.m_nBoxIndex = 0;
 
 
-            CBoxClickedEventArgs args = new CBoxClickedEventArgs(nBoxNumber);
-			args.RoutedEvent = BoxClickedEvent;
-			RaiseEvent(this, args);
+   //         CBoxClickedEventArgs args = new CBoxClickedEventArgs(nBoxNumber);
+			//args.RoutedEvent = BoxClickedEvent;
+			//RaiseEvent(this, args);
 		}
         //KJY for Test
         protected void Text_MouseClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            string strObjectName = ((Border)sender).Name;
-            int nBoxNumber = System.Convert.ToInt16(strObjectName.Substring(strObjectName.Length - 7, 2));
-            this.m_strUnitId = m_boBoxObject[nBoxNumber - 1].m_txtObject.Tag.ToString();
-            this.m_nBoxIndex = 1;
+            //string strObjectName = ((Border)sender).Name;
+            //int nBoxNumber = System.Convert.ToInt16(strObjectName.Substring(strObjectName.Length - 7, 2));
+            //this.m_strUnitId = m_boBoxObject[nBoxNumber - 1].m_txtObject.Tag.ToString();
+            //this.m_nBoxIndex = 1;
 
-            CBoxClickedEventArgs args = new CBoxClickedEventArgs(nBoxNumber);
-            args.RoutedEvent = BoxClickedEvent;
-            RaiseEvent(this, args);
+            //CBoxClickedEventArgs args = new CBoxClickedEventArgs(nBoxNumber);
+            //args.RoutedEvent = BoxClickedEvent;
+            //RaiseEvent(this, args);
         }
         #endregion
         #endregion

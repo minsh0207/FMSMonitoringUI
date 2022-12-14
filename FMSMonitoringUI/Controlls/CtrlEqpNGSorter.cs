@@ -1,4 +1,5 @@
 ﻿using FormationMonCtrl;
+using MonitoringUI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,11 +12,11 @@ using System.Windows.Forms;
 
 namespace FMSMonitoringUI.Controlls
 {
-    public partial class CtrlNGSorter : UserControl
+    public partial class CtrlEqpNGSorter : UserControlEqp
     {
-        public CtrlNGSorter()
+        public CtrlEqpNGSorter()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         #region Properties
@@ -30,39 +31,59 @@ namespace FMSMonitoringUI.Controlls
             set
             {
                 _EqpType = value;
-                lbTitle.Text = _EqpType;
+                lbEqpType.Text = _EqpType;                
             }
         }
         #endregion
 
+        private void InitGridView()
+        {
+            List<string> lstTitle = new List<string>();
+            lstTitle.Add("Location");
+            lstTitle.Add("Tray ID");
+            TrayInfoView.AddColumnHeaderList(lstTitle);
+
+            lstTitle = new List<string>();
+            lstTitle.Add("Pick");
+            lstTitle.Add("Place");
+            TrayInfoView.AddRowsHeaderList(lstTitle);
+
+            TrayInfoView.ColumnHeadersHeight(26);
+            TrayInfoView.RowsHeight(25);
+
+            TrayInfoView.SetGridViewStyles();
+            TrayInfoView.ColumnHeadersWidth(0, 70);
+        }
+
         #region setData
-        public void setData(DataRow row)
+        public override void SetData(DataRow row)
         {
-            //string[] trayID = { $"{row["tray_id"]}", $"{row["tray_id_2"]}" };
-            //string startTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");    //row["start_time"].ToString();
-            //string templature = string.Format($"{40}℃");            //row["jig_avg"].ToString();
-            //string lotID = string.Format($"LotID001");              //row["lot_id"].ToString();
-            //string eqpStatus = "N";             //row["eqp_status"].ToString();
-            //string opStatus = "Discharge";             //row["eqp_status"].ToString();
-
-            //SetEqpStatus(eqpStatus);
-            //SetOperationStatus(opStatus);
-
-            //CtrlFormationBoxCHG chg = (CtrlFormationBoxCHG)formationCHG.Child;
-            //chg.setBox(trayID, startTime, templature, lotID);
+            int nRow = int.Parse(row["Location"].ToString());
+            TrayInfoView.SetValue(1, nRow, row["tray_id"].ToString());
+            TrayInfoView.SetReworkTray(1, nRow, row["rework_flag"].ToString());
         }
 
-        public void SetEqpStatus(string eqp_status)
+        public void SetEqpStatus(string eqp_status, Color color)
         {
-            eqpStatus.Text = eqp_status;
-            eqpStatus.BackColor = Color.Red;
+            lbEqpStatus.Text = eqp_status;
+            lbEqpStatus.BackColor = color;
         }
 
-        public void SetOperationStatus(string op_status)
+        public void SetOperationStatus(string op_status, Color color)
         {
-            opStatus.Text = op_status;
-            opStatus.BackColor = Color.Yellow;
+            lbOPStatus.Text = op_status;
+            lbOPStatus.BackColor = color;
         }
         #endregion
+
+        private void CtrlEqpControl_Load(object sender, EventArgs e)
+        {
+            InitGridView();
+        }
+
+        private void lbEqpType_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            MessageBox.Show($"EqpType DoubleClick {EqpType}");
+        }
     }
 }

@@ -397,7 +397,7 @@ namespace MonitoringUI.Monitoring
             JObject JsonBody;
 
             //RESTClient RestClient = new RESTClient(true);
-            RESTClient RestClient = new RESTClient(RestServerType.FORMATION_BIZ);
+            RESTClient_old RestClient = new RESTClient_old(RestServerType.FORMATION_BIZ);
 
             strUri = "fms/387/";
             JsonBody = GetFireCommandBody();
@@ -595,7 +595,7 @@ namespace MonitoringUI.Monitoring
 
                 try
                 {
-                    RESTClient RestClient = new RESTClient();
+                    RESTClient_old RestClient = new RESTClient_old();
                     var JsonResult = await RestClient.JsonRequest(JsonApiType.Table, JsonCRUD.PATCH, "api.php/tMstAgingRack", jsonBody);
                     JsonRequest ret = JsonConvert.DeserializeObject<JsonRequest>(JsonResult);
 
@@ -620,7 +620,7 @@ namespace MonitoringUI.Monitoring
                 if (string.IsNullOrEmpty(strSpName))
                     return false;
 
-                RESTClient RestClient = new RESTClient();
+                RESTClient_old RestClient = new RESTClient_old();
                 var JsonResult = await RestClient.JsonRequest(JsonApiType.SP, JsonCRUD.SP_IN, $"sp.php/{strSpName}", jsonBody);
                 REST_RESULT_CUD_SP result = JsonConvert.DeserializeObject<REST_RESULT_CUD_SP>(JsonResult);
                 string err_msg = $"Code:{result.code}, Message:{result.message}";
@@ -674,7 +674,7 @@ namespace MonitoringUI.Monitoring
 
             try
             {
-                RESTClient RestClient = new RESTClient();
+                RESTClient_old RestClient = new RESTClient_old();
                 var JsonResult = await RestClient.JsonRequest(JsonApiType.Table, JsonCRUD.PATCH, "api.php/tMstAgingRack", jsonBody);
                 JsonRequest ret = JsonConvert.DeserializeObject<JsonRequest>(JsonResult);
 
@@ -705,7 +705,7 @@ namespace MonitoringUI.Monitoring
 
             try
             {
-                RESTClient RestClient = new RESTClient();
+                RESTClient_old RestClient = new RESTClient_old();
                 var JsonResult = await RestClient.GetJson(JsonApiType.Table, JsonCRUD.SELECT, "api.php/tMstAgingRack", jsonBodyy);
                 JsonAgingRackList jsonAgingRackList = JsonConvert.DeserializeObject<JsonAgingRackList>(JsonResult);
 
@@ -734,7 +734,7 @@ namespace MonitoringUI.Monitoring
 
             try
             {
-                RESTClient RestClient = new RESTClient();
+                RESTClient_old RestClient = new RESTClient_old();
                 var JsonResult = await RestClient.GetJson(JsonApiType.Table, JsonCRUD.SELECT, "api.php/tTrayCurr", jsonBodyy);
                 JsonTrayList jsonTrayList = JsonConvert.DeserializeObject<JsonTrayList>(JsonResult);
 
@@ -768,7 +768,7 @@ namespace MonitoringUI.Monitoring
 
             try
             {
-                RESTClient RestClient = new RESTClient();
+                RESTClient_old RestClient = new RESTClient_old();
                 var JsonResult = await RestClient.GetJson(JsonApiType.Table, JsonCRUD.SELECT, "api.php/tMstRouteOper", jsonBodyy);
                 JsonRouteOperList jsonOperList = JsonConvert.DeserializeObject<JsonRouteOperList>(JsonResult);
 
@@ -853,7 +853,7 @@ namespace MonitoringUI.Monitoring
 
             try
             {
-                RESTClient RestClient = new RESTClient();
+                RESTClient_old RestClient = new RESTClient_old();
                 var JsonResult = RestClient.JsonRequest(JsonApiType.Table, JsonCRUD.PATCH, "api.php/tMstAgingRack", jsonBody).GetAwaiter().GetResult();
                 JsonRequest ret = JsonConvert.DeserializeObject<JsonRequest>(JsonResult);
 
@@ -974,7 +974,7 @@ namespace MonitoringUI.Monitoring
 
             try
             {
-                RESTClient RestClient = new RESTClient();
+                RESTClient_old RestClient = new RESTClient_old();
                 var JsonResult = await RestClient.JsonRequest(JsonApiType.Table, JsonCRUD.PATCH, "api.php/tMstAgingRack", jsonBody);
                 JsonRequest ret = JsonConvert.DeserializeObject<JsonRequest>(JsonResult);
 

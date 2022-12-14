@@ -1,16 +1,23 @@
 ﻿using ControlGallery;
 using CSVMgr;
+using DBHandler;
 using FMSMonitoringUI.Common;
 using FMSMonitoringUI.Monitoring;
 //using Microsoft.Office.Interop.Excel;
 using MonitoringUI;
 using MonitoringUI.Common;
+using MonitoringUI.Monitoring;
+using MySql.Data.MySqlClient;
 using Novasoft.Logger;
 using OPCUAClientClassLib;
+using Org.BouncyCastle.Asn1.Cmp;
 using Org.BouncyCastle.Asn1.Tsp;
+using Org.BouncyCastle.Utilities;
+using RestClientLib;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
@@ -51,6 +58,11 @@ namespace FMSMonitoringUI.Controlls
         /// </summary>
         private Dictionary<string, ItemInfo> _ControlIdx = new Dictionary<string, ItemInfo>();
 
+        /// <summary>
+        /// First=Equipment ID, Second=Eqp UserControl
+        /// </summary>
+        private Dictionary<string, UserControlEqp> _EntireEqpList = new Dictionary<string, UserControlEqp>();
+
         private Logger _Logger; // { get; set; }
 
         private ApplicationInstance _OPCApplication = null;
@@ -59,6 +71,8 @@ namespace FMSMonitoringUI.Controlls
         //    get { return _OPCApplication; }
         //    set { _OPCApplication = value; }
         //}
+
+        private MySqlManager _mysql;
 
         #region CtrlMain
         public CtrlMonitoring(ApplicationInstance applicationInstance)
@@ -70,6 +84,8 @@ namespace FMSMonitoringUI.Controlls
             // Timer 
             m_timer.Tick += new EventHandler(OnTimer);
             m_timer.Stop();
+
+            _mysql = new MySqlManager(ConfigurationManager.ConnectionStrings["DB_CONNECTION_STRING"].ConnectionString);
 
             string logPath = ConfigurationManager.AppSettings["LOG_PATH"];
             _Logger = new Logger(logPath, LogMode.Hour);
@@ -258,8 +274,7 @@ namespace FMSMonitoringUI.Controlls
                         }
                     }
                 }
-
-                if (ctl.GetType() == typeof(BCRMarker))
+                else if (ctl.GetType() == typeof(BCRMarker))
                 {
                     BCRMarker bcr = ctl as BCRMarker;
                     //bcr.ObjectDoubleClick += OnObjectDoubleClick;
@@ -272,8 +287,7 @@ namespace FMSMonitoringUI.Controlls
                     _ListBCR.Add(bcr.PLCNo, bcr);
                     this.Controls.Add(bt);      // Controls에 BubbleText를 추가해줘야 UI에서 Text가 표시된다.
                 }
-
-                if (ctl.GetType() == typeof(CtrlSCraneV))       // RTV 대용으로 사용
+                else if (ctl.GetType() == typeof(CtrlSCraneV))       // RTV 대용으로 사용
                 {
                     CtrlSCraneV crane = ctl as CtrlSCraneV;
                     //crane.SetSCHandler(GlobalArea.g_SCHandlerList.Find(x => x.DeviceID == crane.DeviceID));
@@ -281,8 +295,7 @@ namespace FMSMonitoringUI.Controlls
 
                     //_ListCrane.Add(crane);
                 }
-
-                if (ctl.GetType() == typeof(CtrlSCraneH))
+                else if (ctl.GetType() == typeof(CtrlSCraneH))
                 {
                     CtrlSCraneH crane = ctl as CtrlSCraneH;
                     //crane.SetSCHandler(GlobalArea.g_SCHandlerList.Find(x => x.DeviceID == crane.DeviceID));
@@ -314,7 +327,23 @@ namespace FMSMonitoringUI.Controlls
 
                     //craneCnt++;
                 }
+                else if (ctl.GetType() == typeof(CtrlEqpCharger) ||
+                         ctl.GetType() == typeof(CtrlEqpHPC) ||
+                         ctl.GetType() == typeof(CtrlEqpOCV) ||
+                         ctl.GetType() == typeof(CtrlEqpDCIR) ||
+                         ctl.GetType() == typeof(CtrlEqpMicroCurrent) ||
+                         ctl.GetType() == typeof(CtrlEqpDegas) ||
+                         ctl.GetType() == typeof(CtrlEqpVisionInsp) ||
+                         ctl.GetType() == typeof(CtrlEqpLeakCheck) ||
+                         ctl.GetType() == typeof(CtrlEqpNGSorter) ||
+                         ctl.GetType() == typeof(CtrlEqpPacking))
+                {
+                    UserControlEqp eqp = ctl as UserControlEqp;
+                    _EntireEqpList.Add(eqp.EqpID, eqp);
+                }
             }
+
+            //ctrlEqpDGS.MouseClick += CtrlEqp_MouseClick_Evnet;
 
             //int idx = 0;
             //int groupCnt = groupCtrl.Count();
@@ -334,6 +363,17 @@ namespace FMSMonitoringUI.Controlls
 
             return groupCtrl;
         }
+
+        private void CtrlEqp_MouseClick_Evnet(object sender, MouseEventArgs e)
+        {
+            //CtrlEqpDegas gv = (CtrlEqpDegas)sender;
+
+            //gv.TrayInfoView.CurrentCell = null;
+            //gv.TrayInfoView.ClearSelection();
+            //gv.Refresh();
+
+            //ctrlEqpDGS.Refresh();
+        }
         #endregion
 
         #region OnTimer
@@ -343,7 +383,7 @@ namespace FMSMonitoringUI.Controlls
             {
                 m_timer.Stop();
 
-                //Task task = LoadChargerRackData();
+                ReadEqpInfo();
 
                 if (m_timer.Interval != 5000)
                     m_timer.Interval = 5000;
@@ -415,7 +455,7 @@ namespace FMSMonitoringUI.Controlls
                         string msg = $"Track No : {trackno}, TrayIdL1 : {siteInfo.TrayIdL1}, TrayIdL2 : {siteInfo.TrayIdL2}";
                         _Logger.Write(LogLevel.Info, "", LogFileName.ButtonClick);
 
-                        WinTrayInfo winTray = new WinTrayInfo();
+                        WinCVTrayInfo winTray = new WinCVTrayInfo();
                         winTray.SetTrayInfo(siteInfo);
                         winTray.Show();
 
@@ -578,6 +618,24 @@ namespace FMSMonitoringUI.Controlls
             };
 
             return tagInfo;
+        }
+        #endregion
+
+        #region EQPTrayInfo
+        private void ReadEqpInfo()
+        {
+            DataSet ds = _mysql.SelectEqpInfo();
+
+            foreach (DataRow row in ds.Tables[0].Rows)
+            {
+                string eqpid = row["eqp_id"].ToString();
+
+                if (_EntireEqpList.ContainsKey(eqpid))
+                {
+                    UserControlEqp userControl = _EntireEqpList[eqpid];
+                    userControl.SetData(row);
+                }
+            }
         }
         #endregion
 
@@ -759,7 +817,7 @@ namespace FMSMonitoringUI.Controlls
             {
                 await Task.Run(() =>
                 {
-                    WinTrayInfo winTray = new WinTrayInfo();
+                    WinCVTrayInfo winTray = new WinCVTrayInfo();
                     winTray.SetTrayInfo(tagInfo);
                     winTray.Show();
                 });
@@ -911,6 +969,10 @@ namespace FMSMonitoringUI.Controlls
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+            WinTroubleInfo form = new WinTroubleInfo();
+            form.ShowDialog();
+
             //string node = "ns=2;i=1000";
             //_clientFMS[0].GetNodeID(node);
 
@@ -918,17 +980,53 @@ namespace FMSMonitoringUI.Controlls
             //NodeId nodeToBrowse = new NodeId(Objects.ObjectsFolder, 0);
             //_clientFMS[0].ScanOPCServer(nodeToBrowse);
 
-            
-            
+            //Dictionary<string, object> _EntireEqpList = new Dictionary<string, object>();
 
+            //_EntireEqpList.Add("F1DGS01", ctrlEqpDGS);
+            //_EntireEqpList.Add("F1DCR01", ctrlEqpDCR);
+            //_EntireEqpList.Add("F1OCV01", ctrlEqpOCV);
+
+            //string connection = ConfigurationManager.ConnectionStrings["DB_CONNECTION_STRING"].ConnectionString;
+
+            //DataSet ds = new DataSet();
+
+            //using (MySqlConnection conn = new MySqlConnection(connection))
+            //{
+            //    //tb_mst_aging 전체 데이터를 조회합니다.            
+            //    string selectQuery = string.Format($"SELECT eqp_id, tray_id, tray_id_2  FROM fms_v.tb_mst_eqp");
+
+            //    MySqlDataAdapter dataAdapter = new MySqlDataAdapter(selectQuery, conn);
+
+            //    dataAdapter.Fill(ds);               
+            //}
+
+            //foreach (DataRow row in ds.Tables[0].Rows)
+            //{
+            //    string eqpid = row["eqp_id"].ToString();
+
+            //    if (_EntireEqpList.ContainsKey(eqpid))
+            //    {
+            //        UserControlEqp userControl = _EntireEqpList[eqpid];
+            //        userControl.SetData(row);
+            //    }                
+            //}
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //NodeId nodeID = _clientFMS[0].GetNodeID(".CNV.F01CNV10010.CNV0002.Common.Alive");
+            RESTClient rest = new RESTClient();
 
-           
+            string sql = "SELECT * FROM tb_dat_cell;";            
+            string jsonResult = rest.GetJson(enActionType.SQL_SELECT, sql);
+
+            _jsonDatCellResponse j1 =  rest.ConvertDatCell(jsonResult);
+
+            sql = "SELECT * FROM fms_v.tb_dat_tray Where tray_id = 'TRV000001'";
+            jsonResult = rest.GetJson(enActionType.SQL_SELECT, sql);
+
+            _jsonDatTrayResponse j2 = rest.ConvertDatTray(jsonResult);
+
         }
     }
 }

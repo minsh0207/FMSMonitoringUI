@@ -215,7 +215,7 @@ namespace MonitoringUI.Monitoring
             try
             {
 
-                RESTClient RestClient = new RESTClient();
+                RESTClient_old RestClient = new RESTClient_old();
                 var JsonResult = await RestClient.JsonRequest(JsonApiType.Table, JsonCRUD.PATCH, "api.php/tMstAgingRack", jsonBody);
                 JsonRequest ret = JsonConvert.DeserializeObject<JsonRequest>(JsonResult);
 

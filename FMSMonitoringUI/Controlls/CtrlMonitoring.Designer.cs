@@ -120,8 +120,6 @@
             this.pictureBox29 = new System.Windows.Forms.PictureBox();
             this.pictureBox31 = new System.Windows.Forms.PictureBox();
             this.pictureBox32 = new System.Windows.Forms.PictureBox();
-            this.pictureBox33 = new System.Windows.Forms.PictureBox();
-            this.pictureBox34 = new System.Windows.Forms.PictureBox();
             this.pictureBox35 = new System.Windows.Forms.PictureBox();
             this.pictureBox36 = new System.Windows.Forms.PictureBox();
             this.pictureBox37 = new System.Windows.Forms.PictureBox();
@@ -239,21 +237,8 @@
             this.ctrlTaggingName2 = new MonitoringUI.Controlls.CtrlTaggingName();
             this.ctrlTaggingName1 = new MonitoringUI.Controlls.CtrlTaggingName();
             this.pictureBox38 = new System.Windows.Forms.PictureBox();
-            this.ctrlPacking1 = new FMSMonitoringUI.Controlls.CtrlEqpPacking();
-            this.ctrlEqpMicroCurrent1 = new FMSMonitoringUI.Controlls.CtrlEqpMicroCurrent();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.ctrlEqpLeakCheck1 = new FMSMonitoringUI.Controlls.CtrlEqpLeakCheck();
-            this.ctrlNGSorter1 = new FMSMonitoringUI.Controlls.CtrlNGSorter();
-            this.ctrlEqpOCV1 = new FMSMonitoringUI.Controlls.CtrlEqpOCV();
-            this.ctrlEqpDCIR1 = new FMSMonitoringUI.Controlls.CtrlEqpDCIR();
-            this.ctrlEqpDegas1 = new FMSMonitoringUI.Controlls.CtrlEqpDegas();
-            this.ctrlEqpVisionInspection1 = new FMSMonitoringUI.Controlls.CtrlEqpVisionInspection();
-            this.ctrlEqpHPC1 = new FMSMonitoringUI.Controlls.CtrlEqpHPC();
-            this.ctrlEqpHTAging1 = new FMSMonitoringUI.Controlls.CtrlEqpHTAging();
-            this.ctrlEqpLTAging1 = new FMSMonitoringUI.Controlls.CtrlEqpLTAging();
-            this.ctrlEqpLTAging2 = new FMSMonitoringUI.Controlls.CtrlEqpLTAging();
-            this.ctrlEqpCharger1 = new FMSMonitoringUI.Controlls.CtrlEqpCharger();
             this.ctrlSCraneH1 = new ControlGallery.CtrlSCraneH();
             this.ctrlSCraneH2 = new ControlGallery.CtrlSCraneH();
             this.ctrlSCraneH3 = new ControlGallery.CtrlSCraneH();
@@ -262,6 +247,23 @@
             this.craneCarriageSmall2 = new ControlGallery.CraneCarriageSmall(this.components);
             this.craneCarriageSmall3 = new ControlGallery.CraneCarriageSmall(this.components);
             this.m_timer = new System.Windows.Forms.Timer(this.components);
+            this.ctrlSiteTrack40 = new ControlGallery.CtrlSiteTrack();
+            this.ctrlSiteTrack41 = new ControlGallery.CtrlSiteTrack();
+            this.ctrlSiteTrack42 = new ControlGallery.CtrlSiteTrack();
+            this.ctrlSiteTrack43 = new ControlGallery.CtrlSiteTrack();
+            this.ctrlEqpOCV = new FMSMonitoringUI.Controlls.CtrlEqpOCV();
+            this.ctrlEqpDCR = new FMSMonitoringUI.Controlls.CtrlEqpDCIR();
+            this.ctrlEqpMIC = new FMSMonitoringUI.Controlls.CtrlEqpMicroCurrent();
+            this.ctrlEqpDGS = new FMSMonitoringUI.Controlls.CtrlEqpDegas();
+            this.ctrlEqpNGS = new FMSMonitoringUI.Controlls.CtrlEqpNGSorter();
+            this.ctrlEqpVSI = new FMSMonitoringUI.Controlls.CtrlEqpVisionInsp();
+            this.ctrlEqpPAC = new FMSMonitoringUI.Controlls.CtrlEqpPacking();
+            this.ctrlEqpHPC = new FMSMonitoringUI.Controlls.CtrlEqpHPC();
+            this.ctrlEqpLKC = new FMSMonitoringUI.Controlls.CtrlEqpLeakCheck();
+            this.ctrlEqpHTA = new FMSMonitoringUI.Controlls.CtrlEqpHTAging();
+            this.ctrlEqpLT1 = new FMSMonitoringUI.Controlls.CtrlEqpLTAging();
+            this.ctrlEqpLTA2 = new FMSMonitoringUI.Controlls.CtrlEqpLTAging();
+            this.ctrlEqpCHG = new FMSMonitoringUI.Controlls.CtrlEqpCharger();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -280,8 +282,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox29)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox31)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox32)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox33)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox34)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox35)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox36)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox37)).BeginInit();
@@ -389,79 +389,79 @@
             // 
             // label3
             // 
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(68)))), ((int)(((byte)(22)))));
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label3.CausesValidation = false;
             this.label3.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
             this.label3.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label3.Location = new System.Drawing.Point(325, 533);
+            this.label3.Location = new System.Drawing.Point(325, 532);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 33);
+            this.label3.Size = new System.Drawing.Size(23, 34);
             this.label3.TabIndex = 9;
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label4
             // 
-            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(68)))), ((int)(((byte)(22)))));
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label4.CausesValidation = false;
             this.label4.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
             this.label4.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label4.Location = new System.Drawing.Point(325, 611);
+            this.label4.Location = new System.Drawing.Point(325, 610);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 33);
+            this.label4.Size = new System.Drawing.Size(23, 34);
             this.label4.TabIndex = 10;
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label7
             // 
-            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(68)))), ((int)(((byte)(22)))));
+            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label7.CausesValidation = false;
             this.label7.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
             this.label7.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label7.Location = new System.Drawing.Point(1013, 495);
+            this.label7.Location = new System.Drawing.Point(1011, 495);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(37, 34);
+            this.label7.Size = new System.Drawing.Size(39, 23);
             this.label7.TabIndex = 17;
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label8
             // 
-            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(68)))), ((int)(((byte)(22)))));
+            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label8.CausesValidation = false;
             this.label8.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
             this.label8.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label8.Location = new System.Drawing.Point(928, 495);
+            this.label8.Location = new System.Drawing.Point(926, 495);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(37, 34);
+            this.label8.Size = new System.Drawing.Size(39, 23);
             this.label8.TabIndex = 18;
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label9
             // 
-            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(68)))), ((int)(((byte)(22)))));
+            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label9.CausesValidation = false;
             this.label9.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
             this.label9.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label9.Location = new System.Drawing.Point(799, 495);
+            this.label9.Location = new System.Drawing.Point(797, 495);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(37, 34);
+            this.label9.Size = new System.Drawing.Size(39, 23);
             this.label9.TabIndex = 19;
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label10
             // 
-            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(68)))), ((int)(((byte)(22)))));
+            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label10.CausesValidation = false;
             this.label10.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
             this.label10.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label10.Location = new System.Drawing.Point(712, 495);
+            this.label10.Location = new System.Drawing.Point(711, 495);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(37, 34);
+            this.label10.Size = new System.Drawing.Size(39, 23);
             this.label10.TabIndex = 20;
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -546,15 +546,15 @@
             this.ctrlSiteTrack1.InterSitePadding = 5;
             this.ctrlSiteTrack1.IsControled = true;
             this.ctrlSiteTrack1.IsUpperStage = false;
-            this.ctrlSiteTrack1.Location = new System.Drawing.Point(109, 454);
+            this.ctrlSiteTrack1.Location = new System.Drawing.Point(108, 454);
             this.ctrlSiteTrack1.MainLoop = false;
             this.ctrlSiteTrack1.MarginHorizontal = 0;
             this.ctrlSiteTrack1.MarginVertical = 0;
             this.ctrlSiteTrack1.Name = "ctrlSiteTrack1";
             this.ctrlSiteTrack1.PLCNo = 1;
-            this.ctrlSiteTrack1.ShowSiteNo = true;
+            this.ctrlSiteTrack1.ShowSiteNo = false;
             this.ctrlSiteTrack1.ShowTroubleState = false;
-            this.ctrlSiteTrack1.SiteBorderColor = System.Drawing.Color.Black;
+            this.ctrlSiteTrack1.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack1.SiteBoxColor = System.Drawing.Color.Gray;
             this.ctrlSiteTrack1.SiteBoxHeight = 34;
             this.ctrlSiteTrack1.SiteBoxWidth = 38;
@@ -606,9 +606,9 @@
             this.ctrlSiteTrack2.MarginVertical = 0;
             this.ctrlSiteTrack2.Name = "ctrlSiteTrack2";
             this.ctrlSiteTrack2.PLCNo = 2;
-            this.ctrlSiteTrack2.ShowSiteNo = true;
+            this.ctrlSiteTrack2.ShowSiteNo = false;
             this.ctrlSiteTrack2.ShowTroubleState = false;
-            this.ctrlSiteTrack2.SiteBorderColor = System.Drawing.Color.Black;
+            this.ctrlSiteTrack2.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack2.SiteBoxColor = System.Drawing.Color.Red;
             this.ctrlSiteTrack2.SiteBoxHeight = 34;
             this.ctrlSiteTrack2.SiteBoxWidth = 38;
@@ -642,7 +642,7 @@
         73};
             this.ctrlSiteTrack2.SiteTextDisp = null;
             this.ctrlSiteTrack2.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack2.Size = new System.Drawing.Size(984, 35);
+            this.ctrlSiteTrack2.Size = new System.Drawing.Size(985, 35);
             this.ctrlSiteTrack2.TabIndex = 1;
             this.ctrlSiteTrack2.TextRotateAngle = 0;
             // 
@@ -654,17 +654,17 @@
             this.ctrlSiteTrack3.InterSitePadding = 0;
             this.ctrlSiteTrack3.IsControled = true;
             this.ctrlSiteTrack3.IsUpperStage = false;
-            this.ctrlSiteTrack3.Location = new System.Drawing.Point(66, 419);
+            this.ctrlSiteTrack3.Location = new System.Drawing.Point(65, 454);
             this.ctrlSiteTrack3.MainLoop = false;
             this.ctrlSiteTrack3.MarginHorizontal = 0;
             this.ctrlSiteTrack3.MarginVertical = 0;
             this.ctrlSiteTrack3.Name = "ctrlSiteTrack3";
             this.ctrlSiteTrack3.PLCNo = 3;
-            this.ctrlSiteTrack3.ShowSiteNo = true;
+            this.ctrlSiteTrack3.ShowSiteNo = false;
             this.ctrlSiteTrack3.ShowTroubleState = false;
             this.ctrlSiteTrack3.SiteBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ctrlSiteTrack3.SiteBoxColor = System.Drawing.Color.Gray;
-            this.ctrlSiteTrack3.SiteBoxHeight = 34;
+            this.ctrlSiteTrack3.SiteBoxHeight = 17;
             this.ctrlSiteTrack3.SiteBoxWidth = 38;
             this.ctrlSiteTrack3.SiteCount = 2;
             this.ctrlSiteTrack3.SiteNo = 0;
@@ -673,10 +673,9 @@
             this.ctrlSiteTrack3.SiteNoList = new int[] {
         402,
         40};
-            this.ctrlSiteTrack3.SiteTextDisp = new string[] {
-        "402= E"};
+            this.ctrlSiteTrack3.SiteTextDisp = new string[0];
             this.ctrlSiteTrack3.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack3.Size = new System.Drawing.Size(39, 70);
+            this.ctrlSiteTrack3.Size = new System.Drawing.Size(39, 35);
             this.ctrlSiteTrack3.TabIndex = 0;
             this.ctrlSiteTrack3.TextRotateAngle = 0;
             // 
@@ -694,9 +693,9 @@
             this.ctrlSiteTrack4.MarginVertical = 0;
             this.ctrlSiteTrack4.Name = "ctrlSiteTrack4";
             this.ctrlSiteTrack4.PLCNo = 4;
-            this.ctrlSiteTrack4.ShowSiteNo = true;
+            this.ctrlSiteTrack4.ShowSiteNo = false;
             this.ctrlSiteTrack4.ShowTroubleState = false;
-            this.ctrlSiteTrack4.SiteBorderColor = System.Drawing.Color.Black;
+            this.ctrlSiteTrack4.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack4.SiteBoxColor = System.Drawing.Color.Gray;
             this.ctrlSiteTrack4.SiteBoxHeight = 34;
             this.ctrlSiteTrack4.SiteBoxWidth = 38;
@@ -716,7 +715,7 @@
         42};
             this.ctrlSiteTrack4.SiteTextDisp = null;
             this.ctrlSiteTrack4.SiteTrayDirection = ControlGallery.TrayMovingDirection.TopToBottom;
-            this.ctrlSiteTrack4.Size = new System.Drawing.Size(38, 349);
+            this.ctrlSiteTrack4.Size = new System.Drawing.Size(39, 349);
             this.ctrlSiteTrack4.TabIndex = 3;
             this.ctrlSiteTrack4.TextRotateAngle = 0;
             // 
@@ -734,9 +733,9 @@
             this.ctrlSiteTrack5.MarginVertical = 0;
             this.ctrlSiteTrack5.Name = "ctrlSiteTrack5";
             this.ctrlSiteTrack5.PLCNo = 5;
-            this.ctrlSiteTrack5.ShowSiteNo = true;
+            this.ctrlSiteTrack5.ShowSiteNo = false;
             this.ctrlSiteTrack5.ShowTroubleState = false;
-            this.ctrlSiteTrack5.SiteBorderColor = System.Drawing.Color.Black;
+            this.ctrlSiteTrack5.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack5.SiteBoxColor = System.Drawing.Color.Gray;
             this.ctrlSiteTrack5.SiteBoxHeight = 34;
             this.ctrlSiteTrack5.SiteBoxWidth = 38;
@@ -776,9 +775,9 @@
             this.ctrlSiteTrack6.MarginVertical = 0;
             this.ctrlSiteTrack6.Name = "ctrlSiteTrack6";
             this.ctrlSiteTrack6.PLCNo = 6;
-            this.ctrlSiteTrack6.ShowSiteNo = true;
+            this.ctrlSiteTrack6.ShowSiteNo = false;
             this.ctrlSiteTrack6.ShowTroubleState = false;
-            this.ctrlSiteTrack6.SiteBorderColor = System.Drawing.Color.Black;
+            this.ctrlSiteTrack6.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack6.SiteBoxColor = System.Drawing.Color.Gray;
             this.ctrlSiteTrack6.SiteBoxHeight = 34;
             this.ctrlSiteTrack6.SiteBoxWidth = 38;
@@ -809,15 +808,15 @@
             this.ctrlSiteTrack7.InterSitePadding = 5;
             this.ctrlSiteTrack7.IsControled = true;
             this.ctrlSiteTrack7.IsUpperStage = false;
-            this.ctrlSiteTrack7.Location = new System.Drawing.Point(368, 532);
+            this.ctrlSiteTrack7.Location = new System.Drawing.Point(353, 532);
             this.ctrlSiteTrack7.MainLoop = false;
             this.ctrlSiteTrack7.MarginHorizontal = 0;
             this.ctrlSiteTrack7.MarginVertical = 0;
             this.ctrlSiteTrack7.Name = "ctrlSiteTrack7";
             this.ctrlSiteTrack7.PLCNo = 7;
-            this.ctrlSiteTrack7.ShowSiteNo = true;
+            this.ctrlSiteTrack7.ShowSiteNo = false;
             this.ctrlSiteTrack7.ShowTroubleState = false;
-            this.ctrlSiteTrack7.SiteBorderColor = System.Drawing.Color.Black;
+            this.ctrlSiteTrack7.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack7.SiteBoxColor = System.Drawing.Color.Gray;
             this.ctrlSiteTrack7.SiteBoxHeight = 34;
             this.ctrlSiteTrack7.SiteBoxWidth = 38;
@@ -828,7 +827,7 @@
             this.ctrlSiteTrack7.SiteNoList = null;
             this.ctrlSiteTrack7.SiteTextDisp = null;
             this.ctrlSiteTrack7.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack7.Size = new System.Drawing.Size(39, 116);
+            this.ctrlSiteTrack7.Size = new System.Drawing.Size(39, 113);
             this.ctrlSiteTrack7.TabIndex = 8;
             this.ctrlSiteTrack7.TextRotateAngle = 0;
             // 
@@ -836,33 +835,30 @@
             // 
             this.ctrlSiteTrack8.CVPLCListDeviceID = 0;
             this.ctrlSiteTrack8.DisplayText = "";
-            this.ctrlSiteTrack8.FirstSiteNo = 1;
+            this.ctrlSiteTrack8.FirstSiteNo = 21;
             this.ctrlSiteTrack8.InterSitePadding = 5;
             this.ctrlSiteTrack8.IsControled = true;
             this.ctrlSiteTrack8.IsUpperStage = false;
-            this.ctrlSiteTrack8.Location = new System.Drawing.Point(407, 415);
+            this.ctrlSiteTrack8.Location = new System.Drawing.Point(410, 415);
             this.ctrlSiteTrack8.MainLoop = false;
             this.ctrlSiteTrack8.MarginHorizontal = 0;
             this.ctrlSiteTrack8.MarginVertical = 0;
             this.ctrlSiteTrack8.Name = "ctrlSiteTrack8";
             this.ctrlSiteTrack8.PLCNo = 8;
-            this.ctrlSiteTrack8.ShowSiteNo = true;
+            this.ctrlSiteTrack8.ShowSiteNo = false;
             this.ctrlSiteTrack8.ShowTroubleState = false;
-            this.ctrlSiteTrack8.SiteBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlSiteTrack8.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack8.SiteBoxColor = System.Drawing.Color.Gray;
             this.ctrlSiteTrack8.SiteBoxHeight = 34;
             this.ctrlSiteTrack8.SiteBoxWidth = 38;
-            this.ctrlSiteTrack8.SiteCount = 3;
+            this.ctrlSiteTrack8.SiteCount = 1;
             this.ctrlSiteTrack8.SiteNo = 0;
-            this.ctrlSiteTrack8.SiteNoDirection = ControlGallery.SiteTrackDirection.RightToLeft;
+            this.ctrlSiteTrack8.SiteNoDirection = ControlGallery.SiteTrackDirection.LeftToRight;
             this.ctrlSiteTrack8.SiteNoIncStep = 1;
-            this.ctrlSiteTrack8.SiteNoList = new int[] {
-        21,
-        -2,
-        25};
+            this.ctrlSiteTrack8.SiteNoList = new int[0];
             this.ctrlSiteTrack8.SiteTextDisp = null;
             this.ctrlSiteTrack8.SiteTrayDirection = ControlGallery.TrayMovingDirection.RightToLeft;
-            this.ctrlSiteTrack8.Size = new System.Drawing.Size(132, 34);
+            this.ctrlSiteTrack8.Size = new System.Drawing.Size(39, 35);
             this.ctrlSiteTrack8.TabIndex = 11;
             this.ctrlSiteTrack8.TextRotateAngle = 0;
             // 
@@ -881,9 +877,9 @@
             this.ctrlSiteTrack9.MarginVertical = 0;
             this.ctrlSiteTrack9.Name = "ctrlSiteTrack9";
             this.ctrlSiteTrack9.PLCNo = 9;
-            this.ctrlSiteTrack9.ShowSiteNo = true;
+            this.ctrlSiteTrack9.ShowSiteNo = false;
             this.ctrlSiteTrack9.ShowTroubleState = false;
-            this.ctrlSiteTrack9.SiteBorderColor = System.Drawing.Color.Black;
+            this.ctrlSiteTrack9.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack9.SiteBoxColor = System.Drawing.Color.Gray;
             this.ctrlSiteTrack9.SiteBoxHeight = 34;
             this.ctrlSiteTrack9.SiteBoxWidth = 38;
@@ -902,7 +898,7 @@
             this.ctrlSiteTrack9.SiteTextDisp = new string[] {
         "61=G1"};
             this.ctrlSiteTrack9.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack9.Size = new System.Drawing.Size(38, 271);
+            this.ctrlSiteTrack9.Size = new System.Drawing.Size(39, 271);
             this.ctrlSiteTrack9.TabIndex = 12;
             this.ctrlSiteTrack9.TextRotateAngle = 0;
             // 
@@ -920,9 +916,9 @@
             this.ctrlSiteTrack10.MarginVertical = 0;
             this.ctrlSiteTrack10.Name = "ctrlSiteTrack10";
             this.ctrlSiteTrack10.PLCNo = 10;
-            this.ctrlSiteTrack10.ShowSiteNo = true;
+            this.ctrlSiteTrack10.ShowSiteNo = false;
             this.ctrlSiteTrack10.ShowTroubleState = false;
-            this.ctrlSiteTrack10.SiteBorderColor = System.Drawing.Color.Black;
+            this.ctrlSiteTrack10.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack10.SiteBoxColor = System.Drawing.Color.Gray;
             this.ctrlSiteTrack10.SiteBoxHeight = 34;
             this.ctrlSiteTrack10.SiteBoxWidth = 38;
@@ -941,7 +937,7 @@
             this.ctrlSiteTrack10.SiteTextDisp = new string[] {
         "64=G2"};
             this.ctrlSiteTrack10.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack10.Size = new System.Drawing.Size(38, 271);
+            this.ctrlSiteTrack10.Size = new System.Drawing.Size(39, 271);
             this.ctrlSiteTrack10.TabIndex = 13;
             this.ctrlSiteTrack10.TextRotateAngle = 0;
             // 
@@ -949,7 +945,7 @@
             // 
             this.ctrlSiteTrack11.CVPLCListDeviceID = 0;
             this.ctrlSiteTrack11.DisplayText = "";
-            this.ctrlSiteTrack11.FirstSiteNo = 1;
+            this.ctrlSiteTrack11.FirstSiteNo = 67;
             this.ctrlSiteTrack11.InterSitePadding = 5;
             this.ctrlSiteTrack11.IsControled = true;
             this.ctrlSiteTrack11.IsUpperStage = false;
@@ -959,25 +955,21 @@
             this.ctrlSiteTrack11.MarginVertical = 0;
             this.ctrlSiteTrack11.Name = "ctrlSiteTrack11";
             this.ctrlSiteTrack11.PLCNo = 11;
-            this.ctrlSiteTrack11.ShowSiteNo = true;
+            this.ctrlSiteTrack11.ShowSiteNo = false;
             this.ctrlSiteTrack11.ShowTroubleState = false;
-            this.ctrlSiteTrack11.SiteBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlSiteTrack11.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack11.SiteBoxColor = System.Drawing.Color.Gray;
             this.ctrlSiteTrack11.SiteBoxHeight = 34;
             this.ctrlSiteTrack11.SiteBoxWidth = 38;
-            this.ctrlSiteTrack11.SiteCount = 3;
+            this.ctrlSiteTrack11.SiteCount = 1;
             this.ctrlSiteTrack11.SiteNo = 0;
             this.ctrlSiteTrack11.SiteNoDirection = ControlGallery.SiteTrackDirection.LeftToRight;
             this.ctrlSiteTrack11.SiteNoIncStep = 1;
-            this.ctrlSiteTrack11.SiteNoList = new int[] {
-        67,
-        -2,
-        69};
+            this.ctrlSiteTrack11.SiteNoList = new int[0];
             this.ctrlSiteTrack11.SiteTextDisp = new string[] {
-        "67=G3",
-        "69=G4"};
+        "67=G3"};
             this.ctrlSiteTrack11.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack11.Size = new System.Drawing.Size(125, 35);
+            this.ctrlSiteTrack11.Size = new System.Drawing.Size(39, 35);
             this.ctrlSiteTrack11.TabIndex = 16;
             this.ctrlSiteTrack11.TextRotateAngle = 0;
             // 
@@ -985,33 +977,30 @@
             // 
             this.ctrlSiteTrack12.CVPLCListDeviceID = 0;
             this.ctrlSiteTrack12.DisplayText = "";
-            this.ctrlSiteTrack12.FirstSiteNo = 1;
+            this.ctrlSiteTrack12.FirstSiteNo = 12;
             this.ctrlSiteTrack12.InterSitePadding = 5;
             this.ctrlSiteTrack12.IsControled = true;
             this.ctrlSiteTrack12.IsUpperStage = false;
-            this.ctrlSiteTrack12.Location = new System.Drawing.Point(709, 533);
+            this.ctrlSiteTrack12.Location = new System.Drawing.Point(711, 522);
             this.ctrlSiteTrack12.MainLoop = false;
             this.ctrlSiteTrack12.MarginHorizontal = 0;
             this.ctrlSiteTrack12.MarginVertical = 0;
             this.ctrlSiteTrack12.Name = "ctrlSiteTrack12";
             this.ctrlSiteTrack12.PLCNo = 12;
-            this.ctrlSiteTrack12.ShowSiteNo = true;
+            this.ctrlSiteTrack12.ShowSiteNo = false;
             this.ctrlSiteTrack12.ShowTroubleState = false;
-            this.ctrlSiteTrack12.SiteBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlSiteTrack12.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack12.SiteBoxColor = System.Drawing.Color.Gray;
             this.ctrlSiteTrack12.SiteBoxHeight = 34;
             this.ctrlSiteTrack12.SiteBoxWidth = 38;
-            this.ctrlSiteTrack12.SiteCount = 3;
+            this.ctrlSiteTrack12.SiteCount = 1;
             this.ctrlSiteTrack12.SiteNo = 0;
-            this.ctrlSiteTrack12.SiteNoDirection = ControlGallery.SiteTrackDirection.RightToLeft;
+            this.ctrlSiteTrack12.SiteNoDirection = ControlGallery.SiteTrackDirection.LeftToRight;
             this.ctrlSiteTrack12.SiteNoIncStep = 1;
-            this.ctrlSiteTrack12.SiteNoList = new int[] {
-        11,
-        -2,
-        12};
+            this.ctrlSiteTrack12.SiteNoList = null;
             this.ctrlSiteTrack12.SiteTextDisp = null;
             this.ctrlSiteTrack12.SiteTrayDirection = ControlGallery.TrayMovingDirection.RightToLeft;
-            this.ctrlSiteTrack12.Size = new System.Drawing.Size(132, 35);
+            this.ctrlSiteTrack12.Size = new System.Drawing.Size(39, 35);
             this.ctrlSiteTrack12.TabIndex = 21;
             this.ctrlSiteTrack12.TextRotateAngle = 0;
             // 
@@ -1019,33 +1008,30 @@
             // 
             this.ctrlSiteTrack13.CVPLCListDeviceID = 0;
             this.ctrlSiteTrack13.DisplayText = "";
-            this.ctrlSiteTrack13.FirstSiteNo = 1;
+            this.ctrlSiteTrack13.FirstSiteNo = 5;
             this.ctrlSiteTrack13.InterSitePadding = 5;
             this.ctrlSiteTrack13.IsControled = true;
             this.ctrlSiteTrack13.IsUpperStage = false;
-            this.ctrlSiteTrack13.Location = new System.Drawing.Point(927, 533);
+            this.ctrlSiteTrack13.Location = new System.Drawing.Point(927, 522);
             this.ctrlSiteTrack13.MainLoop = false;
             this.ctrlSiteTrack13.MarginHorizontal = 0;
             this.ctrlSiteTrack13.MarginVertical = 0;
             this.ctrlSiteTrack13.Name = "ctrlSiteTrack13";
             this.ctrlSiteTrack13.PLCNo = 13;
-            this.ctrlSiteTrack13.ShowSiteNo = true;
+            this.ctrlSiteTrack13.ShowSiteNo = false;
             this.ctrlSiteTrack13.ShowTroubleState = false;
-            this.ctrlSiteTrack13.SiteBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlSiteTrack13.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack13.SiteBoxColor = System.Drawing.Color.Gray;
             this.ctrlSiteTrack13.SiteBoxHeight = 34;
             this.ctrlSiteTrack13.SiteBoxWidth = 38;
-            this.ctrlSiteTrack13.SiteCount = 3;
+            this.ctrlSiteTrack13.SiteCount = 1;
             this.ctrlSiteTrack13.SiteNo = 0;
             this.ctrlSiteTrack13.SiteNoDirection = ControlGallery.SiteTrackDirection.LeftToRight;
             this.ctrlSiteTrack13.SiteNoIncStep = 1;
-            this.ctrlSiteTrack13.SiteNoList = new int[] {
-        5,
-        -2,
-        6};
+            this.ctrlSiteTrack13.SiteNoList = null;
             this.ctrlSiteTrack13.SiteTextDisp = null;
             this.ctrlSiteTrack13.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack13.Size = new System.Drawing.Size(126, 35);
+            this.ctrlSiteTrack13.Size = new System.Drawing.Size(39, 35);
             this.ctrlSiteTrack13.TabIndex = 22;
             this.ctrlSiteTrack13.TextRotateAngle = 0;
             // 
@@ -1063,9 +1049,9 @@
             this.ctrlSiteTrack14.MarginVertical = 0;
             this.ctrlSiteTrack14.Name = "ctrlSiteTrack14";
             this.ctrlSiteTrack14.PLCNo = 14;
-            this.ctrlSiteTrack14.ShowSiteNo = true;
+            this.ctrlSiteTrack14.ShowSiteNo = false;
             this.ctrlSiteTrack14.ShowTroubleState = false;
-            this.ctrlSiteTrack14.SiteBorderColor = System.Drawing.Color.Black;
+            this.ctrlSiteTrack14.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack14.SiteBoxColor = System.Drawing.Color.Gray;
             this.ctrlSiteTrack14.SiteBoxHeight = 34;
             this.ctrlSiteTrack14.SiteBoxWidth = 38;
@@ -1076,7 +1062,7 @@
             this.ctrlSiteTrack14.SiteNoList = null;
             this.ctrlSiteTrack14.SiteTextDisp = null;
             this.ctrlSiteTrack14.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack14.Size = new System.Drawing.Size(38, 34);
+            this.ctrlSiteTrack14.Size = new System.Drawing.Size(39, 35);
             this.ctrlSiteTrack14.TabIndex = 25;
             this.ctrlSiteTrack14.TextRotateAngle = 0;
             // 
@@ -1088,15 +1074,15 @@
             this.ctrlSiteTrack15.InterSitePadding = 5;
             this.ctrlSiteTrack15.IsControled = true;
             this.ctrlSiteTrack15.IsUpperStage = false;
-            this.ctrlSiteTrack15.Location = new System.Drawing.Point(970, 312);
+            this.ctrlSiteTrack15.Location = new System.Drawing.Point(969, 312);
             this.ctrlSiteTrack15.MainLoop = false;
             this.ctrlSiteTrack15.MarginHorizontal = 0;
             this.ctrlSiteTrack15.MarginVertical = 0;
             this.ctrlSiteTrack15.Name = "ctrlSiteTrack15";
             this.ctrlSiteTrack15.PLCNo = 15;
-            this.ctrlSiteTrack15.ShowSiteNo = true;
+            this.ctrlSiteTrack15.ShowSiteNo = false;
             this.ctrlSiteTrack15.ShowTroubleState = false;
-            this.ctrlSiteTrack15.SiteBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlSiteTrack15.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack15.SiteBoxColor = System.Drawing.Color.Gray;
             this.ctrlSiteTrack15.SiteBoxHeight = 34;
             this.ctrlSiteTrack15.SiteBoxWidth = 38;
@@ -1110,7 +1096,7 @@
         107};
             this.ctrlSiteTrack15.SiteTextDisp = null;
             this.ctrlSiteTrack15.SiteTrayDirection = ControlGallery.TrayMovingDirection.RightToLeft;
-            this.ctrlSiteTrack15.Size = new System.Drawing.Size(128, 34);
+            this.ctrlSiteTrack15.Size = new System.Drawing.Size(129, 35);
             this.ctrlSiteTrack15.TabIndex = 27;
             this.ctrlSiteTrack15.TextRotateAngle = 0;
             // 
@@ -1128,9 +1114,9 @@
             this.ctrlSiteTrack16.MarginVertical = 0;
             this.ctrlSiteTrack16.Name = "ctrlSiteTrack16";
             this.ctrlSiteTrack16.PLCNo = 16;
-            this.ctrlSiteTrack16.ShowSiteNo = true;
+            this.ctrlSiteTrack16.ShowSiteNo = false;
             this.ctrlSiteTrack16.ShowTroubleState = false;
-            this.ctrlSiteTrack16.SiteBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlSiteTrack16.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack16.SiteBoxColor = System.Drawing.Color.Gray;
             this.ctrlSiteTrack16.SiteBoxHeight = 34;
             this.ctrlSiteTrack16.SiteBoxWidth = 38;
@@ -1138,10 +1124,10 @@
             this.ctrlSiteTrack16.SiteNo = 0;
             this.ctrlSiteTrack16.SiteNoDirection = ControlGallery.SiteTrackDirection.LeftToRight;
             this.ctrlSiteTrack16.SiteNoIncStep = 1;
-            this.ctrlSiteTrack16.SiteNoList = new int[0];
+            this.ctrlSiteTrack16.SiteNoList = null;
             this.ctrlSiteTrack16.SiteTextDisp = null;
             this.ctrlSiteTrack16.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack16.Size = new System.Drawing.Size(38, 34);
+            this.ctrlSiteTrack16.Size = new System.Drawing.Size(39, 35);
             this.ctrlSiteTrack16.TabIndex = 28;
             this.ctrlSiteTrack16.TextRotateAngle = 0;
             // 
@@ -1159,9 +1145,9 @@
             this.ctrlSiteTrack17.MarginVertical = 0;
             this.ctrlSiteTrack17.Name = "ctrlSiteTrack17";
             this.ctrlSiteTrack17.PLCNo = 17;
-            this.ctrlSiteTrack17.ShowSiteNo = true;
+            this.ctrlSiteTrack17.ShowSiteNo = false;
             this.ctrlSiteTrack17.ShowTroubleState = false;
-            this.ctrlSiteTrack17.SiteBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlSiteTrack17.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack17.SiteBoxColor = System.Drawing.Color.Gray;
             this.ctrlSiteTrack17.SiteBoxHeight = 34;
             this.ctrlSiteTrack17.SiteBoxWidth = 38;
@@ -1169,10 +1155,10 @@
             this.ctrlSiteTrack17.SiteNo = 0;
             this.ctrlSiteTrack17.SiteNoDirection = ControlGallery.SiteTrackDirection.RightToLeft;
             this.ctrlSiteTrack17.SiteNoIncStep = 1;
-            this.ctrlSiteTrack17.SiteNoList = new int[0];
+            this.ctrlSiteTrack17.SiteNoList = null;
             this.ctrlSiteTrack17.SiteTextDisp = null;
             this.ctrlSiteTrack17.SiteTrayDirection = ControlGallery.TrayMovingDirection.RightToLeft;
-            this.ctrlSiteTrack17.Size = new System.Drawing.Size(87, 34);
+            this.ctrlSiteTrack17.Size = new System.Drawing.Size(87, 35);
             this.ctrlSiteTrack17.TabIndex = 29;
             this.ctrlSiteTrack17.TextRotateAngle = 0;
             // 
@@ -1190,9 +1176,9 @@
             this.ctrlSiteTrack18.MarginVertical = 0;
             this.ctrlSiteTrack18.Name = "ctrlSiteTrack18";
             this.ctrlSiteTrack18.PLCNo = 18;
-            this.ctrlSiteTrack18.ShowSiteNo = true;
+            this.ctrlSiteTrack18.ShowSiteNo = false;
             this.ctrlSiteTrack18.ShowTroubleState = false;
-            this.ctrlSiteTrack18.SiteBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlSiteTrack18.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack18.SiteBoxColor = System.Drawing.Color.Gray;
             this.ctrlSiteTrack18.SiteBoxHeight = 34;
             this.ctrlSiteTrack18.SiteBoxWidth = 38;
@@ -1205,13 +1191,13 @@
         109};
             this.ctrlSiteTrack18.SiteTextDisp = null;
             this.ctrlSiteTrack18.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack18.Size = new System.Drawing.Size(81, 34);
+            this.ctrlSiteTrack18.Size = new System.Drawing.Size(82, 35);
             this.ctrlSiteTrack18.TabIndex = 30;
             this.ctrlSiteTrack18.TextRotateAngle = 0;
             // 
             // ctrlSiteTrack19
             // 
-            this.ctrlSiteTrack19.CVPLCListDeviceID = 1;
+            this.ctrlSiteTrack19.CVPLCListDeviceID = 0;
             this.ctrlSiteTrack19.DisplayText = "";
             this.ctrlSiteTrack19.FirstSiteNo = 1;
             this.ctrlSiteTrack19.InterSitePadding = 5;
@@ -1223,9 +1209,9 @@
             this.ctrlSiteTrack19.MarginVertical = 0;
             this.ctrlSiteTrack19.Name = "ctrlSiteTrack19";
             this.ctrlSiteTrack19.PLCNo = 19;
-            this.ctrlSiteTrack19.ShowSiteNo = true;
+            this.ctrlSiteTrack19.ShowSiteNo = false;
             this.ctrlSiteTrack19.ShowTroubleState = false;
-            this.ctrlSiteTrack19.SiteBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlSiteTrack19.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack19.SiteBoxColor = System.Drawing.Color.Gray;
             this.ctrlSiteTrack19.SiteBoxHeight = 34;
             this.ctrlSiteTrack19.SiteBoxWidth = 38;
@@ -1241,13 +1227,13 @@
         119};
             this.ctrlSiteTrack19.SiteTextDisp = null;
             this.ctrlSiteTrack19.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack19.Size = new System.Drawing.Size(212, 34);
+            this.ctrlSiteTrack19.Size = new System.Drawing.Size(212, 35);
             this.ctrlSiteTrack19.TabIndex = 32;
             this.ctrlSiteTrack19.TextRotateAngle = 0;
             // 
             // ctrlSiteTrack20
             // 
-            this.ctrlSiteTrack20.CVPLCListDeviceID = 1;
+            this.ctrlSiteTrack20.CVPLCListDeviceID = 0;
             this.ctrlSiteTrack20.DisplayText = "";
             this.ctrlSiteTrack20.FirstSiteNo = 1;
             this.ctrlSiteTrack20.InterSitePadding = 5;
@@ -1259,9 +1245,9 @@
             this.ctrlSiteTrack20.MarginVertical = 0;
             this.ctrlSiteTrack20.Name = "ctrlSiteTrack20";
             this.ctrlSiteTrack20.PLCNo = 20;
-            this.ctrlSiteTrack20.ShowSiteNo = true;
+            this.ctrlSiteTrack20.ShowSiteNo = false;
             this.ctrlSiteTrack20.ShowTroubleState = false;
-            this.ctrlSiteTrack20.SiteBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlSiteTrack20.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack20.SiteBoxColor = System.Drawing.Color.Gray;
             this.ctrlSiteTrack20.SiteBoxHeight = 34;
             this.ctrlSiteTrack20.SiteBoxWidth = 38;
@@ -1277,13 +1263,13 @@
         206};
             this.ctrlSiteTrack20.SiteTextDisp = null;
             this.ctrlSiteTrack20.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack20.Size = new System.Drawing.Size(212, 34);
+            this.ctrlSiteTrack20.Size = new System.Drawing.Size(212, 35);
             this.ctrlSiteTrack20.TabIndex = 33;
             this.ctrlSiteTrack20.TextRotateAngle = 0;
             // 
             // ctrlSiteTrack21
             // 
-            this.ctrlSiteTrack21.CVPLCListDeviceID = 1;
+            this.ctrlSiteTrack21.CVPLCListDeviceID = 0;
             this.ctrlSiteTrack21.DisplayText = "";
             this.ctrlSiteTrack21.FirstSiteNo = 205;
             this.ctrlSiteTrack21.InterSitePadding = 2;
@@ -1295,9 +1281,9 @@
             this.ctrlSiteTrack21.MarginVertical = 0;
             this.ctrlSiteTrack21.Name = "ctrlSiteTrack21";
             this.ctrlSiteTrack21.PLCNo = 21;
-            this.ctrlSiteTrack21.ShowSiteNo = true;
+            this.ctrlSiteTrack21.ShowSiteNo = false;
             this.ctrlSiteTrack21.ShowTroubleState = false;
-            this.ctrlSiteTrack21.SiteBorderColor = System.Drawing.Color.Black;
+            this.ctrlSiteTrack21.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack21.SiteBoxColor = System.Drawing.Color.Gray;
             this.ctrlSiteTrack21.SiteBoxHeight = 34;
             this.ctrlSiteTrack21.SiteBoxWidth = 38;
@@ -1308,13 +1294,13 @@
             this.ctrlSiteTrack21.SiteNoList = null;
             this.ctrlSiteTrack21.SiteTextDisp = null;
             this.ctrlSiteTrack21.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack21.Size = new System.Drawing.Size(38, 34);
+            this.ctrlSiteTrack21.Size = new System.Drawing.Size(39, 35);
             this.ctrlSiteTrack21.TabIndex = 34;
             this.ctrlSiteTrack21.TextRotateAngle = 0;
             // 
             // ctrlSiteTrack22
             // 
-            this.ctrlSiteTrack22.CVPLCListDeviceID = 1;
+            this.ctrlSiteTrack22.CVPLCListDeviceID = 0;
             this.ctrlSiteTrack22.DisplayText = "";
             this.ctrlSiteTrack22.FirstSiteNo = 207;
             this.ctrlSiteTrack22.InterSitePadding = 5;
@@ -1326,9 +1312,9 @@
             this.ctrlSiteTrack22.MarginVertical = 0;
             this.ctrlSiteTrack22.Name = "ctrlSiteTrack22";
             this.ctrlSiteTrack22.PLCNo = 22;
-            this.ctrlSiteTrack22.ShowSiteNo = true;
+            this.ctrlSiteTrack22.ShowSiteNo = false;
             this.ctrlSiteTrack22.ShowTroubleState = false;
-            this.ctrlSiteTrack22.SiteBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlSiteTrack22.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack22.SiteBoxColor = System.Drawing.Color.Gray;
             this.ctrlSiteTrack22.SiteBoxHeight = 34;
             this.ctrlSiteTrack22.SiteBoxWidth = 38;
@@ -1336,16 +1322,16 @@
             this.ctrlSiteTrack22.SiteNo = 0;
             this.ctrlSiteTrack22.SiteNoDirection = ControlGallery.SiteTrackDirection.LeftToRight;
             this.ctrlSiteTrack22.SiteNoIncStep = 1;
-            this.ctrlSiteTrack22.SiteNoList = new int[0];
+            this.ctrlSiteTrack22.SiteNoList = null;
             this.ctrlSiteTrack22.SiteTextDisp = null;
             this.ctrlSiteTrack22.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack22.Size = new System.Drawing.Size(170, 34);
+            this.ctrlSiteTrack22.Size = new System.Drawing.Size(170, 35);
             this.ctrlSiteTrack22.TabIndex = 38;
             this.ctrlSiteTrack22.TextRotateAngle = 0;
             // 
             // ctrlSiteTrack23
             // 
-            this.ctrlSiteTrack23.CVPLCListDeviceID = 1;
+            this.ctrlSiteTrack23.CVPLCListDeviceID = 0;
             this.ctrlSiteTrack23.DisplayText = "";
             this.ctrlSiteTrack23.FirstSiteNo = 1;
             this.ctrlSiteTrack23.InterSitePadding = 5;
@@ -1357,9 +1343,9 @@
             this.ctrlSiteTrack23.MarginVertical = 0;
             this.ctrlSiteTrack23.Name = "ctrlSiteTrack23";
             this.ctrlSiteTrack23.PLCNo = 23;
-            this.ctrlSiteTrack23.ShowSiteNo = true;
+            this.ctrlSiteTrack23.ShowSiteNo = false;
             this.ctrlSiteTrack23.ShowTroubleState = false;
-            this.ctrlSiteTrack23.SiteBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlSiteTrack23.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack23.SiteBoxColor = System.Drawing.Color.Gray;
             this.ctrlSiteTrack23.SiteBoxHeight = 34;
             this.ctrlSiteTrack23.SiteBoxWidth = 38;
@@ -1374,13 +1360,13 @@
         216};
             this.ctrlSiteTrack23.SiteTextDisp = null;
             this.ctrlSiteTrack23.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack23.Size = new System.Drawing.Size(170, 34);
+            this.ctrlSiteTrack23.Size = new System.Drawing.Size(171, 35);
             this.ctrlSiteTrack23.TabIndex = 39;
             this.ctrlSiteTrack23.TextRotateAngle = 0;
             // 
             // ctrlSiteTrack24
             // 
-            this.ctrlSiteTrack24.CVPLCListDeviceID = 1;
+            this.ctrlSiteTrack24.CVPLCListDeviceID = 0;
             this.ctrlSiteTrack24.DisplayText = "";
             this.ctrlSiteTrack24.FirstSiteNo = 211;
             this.ctrlSiteTrack24.InterSitePadding = 2;
@@ -1392,9 +1378,9 @@
             this.ctrlSiteTrack24.MarginVertical = 0;
             this.ctrlSiteTrack24.Name = "ctrlSiteTrack24";
             this.ctrlSiteTrack24.PLCNo = 24;
-            this.ctrlSiteTrack24.ShowSiteNo = true;
+            this.ctrlSiteTrack24.ShowSiteNo = false;
             this.ctrlSiteTrack24.ShowTroubleState = false;
-            this.ctrlSiteTrack24.SiteBorderColor = System.Drawing.Color.Black;
+            this.ctrlSiteTrack24.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack24.SiteBoxColor = System.Drawing.Color.Gray;
             this.ctrlSiteTrack24.SiteBoxHeight = 34;
             this.ctrlSiteTrack24.SiteBoxWidth = 38;
@@ -1405,27 +1391,27 @@
             this.ctrlSiteTrack24.SiteNoList = null;
             this.ctrlSiteTrack24.SiteTextDisp = null;
             this.ctrlSiteTrack24.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack24.Size = new System.Drawing.Size(38, 34);
+            this.ctrlSiteTrack24.Size = new System.Drawing.Size(39, 35);
             this.ctrlSiteTrack24.TabIndex = 40;
             this.ctrlSiteTrack24.TextRotateAngle = 0;
             // 
             // ctrlSiteTrack25
             // 
-            this.ctrlSiteTrack25.CVPLCListDeviceID = 1;
+            this.ctrlSiteTrack25.CVPLCListDeviceID = 0;
             this.ctrlSiteTrack25.DisplayText = "";
             this.ctrlSiteTrack25.FirstSiteNo = 215;
             this.ctrlSiteTrack25.InterSitePadding = 2;
             this.ctrlSiteTrack25.IsControled = true;
             this.ctrlSiteTrack25.IsUpperStage = false;
-            this.ctrlSiteTrack25.Location = new System.Drawing.Point(1269, 549);
+            this.ctrlSiteTrack25.Location = new System.Drawing.Point(1269, 548);
             this.ctrlSiteTrack25.MainLoop = false;
             this.ctrlSiteTrack25.MarginHorizontal = 0;
             this.ctrlSiteTrack25.MarginVertical = 0;
             this.ctrlSiteTrack25.Name = "ctrlSiteTrack25";
             this.ctrlSiteTrack25.PLCNo = 25;
-            this.ctrlSiteTrack25.ShowSiteNo = true;
+            this.ctrlSiteTrack25.ShowSiteNo = false;
             this.ctrlSiteTrack25.ShowTroubleState = false;
-            this.ctrlSiteTrack25.SiteBorderColor = System.Drawing.Color.Black;
+            this.ctrlSiteTrack25.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack25.SiteBoxColor = System.Drawing.Color.Gray;
             this.ctrlSiteTrack25.SiteBoxHeight = 34;
             this.ctrlSiteTrack25.SiteBoxWidth = 38;
@@ -1436,13 +1422,13 @@
             this.ctrlSiteTrack25.SiteNoList = null;
             this.ctrlSiteTrack25.SiteTextDisp = null;
             this.ctrlSiteTrack25.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack25.Size = new System.Drawing.Size(38, 34);
+            this.ctrlSiteTrack25.Size = new System.Drawing.Size(39, 35);
             this.ctrlSiteTrack25.TabIndex = 41;
             this.ctrlSiteTrack25.TextRotateAngle = 0;
             // 
             // ctrlSiteTrack26
             // 
-            this.ctrlSiteTrack26.CVPLCListDeviceID = 1;
+            this.ctrlSiteTrack26.CVPLCListDeviceID = 0;
             this.ctrlSiteTrack26.DisplayText = "";
             this.ctrlSiteTrack26.FirstSiteNo = 1;
             this.ctrlSiteTrack26.InterSitePadding = 5;
@@ -1454,9 +1440,9 @@
             this.ctrlSiteTrack26.MarginVertical = 0;
             this.ctrlSiteTrack26.Name = "ctrlSiteTrack26";
             this.ctrlSiteTrack26.PLCNo = 26;
-            this.ctrlSiteTrack26.ShowSiteNo = true;
+            this.ctrlSiteTrack26.ShowSiteNo = false;
             this.ctrlSiteTrack26.ShowTroubleState = false;
-            this.ctrlSiteTrack26.SiteBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlSiteTrack26.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack26.SiteBoxColor = System.Drawing.Color.Gray;
             this.ctrlSiteTrack26.SiteBoxHeight = 34;
             this.ctrlSiteTrack26.SiteBoxWidth = 38;
@@ -1473,13 +1459,13 @@
         223};
             this.ctrlSiteTrack26.SiteTextDisp = null;
             this.ctrlSiteTrack26.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack26.Size = new System.Drawing.Size(255, 34);
+            this.ctrlSiteTrack26.Size = new System.Drawing.Size(255, 35);
             this.ctrlSiteTrack26.TabIndex = 42;
             this.ctrlSiteTrack26.TextRotateAngle = 0;
             // 
             // ctrlSiteTrack27
             // 
-            this.ctrlSiteTrack27.CVPLCListDeviceID = 1;
+            this.ctrlSiteTrack27.CVPLCListDeviceID = 0;
             this.ctrlSiteTrack27.DisplayText = "";
             this.ctrlSiteTrack27.FirstSiteNo = 222;
             this.ctrlSiteTrack27.InterSitePadding = 2;
@@ -1491,9 +1477,9 @@
             this.ctrlSiteTrack27.MarginVertical = 0;
             this.ctrlSiteTrack27.Name = "ctrlSiteTrack27";
             this.ctrlSiteTrack27.PLCNo = 27;
-            this.ctrlSiteTrack27.ShowSiteNo = true;
+            this.ctrlSiteTrack27.ShowSiteNo = false;
             this.ctrlSiteTrack27.ShowTroubleState = false;
-            this.ctrlSiteTrack27.SiteBorderColor = System.Drawing.Color.Black;
+            this.ctrlSiteTrack27.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack27.SiteBoxColor = System.Drawing.Color.Gray;
             this.ctrlSiteTrack27.SiteBoxHeight = 34;
             this.ctrlSiteTrack27.SiteBoxWidth = 38;
@@ -1504,13 +1490,13 @@
             this.ctrlSiteTrack27.SiteNoList = null;
             this.ctrlSiteTrack27.SiteTextDisp = null;
             this.ctrlSiteTrack27.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack27.Size = new System.Drawing.Size(38, 34);
+            this.ctrlSiteTrack27.Size = new System.Drawing.Size(39, 35);
             this.ctrlSiteTrack27.TabIndex = 43;
             this.ctrlSiteTrack27.TextRotateAngle = 0;
             // 
             // ctrlSiteTrack28
             // 
-            this.ctrlSiteTrack28.CVPLCListDeviceID = 1;
+            this.ctrlSiteTrack28.CVPLCListDeviceID = 0;
             this.ctrlSiteTrack28.DisplayText = "";
             this.ctrlSiteTrack28.FirstSiteNo = 224;
             this.ctrlSiteTrack28.InterSitePadding = 2;
@@ -1522,9 +1508,9 @@
             this.ctrlSiteTrack28.MarginVertical = 0;
             this.ctrlSiteTrack28.Name = "ctrlSiteTrack28";
             this.ctrlSiteTrack28.PLCNo = 28;
-            this.ctrlSiteTrack28.ShowSiteNo = true;
+            this.ctrlSiteTrack28.ShowSiteNo = false;
             this.ctrlSiteTrack28.ShowTroubleState = false;
-            this.ctrlSiteTrack28.SiteBorderColor = System.Drawing.Color.Black;
+            this.ctrlSiteTrack28.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack28.SiteBoxColor = System.Drawing.Color.Gray;
             this.ctrlSiteTrack28.SiteBoxHeight = 34;
             this.ctrlSiteTrack28.SiteBoxWidth = 38;
@@ -1535,7 +1521,7 @@
             this.ctrlSiteTrack28.SiteNoList = null;
             this.ctrlSiteTrack28.SiteTextDisp = null;
             this.ctrlSiteTrack28.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack28.Size = new System.Drawing.Size(38, 34);
+            this.ctrlSiteTrack28.Size = new System.Drawing.Size(39, 35);
             this.ctrlSiteTrack28.TabIndex = 45;
             this.ctrlSiteTrack28.TextRotateAngle = 0;
             // 
@@ -1547,17 +1533,17 @@
             this.ctrlSiteTrack29.InterSitePadding = 0;
             this.ctrlSiteTrack29.IsControled = true;
             this.ctrlSiteTrack29.IsUpperStage = false;
-            this.ctrlSiteTrack29.Location = new System.Drawing.Point(1055, 653);
+            this.ctrlSiteTrack29.Location = new System.Drawing.Point(1055, 687);
             this.ctrlSiteTrack29.MainLoop = false;
             this.ctrlSiteTrack29.MarginHorizontal = 0;
             this.ctrlSiteTrack29.MarginVertical = 0;
             this.ctrlSiteTrack29.Name = "ctrlSiteTrack29";
             this.ctrlSiteTrack29.PLCNo = 29;
-            this.ctrlSiteTrack29.ShowSiteNo = true;
+            this.ctrlSiteTrack29.ShowSiteNo = false;
             this.ctrlSiteTrack29.ShowTroubleState = false;
             this.ctrlSiteTrack29.SiteBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.ctrlSiteTrack29.SiteBoxColor = System.Drawing.Color.Gray;
-            this.ctrlSiteTrack29.SiteBoxHeight = 34;
+            this.ctrlSiteTrack29.SiteBoxHeight = 17;
             this.ctrlSiteTrack29.SiteBoxWidth = 38;
             this.ctrlSiteTrack29.SiteCount = 2;
             this.ctrlSiteTrack29.SiteNo = 0;
@@ -1568,7 +1554,7 @@
         74};
             this.ctrlSiteTrack29.SiteTextDisp = null;
             this.ctrlSiteTrack29.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack29.Size = new System.Drawing.Size(39, 71);
+            this.ctrlSiteTrack29.Size = new System.Drawing.Size(39, 35);
             this.ctrlSiteTrack29.TabIndex = 48;
             this.ctrlSiteTrack29.TextRotateAngle = 0;
             // 
@@ -1581,17 +1567,17 @@
             this.ctrlSiteTrack30.InterSitePadding = 0;
             this.ctrlSiteTrack30.IsControled = true;
             this.ctrlSiteTrack30.IsUpperStage = false;
-            this.ctrlSiteTrack30.Location = new System.Drawing.Point(1055, 419);
+            this.ctrlSiteTrack30.Location = new System.Drawing.Point(1055, 454);
             this.ctrlSiteTrack30.MainLoop = false;
             this.ctrlSiteTrack30.MarginHorizontal = 0;
             this.ctrlSiteTrack30.MarginVertical = 0;
             this.ctrlSiteTrack30.Name = "ctrlSiteTrack30";
             this.ctrlSiteTrack30.PLCNo = 30;
-            this.ctrlSiteTrack30.ShowSiteNo = true;
+            this.ctrlSiteTrack30.ShowSiteNo = false;
             this.ctrlSiteTrack30.ShowTroubleState = false;
             this.ctrlSiteTrack30.SiteBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ctrlSiteTrack30.SiteBoxColor = System.Drawing.Color.Gray;
-            this.ctrlSiteTrack30.SiteBoxHeight = 34;
+            this.ctrlSiteTrack30.SiteBoxHeight = 17;
             this.ctrlSiteTrack30.SiteBoxWidth = 38;
             this.ctrlSiteTrack30.SiteCount = 2;
             this.ctrlSiteTrack30.SiteNo = 0;
@@ -1602,7 +1588,7 @@
         2};
             this.ctrlSiteTrack30.SiteTextDisp = null;
             this.ctrlSiteTrack30.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack30.Size = new System.Drawing.Size(39, 71);
+            this.ctrlSiteTrack30.Size = new System.Drawing.Size(39, 35);
             this.ctrlSiteTrack30.TabIndex = 49;
             this.ctrlSiteTrack30.TextRotateAngle = 0;
             // 
@@ -1614,17 +1600,17 @@
             this.ctrlSiteTrack31.InterSitePadding = 0;
             this.ctrlSiteTrack31.IsControled = true;
             this.ctrlSiteTrack31.IsUpperStage = false;
-            this.ctrlSiteTrack31.Location = new System.Drawing.Point(1055, 129);
+            this.ctrlSiteTrack31.Location = new System.Drawing.Point(1055, 164);
             this.ctrlSiteTrack31.MainLoop = false;
             this.ctrlSiteTrack31.MarginHorizontal = 0;
             this.ctrlSiteTrack31.MarginVertical = 0;
             this.ctrlSiteTrack31.Name = "ctrlSiteTrack31";
             this.ctrlSiteTrack31.PLCNo = 31;
-            this.ctrlSiteTrack31.ShowSiteNo = true;
+            this.ctrlSiteTrack31.ShowSiteNo = false;
             this.ctrlSiteTrack31.ShowTroubleState = false;
             this.ctrlSiteTrack31.SiteBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.ctrlSiteTrack31.SiteBoxColor = System.Drawing.Color.Gray;
-            this.ctrlSiteTrack31.SiteBoxHeight = 34;
+            this.ctrlSiteTrack31.SiteBoxHeight = 17;
             this.ctrlSiteTrack31.SiteBoxWidth = 38;
             this.ctrlSiteTrack31.SiteCount = 2;
             this.ctrlSiteTrack31.SiteNo = 0;
@@ -1635,13 +1621,13 @@
         110};
             this.ctrlSiteTrack31.SiteTextDisp = null;
             this.ctrlSiteTrack31.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack31.Size = new System.Drawing.Size(39, 71);
+            this.ctrlSiteTrack31.Size = new System.Drawing.Size(39, 35);
             this.ctrlSiteTrack31.TabIndex = 50;
             this.ctrlSiteTrack31.TextRotateAngle = 0;
             // 
             // ctrlSiteTrack32
             // 
-            this.ctrlSiteTrack32.CVPLCListDeviceID = 1;
+            this.ctrlSiteTrack32.CVPLCListDeviceID = 0;
             this.ctrlSiteTrack32.DisplayText = "";
             this.ctrlSiteTrack32.FirstSiteNo = 115;
             this.ctrlSiteTrack32.InterSitePadding = 5;
@@ -1653,9 +1639,9 @@
             this.ctrlSiteTrack32.MarginVertical = 0;
             this.ctrlSiteTrack32.Name = "ctrlSiteTrack32";
             this.ctrlSiteTrack32.PLCNo = 32;
-            this.ctrlSiteTrack32.ShowSiteNo = true;
+            this.ctrlSiteTrack32.ShowSiteNo = false;
             this.ctrlSiteTrack32.ShowTroubleState = false;
-            this.ctrlSiteTrack32.SiteBorderColor = System.Drawing.Color.Black;
+            this.ctrlSiteTrack32.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack32.SiteBoxColor = System.Drawing.Color.Gray;
             this.ctrlSiteTrack32.SiteBoxHeight = 34;
             this.ctrlSiteTrack32.SiteBoxWidth = 38;
@@ -1672,7 +1658,7 @@
             // 
             // ctrlSiteTrack33
             // 
-            this.ctrlSiteTrack33.CVPLCListDeviceID = 1;
+            this.ctrlSiteTrack33.CVPLCListDeviceID = 0;
             this.ctrlSiteTrack33.DisplayText = "";
             this.ctrlSiteTrack33.FirstSiteNo = 117;
             this.ctrlSiteTrack33.InterSitePadding = 5;
@@ -1684,9 +1670,9 @@
             this.ctrlSiteTrack33.MarginVertical = 0;
             this.ctrlSiteTrack33.Name = "ctrlSiteTrack33";
             this.ctrlSiteTrack33.PLCNo = 33;
-            this.ctrlSiteTrack33.ShowSiteNo = true;
+            this.ctrlSiteTrack33.ShowSiteNo = false;
             this.ctrlSiteTrack33.ShowTroubleState = false;
-            this.ctrlSiteTrack33.SiteBorderColor = System.Drawing.Color.Black;
+            this.ctrlSiteTrack33.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack33.SiteBoxColor = System.Drawing.Color.Gray;
             this.ctrlSiteTrack33.SiteBoxHeight = 34;
             this.ctrlSiteTrack33.SiteBoxWidth = 38;
@@ -1753,17 +1739,17 @@
             this.ctrlSiteTrack34.InterSitePadding = 0;
             this.ctrlSiteTrack34.IsControled = true;
             this.ctrlSiteTrack34.IsUpperStage = false;
-            this.ctrlSiteTrack34.Location = new System.Drawing.Point(1099, 763);
+            this.ctrlSiteTrack34.Location = new System.Drawing.Point(1099, 797);
             this.ctrlSiteTrack34.MainLoop = false;
             this.ctrlSiteTrack34.MarginHorizontal = 0;
             this.ctrlSiteTrack34.MarginVertical = 0;
             this.ctrlSiteTrack34.Name = "ctrlSiteTrack34";
             this.ctrlSiteTrack34.PLCNo = 34;
-            this.ctrlSiteTrack34.ShowSiteNo = true;
+            this.ctrlSiteTrack34.ShowSiteNo = false;
             this.ctrlSiteTrack34.ShowTroubleState = false;
             this.ctrlSiteTrack34.SiteBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ctrlSiteTrack34.SiteBoxColor = System.Drawing.Color.Gray;
-            this.ctrlSiteTrack34.SiteBoxHeight = 34;
+            this.ctrlSiteTrack34.SiteBoxHeight = 17;
             this.ctrlSiteTrack34.SiteBoxWidth = 38;
             this.ctrlSiteTrack34.SiteCount = 2;
             this.ctrlSiteTrack34.SiteNo = 0;
@@ -1772,10 +1758,9 @@
             this.ctrlSiteTrack34.SiteNoList = new int[] {
         404,
         100};
-            this.ctrlSiteTrack34.SiteTextDisp = new string[] {
-        "404=RE"};
+            this.ctrlSiteTrack34.SiteTextDisp = new string[0];
             this.ctrlSiteTrack34.SiteTrayDirection = ControlGallery.TrayMovingDirection.TopToBottom;
-            this.ctrlSiteTrack34.Size = new System.Drawing.Size(39, 74);
+            this.ctrlSiteTrack34.Size = new System.Drawing.Size(39, 35);
             this.ctrlSiteTrack34.TabIndex = 56;
             this.ctrlSiteTrack34.TextRotateAngle = 0;
             // 
@@ -1793,7 +1778,7 @@
             this.bcrMarker1.Location = new System.Drawing.Point(1100, 160);
             this.bcrMarker1.Name = "bcrMarker1";
             this.bcrMarker1.PLCNo = 111;
-            this.bcrMarker1.ShowSiteNo = true;
+            this.bcrMarker1.ShowSiteNo = false;
             this.bcrMarker1.ShowTroubleState = false;
             this.bcrMarker1.SiteNo = 0;
             this.bcrMarker1.Size = new System.Drawing.Size(35, 3);
@@ -1813,7 +1798,7 @@
             this.bcrMarker2.Location = new System.Drawing.Point(971, 160);
             this.bcrMarker2.Name = "bcrMarker2";
             this.bcrMarker2.PLCNo = 108;
-            this.bcrMarker2.ShowSiteNo = true;
+            this.bcrMarker2.ShowSiteNo = false;
             this.bcrMarker2.ShowTroubleState = false;
             this.bcrMarker2.SiteNo = 0;
             this.bcrMarker2.Size = new System.Drawing.Size(35, 3);
@@ -1833,7 +1818,7 @@
             this.bcrMarker3.Location = new System.Drawing.Point(1057, 348);
             this.bcrMarker3.Name = "bcrMarker3";
             this.bcrMarker3.PLCNo = 102;
-            this.bcrMarker3.ShowSiteNo = true;
+            this.bcrMarker3.ShowSiteNo = false;
             this.bcrMarker3.ShowTroubleState = false;
             this.bcrMarker3.SiteNo = 0;
             this.bcrMarker3.Size = new System.Drawing.Size(35, 3);
@@ -1854,7 +1839,7 @@
             this.bcrMarker4.Location = new System.Drawing.Point(1100, 723);
             this.bcrMarker4.Name = "bcrMarker4";
             this.bcrMarker4.PLCNo = 75;
-            this.bcrMarker4.ShowSiteNo = true;
+            this.bcrMarker4.ShowSiteNo = false;
             this.bcrMarker4.ShowTroubleState = false;
             this.bcrMarker4.SiteNo = 0;
             this.bcrMarker4.Size = new System.Drawing.Size(35, 3);
@@ -1875,7 +1860,7 @@
             this.bcrMarker5.Location = new System.Drawing.Point(1101, 834);
             this.bcrMarker5.Name = "bcrMarker5";
             this.bcrMarker5.PLCNo = 100;
-            this.bcrMarker5.ShowSiteNo = true;
+            this.bcrMarker5.ShowSiteNo = false;
             this.bcrMarker5.ShowTroubleState = false;
             this.bcrMarker5.SiteNo = 0;
             this.bcrMarker5.Size = new System.Drawing.Size(35, 3);
@@ -1896,7 +1881,7 @@
             this.bcrMarker6.Location = new System.Drawing.Point(1184, 232);
             this.bcrMarker6.Name = "bcrMarker6";
             this.bcrMarker6.PLCNo = 201;
-            this.bcrMarker6.ShowSiteNo = true;
+            this.bcrMarker6.ShowSiteNo = false;
             this.bcrMarker6.ShowTroubleState = false;
             this.bcrMarker6.SiteNo = 0;
             this.bcrMarker6.Size = new System.Drawing.Size(35, 3);
@@ -1917,7 +1902,7 @@
             this.bcrMarker7.Location = new System.Drawing.Point(1313, 382);
             this.bcrMarker7.Name = "bcrMarker7";
             this.bcrMarker7.PLCNo = 210;
-            this.bcrMarker7.ShowSiteNo = true;
+            this.bcrMarker7.ShowSiteNo = false;
             this.bcrMarker7.ShowTroubleState = false;
             this.bcrMarker7.SiteNo = 0;
             this.bcrMarker7.Size = new System.Drawing.Size(35, 3);
@@ -1938,7 +1923,7 @@
             this.bcrMarker8.Location = new System.Drawing.Point(1313, 584);
             this.bcrMarker8.Name = "bcrMarker8";
             this.bcrMarker8.PLCNo = 216;
-            this.bcrMarker8.ShowSiteNo = true;
+            this.bcrMarker8.ShowSiteNo = false;
             this.bcrMarker8.ShowTroubleState = false;
             this.bcrMarker8.SiteNo = 0;
             this.bcrMarker8.Size = new System.Drawing.Size(35, 3);
@@ -1959,7 +1944,7 @@
             this.bcrMarker9.Location = new System.Drawing.Point(1357, 895);
             this.bcrMarker9.Name = "bcrMarker9";
             this.bcrMarker9.PLCNo = 221;
-            this.bcrMarker9.ShowSiteNo = true;
+            this.bcrMarker9.ShowSiteNo = false;
             this.bcrMarker9.ShowTroubleState = false;
             this.bcrMarker9.SiteNo = 0;
             this.bcrMarker9.Size = new System.Drawing.Size(35, 3);
@@ -1980,7 +1965,7 @@
             this.bcrMarker10.Location = new System.Drawing.Point(1013, 723);
             this.bcrMarker10.Name = "bcrMarker10";
             this.bcrMarker10.PLCNo = 73;
-            this.bcrMarker10.ShowSiteNo = true;
+            this.bcrMarker10.ShowSiteNo = false;
             this.bcrMarker10.ShowTroubleState = false;
             this.bcrMarker10.SiteNo = 0;
             this.bcrMarker10.Size = new System.Drawing.Size(35, 3);
@@ -2000,7 +1985,7 @@
             this.bcrMarker11.Location = new System.Drawing.Point(1014, 450);
             this.bcrMarker11.Name = "bcrMarker11";
             this.bcrMarker11.PLCNo = 3;
-            this.bcrMarker11.ShowSiteNo = true;
+            this.bcrMarker11.ShowSiteNo = false;
             this.bcrMarker11.ShowTroubleState = false;
             this.bcrMarker11.SiteNo = 0;
             this.bcrMarker11.Size = new System.Drawing.Size(35, 3);
@@ -2020,7 +2005,7 @@
             this.bcrMarker12.Location = new System.Drawing.Point(584, 450);
             this.bcrMarker12.Name = "bcrMarker12";
             this.bcrMarker12.PLCNo = 16;
-            this.bcrMarker12.ShowSiteNo = true;
+            this.bcrMarker12.ShowSiteNo = false;
             this.bcrMarker12.ShowTroubleState = false;
             this.bcrMarker12.SiteNo = 0;
             this.bcrMarker12.Size = new System.Drawing.Size(35, 3);
@@ -2040,7 +2025,7 @@
             this.bcrMarker13.Location = new System.Drawing.Point(326, 450);
             this.bcrMarker13.Name = "bcrMarker13";
             this.bcrMarker13.PLCNo = 26;
-            this.bcrMarker13.ShowSiteNo = true;
+            this.bcrMarker13.ShowSiteNo = false;
             this.bcrMarker13.ShowTroubleState = false;
             this.bcrMarker13.SiteNo = 0;
             this.bcrMarker13.Size = new System.Drawing.Size(35, 3);
@@ -2060,7 +2045,7 @@
             this.bcrMarker14.Location = new System.Drawing.Point(149, 417);
             this.bcrMarker14.Name = "bcrMarker14";
             this.bcrMarker14.PLCNo = 33;
-            this.bcrMarker14.ShowSiteNo = true;
+            this.bcrMarker14.ShowSiteNo = false;
             this.bcrMarker14.ShowTroubleState = false;
             this.bcrMarker14.SiteNo = 0;
             this.bcrMarker14.Size = new System.Drawing.Size(3, 30);
@@ -2080,7 +2065,7 @@
             this.bcrMarker15.Location = new System.Drawing.Point(235, 651);
             this.bcrMarker15.Name = "bcrMarker15";
             this.bcrMarker15.PLCNo = 38;
-            this.bcrMarker15.ShowSiteNo = true;
+            this.bcrMarker15.ShowSiteNo = false;
             this.bcrMarker15.ShowTroubleState = false;
             this.bcrMarker15.SiteNo = 0;
             this.bcrMarker15.Size = new System.Drawing.Size(3, 30);
@@ -2100,7 +2085,7 @@
             this.bcrMarker16.Location = new System.Drawing.Point(277, 533);
             this.bcrMarker16.Name = "bcrMarker16";
             this.bcrMarker16.PLCNo = 52;
-            this.bcrMarker16.ShowSiteNo = true;
+            this.bcrMarker16.ShowSiteNo = false;
             this.bcrMarker16.ShowTroubleState = false;
             this.bcrMarker16.SiteNo = 0;
             this.bcrMarker16.Size = new System.Drawing.Size(3, 30);
@@ -2121,7 +2106,7 @@
             this.bcrMarker17.Location = new System.Drawing.Point(111, 723);
             this.bcrMarker17.Name = "bcrMarker17";
             this.bcrMarker17.PLCNo = 43;
-            this.bcrMarker17.ShowSiteNo = true;
+            this.bcrMarker17.ShowSiteNo = false;
             this.bcrMarker17.ShowTroubleState = false;
             this.bcrMarker17.SiteNo = 0;
             this.bcrMarker17.Size = new System.Drawing.Size(35, 3);
@@ -2142,7 +2127,7 @@
             this.bcrMarker18.Location = new System.Drawing.Point(541, 723);
             this.bcrMarker18.Name = "bcrMarker18";
             this.bcrMarker18.PLCNo = 62;
-            this.bcrMarker18.ShowSiteNo = true;
+            this.bcrMarker18.ShowSiteNo = false;
             this.bcrMarker18.ShowTroubleState = false;
             this.bcrMarker18.SiteNo = 0;
             this.bcrMarker18.Size = new System.Drawing.Size(35, 3);
@@ -2163,7 +2148,7 @@
             this.bcrMarker19.Location = new System.Drawing.Point(627, 723);
             this.bcrMarker19.Name = "bcrMarker19";
             this.bcrMarker19.PLCNo = 65;
-            this.bcrMarker19.ShowSiteNo = true;
+            this.bcrMarker19.ShowSiteNo = false;
             this.bcrMarker19.ShowTroubleState = false;
             this.bcrMarker19.SiteNo = 0;
             this.bcrMarker19.Size = new System.Drawing.Size(35, 3);
@@ -2237,7 +2222,7 @@
             this.bcrMarker20.Location = new System.Drawing.Point(455, 723);
             this.bcrMarker20.Name = "bcrMarker20";
             this.bcrMarker20.PLCNo = 60;
-            this.bcrMarker20.ShowSiteNo = true;
+            this.bcrMarker20.ShowSiteNo = false;
             this.bcrMarker20.ShowTroubleState = false;
             this.bcrMarker20.SiteNo = 0;
             this.bcrMarker20.Size = new System.Drawing.Size(35, 3);
@@ -2424,26 +2409,6 @@
             this.pictureBox32.TabIndex = 117;
             this.pictureBox32.TabStop = false;
             // 
-            // pictureBox33
-            // 
-            this.pictureBox33.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox33.Image")));
-            this.pictureBox33.Location = new System.Drawing.Point(215, 371);
-            this.pictureBox33.Name = "pictureBox33";
-            this.pictureBox33.Size = new System.Drawing.Size(12, 4);
-            this.pictureBox33.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox33.TabIndex = 120;
-            this.pictureBox33.TabStop = false;
-            // 
-            // pictureBox34
-            // 
-            this.pictureBox34.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox34.Image")));
-            this.pictureBox34.Location = new System.Drawing.Point(200, 371);
-            this.pictureBox34.Name = "pictureBox34";
-            this.pictureBox34.Size = new System.Drawing.Size(12, 4);
-            this.pictureBox34.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox34.TabIndex = 119;
-            this.pictureBox34.TabStop = false;
-            // 
             // pictureBox35
             // 
             this.pictureBox35.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox35.Image")));
@@ -2597,7 +2562,7 @@
             // pictureBox68
             // 
             this.pictureBox68.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox68.Image")));
-            this.pictureBox68.Location = new System.Drawing.Point(364, 622);
+            this.pictureBox68.Location = new System.Drawing.Point(349, 622);
             this.pictureBox68.Name = "pictureBox68";
             this.pictureBox68.Size = new System.Drawing.Size(4, 12);
             this.pictureBox68.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2647,7 +2612,7 @@
             // pictureBox73
             // 
             this.pictureBox73.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox73.Image")));
-            this.pictureBox73.Location = new System.Drawing.Point(941, 569);
+            this.pictureBox73.Location = new System.Drawing.Point(941, 558);
             this.pictureBox73.Name = "pictureBox73";
             this.pictureBox73.Size = new System.Drawing.Size(12, 4);
             this.pictureBox73.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2667,7 +2632,7 @@
             // pictureBox77
             // 
             this.pictureBox77.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox77.Image")));
-            this.pictureBox77.Location = new System.Drawing.Point(1027, 569);
+            this.pictureBox77.Location = new System.Drawing.Point(1027, 558);
             this.pictureBox77.Name = "pictureBox77";
             this.pictureBox77.Size = new System.Drawing.Size(12, 4);
             this.pictureBox77.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2677,7 +2642,7 @@
             // pictureBox78
             // 
             this.pictureBox78.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox78.Image")));
-            this.pictureBox78.Location = new System.Drawing.Point(811, 569);
+            this.pictureBox78.Location = new System.Drawing.Point(811, 558);
             this.pictureBox78.Name = "pictureBox78";
             this.pictureBox78.Size = new System.Drawing.Size(12, 4);
             this.pictureBox78.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2697,7 +2662,7 @@
             // pictureBox80
             // 
             this.pictureBox80.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox80.Image")));
-            this.pictureBox80.Location = new System.Drawing.Point(725, 569);
+            this.pictureBox80.Location = new System.Drawing.Point(725, 558);
             this.pictureBox80.Name = "pictureBox80";
             this.pictureBox80.Size = new System.Drawing.Size(12, 4);
             this.pictureBox80.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2768,7 +2733,7 @@
             // pictureBox87
             // 
             this.pictureBox87.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox87.Image")));
-            this.pictureBox87.Location = new System.Drawing.Point(382, 567);
+            this.pictureBox87.Location = new System.Drawing.Point(367, 567);
             this.pictureBox87.Name = "pictureBox87";
             this.pictureBox87.Size = new System.Drawing.Size(12, 4);
             this.pictureBox87.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2788,7 +2753,7 @@
             // pictureBox89
             // 
             this.pictureBox89.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox89.Image")));
-            this.pictureBox89.Location = new System.Drawing.Point(382, 606);
+            this.pictureBox89.Location = new System.Drawing.Point(367, 606);
             this.pictureBox89.Name = "pictureBox89";
             this.pictureBox89.Size = new System.Drawing.Size(12, 4);
             this.pictureBox89.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2948,7 +2913,7 @@
             // pictureBox110
             // 
             this.pictureBox110.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox110.Image")));
-            this.pictureBox110.Location = new System.Drawing.Point(364, 543);
+            this.pictureBox110.Location = new System.Drawing.Point(349, 543);
             this.pictureBox110.Name = "pictureBox110";
             this.pictureBox110.Size = new System.Drawing.Size(4, 12);
             this.pictureBox110.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3377,7 +3342,7 @@
             // 
             // ctrlSiteTrack35
             // 
-            this.ctrlSiteTrack35.CVPLCListDeviceID = 1;
+            this.ctrlSiteTrack35.CVPLCListDeviceID = 0;
             this.ctrlSiteTrack35.DisplayText = "";
             this.ctrlSiteTrack35.FirstSiteNo = 75;
             this.ctrlSiteTrack35.InterSitePadding = 0;
@@ -3389,9 +3354,9 @@
             this.ctrlSiteTrack35.MarginVertical = 0;
             this.ctrlSiteTrack35.Name = "ctrlSiteTrack35";
             this.ctrlSiteTrack35.PLCNo = 35;
-            this.ctrlSiteTrack35.ShowSiteNo = true;
+            this.ctrlSiteTrack35.ShowSiteNo = false;
             this.ctrlSiteTrack35.ShowTroubleState = false;
-            this.ctrlSiteTrack35.SiteBorderColor = System.Drawing.Color.Black;
+            this.ctrlSiteTrack35.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack35.SiteBoxColor = System.Drawing.Color.Gray;
             this.ctrlSiteTrack35.SiteBoxHeight = 34;
             this.ctrlSiteTrack35.SiteBoxWidth = 38;
@@ -3402,7 +3367,7 @@
             this.ctrlSiteTrack35.SiteNoList = null;
             this.ctrlSiteTrack35.SiteTextDisp = null;
             this.ctrlSiteTrack35.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack35.Size = new System.Drawing.Size(38, 34);
+            this.ctrlSiteTrack35.Size = new System.Drawing.Size(39, 35);
             this.ctrlSiteTrack35.TabIndex = 252;
             this.ctrlSiteTrack35.TextRotateAngle = 0;
             // 
@@ -3420,10 +3385,10 @@
             this.ctrlSiteTrack36.MarginVertical = 0;
             this.ctrlSiteTrack36.Name = "ctrlSiteTrack36";
             this.ctrlSiteTrack36.PLCNo = 36;
-            this.ctrlSiteTrack36.ShowSiteNo = true;
+            this.ctrlSiteTrack36.ShowSiteNo = false;
             this.ctrlSiteTrack36.ShowTroubleState = false;
-            this.ctrlSiteTrack36.SiteBorderColor = System.Drawing.Color.Black;
-            this.ctrlSiteTrack36.SiteBoxColor = System.Drawing.Color.Gray;
+            this.ctrlSiteTrack36.SiteBorderColor = System.Drawing.Color.DimGray;
+            this.ctrlSiteTrack36.SiteBoxColor = System.Drawing.Color.Red;
             this.ctrlSiteTrack36.SiteBoxHeight = 34;
             this.ctrlSiteTrack36.SiteBoxWidth = 38;
             this.ctrlSiteTrack36.SiteCount = 1;
@@ -3433,7 +3398,7 @@
             this.ctrlSiteTrack36.SiteNoList = null;
             this.ctrlSiteTrack36.SiteTextDisp = null;
             this.ctrlSiteTrack36.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack36.Size = new System.Drawing.Size(38, 34);
+            this.ctrlSiteTrack36.Size = new System.Drawing.Size(39, 35);
             this.ctrlSiteTrack36.TabIndex = 253;
             this.ctrlSiteTrack36.TextRotateAngle = 0;
             // 
@@ -3445,17 +3410,17 @@
             this.ctrlSiteTrack37.InterSitePadding = 0;
             this.ctrlSiteTrack37.IsControled = true;
             this.ctrlSiteTrack37.IsUpperStage = false;
-            this.ctrlSiteTrack37.Location = new System.Drawing.Point(194, 378);
+            this.ctrlSiteTrack37.Location = new System.Drawing.Point(194, 413);
             this.ctrlSiteTrack37.MainLoop = false;
             this.ctrlSiteTrack37.MarginHorizontal = 0;
             this.ctrlSiteTrack37.MarginVertical = 0;
             this.ctrlSiteTrack37.Name = "ctrlSiteTrack37";
             this.ctrlSiteTrack37.PLCNo = 37;
-            this.ctrlSiteTrack37.ShowSiteNo = true;
+            this.ctrlSiteTrack37.ShowSiteNo = false;
             this.ctrlSiteTrack37.ShowTroubleState = false;
             this.ctrlSiteTrack37.SiteBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ctrlSiteTrack37.SiteBoxColor = System.Drawing.Color.Gray;
-            this.ctrlSiteTrack37.SiteBoxHeight = 34;
+            this.ctrlSiteTrack37.SiteBoxHeight = 17;
             this.ctrlSiteTrack37.SiteBoxWidth = 38;
             this.ctrlSiteTrack37.SiteCount = 2;
             this.ctrlSiteTrack37.SiteNo = 0;
@@ -3464,10 +3429,9 @@
             this.ctrlSiteTrack37.SiteNoList = new int[] {
         401,
         36};
-            this.ctrlSiteTrack37.SiteTextDisp = new string[] {
-        "401= E"};
+            this.ctrlSiteTrack37.SiteTextDisp = new string[0];
             this.ctrlSiteTrack37.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack37.Size = new System.Drawing.Size(39, 70);
+            this.ctrlSiteTrack37.Size = new System.Drawing.Size(39, 35);
             this.ctrlSiteTrack37.TabIndex = 254;
             this.ctrlSiteTrack37.TextRotateAngle = 0;
             // 
@@ -3479,17 +3443,17 @@
             this.ctrlSiteTrack38.InterSitePadding = 0;
             this.ctrlSiteTrack38.IsControled = true;
             this.ctrlSiteTrack38.IsUpperStage = false;
-            this.ctrlSiteTrack38.Location = new System.Drawing.Point(1098, 278);
+            this.ctrlSiteTrack38.Location = new System.Drawing.Point(1098, 312);
             this.ctrlSiteTrack38.MainLoop = false;
             this.ctrlSiteTrack38.MarginHorizontal = 0;
             this.ctrlSiteTrack38.MarginVertical = 0;
             this.ctrlSiteTrack38.Name = "ctrlSiteTrack38";
             this.ctrlSiteTrack38.PLCNo = 38;
-            this.ctrlSiteTrack38.ShowSiteNo = true;
+            this.ctrlSiteTrack38.ShowSiteNo = false;
             this.ctrlSiteTrack38.ShowTroubleState = false;
             this.ctrlSiteTrack38.SiteBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ctrlSiteTrack38.SiteBoxColor = System.Drawing.Color.Gray;
-            this.ctrlSiteTrack38.SiteBoxHeight = 34;
+            this.ctrlSiteTrack38.SiteBoxHeight = 17;
             this.ctrlSiteTrack38.SiteBoxWidth = 38;
             this.ctrlSiteTrack38.SiteCount = 2;
             this.ctrlSiteTrack38.SiteNo = 0;
@@ -3500,7 +3464,7 @@
         101};
             this.ctrlSiteTrack38.SiteTextDisp = null;
             this.ctrlSiteTrack38.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack38.Size = new System.Drawing.Size(39, 71);
+            this.ctrlSiteTrack38.Size = new System.Drawing.Size(39, 35);
             this.ctrlSiteTrack38.TabIndex = 255;
             this.ctrlSiteTrack38.TextRotateAngle = 0;
             // 
@@ -3528,9 +3492,9 @@
             this.ctrlSiteTrack39.MarginVertical = 0;
             this.ctrlSiteTrack39.Name = "ctrlSiteTrack39";
             this.ctrlSiteTrack39.PLCNo = 39;
-            this.ctrlSiteTrack39.ShowSiteNo = true;
+            this.ctrlSiteTrack39.ShowSiteNo = false;
             this.ctrlSiteTrack39.ShowTroubleState = false;
-            this.ctrlSiteTrack39.SiteBorderColor = System.Drawing.Color.Black;
+            this.ctrlSiteTrack39.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack39.SiteBoxColor = System.Drawing.Color.Gray;
             this.ctrlSiteTrack39.SiteBoxHeight = 34;
             this.ctrlSiteTrack39.SiteBoxWidth = 38;
@@ -3541,7 +3505,7 @@
             this.ctrlSiteTrack39.SiteNoList = null;
             this.ctrlSiteTrack39.SiteTextDisp = null;
             this.ctrlSiteTrack39.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack39.Size = new System.Drawing.Size(38, 34);
+            this.ctrlSiteTrack39.Size = new System.Drawing.Size(39, 35);
             this.ctrlSiteTrack39.TabIndex = 257;
             this.ctrlSiteTrack39.TextRotateAngle = 0;
             // 
@@ -3601,7 +3565,7 @@
             this.groupBox1.Controls.Add(this.ctrlTaggingName1);
             this.groupBox1.Location = new System.Drawing.Point(27, 17);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(694, 113);
+            this.groupBox1.Size = new System.Drawing.Size(639, 86);
             this.groupBox1.TabIndex = 262;
             this.groupBox1.TabStop = false;
             // 
@@ -3610,7 +3574,7 @@
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label28.ForeColor = System.Drawing.Color.White;
-            this.label28.Location = new System.Drawing.Point(638, 93);
+            this.label28.Location = new System.Drawing.Point(594, 62);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(25, 13);
             this.label28.TabIndex = 11;
@@ -3621,7 +3585,7 @@
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label27.ForeColor = System.Drawing.Color.White;
-            this.label27.Location = new System.Drawing.Point(568, 93);
+            this.label27.Location = new System.Drawing.Point(542, 62);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(28, 13);
             this.label27.TabIndex = 10;
@@ -3632,7 +3596,7 @@
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label26.ForeColor = System.Drawing.Color.White;
-            this.label26.Location = new System.Drawing.Point(487, 93);
+            this.label26.Location = new System.Drawing.Point(478, 62);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(53, 13);
             this.label26.TabIndex = 9;
@@ -3641,27 +3605,27 @@
             // pictureBox30
             // 
             this.pictureBox30.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox30.Image")));
-            this.pictureBox30.Location = new System.Drawing.Point(628, 14);
+            this.pictureBox30.Location = new System.Drawing.Point(584, 19);
             this.pictureBox30.Name = "pictureBox30";
-            this.pictureBox30.Size = new System.Drawing.Size(44, 74);
+            this.pictureBox30.Size = new System.Drawing.Size(42, 38);
             this.pictureBox30.TabIndex = 8;
             this.pictureBox30.TabStop = false;
             // 
             // pictureBox26
             // 
             this.pictureBox26.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox26.Image")));
-            this.pictureBox26.Location = new System.Drawing.Point(560, 14);
+            this.pictureBox26.Location = new System.Drawing.Point(534, 19);
             this.pictureBox26.Name = "pictureBox26";
-            this.pictureBox26.Size = new System.Drawing.Size(44, 74);
+            this.pictureBox26.Size = new System.Drawing.Size(42, 39);
             this.pictureBox26.TabIndex = 7;
             this.pictureBox26.TabStop = false;
             // 
             // pictureBox25
             // 
             this.pictureBox25.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox25.Image")));
-            this.pictureBox25.Location = new System.Drawing.Point(489, 13);
+            this.pictureBox25.Location = new System.Drawing.Point(480, 19);
             this.pictureBox25.Name = "pictureBox25";
-            this.pictureBox25.Size = new System.Drawing.Size(44, 74);
+            this.pictureBox25.Size = new System.Drawing.Size(42, 38);
             this.pictureBox25.TabIndex = 6;
             this.pictureBox25.TabStop = false;
             // 
@@ -3671,7 +3635,7 @@
             this.ctrlTaggingName5.ColorText = "";
             this.ctrlTaggingName5.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlTaggingName5.Location = new System.Drawing.Point(355, 67);
+            this.ctrlTaggingName5.Location = new System.Drawing.Point(350, 48);
             this.ctrlTaggingName5.Name = "ctrlTaggingName5";
             this.ctrlTaggingName5.Size = new System.Drawing.Size(114, 30);
             this.ctrlTaggingName5.TabIndex = 5;
@@ -3685,7 +3649,7 @@
             this.ctrlTaggingName6.ColorText = "";
             this.ctrlTaggingName6.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlTaggingName6.Location = new System.Drawing.Point(355, 23);
+            this.ctrlTaggingName6.Location = new System.Drawing.Point(350, 13);
             this.ctrlTaggingName6.Name = "ctrlTaggingName6";
             this.ctrlTaggingName6.Size = new System.Drawing.Size(123, 30);
             this.ctrlTaggingName6.TabIndex = 4;
@@ -3699,7 +3663,7 @@
             this.ctrlTaggingName3.ColorText = "";
             this.ctrlTaggingName3.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlTaggingName3.Location = new System.Drawing.Point(189, 67);
+            this.ctrlTaggingName3.Location = new System.Drawing.Point(184, 48);
             this.ctrlTaggingName3.Name = "ctrlTaggingName3";
             this.ctrlTaggingName3.Size = new System.Drawing.Size(129, 30);
             this.ctrlTaggingName3.TabIndex = 3;
@@ -3713,7 +3677,7 @@
             this.ctrlTaggingName4.ColorText = "";
             this.ctrlTaggingName4.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlTaggingName4.Location = new System.Drawing.Point(189, 23);
+            this.ctrlTaggingName4.Location = new System.Drawing.Point(184, 13);
             this.ctrlTaggingName4.Name = "ctrlTaggingName4";
             this.ctrlTaggingName4.Size = new System.Drawing.Size(173, 30);
             this.ctrlTaggingName4.TabIndex = 2;
@@ -3727,7 +3691,7 @@
             this.ctrlTaggingName2.ColorText = "";
             this.ctrlTaggingName2.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlTaggingName2.Location = new System.Drawing.Point(13, 67);
+            this.ctrlTaggingName2.Location = new System.Drawing.Point(8, 48);
             this.ctrlTaggingName2.Name = "ctrlTaggingName2";
             this.ctrlTaggingName2.Size = new System.Drawing.Size(129, 30);
             this.ctrlTaggingName2.TabIndex = 1;
@@ -3741,7 +3705,7 @@
             this.ctrlTaggingName1.ColorText = "";
             this.ctrlTaggingName1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlTaggingName1.Location = new System.Drawing.Point(13, 23);
+            this.ctrlTaggingName1.Location = new System.Drawing.Point(8, 13);
             this.ctrlTaggingName1.Name = "ctrlTaggingName1";
             this.ctrlTaggingName1.Size = new System.Drawing.Size(173, 30);
             this.ctrlTaggingName1.TabIndex = 0;
@@ -3758,24 +3722,6 @@
             this.pictureBox38.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox38.TabIndex = 263;
             this.pictureBox38.TabStop = false;
-            // 
-            // ctrlPacking1
-            // 
-            this.ctrlPacking1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlPacking1.EqpType = "PAC";
-            this.ctrlPacking1.Location = new System.Drawing.Point(152, 228);
-            this.ctrlPacking1.Name = "ctrlPacking1";
-            this.ctrlPacking1.Size = new System.Drawing.Size(127, 143);
-            this.ctrlPacking1.TabIndex = 265;
-            // 
-            // ctrlEqpMicroCurrent1
-            // 
-            this.ctrlEqpMicroCurrent1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlEqpMicroCurrent1.EqpType = "MIC";
-            this.ctrlEqpMicroCurrent1.Location = new System.Drawing.Point(732, 329);
-            this.ctrlEqpMicroCurrent1.Name = "ctrlEqpMicroCurrent1";
-            this.ctrlEqpMicroCurrent1.Size = new System.Drawing.Size(161, 82);
-            this.ctrlEqpMicroCurrent1.TabIndex = 267;
             // 
             // button1
             // 
@@ -3797,112 +3743,12 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // ctrlEqpLeakCheck1
-            // 
-            this.ctrlEqpLeakCheck1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlEqpLeakCheck1.EqpType = "LCK";
-            this.ctrlEqpLeakCheck1.Location = new System.Drawing.Point(373, 329);
-            this.ctrlEqpLeakCheck1.Name = "ctrlEqpLeakCheck1";
-            this.ctrlEqpLeakCheck1.Size = new System.Drawing.Size(195, 82);
-            this.ctrlEqpLeakCheck1.TabIndex = 271;
-            // 
-            // ctrlNGSorter1
-            // 
-            this.ctrlNGSorter1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlNGSorter1.EqpType = "NGS";
-            this.ctrlNGSorter1.Location = new System.Drawing.Point(93, 529);
-            this.ctrlNGSorter1.Name = "ctrlNGSorter1";
-            this.ctrlNGSorter1.Size = new System.Drawing.Size(158, 118);
-            this.ctrlNGSorter1.TabIndex = 272;
-            // 
-            // ctrlEqpOCV1
-            // 
-            this.ctrlEqpOCV1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlEqpOCV1.EqpType = "OCV";
-            this.ctrlEqpOCV1.Location = new System.Drawing.Point(437, 530);
-            this.ctrlEqpOCV1.Name = "ctrlEqpOCV1";
-            this.ctrlEqpOCV1.Size = new System.Drawing.Size(124, 115);
-            this.ctrlEqpOCV1.TabIndex = 273;
-            // 
-            // ctrlEqpDCIR1
-            // 
-            this.ctrlEqpDCIR1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlEqpDCIR1.EqpType = "DCR";
-            this.ctrlEqpDCIR1.Location = new System.Drawing.Point(558, 530);
-            this.ctrlEqpDCIR1.Name = "ctrlEqpDCIR1";
-            this.ctrlEqpDCIR1.Size = new System.Drawing.Size(124, 115);
-            this.ctrlEqpDCIR1.TabIndex = 274;
-            // 
-            // ctrlEqpDegas1
-            // 
-            this.ctrlEqpDegas1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlEqpDegas1.EqpType = "DGS";
-            this.ctrlEqpDegas1.Location = new System.Drawing.Point(813, 203);
-            this.ctrlEqpDegas1.Name = "ctrlEqpDegas1";
-            this.ctrlEqpDegas1.Size = new System.Drawing.Size(195, 105);
-            this.ctrlEqpDegas1.TabIndex = 275;
-            // 
-            // ctrlEqpVisionInspection1
-            // 
-            this.ctrlEqpVisionInspection1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlEqpVisionInspection1.EqpType = "VSI";
-            this.ctrlEqpVisionInspection1.Location = new System.Drawing.Point(711, 572);
-            this.ctrlEqpVisionInspection1.Name = "ctrlEqpVisionInspection1";
-            this.ctrlEqpVisionInspection1.Size = new System.Drawing.Size(343, 82);
-            this.ctrlEqpVisionInspection1.TabIndex = 276;
-            // 
-            // ctrlEqpHPC1
-            // 
-            this.ctrlEqpHPC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlEqpHPC1.EqpType = "HPC";
-            this.ctrlEqpHPC1.Location = new System.Drawing.Point(1752, 790);
-            this.ctrlEqpHPC1.Name = "ctrlEqpHPC1";
-            this.ctrlEqpHPC1.Size = new System.Drawing.Size(118, 133);
-            this.ctrlEqpHPC1.TabIndex = 277;
-            // 
-            // ctrlEqpHTAging1
-            // 
-            this.ctrlEqpHTAging1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlEqpHTAging1.EqpType = "HT Aging";
-            this.ctrlEqpHTAging1.Location = new System.Drawing.Point(1392, 133);
-            this.ctrlEqpHTAging1.Name = "ctrlEqpHTAging1";
-            this.ctrlEqpHTAging1.Size = new System.Drawing.Size(431, 168);
-            this.ctrlEqpHTAging1.TabIndex = 282;
-            // 
-            // ctrlEqpLTAging1
-            // 
-            this.ctrlEqpLTAging1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlEqpLTAging1.EqpType = "LT Aging #1";
-            this.ctrlEqpLTAging1.Location = new System.Drawing.Point(1349, 352);
-            this.ctrlEqpLTAging1.Name = "ctrlEqpLTAging1";
-            this.ctrlEqpLTAging1.Size = new System.Drawing.Size(534, 168);
-            this.ctrlEqpLTAging1.TabIndex = 283;
-            // 
-            // ctrlEqpLTAging2
-            // 
-            this.ctrlEqpLTAging2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlEqpLTAging2.EqpType = "LT Aging #2";
-            this.ctrlEqpLTAging2.Location = new System.Drawing.Point(1349, 554);
-            this.ctrlEqpLTAging2.Name = "ctrlEqpLTAging2";
-            this.ctrlEqpLTAging2.Size = new System.Drawing.Size(534, 168);
-            this.ctrlEqpLTAging2.TabIndex = 284;
-            // 
-            // ctrlEqpCharger1
-            // 
-            this.ctrlEqpCharger1.AutoSize = true;
-            this.ctrlEqpCharger1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlEqpCharger1.EqpType = "Charger";
-            this.ctrlEqpCharger1.Location = new System.Drawing.Point(1437, 766);
-            this.ctrlEqpCharger1.Name = "ctrlEqpCharger1";
-            this.ctrlEqpCharger1.Size = new System.Drawing.Size(266, 132);
-            this.ctrlEqpCharger1.TabIndex = 285;
-            // 
             // ctrlSCraneH1
             // 
             this.ctrlSCraneH1.CraneDirection = ControlGallery.EnumCraneDirection.Right;
             this.ctrlSCraneH1.CraneID = 0;
             this.ctrlSCraneH1.CurrentBay = 0;
-            this.ctrlSCraneH1.DeviceID = 2;
+            this.ctrlSCraneH1.DeviceID = 1;
             this.ctrlSCraneH1.DisplayText = "";
             this.ctrlSCraneH1.Font = new System.Drawing.Font("Segoe UI Emoji", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ctrlSCraneH1.Location = new System.Drawing.Point(1366, 202);
@@ -3917,7 +3763,7 @@
             this.ctrlSCraneH2.CraneDirection = ControlGallery.EnumCraneDirection.Right;
             this.ctrlSCraneH2.CraneID = 1;
             this.ctrlSCraneH2.CurrentBay = 0;
-            this.ctrlSCraneH2.DeviceID = 3;
+            this.ctrlSCraneH2.DeviceID = 2;
             this.ctrlSCraneH2.DisplayText = "";
             this.ctrlSCraneH2.Font = new System.Drawing.Font("Segoe UI Emoji", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ctrlSCraneH2.Location = new System.Drawing.Point(1324, 423);
@@ -3932,7 +3778,7 @@
             this.ctrlSCraneH3.CraneDirection = ControlGallery.EnumCraneDirection.Right;
             this.ctrlSCraneH3.CraneID = 2;
             this.ctrlSCraneH3.CurrentBay = 0;
-            this.ctrlSCraneH3.DeviceID = 3;
+            this.ctrlSCraneH3.DeviceID = 2;
             this.ctrlSCraneH3.DisplayText = "";
             this.ctrlSCraneH3.Font = new System.Drawing.Font("Segoe UI Emoji", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ctrlSCraneH3.Location = new System.Drawing.Point(1324, 625);
@@ -3957,7 +3803,7 @@
             this.ctrlSCraneH4.CraneDirection = ControlGallery.EnumCraneDirection.Right;
             this.ctrlSCraneH4.CraneID = 3;
             this.ctrlSCraneH4.CurrentBay = 0;
-            this.ctrlSCraneH4.DeviceID = 4;
+            this.ctrlSCraneH4.DeviceID = 3;
             this.ctrlSCraneH4.DisplayText = "";
             this.ctrlSCraneH4.Font = new System.Drawing.Font("Segoe UI Emoji", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ctrlSCraneH4.Location = new System.Drawing.Point(1410, 900);
@@ -3989,11 +3835,305 @@
             this.craneCarriageSmall3.Text = "C";
             this.craneCarriageSmall3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // ctrlSiteTrack40
+            // 
+            this.ctrlSiteTrack40.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack40.DisplayText = "";
+            this.ctrlSiteTrack40.FirstSiteNo = 69;
+            this.ctrlSiteTrack40.InterSitePadding = 5;
+            this.ctrlSiteTrack40.IsControled = true;
+            this.ctrlSiteTrack40.IsUpperStage = false;
+            this.ctrlSiteTrack40.Location = new System.Drawing.Point(754, 726);
+            this.ctrlSiteTrack40.MainLoop = false;
+            this.ctrlSiteTrack40.MarginHorizontal = 0;
+            this.ctrlSiteTrack40.MarginVertical = 0;
+            this.ctrlSiteTrack40.Name = "ctrlSiteTrack40";
+            this.ctrlSiteTrack40.PLCNo = 40;
+            this.ctrlSiteTrack40.ShowSiteNo = false;
+            this.ctrlSiteTrack40.ShowTroubleState = false;
+            this.ctrlSiteTrack40.SiteBorderColor = System.Drawing.Color.DimGray;
+            this.ctrlSiteTrack40.SiteBoxColor = System.Drawing.Color.Gray;
+            this.ctrlSiteTrack40.SiteBoxHeight = 34;
+            this.ctrlSiteTrack40.SiteBoxWidth = 38;
+            this.ctrlSiteTrack40.SiteCount = 1;
+            this.ctrlSiteTrack40.SiteNo = 0;
+            this.ctrlSiteTrack40.SiteNoDirection = ControlGallery.SiteTrackDirection.LeftToRight;
+            this.ctrlSiteTrack40.SiteNoIncStep = 1;
+            this.ctrlSiteTrack40.SiteNoList = null;
+            this.ctrlSiteTrack40.SiteTextDisp = new string[] {
+        "69=G4"};
+            this.ctrlSiteTrack40.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
+            this.ctrlSiteTrack40.Size = new System.Drawing.Size(39, 35);
+            this.ctrlSiteTrack40.TabIndex = 290;
+            this.ctrlSiteTrack40.TextRotateAngle = 0;
+            // 
+            // ctrlSiteTrack41
+            // 
+            this.ctrlSiteTrack41.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack41.DisplayText = "";
+            this.ctrlSiteTrack41.FirstSiteNo = 25;
+            this.ctrlSiteTrack41.InterSitePadding = 5;
+            this.ctrlSiteTrack41.IsControled = true;
+            this.ctrlSiteTrack41.IsUpperStage = false;
+            this.ctrlSiteTrack41.Location = new System.Drawing.Point(496, 415);
+            this.ctrlSiteTrack41.MainLoop = false;
+            this.ctrlSiteTrack41.MarginHorizontal = 0;
+            this.ctrlSiteTrack41.MarginVertical = 0;
+            this.ctrlSiteTrack41.Name = "ctrlSiteTrack41";
+            this.ctrlSiteTrack41.PLCNo = 41;
+            this.ctrlSiteTrack41.ShowSiteNo = false;
+            this.ctrlSiteTrack41.ShowTroubleState = false;
+            this.ctrlSiteTrack41.SiteBorderColor = System.Drawing.Color.DimGray;
+            this.ctrlSiteTrack41.SiteBoxColor = System.Drawing.Color.Gray;
+            this.ctrlSiteTrack41.SiteBoxHeight = 34;
+            this.ctrlSiteTrack41.SiteBoxWidth = 38;
+            this.ctrlSiteTrack41.SiteCount = 1;
+            this.ctrlSiteTrack41.SiteNo = 0;
+            this.ctrlSiteTrack41.SiteNoDirection = ControlGallery.SiteTrackDirection.LeftToRight;
+            this.ctrlSiteTrack41.SiteNoIncStep = 1;
+            this.ctrlSiteTrack41.SiteNoList = null;
+            this.ctrlSiteTrack41.SiteTextDisp = null;
+            this.ctrlSiteTrack41.SiteTrayDirection = ControlGallery.TrayMovingDirection.RightToLeft;
+            this.ctrlSiteTrack41.Size = new System.Drawing.Size(39, 35);
+            this.ctrlSiteTrack41.TabIndex = 291;
+            this.ctrlSiteTrack41.TextRotateAngle = 0;
+            // 
+            // ctrlSiteTrack42
+            // 
+            this.ctrlSiteTrack42.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack42.DisplayText = "";
+            this.ctrlSiteTrack42.FirstSiteNo = 11;
+            this.ctrlSiteTrack42.InterSitePadding = 5;
+            this.ctrlSiteTrack42.IsControled = true;
+            this.ctrlSiteTrack42.IsUpperStage = false;
+            this.ctrlSiteTrack42.Location = new System.Drawing.Point(798, 522);
+            this.ctrlSiteTrack42.MainLoop = false;
+            this.ctrlSiteTrack42.MarginHorizontal = 0;
+            this.ctrlSiteTrack42.MarginVertical = 0;
+            this.ctrlSiteTrack42.Name = "ctrlSiteTrack42";
+            this.ctrlSiteTrack42.PLCNo = 42;
+            this.ctrlSiteTrack42.ShowSiteNo = false;
+            this.ctrlSiteTrack42.ShowTroubleState = false;
+            this.ctrlSiteTrack42.SiteBorderColor = System.Drawing.Color.DimGray;
+            this.ctrlSiteTrack42.SiteBoxColor = System.Drawing.Color.Gray;
+            this.ctrlSiteTrack42.SiteBoxHeight = 34;
+            this.ctrlSiteTrack42.SiteBoxWidth = 38;
+            this.ctrlSiteTrack42.SiteCount = 1;
+            this.ctrlSiteTrack42.SiteNo = 0;
+            this.ctrlSiteTrack42.SiteNoDirection = ControlGallery.SiteTrackDirection.LeftToRight;
+            this.ctrlSiteTrack42.SiteNoIncStep = 1;
+            this.ctrlSiteTrack42.SiteNoList = null;
+            this.ctrlSiteTrack42.SiteTextDisp = null;
+            this.ctrlSiteTrack42.SiteTrayDirection = ControlGallery.TrayMovingDirection.RightToLeft;
+            this.ctrlSiteTrack42.Size = new System.Drawing.Size(39, 35);
+            this.ctrlSiteTrack42.TabIndex = 292;
+            this.ctrlSiteTrack42.TextRotateAngle = 0;
+            // 
+            // ctrlSiteTrack43
+            // 
+            this.ctrlSiteTrack43.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack43.DisplayText = "";
+            this.ctrlSiteTrack43.FirstSiteNo = 6;
+            this.ctrlSiteTrack43.InterSitePadding = 5;
+            this.ctrlSiteTrack43.IsControled = true;
+            this.ctrlSiteTrack43.IsUpperStage = false;
+            this.ctrlSiteTrack43.Location = new System.Drawing.Point(1012, 522);
+            this.ctrlSiteTrack43.MainLoop = false;
+            this.ctrlSiteTrack43.MarginHorizontal = 0;
+            this.ctrlSiteTrack43.MarginVertical = 0;
+            this.ctrlSiteTrack43.Name = "ctrlSiteTrack43";
+            this.ctrlSiteTrack43.PLCNo = 43;
+            this.ctrlSiteTrack43.ShowSiteNo = false;
+            this.ctrlSiteTrack43.ShowTroubleState = false;
+            this.ctrlSiteTrack43.SiteBorderColor = System.Drawing.Color.DimGray;
+            this.ctrlSiteTrack43.SiteBoxColor = System.Drawing.Color.Gray;
+            this.ctrlSiteTrack43.SiteBoxHeight = 34;
+            this.ctrlSiteTrack43.SiteBoxWidth = 38;
+            this.ctrlSiteTrack43.SiteCount = 1;
+            this.ctrlSiteTrack43.SiteNo = 0;
+            this.ctrlSiteTrack43.SiteNoDirection = ControlGallery.SiteTrackDirection.LeftToRight;
+            this.ctrlSiteTrack43.SiteNoIncStep = 1;
+            this.ctrlSiteTrack43.SiteNoList = null;
+            this.ctrlSiteTrack43.SiteTextDisp = null;
+            this.ctrlSiteTrack43.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
+            this.ctrlSiteTrack43.Size = new System.Drawing.Size(39, 35);
+            this.ctrlSiteTrack43.TabIndex = 293;
+            this.ctrlSiteTrack43.TextRotateAngle = 0;
+            // 
+            // ctrlEqpOCV
+            // 
+            this.ctrlEqpOCV.BackColor = System.Drawing.Color.DimGray;
+            this.ctrlEqpOCV.EqpID = "F1OCV01";
+            this.ctrlEqpOCV.EqpType = " OCV";
+            this.ctrlEqpOCV.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlEqpOCV.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.ctrlEqpOCV.Location = new System.Drawing.Point(442, 531);
+            this.ctrlEqpOCV.Name = "ctrlEqpOCV";
+            this.ctrlEqpOCV.Size = new System.Drawing.Size(116, 114);
+            this.ctrlEqpOCV.TabIndex = 295;
+            // 
+            // ctrlEqpDCR
+            // 
+            this.ctrlEqpDCR.BackColor = System.Drawing.Color.DimGray;
+            this.ctrlEqpDCR.EqpID = "F1DCR01";
+            this.ctrlEqpDCR.EqpType = " DCR";
+            this.ctrlEqpDCR.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlEqpDCR.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.ctrlEqpDCR.Location = new System.Drawing.Point(564, 531);
+            this.ctrlEqpDCR.Name = "ctrlEqpDCR";
+            this.ctrlEqpDCR.Size = new System.Drawing.Size(116, 114);
+            this.ctrlEqpDCR.TabIndex = 296;
+            // 
+            // ctrlEqpMIC
+            // 
+            this.ctrlEqpMIC.BackColor = System.Drawing.Color.DimGray;
+            this.ctrlEqpMIC.EqpID = "F1MIC01";
+            this.ctrlEqpMIC.EqpType = " MIC";
+            this.ctrlEqpMIC.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlEqpMIC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.ctrlEqpMIC.Location = new System.Drawing.Point(734, 330);
+            this.ctrlEqpMIC.Name = "ctrlEqpMIC";
+            this.ctrlEqpMIC.Size = new System.Drawing.Size(162, 80);
+            this.ctrlEqpMIC.TabIndex = 298;
+            // 
+            // ctrlEqpDGS
+            // 
+            this.ctrlEqpDGS.BackColor = System.Drawing.Color.DimGray;
+            this.ctrlEqpDGS.EqpID = "F1DGS01";
+            this.ctrlEqpDGS.EqpType = " DGS";
+            this.ctrlEqpDGS.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlEqpDGS.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.ctrlEqpDGS.Location = new System.Drawing.Point(822, 207);
+            this.ctrlEqpDGS.Name = "ctrlEqpDGS";
+            this.ctrlEqpDGS.Size = new System.Drawing.Size(184, 100);
+            this.ctrlEqpDGS.TabIndex = 299;
+            // 
+            // ctrlEqpNGS
+            // 
+            this.ctrlEqpNGS.BackColor = System.Drawing.Color.DimGray;
+            this.ctrlEqpNGS.EqpID = "F1NGS01";
+            this.ctrlEqpNGS.EqpType = " NGS";
+            this.ctrlEqpNGS.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlEqpNGS.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.ctrlEqpNGS.Location = new System.Drawing.Point(81, 531);
+            this.ctrlEqpNGS.Name = "ctrlEqpNGS";
+            this.ctrlEqpNGS.Size = new System.Drawing.Size(174, 113);
+            this.ctrlEqpNGS.TabIndex = 300;
+            // 
+            // ctrlEqpVSI
+            // 
+            this.ctrlEqpVSI.BackColor = System.Drawing.Color.DimGray;
+            this.ctrlEqpVSI.EqpID = "F1VSI01";
+            this.ctrlEqpVSI.EqpType = " VSI";
+            this.ctrlEqpVSI.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlEqpVSI.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.ctrlEqpVSI.Location = new System.Drawing.Point(713, 564);
+            this.ctrlEqpVSI.Name = "ctrlEqpVSI";
+            this.ctrlEqpVSI.Size = new System.Drawing.Size(338, 82);
+            this.ctrlEqpVSI.TabIndex = 301;
+            // 
+            // ctrlEqpPAC
+            // 
+            this.ctrlEqpPAC.BackColor = System.Drawing.Color.DimGray;
+            this.ctrlEqpPAC.EqpID = "F1PAC01";
+            this.ctrlEqpPAC.EqpType = " PAC";
+            this.ctrlEqpPAC.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlEqpPAC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.ctrlEqpPAC.Location = new System.Drawing.Point(151, 222);
+            this.ctrlEqpPAC.Name = "ctrlEqpPAC";
+            this.ctrlEqpPAC.Size = new System.Drawing.Size(126, 154);
+            this.ctrlEqpPAC.TabIndex = 302;
+            // 
+            // ctrlEqpHPC
+            // 
+            this.ctrlEqpHPC.BackColor = System.Drawing.Color.DimGray;
+            this.ctrlEqpHPC.EqpID = "F1HPC01";
+            this.ctrlEqpHPC.EqpType = " HPC";
+            this.ctrlEqpHPC.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlEqpHPC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.ctrlEqpHPC.Location = new System.Drawing.Point(1754, 756);
+            this.ctrlEqpHPC.Name = "ctrlEqpHPC";
+            this.ctrlEqpHPC.Size = new System.Drawing.Size(117, 142);
+            this.ctrlEqpHPC.TabIndex = 303;
+            // 
+            // ctrlEqpLKC
+            // 
+            this.ctrlEqpLKC.BackColor = System.Drawing.Color.DimGray;
+            this.ctrlEqpLKC.EqpID = "F1LKC01";
+            this.ctrlEqpLKC.EqpType = " LKC";
+            this.ctrlEqpLKC.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlEqpLKC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.ctrlEqpLKC.Location = new System.Drawing.Point(354, 329);
+            this.ctrlEqpLKC.Name = "ctrlEqpLKC";
+            this.ctrlEqpLKC.Size = new System.Drawing.Size(232, 82);
+            this.ctrlEqpLKC.TabIndex = 304;
+            // 
+            // ctrlEqpHTA
+            // 
+            this.ctrlEqpHTA.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlEqpHTA.EqpID = "F1HTA01";
+            this.ctrlEqpHTA.EqpType = "HTA";
+            this.ctrlEqpHTA.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlEqpHTA.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.ctrlEqpHTA.Location = new System.Drawing.Point(1396, 138);
+            this.ctrlEqpHTA.Name = "ctrlEqpHTA";
+            this.ctrlEqpHTA.Size = new System.Drawing.Size(422, 160);
+            this.ctrlEqpHTA.TabIndex = 305;
+            // 
+            // ctrlEqpLT1
+            // 
+            this.ctrlEqpLT1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlEqpLT1.EqpID = "F1LTA01";
+            this.ctrlEqpLT1.EqpType = "LTA";
+            this.ctrlEqpLT1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlEqpLT1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.ctrlEqpLT1.Location = new System.Drawing.Point(1350, 357);
+            this.ctrlEqpLT1.Name = "ctrlEqpLT1";
+            this.ctrlEqpLT1.Size = new System.Drawing.Size(540, 164);
+            this.ctrlEqpLT1.TabIndex = 306;
+            // 
+            // ctrlEqpLTA2
+            // 
+            this.ctrlEqpLTA2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlEqpLTA2.EqpID = "F1LTA02";
+            this.ctrlEqpLTA2.EqpType = "LTA";
+            this.ctrlEqpLTA2.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlEqpLTA2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.ctrlEqpLTA2.Location = new System.Drawing.Point(1350, 558);
+            this.ctrlEqpLTA2.Name = "ctrlEqpLTA2";
+            this.ctrlEqpLTA2.Size = new System.Drawing.Size(540, 164);
+            this.ctrlEqpLTA2.TabIndex = 307;
+            // 
+            // ctrlEqpCHG
+            // 
+            this.ctrlEqpCHG.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlEqpCHG.EqpID = "F1CHG01";
+            this.ctrlEqpCHG.EqpType = "CHG";
+            this.ctrlEqpCHG.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlEqpCHG.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.ctrlEqpCHG.Location = new System.Drawing.Point(1442, 770);
+            this.ctrlEqpCHG.Name = "ctrlEqpCHG";
+            this.ctrlEqpCHG.Size = new System.Drawing.Size(259, 125);
+            this.ctrlEqpCHG.TabIndex = 308;
+            // 
             // CtrlMonitoring
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.Controls.Add(this.ctrlEqpLKC);
+            this.Controls.Add(this.ctrlEqpHPC);
+            this.Controls.Add(this.ctrlEqpPAC);
+            this.Controls.Add(this.ctrlEqpVSI);
+            this.Controls.Add(this.ctrlEqpNGS);
+            this.Controls.Add(this.ctrlEqpDGS);
+            this.Controls.Add(this.ctrlEqpMIC);
+            this.Controls.Add(this.ctrlEqpDCR);
+            this.Controls.Add(this.ctrlEqpOCV);
+            this.Controls.Add(this.ctrlSiteTrack43);
+            this.Controls.Add(this.ctrlSiteTrack42);
+            this.Controls.Add(this.ctrlSiteTrack41);
+            this.Controls.Add(this.ctrlSiteTrack40);
             this.Controls.Add(this.ctrlSCraneH4);
             this.Controls.Add(this.ctrlSCraneH3);
             this.Controls.Add(this.ctrlSCraneH2);
@@ -4002,33 +4142,24 @@
             this.Controls.Add(this.pictureBox21);
             this.Controls.Add(this.pictureBox23);
             this.Controls.Add(this.pictureBox24);
-            this.Controls.Add(this.ctrlEqpHPC1);
             this.Controls.Add(this.pictureBox85);
             this.Controls.Add(this.pictureBox80);
             this.Controls.Add(this.pictureBox78);
             this.Controls.Add(this.pictureBox77);
             this.Controls.Add(this.pictureBox73);
-            this.Controls.Add(this.ctrlEqpVisionInspection1);
             this.Controls.Add(this.pictureBox11);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.ctrlEqpDegas1);
             this.Controls.Add(this.pictureBox71);
             this.Controls.Add(this.pictureBox6);
-            this.Controls.Add(this.ctrlEqpDCIR1);
             this.Controls.Add(this.pictureBox88);
             this.Controls.Add(this.pictureBox41);
-            this.Controls.Add(this.ctrlEqpOCV1);
             this.Controls.Add(this.pictureBox86);
             this.Controls.Add(this.pictureBox70);
             this.Controls.Add(this.pictureBox14);
             this.Controls.Add(this.pictureBox12);
-            this.Controls.Add(this.ctrlNGSorter1);
-            this.Controls.Add(this.ctrlEqpLeakCheck1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.ctrlEqpMicroCurrent1);
-            this.Controls.Add(this.ctrlPacking1);
             this.Controls.Add(this.pictureBox38);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.ctrlSiteTrack39);
@@ -4119,8 +4250,6 @@
             this.Controls.Add(this.pictureBox36);
             this.Controls.Add(this.pictureBox37);
             this.Controls.Add(this.pictureBox35);
-            this.Controls.Add(this.pictureBox33);
-            this.Controls.Add(this.pictureBox34);
             this.Controls.Add(this.pictureBox31);
             this.Controls.Add(this.pictureBox32);
             this.Controls.Add(this.pictureBox29);
@@ -4205,10 +4334,10 @@
             this.Controls.Add(this.ctrlSiteTrack25);
             this.Controls.Add(this.ctrlSiteTrack27);
             this.Controls.Add(this.ctrlSiteTrack3);
-            this.Controls.Add(this.ctrlEqpHTAging1);
-            this.Controls.Add(this.ctrlEqpLTAging1);
-            this.Controls.Add(this.ctrlEqpLTAging2);
-            this.Controls.Add(this.ctrlEqpCharger1);
+            this.Controls.Add(this.ctrlEqpHTA);
+            this.Controls.Add(this.ctrlEqpLT1);
+            this.Controls.Add(this.ctrlEqpLTA2);
+            this.Controls.Add(this.ctrlEqpCHG);
             this.Name = "CtrlMonitoring";
             this.Size = new System.Drawing.Size(1899, 995);
             this.Tag = "LCK";
@@ -4231,8 +4360,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox29)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox31)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox32)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox33)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox34)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox35)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox36)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox37)).EndInit();
@@ -4338,7 +4465,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox38)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -4435,8 +4561,6 @@
         private System.Windows.Forms.PictureBox pictureBox29;
         private System.Windows.Forms.PictureBox pictureBox31;
         private System.Windows.Forms.PictureBox pictureBox32;
-        private System.Windows.Forms.PictureBox pictureBox33;
-        private System.Windows.Forms.PictureBox pictureBox34;
         private System.Windows.Forms.PictureBox pictureBox35;
         private System.Windows.Forms.PictureBox pictureBox36;
         private System.Windows.Forms.PictureBox pictureBox37;
@@ -4550,25 +4674,9 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.PictureBox pictureBox30;
-        private System.Windows.Forms.PictureBox pictureBox26;
-        private System.Windows.Forms.PictureBox pictureBox25;
         private System.Windows.Forms.PictureBox pictureBox38;
-        private CtrlEqpPacking ctrlPacking1;
-        private CtrlEqpMicroCurrent ctrlEqpMicroCurrent1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private CtrlEqpLeakCheck ctrlEqpLeakCheck1;
-        private CtrlNGSorter ctrlNGSorter1;
-        private CtrlEqpOCV ctrlEqpOCV1;
-        private CtrlEqpDCIR ctrlEqpDCIR1;
-        private CtrlEqpDegas ctrlEqpDegas1;
-        private CtrlEqpVisionInspection ctrlEqpVisionInspection1;
-        private CtrlEqpHPC ctrlEqpHPC1;
-        private CtrlEqpHTAging ctrlEqpHTAging1;
-        private CtrlEqpLTAging ctrlEqpLTAging1;
-        private CtrlEqpLTAging ctrlEqpLTAging2;
-        private CtrlEqpCharger ctrlEqpCharger1;
         private ControlGallery.CtrlSCraneH ctrlSCraneH1;
         private ControlGallery.CtrlSCraneH ctrlSCraneH2;
         private ControlGallery.CtrlSCraneH ctrlSCraneH3;
@@ -4577,5 +4685,25 @@
         private ControlGallery.CraneCarriageSmall craneCarriageSmall2;
         private ControlGallery.CraneCarriageSmall craneCarriageSmall3;
         private System.Windows.Forms.Timer m_timer;
+        private ControlGallery.CtrlSiteTrack ctrlSiteTrack40;
+        private ControlGallery.CtrlSiteTrack ctrlSiteTrack41;
+        private ControlGallery.CtrlSiteTrack ctrlSiteTrack42;
+        private ControlGallery.CtrlSiteTrack ctrlSiteTrack43;
+        private System.Windows.Forms.PictureBox pictureBox30;
+        private System.Windows.Forms.PictureBox pictureBox26;
+        private System.Windows.Forms.PictureBox pictureBox25;
+        private CtrlEqpOCV ctrlEqpOCV;
+        private CtrlEqpDCIR ctrlEqpDCR;
+        private CtrlEqpMicroCurrent ctrlEqpMIC;
+        private CtrlEqpDegas ctrlEqpDGS;
+        private CtrlEqpNGSorter ctrlEqpNGS;
+        private CtrlEqpVisionInsp ctrlEqpVSI;
+        private CtrlEqpPacking ctrlEqpPAC;
+        private CtrlEqpHPC ctrlEqpHPC;
+        private CtrlEqpLeakCheck ctrlEqpLKC;
+        private CtrlEqpHTAging ctrlEqpHTA;
+        private CtrlEqpLTAging ctrlEqpLT1;
+        private CtrlEqpLTAging ctrlEqpLTA2;
+        private CtrlEqpCharger ctrlEqpCHG;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace FMSMonitoringUI.Monitoring
 {
-    partial class WinTrayInfo
+    partial class WinCVTrayInfo
     {
         /// <summary>
         /// Required designer variable.
@@ -126,7 +126,7 @@
             // 
             this._TrayIdL1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this._TrayIdL1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this._TrayIdL1.LanguageID = "";
+            this._TrayIdL1.LanguageID = "Tray ID L1";
             this._TrayIdL1.Location = new System.Drawing.Point(6, 122);
             this._TrayIdL1.Margin = new System.Windows.Forms.Padding(30);
             this._TrayIdL1.Name = "_TrayIdL1";
@@ -154,7 +154,7 @@
             // 
             this._ConveyorNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this._ConveyorNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this._ConveyorNo.LanguageID = "";
+            this._ConveyorNo.LanguageID = "TEST";
             this._ConveyorNo.Location = new System.Drawing.Point(6, 62);
             this._ConveyorNo.Margin = new System.Windows.Forms.Padding(30);
             this._ConveyorNo.Name = "_ConveyorNo";
@@ -176,7 +176,7 @@
             this.ctrlTitleBar.TabIndex = 1;
             this.ctrlTitleBar.TitleText = "Tray Infomation";
             // 
-            // WinTrayInfo
+            // WinCVTrayInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -193,7 +193,7 @@
             this.Controls.Add(this._ConveyorNo);
             this.Controls.Add(this.ctrlTitleBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "WinTrayInfo";
+            this.Name = "WinCVTrayInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WinTrayInfo";
             this.TopMost = true;

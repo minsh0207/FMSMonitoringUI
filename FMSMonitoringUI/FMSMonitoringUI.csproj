@@ -73,7 +73,6 @@
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.Configuration" />
-    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Management" />
@@ -381,29 +380,17 @@
     <Compile Include="Controlls\CtrlButtonRoot.designer.cs">
       <DependentUpon>CtrlButtonRoot.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controlls\CtrlEqpDCIR.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CtrlEqpDCIR.Designer.cs">
-      <DependentUpon>CtrlEqpDCIR.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controlls\CtrlEqpCharger.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controlls\CtrlEqpCharger.Designer.cs">
       <DependentUpon>CtrlEqpCharger.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controlls\CtrlEqpLTAging.cs">
+    <Compile Include="Controlls\CtrlEqpDCIR.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controlls\CtrlEqpLTAging.Designer.cs">
-      <DependentUpon>CtrlEqpLTAging.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CtrlEqpHTAging.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CtrlEqpHTAging.Designer.cs">
-      <DependentUpon>CtrlEqpHTAging.cs</DependentUpon>
+    <Compile Include="Controlls\CtrlEqpDCIR.Designer.cs">
+      <DependentUpon>CtrlEqpDCIR.cs</DependentUpon>
     </Compile>
     <Compile Include="Controlls\CtrlEqpHPC.cs">
       <SubType>UserControl</SubType>
@@ -411,11 +398,35 @@
     <Compile Include="Controlls\CtrlEqpHPC.Designer.cs">
       <DependentUpon>CtrlEqpHPC.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controlls\CtrlEqpVisionInspection.cs">
+    <Compile Include="Controlls\CtrlEqpPacking.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controlls\CtrlEqpVisionInspection.Designer.cs">
-      <DependentUpon>CtrlEqpVisionInspection.cs</DependentUpon>
+    <Compile Include="Controlls\CtrlEqpPacking.Designer.cs">
+      <DependentUpon>CtrlEqpPacking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controlls\CtrlEqpLeakCheck.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controlls\CtrlEqpLeakCheck.Designer.cs">
+      <DependentUpon>CtrlEqpLeakCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controlls\CtrlEqpVisionInsp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controlls\CtrlEqpVisionInsp.Designer.cs">
+      <DependentUpon>CtrlEqpVisionInsp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controlls\CtrlEqpNGSorter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controlls\CtrlEqpNGSorter.Designer.cs">
+      <DependentUpon>CtrlEqpNGSorter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controlls\CtrlEqpMicroCurrent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controlls\CtrlEqpMicroCurrent.Designer.cs">
+      <DependentUpon>CtrlEqpMicroCurrent.cs</DependentUpon>
     </Compile>
     <Compile Include="Controlls\CtrlEqpOCV.cs">
       <SubType>UserControl</SubType>
@@ -429,29 +440,17 @@
     <Compile Include="Controlls\CtrlEqpDegas.Designer.cs">
       <DependentUpon>CtrlEqpDegas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controlls\CtrlEqpMicroCurrent.cs">
+    <Compile Include="Controlls\CtrlEqpLTAging.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controlls\CtrlEqpMicroCurrent.Designer.cs">
-      <DependentUpon>CtrlEqpMicroCurrent.cs</DependentUpon>
+    <Compile Include="Controlls\CtrlEqpLTAging.Designer.cs">
+      <DependentUpon>CtrlEqpLTAging.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controlls\CtrlEqpLeakCheck.cs">
+    <Compile Include="Controlls\CtrlEqpHTAging.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controlls\CtrlEqpLeakCheck.Designer.cs">
-      <DependentUpon>CtrlEqpLeakCheck.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CtrlEqpNGSorter.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CtrlEqpNGSorter.Designer.cs">
-      <DependentUpon>CtrlEqpNGSorter.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CtrlEqpPacking.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CtrlEqpPacking.Designer.cs">
-      <DependentUpon>CtrlEqpPacking.cs</DependentUpon>
+    <Compile Include="Controlls\CtrlEqpHTAging.Designer.cs">
+      <DependentUpon>CtrlEqpHTAging.cs</DependentUpon>
     </Compile>
     <Compile Include="Controlls\CtrlCharger.cs">
       <SubType>UserControl</SubType>
@@ -550,6 +549,18 @@
       <DependentUpon>NormalDataGridView.cs</DependentUpon>
     </Compile>
     <Compile Include="Controlls\StatusAndData.cs" />
+    <Compile Include="Controlls\CtrlDataGridView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controlls\CtrlDataGridView.Designer.cs">
+      <DependentUpon>CtrlDataGridView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controlls\UserControlEqp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controlls\UserControlEqp.Designer.cs">
+      <DependentUpon>UserControlEqp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controlls\UserControlRoot.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -592,11 +603,11 @@
     <Compile Include="Monitoring\WinRackInfo.Designer.cs">
       <DependentUpon>WinRackInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Monitoring\WinTrayInfo.cs">
+    <Compile Include="Monitoring\WinCVTrayInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Monitoring\WinTrayInfo.Designer.cs">
-      <DependentUpon>WinTrayInfo.cs</DependentUpon>
+    <Compile Include="Monitoring\WinCVTrayInfo.Designer.cs">
+      <DependentUpon>WinCVTrayInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Monitoring\WinTroubleInfo.cs">
       <SubType>Form</SubType>
@@ -631,7 +642,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="REST\ClassForREST.cs" />
-    <Compile Include="REST\RESTClient.cs" />
+    <Compile Include="REST\RESTClient_old.cs" />
     <Compile Include="TrustCertificate\TrustCertificateDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -752,23 +763,32 @@
     <EmbeddedResource Include="Controlls\CtrlButtonRoot.resx">
       <DependentUpon>CtrlButtonRoot.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CtrlEqpDCIR.resx">
-      <DependentUpon>CtrlEqpDCIR.cs</DependentUpon>
+    <EmbeddedResource Include="Controlls\CtrlDataGridView.resx">
+      <DependentUpon>CtrlDataGridView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controlls\CtrlEqpCharger.resx">
       <DependentUpon>CtrlEqpCharger.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CtrlEqpLTAging.resx">
-      <DependentUpon>CtrlEqpLTAging.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CtrlEqpHTAging.resx">
-      <DependentUpon>CtrlEqpHTAging.cs</DependentUpon>
+    <EmbeddedResource Include="Controlls\CtrlEqpDCIR.resx">
+      <DependentUpon>CtrlEqpDCIR.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controlls\CtrlEqpHPC.resx">
       <DependentUpon>CtrlEqpHPC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CtrlEqpVisionInspection.resx">
-      <DependentUpon>CtrlEqpVisionInspection.cs</DependentUpon>
+    <EmbeddedResource Include="Controlls\CtrlEqpPacking.resx">
+      <DependentUpon>CtrlEqpPacking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controlls\CtrlEqpLeakCheck.resx">
+      <DependentUpon>CtrlEqpLeakCheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controlls\CtrlEqpVisionInsp.resx">
+      <DependentUpon>CtrlEqpVisionInsp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controlls\CtrlEqpNGSorter.resx">
+      <DependentUpon>CtrlEqpNGSorter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controlls\CtrlEqpMicroCurrent.resx">
+      <DependentUpon>CtrlEqpMicroCurrent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controlls\CtrlEqpOCV.resx">
       <DependentUpon>CtrlEqpOCV.cs</DependentUpon>
@@ -776,17 +796,11 @@
     <EmbeddedResource Include="Controlls\CtrlEqpDegas.resx">
       <DependentUpon>CtrlEqpDegas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CtrlEqpMicroCurrent.resx">
-      <DependentUpon>CtrlEqpMicroCurrent.cs</DependentUpon>
+    <EmbeddedResource Include="Controlls\CtrlEqpLTAging.resx">
+      <DependentUpon>CtrlEqpLTAging.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CtrlEqpLeakCheck.resx">
-      <DependentUpon>CtrlEqpLeakCheck.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CtrlEqpNGSorter.resx">
-      <DependentUpon>CtrlEqpNGSorter.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CtrlEqpPacking.resx">
-      <DependentUpon>CtrlEqpPacking.cs</DependentUpon>
+    <EmbeddedResource Include="Controlls\CtrlEqpHTAging.resx">
+      <DependentUpon>CtrlEqpHTAging.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controlls\CtrlCharger.resx">
       <DependentUpon>CtrlCharger.cs</DependentUpon>
@@ -830,6 +844,9 @@
     <EmbeddedResource Include="Controlls\NormalDataGridView.resx">
       <DependentUpon>NormalDataGridView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controlls\UserControlEqp.resx">
+      <DependentUpon>UserControlEqp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controlls\UserControlRoot.resx">
       <DependentUpon>UserControlRoot.cs</DependentUpon>
     </EmbeddedResource>
@@ -851,8 +868,8 @@
     <EmbeddedResource Include="Monitoring\WinRackInfo.resx">
       <DependentUpon>WinRackInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Monitoring\WinTrayInfo.resx">
-      <DependentUpon>WinTrayInfo.cs</DependentUpon>
+    <EmbeddedResource Include="Monitoring\WinCVTrayInfo.resx">
+      <DependentUpon>WinCVTrayInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Monitoring\WinTroubleInfo.resx">
       <DependentUpon>WinTroubleInfo.cs</DependentUpon>
@@ -934,9 +951,13 @@
       <Project>{571ea494-e0b0-4c80-b87e-92157ad179ee}</Project>
       <Name>Logger</Name>
     </ProjectReference>
-    <ProjectReference Include="..\OPCUAClientClassLib\OPCUAClientClassLib.csproj">
+    <ProjectReference Include="..\OPCUAClientClassLib\OPCUAClientLib.csproj">
       <Project>{065d7112-f84a-4864-868e-9b8fc35696ca}</Project>
-      <Name>OPCUAClientClassLib</Name>
+      <Name>OPCUAClientLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RestClientLib\RestClientLib.csproj">
+      <Project>{61d97d17-849f-4d97-84b1-a5b746b4e8fb}</Project>
+      <Name>RestClientLib</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

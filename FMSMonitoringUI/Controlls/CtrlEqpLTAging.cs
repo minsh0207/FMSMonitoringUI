@@ -1,4 +1,5 @@
 ﻿using FormationMonCtrl;
+using MonitoringUI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 
 namespace FMSMonitoringUI.Controlls
 {
-    public partial class CtrlEqpLTAging : UserControl
+    public partial class CtrlEqpLTAging : UserControlEqp
     {
         public CtrlEqpLTAging()
         {

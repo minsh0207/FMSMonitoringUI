@@ -1,4 +1,5 @@
 ﻿using FormationMonCtrl;
+using MonitoringUI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 
 namespace FMSMonitoringUI.Controlls
 {
-    public partial class CtrlEqpCharger : UserControl
+    public partial class CtrlEqpCharger : UserControlEqp
     {
         public CtrlEqpCharger()
         {
@@ -30,7 +31,7 @@ namespace FMSMonitoringUI.Controlls
             set
             {
                 _EqpType = value;
-                //lbTitle.Text = _EqpType;
+                lbTitle.Text = _EqpType;
             }
         }
         #endregion

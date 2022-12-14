@@ -114,7 +114,7 @@ namespace MonitoringUI.Monitoring
             string[] strData = new string[5];
             try
             {
-                RESTClient restClinet = new RESTClient();
+                RESTClient_old restClinet = new RESTClient_old();
                 JObject loadEQPQuery = new JObject();
                 string strSql = "";
                 strSql += " SELECT C.EqpTypeName,D.UnitName,         E.UnitName BcrUnitName"
@@ -186,7 +186,7 @@ namespace MonitoringUI.Monitoring
         {
             try
             {
-                RESTClient restClinet = new RESTClient();
+                RESTClient_old restClinet = new RESTClient_old();
                 JObject loadEQPQuery = new JObject();
                 string strSql = "";
                 if (m_strEqpTypeID == "3")

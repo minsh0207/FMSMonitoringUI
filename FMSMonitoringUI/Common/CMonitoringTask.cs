@@ -135,7 +135,7 @@ namespace MonitoringUI.Common
 
         private async Task<int> GetAgingRackCountRest(JObject jsonBody)
         {
-            RESTClient RestClient = new RESTClient();
+            RESTClient_old RestClient = new RESTClient_old();
 
             var JsonResult = await RestClient.GetJson(JsonApiType.Table, JsonCRUD.SELECT, "api.php/tMstAgingRack", jsonBody);
             JsonRequest ret = JsonConvert.DeserializeObject<JsonRequest>(JsonResult);
@@ -152,7 +152,7 @@ namespace MonitoringUI.Common
             jsonBody["columns"] = "*";
             jsonBody["countonly"] = "1";
 
-            RESTClient RestClient = new RESTClient();
+            RESTClient_old RestClient = new RESTClient_old();
 
             var JsonResult = await RestClient.GetJson(JsonApiType.Table, JsonCRUD.SELECT, "api.php/tMstUser", jsonBody);
             JsonRequest ret = JsonConvert.DeserializeObject<JsonRequest>(JsonResult);
@@ -177,7 +177,7 @@ namespace MonitoringUI.Common
             jsonBody["columns"] = "*";
             jsonBody["countonly"] = "1";
 
-            RESTClient RestClient = new RESTClient();
+            RESTClient_old RestClient = new RESTClient_old();
 
             var JsonResult = await RestClient.GetJson(JsonApiType.Table, JsonCRUD.SELECT, "api.php/tMstAgingRack", jsonBody);
             JsonRequest ret = JsonConvert.DeserializeObject<JsonRequest>(JsonResult);
@@ -202,7 +202,7 @@ namespace MonitoringUI.Common
             jsonBody["columns"] = "*";
             jsonBody["countonly"] = "1";
 
-            RESTClient RestClient = new RESTClient();
+            RESTClient_old RestClient = new RESTClient_old();
 
             var JsonResult = await RestClient.GetJson(JsonApiType.Table, JsonCRUD.SELECT, "api.php/tMstEquipment", jsonBody);
             JsonRequest ret = JsonConvert.DeserializeObject<JsonRequest>(JsonResult);
@@ -247,7 +247,7 @@ namespace MonitoringUI.Common
                     break;
             }
             jsonBody["query"] = strSQL;
-            RESTClient RestClient = new RESTClient();
+            RESTClient_old RestClient = new RESTClient_old();
 
             var JsonResult = await RestClient.GetJson(JsonApiType.Table, JsonCRUD.SELECT, "query.php", jsonBody);
 
@@ -327,7 +327,7 @@ namespace MonitoringUI.Common
             JObject jsonBody = new JObject();
             jsonBody["query"] = strQuery;
 
-            RESTClient restClient = new RESTClient(RestServerType.WORKING, RestServerVersion.V1);
+            RESTClient_old restClient = new RESTClient_old(RestServerType.WORKING, RestServerVersion.V1);
             var JsonResult = await restClient.GetJson(JsonApiType.Table, JsonCRUD.SELECT, "query.php", jsonBody);
 
             JObject joFormationBoxCount = JObject.Parse(JsonResult);

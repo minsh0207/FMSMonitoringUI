@@ -29,12 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.m_timer = new System.Windows.Forms.Timer(this.components);
             this.AgingTab = new System.Windows.Forms.TabControl();
             this.tpHTAging = new System.Windows.Forms.TabPage();
+            this.AgingInfoView = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -136,16 +141,11 @@
             this.btnHTAging = new System.Windows.Forms.Button();
             this.btnLTAging1 = new System.Windows.Forms.Button();
             this.btnLTAging2 = new System.Windows.Forms.Button();
-            this.AgingInfoView = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AgingTab.SuspendLayout();
             this.tpHTAging.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AgingInfoView)).BeginInit();
             this.tpLTAging1.SuspendLayout();
             this.tpLTAging2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AgingInfoView)).BeginInit();
             this.SuspendLayout();
             // 
             // AgingTab
@@ -191,6 +191,72 @@
             this.tpHTAging.Size = new System.Drawing.Size(1562, 874);
             this.tpHTAging.TabIndex = 0;
             this.tpHTAging.Text = "HT Aging";
+            // 
+            // AgingInfoView
+            // 
+            this.AgingInfoView.AllowUserToAddRows = false;
+            this.AgingInfoView.AllowUserToDeleteRows = false;
+            this.AgingInfoView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.AgingInfoView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.AgingInfoView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.AgingInfoView.ColumnHeadersHeight = 42;
+            this.AgingInfoView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4});
+            this.AgingInfoView.Location = new System.Drawing.Point(1022, 15);
+            this.AgingInfoView.Name = "AgingInfoView";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.AgingInfoView.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.AgingInfoView.RowHeadersVisible = false;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            this.AgingInfoView.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.AgingInfoView.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.AgingInfoView.RowTemplate.DividerHeight = 1;
+            this.AgingInfoView.RowTemplate.Height = 32;
+            this.AgingInfoView.RowTemplate.ReadOnly = true;
+            this.AgingInfoView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.AgingInfoView.Size = new System.Drawing.Size(524, 302);
+            this.AgingInfoView.TabIndex = 109;
+            this.AgingInfoView.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.AgingInfoView_CellMouseClick);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Status Name";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 160;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "HT Aging";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 120;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "LT Aging#1";
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 120;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "LT Aging#2";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 120;
             // 
             // label13
             // 
@@ -1132,6 +1198,7 @@
             this.button1.TabIndex = 61;
             this.button1.Text = "TEST";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // ctrlTaggingName1
@@ -1483,7 +1550,7 @@
             this.Tag13.Name = "Tag13";
             this.Tag13.Size = new System.Drawing.Size(200, 30);
             this.Tag13.TabIndex = 75;
-            this.Tag13.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(251)))), ((int)(((byte)(0)))));
+            this.Tag13.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.Tag13.TagText = "Wait Unload";
             this.Tag13.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(238)))), ((int)(((byte)(244)))));
             // 
@@ -1596,72 +1663,6 @@
             this.btnLTAging2.UseVisualStyleBackColor = true;
             this.btnLTAging2.Click += new System.EventHandler(this.AgingTab_Click);
             // 
-            // AgingInfoView
-            // 
-            this.AgingInfoView.AllowUserToAddRows = false;
-            this.AgingInfoView.AllowUserToDeleteRows = false;
-            this.AgingInfoView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.AgingInfoView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.AgingInfoView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.AgingInfoView.ColumnHeadersHeight = 42;
-            this.AgingInfoView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4});
-            this.AgingInfoView.Location = new System.Drawing.Point(1022, 15);
-            this.AgingInfoView.Name = "AgingInfoView";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Empty;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Empty;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.AgingInfoView.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
-            this.AgingInfoView.RowHeadersVisible = false;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            this.AgingInfoView.RowsDefaultCellStyle = dataGridViewCellStyle9;
-            this.AgingInfoView.RowTemplate.DividerHeight = 1;
-            this.AgingInfoView.RowTemplate.Height = 32;
-            this.AgingInfoView.RowTemplate.ReadOnly = true;
-            this.AgingInfoView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.AgingInfoView.Size = new System.Drawing.Size(524, 302);
-            this.AgingInfoView.TabIndex = 109;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Status Name";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 160;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "HT Aging";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 120;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "LT Aging#1";
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 120;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "LT Aging#2";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 120;
-            // 
             // CtrlAging
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -1708,9 +1709,9 @@
             this.Load += new System.EventHandler(this.CtrlAging_Load);
             this.AgingTab.ResumeLayout(false);
             this.tpHTAging.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.AgingInfoView)).EndInit();
             this.tpLTAging1.ResumeLayout(false);
             this.tpLTAging2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.AgingInfoView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

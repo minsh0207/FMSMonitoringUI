@@ -90,6 +90,7 @@
             this.Margin = new System.Windows.Forms.Padding(30);
             this.Name = "CtrlTextBox";
             this.Size = new System.Drawing.Size(373, 37);
+            this.Load += new System.EventHandler(this.CtrlTextBox_Load);
             this.tableLayoutPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 

@@ -40,7 +40,7 @@ namespace MonitoringUI.Common
             try
             {
                 //RestClient Crate
-                RESTClient restClinet = new RESTClient();
+                RESTClient_old restClinet = new RESTClient_old();
                 // 검색 조건 생성
                 JObject searchFilter = new JObject();
                 string strTable = "";
@@ -85,7 +85,7 @@ namespace MonitoringUI.Common
         {
             try
             {
-                RESTClient restClinet = new RESTClient();
+                RESTClient_old restClinet = new RESTClient_old();
                 JObject loadEqpQuery = new JObject();
 
                 loadEqpQuery["query"] = strSql;
@@ -112,7 +112,7 @@ namespace MonitoringUI.Common
                 if (strTable.Length < 1) throw new Exception("Table Null : No[ " + enTable.ToString() + " ]");
 
                 //RestClient Crate
-                RESTClient restClinet = new RESTClient();
+                RESTClient_old restClinet = new RESTClient_old();
                 // Url Table
                 string strUrl = m_Uri + strTable;
                 //Jons Result, Return
@@ -139,7 +139,7 @@ namespace MonitoringUI.Common
                 if (strTable.Length < 1) throw new Exception("Table Null : No[ " + enTable.ToString() + " ]");
 
                 //RestClient Crate
-                RESTClient restClinet = new RESTClient();
+                RESTClient_old restClinet = new RESTClient_old();
                 // Url Table
                 string strUrl = m_Uri + strTable;
                 //Jons Result, Return
@@ -166,7 +166,7 @@ namespace MonitoringUI.Common
                 if (strTable.Length < 1) throw new Exception("Table Null : No[ " + enTable.ToString() + " ]");
 
                 //RestClient Crate
-                RESTClient restClinet = new RESTClient();
+                RESTClient_old restClinet = new RESTClient_old();
                 // Url Table
                 string strUrl = m_Uri + strTable;
                 //Jons Result, Return
@@ -205,7 +205,7 @@ namespace MonitoringUI.Common
                 if (strSp.Length < 1) throw new Exception("Stored Procedure Null : No[ " + strSp.ToString() + " ]");
 
                 //RestClient Crate
-                RESTClient restClinet = new RESTClient();
+                RESTClient_old restClinet = new RESTClient_old();
 
                 // Url Table
                 string strUrl = m_UriSp + strSp;

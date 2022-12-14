@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox = new System.Windows.Forms.GroupBox();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lbInOut = new System.Windows.Forms.Label();
             this.lbRatio = new System.Windows.Forms.Label();
             this.lbInAging = new System.Windows.Forms.Label();
@@ -38,147 +38,160 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lbTitle = new System.Windows.Forms.Label();
-            this.groupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox
+            // splitContainer1
             // 
-            this.groupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
-            this.groupBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.groupBox.Controls.Add(this.lbInOut);
-            this.groupBox.Controls.Add(this.lbRatio);
-            this.groupBox.Controls.Add(this.lbInAging);
-            this.groupBox.Controls.Add(this.lbTotalRack);
-            this.groupBox.Controls.Add(this.label4);
-            this.groupBox.Controls.Add(this.label3);
-            this.groupBox.Controls.Add(this.label2);
-            this.groupBox.Controls.Add(this.label1);
-            this.groupBox.Controls.Add(this.lbTitle);
-            this.groupBox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox.ForeColor = System.Drawing.Color.White;
-            this.groupBox.Location = new System.Drawing.Point(4, -3);
-            this.groupBox.Margin = new System.Windows.Forms.Padding(0);
-            this.groupBox.Name = "groupBox";
-            this.groupBox.Padding = new System.Windows.Forms.Padding(0);
-            this.groupBox.Size = new System.Drawing.Size(526, 158);
-            this.groupBox.TabIndex = 0;
-            this.groupBox.TabStop = false;
+            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.IsSplitterFixed = true;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.lbInOut);
+            this.splitContainer1.Panel2.Controls.Add(this.lbRatio);
+            this.splitContainer1.Panel2.Controls.Add(this.lbInAging);
+            this.splitContainer1.Panel2.Controls.Add(this.lbTotalRack);
+            this.splitContainer1.Panel2.Controls.Add(this.label4);
+            this.splitContainer1.Panel2.Controls.Add(this.label3);
+            this.splitContainer1.Panel2.Controls.Add(this.label2);
+            this.splitContainer1.Panel2.Controls.Add(this.label1);
+            this.splitContainer1.Panel2.Controls.Add(this.lbTitle);
+            this.splitContainer1.Size = new System.Drawing.Size(508, 172);
+            this.splitContainer1.SplitterDistance = 366;
+            this.splitContainer1.TabIndex = 0;
             // 
             // lbInOut
             // 
             this.lbInOut.AutoSize = true;
             this.lbInOut.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbInOut.Location = new System.Drawing.Point(461, 99);
+            this.lbInOut.ForeColor = System.Drawing.Color.White;
+            this.lbInOut.Location = new System.Drawing.Point(72, 98);
             this.lbInOut.Name = "lbInOut";
             this.lbInOut.Size = new System.Drawing.Size(58, 15);
-            this.lbInOut.TabIndex = 12;
+            this.lbInOut.TabIndex = 21;
             this.lbInOut.Text = "220 / 220";
             // 
             // lbRatio
             // 
             this.lbRatio.AutoSize = true;
             this.lbRatio.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbRatio.Location = new System.Drawing.Point(461, 80);
+            this.lbRatio.ForeColor = System.Drawing.Color.White;
+            this.lbRatio.Location = new System.Drawing.Point(72, 77);
             this.lbRatio.Name = "lbRatio";
             this.lbRatio.Size = new System.Drawing.Size(39, 15);
-            this.lbRatio.TabIndex = 11;
+            this.lbRatio.TabIndex = 20;
             this.lbRatio.Text = "100%";
             // 
             // lbInAging
             // 
             this.lbInAging.AutoSize = true;
             this.lbInAging.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbInAging.Location = new System.Drawing.Point(461, 61);
+            this.lbInAging.ForeColor = System.Drawing.Color.White;
+            this.lbInAging.Location = new System.Drawing.Point(72, 56);
             this.lbInAging.Name = "lbInAging";
             this.lbInAging.Size = new System.Drawing.Size(28, 15);
-            this.lbInAging.TabIndex = 10;
+            this.lbInAging.TabIndex = 19;
             this.lbInAging.Text = "100";
             // 
             // lbTotalRack
             // 
             this.lbTotalRack.AutoSize = true;
             this.lbTotalRack.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotalRack.Location = new System.Drawing.Point(461, 42);
+            this.lbTotalRack.ForeColor = System.Drawing.Color.White;
+            this.lbTotalRack.Location = new System.Drawing.Point(72, 36);
             this.lbTotalRack.Name = "lbTotalRack";
             this.lbTotalRack.Size = new System.Drawing.Size(28, 15);
-            this.lbTotalRack.TabIndex = 9;
+            this.lbTotalRack.TabIndex = 18;
             this.lbTotalRack.Text = "220";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(405, 99);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(16, 98);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(59, 15);
-            this.label4.TabIndex = 8;
+            this.label4.TabIndex = 17;
             this.label4.Text = "IN / OUT :";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(422, 80);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(33, 77);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(42, 15);
-            this.label3.TabIndex = 7;
+            this.label3.TabIndex = 16;
             this.label3.Text = "Ratio :";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(408, 61);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(19, 56);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 15);
-            this.label2.TabIndex = 6;
+            this.label2.TabIndex = 15;
             this.label2.Text = "In Aging :";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(394, 42);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(5, 36);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 15);
-            this.label1.TabIndex = 5;
+            this.label1.TabIndex = 14;
             this.label1.Text = "Total Rack :";
             // 
             // lbTitle
             // 
             this.lbTitle.AutoSize = true;
             this.lbTitle.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTitle.Location = new System.Drawing.Point(394, 17);
+            this.lbTitle.ForeColor = System.Drawing.Color.White;
+            this.lbTitle.Location = new System.Drawing.Point(5, 9);
             this.lbTitle.Name = "lbTitle";
             this.lbTitle.Size = new System.Drawing.Size(63, 16);
-            this.lbTitle.TabIndex = 4;
+            this.lbTitle.TabIndex = 13;
             this.lbTitle.Text = "LT Aging";
             // 
             // CtrlEqpLTAging
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.Controls.Add(this.groupBox);
+            this.Controls.Add(this.splitContainer1);
             this.Name = "CtrlEqpLTAging";
-            this.Size = new System.Drawing.Size(553, 159);
-            this.groupBox.ResumeLayout(false);
-            this.groupBox.PerformLayout();
+            this.Size = new System.Drawing.Size(508, 172);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox;
-        private System.Windows.Forms.Label lbTitle;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label lbInOut;
         private System.Windows.Forms.Label lbRatio;
         private System.Windows.Forms.Label lbInAging;
         private System.Windows.Forms.Label lbTotalRack;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbTitle;
     }
 }

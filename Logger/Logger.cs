@@ -14,6 +14,7 @@ namespace Novasoft.Logger
         Read,
         Warning,
         OPCUA,
+        REST,
         Error
     }
 
@@ -32,6 +33,7 @@ namespace Novasoft.Logger
         public const string DataException = "DBException";      //DB Exception 관련 기록 파일
         public const string AllLog = "AllLog";                  //모든 Log 기록 파일
         public const string OPCUA = "OPCUA";                    // OPCUA에 대한 기록 파일
+        public const string REST = "REST";                      // REST에 대한 기록 파일
         public const string ErrorLog = "ErrorLog";              //Error에 대한 모든 기록 파일
         public const string SqlLog = "SQL_LOG";                  //SQL 실행시 Log 기록
     }

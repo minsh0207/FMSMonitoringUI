@@ -111,6 +111,7 @@
             this.button1.TabIndex = 22;
             this.button1.Text = "TEST";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // splitterHPC
@@ -138,7 +139,7 @@
             // 
             // ctrlTitleBar25
             // 
-            this.ctrlTitleBar25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.ctrlTitleBar25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ctrlTitleBar25.Font = new System.Drawing.Font("돋움", 9.25F, System.Drawing.FontStyle.Bold);
             this.ctrlTitleBar25.ForeColor = System.Drawing.Color.Black;
             this.ctrlTitleBar25.Location = new System.Drawing.Point(91, 27);
@@ -149,7 +150,7 @@
             // 
             // ctrlTitleBar26
             // 
-            this.ctrlTitleBar26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.ctrlTitleBar26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ctrlTitleBar26.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTitleBar26.ForeColor = System.Drawing.Color.Black;
             this.ctrlTitleBar26.Location = new System.Drawing.Point(52, 27);
@@ -223,7 +224,7 @@
             // 
             // ctrlTitleBar27
             // 
-            this.ctrlTitleBar27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.ctrlTitleBar27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ctrlTitleBar27.Font = new System.Drawing.Font("돋움", 9.25F, System.Drawing.FontStyle.Bold);
             this.ctrlTitleBar27.ForeColor = System.Drawing.Color.Black;
             this.ctrlTitleBar27.Location = new System.Drawing.Point(91, 26);
@@ -234,7 +235,7 @@
             // 
             // ctrlTitleBar28
             // 
-            this.ctrlTitleBar28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.ctrlTitleBar28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ctrlTitleBar28.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTitleBar28.ForeColor = System.Drawing.Color.Black;
             this.ctrlTitleBar28.Location = new System.Drawing.Point(52, 26);
@@ -712,7 +713,7 @@
             this.CHG0110304.Size = new System.Drawing.Size(455, 145);
             this.CHG0110304.TabIndex = 96;
             // 
-            // CtrlFormation2
+            // CtrlFormation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -764,7 +765,7 @@
             this.Controls.Add(this.splitterHPC);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.splitter1);
-            this.Name = "CtrlFormation2";
+            this.Name = "CtrlFormation";
             this.Size = new System.Drawing.Size(1920, 945);
             this.Tag = "";
             this.groupBox13.ResumeLayout(false);

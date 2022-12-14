@@ -20,6 +20,39 @@ namespace DBHandler
             _connectionString = connectionString;         
         }
 
+        public DataSet SelectEqpInfo()
+        {
+            DataSet ds = new DataSet();
+            StringBuilder strSQL = new StringBuilder();
+
+            using (MySqlConnection conn = new MySqlConnection(_connectionString))
+            {
+                //tb_mst_aging 전체 데이터를 조회합니다.            
+                //string selectQuery = string.Format($"SELECT eqp_id, tray_id, tray_id_2  FROM fms_v.tb_mst_eqp");
+
+                // Set Query
+                //strSQL.Append(" SELECT A.eqp_id, A.tray_id, A.tray_id_2 , B.rework_flag");
+                //strSQL.Append("   FROM fms_v.tb_mst_eqp                     A");
+                //strSQL.Append("        LEFT OUTER JOIN fms_v.tb_dat_tray    B");
+                //strSQL.Append("          ON B.tray_id	    = A.tray_id");
+                ////필수값
+                //strSQL.Append($" WHERE A.tray_id	            = 'TRV000001'");
+
+                strSQL.Append(" SELECT A.eqp_id, B.tray_id , B.rework_flag, IF(B.tray_id = A.tray_id, '0', '1') AS Location");
+                strSQL.Append("   FROM fms_v.tb_mst_eqp     A ");
+                strSQL.Append("        Inner JOIN fms_v.tb_dat_tray     B");
+                strSQL.Append("           ON B.eqp_id = A.eqp_id ");
+                //필수값
+                strSQL.Append($" WHERE A.eqp_id = B.eqp_id");
+
+                MySqlDataAdapter dataAdapter = new MySqlDataAdapter(strSQL.ToString(), conn);
+
+                dataAdapter.Fill(ds);
+
+                return ds;
+            }
+        }
+
         public DataSet SelectAgingInfo(string linePrefix)
         {
             DataSet ds = new DataSet();
@@ -48,13 +81,14 @@ namespace DBHandler
             using (MySqlConnection conn = new MySqlConnection(_connectionString))
             {
                 // Set Query
-                strSQL.Append(" SELECT A.tray_id, A.tray_id_2, A.unit_status, A.unit_mode, A.start_time,");
+                //strSQL.Append(" SELECT A.tray_id, A.tray_id_2, A.unit_status, A.unit_mode, A.start_time,");
+                strSQL.Append(" SELECT A.*,");
                 strSQL.Append("                   B.lot_id");
                 strSQL.Append("   FROM fms_v.tb_mst_unit    A");
                 strSQL.Append("        LEFT OUTER JOIN fms_v.tb_dat_tray    B");
                 strSQL.Append("          ON B.tray_id   = A.tray_id");
                 //필수값
-                strSQL.Append($" WHERE A.tray_id	            = 'F101ACHG10101'");
+                strSQL.Append($" WHERE A.tray_id	            = 'trayid_01'");
                 //조회조건
                 //if (strEqpTypeID.Length > 0) strSQL.Append($"   AND A.EqpTypeID	    = '{strEqpTypeID}'");
                 //if (strUnitID.Length > 0) strSQL.Append($"   AND A.UnitID	        = '{strUnitID}'");
