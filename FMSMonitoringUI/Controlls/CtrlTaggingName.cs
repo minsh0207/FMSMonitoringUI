@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace MonitoringUI.Controlls
 {
-    public partial class CtrlTaggingName : UserControlRoot
+    public partial class CtrlTaggingName : UserControl
     {
         #region Properties
         Color _tagColor = Color.Red;
@@ -58,7 +58,6 @@ namespace MonitoringUI.Controlls
             }
         }
 
-
         string _tagText = "TagText";
         [DisplayName("TagText"), Description("Tag Text"), Category("Tag Setting")]
         public string TagText
@@ -73,11 +72,33 @@ namespace MonitoringUI.Controlls
                 lbTag.Text = _tagText;
             }
         }
+
+        string _LanguageID = "";
+        [DisplayName("LocalLanguage"), Description("Local Language"), Category("Language Setting")]
+        public string LanguageID
+        {
+            get
+            {
+                return _LanguageID;
+            }
+            set
+            {
+                _LanguageID = value;
+            }
+        }
         #endregion
 
         public CtrlTaggingName()
         {
             InitializeComponent();
+        }
+
+        public void CallLocalLanguage()
+        {
+            if (_LanguageID != "")
+            {
+                lbTag.Text = LocalLanguage.GetItemString(_LanguageID);
+            }
         }
     }
 }

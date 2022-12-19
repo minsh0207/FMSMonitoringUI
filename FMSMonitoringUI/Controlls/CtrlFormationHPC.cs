@@ -19,16 +19,16 @@ using System.Windows.Forms.Integration;
 
 namespace FMSMonitoringUI
 {
-    public partial class CtrlFormation : UserControlRoot
+    public partial class CtrlFormationHPC : UserControlRoot
     {
         private MySqlManager _mysql;
 
         /// <summary>
         /// First=Charger UnitID, Second=Charger Control
         /// </summary>
-        private Dictionary<string, CtrlCharger> _ListCharger = new Dictionary<string, CtrlCharger>();
+        private Dictionary<string, CtrlHPC> _ListHPC = new Dictionary<string, CtrlHPC>();
 
-        public CtrlFormation()
+        public CtrlFormationHPC()
         {
             InitializeComponent();
 
@@ -91,16 +91,16 @@ namespace FMSMonitoringUI
 
         private void InitControls()
         {
-            _ListCharger.Clear();
+            _ListHPC.Clear();
 
             foreach (var ctl in Controls)
             {   
-                if (ctl.GetType() == typeof(CtrlCharger))
+                if (ctl.GetType() == typeof(CtrlHPC))
                 {
-                    CtrlCharger charger = ctl as CtrlCharger;
+                    CtrlHPC charger = ctl as CtrlHPC;
 
                     charger.MouseDoubleClick += Charger_MouseDoubleClick;
-                    _ListCharger.Add(charger.Name, charger);
+                    _ListHPC.Add(charger.Name, charger);
                 }
             }
         }
@@ -110,23 +110,23 @@ namespace FMSMonitoringUI
             
         }
 
-        public static CtrlFormationBoxCHG FindByName(Control root, string strName)
-        {
-            for (int i = 0; i < root.Controls.Count; i++)
-            {
-                if (root.Controls[i] is ElementHost)
-                {
-                    if (((ElementHost)root.Controls[i]).Child is CtrlFormationBoxCHG)
-                    {
-                        CtrlFormationBoxCHG eh = (CtrlFormationBoxCHG)((ElementHost)root.Controls[i]).Child;
-                        if (eh.Name == strName)
-                            return eh;
-                    }
-                }
-            }
+        //public static CtrlFormationBoxCHG FindByName(Control root, string strName)
+        //{
+        //    for (int i = 0; i < root.Controls.Count; i++)
+        //    {
+        //        if (root.Controls[i] is ElementHost)
+        //        {
+        //            if (((ElementHost)root.Controls[i]).Child is CtrlFormationBoxCHG)
+        //            {
+        //                CtrlFormationBoxCHG eh = (CtrlFormationBoxCHG)((ElementHost)root.Controls[i]).Child;
+        //                if (eh.Name == strName)
+        //                    return eh;
+        //            }
+        //        }
+        //    }
 
-            return null;
-        }
+        //    return null;
+        //}
 
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -297,7 +297,7 @@ namespace FMSMonitoringUI
                     {
                         this.Invoke(new MethodInvoker(delegate ()
                         {
-                            UpdateCharger();
+                            UpdateHPC();
                         }));
                     });
                 }
@@ -313,16 +313,16 @@ namespace FMSMonitoringUI
             return true;
         }
 
-        private void UpdateCharger()
+        private void UpdateHPC()
         {
-            DataSet ds = _mysql.SelectChargerInfo();
+            DataSet ds = _mysql.SelectHPCInfo();
 
             foreach (DataRow row in ds.Tables[0].Rows)
             {
                 string unit_id = row["unit_id"].ToString();
 
-                CtrlCharger chg = _ListCharger[unit_id];
-                chg.setData(row);
+                CtrlHPC chg = _ListHPC[unit_id];
+                chg.SetData(row);
             }
         }
     }

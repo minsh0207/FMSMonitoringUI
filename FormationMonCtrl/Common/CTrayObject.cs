@@ -179,7 +179,7 @@ namespace FormationMonCtrl
 				}
 
 				// 화재 물통
-				if (chrEqpTypeID == CDefine.DEF_EQP_TYPE_ID_FIRE)
+				if (chrEqpTypeID == CDefineCtrl.DEF_EQP_TYPE_ID_FIRE)
 				{
 					// 투입가능 상태
 					if (chrUnitStatus == 'I' && chrProcessStatus == 'L')

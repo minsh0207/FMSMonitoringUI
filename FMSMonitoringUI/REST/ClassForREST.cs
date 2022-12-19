@@ -133,9 +133,9 @@ namespace MonitoringUI
 
                 strOperName = varOperList.OperName;
 
-                if (CDefine.m_enLanguage == enLoginLanguage.Chinese)
+                if (CDefine.m_enLanguage == enLoginLanguage.France)
                 {
-                    strOperName = varOperList.OperName_cn;
+                    strOperName = varOperList.OperName_fr;
                 }
 
                 return strOperName;
@@ -149,8 +149,8 @@ namespace MonitoringUI
         public string OperID { get; set; }
         [JsonProperty("OperName")]
         public string OperName { get; set; }
-        [JsonProperty("OperName_cn")]
-        public string OperName_cn { get; set; }
+        [JsonProperty("OperName_fr")]
+        public string OperName_fr { get; set; }
         [JsonProperty("EqpTypeID")]
         public string EqpTypeID { get; set; }
         [JsonProperty("OperGroupID")]
@@ -1523,6 +1523,8 @@ namespace MonitoringUI
         public string TroubleName_kr { get; set; }
         [JsonProperty("TroubleName_cn")]
         public string TroubleName_cn { get; set; }
+        [JsonProperty("TroubleName_fr")]
+        public string TroubleName_fr { get; set; }
         [JsonProperty("TroubleName_en")]
         public string TroubleName_en { get; set; }
         [JsonProperty("AgingUnitName")]
@@ -1553,7 +1555,7 @@ namespace MonitoringUI
 
                 if (CDefine.m_enLanguage == enLoginLanguage.Korean) strWindowName = varTemp.WindowName_kr;
                 if (CDefine.m_enLanguage == enLoginLanguage.English) strWindowName = varTemp.WindowName_en;
-                if (CDefine.m_enLanguage == enLoginLanguage.Chinese) strWindowName = varTemp.WindowName_cn;
+                if (CDefine.m_enLanguage == enLoginLanguage.France) strWindowName = varTemp.WindowName_fr;
 
                 return strWindowName;
             }
@@ -1573,6 +1575,9 @@ namespace MonitoringUI
 
         [JsonProperty("WindowName_cn")]
         public string WindowName_cn { get; set; }
+
+        [JsonProperty("WindowName_fr")]
+        public string WindowName_fr { get; set; }
 
         [JsonProperty("DefaultClassID")]
         public string DefaultClassID { get; set; }

@@ -20,6 +20,8 @@ using Novasoft.Logger;
 using System.Threading;
 using FMSMonitoringUI.Monitoring;
 using OPCUAClientClassLib;
+using ControlGallery;
+using FMSMonitoringUI.Controlls;
 
 namespace MonitoringUI.Monitoring
 {
@@ -57,6 +59,9 @@ namespace MonitoringUI.Monitoring
         /// <param name="e"></param>
         private void CtrlAging_Load(object sender, EventArgs e)
         {
+            btnHTAging.BackColor = Color.LightYellow;
+            btnHTAging.ForeColor = Color.Black;
+
             //string log = $"Aging Monitoring";
             //_Logger.Write(LogLevel.Info, log, LogFileName.AllLog);
         }
@@ -424,7 +429,7 @@ namespace MonitoringUI.Monitoring
                     case 2:
                         lt021.SetDataTable(ref dt);
                         lt022.SetDataTable(ref dt);
-                        lt023.SetDataTable(ref dt);
+                        lt022.SetDataTable(ref dt);
                         lt024.SetDataTable(ref dt);
                         break;
                 }
@@ -457,7 +462,7 @@ namespace MonitoringUI.Monitoring
             lt014.MouseDoubleClick += AgingLineControl_DoubleClick;
             lt021.MouseDoubleClick += AgingLineControl_DoubleClick;
             lt022.MouseDoubleClick += AgingLineControl_DoubleClick;
-            lt023.MouseDoubleClick += AgingLineControl_DoubleClick;
+            lt022.MouseDoubleClick += AgingLineControl_DoubleClick;
             lt024.MouseDoubleClick += AgingLineControl_DoubleClick;
 
             // 우클릭 - Trouble
@@ -493,29 +498,63 @@ namespace MonitoringUI.Monitoring
 
         private void InitGridView()
         {
-            string[] columnName = { "Total Rack Count", "In Aging", "Empty Rack", "Unloading Rack", "No Input Rack","No Output Rack","Bad Rack", "Tatal Trouble"}; 
+            string[] columnName = { "Status Name", "Total Rack Count", "In Aging", "Empty Rack", 
+                                    "Unloading Rack", "No Input Rack", "No Output Rack", "Bad Rack", "Tatal Trouble" };
 
-            AgingInfoView.EnableHeadersVisualStyles = false;
-            AgingInfoView.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(27, 27, 27);
+            List<string> lstTitle = new List<string>();
 
-            AgingInfoView.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            AgingInfoView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-
-            for (int i = 0; i < AgingInfoView.ColumnCount; i++)
+            foreach (var item in columnName)
             {
-                AgingInfoView.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                lstTitle.Add(item);
             }
+            AgingInfoView_HT.AddColumnHeaderList(lstTitle);
+            AgingInfoView_LT1.AddColumnHeaderList(lstTitle);
+            AgingInfoView_LT2.AddColumnHeaderList(lstTitle);
 
-            for (int i = 0; i < columnName.Length; i++)
-            {
-                AgingInfoView.Rows.Add(new string[] { columnName[i], "", "", "" });
-                
-            }
+            lstTitle = new List<string>();
+            lstTitle.Add("Count");
+            AgingInfoView_HT.AddRowsHeaderList(lstTitle);
+            AgingInfoView_LT1.AddRowsHeaderList(lstTitle);
+            AgingInfoView_LT2.AddRowsHeaderList(lstTitle);
 
-            //AgingInfoView[1, 1].Style.BackColor = Color.White;
+            AgingInfoView_HT.ColumnHeadersHeight(30);
+            AgingInfoView_HT.RowsHeight(30);
+            AgingInfoView_LT1.ColumnHeadersHeight(30);
+            AgingInfoView_LT1.RowsHeight(30);
+            AgingInfoView_LT2.ColumnHeadersHeight(30);
+            AgingInfoView_LT2.RowsHeight(30);
 
-            AgingInfoView.CurrentCell = null;
-            AgingInfoView.ClearSelection();
+            AgingInfoView_HT.SetGridViewStyles();
+            AgingInfoView_HT.ColumnHeadersWidth(0, 140);
+            AgingInfoView_LT1.SetGridViewStyles();
+            AgingInfoView_LT1.ColumnHeadersWidth(0, 140);
+            AgingInfoView_LT2.SetGridViewStyles();
+            AgingInfoView_LT2.ColumnHeadersWidth(0, 140);
+
+
+            //string[] columnName = { "Total Rack Count", "In Aging", "Empty Rack", "Unloading Rack", "No Input Rack","No Output Rack","Bad Rack", "Tatal Trouble"}; 
+
+            //AgingInfoView.EnableHeadersVisualStyles = false;
+            //AgingInfoView.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(27, 27, 27);
+
+            //AgingInfoView.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //AgingInfoView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+
+            //for (int i = 0; i < AgingInfoView.ColumnCount; i++)
+            //{
+            //    AgingInfoView.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //}
+
+            //for (int i = 0; i < columnName.Length; i++)
+            //{
+            //    AgingInfoView.Rows.Add(new string[] { columnName[i], "", "", "" });
+
+            //}
+
+            ////AgingInfoView[1, 1].Style.BackColor = Color.White;
+
+            //AgingInfoView.CurrentCell = null;
+            //AgingInfoView.ClearSelection();
         }
 
         private void Rack_Click(object sender, EventArgs e)
@@ -591,7 +630,11 @@ namespace MonitoringUI.Monitoring
                         //string msg = $"Track No : {trackno}, TrayIdL1 : {siteInfo.TrayIdL1}, TrayIdL2 : {siteInfo.TrayIdL2}";
                         //_Logger.Write(LogLevel.Info, "", LogFileName.ButtonClick);
 
-                        WinRackInfo winRack = new WinRackInfo();
+                        //WinRackInfo winRack = new WinRackInfo();
+                        //winRack.SetRackInfo(ds);
+                        //winRack.Show();
+
+                        WinAgingRackSetting winRack = new WinAgingRackSetting();
                         winRack.SetRackInfo(ds);
                         winRack.Show();
                     }
@@ -622,39 +665,39 @@ namespace MonitoringUI.Monitoring
 
 
             // 랙 상태 Tag
-            Tag00.TagText = LocalLanguage.GetItemString("strTag00"); // 사용안함
+            //Tag00.TagText = LocalLanguage.GetItemString("strTag00"); // 사용안함
 
-            TagDelayAlarm.TagText = LocalLanguage.GetItemString("strDelayAlarm"); // 출고지연알람
+            //TagDelayAlarm.TagText = LocalLanguage.GetItemString("strDelayAlarm"); // 출고지연알람
 
-            Tag01.TagText = LocalLanguage.GetItemString("strTag01"); // Empty
-            Tag02.TagText = LocalLanguage.GetItemString("strTag02"); // RT 1st Aging
-            Tag03.TagText = LocalLanguage.GetItemString("strTag03"); // RT 2nd Aging
-            Tag04.TagText = LocalLanguage.GetItemString("strTag04"); // RT 3rd Aging
-            Tag05.TagText = LocalLanguage.GetItemString("strTag05"); // RT 4th Aging
-            Tag06.TagText = LocalLanguage.GetItemString("strTag06"); // RT 5th Aging
+            //Tag01.TagText = LocalLanguage.GetItemString("strTag01"); // Empty
+            //Tag02.TagText = LocalLanguage.GetItemString("strTag02"); // RT 1st Aging
+            //Tag03.TagText = LocalLanguage.GetItemString("strTag03"); // RT 2nd Aging
+            //Tag04.TagText = LocalLanguage.GetItemString("strTag04"); // RT 3rd Aging
+            //Tag05.TagText = LocalLanguage.GetItemString("strTag05"); // RT 4th Aging
+            //Tag06.TagText = LocalLanguage.GetItemString("strTag06"); // RT 5th Aging
 
-            Tag20.TagText = LocalLanguage.GetItemString("strTag20"); // RT 6th Aging 20191128
+            //Tag20.TagText = LocalLanguage.GetItemString("strTag20"); // RT 6th Aging 20191128
 
-            Tag07.TagText = LocalLanguage.GetItemString("strTag07"); // 입고금지
-            Tag08.TagText = LocalLanguage.GetItemString("strTag08"); // 출고금지
+            //Tag07.TagText = LocalLanguage.GetItemString("strTag07"); // 입고금지
+            //Tag08.TagText = LocalLanguage.GetItemString("strTag08"); // 출고금지
 
-            //Tag09.TagText = LocalLanguage.GetItemString("strTag09"); // 입고
-            Tag09.TagText = LocalLanguage.GetItemString("strGInput"); // 강제입고
+            ////Tag09.TagText = LocalLanguage.GetItemString("strTag09"); // 입고
+            //Tag09.TagText = LocalLanguage.GetItemString("strGInput"); // 강제입고
 
-            // 20210430 KJY - 공트레이 CellType 305, 322 추가
-            Tag091.TagText = LocalLanguage.GetItemString("strGInput") + " (305)"; // 강제입고 (305)
-            Tag092.TagText = LocalLanguage.GetItemString("strGInput") + " (322)"; // 강제입고 (322)
+            //// 20210430 KJY - 공트레이 CellType 305, 322 추가
+            //Tag091.TagText = LocalLanguage.GetItemString("strGInput") + " (305)"; // 강제입고 (305)
+            //Tag092.TagText = LocalLanguage.GetItemString("strGInput") + " (322)"; // 강제입고 (322)
 
-            Tag10.TagText = LocalLanguage.GetItemString("strTag10"); // 입고중
-            Tag11.TagText = LocalLanguage.GetItemString("strTag11"); // 출고
-            Tag12.TagText = LocalLanguage.GetItemString("strTag12"); // 출고중
-            Tag13.TagText = LocalLanguage.GetItemString("strTag13"); // 출고대기중
-            Tag14.TagText = LocalLanguage.GetItemString("strTag14"); // Bad Rack
-            Tag15.TagText = LocalLanguage.GetItemString("strTag15"); // Trouble
-            Tag16.TagText = LocalLanguage.GetItemString("strTag16"); // 화재
-            Tag17.TagText = LocalLanguage.GetItemString("strTag17"); // 염수통
-            Tag18.TagText = LocalLanguage.GetItemString("strTag18"); // 이중입고
-            Tag19.TagText = LocalLanguage.GetItemString("strTag19"); // 공출고
+            //Tag10.TagText = LocalLanguage.GetItemString("strTag10"); // 입고중
+            //Tag11.TagText = LocalLanguage.GetItemString("strTag11"); // 출고
+            //Tag12.TagText = LocalLanguage.GetItemString("strTag12"); // 출고중
+            //Tag13.TagText = LocalLanguage.GetItemString("strTag13"); // 출고대기중
+            //Tag14.TagText = LocalLanguage.GetItemString("strTag14"); // Bad Rack
+            //Tag15.TagText = LocalLanguage.GetItemString("strTag15"); // Trouble
+            //Tag16.TagText = LocalLanguage.GetItemString("strTag16"); // 화재
+            //Tag17.TagText = LocalLanguage.GetItemString("strTag17"); // 염수통
+            //Tag18.TagText = LocalLanguage.GetItemString("strTag18"); // 이중입고
+            //Tag19.TagText = LocalLanguage.GetItemString("strTag19"); // 공출고
 
         }
 
@@ -742,24 +785,6 @@ namespace MonitoringUI.Monitoring
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            AgingInfoView.EnableHeadersVisualStyles = false;
-            AgingInfoView.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(95, 95, 95);
-
-            AgingInfoView.Rows.Add(new String[] { "Total Rack Count", "a", "b", "c" });
-            AgingInfoView.Rows.Add(new String[] { "In Aging", "a", "b", "c" });
-            AgingInfoView.Rows.Add(new String[] { "Empty Rack", "a", "b", "c" });
-            AgingInfoView.Rows.Add(new String[] { "Unloading Rack", "a", "b", "c" });
-            AgingInfoView.Rows.Add(new String[] { "No Input Rack", "a", "b", "c" });
-            AgingInfoView.Rows.Add(new String[] { "No Output Rack", "a", "b", "c" });
-            AgingInfoView.Rows.Add(new String[] { "Bad Rack", "a", "b", "c" });
-            AgingInfoView.Rows.Add(new String[] { "Tatal Trouble", "a", "b", "c" });
-
-            AgingInfoView.CurrentCell = null;
-            AgingInfoView.ClearSelection();
-
-
-
-
             //updateTable();
 
             //_mysql.UpdateAgingInfo("status", "G", "aging_type", "L");
@@ -885,13 +910,19 @@ namespace MonitoringUI.Monitoring
             Button btn = (Button)sender;
             int tabIdx = int.Parse(btn.Tag.ToString());
 
-            AgingTab.SelectedTab = AgingTab.TabPages[tabIdx];
-        }
+            btnHTAging.BackColor = Color.FromArgb(27, 27, 27);
+            btnHTAging.ForeColor = Color.White;
 
-        private void AgingInfoView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            AgingInfoView.CurrentCell = null;
-            AgingInfoView.ClearSelection();
+            btnLTAging1.BackColor = Color.FromArgb(27, 27, 27);
+            btnLTAging1.ForeColor = Color.White;
+
+            btnLTAging2.BackColor = Color.FromArgb(27, 27, 27);
+            btnLTAging2.ForeColor = Color.White;
+
+            btn.BackColor = Color.LightYellow;
+            btn.ForeColor = Color.Black;
+
+            AgingTab.SelectedTab = AgingTab.TabPages[tabIdx];
         }
     }
 }

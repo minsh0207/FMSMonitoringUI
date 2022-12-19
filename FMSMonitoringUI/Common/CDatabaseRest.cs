@@ -1298,9 +1298,9 @@ namespace MonitoringUI.Common
 
                 strTitle = list.MstWindowList[0].WindowName_kr;
 
-                if (CDefine.m_enLanguage == enLoginLanguage.Chinese)
+                if (CDefine.m_enLanguage == enLoginLanguage.France)
                 {
-                    strTitle = list.MstWindowList[0].WindowName_cn;
+                    strTitle = list.MstWindowList[0].WindowName_fr;
                 }
 
                 if (CDefine.m_enLanguage == enLoginLanguage.English)

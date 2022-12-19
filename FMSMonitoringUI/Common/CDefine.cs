@@ -125,6 +125,11 @@ namespace MonitoringUI.Common
 
         //public const string DEF_MQ_AGING_SEND = @"FormatName:Direct=TCP:" + DEF_MQ_SERVER_IP + @"\Private$\mq_aging_send";
 
+        /////////////////////////////////////////////////////////////////////
+        //	PLC OPCUA Server COUNT
+        //=================================================================== 
+        public const int DEF_PLC_SERVER_COUNT = 4;
+
 
         /////////////////////////////////////////////////////////////////////
         //	Define Count

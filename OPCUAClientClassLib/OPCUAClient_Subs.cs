@@ -184,7 +184,7 @@ namespace OPCUAClientClassLib
             //}
 
             // Update the value
-            bool trayExist = false;
+            //bool trayExist = false;
             string msg = string.Empty;
 
             msg = $"Item Count = {e.DataChanges.Count}";

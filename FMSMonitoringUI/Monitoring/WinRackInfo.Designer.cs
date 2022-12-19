@@ -28,22 +28,92 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this._TrayZone = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
-            this.ctrlButtonExit1 = new MonitoringUI.Controlls.CButton.CtrlButtonExit();
-            this._CellType = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
-            this._RouteID = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
-            this._ModelID = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
-            this._TrayIdL2 = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
-            this._TrayIdL1 = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
-            this._LotID = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
-            this._RackID = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
-            this.ctrlTitleBar = new MonitoringUI.Controlls.CtrlTitleBar();
-            this._RackStatus = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
             this._TroubleName = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
             this._TroubleCode = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
             this._EndTime = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
             this._StartTime = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
+            this._CellType = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
+            this._TrayZone = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
+            this._RackStatus = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
+            this._LotID = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
+            this.ctrlButtonExit1 = new MonitoringUI.Controlls.CButton.CtrlButtonExit();
+            this._RouteID = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
+            this._ModelID = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
+            this._TrayIdL2 = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
+            this._TrayIdL1 = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
+            this._RackID = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
+            this.ctrlTitleBar = new MonitoringUI.Controlls.CtrlTitleBar();
             this.SuspendLayout();
+            // 
+            // _TroubleName
+            // 
+            this._TroubleName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this._TroubleName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this._TroubleName.LanguageID = "";
+            this._TroubleName.Location = new System.Drawing.Point(6, 438);
+            this._TroubleName.Margin = new System.Windows.Forms.Padding(30);
+            this._TroubleName.Name = "_TroubleName";
+            this._TroubleName.Size = new System.Drawing.Size(337, 37);
+            this._TroubleName.TabIndex = 14;
+            this._TroubleName.TextData = "";
+            this._TroubleName.TitleText = "Trouble Name ";
+            this._TroubleName.TitleWidth = 180F;
+            // 
+            // _TroubleCode
+            // 
+            this._TroubleCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this._TroubleCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this._TroubleCode.LanguageID = "";
+            this._TroubleCode.Location = new System.Drawing.Point(6, 404);
+            this._TroubleCode.Margin = new System.Windows.Forms.Padding(30);
+            this._TroubleCode.Name = "_TroubleCode";
+            this._TroubleCode.Size = new System.Drawing.Size(337, 37);
+            this._TroubleCode.TabIndex = 15;
+            this._TroubleCode.TextData = "";
+            this._TroubleCode.TitleText = "Trouble Code";
+            this._TroubleCode.TitleWidth = 180F;
+            // 
+            // _EndTime
+            // 
+            this._EndTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this._EndTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this._EndTime.LanguageID = "";
+            this._EndTime.Location = new System.Drawing.Point(6, 374);
+            this._EndTime.Margin = new System.Windows.Forms.Padding(30);
+            this._EndTime.Name = "_EndTime";
+            this._EndTime.Size = new System.Drawing.Size(337, 33);
+            this._EndTime.TabIndex = 16;
+            this._EndTime.TextData = "";
+            this._EndTime.TitleText = "End Time ";
+            this._EndTime.TitleWidth = 180F;
+            // 
+            // _StartTime
+            // 
+            this._StartTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this._StartTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this._StartTime.LanguageID = "";
+            this._StartTime.Location = new System.Drawing.Point(6, 344);
+            this._StartTime.Margin = new System.Windows.Forms.Padding(30);
+            this._StartTime.Name = "_StartTime";
+            this._StartTime.Size = new System.Drawing.Size(337, 33);
+            this._StartTime.TabIndex = 13;
+            this._StartTime.TextData = "";
+            this._StartTime.TitleText = "Start Time ";
+            this._StartTime.TitleWidth = 180F;
+            // 
+            // _CellType
+            // 
+            this._CellType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this._CellType.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this._CellType.LanguageID = "";
+            this._CellType.Location = new System.Drawing.Point(6, 310);
+            this._CellType.Margin = new System.Windows.Forms.Padding(30);
+            this._CellType.Name = "_CellType";
+            this._CellType.Size = new System.Drawing.Size(337, 37);
+            this._CellType.TabIndex = 6;
+            this._CellType.TextData = "";
+            this._CellType.TitleText = "Cell Type ";
+            this._CellType.TitleWidth = 180F;
             // 
             // _TrayZone
             // 
@@ -59,6 +129,34 @@
             this._TrayZone.TitleText = "Tray Zone ";
             this._TrayZone.TitleWidth = 180F;
             // 
+            // _RackStatus
+            // 
+            this._RackStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this._RackStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this._RackStatus.LanguageID = "";
+            this._RackStatus.Location = new System.Drawing.Point(6, 246);
+            this._RackStatus.Margin = new System.Windows.Forms.Padding(30);
+            this._RackStatus.Name = "_RackStatus";
+            this._RackStatus.Size = new System.Drawing.Size(337, 33);
+            this._RackStatus.TabIndex = 12;
+            this._RackStatus.TextData = "";
+            this._RackStatus.TitleText = "Rack Status ";
+            this._RackStatus.TitleWidth = 180F;
+            // 
+            // _LotID
+            // 
+            this._LotID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this._LotID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this._LotID.LanguageID = "";
+            this._LotID.Location = new System.Drawing.Point(6, 216);
+            this._LotID.Margin = new System.Windows.Forms.Padding(30);
+            this._LotID.Name = "_LotID";
+            this._LotID.Size = new System.Drawing.Size(337, 33);
+            this._LotID.TabIndex = 2;
+            this._LotID.TextData = "";
+            this._LotID.TitleText = "Lot ID ";
+            this._LotID.TitleWidth = 180F;
+            // 
             // ctrlButtonExit1
             // 
             this.ctrlButtonExit1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(69)))), ((int)(((byte)(88)))));
@@ -70,20 +168,6 @@
             this.ctrlButtonExit1.Size = new System.Drawing.Size(164, 38);
             this.ctrlButtonExit1.TabIndex = 10;
             this.ctrlButtonExit1.Click += new System.EventHandler(this.ctrlButtonExit1_Click);
-            // 
-            // _CellType
-            // 
-            this._CellType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this._CellType.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this._CellType.LanguageID = "";
-            this._CellType.Location = new System.Drawing.Point(6, 310);
-            this._CellType.Margin = new System.Windows.Forms.Padding(30);
-            this._CellType.Name = "_CellType";
-            this._CellType.Size = new System.Drawing.Size(337, 37);
-            this._CellType.TabIndex = 6;
-            this._CellType.TextData = "";
-            this._CellType.TitleText = "Cell Type ";
-            this._CellType.TitleWidth = 180F;
             // 
             // _RouteID
             // 
@@ -141,25 +225,11 @@
             this._TrayIdL1.TitleText = "Tray ID L1 ";
             this._TrayIdL1.TitleWidth = 180F;
             // 
-            // _LotID
-            // 
-            this._LotID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this._LotID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this._LotID.LanguageID = "";
-            this._LotID.Location = new System.Drawing.Point(6, 216);
-            this._LotID.Margin = new System.Windows.Forms.Padding(30);
-            this._LotID.Name = "_LotID";
-            this._LotID.Size = new System.Drawing.Size(337, 33);
-            this._LotID.TabIndex = 2;
-            this._LotID.TextData = "";
-            this._LotID.TitleText = "Lot ID ";
-            this._LotID.TitleWidth = 180F;
-            // 
             // _RackID
             // 
             this._RackID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this._RackID.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this._RackID.LanguageID = "";
+            this._RackID.LanguageID = "DEF_CONTROL_001";
             this._RackID.Location = new System.Drawing.Point(6, 62);
             this._RackID.Margin = new System.Windows.Forms.Padding(30);
             this._RackID.Name = "_RackID";
@@ -180,76 +250,6 @@
             this.ctrlTitleBar.Size = new System.Drawing.Size(334, 50);
             this.ctrlTitleBar.TabIndex = 1;
             this.ctrlTitleBar.TitleText = "Rack Infomation";
-            // 
-            // _RackStatus
-            // 
-            this._RackStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this._RackStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this._RackStatus.LanguageID = "";
-            this._RackStatus.Location = new System.Drawing.Point(6, 246);
-            this._RackStatus.Margin = new System.Windows.Forms.Padding(30);
-            this._RackStatus.Name = "_RackStatus";
-            this._RackStatus.Size = new System.Drawing.Size(337, 33);
-            this._RackStatus.TabIndex = 12;
-            this._RackStatus.TextData = "";
-            this._RackStatus.TitleText = "Rack Status ";
-            this._RackStatus.TitleWidth = 180F;
-            // 
-            // _TroubleName
-            // 
-            this._TroubleName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this._TroubleName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this._TroubleName.LanguageID = "";
-            this._TroubleName.Location = new System.Drawing.Point(6, 438);
-            this._TroubleName.Margin = new System.Windows.Forms.Padding(30);
-            this._TroubleName.Name = "_TroubleName";
-            this._TroubleName.Size = new System.Drawing.Size(337, 37);
-            this._TroubleName.TabIndex = 14;
-            this._TroubleName.TextData = "";
-            this._TroubleName.TitleText = "Trouble Name ";
-            this._TroubleName.TitleWidth = 180F;
-            // 
-            // _TroubleCode
-            // 
-            this._TroubleCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this._TroubleCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this._TroubleCode.LanguageID = "";
-            this._TroubleCode.Location = new System.Drawing.Point(6, 404);
-            this._TroubleCode.Margin = new System.Windows.Forms.Padding(30);
-            this._TroubleCode.Name = "_TroubleCode";
-            this._TroubleCode.Size = new System.Drawing.Size(337, 37);
-            this._TroubleCode.TabIndex = 15;
-            this._TroubleCode.TextData = "";
-            this._TroubleCode.TitleText = "Trouble Code";
-            this._TroubleCode.TitleWidth = 180F;
-            // 
-            // _EndTime
-            // 
-            this._EndTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this._EndTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this._EndTime.LanguageID = "";
-            this._EndTime.Location = new System.Drawing.Point(6, 374);
-            this._EndTime.Margin = new System.Windows.Forms.Padding(30);
-            this._EndTime.Name = "_EndTime";
-            this._EndTime.Size = new System.Drawing.Size(337, 33);
-            this._EndTime.TabIndex = 16;
-            this._EndTime.TextData = "";
-            this._EndTime.TitleText = "End Time ";
-            this._EndTime.TitleWidth = 180F;
-            // 
-            // _StartTime
-            // 
-            this._StartTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this._StartTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this._StartTime.LanguageID = "";
-            this._StartTime.Location = new System.Drawing.Point(6, 344);
-            this._StartTime.Margin = new System.Windows.Forms.Padding(30);
-            this._StartTime.Name = "_StartTime";
-            this._StartTime.Size = new System.Drawing.Size(337, 33);
-            this._StartTime.TabIndex = 13;
-            this._StartTime.TextData = "";
-            this._StartTime.TitleText = "Start Time ";
-            this._StartTime.TitleWidth = 180F;
             // 
             // WinRackInfo
             // 

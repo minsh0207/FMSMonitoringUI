@@ -84,7 +84,44 @@ namespace DBHandler
                 //strSQL.Append(" SELECT A.tray_id, A.tray_id_2, A.unit_status, A.unit_mode, A.start_time,");
                 strSQL.Append(" SELECT A.*,");
                 strSQL.Append("                   B.lot_id");
-                strSQL.Append("   FROM fms_v.tb_mst_unit    A");
+                strSQL.Append("   FROM fms_v.tb_mst_eqp    A");
+                strSQL.Append("        LEFT OUTER JOIN fms_v.tb_dat_tray    B");
+                strSQL.Append("          ON B.tray_id   = A.tray_id");
+                //필수값
+                strSQL.Append($" WHERE A.tray_id	            = 'trayid_01'");
+                //조회조건
+                //if (strEqpTypeID.Length > 0) strSQL.Append($"   AND A.EqpTypeID	    = '{strEqpTypeID}'");
+                //if (strUnitID.Length > 0) strSQL.Append($"   AND A.UnitID	        = '{strUnitID}'");
+
+
+
+                //string where = string.Format("eqp_id LIKE '{0}%'", "F1CHG01");
+                //string orderby = "eqp_id ASC";
+
+                //tb_mst_unit 전체 데이터를 조회합니다.            
+                //string selectQuery = string.Format($"SELECT * FROM fms_v.tb_mst_unit WHERE {where} ORDER BY {orderby}");
+                //string selectQuery = string.Format($"SELECT * FROM fms_v.tb_mst_unit WHERE {where}");
+
+                MySqlDataAdapter dataAdapter = new MySqlDataAdapter(strSQL.ToString(), conn);
+
+                dataAdapter.Fill(ds);
+
+                return ds;
+            }
+        }
+
+        public DataSet SelectHPCInfo()
+        {
+            DataSet ds = new DataSet();
+            StringBuilder strSQL = new StringBuilder();
+
+            using (MySqlConnection conn = new MySqlConnection(_connectionString))
+            {
+                // Set Query
+                //strSQL.Append(" SELECT A.tray_id, A.tray_id_2, A.unit_status, A.unit_mode, A.start_time,");
+                strSQL.Append(" SELECT A.*,");
+                strSQL.Append("                   B.lot_id");
+                strSQL.Append("   FROM fms_v.tb_mst_eqp    A");
                 strSQL.Append("        LEFT OUTER JOIN fms_v.tb_dat_tray    B");
                 strSQL.Append("          ON B.tray_id   = A.tray_id");
                 //필수값
@@ -165,7 +202,7 @@ namespace DBHandler
         {
             using (MySqlConnection conn = new MySqlConnection(_connectionString))
             {
-                string updateQuery = string.Format($"UPDATE fms_v.tb_mst_unit " +
+                string updateQuery = string.Format($"UPDATE fms_v.tb_mst_eqp " +
                                                $"SET {updateColumn} = '{updateValue}' " +
                                                $"WHERE {whereName} = '{whereValue}'");
 

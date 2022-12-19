@@ -103,8 +103,8 @@ namespace MonitoringUI.Popup
 
             switch (cbLanguage.SelectedItem.ToString())
             {
-                case "CHINESE":
-                    CDefine.m_enLanguage = enLoginLanguage.Chinese;
+                case "FRANCE":
+                    CDefine.m_enLanguage = enLoginLanguage.France;
                     break;
                 case "KOREAN":
                     CDefine.m_enLanguage = enLoginLanguage.Korean;

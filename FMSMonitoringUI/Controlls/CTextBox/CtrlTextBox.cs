@@ -83,16 +83,21 @@ namespace FMSMonitoringUI.Controlls.CTextBox
             InitializeComponent();
         }
 
-        private void CtrlTextBox_Load(object sender, EventArgs e)
+        //private void CtrlTextBox_Load(object sender, EventArgs e)
+        //{
+        //    if (LanguageID == "")
+        //    {
+        //        lbTitle.Text = _labelText;
+        //    }
+        //    else
+        //    {
+        //        //lbTitle.Text = LocalLanguage.GetItemString(_LanguageID);
+        //    }
+        //}
+
+        private void CtrlTextBox_Enter(object sender, EventArgs e)
         {
-            if (LanguageID == "")
-            {
-                lbTitle.Text = _labelText;
-            }
-            else
-            {
-                lbTitle.Text = LocalLanguage.GetItemString(_LanguageID);
-            }
+            lbTitle.Text = LocalLanguage.GetItemString(_LanguageID);
         }
     }
 }

@@ -28,28 +28,63 @@ namespace MonitoringUI.Controlls.CDateTime
 
             }
         }
+        string _labelText = "";
+        [DisplayName("TitleText"), Description("Title"), Category("TextBox Setting")]
+        public string TitleText
+        {
+            get
+            {
+                return _labelText;
+            }
+            set
+            {
+                _labelText = value;
+                lbTitle.Text = _labelText;
+            }
+        }
+        string _LanguageID = "";
+        [DisplayName("LocalLanguage"), Description("Local Language"), Category("Language Setting")]
+        public string LanguageID
+        {
+            get
+            {
+                return _LanguageID;
+            }
+            set
+            {
+                _LanguageID = value;
+            }
+        }
         #endregion
 
 
-        string strTitleName = string.Empty;
+        //string strTitleName = string.Empty;
 
         public CtrlDateTimeDT()
         {
-            strTitleName = "strDateRange";
+            //strTitleName = "strDateRange";
             InitializeComponent();
         }
 
-        public void ChangeTitle(string strTitle)
-        {
-            if (strTitle != null) strTitleName = strTitle;
-            else strTitleName = "strDateRange";
-            lbTitle.Text = LocalLanguage.GetItemString(strTitleName);
-        }
+        //public void ChangeTitle(string strTitle)
+        //{
+        //    if (strTitle != null) strTitleName = strTitle;
+        //    else strTitleName = "strDateRange";
+        //    lbTitle.Text = LocalLanguage.GetItemString(strTitleName);
+        //}
 
-        private void CtrlDateTimeDT_Load(object sender, EventArgs e)
+        //private void CtrlDateTimeDT_Load(object sender, EventArgs e)
+        //{
+        //    //lbTitle.Text = LocalLanguage.GetItemString("strDateRange");
+        //    lbTitle.Text = LocalLanguage.GetItemString(strTitleName);
+        //}
+
+        public void CallLocalLanguage()
         {
-            //lbTitle.Text = LocalLanguage.GetItemString("strDateRange");
-            lbTitle.Text = LocalLanguage.GetItemString(strTitleName);
+            if (_LanguageID != "")
+            {
+                lbTitle.Text = LocalLanguage.GetItemString(_LanguageID);
+            }
         }
     }
 }

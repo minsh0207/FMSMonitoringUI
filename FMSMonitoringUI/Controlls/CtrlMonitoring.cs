@@ -3,11 +3,14 @@ using CSVMgr;
 using DBHandler;
 using FMSMonitoringUI.Common;
 using FMSMonitoringUI.Monitoring;
+using FormationMonCtrl;
 //using Microsoft.Office.Interop.Excel;
 using MonitoringUI;
 using MonitoringUI.Common;
+using MonitoringUI.Controlls;
 using MonitoringUI.Monitoring;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI;
 using Novasoft.Logger;
 using OPCUAClientClassLib;
 using Org.BouncyCastle.Asn1.Cmp;
@@ -45,13 +48,13 @@ namespace FMSMonitoringUI.Controlls
         /// </summary>
         private Dictionary<int, CtrlSCraneH> _ListSCrane = new Dictionary<int, CtrlSCraneH>();
         /// <summary>
-        /// First=SiteNo, Second=ItemInfo Class
+        /// First=SiteNo(TrackNo), Second=ItemInfo Class
         /// </summary>
-        private Dictionary<int, ItemInfo> _ListSite = new Dictionary<int, ItemInfo>();
+        private Dictionary<int, ItemInfo>[] _ListSite = new Dictionary<int, ItemInfo>[CDefine.DEF_PLC_SERVER_COUNT];
         /// <summary>
         /// First=BCRNo, Second=BCRMarker Control
         /// </summary>
-        private Dictionary<int, BCRMarker> _ListBCR = new Dictionary<int, BCRMarker>();
+        private Dictionary<int, BCRMarker>[] _ListBCR = new Dictionary<int, BCRMarker>[CDefine.DEF_PLC_SERVER_COUNT];
 
         /// <summary>
         /// First=Equipment ID, Second=Control Index
@@ -62,6 +65,8 @@ namespace FMSMonitoringUI.Controlls
         /// First=Equipment ID, Second=Eqp UserControl
         /// </summary>
         private Dictionary<string, UserControlEqp> _EntireEqpList = new Dictionary<string, UserControlEqp>();
+                
+        private COPCGroupCtrl _OPCGroupList= new COPCGroupCtrl();
 
         private Logger _Logger; // { get; set; }
 
@@ -121,70 +126,23 @@ namespace FMSMonitoringUI.Controlls
         {
             Dictionary<int, List<ItemInfo>> ctrlGroupList = InitControls();
 
-            List<EqpTagItem> DataList = ReadTagConfig();
+            List<CEqpTagItem> DataList = ReadTagConfig();
             List<COPCUAConfig> opcList = ReadOPCConfig();
 
             _clientFMS = new OPCUAClient[opcList.Count()];
 
             for (int i = 0; i < opcList.Count; i++)
             {
-                _clientFMS[i] = new OPCUAClient(DataList, ctrlGroupList[i], _OPCApplication, _ControlIdx, _ListSite);
+                _clientFMS[i] = new OPCUAClient(DataList, _OPCGroupList.GroupList[i], _OPCApplication, _ControlIdx, _ListSite[i]);
+                _clientFMS[i].ServerNo = i;
 
                 string msg = ($"Connecting to [{opcList[i].OPCServerURL}] ");
                 _Logger.Write(LogLevel.Info, msg, LogFileName.AllLog);
 
                 _clientFMS[i].SubscriptionEvent += CtrlMain_SubscriptionEvent;
 
-                await _clientFMS[i].ConnectAsync(opcList[i].OPCServerURL, opcList[i].UserID, opcList[i].UserPW, opcList[i].FirstNodeID);
-               
-                //if (ret)
-                //{
-                //    msg = ($"Connected to [{opcList[i].OPCServerURL}] ");
-                //    _Logger.Write(LogLevel.Info, msg, LogFileName.AllLog);
+                await _clientFMS[i].ConnectAsync(opcList[i].OPCServerURL, opcList[i].UserID, opcList[i].UserPW, opcList[i].FirstNodeID);              
 
-                //    // Start NodeID
-                //    //_clientFMS[i].GetStartNodeID(opcList[i].FirstNodeID);
-
-                //    msg = $"{i} - Full Monitoring1";
-                //    _Logger.Write(LogLevel.Info, msg, LogFileName.AllLog);
-
-                //    // Tag List
-                //    //Dictionary<int, List<BrowsePath>> dictBrowsePath = _clientFMS[i].AddBrowsePath(_clientFMS[i].OPCTagList);
-                //    //Dictionary<int, List<BrowsePathResult>> dictResultPath = _clientFMS[i].ReadBrowse(dictBrowsePath);
-
-                //    msg = $"{i} - Full Monitoring2";
-                //    _Logger.Write(LogLevel.Info, msg, LogFileName.AllLog);
-
-                //    //if (ctrlGroupList[i].ElementAt(0).ControlType == enEqpType.CNV)
-                //    //{
-                //    //    _clientFMS[i].AddConveyorNodeID(dictResultPath, dictBrowsePath);
-                //    //}
-                //    //else if (ctrlGroupList[i].ElementAt(0).ControlType == enEqpType.STC)
-                //    //{
-                //    //    _clientFMS[i].AddCraneNodeID(dictResultPath, dictBrowsePath, _ControlIdx);
-                //    //}
-
-                //    msg = $"{i} - Full Monitoring3";
-                //    _Logger.Write(LogLevel.Info, msg, LogFileName.AllLog);
-
-                //    // Subscribe List
-                //    //dictBrowsePath = _clientFMS[i].AddBrowsePath(_clientFMS[i].SubscribeTagList);
-                //    //dictResultPath = _clientFMS[i].ReadBrowse(dictBrowsePath);
-
-                //    msg = $"{i} - Full Monitoring4";
-                //    _Logger.Write(LogLevel.Info, msg, LogFileName.AllLog);
-
-                //    //_clientFMS[i].SubscribeNodes(dictResultPath, dictBrowsePath, _ListSite, _ControlIdx);
-                //    //_clientFMS[i].Subscription.DataChanged += Subscription_DataChanged;
-                //    //_clientFMS[i].Subscription.DataChanged += new DataChangedEventHandler(Subscription_DataChanged);
-
-                //    msg = $"{i} - Full Monitoring5";
-                //    _Logger.Write(LogLevel.Info, msg, LogFileName.AllLog);
-                //}
-                //else
-                //{
-                //    _clientFMS[i] = null;
-                //}
             }
         }
 
@@ -206,16 +164,23 @@ namespace FMSMonitoringUI.Controlls
         {
             _ListConveyor.Clear();
             _ListSCrane.Clear();
-            _ListSite.Clear();
-            _ListBCR.Clear();
             _ControlIdx.Clear();
+
+            CDeviceInfo[] siteInfo = new CDeviceInfo[CDefine.DEF_PLC_SERVER_COUNT];
+
+            for (int i = 0; i < CDefine.DEF_PLC_SERVER_COUNT; i++)
+            {
+                _ListSite[i] = new Dictionary<int, ItemInfo>();
+                _ListBCR[i] = new Dictionary<int, BCRMarker>();
+                siteInfo[i] = new CDeviceInfo();
+            }
 
             //int craneCnt = 0;
 
             // First=OPCUA Server로 구성된 Conveyor, Second=Site정보
             Dictionary<int, List<ItemInfo>> groupCtrl = new Dictionary<int, List<ItemInfo>>();
 
-            foreach (var ctl in this.Controls)
+            foreach (var ctl in this.panel2.Controls)
             {
                 if (ctl.GetType() == typeof(CtrlSiteTrack))
                 {
@@ -256,7 +221,7 @@ namespace FMSMonitoringUI.Controlls
                                 };
                             }
 
-                            _ListSite.Add(site.SiteNo, itemInfo);
+                            _ListSite[deviceID].Add(site.SiteNo, itemInfo);
 
                             if (groupCtrl.ContainsKey(deviceID))
                             {
@@ -267,6 +232,10 @@ namespace FMSMonitoringUI.Controlls
                                 groupCtrl[deviceID] = new List<ItemInfo> { itemInfo };
                             }
 
+                            siteInfo[deviceID].GroupNo = deviceID;
+                            siteInfo[deviceID].AddItem(deviceID, itemInfo);
+                            
+
                             if (!_ControlIdx.ContainsKey(itemInfo.EqpID))
                             {
                                 _ControlIdx[itemInfo.EqpID] = itemInfo;
@@ -274,7 +243,27 @@ namespace FMSMonitoringUI.Controlls
                         }
                     }
                 }
-                else if (ctl.GetType() == typeof(BCRMarker))
+            }
+
+            for (int i = 0; i < CDefine.DEF_PLC_SERVER_COUNT; i++)
+            {
+                if (siteInfo[i].Item.Count > 0)
+                {
+                    _OPCGroupList.AddList(i, siteInfo[i]);
+                }                
+            }
+
+            CDeviceInfo[] craneInfo = new CDeviceInfo[CDefine.DEF_PLC_SERVER_COUNT];
+
+            for (int i = 0; i < CDefine.DEF_PLC_SERVER_COUNT; i++)
+            {
+                craneInfo[i] = new CDeviceInfo();
+                _ListBCR[i] = new Dictionary<int, BCRMarker>();
+            }
+
+            foreach (var ctl in this.panel2.Controls)
+            {
+                if (ctl.GetType() == typeof(BCRMarker))
                 {
                     BCRMarker bcr = ctl as BCRMarker;
                     //bcr.ObjectDoubleClick += OnObjectDoubleClick;
@@ -284,7 +273,7 @@ namespace FMSMonitoringUI.Controlls
                     bcr.SetBubbleTextObject(bt, bcr.BCRLevel, bcr.BCRMarkPosition);
 
                     //
-                    _ListBCR.Add(bcr.PLCNo, bcr);
+                    _ListBCR[bcr.CVPLCListDeviceID].Add(bcr.PLCNo, bcr);
                     this.Controls.Add(bt);      // Controls에 BubbleText를 추가해줘야 UI에서 Text가 표시된다.
                 }
                 else if (ctl.GetType() == typeof(CtrlSCraneV))       // RTV 대용으로 사용
@@ -300,7 +289,7 @@ namespace FMSMonitoringUI.Controlls
                     CtrlSCraneH crane = ctl as CtrlSCraneH;
                     //crane.SetSCHandler(GlobalArea.g_SCHandlerList.Find(x => x.DeviceID == crane.DeviceID));
                     crane.MouseDoubleClick += Crane_MouseDoubleClick;
-                    
+
                     _ListSCrane.Add(crane.CraneID, crane);
 
                     ItemInfo itemInfo = new ItemInfo()
@@ -319,6 +308,9 @@ namespace FMSMonitoringUI.Controlls
                     {
                         groupCtrl[itemInfo.GroupNo] = new List<ItemInfo> { itemInfo };
                     }
+
+                    craneInfo[itemInfo.GroupNo].GroupNo = itemInfo.GroupNo;
+                    craneInfo[itemInfo.GroupNo].AddItem(itemInfo.GroupNo, itemInfo);
 
                     if (!_ControlIdx.ContainsKey(itemInfo.EqpID))
                     {
@@ -343,6 +335,27 @@ namespace FMSMonitoringUI.Controlls
                 }
             }
 
+            // CtrlTaggingName 언어 변환 호출
+            foreach (var ctl in panel1.Controls)
+            {
+                if (ctl.GetType() == typeof(CtrlTaggingName))
+                {
+                    CtrlTaggingName tagName = ctl as CtrlTaggingName;
+                    tagName.CallLocalLanguage();
+                }
+            }
+
+            for (int i = 0; i < CDefine.DEF_PLC_SERVER_COUNT; i++)
+            {
+                if (craneInfo[i].Item.Count > 0)
+                {
+                    _OPCGroupList.AddList(i, craneInfo[i]);
+                }
+            }
+
+            ctrlEqpHTAging1.Click_Evnet += CtrlEqpAging1_Click;
+            ctrlEqpLTAging1.Click_Evnet += CtrlEqpAging1_Click;
+            ctrlEqpLTAging2.Click_Evnet += CtrlEqpAging1_Click;
             //ctrlEqpDGS.MouseClick += CtrlEqp_MouseClick_Evnet;
 
             //int idx = 0;
@@ -362,6 +375,29 @@ namespace FMSMonitoringUI.Controlls
             _Logger.Write(LogLevel.Info, "Initialize the Controls", LogFileName.AllLog);
 
             return groupCtrl;
+        }
+
+        private void CtrlEqpAging1_Click(string rackid)
+        {
+            string agingType = string.Empty;
+            switch (rackid)
+            {
+                case "HTA":
+                    agingType = "HT Aging";
+                    break;
+                case "LTA1":
+                    agingType = "LT Aging#1";
+                    break;
+                case "LTA2":
+                    agingType = "LT Aging#2";
+                    break;
+
+                default:
+                    break;
+            }
+            WinLeadTime form = new WinLeadTime();            
+            form.SetData(agingType);
+            form.ShowDialog();
         }
 
         private void CtrlEqp_MouseClick_Evnet(object sender, MouseEventArgs e)
@@ -401,7 +437,7 @@ namespace FMSMonitoringUI.Controlls
         /// TAGS_CLIENT_V1.xlsx TagList를 읽어온다.
         /// </summary>
         /// <returns></returns>
-        private List<EqpTagItem> ReadTagConfig()
+        private List<CEqpTagItem> ReadTagConfig()
         {
             System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(Application.StartupPath + @"\TagList");
 
@@ -717,14 +753,14 @@ namespace FMSMonitoringUI.Controlls
         #endregion
 
         #region StatusConveyorAsync
-        private async Task StatusConveyorAsync(int siteno, bool trayExist)
+        private async Task StatusConveyorAsync(int groupno, int siteno, bool trayExist)
         {
-            Task task = StatusConveyor(siteno, trayExist);
+            Task task = StatusConveyor(groupno, siteno, trayExist);
 
             await task;
         }
 
-        private async Task StatusConveyor(int siteno, bool trayExist)
+        private async Task StatusConveyor(int groupno, int siteno, bool trayExist)
         {
             if (this.InvokeRequired)
             {
@@ -732,7 +768,7 @@ namespace FMSMonitoringUI.Controlls
                 {
                     this.Invoke(new MethodInvoker(delegate ()
                     {
-                        ItemInfo siteInfo = _ListSite[siteno];
+                        ItemInfo siteInfo = _ListSite[groupno][siteno];
 
                         if (siteInfo.ConveyorNo > 0)
                         {
@@ -756,14 +792,14 @@ namespace FMSMonitoringUI.Controlls
         /// <param name="trayExist"></param>
         /// <param name="craneName"></param>
         /// <returns></returns>
-        private async Task DisplayBCRAsync(int bcrno, SiteTagInfo tagInfo)
+        private async Task DisplayBCRAsync(int deviceID, int bcrno, SiteTagInfo tagInfo)
         {
-            Task task = DisplayBCR(bcrno, tagInfo);
+            Task task = DisplayBCR(deviceID, bcrno, tagInfo);
 
             await task;
         }
 
-        private async Task DisplayBCR(int bcrno, SiteTagInfo tagInfo)
+        private async Task DisplayBCR(int deviceID, int bcrno, SiteTagInfo tagInfo)
         {
             if (this.InvokeRequired)
             {
@@ -771,9 +807,9 @@ namespace FMSMonitoringUI.Controlls
                 {
                     this.Invoke(new MethodInvoker(delegate ()
                     {
-                        if (_ListBCR.ContainsKey(bcrno))
+                        if (_ListBCR[deviceID].ContainsKey(bcrno))
                         {
-                            BCRMarker bcr_ui = _ListBCR[bcrno];
+                            BCRMarker bcr_ui = _ListBCR[deviceID][bcrno];
 
                             if (bcr_ui.BCRLevel == 1)
                             {
@@ -860,10 +896,10 @@ namespace FMSMonitoringUI.Controlls
                             if (trayExist)
                             {
                                 SiteTagInfo tagInfo = ReadSiteInfo(item);
-                                task = DisplayBCRAsync(item.SiteNo, tagInfo);
+                                task = DisplayBCRAsync(item.GroupNo, item.SiteNo, tagInfo);
                             }
 
-                            task = StatusConveyorAsync(item.SiteNo, trayExist);
+                            task = StatusConveyorAsync(item.GroupNo, item.SiteNo, trayExist);
 
                             msg = string.Format("[{0}-CNV{1:D4}] {2} = {3}",
                                 item.ControlType, item.SiteNo, item.BrowseName, change.Value);
@@ -919,7 +955,7 @@ namespace FMSMonitoringUI.Controlls
         }
         #endregion
 
-        #region GetEqpID
+        #region GetConveyorEqpID
         private string GetConveyorEqpID(int eqpIdx)
         {
             string eqp = string.Empty;
@@ -931,6 +967,12 @@ namespace FMSMonitoringUI.Controlls
                     break;
                 case 1:
                     eqp = "F01CNV10020";
+                    break;
+                case 2:
+                    eqp = "F01CNV10030";
+                    break;
+                case 3:
+                    eqp = "F01CNV10040";
                     break;
                 default:
                     _Logger.Write(LogLevel.Error, "GetConveyorEqpID is Empty", LogFileName.ErrorLog);
@@ -1028,5 +1070,46 @@ namespace FMSMonitoringUI.Controlls
             _jsonDatTrayResponse j2 = rest.ConvertDatTray(jsonResult);
 
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            //WinAgingRackSetting form = new WinAgingRackSetting();
+            //form.SetData();
+            //form.ShowDialog();
+
+            WinLeadTime form = new WinLeadTime();
+            form.SetData("TVID00001");
+            form.ShowDialog();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            //DataSet ds = _mysql.SelectEqpInfo();
+
+            //foreach (DataRow row in ds.Tables[0].Rows)
+            //{
+            //    //string eqpid = row["eqp_id"].ToString();
+
+            //    //if (_EntireEqpList.ContainsKey(eqpid))
+            //    //{
+            //    //    UserControlEqp userControl = _EntireEqpList[eqpid];
+            //    //    userControl.SetData(row);
+            //    //}
+            //}
+
+            //WinCellDetailInfo form = new WinCellDetailInfo();
+            //form.ShowDialog();
+
+            WinLeadTime form = new WinLeadTime();
+            form.SetData("TVID00001");
+            form.ShowDialog();
+        }
+
+        //private void ctrlEqpHTAging1_DoubleClick(object sender, EventArgs e)
+        //{
+        //    WinLeadTime form = new WinLeadTime();
+        //    form.SetData("TVID00001");
+        //    form.ShowDialog();
+        //}
     }
 }

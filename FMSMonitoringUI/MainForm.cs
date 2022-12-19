@@ -16,6 +16,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Resources;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -27,7 +28,13 @@ namespace FMSMonitoringUI
 {
     public partial class MainForm : Form
     {
-        #region Fields
+        #region [Dll Import]
+        // System Time
+        [DllImport("kernel32.dll")]
+        public static extern bool SetLocalTime(ref SYSTEMTIME time);
+        #endregion
+
+        #region [Variable]
         /// <summary>
         /// Provides access to the OPC UA server and its services.
         /// </summary>
@@ -37,7 +44,10 @@ namespace FMSMonitoringUI
 
         CtrlMonitoring ctrlMonitoring = null;
         CtrlAging ctrlAging = null;
-        CtrlFormation ctrlFormation = null;
+        CtrlFormationCHG ctrlFormationCHG = null;
+        CtrlFormationHPC ctrlFormationHPC = null;
+
+        delegate void SetCurrentTimeCallback(string strCurrentTime);
 
         #endregion
 
@@ -58,16 +68,23 @@ namespace FMSMonitoringUI
             #region Title Click Event
             barMain.Click_Evnet += Title_ClickEvnet;
             barAging.Click_Evnet += Title_ClickEvnet;
-            barFormation.Click_Evnet += Title_ClickEvnet;
+            barFormationCHG.Click_Evnet += Title_ClickEvnet;
+            barFormationHPC.Click_Evnet += Title_ClickEvnet;
             #endregion
 
             FormBorderStyle = FormBorderStyle.Sizable;
             WindowState = FormWindowState.Maximized;
 
-
             ctrlMonitoring = new CtrlMonitoring(_Application);
             ctrlAging = new CtrlAging();
-            ctrlFormation = new CtrlFormation();
+            ctrlFormationCHG = new CtrlFormationCHG();
+            ctrlFormationHPC = new CtrlFormationHPC();
+
+            #region CurrentTimer
+            Thread tCurrentTime = new Thread(new ThreadStart(updateTime));
+            tCurrentTime.IsBackground = true;
+            tCurrentTime.Start();
+            #endregion
 
             Title_ClickEvnet("Main");
 
@@ -86,7 +103,8 @@ namespace FMSMonitoringUI
 
             ctrlMonitoring.MonitoringTimer(false);
             ctrlAging.AgingTimer(false);
-            ctrlFormation.FormationTimer(false);
+            ctrlFormationCHG.FormationTimer(false);
+            ctrlFormationHPC.FormationTimer(false);
 
             switch (title)
             {
@@ -104,19 +122,19 @@ namespace FMSMonitoringUI
                     scMainPanel.Panel2.Controls.Add(ctrlAging);
                     ctrlAging.AgingTimer(true);
                     break;
-                case "Formation":
+                case "Formation(CHG)":
 
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls[0].Dispose();
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
-                    //scMainPanel.Panel2.Controls.Add(ctrlFormation);
-                    //ctrlFormation.FormationTimer(true);
+                    scMainPanel.Panel2.Controls.Add(ctrlFormationCHG);
+                    ctrlFormationCHG.FormationTimer(true);
+                    break;
+                case "Formation(HPC)":
 
-                    this.Invoke(new MethodInvoker(delegate ()
-                    {
-                        ctrlMonitoring.Refresh();
-                    }));
-                    
-
+                    //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls[0].Dispose();
+                    //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
+                    scMainPanel.Panel2.Controls.Add(ctrlFormationHPC);
+                    ctrlFormationHPC.FormationTimer(true);
                     break;
             }
 
@@ -176,8 +194,8 @@ namespace FMSMonitoringUI
         {
             switch (enLanguage)
             {
-                case enLoginLanguage.Chinese:
-                    Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("zh-CN");
+                case enLoginLanguage.France:
+                    Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("fr-FR");
                     break;
                 case enLoginLanguage.Korean:
                     Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("ko-KR");
@@ -188,6 +206,43 @@ namespace FMSMonitoringUI
             }
             LocalLanguage.resxLanguage = new ResourceManager("MonitoringUI.WinFormRoot", typeof(WinFormRoot).Assembly);
         }
+        #endregion
+
+        #region 날짜 표시 Thread
+        private void updateTime()
+        {
+            string strCurrentTime = "";
+            while (true)
+            {
+                strCurrentTime = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                //lbCurrentTime.Text = strCurrentTime;
+                SetCurrentTime(strCurrentTime);
+                Task.Delay(1000).GetAwaiter().GetResult();
+            }
+        }
+
+        private void SetCurrentTime(string strCurrentTime)
+        {
+
+            try
+            {
+                if (this.lbCurrentTime.InvokeRequired)
+                {
+                    SetCurrentTimeCallback d = new SetCurrentTimeCallback(SetCurrentTime);
+                    this.Invoke(d, new object[] { strCurrentTime });
+                }
+                else
+                {
+                    this.lbCurrentTime.Text = strCurrentTime;
+                }
+            }
+            catch (Exception)
+            {
+
+                return;
+            }
+        }
+
         #endregion
     }
 }

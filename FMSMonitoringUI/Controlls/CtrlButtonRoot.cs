@@ -38,17 +38,17 @@ namespace MonitoringUI.Controlls.CButton
         #region MouseEvent
         private void button_MouseLeave(object sender, EventArgs e)
         {
-            lbTitle.BackColor = Color.FromArgb(121, 121, 121);
+            lbTitle.BackColor = Color.FromArgb(27, 27, 27);
         }
 
         private void button_MouseMove(object sender, MouseEventArgs e)
         {
-            lbTitle.BackColor = Color.FromArgb(252, 86, 24);
+            lbTitle.BackColor = Color.FromArgb(154, 160, 166);
         }
 
         private void button_MouseDown(object sender, MouseEventArgs e)
         {
-            lbTitle.BackColor = Color.FromArgb(121, 121, 121);
+            lbTitle.BackColor = Color.FromArgb(27, 27, 27);
         }
         #endregion
 

@@ -2683,4 +2683,7 @@
   <data name="strTrayOutManage" xml:space="preserve">
     <value>출고시간 변경</value>
   </data>
+  <data name="DEF_NORMAL_STATUS" xml:space="preserve">
+    <value>정상 상태</value>
+  </data>
 </root>

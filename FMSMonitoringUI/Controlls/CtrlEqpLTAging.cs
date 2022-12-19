@@ -14,9 +14,14 @@ namespace FMSMonitoringUI.Controlls
 {
     public partial class CtrlEqpLTAging : UserControlEqp
     {
+        public delegate void EventHandler(string title);
+        public event EventHandler Click_Evnet = null;
+
         public CtrlEqpLTAging()
         {
             InitializeComponent();
+
+            ctrlTitleBarLabel1.Click_Evnet += CtrlTitleBarLabel_Click;
         }
 
         #region Properties
@@ -63,6 +68,14 @@ namespace FMSMonitoringUI.Controlls
         {
             //opStatus.Text = op_status;
             //opStatus.BackColor = Color.Yellow;
+        }
+        #endregion
+
+        #region TitleBarLavel Click
+        private void CtrlTitleBarLabel_Click(string title)
+        {
+            if (this.Click_Evnet != null)
+                Click_Evnet(_EqpType);
         }
         #endregion
     }

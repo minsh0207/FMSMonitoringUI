@@ -11,12 +11,12 @@ namespace OPCUAClientClassLib
         /// <summary>
         /// None
         /// </summary>
-        None = 0,
+        //None = 0,
 
         /// <summary>
         /// Conveyor
         /// </summary>
-        CNV,
+        CNV = 0,
 
         /// <summary>
         /// StackerCrane

@@ -307,7 +307,7 @@ namespace ControlGallery
             }
 
             //
-            if (status.HasFlag(EnumDeviceStatus.TrayOn)) return Color.Lime; //.Yellow;
+            if (status.HasFlag(EnumDeviceStatus.TrayOn)) return Color.SpringGreen; //.Yellow;
 
             if (status.HasFlag(EnumDeviceStatus.ReqBCR)) return Color.LightGreen;
             if (status.HasFlag(EnumDeviceStatus.BCRReading)) return Color.RoyalBlue;

@@ -47,8 +47,8 @@ namespace MonitoringUI.Common
     public enum enLoginLanguage
     {
         Korean = 0,
-        Chinese = 1,
-        English = 2
+        France = 1,     //fr-FR
+        English = 2,
     }
 
     // Spread Skin

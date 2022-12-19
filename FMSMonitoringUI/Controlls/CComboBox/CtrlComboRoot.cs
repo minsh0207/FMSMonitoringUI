@@ -25,7 +25,7 @@ namespace MonitoringUI.Controlls.CComboBox
     {
         CString m_cString = new CString();
 
-        #region Properties
+        #region Properties        
         string _labelText = "";
         [DisplayName("TitleText"), Description("Combo Title"), Category("Combo Setting")]
         public string TitleText
@@ -1058,6 +1058,7 @@ namespace MonitoringUI.Controlls.CComboBox
             }
         }
         #endregion
+        
         #endregion
     }
     #endregion

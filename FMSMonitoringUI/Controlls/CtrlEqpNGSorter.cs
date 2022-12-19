@@ -52,7 +52,7 @@ namespace FMSMonitoringUI.Controlls
             TrayInfoView.RowsHeight(25);
 
             TrayInfoView.SetGridViewStyles();
-            TrayInfoView.ColumnHeadersWidth(0, 70);
+            TrayInfoView.ColumnWidth(0, 60);
         }
 
         #region setData

@@ -1,4 +1,4 @@
-﻿namespace MonitoringUI.Monitoring
+﻿namespace FMSMonitoringUI.Monitoring
 {
     partial class WinAgingRackSetting
     {
@@ -28,527 +28,422 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.gbJobKind = new System.Windows.Forms.GroupBox();
-            this.rbDelayAlarmOff = new System.Windows.Forms.RadioButton();
-            this.rbManualOutputOkTray = new System.Windows.Forms.RadioButton();
-            this.rbManualInputOkTray = new System.Windows.Forms.RadioButton();
-            this.rdInitTrouble = new System.Windows.Forms.RadioButton();
-            this.rbFireInit = new System.Windows.Forms.RadioButton();
-            this.rbYesOut = new System.Windows.Forms.RadioButton();
-            this.rbYesIn = new System.Windows.Forms.RadioButton();
-            this.rbNoOut = new System.Windows.Forms.RadioButton();
-            this.rbDeleteRackInfo = new System.Windows.Forms.RadioButton();
-            this.rbNoIn = new System.Windows.Forms.RadioButton();
-            this.btExit = new MonitoringUI.Controlls.CButton.CtrlButtonExit();
-            this.ctrlTitleBar1 = new MonitoringUI.Controlls.CtrlTitleBar();
-            this.tbRackID = new MonitoringUI.Controlls.TextBox.CtrlTextBoxRackID();
-            this.tbProcessName = new MonitoringUI.Controlls.TextBox.CtrlTextBoxProcessName();
-            this.tbTrayID = new MonitoringUI.Controlls.TextBox.CtrlTextBoxTrayID();
-            this.tbCurrentProcessName = new MonitoringUI.Controlls.TextBox.CtrlTextBoxCurrProcess();
-            this.dtPlanTime = new MonitoringUI.Controlls.CDateTime.CtrlDateTimePlanTime();
-            this.tbNextProcessName = new MonitoringUI.Controlls.TextBox.CtrlTextBoxNextProcess();
-            this.btConfirm = new MonitoringUI.Controlls.CButton.CtrlButtonConfirm();
-            this.cbChangePlantime = new System.Windows.Forms.CheckBox();
-            this.btOutNow = new System.Windows.Forms.Button();
-            this.dtStartTime = new MonitoringUI.Controlls.CDateTime.CtrlDateTimeDT();
-            this.ctrlLine1 = new MonitoringUI.Controlls.CtrlLine();
-            this.gbChangeRouteID = new System.Windows.Forms.GroupBox();
-            this.btCancelReserve = new System.Windows.Forms.Button();
-            this.btReserve = new System.Windows.Forms.Button();
-            this.tbReservedProc = new MonitoringUI.Controlls.TextBox.CtrlTextBoxNextProcess();
-            this.tbReservedRouteID = new MonitoringUI.Controlls.TextBox.CtrlTextBoxInputRouteID();
-            this.btManageOut = new System.Windows.Forms.Button();
-            this.gbJobKind.SuspendLayout();
-            this.gbChangeRouteID.SuspendLayout();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gridRackInfo = new FMSMonitoringUI.Controlls.CtrlDataGridView();
+            this.ctrlLabel1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
+            this.cboRouteID = new MonitoringUI.Controlls.CComboBox.CtrlComboBox();
+            this.cboModelID = new MonitoringUI.Controlls.CComboBox.CtrlComboBox();
+            this.ctrlRadioButton3 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
+            this.ctrlRadioButton2 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
+            this.ctrlRadioButton1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
+            this.ctrlLabel2 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
+            this.ctrlDateTimeDT1 = new MonitoringUI.Controlls.CDateTime.CtrlDateTimeDT();
+            this.rbNoOut = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
+            this.rbYesOut = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
+            this.rbNoIn = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
+            this.rbYesIn = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
+            this.ctrlLavel2 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
+            this.ctrlLavel1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
+            this.ctrlButtonSave1 = new MonitoringUI.Controlls.CButton.CtrlButtonSave();
+            this.ctrlButtonExit1 = new MonitoringUI.Controlls.CButton.CtrlButtonExit();
+            this.ctrlTitleBar = new MonitoringUI.Controlls.CtrlTitleBar();
+            this.ctrlButton1 = new MonitoringUI.Controlls.CButton.CtrlButton();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // gbJobKind
+            // panel2
             // 
-            this.gbJobKind.Controls.Add(this.rbDelayAlarmOff);
-            this.gbJobKind.Controls.Add(this.rbManualOutputOkTray);
-            this.gbJobKind.Controls.Add(this.rbManualInputOkTray);
-            this.gbJobKind.Controls.Add(this.rdInitTrouble);
-            this.gbJobKind.Controls.Add(this.rbFireInit);
-            this.gbJobKind.Controls.Add(this.rbYesOut);
-            this.gbJobKind.Controls.Add(this.rbYesIn);
-            this.gbJobKind.Controls.Add(this.rbNoOut);
-            this.gbJobKind.Controls.Add(this.rbDeleteRackInfo);
-            this.gbJobKind.Controls.Add(this.rbNoIn);
-            this.gbJobKind.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.gbJobKind.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.gbJobKind.Location = new System.Drawing.Point(22, 329);
-            this.gbJobKind.Name = "gbJobKind";
-            this.gbJobKind.Size = new System.Drawing.Size(531, 122);
-            this.gbJobKind.TabIndex = 5;
-            this.gbJobKind.TabStop = false;
-            this.gbJobKind.Text = "작업종류";
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.ctrlTitleBar);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(929, 65);
+            this.panel2.TabIndex = 1;
             // 
-            // rbDelayAlarmOff
+            // panel3
             // 
-            this.rbDelayAlarmOff.AutoSize = true;
-            this.rbDelayAlarmOff.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.rbDelayAlarmOff.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.rbDelayAlarmOff.Location = new System.Drawing.Point(390, 27);
-            this.rbDelayAlarmOff.Name = "rbDelayAlarmOff";
-            this.rbDelayAlarmOff.Size = new System.Drawing.Size(129, 17);
-            this.rbDelayAlarmOff.TabIndex = 9;
-            this.rbDelayAlarmOff.TabStop = true;
-            this.rbDelayAlarmOff.Text = "출고지연알람해제";
-            this.rbDelayAlarmOff.UseVisualStyleBackColor = true;
-            this.rbDelayAlarmOff.Visible = false;
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.ctrlButton1);
+            this.panel3.Controls.Add(this.ctrlButtonSave1);
+            this.panel3.Controls.Add(this.ctrlButtonExit1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 479);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(929, 64);
+            this.panel3.TabIndex = 2;
             // 
-            // rbManualOutputOkTray
+            // splitContainer1
             // 
-            this.rbManualOutputOkTray.AutoSize = true;
-            this.rbManualOutputOkTray.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.rbManualOutputOkTray.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.rbManualOutputOkTray.Location = new System.Drawing.Point(390, 88);
-            this.rbManualOutputOkTray.Name = "rbManualOutputOkTray";
-            this.rbManualOutputOkTray.Size = new System.Drawing.Size(107, 17);
-            this.rbManualOutputOkTray.TabIndex = 8;
-            this.rbManualOutputOkTray.TabStop = true;
-            this.rbManualOutputOkTray.Text = "수동 출고완료";
-            this.rbManualOutputOkTray.UseVisualStyleBackColor = true;
-            this.rbManualOutputOkTray.Visible = false;
+            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 65);
+            this.splitContainer1.Name = "splitContainer1";
             // 
-            // rbManualInputOkTray
+            // splitContainer1.Panel1
             // 
-            this.rbManualInputOkTray.AutoSize = true;
-            this.rbManualInputOkTray.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.rbManualInputOkTray.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.rbManualInputOkTray.Location = new System.Drawing.Point(390, 56);
-            this.rbManualInputOkTray.Name = "rbManualInputOkTray";
-            this.rbManualInputOkTray.Size = new System.Drawing.Size(107, 17);
-            this.rbManualInputOkTray.TabIndex = 8;
-            this.rbManualInputOkTray.TabStop = true;
-            this.rbManualInputOkTray.Text = "수동 입고완료";
-            this.rbManualInputOkTray.UseVisualStyleBackColor = true;
-            this.rbManualInputOkTray.Visible = false;
+            this.splitContainer1.Panel1.Controls.Add(this.label1);
+            this.splitContainer1.Panel1.Controls.Add(this.gridRackInfo);
             // 
-            // rdInitTrouble
+            // splitContainer1.Panel2
             // 
-            this.rdInitTrouble.AutoSize = true;
-            this.rdInitTrouble.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.rdInitTrouble.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.rdInitTrouble.Location = new System.Drawing.Point(260, 27);
-            this.rdInitTrouble.Name = "rdInitTrouble";
-            this.rdInitTrouble.Size = new System.Drawing.Size(110, 17);
-            this.rdInitTrouble.TabIndex = 6;
-            this.rdInitTrouble.TabStop = true;
-            this.rdInitTrouble.Text = "Trouble 초기화";
-            this.rdInitTrouble.UseVisualStyleBackColor = true;
+            this.splitContainer1.Panel2.Controls.Add(this.ctrlLabel1);
+            this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
+            this.splitContainer1.Panel2.Controls.Add(this.groupBox1);
+            this.splitContainer1.Panel2.Controls.Add(this.ctrlDateTimeDT1);
+            this.splitContainer1.Panel2.Controls.Add(this.rbNoOut);
+            this.splitContainer1.Panel2.Controls.Add(this.rbYesOut);
+            this.splitContainer1.Panel2.Controls.Add(this.rbNoIn);
+            this.splitContainer1.Panel2.Controls.Add(this.rbYesIn);
+            this.splitContainer1.Panel2.Controls.Add(this.ctrlLavel2);
+            this.splitContainer1.Panel2.Controls.Add(this.ctrlLavel1);
+            this.splitContainer1.Size = new System.Drawing.Size(929, 414);
+            this.splitContainer1.SplitterDistance = 342;
+            this.splitContainer1.TabIndex = 3;
             // 
-            // rbFireInit
+            // label1
             // 
-            this.rbFireInit.AutoSize = true;
-            this.rbFireInit.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.rbFireInit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.rbFireInit.Location = new System.Drawing.Point(143, 27);
-            this.rbFireInit.Name = "rbFireInit";
-            this.rbFireInit.Size = new System.Drawing.Size(111, 17);
-            this.rbFireInit.TabIndex = 7;
-            this.rbFireInit.TabStop = true;
-            this.rbFireInit.Text = "화재 정보 해제";
-            this.rbFireInit.UseVisualStyleBackColor = true;
+            this.label1.ForeColor = System.Drawing.Color.DarkGray;
+            this.label1.Location = new System.Drawing.Point(6, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(107, 26);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Rack Info";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // rbYesOut
+            // groupBox2
             // 
-            this.rbYesOut.AutoSize = true;
-            this.rbYesOut.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.rbYesOut.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.rbYesOut.Location = new System.Drawing.Point(143, 56);
-            this.rbYesOut.Name = "rbYesOut";
-            this.rbYesOut.Size = new System.Drawing.Size(81, 17);
-            this.rbYesOut.TabIndex = 4;
-            this.rbYesOut.TabStop = true;
-            this.rbYesOut.Text = "출고 가능";
-            this.rbYesOut.UseVisualStyleBackColor = true;
+            this.groupBox2.Controls.Add(this.cboRouteID);
+            this.groupBox2.Controls.Add(this.cboModelID);
+            this.groupBox2.Location = new System.Drawing.Point(66, 127);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(477, 53);
+            this.groupBox2.TabIndex = 46;
+            this.groupBox2.TabStop = false;
             // 
-            // rbYesIn
+            // groupBox1
             // 
-            this.rbYesIn.AutoSize = true;
-            this.rbYesIn.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.rbYesIn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.rbYesIn.Location = new System.Drawing.Point(143, 88);
-            this.rbYesIn.Name = "rbYesIn";
-            this.rbYesIn.Size = new System.Drawing.Size(81, 17);
-            this.rbYesIn.TabIndex = 2;
-            this.rbYesIn.TabStop = true;
-            this.rbYesIn.Text = "입고 가능";
-            this.rbYesIn.UseVisualStyleBackColor = true;
+            this.groupBox1.Controls.Add(this.ctrlRadioButton3);
+            this.groupBox1.Controls.Add(this.ctrlRadioButton2);
+            this.groupBox1.Controls.Add(this.ctrlRadioButton1);
+            this.groupBox1.Controls.Add(this.ctrlLabel2);
+            this.groupBox1.Location = new System.Drawing.Point(34, 270);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(509, 64);
+            this.groupBox1.TabIndex = 45;
+            this.groupBox1.TabStop = false;
+            // 
+            // gridRackInfo
+            // 
+            this.gridRackInfo.ColumnCount = -1;
+            this.gridRackInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gridRackInfo.Location = new System.Drawing.Point(0, 45);
+            this.gridRackInfo.Name = "gridRackInfo";
+            this.gridRackInfo.RowCount = -1;
+            this.gridRackInfo.Size = new System.Drawing.Size(340, 367);
+            this.gridRackInfo.TabIndex = 1;
+            // 
+            // ctrlLabel1
+            // 
+            this.ctrlLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlLabel1.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel1.LanguageID = "";
+            this.ctrlLabel1.Location = new System.Drawing.Point(72, 129);
+            this.ctrlLabel1.Name = "ctrlLabel1";
+            this.ctrlLabel1.Size = new System.Drawing.Size(88, 12);
+            this.ctrlLabel1.TabIndex = 32;
+            this.ctrlLabel1.Text = "Load Available";
+            // 
+            // cboRouteID
+            // 
+            this.cboRouteID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.cboRouteID.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.cboRouteID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.cboRouteID.LanguageID = "";
+            this.cboRouteID.Location = new System.Drawing.Point(263, 19);
+            this.cboRouteID.Name = "cboRouteID";
+            this.cboRouteID.SelectedIndex = -1;
+            this.cboRouteID.SelectedItem = null;
+            this.cboRouteID.SelectedKeyString = "";
+            this.cboRouteID.Size = new System.Drawing.Size(189, 27);
+            this.cboRouteID.TabIndex = 37;
+            this.cboRouteID.TitleText = "Route ID";
+            // 
+            // cboModelID
+            // 
+            this.cboModelID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.cboModelID.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.cboModelID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.cboModelID.LanguageID = "";
+            this.cboModelID.Location = new System.Drawing.Point(20, 19);
+            this.cboModelID.Name = "cboModelID";
+            this.cboModelID.SelectedIndex = -1;
+            this.cboModelID.SelectedItem = null;
+            this.cboModelID.SelectedKeyString = "";
+            this.cboModelID.Size = new System.Drawing.Size(189, 27);
+            this.cboModelID.TabIndex = 36;
+            this.cboModelID.TitleText = "Model ID";
+            // 
+            // ctrlRadioButton3
+            // 
+            this.ctrlRadioButton3.AutoSize = true;
+            this.ctrlRadioButton3.ForeColor = System.Drawing.Color.White;
+            this.ctrlRadioButton3.LanguageID = "";
+            this.ctrlRadioButton3.Location = new System.Drawing.Point(356, 28);
+            this.ctrlRadioButton3.Name = "ctrlRadioButton3";
+            this.ctrlRadioButton3.Size = new System.Drawing.Size(115, 16);
+            this.ctrlRadioButton3.TabIndex = 47;
+            this.ctrlRadioButton3.TabStop = true;
+            this.ctrlRadioButton3.Text = "Clear Fire Alarm";
+            this.ctrlRadioButton3.UseVisualStyleBackColor = true;
+            // 
+            // ctrlRadioButton2
+            // 
+            this.ctrlRadioButton2.AutoSize = true;
+            this.ctrlRadioButton2.ForeColor = System.Drawing.Color.White;
+            this.ctrlRadioButton2.LanguageID = "";
+            this.ctrlRadioButton2.Location = new System.Drawing.Point(174, 28);
+            this.ctrlRadioButton2.Name = "ctrlRadioButton2";
+            this.ctrlRadioButton2.Size = new System.Drawing.Size(137, 16);
+            this.ctrlRadioButton2.TabIndex = 46;
+            this.ctrlRadioButton2.TabStop = true;
+            this.ctrlRadioButton2.Text = "Clear Trouble Alarm";
+            this.ctrlRadioButton2.UseVisualStyleBackColor = true;
+            // 
+            // ctrlRadioButton1
+            // 
+            this.ctrlRadioButton1.AutoSize = true;
+            this.ctrlRadioButton1.ForeColor = System.Drawing.Color.White;
+            this.ctrlRadioButton1.LanguageID = "";
+            this.ctrlRadioButton1.Location = new System.Drawing.Point(11, 28);
+            this.ctrlRadioButton1.Name = "ctrlRadioButton1";
+            this.ctrlRadioButton1.Size = new System.Drawing.Size(109, 16);
+            this.ctrlRadioButton1.TabIndex = 45;
+            this.ctrlRadioButton1.TabStop = true;
+            this.ctrlRadioButton1.Text = "Clear Rack Info";
+            this.ctrlRadioButton1.UseVisualStyleBackColor = true;
+            // 
+            // ctrlLabel2
+            // 
+            this.ctrlLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel2.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlLabel2.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel2.LanguageID = "";
+            this.ctrlLabel2.Location = new System.Drawing.Point(8, 2);
+            this.ctrlLabel2.Name = "ctrlLabel2";
+            this.ctrlLabel2.Size = new System.Drawing.Size(111, 13);
+            this.ctrlLabel2.TabIndex = 37;
+            this.ctrlLabel2.Text = "Clear Command";
+            // 
+            // ctrlDateTimeDT1
+            // 
+            this.ctrlDateTimeDT1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlDateTimeDT1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlDateTimeDT1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.ctrlDateTimeDT1.LanguageID = "DEF_CONTROL_001";
+            this.ctrlDateTimeDT1.Location = new System.Drawing.Point(30, 194);
+            this.ctrlDateTimeDT1.Name = "ctrlDateTimeDT1";
+            this.ctrlDateTimeDT1.Size = new System.Drawing.Size(253, 27);
+            this.ctrlDateTimeDT1.StartTime = new System.DateTime(2022, 12, 22, 18, 9, 29, 104);
+            this.ctrlDateTimeDT1.TabIndex = 36;
+            this.ctrlDateTimeDT1.TitleText = "Plan Time";
             // 
             // rbNoOut
             // 
             this.rbNoOut.AutoSize = true;
-            this.rbNoOut.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.rbNoOut.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.rbNoOut.Location = new System.Drawing.Point(24, 56);
+            this.rbNoOut.ForeColor = System.Drawing.Color.White;
+            this.rbNoOut.LanguageID = "";
+            this.rbNoOut.Location = new System.Drawing.Point(222, 96);
             this.rbNoOut.Name = "rbNoOut";
-            this.rbNoOut.Size = new System.Drawing.Size(81, 17);
-            this.rbNoOut.TabIndex = 3;
+            this.rbNoOut.Size = new System.Drawing.Size(108, 16);
+            this.rbNoOut.TabIndex = 31;
             this.rbNoOut.TabStop = true;
-            this.rbNoOut.Text = "출고 금지";
+            this.rbNoOut.Text = "Unload Prohibit";
             this.rbNoOut.UseVisualStyleBackColor = true;
             // 
-            // rbDeleteRackInfo
+            // rbYesOut
             // 
-            this.rbDeleteRackInfo.AutoSize = true;
-            this.rbDeleteRackInfo.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.rbDeleteRackInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.rbDeleteRackInfo.Location = new System.Drawing.Point(24, 27);
-            this.rbDeleteRackInfo.Name = "rbDeleteRackInfo";
-            this.rbDeleteRackInfo.Size = new System.Drawing.Size(113, 17);
-            this.rbDeleteRackInfo.TabIndex = 5;
-            this.rbDeleteRackInfo.TabStop = true;
-            this.rbDeleteRackInfo.Text = "Rack 정보 삭제";
-            this.rbDeleteRackInfo.UseVisualStyleBackColor = true;
+            this.rbYesOut.AutoSize = true;
+            this.rbYesOut.ForeColor = System.Drawing.Color.White;
+            this.rbYesOut.LanguageID = "";
+            this.rbYesOut.Location = new System.Drawing.Point(59, 96);
+            this.rbYesOut.Name = "rbYesOut";
+            this.rbYesOut.Size = new System.Drawing.Size(117, 16);
+            this.rbYesOut.TabIndex = 30;
+            this.rbYesOut.TabStop = true;
+            this.rbYesOut.Text = "Unload Available";
+            this.rbYesOut.UseVisualStyleBackColor = true;
             // 
             // rbNoIn
             // 
             this.rbNoIn.AutoSize = true;
-            this.rbNoIn.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.rbNoIn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.rbNoIn.Location = new System.Drawing.Point(24, 88);
+            this.rbNoIn.ForeColor = System.Drawing.Color.White;
+            this.rbNoIn.LanguageID = "";
+            this.rbNoIn.Location = new System.Drawing.Point(222, 71);
             this.rbNoIn.Name = "rbNoIn";
-            this.rbNoIn.Size = new System.Drawing.Size(81, 17);
-            this.rbNoIn.TabIndex = 1;
+            this.rbNoIn.Size = new System.Drawing.Size(97, 16);
+            this.rbNoIn.TabIndex = 29;
             this.rbNoIn.TabStop = true;
-            this.rbNoIn.Text = "입고 금지";
+            this.rbNoIn.Text = "Load Prohibit";
             this.rbNoIn.UseVisualStyleBackColor = true;
             // 
-            // btExit
+            // rbYesIn
             // 
-            this.btExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(69)))), ((int)(((byte)(88)))));
-            this.btExit.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.btExit.LabelText = "Exit";
-            this.btExit.Location = new System.Drawing.Point(280, 457);
-            this.btExit.Name = "btExit";
-            this.btExit.Size = new System.Drawing.Size(100, 38);
-            this.btExit.TabIndex = 9;
+            this.rbYesIn.AutoSize = true;
+            this.rbYesIn.ForeColor = System.Drawing.Color.White;
+            this.rbYesIn.LanguageID = "";
+            this.rbYesIn.Location = new System.Drawing.Point(59, 71);
+            this.rbYesIn.Name = "rbYesIn";
+            this.rbYesIn.Size = new System.Drawing.Size(106, 16);
+            this.rbYesIn.TabIndex = 28;
+            this.rbYesIn.TabStop = true;
+            this.rbYesIn.Text = "Load Available";
+            this.rbYesIn.UseVisualStyleBackColor = true;
             // 
-            // ctrlTitleBar1
+            // ctrlLavel2
             // 
-            this.ctrlTitleBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(90)))), ((int)(((byte)(107)))));
-            this.ctrlTitleBar1.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ctrlTitleBar1.ForeColor = System.Drawing.Color.White;
-            this.ctrlTitleBar1.Location = new System.Drawing.Point(0, 0);
-            this.ctrlTitleBar1.Margin = new System.Windows.Forms.Padding(4);
-            this.ctrlTitleBar1.Name = "ctrlTitleBar1";
-            this.ctrlTitleBar1.Size = new System.Drawing.Size(603, 50);
-            this.ctrlTitleBar1.TabIndex = 10;
-            this.ctrlTitleBar1.TitleText = "Aging Rack 설정";
+            this.ctrlLavel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLavel2.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlLavel2.ForeColor = System.Drawing.Color.White;
+            this.ctrlLavel2.LanguageID = "";
+            this.ctrlLavel2.Location = new System.Drawing.Point(32, 45);
+            this.ctrlLavel2.Name = "ctrlLavel2";
+            this.ctrlLavel2.Size = new System.Drawing.Size(160, 23);
+            this.ctrlLavel2.TabIndex = 27;
+            this.ctrlLavel2.Text = "Rack Use Command";
             // 
-            // tbRackID
+            // ctrlLavel1
             // 
-            this.tbRackID.BackColor = System.Drawing.Color.LightGray;
-            this.tbRackID.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.tbRackID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.tbRackID.Location = new System.Drawing.Point(13, 63);
-            this.tbRackID.MaxLength = 32767;
-            this.tbRackID.Name = "tbRackID";
-            this.tbRackID.PasswordChar = '\0';
-            this.tbRackID.Size = new System.Drawing.Size(260, 27);
-            this.tbRackID.TabIndex = 11;
-            this.tbRackID.TextBoxAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.tbRackID.TextBoxText = "";
-            this.tbRackID.TextData = "";
-            this.tbRackID.TitleText = "strRackID";
+            this.ctrlLavel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLavel1.Font = new System.Drawing.Font("굴림", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlLavel1.ForeColor = System.Drawing.Color.White;
+            this.ctrlLavel1.LanguageID = "";
+            this.ctrlLavel1.Location = new System.Drawing.Point(13, 13);
+            this.ctrlLavel1.Name = "ctrlLavel1";
+            this.ctrlLavel1.Size = new System.Drawing.Size(236, 23);
+            this.ctrlLavel1.TabIndex = 26;
+            this.ctrlLavel1.Text = "Configuration";
             // 
-            // tbProcessName
+            // ctrlButtonSave1
             // 
-            this.tbProcessName.BackColor = System.Drawing.Color.LightGray;
-            this.tbProcessName.Enabled = false;
-            this.tbProcessName.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.tbProcessName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.tbProcessName.Location = new System.Drawing.Point(280, 63);
-            this.tbProcessName.MaxLength = 32767;
-            this.tbProcessName.Name = "tbProcessName";
-            this.tbProcessName.PasswordChar = '\0';
-            this.tbProcessName.Size = new System.Drawing.Size(260, 27);
-            this.tbProcessName.TabIndex = 12;
-            this.tbProcessName.TextBoxAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.tbProcessName.TextBoxText = "";
-            this.tbProcessName.TextData = "";
-            this.tbProcessName.TitleText = "strProcessName";
+            this.ctrlButtonSave1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(69)))), ((int)(((byte)(88)))));
+            this.ctrlButtonSave1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlButtonSave1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.ctrlButtonSave1.LabelText = "strSave";
+            this.ctrlButtonSave1.Location = new System.Drawing.Point(333, 9);
+            this.ctrlButtonSave1.Name = "ctrlButtonSave1";
+            this.ctrlButtonSave1.Size = new System.Drawing.Size(127, 42);
+            this.ctrlButtonSave1.TabIndex = 3;
             // 
-            // tbTrayID
+            // ctrlButtonExit1
             // 
-            this.tbTrayID.BackColor = System.Drawing.Color.LightGray;
-            this.tbTrayID.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.tbTrayID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.tbTrayID.Location = new System.Drawing.Point(13, 133);
-            this.tbTrayID.MaxLength = 32767;
-            this.tbTrayID.Name = "tbTrayID";
-            this.tbTrayID.PasswordChar = '\0';
-            this.tbTrayID.Size = new System.Drawing.Size(260, 27);
-            this.tbTrayID.TabIndex = 13;
-            this.tbTrayID.TextBoxAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.tbTrayID.TextBoxText = "";
-            this.tbTrayID.TextData = "";
-            this.tbTrayID.TitleText = "strTrayID";
+            this.ctrlButtonExit1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(69)))), ((int)(((byte)(88)))));
+            this.ctrlButtonExit1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlButtonExit1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.ctrlButtonExit1.LabelText = "Exit";
+            this.ctrlButtonExit1.Location = new System.Drawing.Point(482, 9);
+            this.ctrlButtonExit1.Name = "ctrlButtonExit1";
+            this.ctrlButtonExit1.Size = new System.Drawing.Size(127, 42);
+            this.ctrlButtonExit1.TabIndex = 2;
+            this.ctrlButtonExit1.Click += new System.EventHandler(this.ctrlButtonExit1_Click);
             // 
-            // tbCurrentProcessName
+            // ctrlTitleBar
             // 
-            this.tbCurrentProcessName.BackColor = System.Drawing.Color.LightGray;
-            this.tbCurrentProcessName.Enabled = false;
-            this.tbCurrentProcessName.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.tbCurrentProcessName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.tbCurrentProcessName.Location = new System.Drawing.Point(13, 167);
-            this.tbCurrentProcessName.MaxLength = 32767;
-            this.tbCurrentProcessName.Name = "tbCurrentProcessName";
-            this.tbCurrentProcessName.PasswordChar = '\0';
-            this.tbCurrentProcessName.Size = new System.Drawing.Size(260, 27);
-            this.tbCurrentProcessName.TabIndex = 15;
-            this.tbCurrentProcessName.TextBoxAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.tbCurrentProcessName.TextBoxText = "";
-            this.tbCurrentProcessName.TextData = "";
-            this.tbCurrentProcessName.TitleText = "strCurrProcessName";
+            this.ctrlTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlTitleBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ctrlTitleBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ctrlTitleBar.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlTitleBar.ForeColor = System.Drawing.Color.White;
+            this.ctrlTitleBar.Location = new System.Drawing.Point(0, 0);
+            this.ctrlTitleBar.Margin = new System.Windows.Forms.Padding(4);
+            this.ctrlTitleBar.Name = "ctrlTitleBar";
+            this.ctrlTitleBar.Size = new System.Drawing.Size(927, 63);
+            this.ctrlTitleBar.TabIndex = 0;
+            this.ctrlTitleBar.TitleText = "Aging Rack Setting";
             // 
-            // dtPlanTime
+            // ctrlButton1
             // 
-            this.dtPlanTime.BackColor = System.Drawing.Color.LightGray;
-            this.dtPlanTime.Enabled = false;
-            this.dtPlanTime.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.dtPlanTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.dtPlanTime.Location = new System.Drawing.Point(280, 96);
-            this.dtPlanTime.Name = "dtPlanTime";
-            this.dtPlanTime.PlanTime = new System.DateTime(2019, 3, 18, 18, 13, 28, 458);
-            this.dtPlanTime.Size = new System.Drawing.Size(251, 27);
-            this.dtPlanTime.TabIndex = 16;
-            // 
-            // tbNextProcessName
-            // 
-            this.tbNextProcessName.BackColor = System.Drawing.Color.LightGray;
-            this.tbNextProcessName.Enabled = false;
-            this.tbNextProcessName.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.tbNextProcessName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.tbNextProcessName.Location = new System.Drawing.Point(280, 167);
-            this.tbNextProcessName.MaxLength = 32767;
-            this.tbNextProcessName.Name = "tbNextProcessName";
-            this.tbNextProcessName.PasswordChar = '\0';
-            this.tbNextProcessName.Size = new System.Drawing.Size(260, 27);
-            this.tbNextProcessName.TabIndex = 17;
-            this.tbNextProcessName.TextBoxAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.tbNextProcessName.TextBoxText = "";
-            this.tbNextProcessName.TextData = "";
-            this.tbNextProcessName.TitleText = "strNextProcessName";
-            // 
-            // btConfirm
-            // 
-            this.btConfirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(69)))), ((int)(((byte)(88)))));
-            this.btConfirm.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btConfirm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.btConfirm.LabelText = "Confirm";
-            this.btConfirm.Location = new System.Drawing.Point(159, 457);
-            this.btConfirm.Name = "btConfirm";
-            this.btConfirm.Size = new System.Drawing.Size(100, 38);
-            this.btConfirm.TabIndex = 18;
-            // 
-            // cbChangePlantime
-            // 
-            this.cbChangePlantime.AutoSize = true;
-            this.cbChangePlantime.Location = new System.Drawing.Point(539, 12);
-            this.cbChangePlantime.Name = "cbChangePlantime";
-            this.cbChangePlantime.Size = new System.Drawing.Size(52, 17);
-            this.cbChangePlantime.TabIndex = 19;
-            this.cbChangePlantime.Text = "변경";
-            this.cbChangePlantime.UseVisualStyleBackColor = true;
-            this.cbChangePlantime.Visible = false;
-            this.cbChangePlantime.CheckedChanged += new System.EventHandler(this.cbChangePlantime_CheckedChanged);
-            // 
-            // btOutNow
-            // 
-            this.btOutNow.BackColor = System.Drawing.Color.Black;
-            this.btOutNow.ForeColor = System.Drawing.Color.White;
-            this.btOutNow.Location = new System.Drawing.Point(307, 129);
-            this.btOutNow.Name = "btOutNow";
-            this.btOutNow.Size = new System.Drawing.Size(139, 23);
-            this.btOutNow.TabIndex = 21;
-            this.btOutNow.Text = "지금 출고";
-            this.btOutNow.UseVisualStyleBackColor = false;
-            this.btOutNow.Click += new System.EventHandler(this.btOutNow_Click);
-            // 
-            // dtStartTime
-            // 
-            this.dtStartTime.BackColor = System.Drawing.Color.LightGray;
-            this.dtStartTime.Enabled = false;
-            this.dtStartTime.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.dtStartTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.dtStartTime.Location = new System.Drawing.Point(13, 96);
-            this.dtStartTime.Name = "dtStartTime";
-            this.dtStartTime.Size = new System.Drawing.Size(251, 27);
-            this.dtStartTime.StartTime = new System.DateTime(2019, 10, 30, 12, 29, 34, 592);
-            this.dtStartTime.TabIndex = 22;
-            // 
-            // ctrlLine1
-            // 
-            this.ctrlLine1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ctrlLine1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(231)))), ((int)(((byte)(231)))));
-            this.ctrlLine1.Location = new System.Drawing.Point(13, 205);
-            this.ctrlLine1.Name = "ctrlLine1";
-            this.ctrlLine1.Size = new System.Drawing.Size(567, 2);
-            this.ctrlLine1.TabIndex = 23;
-            // 
-            // gbChangeRouteID
-            // 
-            this.gbChangeRouteID.Controls.Add(this.btCancelReserve);
-            this.gbChangeRouteID.Controls.Add(this.btReserve);
-            this.gbChangeRouteID.Controls.Add(this.tbReservedProc);
-            this.gbChangeRouteID.Controls.Add(this.tbReservedRouteID);
-            this.gbChangeRouteID.Location = new System.Drawing.Point(22, 214);
-            this.gbChangeRouteID.Name = "gbChangeRouteID";
-            this.gbChangeRouteID.Size = new System.Drawing.Size(531, 97);
-            this.gbChangeRouteID.TabIndex = 24;
-            this.gbChangeRouteID.TabStop = false;
-            this.gbChangeRouteID.Text = "RouteID 변경 예약 정보";
-            // 
-            // btCancelReserve
-            // 
-            this.btCancelReserve.BackColor = System.Drawing.Color.Red;
-            this.btCancelReserve.ForeColor = System.Drawing.Color.White;
-            this.btCancelReserve.Location = new System.Drawing.Point(342, 50);
-            this.btCancelReserve.Name = "btCancelReserve";
-            this.btCancelReserve.Size = new System.Drawing.Size(151, 27);
-            this.btCancelReserve.TabIndex = 3;
-            this.btCancelReserve.Text = "예약취소";
-            this.btCancelReserve.UseVisualStyleBackColor = false;
-            this.btCancelReserve.Click += new System.EventHandler(this.btCancelReserve_Click);
-            // 
-            // btReserve
-            // 
-            this.btReserve.BackColor = System.Drawing.Color.Gray;
-            this.btReserve.ForeColor = System.Drawing.Color.Black;
-            this.btReserve.Location = new System.Drawing.Point(342, 21);
-            this.btReserve.Name = "btReserve";
-            this.btReserve.Size = new System.Drawing.Size(151, 32);
-            this.btReserve.TabIndex = 2;
-            this.btReserve.Text = "변경예약";
-            this.btReserve.UseVisualStyleBackColor = false;
-            this.btReserve.Click += new System.EventHandler(this.btReserve_Click);
-            // 
-            // tbReservedProc
-            // 
-            this.tbReservedProc.BackColor = System.Drawing.Color.LightGray;
-            this.tbReservedProc.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.tbReservedProc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.tbReservedProc.Location = new System.Drawing.Point(48, 55);
-            this.tbReservedProc.MaxLength = 32767;
-            this.tbReservedProc.Name = "tbReservedProc";
-            this.tbReservedProc.PasswordChar = '\0';
-            this.tbReservedProc.Size = new System.Drawing.Size(260, 27);
-            this.tbReservedProc.TabIndex = 1;
-            this.tbReservedProc.TextBoxAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.tbReservedProc.TextBoxText = "";
-            this.tbReservedProc.TextData = "";
-            this.tbReservedProc.TitleText = "strNextProcessName";
-            // 
-            // tbReservedRouteID
-            // 
-            this.tbReservedRouteID.BackColor = System.Drawing.Color.LightGray;
-            this.tbReservedRouteID.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.tbReservedRouteID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.tbReservedRouteID.Location = new System.Drawing.Point(48, 22);
-            this.tbReservedRouteID.MaxLength = 32767;
-            this.tbReservedRouteID.Name = "tbReservedRouteID";
-            this.tbReservedRouteID.PasswordChar = '\0';
-            this.tbReservedRouteID.Size = new System.Drawing.Size(260, 27);
-            this.tbReservedRouteID.TabIndex = 0;
-            this.tbReservedRouteID.TextBoxAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.tbReservedRouteID.TextBoxText = "";
-            this.tbReservedRouteID.TextData = "";
-            this.tbReservedRouteID.TitleText = "DEF_CONTROL_093";
-            // 
-            // btManageOut
-            // 
-            this.btManageOut.Location = new System.Drawing.Point(459, 129);
-            this.btManageOut.Name = "btManageOut";
-            this.btManageOut.Size = new System.Drawing.Size(139, 23);
-            this.btManageOut.TabIndex = 25;
-            this.btManageOut.Text = "출고시간 변경";
-            this.btManageOut.UseVisualStyleBackColor = true;
-            this.btManageOut.Click += new System.EventHandler(this.btManageOut_Click);
+            this.ctrlButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlButton1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ctrlButton1.Enabled = false;
+            this.ctrlButton1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.ctrlButton1.LabelText = "Exit";
+            this.ctrlButton1.LanguageID = "";
+            this.ctrlButton1.Location = new System.Drawing.Point(675, 9);
+            this.ctrlButton1.Name = "ctrlButton1";
+            this.ctrlButton1.Size = new System.Drawing.Size(127, 42);
+            this.ctrlButton1.TabIndex = 4;
+            this.ctrlButton1.Visible = false;
             // 
             // WinAgingRackSetting
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(603, 550);
-            this.Controls.Add(this.btManageOut);
-            this.Controls.Add(this.gbChangeRouteID);
-            this.Controls.Add(this.ctrlLine1);
-            this.Controls.Add(this.dtStartTime);
-            this.Controls.Add(this.btOutNow);
-            this.Controls.Add(this.cbChangePlantime);
-            this.Controls.Add(this.btConfirm);
-            this.Controls.Add(this.tbNextProcessName);
-            this.Controls.Add(this.dtPlanTime);
-            this.Controls.Add(this.tbCurrentProcessName);
-            this.Controls.Add(this.tbTrayID);
-            this.Controls.Add(this.tbProcessName);
-            this.Controls.Add(this.tbRackID);
-            this.Controls.Add(this.ctrlTitleBar1);
-            this.Controls.Add(this.btExit);
-            this.Controls.Add(this.gbJobKind);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ClientSize = new System.Drawing.Size(929, 543);
+            this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "WinAgingRackSetting";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WinAgingRackSetting";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.WinAgingRackSetting_Load);
-            this.Controls.SetChildIndex(this.gbJobKind, 0);
-            this.Controls.SetChildIndex(this.btExit, 0);
-            this.Controls.SetChildIndex(this.ctrlTitleBar1, 0);
-            this.Controls.SetChildIndex(this.tbRackID, 0);
-            this.Controls.SetChildIndex(this.tbProcessName, 0);
-            this.Controls.SetChildIndex(this.tbTrayID, 0);
-            this.Controls.SetChildIndex(this.tbCurrentProcessName, 0);
-            this.Controls.SetChildIndex(this.dtPlanTime, 0);
-            this.Controls.SetChildIndex(this.tbNextProcessName, 0);
-            this.Controls.SetChildIndex(this.btConfirm, 0);
-            this.Controls.SetChildIndex(this.cbChangePlantime, 0);
-            this.Controls.SetChildIndex(this.btOutNow, 0);
-            this.Controls.SetChildIndex(this.dtStartTime, 0);
-            this.Controls.SetChildIndex(this.ctrlLine1, 0);
-            this.Controls.SetChildIndex(this.gbChangeRouteID, 0);
-            this.Controls.SetChildIndex(this.btManageOut, 0);
-            this.gbJobKind.ResumeLayout(false);
-            this.gbJobKind.PerformLayout();
-            this.gbChangeRouteID.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.RadioButton rbNoIn;
-        private System.Windows.Forms.RadioButton rbDeleteRackInfo;
-        private System.Windows.Forms.GroupBox gbJobKind;
-        private Controlls.CButton.CtrlButtonExit btExit;
-        private Controlls.CtrlTitleBar ctrlTitleBar1;
-        private Controlls.TextBox.CtrlTextBoxRackID tbRackID;
-        private Controlls.TextBox.CtrlTextBoxProcessName tbProcessName;
-        private Controlls.TextBox.CtrlTextBoxTrayID tbTrayID;
-        private Controlls.TextBox.CtrlTextBoxCurrProcess tbCurrentProcessName;
-        private Controlls.CDateTime.CtrlDateTimePlanTime dtPlanTime;
-        private Controlls.TextBox.CtrlTextBoxNextProcess tbNextProcessName;
-        private Controlls.CButton.CtrlButtonConfirm btConfirm;
-        private System.Windows.Forms.RadioButton rbNoOut;
-        private System.Windows.Forms.RadioButton rbYesOut;
-        private System.Windows.Forms.RadioButton rbYesIn;
-        private System.Windows.Forms.CheckBox cbChangePlantime;
-        private System.Windows.Forms.RadioButton rbFireInit;
-        private System.Windows.Forms.RadioButton rdInitTrouble;
-        private System.Windows.Forms.RadioButton rbManualInputOkTray;
-        private System.Windows.Forms.RadioButton rbManualOutputOkTray;
-        //private Controlls.CDateTime.CtrlDateTimeDT dtStartTime;
-        private System.Windows.Forms.Button btOutNow;
-        private Controlls.CDateTime.CtrlDateTimeDT dtStartTime;
-        private System.Windows.Forms.RadioButton rbDelayAlarmOff;
-        private Controlls.CtrlLine ctrlLine1;
-        private System.Windows.Forms.GroupBox gbChangeRouteID;
-        private Controlls.TextBox.CtrlTextBoxNextProcess tbReservedProc;
-        private Controlls.TextBox.CtrlTextBoxInputRouteID tbReservedRouteID;
-        private System.Windows.Forms.Button btCancelReserve;
-        private System.Windows.Forms.Button btReserve;
-        private System.Windows.Forms.Button btManageOut;
+        private System.Windows.Forms.Panel panel2;
+        private MonitoringUI.Controlls.CtrlTitleBar ctrlTitleBar;
+        private System.Windows.Forms.Panel panel3;
+        private MonitoringUI.Controlls.CButton.CtrlButtonSave ctrlButtonSave1;
+        private MonitoringUI.Controlls.CButton.CtrlButtonExit ctrlButtonExit1;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private Controlls.CtrlDataGridView gridRackInfo;
+        private Controlls.WindowsForms.CtrlLabel ctrlLavel1;
+        private Controlls.WindowsForms.CtrlLabel ctrlLavel2;
+        private Controlls.WindowsForms.CtrlRadioButton rbYesIn;
+        private Controlls.WindowsForms.CtrlRadioButton rbNoOut;
+        private Controlls.WindowsForms.CtrlRadioButton rbYesOut;
+        private Controlls.WindowsForms.CtrlRadioButton rbNoIn;
+        private Controlls.WindowsForms.CtrlLabel ctrlLabel1;
+        private MonitoringUI.Controlls.CDateTime.CtrlDateTimeDT ctrlDateTimeDT1;
+        private Controlls.WindowsForms.CtrlLabel ctrlLabel2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private Controlls.WindowsForms.CtrlRadioButton ctrlRadioButton3;
+        private Controlls.WindowsForms.CtrlRadioButton ctrlRadioButton2;
+        private Controlls.WindowsForms.CtrlRadioButton ctrlRadioButton1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private MonitoringUI.Controlls.CComboBox.CtrlComboBox cboRouteID;
+        private MonitoringUI.Controlls.CComboBox.CtrlComboBox cboModelID;
+        private System.Windows.Forms.Label label1;
+        private MonitoringUI.Controlls.CButton.CtrlButton ctrlButton1;
     }
 }

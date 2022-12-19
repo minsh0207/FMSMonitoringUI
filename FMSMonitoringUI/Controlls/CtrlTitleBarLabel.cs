@@ -30,6 +30,19 @@ namespace MonitoringUI.Controlls
                 lbTitle.Text = _labelText;
             }
         }
+        string _LanguageID = "";
+        [DisplayName("LocalLanguage"), Description("Local Language"), Category("Language Setting")]
+        public string LanguageID
+        {
+            get
+            {
+                return _LanguageID;
+            }
+            set
+            {
+                _LanguageID = value;
+            }
+        }
         #endregion
 
         public CtrlTitleBarLabel()
@@ -52,5 +65,15 @@ namespace MonitoringUI.Controlls
         {
             lbTitle.ForeColor = Color.White;
         }
+
+        #region CallLocalLanguage
+        public void CallLocalLanguage()
+        {
+            if (_LanguageID != "")
+            {
+                lbTitle.Text = LocalLanguage.GetItemString(_LanguageID);
+            }
+        }
+        #endregion
     }
 }

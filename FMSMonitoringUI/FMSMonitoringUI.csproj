@@ -74,6 +74,7 @@
     </Reference>
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Management" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -96,6 +97,7 @@
     <Reference Include="System.Web.Http.WebHost, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.9\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -124,7 +126,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\CDefine.cs" />
     <Compile Include="Common\CLogger.cs" />
+    <Compile Include="Common\COPCGroupCtrl.cs" />
     <Compile Include="Common\COPCUAConfig.cs" />
     <Compile Include="Common\CAuthority.cs" />
     <Compile Include="Common\CConstants.cs" />
@@ -132,7 +136,6 @@
     <Compile Include="Common\CDataBaseQuery.cs" />
     <Compile Include="Common\CDatabaseRest.cs" />
     <Compile Include="Common\CDataTable.cs" />
-    <Compile Include="Common\CDefine.cs" />
     <Compile Include="Common\CMessage.cs" />
     <Compile Include="Common\CMonitoringTask.cs" />
     <Compile Include="Common\CString.cs" />
@@ -164,6 +167,12 @@
     <Compile Include="Controlls\CButton\CtrlButtonCancel.Designer.cs">
       <DependentUpon>CtrlButtonCancel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controlls\WindowsForms\CtrlButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controlls\WindowsForms\CtrlButton.Designer.cs">
+      <DependentUpon>CtrlButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controlls\CButton\CtrlButtonConfirm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -181,6 +190,12 @@
     </Compile>
     <Compile Include="Controlls\CButton\CtrlButtonModify.Designer.cs">
       <DependentUpon>CtrlButtonModify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controlls\CButton\CtrlButtonSave.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controlls\CButton\CtrlButtonSave.Designer.cs">
+      <DependentUpon>CtrlButtonSave.cs</DependentUpon>
     </Compile>
     <Compile Include="Controlls\CButton\CtrlButtonSearch.cs">
       <SubType>UserControl</SubType>
@@ -205,6 +220,12 @@
     </Compile>
     <Compile Include="Controlls\CComboBox\CtrlComboLotID.Designer.cs">
       <DependentUpon>CtrlComboLotID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controlls\WindowsForms\CtrlComboBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controlls\WindowsForms\CtrlComboBox.Designer.cs">
+      <DependentUpon>CtrlComboBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Controlls\CComboBox\CtrlComboModel.cs">
       <SubType>UserControl</SubType>
@@ -265,6 +286,12 @@
     </Compile>
     <Compile Include="Controlls\CDateTime\CtrlDateTimePlanTime.Designer.cs">
       <DependentUpon>CtrlDateTimePlanTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controlls\WindowsForms\CtrlLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controlls\WindowsForms\CtrlLabel.Designer.cs">
+      <DependentUpon>CtrlLabel.cs</DependentUpon>
     </Compile>
     <Compile Include="Controlls\CraneCarriageSmall.cs">
       <SubType>Component</SubType>
@@ -392,6 +419,42 @@
     <Compile Include="Controlls\CtrlEqpDCIR.Designer.cs">
       <DependentUpon>CtrlEqpDCIR.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controlls\CtrlFormationHPC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controlls\CtrlFormationHPC.Designer.cs">
+      <DependentUpon>CtrlFormationHPC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controlls\CtrlMonitoring.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controlls\CtrlMonitoring.Designer.cs">
+      <DependentUpon>CtrlMonitoring.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controlls\CtrlHPC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controlls\CtrlHPC.Designer.cs">
+      <DependentUpon>CtrlHPC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controlls\CtrlHPCTemp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controlls\CtrlHPCTemp.Designer.cs">
+      <DependentUpon>CtrlHPCTemp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controlls\CtrlRackTemp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controlls\CtrlRackTemp.Designer.cs">
+      <DependentUpon>CtrlRackTemp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controlls\CtrlRack.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controlls\CtrlRack.Designer.cs">
+      <DependentUpon>CtrlRack.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controlls\CtrlEqpHPC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -452,35 +515,17 @@
     <Compile Include="Controlls\CtrlEqpHTAging.Designer.cs">
       <DependentUpon>CtrlEqpHTAging.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controlls\CtrlCharger.cs">
+    <Compile Include="Controlls\CtrlFormationCHG.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controlls\CtrlCharger.Designer.cs">
-      <DependentUpon>CtrlCharger.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CtrlFormation.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CtrlFormation.Designer.cs">
-      <DependentUpon>CtrlFormation.cs</DependentUpon>
+    <Compile Include="Controlls\CtrlFormationCHG.Designer.cs">
+      <DependentUpon>CtrlFormationCHG.cs</DependentUpon>
     </Compile>
     <Compile Include="Controlls\CtrlLine.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controlls\CtrlLine.Designer.cs">
       <DependentUpon>CtrlLine.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CtrlMonitoring.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CtrlMonitoring.Designer.cs">
-      <DependentUpon>CtrlMonitoring.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CtrlRackDescription.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CtrlRackDescription.Designer.cs">
-      <DependentUpon>CtrlRackDescription.cs</DependentUpon>
     </Compile>
     <Compile Include="Controlls\CtrlSCrane.cs">
       <SubType>UserControl</SubType>
@@ -536,6 +581,12 @@
     <Compile Include="Controlls\CtrlTitleSubBar.Designer.cs">
       <DependentUpon>CtrlTitleSubBar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controlls\CtrlDataGridView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controlls\CtrlDataGridView.Designer.cs">
+      <DependentUpon>CtrlDataGridView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controlls\KosiDataGridView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -549,11 +600,11 @@
       <DependentUpon>NormalDataGridView.cs</DependentUpon>
     </Compile>
     <Compile Include="Controlls\StatusAndData.cs" />
-    <Compile Include="Controlls\CtrlDataGridView.cs">
+    <Compile Include="Controlls\CtrlTrayInfoView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controlls\CtrlDataGridView.Designer.cs">
-      <DependentUpon>CtrlDataGridView.cs</DependentUpon>
+    <Compile Include="Controlls\CtrlTrayInfoView.Designer.cs">
+      <DependentUpon>CtrlTrayInfoView.cs</DependentUpon>
     </Compile>
     <Compile Include="Controlls\UserControlEqp.cs">
       <SubType>UserControl</SubType>
@@ -567,6 +618,12 @@
     <Compile Include="Controlls\UserControlRoot.Designer.cs">
       <DependentUpon>UserControlRoot.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controlls\WindowsForms\CtrlRadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controlls\WindowsForms\CtrlRadioButton.Designer.cs">
+      <DependentUpon>CtrlRadioButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -579,11 +636,53 @@
     <Compile Include="Monitoring\WinAgingRackOutManage.Designer.cs">
       <DependentUpon>WinAgingRackOutManage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Monitoring\WinAgingRackSetting_old.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Monitoring\WinAgingRackSetting_old.Designer.cs">
+      <DependentUpon>WinAgingRackSetting_old.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Monitoring\WinCellDetailInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Monitoring\WinCellDetailInfo.Designer.cs">
+      <DependentUpon>WinCellDetailInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Monitoring\WinAgingRackSetting.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Monitoring\WinAgingRackSetting.Designer.cs">
       <DependentUpon>WinAgingRackSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Monitoring\WinTrayDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Monitoring\WinTrayDetails.Designer.cs">
+      <DependentUpon>WinTrayDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Monitoring\WinManageEqp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Monitoring\WinManageEqp.Designer.cs">
+      <DependentUpon>WinManageEqp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Monitoring\WinCellInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Monitoring\WinCellInfo.Designer.cs">
+      <DependentUpon>WinCellInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Monitoring\WinLeadTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Monitoring\WinLeadTime.Designer.cs">
+      <DependentUpon>WinLeadTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Monitoring\WinTrayInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Monitoring\WinTrayInfo.Designer.cs">
+      <DependentUpon>WinTrayInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Monitoring\WinReserveChangeRouteID.cs">
       <SubType>Form</SubType>
@@ -658,6 +757,9 @@
     <EmbeddedResource Include="Controlls\CButton\CtrlButtonCancel.resx">
       <DependentUpon>CtrlButtonCancel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controlls\WindowsForms\CtrlButton.resx">
+      <DependentUpon>CtrlButton.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controlls\CButton\CtrlButtonConfirm.resx">
       <DependentUpon>CtrlButtonConfirm.cs</DependentUpon>
     </EmbeddedResource>
@@ -666,6 +768,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controlls\CButton\CtrlButtonModify.resx">
       <DependentUpon>CtrlButtonModify.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controlls\CButton\CtrlButtonSave.resx">
+      <DependentUpon>CtrlButtonSave.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controlls\CButton\CtrlButtonSearch.resx">
       <DependentUpon>CtrlButtonSearch.cs</DependentUpon>
@@ -678,6 +783,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controlls\CComboBox\CtrlComboLotID.resx">
       <DependentUpon>CtrlComboLotID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controlls\WindowsForms\CtrlComboBox.resx">
+      <DependentUpon>CtrlComboBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controlls\CComboBox\CtrlComboModel.resx">
       <DependentUpon>CtrlComboModel.cs</DependentUpon>
@@ -708,6 +816,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controlls\CDateTime\CtrlDateTimePlanTime.resx">
       <DependentUpon>CtrlDateTimePlanTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controlls\WindowsForms\CtrlLabel.resx">
+      <DependentUpon>CtrlLabel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controlls\CTextBox\CtrlTextBox.resx">
       <DependentUpon>CtrlTextBox.cs</DependentUpon>
@@ -766,6 +877,27 @@
     <EmbeddedResource Include="Controlls\CtrlDataGridView.resx">
       <DependentUpon>CtrlDataGridView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controlls\CtrlFormationHPC.resx">
+      <DependentUpon>CtrlFormationHPC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controlls\CtrlMonitoring.resx">
+      <DependentUpon>CtrlMonitoring.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controlls\CtrlHPC.resx">
+      <DependentUpon>CtrlHPC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controlls\CtrlHPCTemp.resx">
+      <DependentUpon>CtrlHPCTemp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controlls\CtrlRackTemp.resx">
+      <DependentUpon>CtrlRackTemp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controlls\CtrlRack.resx">
+      <DependentUpon>CtrlRack.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controlls\CtrlTrayInfoView.resx">
+      <DependentUpon>CtrlTrayInfoView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controlls\CtrlEqpCharger.resx">
       <DependentUpon>CtrlEqpCharger.cs</DependentUpon>
     </EmbeddedResource>
@@ -802,20 +934,11 @@
     <EmbeddedResource Include="Controlls\CtrlEqpHTAging.resx">
       <DependentUpon>CtrlEqpHTAging.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CtrlCharger.resx">
-      <DependentUpon>CtrlCharger.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CtrlFormation.resx">
-      <DependentUpon>CtrlFormation.cs</DependentUpon>
+    <EmbeddedResource Include="Controlls\CtrlFormationCHG.resx">
+      <DependentUpon>CtrlFormationCHG.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controlls\CtrlLine.resx">
       <DependentUpon>CtrlLine.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CtrlMonitoring.resx">
-      <DependentUpon>CtrlMonitoring.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CtrlRackDescription.resx">
-      <DependentUpon>CtrlRackDescription.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controlls\CtrlSCrane.resx">
       <DependentUpon>CtrlSCrane.cs</DependentUpon>
@@ -850,14 +973,44 @@
     <EmbeddedResource Include="Controlls\UserControlRoot.resx">
       <DependentUpon>UserControlRoot.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controlls\WindowsForms\CtrlRadioButton.resx">
+      <DependentUpon>CtrlRadioButton.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Monitoring\WinAgingRackOutManage.resx">
       <DependentUpon>WinAgingRackOutManage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Monitoring\WinAgingRackSetting_old.resx">
+      <DependentUpon>WinAgingRackSetting_old.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Monitoring\WinCellDetailInfo.resx">
+      <DependentUpon>WinCellDetailInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Monitoring\WinTrayDetails.resx">
+      <DependentUpon>WinTrayDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Monitoring\WinFormRoot.en-US.resx">
+      <DependentUpon>WinFormRoot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Monitoring\WinFormRoot.fr-FR.resx">
+      <DependentUpon>WinFormRoot.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Monitoring\WinAgingRackSetting.resx">
       <DependentUpon>WinAgingRackSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Monitoring\WinManageEqp.resx">
+      <DependentUpon>WinManageEqp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Monitoring\WinCellInfo.resx">
+      <DependentUpon>WinCellInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Monitoring\WinLeadTime.resx">
+      <DependentUpon>WinLeadTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Monitoring\WinTrayInfo.resx">
+      <DependentUpon>WinTrayInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Monitoring\WinReserveChangeRouteID.resx">
       <DependentUpon>WinReserveChangeRouteID.cs</DependentUpon>
@@ -903,9 +1056,6 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Monitoring\WinFormRoot.resx">
-      <DependentUpon>WinFormRoot.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Monitoring\WinFormRoot.zh-CN.resx">
       <DependentUpon>WinFormRoot.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -1006,5 +1156,6 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

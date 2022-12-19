@@ -16,12 +16,12 @@ namespace OPCUAClientClassLib
             ConfigFilePath = config_file_path;
         }
 
-        public List<EqpTagItem> Read(int data_start_row = 4, int data_start_col = 2)
+        public List<CEqpTagItem> Read(int data_start_row = 4, int data_start_col = 2)
         {
             DataSet ds = ReadSheetsAsDataSet();
             if (ds == null) return null;
 
-            List<EqpTagItem> eqplist = ReadEqpTypeAndList(ds, "EQPLIST", data_start_row, data_start_col);
+            List<CEqpTagItem> eqplist = ReadEqpTypeAndList(ds, "EQPLIST", data_start_row, data_start_col);
 
             foreach (var eqptype in eqplist)
             {
@@ -129,9 +129,9 @@ namespace OPCUAClientClassLib
         /// <param name="data_start_row">Start Row That Data Starts, 1-based</param>
         /// <param name="data_start_col">Start Col That Data Starts, 1-based</param>
         /// <returns>Dictionary<string,List<string>> (EqpType:List<EqpId>)</returns>
-        public List<EqpTagItem> ReadEqpTypeAndList(DataSet ds, string sheet_name, int data_start_row, int data_start_col)
+        public List<CEqpTagItem> ReadEqpTypeAndList(DataSet ds, string sheet_name, int data_start_row, int data_start_col)
         {
-            List<EqpTagItem> eqptypelist = new List<EqpTagItem>();
+            List<CEqpTagItem> eqptypelist = new List<CEqpTagItem>();
 
             DataTable dt = ds.Tables[sheet_name];
             if (dt == null || dt.Rows.Count < data_start_row || dt.Columns.Count < data_start_col) return eqptypelist;
@@ -147,7 +147,7 @@ namespace OPCUAClientClassLib
                 var eqptype = eqptypelist.Find(x => x.TagName == eqp_type);
                 if (eqptype == null)
                 {
-                    eqptype = new EqpTagItem(eqp_type, EnumTagType.FOLDER, string.Empty, null, false, false);
+                    eqptype = new CEqpTagItem(eqp_type, EnumTagType.FOLDER, string.Empty, null, false, false);
                     eqptypelist.Add(eqptype);
                 }
 
@@ -189,7 +189,7 @@ namespace OPCUAClientClassLib
         /// <param name="eqp_type">Eqp Type Name == Excel Sheet Name</param>
         /// <param name="data_start_row">Start Row That Data Starts, 1-based</param>
         /// <param name="data_start_col">Start Col That Data Starts, 1-based</param>
-        public void BuildEqpIdListForEqpType(DataSet ds, EqpTagItem eqp_type, int data_start_row, int data_start_col)
+        public void BuildEqpIdListForEqpType(DataSet ds, CEqpTagItem eqp_type, int data_start_row, int data_start_col)
         {
             //DataTable dt = ds.Tables[eqp_type.TagName];
             //if (dt == null || dt.Rows.Count < data_start_row || dt.Columns.Count < data_start_col) return;
@@ -265,7 +265,7 @@ namespace OPCUAClientClassLib
         /// <param name="cell_tag_name_format"></param>
         /// <param name="cell_no_format"></param>
         /// <param name="cell_count"></param>
-        private void CreateCellTags(EqpTagItem eqpid, string cell_tag_name_format, string cell_no_format, int cell_count)
+        private void CreateCellTags(CEqpTagItem eqpid, string cell_tag_name_format, string cell_no_format, int cell_count)
         {
             int cell_01 = 0;
             string cell_01_tag_name = String.Format(cell_tag_name_format, cell_01.ToString(cell_no_format));
@@ -281,7 +281,7 @@ namespace OPCUAClientClassLib
                 //for (int i = cell_01 + 1; i <= cell_count; i++)
                 for (int i = cell_01 + 1; i < cell_count; i++)
                 {
-                    EqpTagItem dupe = new EqpTagItem(tag_name: String.Format(cell_tag_name_format, i.ToString(cell_no_format)),
+                    CEqpTagItem dupe = new CEqpTagItem(tag_name: String.Format(cell_tag_name_format, i.ToString(cell_no_format)),
                         tag_type: cell_01_tag.TagType,
                         default_Value: cell_01_tag.DefaultValue,
                         parent: cell_01_tag.Parent,
@@ -303,9 +303,9 @@ namespace OPCUAClientClassLib
         /// <param name="data_start_row">Start Row That Data Starts, 1-based</param>
         /// <param name="data_start_col">Start Col That Data Starts, 1-based</param>
         /// <returns></returns>
-        public List<EqpTagItem> ReadEqpTagList(DataTable dt, EqpTagItem eqpid, int data_start_row, int data_start_col)
+        public List<CEqpTagItem> ReadEqpTagList(DataTable dt, CEqpTagItem eqpid, int data_start_row, int data_start_col)
         {
-            List<EqpTagItem> taglist = new List<EqpTagItem>();
+            List<CEqpTagItem> taglist = new List<CEqpTagItem>();
 
             for (int row = data_start_row - 1; row < dt.Rows.Count; row++)
             {
@@ -321,10 +321,10 @@ namespace OPCUAClientClassLib
                 if (string.IsNullOrEmpty(subscribe)) subscribe = "FALSE";
                 if (string.IsNullOrEmpty(batchreport)) batchreport = "FALSE";
 
-                EqpTagItem parent_tag = taglist.FindInTree(parent_tag_name);
+                CEqpTagItem parent_tag = taglist.FindInTree(parent_tag_name);
                 if (parent_tag == null)
                 {
-                    taglist.Add(new EqpTagItem(tag_name, tag_type, method_arg_inout, eqpid, Convert.ToBoolean(subscribe), Convert.ToBoolean(batchreport)));
+                    taglist.Add(new CEqpTagItem(tag_name, tag_type, method_arg_inout, eqpid, Convert.ToBoolean(subscribe), Convert.ToBoolean(batchreport)));
                 }
                 else
                 {

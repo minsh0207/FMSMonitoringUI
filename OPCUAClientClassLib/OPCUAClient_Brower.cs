@@ -41,11 +41,11 @@ namespace OPCUAClientClassLib
             return browsePath;
         }
 
-        public Dictionary<int, List<BrowsePath>> AddBrowsePath(List<string> taglist)
+        public Dictionary<int, List<BrowsePath>> AddBrowsePath(string startNodeID, string eqpType, List<CBrowerInfo> taglist)
         {
             int idx = 0;
             // parse the node id.
-            NodeId startingNodeId = NodeId.Parse(StartNodeID);
+            NodeId startingNodeId = NodeId.Parse(startNodeID);
 
             List<BrowsePath> browsePath = new List<BrowsePath>();
             Dictionary<int, List<BrowsePath>> dictBrowsePath = new Dictionary<int, List<BrowsePath>>();
@@ -54,20 +54,58 @@ namespace OPCUAClientClassLib
             {
                 StringBuilder sb = new StringBuilder();
 
-                string[] taglevel = item.Split('.');
+                string[] taglevel = item.BrowerPath.Split('.');
 
                 for (int i = 0; i < taglevel.Count() - 1; i++)
                 {
                     sb.Append($"/2:{taglevel[i]}");
                 }
 
-                browsePath.Add(GetBrowsePath(startingNodeId, AbsoluteName.ToQualifiedNames($"{sb}/2:Address Space.{EqpType}.{item}")));
+                browsePath.Add(GetBrowsePath(startingNodeId, AbsoluteName.ToQualifiedNames($"{sb}/2:Address Space.{eqpType}.{item.BrowerPath}")));
 
                 if (browsePath.Count > BROWSEPATH_MAXCOUNT)
                 {
                     dictBrowsePath.Add(idx, browsePath);
                     browsePath = new List<BrowsePath>();
                     idx++;
+                }
+            }
+
+            dictBrowsePath.Add(idx, browsePath);
+
+            return dictBrowsePath;
+        }
+
+        public Dictionary<int, List<BrowsePath>> AddSubscibeBrowsePath(string startNodeID, string eqpType, List<CBrowerInfo> taglist)
+        {
+            int idx = 0;
+            // parse the node id.
+            NodeId startingNodeId = NodeId.Parse(startNodeID);
+
+            List<BrowsePath> browsePath = new List<BrowsePath>();
+            Dictionary<int, List<BrowsePath>> dictBrowsePath = new Dictionary<int, List<BrowsePath>>();
+
+            foreach (var item in taglist)
+            {
+                StringBuilder sb = new StringBuilder();
+
+                string[] taglevel = item.BrowerPath.Split('.');
+
+                for (int i = 0; i < taglevel.Count() - 1; i++)
+                {
+                    sb.Append($"/2:{taglevel[i]}");
+                }
+
+                if (item.SubScribe)
+                {
+                    browsePath.Add(GetBrowsePath(startingNodeId, AbsoluteName.ToQualifiedNames($"{sb}/2:Address Space.{eqpType}.{item.BrowerPath}")));
+
+                    if (browsePath.Count > BROWSEPATH_MAXCOUNT)
+                    {
+                        dictBrowsePath.Add(idx, browsePath);
+                        browsePath = new List<BrowsePath>();
+                        idx++;
+                    }
                 }
             }
 

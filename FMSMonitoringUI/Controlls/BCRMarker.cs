@@ -45,24 +45,24 @@ namespace ControlGallery
             {
                 if (bcrLevel == 1)
                 {
-                    _BubbleTextControl.Location = new Point(this.Location.X, this.Location.Y - 20); // 24 -> 10
+                    _BubbleTextControl.Location = new Point(this.Location.X + 190, this.Location.Y - 20); // 24 -> 10
                 }
                 else
                 {
-                    _BubbleTextControl.Location = new Point(this.Location.X, this.Location.Y - 33);
+                    _BubbleTextControl.Location = new Point(this.Location.X + 190, this.Location.Y - 33);
                 }
             }
             else if (bcrPos == BCRMarkPosition.Bottom)
             {
-                _BubbleTextControl.Location = new Point(this.Location.X, this.Location.Y + 10); // 24 -> 10
+                _BubbleTextControl.Location = new Point(this.Location.X + 200, this.Location.Y + 10); // 24 -> 10
             }
             else if (bcrPos == BCRMarkPosition.Right)
             {
-                _BubbleTextControl.Location = new Point(this.Location.X + 10, this.Location.Y + 10); // 24 -> 10
+                _BubbleTextControl.Location = new Point(this.Location.X + 220, this.Location.Y + 10); // 24 -> 10
             }
             else if (bcrPos == BCRMarkPosition.Left)
             {
-                _BubbleTextControl.Location = new Point(this.Location.X - 110, this.Location.Y + 10); // 24 -> 10
+                _BubbleTextControl.Location = new Point(this.Location.X + 140, this.Location.Y + 10); // 24 -> 10
             }
 
             _BubbleTextControl.Visible = false;

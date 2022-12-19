@@ -158,8 +158,8 @@ namespace MonitoringUI.Monitoring
                         // language에 따라 간다.
                         if (CDefine.m_enLanguage == enLoginLanguage.Korean)
                             strData[3] = Troubles.troubleEventTmList[i].TroubleName_kr;
-                        else if (CDefine.m_enLanguage == enLoginLanguage.Chinese)
-                            strData[3] = Troubles.troubleEventTmList[i].TroubleName_cn;
+                        else if (CDefine.m_enLanguage == enLoginLanguage.France)
+                            strData[3] = Troubles.troubleEventTmList[i].TroubleName_fr;
                         else if (CDefine.m_enLanguage == enLoginLanguage.English)
                             strData[3] = Troubles.troubleEventTmList[i].TroubleName_en;
                         else

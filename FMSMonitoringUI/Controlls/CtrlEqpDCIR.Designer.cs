@@ -32,7 +32,7 @@
             this.lbEqpStatus = new System.Windows.Forms.Label();
             this.lbEqpType = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.TrayInfoView = new FMSMonitoringUI.Controlls.CtrlDataGridView();
+            this.TrayInfoView = new FMSMonitoringUI.Controlls.CtrlTrayInfoView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -47,9 +47,9 @@
             this.lbOPStatus.ForeColor = System.Drawing.Color.Black;
             this.lbOPStatus.Location = new System.Drawing.Point(35, 25);
             this.lbOPStatus.Name = "lbOPStatus";
-            this.lbOPStatus.Size = new System.Drawing.Size(77, 25);
+            this.lbOPStatus.Size = new System.Drawing.Size(62, 25);
             this.lbOPStatus.TabIndex = 3;
-            this.lbOPStatus.Text = "Processing";
+            this.lbOPStatus.Text = "Running";
             this.lbOPStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbOPStatus.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseDoubleClick);
             // 
@@ -74,7 +74,7 @@
             this.lbEqpType.ForeColor = System.Drawing.Color.White;
             this.lbEqpType.Location = new System.Drawing.Point(0, 0);
             this.lbEqpType.Name = "lbEqpType";
-            this.lbEqpType.Size = new System.Drawing.Size(112, 25);
+            this.lbEqpType.Size = new System.Drawing.Size(97, 25);
             this.lbEqpType.TabIndex = 1;
             this.lbEqpType.Text = "  EQP";
             this.lbEqpType.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -99,7 +99,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.TrayInfoView);
-            this.splitContainer1.Size = new System.Drawing.Size(114, 112);
+            this.splitContainer1.Size = new System.Drawing.Size(99, 112);
             this.splitContainer1.SplitterDistance = 52;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -108,7 +108,7 @@
             this.TrayInfoView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TrayInfoView.Location = new System.Drawing.Point(0, 0);
             this.TrayInfoView.Name = "TrayInfoView";
-            this.TrayInfoView.Size = new System.Drawing.Size(112, 54);
+            this.TrayInfoView.Size = new System.Drawing.Size(97, 54);
             this.TrayInfoView.TabIndex = 0;
             // 
             // CtrlEqpDCIR
@@ -133,6 +133,6 @@
         private System.Windows.Forms.Label lbEqpStatus;
         private System.Windows.Forms.Label lbEqpType;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private CtrlDataGridView TrayInfoView;
+        private CtrlTrayInfoView TrayInfoView;
     }
 }

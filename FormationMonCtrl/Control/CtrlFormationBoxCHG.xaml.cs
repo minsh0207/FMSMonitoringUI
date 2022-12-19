@@ -379,9 +379,6 @@ namespace FormationMonCtrl
                         break;
                 }
 
-
-
-
                 InvalidateVisual();
             }
             catch (Exception ex)

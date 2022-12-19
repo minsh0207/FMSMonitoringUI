@@ -50,6 +50,33 @@ namespace MonitoringUI.Controlls.CDateTime
 
             }
         }
+        string _labelText = "";
+        [DisplayName("TitleText"), Description("Title"), Category("TextBox Setting")]
+        public string TitleText
+        {
+            get
+            {
+                return _labelText;
+            }
+            set
+            {
+                _labelText = value;
+                lbTitle.Text = _labelText;
+            }
+        }
+        string _LanguageID = "";
+        [DisplayName("LocalLanguage"), Description("Local Language"), Category("Language Setting")]
+        public string LanguageID
+        {
+            get
+            {
+                return _LanguageID;
+            }
+            set
+            {
+                _LanguageID = value;
+            }
+        }
         #endregion
 
         public CtrlDateTimeDT2DT()
@@ -57,10 +84,10 @@ namespace MonitoringUI.Controlls.CDateTime
             InitializeComponent();
         }
 
-        private void CtrlDateTimeDT2DT_Load(object sender, EventArgs e)
-        {
-            lbTitle.Text = LocalLanguage.GetItemString("strDateRange");
-        }
+        //private void CtrlDateTimeDT2DT_Load(object sender, EventArgs e)
+        //{
+        //    lbTitle.Text = LocalLanguage.GetItemString("strDateRange");
+        //}
 
         private void dtpFrom_ValueChanged(object sender, EventArgs e)
         {
@@ -72,6 +99,14 @@ namespace MonitoringUI.Controlls.CDateTime
         {
             if (OnValueChanged == null) return;
             OnValueChanged();
+        }
+
+        public void CallLocalLanguage()
+        {
+            if (_LanguageID != "")
+            {
+                lbTitle.Text = LocalLanguage.GetItemString(_LanguageID);
+            }
         }
     }
 }

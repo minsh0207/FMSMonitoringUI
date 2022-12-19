@@ -32,7 +32,7 @@
             this.lbEqpStatus = new System.Windows.Forms.Label();
             this.lbEqpType = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.TrayInfoView = new FMSMonitoringUI.Controlls.CtrlDataGridView();
+            this.TrayInfoView = new FMSMonitoringUI.Controlls.CtrlTrayInfoView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -47,9 +47,9 @@
             this.lbOPStatus.ForeColor = System.Drawing.Color.Black;
             this.lbOPStatus.Location = new System.Drawing.Point(90, 0);
             this.lbOPStatus.Name = "lbOPStatus";
-            this.lbOPStatus.Size = new System.Drawing.Size(80, 25);
+            this.lbOPStatus.Size = new System.Drawing.Size(61, 25);
             this.lbOPStatus.TabIndex = 3;
-            this.lbOPStatus.Text = "Processing";
+            this.lbOPStatus.Text = "Running";
             this.lbOPStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbOPStatus.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseDoubleClick);
             // 
@@ -98,7 +98,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.TrayInfoView);
-            this.splitContainer1.Size = new System.Drawing.Size(172, 111);
+            this.splitContainer1.Size = new System.Drawing.Size(153, 111);
             this.splitContainer1.SplitterDistance = 27;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -107,7 +107,7 @@
             this.TrayInfoView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TrayInfoView.Location = new System.Drawing.Point(0, 0);
             this.TrayInfoView.Name = "TrayInfoView";
-            this.TrayInfoView.Size = new System.Drawing.Size(170, 78);
+            this.TrayInfoView.Size = new System.Drawing.Size(151, 78);
             this.TrayInfoView.TabIndex = 0;
             // 
             // CtrlEqpNGSorter
@@ -132,6 +132,6 @@
         private System.Windows.Forms.Label lbEqpStatus;
         private System.Windows.Forms.Label lbEqpType;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private CtrlDataGridView TrayInfoView;
+        private CtrlTrayInfoView TrayInfoView;
     }
 }

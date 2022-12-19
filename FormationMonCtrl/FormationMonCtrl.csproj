@@ -64,7 +64,7 @@
     <Compile Include="Common\CBoxClickedEventArgs.cs" />
     <Compile Include="Common\CBoxObject.cs" />
     <Compile Include="Common\CConstants.cs" />
-    <Compile Include="Common\CDefine.cs" />
+    <Compile Include="Common\CDefineCtrl.cs" />
     <Compile Include="Common\CTrayObject.cs" />
     <Compile Include="Control\CtrlFormationBoxCHG.xaml.cs">
       <DependentUpon>CtrlFormationBoxCHG.xaml</DependentUpon>

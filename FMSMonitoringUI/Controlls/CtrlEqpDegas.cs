@@ -1,4 +1,5 @@
-﻿using FormationMonCtrl;
+﻿using FMSMonitoringUI.Monitoring;
+using FormationMonCtrl;
 using MonitoringUI;
 using MySqlX.XDevAPI.Relational;
 using OPCUAClientClassLib;
@@ -19,6 +20,8 @@ namespace FMSMonitoringUI.Controlls
         public CtrlEqpDegas()
         {
             InitializeComponent();
+
+            TrayInfoView.MouseCellDoubleClick_Evnet += TrayInfoView_MouseCellDoubleClick;
         }
 
         #region Properties
@@ -54,7 +57,7 @@ namespace FMSMonitoringUI.Controlls
             TrayInfoView.RowsHeight(21);
 
             TrayInfoView.SetGridViewStyles();
-            TrayInfoView.ColumnHeadersWidth(0, 70);
+            TrayInfoView.ColumnWidth(0, 70);
         }
 
         #region setData
@@ -78,6 +81,15 @@ namespace FMSMonitoringUI.Controlls
         }
         #endregion
 
+        #region DataGridView Event
+        private void TrayInfoView_MouseCellDoubleClick(int col, int row, object value)
+        {
+            WinTrayInfo form = new WinTrayInfo();
+            form.SetData(value.ToString());
+            form.ShowDialog();
+        }
+        #endregion
+
         private void CtrlEqpControl_Load(object sender, EventArgs e)
         {
             InitGridView();
@@ -85,27 +97,8 @@ namespace FMSMonitoringUI.Controlls
 
         private void lbEqpType_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            MessageBox.Show($"EqpType DoubleClick {EqpType}");
+            WinManageEqp form = new WinManageEqp();
+            form.ShowDialog();
         }
-
-        //private void TrayInfoView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    TrayInfoView.CurrentCell = null;
-        //    TrayInfoView.ClearSelection();
-        //}
-
-        //private void TrayInfoView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    TrayInfoView.CurrentCell = null;
-        //    TrayInfoView.ClearSelection();
-
-        //    int col = e.ColumnIndex;
-        //    int row = e.RowIndex;
-
-        //    if (col == 1 && row >= 0)
-        //    {
-        //        MessageBox.Show($"TrayInfoView DoubleClick {row}");
-        //    }
-        //}
     }
 }

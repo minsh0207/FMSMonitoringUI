@@ -154,7 +154,7 @@
             // 
             this._ConveyorNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this._ConveyorNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this._ConveyorNo.LanguageID = "TEST";
+            this._ConveyorNo.LanguageID = "DEF_CONTROL_001";
             this._ConveyorNo.Location = new System.Drawing.Point(6, 62);
             this._ConveyorNo.Margin = new System.Windows.Forms.Padding(30);
             this._ConveyorNo.Name = "_ConveyorNo";
