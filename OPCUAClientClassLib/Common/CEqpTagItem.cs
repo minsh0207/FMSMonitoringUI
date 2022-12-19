@@ -6,9 +6,9 @@ using UnifiedAutomation.UaBase;
 namespace OPCUAClientClassLib
 {
     [Serializable]
-    public class EqpTagItem
+    public class CEqpTagItem
     {
-        public EqpTagItem()
+        public CEqpTagItem()
         {
             //
         }
@@ -19,7 +19,7 @@ namespace OPCUAClientClassLib
             return (EnumTagType)System.Enum.Parse(typeof(EnumTagType), to_convert);
         }
 
-        public EqpTagItem(string tag_name, EnumTagType tag_type, string default_Value, EqpTagItem parent, bool subscribe, bool batchreport)
+        public CEqpTagItem(string tag_name, EnumTagType tag_type, string default_Value, CEqpTagItem parent, bool subscribe, bool batchreport)
         {
             TagName = tag_name;
             TagType = tag_type;
@@ -28,10 +28,10 @@ namespace OPCUAClientClassLib
             BatchReport = batchreport;
             Parent = parent;
             Level = parent == null ? 0 : parent.Level + 1;
-            Children = new List<EqpTagItem>();
+            Children = new List<CEqpTagItem>();
         }
 
-        public EqpTagItem(string tag_name, string tag_type, string default_Value, EqpTagItem parent, bool subscribe, bool batchreport)
+        public CEqpTagItem(string tag_name, string tag_type, string default_Value, CEqpTagItem parent, bool subscribe, bool batchreport)
         {
             TagName = tag_name;
             TagType = ConvertFromString(tag_type);
@@ -40,12 +40,12 @@ namespace OPCUAClientClassLib
             BatchReport = batchreport;
             Parent = parent;
             Level = parent == null ? 0 : parent.Level + 1;
-            Children = new List<EqpTagItem>();
+            Children = new List<CEqpTagItem>();
         }
 
-        public void AddChild(string tag_name, EnumTagType tag_type, string default_Value, List<EqpTagItem> children, bool subscribe, bool batchreport)
+        public void AddChild(string tag_name, EnumTagType tag_type, string default_Value, List<CEqpTagItem> children, bool subscribe, bool batchreport)
         {
-            Children.Add(new EqpTagItem()
+            Children.Add(new CEqpTagItem()
             {
                 TagName = tag_name,
                 TagType = tag_type,
@@ -54,13 +54,13 @@ namespace OPCUAClientClassLib
                 BatchReport = batchreport,
                 Parent = this,
                 Level = this.Level + 1,
-                Children = children ?? new List<EqpTagItem>()
+                Children = children ?? new List<CEqpTagItem>()
             });
         }
 
-        public void AddChild(string tag_name, string tag_type, string default_Value, List<EqpTagItem> children, bool subscribe, bool batchreport)
+        public void AddChild(string tag_name, string tag_type, string default_Value, List<CEqpTagItem> children, bool subscribe, bool batchreport)
         {
-            Children.Add(new EqpTagItem()
+            Children.Add(new CEqpTagItem()
             {
                 TagName = tag_name,
                 TagType = ConvertFromString(tag_type),
@@ -69,14 +69,14 @@ namespace OPCUAClientClassLib
                 BatchReport = batchreport,
                 Parent = this,
                 Level = this.Level + 1,
-                Children = children ?? new List<EqpTagItem>()
+                Children = children ?? new List<CEqpTagItem>()
             });
         }
 
         public string GetNodePath(char path_sep)
         {
             List<string> paths = new List<string>();
-            EqpTagItem walker = this;
+            CEqpTagItem walker = this;
 
             while (walker != null)
             {
@@ -97,11 +97,11 @@ namespace OPCUAClientClassLib
 
         public bool BatchReport { get; set; }
 
-        public EqpTagItem Parent { get; set; }
+        public CEqpTagItem Parent { get; set; }
 
         public int Level { get; set; }
 
-        public List<EqpTagItem> Children { get; set; }
+        public List<CEqpTagItem> Children { get; set; }
     }
 
     [Serializable]
@@ -131,7 +131,7 @@ namespace OPCUAClientClassLib
 
     public static class ListExtensions
     {
-        public static void DebugPrint(this List<EqpTagItem> list, int level = 0)
+        public static void DebugPrint(this List<CEqpTagItem> list, int level = 0)
         {
             foreach (var item in list)
             {
@@ -142,7 +142,7 @@ namespace OPCUAClientClassLib
         }
 
 
-        public static EqpTagItem FindInTree(this List<EqpTagItem> list, string tag_name_to_find)
+        public static CEqpTagItem FindInTree(this List<CEqpTagItem> list, string tag_name_to_find)
         {
             if (string.IsNullOrEmpty(tag_name_to_find)) return null;
 
@@ -150,7 +150,7 @@ namespace OPCUAClientClassLib
             for(int i = list.Count-1; i>=0; i--)
             {
                 if (list[i].TagName == tag_name_to_find) return list[i];
-                EqpTagItem tag = FindInTree(list[i].Children, tag_name_to_find);
+                CEqpTagItem tag = FindInTree(list[i].Children, tag_name_to_find);
                 if (tag != null) return tag;
             }
 
@@ -164,11 +164,11 @@ namespace OPCUAClientClassLib
             return null;
         }
 
-        public static List<EqpTagItem> FindAllInTree(this List<EqpTagItem> list, string tag_name_to_find)
+        public static List<CEqpTagItem> FindAllInTree(this List<CEqpTagItem> list, string tag_name_to_find)
         {
-            List<EqpTagItem> flattened = list.Flatten(d => d.Children).ToList();
+            List<CEqpTagItem> flattened = list.Flatten(d => d.Children).ToList();
 
-            List<EqpTagItem> result  = new List<EqpTagItem>();
+            List<CEqpTagItem> result  = new List<CEqpTagItem>();
             foreach (var item in flattened)
             {
                 if(item.TagName == tag_name_to_find)
@@ -188,13 +188,13 @@ namespace OPCUAClientClassLib
 
 
 
-        public static List<EqpTagItem> MakeTreeCopy(this List<EqpTagItem> list, EqpTagItem parent)
+        public static List<CEqpTagItem> MakeTreeCopy(this List<CEqpTagItem> list, CEqpTagItem parent)
         {
-            List<EqpTagItem> target = new List<EqpTagItem>();
+            List<CEqpTagItem> target = new List<CEqpTagItem>();
 
             foreach (var item in list)
             {
-                EqpTagItem dupe = new EqpTagItem();
+                CEqpTagItem dupe = new CEqpTagItem();
                 dupe.TagName = item.TagName;
                 dupe.TagType = item.TagType;
                 dupe.Level = item.Level;

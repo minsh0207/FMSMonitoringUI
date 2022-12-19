@@ -12,9 +12,9 @@ using static MonitoringUI.Controlls.NormalDataGridView;
 
 namespace FMSMonitoringUI.Controlls
 {
-    public partial class CtrlDataGridView : UserControl
+    public partial class CtrlTrayInfoView : UserControl
     {
-        public CtrlDataGridView()
+        public CtrlTrayInfoView()
         {
             InitializeComponent();
 
@@ -23,7 +23,7 @@ namespace FMSMonitoringUI.Controlls
 
         private void InitDataGridView()
         {
-            dataGridView1.Paint += dataGridView_Paint;
+            //dataGridView1.Paint += dataGridView_Paint;
         }
 
         public void SetGridViewStyles()
@@ -87,29 +87,19 @@ namespace FMSMonitoringUI.Controlls
         /// <param name="e">이벤트 인자</param>
         private void dataGridView_Paint(object sender, PaintEventArgs e)
         {
-            string[] parentHeaderArray = { "Equipment Infomation", "Tray Infomation" };
+            string[] parentHeaderArray = { "Equipment Infomation" };
 
-            int nextCellWidth;
-            Rectangle cellRectangle;
-
-            for (int i = 0; i < 4;)
+            for (int i = 0; i < 2;)
             {
-                if (i < 2)
-                {
-                    cellRectangle = this.dataGridView1.GetCellDisplayRectangle(i, -1, true);
-                    nextCellWidth = this.dataGridView1.GetCellDisplayRectangle(i + 1, -1, true).Width;
-                }
-                else
-                {
-                    cellRectangle = this.dataGridView1.GetCellDisplayRectangle(0, 6, true);
-                    nextCellWidth = this.dataGridView1.GetCellDisplayRectangle(0 + 1, 6, true).Width;
-                }
+                Rectangle cellRectangle = this.dataGridView1.GetCellDisplayRectangle(i, -1, true);
+
+                int nextCellWidth = this.dataGridView1.GetCellDisplayRectangle(i + 1, -1, true).Width;
 
                 cellRectangle.X += 1;
                 cellRectangle.Y += 1;
 
                 cellRectangle.Width = cellRectangle.Width + nextCellWidth - 2;
-                cellRectangle.Height = cellRectangle.Height - 2;
+                cellRectangle.Height = cellRectangle.Height / 2 - 2;
 
                 e.Graphics.FillRectangle(new SolidBrush(this.dataGridView1.ColumnHeadersDefaultCellStyle.BackColor), cellRectangle);
 
@@ -120,7 +110,7 @@ namespace FMSMonitoringUI.Controlls
 
                 e.Graphics.DrawString
                 (
-                    parentHeaderArray[i/2],
+                    parentHeaderArray[i / 2],
                     this.dataGridView1.ColumnHeadersDefaultCellStyle.Font,
                     new SolidBrush(this.dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor),
                     cellRectangle,

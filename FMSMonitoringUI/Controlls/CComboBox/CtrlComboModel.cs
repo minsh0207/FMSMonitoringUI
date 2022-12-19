@@ -13,6 +13,7 @@ using System;
 using System.Data;
 using System.ComponentModel;
 using MonitoringUI.Common;
+using System.Drawing;
 #endregion
 
 #region [NameSpace]
@@ -102,7 +103,7 @@ namespace MonitoringUI.Controlls.CComboBox
             m_bLoadFlag = true;
 
             TitleText = LocalLanguage.GetItemString("DEF_SPREAD_102");
-
+            
             //InitComboBoxList(true).GetAwaiter().GetResult();
 
             m_bLoadFlag = false;

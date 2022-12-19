@@ -118,7 +118,7 @@ namespace OPCUAClientClassLib
             GroupNo = 0;
             BrowseName = string.Empty;
             EqpID = string.Empty;
-            ControlType = enEqpType.None;
+            //ControlType = enEqpType.CNV;
         }
         /// <summary>
         /// Track No
@@ -151,5 +151,56 @@ namespace OPCUAClientClassLib
 
     }
 
+    public class CBrowerInfo
+    {
+        public string BrowerPath { get; set; }
+        public bool SubScribe { get; set; }
+    }
 
+    public class CDeviceInfo
+    {
+        public CDeviceInfo()
+        {
+            Item = new Dictionary<int, List<ItemInfo>>();
+        }
+
+        public int GroupNo { get; set; }
+
+        public Dictionary<int, List<ItemInfo>> Item { get; }
+
+        public void AddItem(int deviceID, ItemInfo itemInfo)
+        {
+            if (Item.ContainsKey(deviceID))
+            {
+                Item[deviceID].Add(itemInfo);
+            }
+            else
+            {
+                Item[deviceID] = new List<ItemInfo> { itemInfo };
+            }
+        }
+
+    }
+
+    public class COPCGroupCtrl
+    {
+        public COPCGroupCtrl()
+        {
+            GroupList = new Dictionary<int, List<CDeviceInfo>>();
+        }
+
+        public Dictionary<int, List<CDeviceInfo>> GroupList { get; }
+
+        public void AddList(int deviceID, CDeviceInfo deviceInfo)
+        {
+            if (GroupList.ContainsKey(deviceID))
+            {
+                GroupList[deviceID].Add(deviceInfo);
+            }
+            else
+            {
+                GroupList[deviceID] = new List<CDeviceInfo> { deviceInfo };
+            }
+        }
+    }
 }

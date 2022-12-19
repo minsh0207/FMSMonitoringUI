@@ -4165,7 +4165,7 @@
   <data name="pictureBox30.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACoAAAAmCAYAAACyAQkgAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vQAADr0BR/uQrQAAAF1JREFUWEftzzEKwDAMwMD+w7P/2Z870C2koyA2aNB+eiKiJvRB36q2HdDMbJdQ
+        vAAADrwBlbxySQAAAF1JREFUWEftzzEKwDAMwMD+w7P/2Z870C2koyA2aNB+eiKiJvRB36q2HdDMbJdQ
         OqF0QumE0gmlE0onlG42tGsH9O/odkLphNIJpRNKJ5ROKJ1QutnQrm3QCQ2BRi1W10PoOg9NHAAAAABJ
         RU5ErkJggg==
 </value>
@@ -4173,7 +4173,7 @@
   <data name="pictureBox26.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACoAAAAoCAYAAACIC2hQAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vQAADr0BR/uQrQAAAF1JREFUWEftzzEKwDAQA8H84+r7Z35u18EpF3yCRWw/eqpqJZQFfQfvgHb3uITS
+        vAAADrwBlbxySQAAAF1JREFUWEftzzEKwDAQA8H84+r7Z35u18EpF3yCRWw/eqpqJZQFfQfvgHb3uITS
         CaUTSieUTiidUDqhdNnQqTugf49uJ5ROKJ1QOqF0QumE0gmly4ZO3QeakFC2Whu6plhdTMSrOgAAAABJ
         RU5ErkJggg==
 </value>
@@ -4181,7 +4181,7 @@
   <data name="pictureBox25.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACoAAAAmCAYAAACyAQkgAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vQAADr0BR/uQrQAAAF1JREFUWEftzzEKwDAMwMD+w7P/mZ870K2koyA2aNB+eiKiJvRC16q2HdDMbJdQ
+        vAAADrwBlbxySQAAAF1JREFUWEftzzEKwDAMwMD+w7P/mZ870K2koyA2aNB+eiKiJvRC16q2HdDMbJdQ
         OqF0QumE0gmlE0onlG42tGsH9O/odkLphNIJpRNKJ5ROKJ1QutnQrn2gExoCjdpJ1uoO6qrFSQAAAABJ
         RU5ErkJggg==
 </value>
@@ -4241,7 +4241,7 @@
 </value>
   </data>
   <metadata name="m_timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>52, 17</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>25</value>

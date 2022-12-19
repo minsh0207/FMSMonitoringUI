@@ -32,7 +32,7 @@
             this.lbEqpStatus = new System.Windows.Forms.Label();
             this.lbEqpType = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.TrayInfoView = new FMSMonitoringUI.Controlls.CtrlDataGridView();
+            this.TrayInfoView = new FMSMonitoringUI.Controlls.CtrlTrayInfoView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -132,6 +132,6 @@
         private System.Windows.Forms.Label lbEqpStatus;
         private System.Windows.Forms.Label lbEqpType;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private CtrlDataGridView TrayInfoView;
+        private CtrlTrayInfoView TrayInfoView;
     }
 }

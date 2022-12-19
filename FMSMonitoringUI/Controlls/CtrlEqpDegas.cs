@@ -1,4 +1,5 @@
-﻿using FormationMonCtrl;
+﻿using FMSMonitoringUI.Monitoring;
+using FormationMonCtrl;
 using MonitoringUI;
 using MySqlX.XDevAPI.Relational;
 using OPCUAClientClassLib;
@@ -85,27 +86,8 @@ namespace FMSMonitoringUI.Controlls
 
         private void lbEqpType_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            MessageBox.Show($"EqpType DoubleClick {EqpType}");
+            WinManageEqp form = new WinManageEqp();
+            form.Show();
         }
-
-        //private void TrayInfoView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    TrayInfoView.CurrentCell = null;
-        //    TrayInfoView.ClearSelection();
-        //}
-
-        //private void TrayInfoView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    TrayInfoView.CurrentCell = null;
-        //    TrayInfoView.ClearSelection();
-
-        //    int col = e.ColumnIndex;
-        //    int row = e.RowIndex;
-
-        //    if (col == 1 && row >= 0)
-        //    {
-        //        MessageBox.Show($"TrayInfoView DoubleClick {row}");
-        //    }
-        //}
     }
 }
