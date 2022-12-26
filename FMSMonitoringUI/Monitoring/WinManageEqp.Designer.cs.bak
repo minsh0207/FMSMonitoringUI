@@ -84,7 +84,7 @@
             this.panel3.Controls.Add(this.ctrlButtonSave1);
             this.panel3.Controls.Add(this.ctrlButtonExit1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 424);
+            this.panel3.Location = new System.Drawing.Point(0, 510);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(883, 64);
             this.panel3.TabIndex = 2;
@@ -118,24 +118,26 @@
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 65);
             this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.label2);
             this.splitContainer1.Panel1.Controls.Add(this.gridEqpInfo);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(883, 359);
+            this.splitContainer1.Size = new System.Drawing.Size(883, 445);
             this.splitContainer1.SplitterDistance = 294;
             this.splitContainer1.TabIndex = 3;
             // 
             // gridEqpInfo
             // 
-            this.gridEqpInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridEqpInfo.Location = new System.Drawing.Point(0, 0);
+            this.gridEqpInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gridEqpInfo.Location = new System.Drawing.Point(0, 44);
             this.gridEqpInfo.Name = "gridEqpInfo";
-            this.gridEqpInfo.Size = new System.Drawing.Size(292, 357);
+            this.gridEqpInfo.Size = new System.Drawing.Size(292, 399);
             this.gridEqpInfo.TabIndex = 1;
             // 
             // splitContainer2
@@ -144,9 +146,11 @@
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
             this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitContainer2.Panel1
             // 
+            this.splitContainer2.Panel1.Controls.Add(this.label3);
             this.splitContainer2.Panel1.Controls.Add(this.gridTrayInfo);
             // 
             // splitContainer2.Panel2
@@ -155,17 +159,51 @@
             this.splitContainer2.Panel2.Controls.Add(this.radioButton9);
             this.splitContainer2.Panel2.Controls.Add(this.label4);
             this.splitContainer2.Panel2.Controls.Add(this.label1);
-            this.splitContainer2.Size = new System.Drawing.Size(585, 359);
+            this.splitContainer2.Size = new System.Drawing.Size(585, 445);
             this.splitContainer2.SplitterDistance = 292;
             this.splitContainer2.TabIndex = 0;
             // 
             // gridTrayInfo
             // 
-            this.gridTrayInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridTrayInfo.Location = new System.Drawing.Point(0, 0);
+            this.gridTrayInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gridTrayInfo.Location = new System.Drawing.Point(0, 44);
             this.gridTrayInfo.Name = "gridTrayInfo";
-            this.gridTrayInfo.Size = new System.Drawing.Size(290, 357);
+            this.gridTrayInfo.Size = new System.Drawing.Size(290, 399);
             this.gridTrayInfo.TabIndex = 1;
+            // 
+            // splitContainer3.Panel2
+            // 
+            //this.splitContainer3.Panel2.Controls.Add(this.panel1);
+            //this.splitContainer3.Size = new System.Drawing.Size(862, 390);
+            //this.splitContainer3.SplitterDistance = 312;
+            //this.splitContainer3.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            //this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            //this.panel1.Controls.Add(this.radioButton10);
+            //this.panel1.Controls.Add(this.radioButton9);
+            //this.panel1.Controls.Add(this.radioButton8);
+            //this.panel1.Controls.Add(this.radioButton7);
+            //this.panel1.Controls.Add(this.radioButton6);
+            //this.panel1.Controls.Add(this.radioButton5);
+            //this.panel1.Controls.Add(this.radioButton4);
+            //this.panel1.Controls.Add(this.ctrlComboRouteID1);
+            //this.panel1.Controls.Add(this.ctrlComboModel1);
+            //this.panel1.Controls.Add(this.radioButton3);
+            //this.panel1.Controls.Add(this.radioButton2);
+            //this.panel1.Controls.Add(this.radioButton1);
+            //this.panel1.Controls.Add(this.ctrlLine2);
+            //this.panel1.Controls.Add(this.ctrlLine1);
+            //this.panel1.Controls.Add(this.label4);
+            //this.panel1.Controls.Add(this.label3);
+            //this.panel1.Controls.Add(this.label2);
+            //this.panel1.Controls.Add(this.label1);
+            //this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            //this.panel1.Location = new System.Drawing.Point(0, 0);
+            //this.panel1.Name = "panel1";
+            //this.panel1.Size = new System.Drawing.Size(542, 390);
+            //this.panel1.TabIndex = 0;
             // 
             // radioButton10
             // 
@@ -211,12 +249,63 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Manual Command";
             // 
+            // label2
+            // 
+            this.label2.ForeColor = System.Drawing.Color.DarkGray;
+            this.label2.Location = new System.Drawing.Point(6, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(107, 26);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Eqp Info";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label3
+            // 
+            this.label3.ForeColor = System.Drawing.Color.DarkGray;
+            this.label3.Location = new System.Drawing.Point(6, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(107, 26);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Tray Info";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // ctrlLine1
+            // 
+            this.ctrlLine1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(231)))), ((int)(((byte)(231)))));
+            this.ctrlLine1.Location = new System.Drawing.Point(38, 180);
+            this.ctrlLine1.Name = "ctrlLine1";
+            this.ctrlLine1.Size = new System.Drawing.Size(487, 1);
+            this.ctrlLine1.TabIndex = 4;
+            // 
+            // ctrlButtonSave1
+            // 
+            this.ctrlButtonSave1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(69)))), ((int)(((byte)(88)))));
+            this.ctrlButtonSave1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlButtonSave1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.ctrlButtonSave1.LabelText = "strSave";
+            this.ctrlButtonSave1.Location = new System.Drawing.Point(316, 8);
+            this.ctrlButtonSave1.Name = "ctrlButtonSave1";
+            this.ctrlButtonSave1.Size = new System.Drawing.Size(127, 47);
+            this.ctrlButtonSave1.TabIndex = 1;
+            // 
+            // ctrlButtonExit1
+            // 
+            this.ctrlButtonExit1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(69)))), ((int)(((byte)(88)))));
+            this.ctrlButtonExit1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlButtonExit1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.ctrlButtonExit1.LabelText = "Exit";
+            this.ctrlButtonExit1.Location = new System.Drawing.Point(465, 8);
+            this.ctrlButtonExit1.Name = "ctrlButtonExit1";
+            this.ctrlButtonExit1.Size = new System.Drawing.Size(127, 47);
+            this.ctrlButtonExit1.TabIndex = 0;
+            this.ctrlButtonExit1.Click += new System.EventHandler(this.ctrlButtonExit1_Click);
+            // 
             // WinManageEqp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ClientSize = new System.Drawing.Size(883, 488);
+            this.ClientSize = new System.Drawing.Size(883, 574);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -237,6 +326,12 @@
             this.splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            //this.splitContainer3.Panel1.ResumeLayout(false);
+            //this.splitContainer3.Panel2.ResumeLayout(false);
+            //((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            //this.splitContainer3.ResumeLayout(false);
+            //this.panel1.ResumeLayout(false);
+            //this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -255,5 +350,19 @@
         private System.Windows.Forms.RadioButton radioButton9;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private MonitoringUI.Controlls.CtrlLine ctrlLine2;
+        private MonitoringUI.Controlls.CtrlLine ctrlLine1;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private MonitoringUI.Controlls.CComboBox.CtrlComboModel ctrlComboModel1;
+        private MonitoringUI.Controlls.CComboBox.CtrlComboRouteID ctrlComboRouteID1;
+        private System.Windows.Forms.RadioButton radioButton8;
+        private System.Windows.Forms.RadioButton radioButton7;
+        private System.Windows.Forms.RadioButton radioButton6;
+        private System.Windows.Forms.RadioButton radioButton5;
+        private System.Windows.Forms.RadioButton radioButton4;
     }
 }

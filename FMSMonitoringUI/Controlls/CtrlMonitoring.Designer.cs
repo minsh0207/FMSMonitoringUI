@@ -1441,7 +1441,7 @@
             this.ctrlSiteTrack50.InterSitePadding = 2;
             this.ctrlSiteTrack50.IsControled = true;
             this.ctrlSiteTrack50.IsUpperStage = false;
-            this.ctrlSiteTrack50.Location = new System.Drawing.Point(1363, 841);
+            this.ctrlSiteTrack50.Location = new System.Drawing.Point(1363, 842);
             this.ctrlSiteTrack50.MainLoop = false;
             this.ctrlSiteTrack50.MarginHorizontal = 0;
             this.ctrlSiteTrack50.MarginVertical = 0;
@@ -1461,7 +1461,7 @@
             this.ctrlSiteTrack50.SiteTextDisp = null;
             this.ctrlSiteTrack50.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack50.Size = new System.Drawing.Size(29, 35);
-            this.ctrlSiteTrack50.TabIndex = 554;
+            this.ctrlSiteTrack50.TabIndex = 315;
             this.ctrlSiteTrack50.TextRotateAngle = 0;
             // 
             // ctrlSiteTrack49
@@ -1472,7 +1472,7 @@
             this.ctrlSiteTrack49.InterSitePadding = 2;
             this.ctrlSiteTrack49.IsControled = true;
             this.ctrlSiteTrack49.IsUpperStage = false;
-            this.ctrlSiteTrack49.Location = new System.Drawing.Point(1496, 659);
+            this.ctrlSiteTrack49.Location = new System.Drawing.Point(1496, 667);
             this.ctrlSiteTrack49.MainLoop = false;
             this.ctrlSiteTrack49.MarginHorizontal = 0;
             this.ctrlSiteTrack49.MarginVertical = 0;
@@ -1492,7 +1492,7 @@
             this.ctrlSiteTrack49.SiteTextDisp = null;
             this.ctrlSiteTrack49.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack49.Size = new System.Drawing.Size(29, 35);
-            this.ctrlSiteTrack49.TabIndex = 553;
+            this.ctrlSiteTrack49.TabIndex = 314;
             this.ctrlSiteTrack49.TextRotateAngle = 0;
             // 
             // ctrlSiteTrack48
@@ -1503,7 +1503,7 @@
             this.ctrlSiteTrack48.InterSitePadding = 2;
             this.ctrlSiteTrack48.IsControled = true;
             this.ctrlSiteTrack48.IsUpperStage = false;
-            this.ctrlSiteTrack48.Location = new System.Drawing.Point(1496, 563);
+            this.ctrlSiteTrack48.Location = new System.Drawing.Point(1496, 568);
             this.ctrlSiteTrack48.MainLoop = false;
             this.ctrlSiteTrack48.MarginHorizontal = 0;
             this.ctrlSiteTrack48.MarginVertical = 0;
@@ -1523,7 +1523,7 @@
             this.ctrlSiteTrack48.SiteTextDisp = null;
             this.ctrlSiteTrack48.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack48.Size = new System.Drawing.Size(29, 35);
-            this.ctrlSiteTrack48.TabIndex = 552;
+            this.ctrlSiteTrack48.TabIndex = 313;
             this.ctrlSiteTrack48.TextRotateAngle = 0;
             // 
             // ctrlSiteTrack47
@@ -1534,7 +1534,7 @@
             this.ctrlSiteTrack47.InterSitePadding = 2;
             this.ctrlSiteTrack47.IsControled = true;
             this.ctrlSiteTrack47.IsUpperStage = false;
-            this.ctrlSiteTrack47.Location = new System.Drawing.Point(1496, 453);
+            this.ctrlSiteTrack47.Location = new System.Drawing.Point(1495, 465);
             this.ctrlSiteTrack47.MainLoop = false;
             this.ctrlSiteTrack47.MarginHorizontal = 0;
             this.ctrlSiteTrack47.MarginVertical = 0;
@@ -1554,7 +1554,7 @@
             this.ctrlSiteTrack47.SiteTextDisp = null;
             this.ctrlSiteTrack47.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack47.Size = new System.Drawing.Size(29, 35);
-            this.ctrlSiteTrack47.TabIndex = 551;
+            this.ctrlSiteTrack47.TabIndex = 312;
             this.ctrlSiteTrack47.TextRotateAngle = 0;
             // 
             // ctrlSiteTrack46
@@ -1565,7 +1565,7 @@
             this.ctrlSiteTrack46.InterSitePadding = 2;
             this.ctrlSiteTrack46.IsControled = true;
             this.ctrlSiteTrack46.IsUpperStage = false;
-            this.ctrlSiteTrack46.Location = new System.Drawing.Point(1496, 360);
+            this.ctrlSiteTrack46.Location = new System.Drawing.Point(1495, 368);
             this.ctrlSiteTrack46.MainLoop = false;
             this.ctrlSiteTrack46.MarginHorizontal = 0;
             this.ctrlSiteTrack46.MarginVertical = 0;
@@ -1585,7 +1585,7 @@
             this.ctrlSiteTrack46.SiteTextDisp = null;
             this.ctrlSiteTrack46.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack46.Size = new System.Drawing.Size(29, 35);
-            this.ctrlSiteTrack46.TabIndex = 550;
+            this.ctrlSiteTrack46.TabIndex = 311;
             this.ctrlSiteTrack46.TextRotateAngle = 0;
             // 
             // ctrlSiteTrack45
@@ -1596,7 +1596,7 @@
             this.ctrlSiteTrack45.InterSitePadding = 2;
             this.ctrlSiteTrack45.IsControled = true;
             this.ctrlSiteTrack45.IsUpperStage = false;
-            this.ctrlSiteTrack45.Location = new System.Drawing.Point(1456, 232);
+            this.ctrlSiteTrack45.Location = new System.Drawing.Point(1456, 243);
             this.ctrlSiteTrack45.MainLoop = false;
             this.ctrlSiteTrack45.MarginHorizontal = 0;
             this.ctrlSiteTrack45.MarginVertical = 0;
@@ -1616,7 +1616,7 @@
             this.ctrlSiteTrack45.SiteTextDisp = null;
             this.ctrlSiteTrack45.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack45.Size = new System.Drawing.Size(29, 35);
-            this.ctrlSiteTrack45.TabIndex = 549;
+            this.ctrlSiteTrack45.TabIndex = 310;
             this.ctrlSiteTrack45.TextRotateAngle = 0;
             // 
             // ctrlSiteTrack44
@@ -1627,7 +1627,7 @@
             this.ctrlSiteTrack44.InterSitePadding = 2;
             this.ctrlSiteTrack44.IsControled = true;
             this.ctrlSiteTrack44.IsUpperStage = false;
-            this.ctrlSiteTrack44.Location = new System.Drawing.Point(1456, 139);
+            this.ctrlSiteTrack44.Location = new System.Drawing.Point(1456, 146);
             this.ctrlSiteTrack44.MainLoop = false;
             this.ctrlSiteTrack44.MarginHorizontal = 0;
             this.ctrlSiteTrack44.MarginVertical = 0;
@@ -1647,7 +1647,7 @@
             this.ctrlSiteTrack44.SiteTextDisp = null;
             this.ctrlSiteTrack44.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack44.Size = new System.Drawing.Size(29, 35);
-            this.ctrlSiteTrack44.TabIndex = 548;
+            this.ctrlSiteTrack44.TabIndex = 309;
             this.ctrlSiteTrack44.TextRotateAngle = 0;
             // 
             // pictureBox14
@@ -5167,223 +5167,6 @@
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(269, 162);
             this.label29.TabIndex = 577;
-            // 
-            // ctrlSiteTrack44
-            // 
-            this.ctrlSiteTrack44.CVPLCListDeviceID = 1;
-            this.ctrlSiteTrack44.DisplayText = "";
-            this.ctrlSiteTrack44.FirstSiteNo = 301;
-            this.ctrlSiteTrack44.InterSitePadding = 2;
-            this.ctrlSiteTrack44.IsControled = true;
-            this.ctrlSiteTrack44.IsUpperStage = false;
-            this.ctrlSiteTrack44.Location = new System.Drawing.Point(1643, 154);
-            this.ctrlSiteTrack44.MainLoop = false;
-            this.ctrlSiteTrack44.MarginHorizontal = 0;
-            this.ctrlSiteTrack44.MarginVertical = 0;
-            this.ctrlSiteTrack44.Name = "ctrlSiteTrack44";
-            this.ctrlSiteTrack44.PLCNo = 44;
-            this.ctrlSiteTrack44.ShowSiteNo = true;
-            this.ctrlSiteTrack44.ShowTroubleState = false;
-            this.ctrlSiteTrack44.SiteBorderColor = System.Drawing.Color.DimGray;
-            this.ctrlSiteTrack44.SiteBoxColor = System.Drawing.Color.Gray;
-            this.ctrlSiteTrack44.SiteBoxHeight = 34;
-            this.ctrlSiteTrack44.SiteBoxWidth = 28;
-            this.ctrlSiteTrack44.SiteCount = 1;
-            this.ctrlSiteTrack44.SiteNo = 0;
-            this.ctrlSiteTrack44.SiteNoDirection = ControlGallery.SiteTrackDirection.LeftToRight;
-            this.ctrlSiteTrack44.SiteNoIncStep = 1;
-            this.ctrlSiteTrack44.SiteNoList = null;
-            this.ctrlSiteTrack44.SiteTextDisp = null;
-            this.ctrlSiteTrack44.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack44.Size = new System.Drawing.Size(29, 35);
-            this.ctrlSiteTrack44.TabIndex = 309;
-            this.ctrlSiteTrack44.TextRotateAngle = 0;
-            // 
-            // ctrlSiteTrack45
-            // 
-            this.ctrlSiteTrack45.CVPLCListDeviceID = 1;
-            this.ctrlSiteTrack45.DisplayText = "";
-            this.ctrlSiteTrack45.FirstSiteNo = 302;
-            this.ctrlSiteTrack45.InterSitePadding = 2;
-            this.ctrlSiteTrack45.IsControled = true;
-            this.ctrlSiteTrack45.IsUpperStage = false;
-            this.ctrlSiteTrack45.Location = new System.Drawing.Point(1643, 247);
-            this.ctrlSiteTrack45.MainLoop = false;
-            this.ctrlSiteTrack45.MarginHorizontal = 0;
-            this.ctrlSiteTrack45.MarginVertical = 0;
-            this.ctrlSiteTrack45.Name = "ctrlSiteTrack45";
-            this.ctrlSiteTrack45.PLCNo = 45;
-            this.ctrlSiteTrack45.ShowSiteNo = true;
-            this.ctrlSiteTrack45.ShowTroubleState = false;
-            this.ctrlSiteTrack45.SiteBorderColor = System.Drawing.Color.DimGray;
-            this.ctrlSiteTrack45.SiteBoxColor = System.Drawing.Color.Gray;
-            this.ctrlSiteTrack45.SiteBoxHeight = 34;
-            this.ctrlSiteTrack45.SiteBoxWidth = 28;
-            this.ctrlSiteTrack45.SiteCount = 1;
-            this.ctrlSiteTrack45.SiteNo = 0;
-            this.ctrlSiteTrack45.SiteNoDirection = ControlGallery.SiteTrackDirection.LeftToRight;
-            this.ctrlSiteTrack45.SiteNoIncStep = 1;
-            this.ctrlSiteTrack45.SiteNoList = null;
-            this.ctrlSiteTrack45.SiteTextDisp = null;
-            this.ctrlSiteTrack45.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack45.Size = new System.Drawing.Size(29, 35);
-            this.ctrlSiteTrack45.TabIndex = 310;
-            this.ctrlSiteTrack45.TextRotateAngle = 0;
-            // 
-            // ctrlSiteTrack46
-            // 
-            this.ctrlSiteTrack46.CVPLCListDeviceID = 2;
-            this.ctrlSiteTrack46.DisplayText = "";
-            this.ctrlSiteTrack46.FirstSiteNo = 303;
-            this.ctrlSiteTrack46.InterSitePadding = 2;
-            this.ctrlSiteTrack46.IsControled = true;
-            this.ctrlSiteTrack46.IsUpperStage = false;
-            this.ctrlSiteTrack46.Location = new System.Drawing.Point(1683, 375);
-            this.ctrlSiteTrack46.MainLoop = false;
-            this.ctrlSiteTrack46.MarginHorizontal = 0;
-            this.ctrlSiteTrack46.MarginVertical = 0;
-            this.ctrlSiteTrack46.Name = "ctrlSiteTrack46";
-            this.ctrlSiteTrack46.PLCNo = 46;
-            this.ctrlSiteTrack46.ShowSiteNo = true;
-            this.ctrlSiteTrack46.ShowTroubleState = false;
-            this.ctrlSiteTrack46.SiteBorderColor = System.Drawing.Color.DimGray;
-            this.ctrlSiteTrack46.SiteBoxColor = System.Drawing.Color.Gray;
-            this.ctrlSiteTrack46.SiteBoxHeight = 34;
-            this.ctrlSiteTrack46.SiteBoxWidth = 28;
-            this.ctrlSiteTrack46.SiteCount = 1;
-            this.ctrlSiteTrack46.SiteNo = 0;
-            this.ctrlSiteTrack46.SiteNoDirection = ControlGallery.SiteTrackDirection.LeftToRight;
-            this.ctrlSiteTrack46.SiteNoIncStep = 1;
-            this.ctrlSiteTrack46.SiteNoList = null;
-            this.ctrlSiteTrack46.SiteTextDisp = null;
-            this.ctrlSiteTrack46.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack46.Size = new System.Drawing.Size(29, 35);
-            this.ctrlSiteTrack46.TabIndex = 311;
-            this.ctrlSiteTrack46.TextRotateAngle = 0;
-            // 
-            // ctrlSiteTrack47
-            // 
-            this.ctrlSiteTrack47.CVPLCListDeviceID = 2;
-            this.ctrlSiteTrack47.DisplayText = "";
-            this.ctrlSiteTrack47.FirstSiteNo = 304;
-            this.ctrlSiteTrack47.InterSitePadding = 2;
-            this.ctrlSiteTrack47.IsControled = true;
-            this.ctrlSiteTrack47.IsUpperStage = false;
-            this.ctrlSiteTrack47.Location = new System.Drawing.Point(1683, 468);
-            this.ctrlSiteTrack47.MainLoop = false;
-            this.ctrlSiteTrack47.MarginHorizontal = 0;
-            this.ctrlSiteTrack47.MarginVertical = 0;
-            this.ctrlSiteTrack47.Name = "ctrlSiteTrack47";
-            this.ctrlSiteTrack47.PLCNo = 47;
-            this.ctrlSiteTrack47.ShowSiteNo = true;
-            this.ctrlSiteTrack47.ShowTroubleState = false;
-            this.ctrlSiteTrack47.SiteBorderColor = System.Drawing.Color.DimGray;
-            this.ctrlSiteTrack47.SiteBoxColor = System.Drawing.Color.Gray;
-            this.ctrlSiteTrack47.SiteBoxHeight = 34;
-            this.ctrlSiteTrack47.SiteBoxWidth = 28;
-            this.ctrlSiteTrack47.SiteCount = 1;
-            this.ctrlSiteTrack47.SiteNo = 0;
-            this.ctrlSiteTrack47.SiteNoDirection = ControlGallery.SiteTrackDirection.LeftToRight;
-            this.ctrlSiteTrack47.SiteNoIncStep = 1;
-            this.ctrlSiteTrack47.SiteNoList = null;
-            this.ctrlSiteTrack47.SiteTextDisp = null;
-            this.ctrlSiteTrack47.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack47.Size = new System.Drawing.Size(29, 35);
-            this.ctrlSiteTrack47.TabIndex = 312;
-            this.ctrlSiteTrack47.TextRotateAngle = 0;
-            // 
-            // ctrlSiteTrack48
-            // 
-            this.ctrlSiteTrack48.CVPLCListDeviceID = 2;
-            this.ctrlSiteTrack48.DisplayText = "";
-            this.ctrlSiteTrack48.FirstSiteNo = 305;
-            this.ctrlSiteTrack48.InterSitePadding = 2;
-            this.ctrlSiteTrack48.IsControled = true;
-            this.ctrlSiteTrack48.IsUpperStage = false;
-            this.ctrlSiteTrack48.Location = new System.Drawing.Point(1683, 578);
-            this.ctrlSiteTrack48.MainLoop = false;
-            this.ctrlSiteTrack48.MarginHorizontal = 0;
-            this.ctrlSiteTrack48.MarginVertical = 0;
-            this.ctrlSiteTrack48.Name = "ctrlSiteTrack48";
-            this.ctrlSiteTrack48.PLCNo = 48;
-            this.ctrlSiteTrack48.ShowSiteNo = true;
-            this.ctrlSiteTrack48.ShowTroubleState = false;
-            this.ctrlSiteTrack48.SiteBorderColor = System.Drawing.Color.DimGray;
-            this.ctrlSiteTrack48.SiteBoxColor = System.Drawing.Color.Gray;
-            this.ctrlSiteTrack48.SiteBoxHeight = 34;
-            this.ctrlSiteTrack48.SiteBoxWidth = 28;
-            this.ctrlSiteTrack48.SiteCount = 1;
-            this.ctrlSiteTrack48.SiteNo = 0;
-            this.ctrlSiteTrack48.SiteNoDirection = ControlGallery.SiteTrackDirection.LeftToRight;
-            this.ctrlSiteTrack48.SiteNoIncStep = 1;
-            this.ctrlSiteTrack48.SiteNoList = null;
-            this.ctrlSiteTrack48.SiteTextDisp = null;
-            this.ctrlSiteTrack48.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack48.Size = new System.Drawing.Size(29, 35);
-            this.ctrlSiteTrack48.TabIndex = 313;
-            this.ctrlSiteTrack48.TextRotateAngle = 0;
-            // 
-            // ctrlSiteTrack49
-            // 
-            this.ctrlSiteTrack49.CVPLCListDeviceID = 2;
-            this.ctrlSiteTrack49.DisplayText = "";
-            this.ctrlSiteTrack49.FirstSiteNo = 306;
-            this.ctrlSiteTrack49.InterSitePadding = 2;
-            this.ctrlSiteTrack49.IsControled = true;
-            this.ctrlSiteTrack49.IsUpperStage = false;
-            this.ctrlSiteTrack49.Location = new System.Drawing.Point(1683, 674);
-            this.ctrlSiteTrack49.MainLoop = false;
-            this.ctrlSiteTrack49.MarginHorizontal = 0;
-            this.ctrlSiteTrack49.MarginVertical = 0;
-            this.ctrlSiteTrack49.Name = "ctrlSiteTrack49";
-            this.ctrlSiteTrack49.PLCNo = 49;
-            this.ctrlSiteTrack49.ShowSiteNo = true;
-            this.ctrlSiteTrack49.ShowTroubleState = false;
-            this.ctrlSiteTrack49.SiteBorderColor = System.Drawing.Color.DimGray;
-            this.ctrlSiteTrack49.SiteBoxColor = System.Drawing.Color.Gray;
-            this.ctrlSiteTrack49.SiteBoxHeight = 34;
-            this.ctrlSiteTrack49.SiteBoxWidth = 28;
-            this.ctrlSiteTrack49.SiteCount = 1;
-            this.ctrlSiteTrack49.SiteNo = 0;
-            this.ctrlSiteTrack49.SiteNoDirection = ControlGallery.SiteTrackDirection.LeftToRight;
-            this.ctrlSiteTrack49.SiteNoIncStep = 1;
-            this.ctrlSiteTrack49.SiteNoList = null;
-            this.ctrlSiteTrack49.SiteTextDisp = null;
-            this.ctrlSiteTrack49.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack49.Size = new System.Drawing.Size(29, 35);
-            this.ctrlSiteTrack49.TabIndex = 314;
-            this.ctrlSiteTrack49.TextRotateAngle = 0;
-            // 
-            // ctrlSiteTrack50
-            // 
-            this.ctrlSiteTrack50.CVPLCListDeviceID = 3;
-            this.ctrlSiteTrack50.DisplayText = "";
-            this.ctrlSiteTrack50.FirstSiteNo = 307;
-            this.ctrlSiteTrack50.InterSitePadding = 2;
-            this.ctrlSiteTrack50.IsControled = true;
-            this.ctrlSiteTrack50.IsUpperStage = false;
-            this.ctrlSiteTrack50.Location = new System.Drawing.Point(1550, 856);
-            this.ctrlSiteTrack50.MainLoop = false;
-            this.ctrlSiteTrack50.MarginHorizontal = 0;
-            this.ctrlSiteTrack50.MarginVertical = 0;
-            this.ctrlSiteTrack50.Name = "ctrlSiteTrack50";
-            this.ctrlSiteTrack50.PLCNo = 50;
-            this.ctrlSiteTrack50.ShowSiteNo = true;
-            this.ctrlSiteTrack50.ShowTroubleState = false;
-            this.ctrlSiteTrack50.SiteBorderColor = System.Drawing.Color.DimGray;
-            this.ctrlSiteTrack50.SiteBoxColor = System.Drawing.Color.Gray;
-            this.ctrlSiteTrack50.SiteBoxHeight = 34;
-            this.ctrlSiteTrack50.SiteBoxWidth = 28;
-            this.ctrlSiteTrack50.SiteCount = 1;
-            this.ctrlSiteTrack50.SiteNo = 0;
-            this.ctrlSiteTrack50.SiteNoDirection = ControlGallery.SiteTrackDirection.LeftToRight;
-            this.ctrlSiteTrack50.SiteNoIncStep = 1;
-            this.ctrlSiteTrack50.SiteNoList = null;
-            this.ctrlSiteTrack50.SiteTextDisp = null;
-            this.ctrlSiteTrack50.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack50.Size = new System.Drawing.Size(29, 35);
-            this.ctrlSiteTrack50.TabIndex = 315;
-            this.ctrlSiteTrack50.TextRotateAngle = 0;
             // 
             // CtrlMonitoring
             // 
