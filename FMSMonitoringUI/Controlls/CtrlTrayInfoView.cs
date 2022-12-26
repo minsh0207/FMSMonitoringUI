@@ -254,10 +254,10 @@ namespace FMSMonitoringUI.Controlls
 
             try
             {
-                // Data Cell만 클릭하도록 하기 위해 추가
-                if ((row >= 0 && col > 0) ||
-                    (row >= 0 && bool.Parse(dataGridView1.Rows[row].Tag.ToString())))
-                {
+            // Data Cell만 클릭하도록 하기 위해 추가
+            if ((row >= 0 && col > 0) ||
+                (row >= 0 && bool.Parse(dataGridView1.Rows[row].Tag.ToString())))
+            {
                     if (dataGridView1[col, row].Value != null)
                     {
                         if (this.MouseCellDoubleClick_Evnet != null)

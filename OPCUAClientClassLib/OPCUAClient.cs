@@ -196,6 +196,8 @@ namespace OPCUAClientClassLib
 
         private List<CDeviceInfo> _DeviceList;
 
+        private List<CDeviceInfo> _DeviceList;
+
         private Dictionary<string, ItemInfo> _ControlIdx;
 
         private Dictionary<int, ItemInfo> _ListSite;

@@ -63,6 +63,11 @@ namespace FMSMonitoringUI.Controlls
             dataGridView1.Paint += dataGridView_Paint;
         }
 
+        private void InitDataGridView()
+        {
+            dataGridView1.Paint += dataGridView_Paint;
+        }
+
         public void SetGridViewStyles()
         {
             dataGridView1.EnableHeadersVisualStyles = false;
