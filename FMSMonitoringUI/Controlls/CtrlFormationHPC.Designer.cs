@@ -107,7 +107,7 @@
             this.ctrlHPC1.HpcID = " HPC JIG#1";
             this.ctrlHPC1.Location = new System.Drawing.Point(21, 28);
             this.ctrlHPC1.Name = "ctrlHPC1";
-            this.ctrlHPC1.Size = new System.Drawing.Size(307, 343);
+            this.ctrlHPC1.Size = new System.Drawing.Size(307, 373);
             this.ctrlHPC1.TabIndex = 2;
             // 
             // ctrlHPCTemp1
@@ -132,7 +132,7 @@
             this.ctrlHPC2.HpcID = " HPC JIG#2";
             this.ctrlHPC2.Location = new System.Drawing.Point(21, 28);
             this.ctrlHPC2.Name = "ctrlHPC2";
-            this.ctrlHPC2.Size = new System.Drawing.Size(307, 343);
+            this.ctrlHPC2.Size = new System.Drawing.Size(307, 373);
             this.ctrlHPC2.TabIndex = 3;
             // 
             // ctrlHPCTemp2

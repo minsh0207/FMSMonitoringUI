@@ -48,6 +48,7 @@ namespace FMSMonitoringUI.Controlls
             TrayInfoView.ColumnHeadersVisible(false);
 
             lstTitle = new List<string>();
+            lstTitle.Add("Tray ID");
             lstTitle.Add("Control Mode");
             lstTitle.Add("Status");
             lstTitle.Add("Operation Mode");
@@ -95,7 +96,7 @@ namespace FMSMonitoringUI.Controlls
 
         private void lbEqpType_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            WinFormationHPC form = new WinFormationHPC();
+            WinFormationHPC form = new WinFormationHPC(lbRackID.Text);            
             form.Show();
         }
     }

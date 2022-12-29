@@ -305,7 +305,7 @@
       <DependentUpon>CtrlDateTimePlanTime.cs</DependentUpon>
     </Compile>
     <Compile Include="Controlls\WindowsForms\CtrlGroupBox.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controlls\WindowsForms\CtrlGroupBox.Designer.cs">
       <DependentUpon>CtrlGroupBox.cs</DependentUpon>

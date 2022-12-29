@@ -119,7 +119,7 @@ namespace FMSMonitoringUI.Monitoring
         {
             if (col == 2 && row > -1)
             {
-                WinTrayDetails form = new WinTrayDetails();
+                WinTrayInfo form = new WinTrayInfo();
                 form.SetData(value.ToString());
                 form.ShowDialog();
             }

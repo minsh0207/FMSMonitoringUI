@@ -299,6 +299,8 @@ namespace FMSMonitoringUI
                         {
                             UpdateHPC();
                         }));
+
+                        //this.BeginInvoke(new Action(() => UpdateHPC()));
                     });
                 }
             }

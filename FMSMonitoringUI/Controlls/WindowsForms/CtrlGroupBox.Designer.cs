@@ -28,33 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox = new System.Windows.Forms.GroupBox();
             this.SuspendLayout();
-            // 
-            // groupBox
-            // 
-            this.groupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox.ForeColor = System.Drawing.Color.White;
-            this.groupBox.Location = new System.Drawing.Point(0, 0);
-            this.groupBox.Name = "groupBox";
-            this.groupBox.Size = new System.Drawing.Size(150, 150);
-            this.groupBox.TabIndex = 0;
-            this.groupBox.TabStop = false;
-            this.groupBox.Text = "groupBox";
             // 
             // CtrlGroupBox
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.Controls.Add(this.groupBox);
             this.Name = "CtrlGroupBox";
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox groupBox;
     }
 }

@@ -97,7 +97,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.TrayInfoView);
-            this.splitContainer1.Size = new System.Drawing.Size(305, 341);
+            this.splitContainer1.Size = new System.Drawing.Size(305, 371);
             this.splitContainer1.SplitterDistance = 32;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -106,7 +106,7 @@
             this.TrayInfoView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TrayInfoView.Location = new System.Drawing.Point(0, 0);
             this.TrayInfoView.Name = "TrayInfoView";
-            this.TrayInfoView.Size = new System.Drawing.Size(303, 303);
+            this.TrayInfoView.Size = new System.Drawing.Size(303, 333);
             this.TrayInfoView.TabIndex = 0;
             // 
             // CtrlHPC

@@ -323,6 +323,7 @@ namespace MonitoringUI.Monitoring
                 {
                     await Task.Run(() =>
                     {
+                        //this.BeginInvoke(new Action(() =>
                         this.Invoke(new MethodInvoker(delegate ()
                         {
                             //선택된 Tab의 데이터만 Load하자.

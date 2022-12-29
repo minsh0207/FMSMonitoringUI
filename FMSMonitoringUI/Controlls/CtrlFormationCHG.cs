@@ -93,14 +93,14 @@ namespace FMSMonitoringUI
         {
             _ListCharger.Clear();
 
-            foreach (var ctl in Controls)
+            foreach (var ctl in splitContainer1.Panel1.Controls)
             {   
                 if (ctl.GetType() == typeof(CtrlRack))
                 {
                     CtrlRack charger = ctl as CtrlRack;
 
                     charger.MouseDoubleClick += Charger_MouseDoubleClick;
-                    _ListCharger.Add(charger.Name, charger);
+                    _ListCharger.Add(charger.EqpID, charger);
                 }
             }
         }
@@ -299,6 +299,8 @@ namespace FMSMonitoringUI
                         {
                             UpdateCharger();
                         }));
+
+                        //this.BeginInvoke(new Action(() => UpdateCharger()));
                     });
                 }
             }

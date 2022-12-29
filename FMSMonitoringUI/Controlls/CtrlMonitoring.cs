@@ -600,75 +600,79 @@ namespace FMSMonitoringUI.Controlls
                 _Logger.Write(LogLevel.Receive, $"Item Count = {e.DataChanges.Count}", LogFileName.AllLog);
             }
 
-            Task task = SubscriptionAsync(e);
+            //Task task = SubscriptionAsync(e);
 
-            //bool trayExist = false;
-            //int pos;
-            //Task task;
+            bool trayExist = false;
+            int pos;
+            Task task;
 
-            //foreach (DataChange change in e.DataChanges)
-            //{
-            //    ItemInfo item = change.MonitoredItem.UserData as ItemInfo;
+            foreach (DataChange change in e.DataChanges)
+            {
+                ItemInfo item = change.MonitoredItem.UserData as ItemInfo;
 
-            //    string msg = string.Empty;
+                string msg = string.Empty;
 
-            //    if (item.BrowseName == "TrayExist")
-            //        trayExist = bool.Parse(change.Value.ToString());
+                if (item.BrowseName == "TrayExist")
+                    trayExist = bool.Parse(change.Value.ToString());
 
-            //    if (item.ControlType == enEqpType.CNV)
-            //    {
-            //        if (trayExist)
-            //        {
-            //            SiteTagInfo tagInfo = ReadSiteInfo(item);
-            //            task = DisplayBCRAsync(item.SiteNo, tagInfo);
-            //        }
+                if (item.ControlType == enEqpType.CNV)
+                {
+                    if (trayExist)
+                    {
+                        SiteTagInfo tagInfo = ReadSiteInfo(item);
+                        task = DisplayBCRAsync(item.GroupNo, item.SiteNo, tagInfo);
+                    }
 
-            //        task = StatusConveyorAsync(item.SiteNo, trayExist);
+                    task = StatusConveyorAsync(item.GroupNo, item.SiteNo, trayExist);
 
-            //        msg = string.Format("[{0}-CNV{1:D4}] {2} = {3}",
-            //            item.ControlType, item.SiteNo, item.BrowseName, change.Value);
-            //    }
-            //    else if (item.ControlType == enEqpType.STC)
-            //    {
-            //        if (item.BrowseName == "PosBay")
-            //        {
-            //            pos = int.Parse(change.Value.ToString());
-            //            task = MoveCraneAsync(_ListSCrane[item.CraneNo], pos);
-            //        }
-            //        else
-            //        {
-            //            task = StatusCraneAsync(_ListSCrane[item.CraneNo], trayExist, "C");
-            //        }
+                    msg = string.Format("[{0}-CNV{1:D4}] {2} = {3}",
+                        item.ControlType, item.SiteNo, item.BrowseName, change.Value);
+                }
+                else if (item.ControlType == enEqpType.STC)
+                {
+                    if (item.BrowseName == "PosBay")
+                    {
+                        pos = int.Parse(change.Value.ToString());
+                        task = MoveCraneAsync(_ListSCrane[item.CraneNo], pos);
+                    }
+                    else
+                    {
+                        task = StatusCraneAsync(_ListSCrane[item.CraneNo], trayExist, "C");
+                    }
 
-            //        msg = string.Format("[{0}-CraneNo{1:D2}] {2} = {3}",
-            //            item.ControlType, item.CraneNo + 1, item.BrowseName, change.Value);
-            //    }
-            //    else if (item.ControlType == enEqpType.RTV)
-            //    {
-            //        if (item.BrowseName == "CarriagePos")
-            //        {
-            //            pos = int.Parse(change.Value.ToString());
-            //            task = MoveCraneAsync(ctrlSCraneV1, pos);
-            //        }
-            //        else
-            //        {
-            //            task = StatusCraneAsync(ctrlSCraneV1, trayExist, "RTV");
+                    msg = string.Format("[{0}-CraneNo{1:D2}] {2} = {3}",
+                        item.ControlType, item.CraneNo + 1, item.BrowseName, change.Value);
+                }
+                else if (item.ControlType == enEqpType.RTV)
+                {
+                    if (item.BrowseName == "CarriagePos")
+                    {
+                        pos = int.Parse(change.Value.ToString());
+                        task = MoveCraneAsync(ctrlSCraneV1, pos);
+                    }
+                    else
+                    {
+                        task = StatusCraneAsync(ctrlSCraneV1, trayExist, "RTV");
 
-            //            //if (trayExist)
-            //            //{
-            //            //    SiteTagInfo tagInfo = ReadSiteInfo(item);
-            //            //    task = DisplayBCRAsync(item.SiteNo, tagInfo);
-            //            //}
+                        //if (trayExist)
+                        //{
+                        //    SiteTagInfo tagInfo = ReadSiteInfo(item);
+                        //    task = DisplayBCRAsync(item.SiteNo, tagInfo);
+                        //}
 
-            //            //task = StatusConveyorAsync(item.SiteNo, trayExist);
-            //        }
+                        //task = StatusConveyorAsync(item.SiteNo, trayExist);
+                    }
 
-            //        msg = string.Format("[{0}-{1:D2}] {2} = {3}",
-            //            item.ControlType, 1, item.BrowseName, change.Value);
-            //    }
+                    msg = string.Format("[{0}-{1:D2}] {2} = {3}",
+                        item.ControlType, 1, item.BrowseName, change.Value);
+                }
 
-            //    _Logger.Write(LogLevel.Receive, msg, LogFileName.AllLog);
-            //}
+                _Logger.Write(LogLevel.Receive, msg, LogFileName.AllLog);
+            }
+
+            //Refresh();
+
+            this.BeginInvoke(new Action(() => Refresh()));
 
             //this.Invoke(new MethodInvoker(delegate ()
             //{
@@ -748,6 +752,11 @@ namespace FMSMonitoringUI.Controlls
                                 crane.CurrentBay = i;
                             }));
 
+                            //this.BeginInvoke(new Action(() =>
+                            //{
+                            //    crane.CurrentBay = i;
+                            //}));
+
                             Thread.Sleep(100);
                             Application.DoEvents();
                         }
@@ -760,6 +769,11 @@ namespace FMSMonitoringUI.Controlls
                             {
                                 crane.CurrentBay = i;
                             }));
+
+                            //this.BeginInvoke(new Action(() =>
+                            //{
+                            //    crane.CurrentBay = i;
+                            //}));
 
                             Thread.Sleep(100);
                             Application.DoEvents();
@@ -788,6 +802,11 @@ namespace FMSMonitoringUI.Controlls
                     {
                         crane.UpdateUI(trayExist, craneName);
                     }));
+
+                    //this.BeginInvoke(new Action(() =>
+                    //{
+                    //    crane.UpdateUI(trayExist, craneName);
+                    //}));
                 });
             }
         }
@@ -818,6 +837,16 @@ namespace FMSMonitoringUI.Controlls
 
                         //Refresh();
                     }));
+
+                    //this.BeginInvoke(new Action(() =>
+                    //{
+                    //    ItemInfo siteInfo = _ListSite[groupno][siteno];
+
+                    //    if (siteInfo.ConveyorNo > 0)
+                    //    {
+                    //        _ListConveyor[siteInfo.ConveyorNo].UpdateTrackStatus(siteno, trayExist);
+                    //    }
+                    //}));
                 });
             }
 
@@ -870,6 +899,31 @@ namespace FMSMonitoringUI.Controlls
                             bcr_ui.BCRUseYN = true;
                         }
                     }));
+
+                    //this.BeginInvoke(new Action(() =>
+                    //{
+                    //    if (_ListBCR[deviceID].ContainsKey(bcrno))
+                    //    {
+                    //        BCRMarker bcr_ui = _ListBCR[deviceID][bcrno];
+
+                    //        if (bcr_ui.BCRLevel == 1)
+                    //        {
+                    //            bcr_ui.BubbleText = string.Format($"{tagInfo.TrayIdL1}");
+                    //        }
+                    //        else
+                    //        {
+                    //            bcr_ui.BubbleText = string.Format($"{tagInfo.TrayIdL1}\n{tagInfo.TrayIdL2}");
+                    //        }
+
+                    //        if (bcr_ui.BubbleText != null && bcr_ui.BubbleText.Length > 0)
+                    //        {
+                    //            bcr_ui.ShowToolTip();
+                    //            bcr_ui.BubbleText = string.Empty;
+                    //        }
+
+                    //        bcr_ui.BCRUseYN = true;
+                    //    }
+                    //}));
                 });
             }
         }
@@ -987,10 +1041,12 @@ namespace FMSMonitoringUI.Controlls
                         _Logger.Write(LogLevel.Receive, msg, LogFileName.AllLog);
                     }
 
-                    this.Invoke(new MethodInvoker(delegate ()
-                    {
-                        Refresh();
-                    }));
+                    //this.Invoke(new MethodInvoker(delegate ()
+                    //{
+                    //    Refresh();
+                    //}));
+
+                    this.BeginInvoke(new Action(() => Refresh()));
                 });
             }            
         }

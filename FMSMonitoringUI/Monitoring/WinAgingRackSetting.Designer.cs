@@ -77,7 +77,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(900, 65);
+            this.panel2.Size = new System.Drawing.Size(916, 65);
             this.panel2.TabIndex = 1;
             // 
             // ctrlTitleBar
@@ -90,7 +90,7 @@
             this.ctrlTitleBar.Location = new System.Drawing.Point(0, 0);
             this.ctrlTitleBar.Margin = new System.Windows.Forms.Padding(4);
             this.ctrlTitleBar.Name = "ctrlTitleBar";
-            this.ctrlTitleBar.Size = new System.Drawing.Size(898, 63);
+            this.ctrlTitleBar.Size = new System.Drawing.Size(914, 63);
             this.ctrlTitleBar.TabIndex = 0;
             this.ctrlTitleBar.TitleText = "Aging Rack Setting";
             // 
@@ -102,7 +102,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(0, 446);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(900, 64);
+            this.panel3.Size = new System.Drawing.Size(916, 64);
             this.panel3.TabIndex = 2;
             // 
             // Exit
@@ -112,7 +112,7 @@
             this.Exit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.Exit.LabelText = "Exit";
             this.Exit.LanguageID = "DEF_EXIT";
-            this.Exit.Location = new System.Drawing.Point(411, 11);
+            this.Exit.Location = new System.Drawing.Point(394, 11);
             this.Exit.Name = "Exit";
             this.Exit.Size = new System.Drawing.Size(131, 41);
             this.Exit.TabIndex = 1;
@@ -122,6 +122,7 @@
             // 
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer1.Location = new System.Drawing.Point(0, 65);
             this.splitContainer1.Name = "splitContainer1";
             // 
@@ -132,7 +133,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(900, 381);
+            this.splitContainer1.Size = new System.Drawing.Size(916, 381);
             this.splitContainer1.SplitterDistance = 271;
             this.splitContainer1.TabIndex = 3;
             // 
@@ -150,6 +151,7 @@
             // 
             this.splitContainer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
             this.splitContainer2.Name = "splitContainer2";
             // 
@@ -166,7 +168,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.groupBox2);
             this.splitContainer2.Panel2.Controls.Add(this.groupBox1);
             this.splitContainer2.Panel2.Controls.Add(this.label1);
-            this.splitContainer2.Size = new System.Drawing.Size(625, 381);
+            this.splitContainer2.Size = new System.Drawing.Size(641, 381);
             this.splitContainer2.SplitterDistance = 272;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -228,7 +230,7 @@
             this.groupBox3.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupBox3.Location = new System.Drawing.Point(12, 130);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(326, 80);
+            this.groupBox3.Size = new System.Drawing.Size(338, 80);
             this.groupBox3.TabIndex = 38;
             this.groupBox3.TabStop = false;
             // 
@@ -239,10 +241,10 @@
             this.ctrlRadioButton4.LanguageID = "";
             this.ctrlRadioButton4.Location = new System.Drawing.Point(14, 54);
             this.ctrlRadioButton4.Name = "ctrlRadioButton4";
-            this.ctrlRadioButton4.Size = new System.Drawing.Size(52, 16);
+            this.ctrlRadioButton4.Size = new System.Drawing.Size(81, 16);
             this.ctrlRadioButton4.TabIndex = 43;
             this.ctrlRadioButton4.TabStop = true;
-            this.ctrlRadioButton4.Text = "Time";
+            this.ctrlRadioButton4.Text = "Plan Time";
             this.ctrlRadioButton4.UseVisualStyleBackColor = true;
             // 
             // ctrlRadioButton3
@@ -252,10 +254,10 @@
             this.ctrlRadioButton3.LanguageID = "";
             this.ctrlRadioButton3.Location = new System.Drawing.Point(14, 28);
             this.ctrlRadioButton3.Name = "ctrlRadioButton3";
-            this.ctrlRadioButton3.Size = new System.Drawing.Size(102, 16);
+            this.ctrlRadioButton3.Size = new System.Drawing.Size(156, 16);
             this.ctrlRadioButton3.TabIndex = 42;
             this.ctrlRadioButton3.TabStop = true;
-            this.ctrlRadioButton3.Text = "Forced Output";
+            this.ctrlRadioButton3.Text = "Force Tray Unload now";
             this.ctrlRadioButton3.UseVisualStyleBackColor = true;
             // 
             // ctrlButton3
@@ -265,7 +267,7 @@
             this.ctrlButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlButton3.LabelText = "Save";
             this.ctrlButton3.LanguageID = "";
-            this.ctrlButton3.Location = new System.Drawing.Point(234, 27);
+            this.ctrlButton3.Location = new System.Drawing.Point(249, 27);
             this.ctrlButton3.Name = "ctrlButton3";
             this.ctrlButton3.Size = new System.Drawing.Size(78, 48);
             this.ctrlButton3.TabIndex = 41;
@@ -276,9 +278,9 @@
             this.ctrlDateTimeDT1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlDateTimeDT1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.ctrlDateTimeDT1.LanguageID = "DEF_CONTROL_001";
-            this.ctrlDateTimeDT1.Location = new System.Drawing.Point(69, 48);
+            this.ctrlDateTimeDT1.Location = new System.Drawing.Point(101, 48);
             this.ctrlDateTimeDT1.Name = "ctrlDateTimeDT1";
-            this.ctrlDateTimeDT1.Size = new System.Drawing.Size(144, 27);
+            this.ctrlDateTimeDT1.Size = new System.Drawing.Size(141, 27);
             this.ctrlDateTimeDT1.StartTime = new System.DateTime(2022, 12, 22, 18, 9, 29, 104);
             this.ctrlDateTimeDT1.TabIndex = 38;
             this.ctrlDateTimeDT1.TitleText = "";
@@ -293,7 +295,7 @@
             this.groupBox2.Controls.Add(this.rbYesIn);
             this.groupBox2.Location = new System.Drawing.Point(12, 36);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(326, 80);
+            this.groupBox2.Size = new System.Drawing.Size(338, 80);
             this.groupBox2.TabIndex = 25;
             this.groupBox2.TabStop = false;
             // 
@@ -304,7 +306,7 @@
             this.ctrlButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlButton2.LabelText = "Save";
             this.ctrlButton2.LanguageID = "";
-            this.ctrlButton2.Location = new System.Drawing.Point(234, 20);
+            this.ctrlButton2.Location = new System.Drawing.Point(249, 20);
             this.ctrlButton2.Name = "ctrlButton2";
             this.ctrlButton2.Size = new System.Drawing.Size(78, 48);
             this.ctrlButton2.TabIndex = 40;
@@ -316,10 +318,10 @@
             this.rbNoOut.LanguageID = "";
             this.rbNoOut.Location = new System.Drawing.Point(14, 52);
             this.rbNoOut.Name = "rbNoOut";
-            this.rbNoOut.Size = new System.Drawing.Size(108, 16);
+            this.rbNoOut.Size = new System.Drawing.Size(131, 16);
             this.rbNoOut.TabIndex = 35;
             this.rbNoOut.TabStop = true;
-            this.rbNoOut.Text = "Unload Prohibit";
+            this.rbNoOut.Text = "Disable Try Unload";
             this.rbNoOut.UseVisualStyleBackColor = true;
             // 
             // rbYesOut
@@ -329,10 +331,10 @@
             this.rbYesOut.LanguageID = "";
             this.rbYesOut.Location = new System.Drawing.Point(14, 24);
             this.rbYesOut.Name = "rbYesOut";
-            this.rbYesOut.Size = new System.Drawing.Size(117, 16);
+            this.rbYesOut.Size = new System.Drawing.Size(135, 16);
             this.rbYesOut.TabIndex = 34;
             this.rbYesOut.TabStop = true;
-            this.rbYesOut.Text = "Unload Available";
+            this.rbYesOut.Text = "Enable Tray Unload";
             this.rbYesOut.UseVisualStyleBackColor = true;
             // 
             // rbNoIn
@@ -343,10 +345,10 @@
             this.rbNoIn.LanguageID = "";
             this.rbNoIn.Location = new System.Drawing.Point(127, 52);
             this.rbNoIn.Name = "rbNoIn";
-            this.rbNoIn.Size = new System.Drawing.Size(97, 16);
+            this.rbNoIn.Size = new System.Drawing.Size(127, 16);
             this.rbNoIn.TabIndex = 33;
             this.rbNoIn.TabStop = true;
-            this.rbNoIn.Text = "Load Prohibit";
+            this.rbNoIn.Text = "Disable Tray Load";
             this.rbNoIn.UseVisualStyleBackColor = true;
             this.rbNoIn.Visible = false;
             // 
@@ -358,10 +360,10 @@
             this.rbYesIn.LanguageID = "";
             this.rbYesIn.Location = new System.Drawing.Point(127, 24);
             this.rbYesIn.Name = "rbYesIn";
-            this.rbYesIn.Size = new System.Drawing.Size(106, 16);
+            this.rbYesIn.Size = new System.Drawing.Size(124, 16);
             this.rbYesIn.TabIndex = 32;
             this.rbYesIn.TabStop = true;
-            this.rbYesIn.Text = "Load Available";
+            this.rbYesIn.Text = "Enable Tray Load";
             this.rbYesIn.UseVisualStyleBackColor = true;
             this.rbYesIn.Visible = false;
             // 
@@ -372,7 +374,7 @@
             this.groupBox1.Controls.Add(this.ctrlRadioButton1);
             this.groupBox1.Location = new System.Drawing.Point(12, 233);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(326, 80);
+            this.groupBox1.Size = new System.Drawing.Size(338, 80);
             this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
             // 
@@ -383,7 +385,7 @@
             this.ctrlButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlButton4.LabelText = "Save";
             this.ctrlButton4.LanguageID = "";
-            this.ctrlButton4.Location = new System.Drawing.Point(234, 23);
+            this.ctrlButton4.Location = new System.Drawing.Point(249, 23);
             this.ctrlButton4.Name = "ctrlButton4";
             this.ctrlButton4.Size = new System.Drawing.Size(78, 48);
             this.ctrlButton4.TabIndex = 42;
@@ -429,7 +431,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ClientSize = new System.Drawing.Size(900, 510);
+            this.ClientSize = new System.Drawing.Size(916, 510);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);

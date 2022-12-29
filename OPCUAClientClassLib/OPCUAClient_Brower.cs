@@ -138,7 +138,12 @@ namespace OPCUAClientClassLib
 //#else
 //                    int cv_no = int.Parse(taglevel[2].Substring(3));
 //#endif
-                        nodesToRead.Add(new ReadValueId() { NodeId = NodeId.Parse(sNodeId), AttributeId = Attributes.Value });
+                        nodesToRead.Add(new ReadValueId() 
+                        {
+                            NodeId = NodeId.Parse(sNodeId), 
+                            AttributeId = Attributes.Value,
+                            UserData = taglevel[taglevel.Length - 1]
+                        });
 
                         if (taglevel[taglevel.Count() - 1] == "MagazineCommand")
                         {

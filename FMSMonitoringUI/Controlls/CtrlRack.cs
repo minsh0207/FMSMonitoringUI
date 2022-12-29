@@ -47,10 +47,12 @@ namespace FMSMonitoringUI.Controlls
             lstTitle.Add("Lot ID");
             lstTitle.Add("");
             TrayInfoView.AddColumnHeaderList(lstTitle);
+            TrayInfoView.ColumnHeadersVisible(false);
 
             lstTitle = new List<string>();
-            lstTitle.Add("");
-            lstTitle.Add("");
+            lstTitle.Add("Level");
+            lstTitle.Add("1");
+            lstTitle.Add("2");
             TrayInfoView.AddRowsHeaderList(lstTitle);
 
             TrayInfoView.ColumnHeadersHeight(25);
@@ -59,19 +61,26 @@ namespace FMSMonitoringUI.Controlls
             TrayInfoView.SetGridViewStyles();
             TrayInfoView.ColumnWidth(0, 60);
 
-            TrayInfoView.SetTitle(2, 0, "Start Time");
-            TrayInfoView.SetTitle(2, 1, "Plan Time");
+            TrayInfoView.SetTitle(1, 0, "Tray ID");
+            TrayInfoView.SetTitle(2, 0, "Lot ID");
+            TrayInfoView.SetTitle(2, 1, "Start Time");
+            TrayInfoView.SetTitle(2, 2, "Plan Time");
 
-            TrayInfoView.SetTitle(0, 0, "1");
-            TrayInfoView.SetTitle(0, 1, "2");
+            //TrayInfoView.SetTitle(0, 0, "1");
+            //TrayInfoView.SetTitle(0, 1, "2");
         }
 
         #region setData
         public override void SetData(DataRow row)
         {
             //int nRow = int.Parse(row["Location"].ToString());
-            //TrayInfoView.SetValue(1, nRow, row["tray_id"].ToString());
-            //TrayInfoView.SetReworkTray(1, nRow, row["rework_flag"].ToString());
+            TrayInfoView.SetValue(1, 1, row["tray_id"].ToString());
+            TrayInfoView.SetValue(1, 2, row["tray_id_2"].ToString());
+            TrayInfoView.SetValue(3, 0, row["lot_id"].ToString());
+            //TrayInfoView.SetValue(3, 1, row["start_time"].ToString());
+            //TrayInfoView.SetValue(3, 2, row["end_time"].ToString());
+            TrayInfoView.SetValue(3, 1, "2022-12-28 10:44:01");
+            TrayInfoView.SetValue(3, 2, "2022-12-29 10:44:02");
         }
 
         public void SetEqpStatus(string eqp_status, Color color)

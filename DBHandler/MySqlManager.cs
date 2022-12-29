@@ -83,12 +83,12 @@ namespace DBHandler
                 // Set Query
                 //strSQL.Append(" SELECT A.tray_id, A.tray_id_2, A.unit_status, A.unit_mode, A.start_time,");
                 strSQL.Append(" SELECT A.*,");
-                strSQL.Append("                   B.lot_id");
+                strSQL.Append("        B.lot_id, B.start_time , B.end_time");
                 strSQL.Append("   FROM fms_v.tb_mst_eqp    A");
                 strSQL.Append("        LEFT OUTER JOIN fms_v.tb_dat_tray    B");
                 strSQL.Append("          ON B.tray_id   = A.tray_id");
                 //필수값
-                strSQL.Append($" WHERE A.tray_id	            = 'trayid_01'");
+                strSQL.Append($" WHERE A.tray_id	            = 'TEST00001'");
                 //조회조건
                 //if (strEqpTypeID.Length > 0) strSQL.Append($"   AND A.EqpTypeID	    = '{strEqpTypeID}'");
                 //if (strUnitID.Length > 0) strSQL.Append($"   AND A.UnitID	        = '{strUnitID}'");

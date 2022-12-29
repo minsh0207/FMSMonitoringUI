@@ -15,9 +15,11 @@ namespace FMSMonitoringUI.Monitoring
     {
         private Point point = new Point();
 
-        public WinFormationHPC()
+        public WinFormationHPC(string titleText)
         {
             InitializeComponent();
+
+            ctrlTitleBar.TitleText = titleText;
         }
 
         private void WinFormationHPC_Load(object sender, EventArgs e)
@@ -84,8 +86,7 @@ namespace FMSMonitoringUI.Monitoring
             gridTrayInfo.AddColumnHeaderList(lstTitle);
 
             lstTitle = new List<string>();
-            lstTitle.Add("Tray ID 1");
-            lstTitle.Add("Tray ID 2");
+            lstTitle.Add("Tray ID");
             lstTitle.Add("Model");
             lstTitle.Add("Route");
             lstTitle.Add("Lot ID");

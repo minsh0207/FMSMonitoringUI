@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CtrlLED));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.lbTitle = new System.Windows.Forms.Label();
             this.ledLamp = new System.Windows.Forms.PictureBox();
+            this.lbTitle = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -53,30 +53,31 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.lbTitle);
-            this.splitContainer1.Size = new System.Drawing.Size(144, 20);
+            this.splitContainer1.Size = new System.Drawing.Size(144, 18);
             this.splitContainer1.SplitterDistance = 25;
             this.splitContainer1.TabIndex = 1;
             // 
-            // lbTitle
-            // 
-            this.lbTitle.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lbTitle.ForeColor = System.Drawing.Color.White;
-            this.lbTitle.Location = new System.Drawing.Point(0, 4);
-            this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(115, 16);
-            this.lbTitle.TabIndex = 0;
-            this.lbTitle.Text = "On";
-            this.lbTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // ledLamp
             // 
+            this.ledLamp.Dock = System.Windows.Forms.DockStyle.Right;
             this.ledLamp.Image = ((System.Drawing.Image)(resources.GetObject("ledLamp.Image")));
-            this.ledLamp.Location = new System.Drawing.Point(5, 4);
+            this.ledLamp.Location = new System.Drawing.Point(9, 0);
             this.ledLamp.Name = "ledLamp";
-            this.ledLamp.Size = new System.Drawing.Size(16, 16);
+            this.ledLamp.Size = new System.Drawing.Size(16, 18);
             this.ledLamp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.ledLamp.TabIndex = 1;
             this.ledLamp.TabStop = false;
+            // 
+            // lbTitle
+            // 
+            this.lbTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbTitle.ForeColor = System.Drawing.Color.White;
+            this.lbTitle.Location = new System.Drawing.Point(0, 0);
+            this.lbTitle.Name = "lbTitle";
+            this.lbTitle.Size = new System.Drawing.Size(115, 18);
+            this.lbTitle.TabIndex = 0;
+            this.lbTitle.Text = "On";
+            this.lbTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // CtrlLED
             // 
@@ -85,7 +86,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.Controls.Add(this.splitContainer1);
             this.Name = "CtrlLED";
-            this.Size = new System.Drawing.Size(144, 20);
+            this.Size = new System.Drawing.Size(144, 18);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);

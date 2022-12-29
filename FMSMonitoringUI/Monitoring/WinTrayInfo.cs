@@ -65,7 +65,7 @@ namespace FMSMonitoringUI.Monitoring
             lstTitle.Add("Route ID");
             lstTitle.Add("Lot ID");
             lstTitle.Add("Current Process");
-            //lstTitle.Add("Next Process");
+            lstTitle.Add("Current Equipment");
             lstTitle.Add("Start Time");
             lstTitle.Add("Plan Time");
             lstTitle.Add("Cell Count");

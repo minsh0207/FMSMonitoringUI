@@ -12,7 +12,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace FMSMonitoringUI.Controlls.WindowsForms
 {
-    public partial class CtrlGroupBox : UserControl
+    public partial class CtrlGroupBox : GroupBox
     {
         #region Properties
         string _LanguageID = "";
@@ -39,7 +39,7 @@ namespace FMSMonitoringUI.Controlls.WindowsForms
             set
             {
                 _labelText = value;
-                groupBox.Text = value;
+                Text = value;
             }
         }
         #endregion
@@ -54,7 +54,7 @@ namespace FMSMonitoringUI.Controlls.WindowsForms
         {
             if (_LanguageID != "")
             {
-                groupBox.Text = LocalLanguage.GetItemString(_LanguageID);
+                Text = LocalLanguage.GetItemString(_LanguageID);
             }
         }
         #endregion
