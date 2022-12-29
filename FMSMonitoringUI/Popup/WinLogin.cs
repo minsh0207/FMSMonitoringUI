@@ -82,24 +82,24 @@ namespace MonitoringUI.Popup
             if (tbLoginID.TextData.Length < 1 || tbPassword.TextData.Length < 1)
                 return;
 
-            if (rbLine1.Checked)
-            {
-                CDefine.m_strLineID = "001";
-                CDefine.m_strBizRestURI = CUtills.GetAppConfig("BizRestUri_Area001");   //19.05.27 PYG BizRestURI를 AppConfig로 분리
-            }
-            else if (rbLine2.Checked)
-            {
-                CDefine.m_strLineID = "002";
-                CDefine.m_strBizRestURI = CUtills.GetAppConfig("BizRestUri_Area002");   //19.05.27 PYG BizRestURI를 AppConfig로 분리
-            }
+            //if (rbLine1.Checked)
+            //{
+            //    CDefine.m_strLineID = "001";
+            //    CDefine.m_strBizRestURI = CUtills.GetAppConfig("BizRestUri_Area001");   //19.05.27 PYG BizRestURI를 AppConfig로 분리
+            //}
+            //else if (rbLine2.Checked)
+            //{
+            //    CDefine.m_strLineID = "002";
+            //    CDefine.m_strBizRestURI = CUtills.GetAppConfig("BizRestUri_Area002");   //19.05.27 PYG BizRestURI를 AppConfig로 분리
+            //}
                 
 
             // 로그인 루틴
-            LogIn().GetAwaiter().GetResult();
+            //LogIn().GetAwaiter().GetResult();
 
             CDefine.m_strLoginID = tbLoginID.TextData;
 
-            CDatabaseRest.ResetBaseURI();
+            //CDatabaseRest.ResetBaseURI();
 
             switch (cbLanguage.SelectedItem.ToString())
             {
@@ -114,6 +114,8 @@ namespace MonitoringUI.Popup
                     break;
 
             }
+
+            this.Close();
         }
 
         private void BtExit_Click(object sender, EventArgs e)

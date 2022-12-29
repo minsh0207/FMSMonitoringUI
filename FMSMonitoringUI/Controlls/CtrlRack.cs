@@ -61,6 +61,9 @@ namespace FMSMonitoringUI.Controlls
 
             TrayInfoView.SetTitle(2, 0, "Start Time");
             TrayInfoView.SetTitle(2, 1, "Plan Time");
+
+            TrayInfoView.SetTitle(0, 0, "1");
+            TrayInfoView.SetTitle(0, 1, "2");
         }
 
         #region setData
@@ -91,7 +94,7 @@ namespace FMSMonitoringUI.Controlls
 
         private void lbEqpType_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            WinManageEqp form = new WinManageEqp();
+            WinFormationBox form = new WinFormationBox();
             form.Show();
         }
     }

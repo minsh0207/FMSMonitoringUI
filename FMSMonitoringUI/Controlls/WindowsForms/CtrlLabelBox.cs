@@ -11,12 +11,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FMSMonitoringUI.Controlls.CTextBox
+namespace FMSMonitoringUI.Controlls.WindowsForms
 {
-    public partial class CtrlTextBox : UserControl
+    public partial class CtrlLabelBox : UserControl
     {
         #region Properties
-        Single _TitleWidth = 250F;
+        Single _TitleWidth = 150F;
         [DisplayName("Column Width"), Description("Column Width"), Category("TablePanel Setting")]
         public Single TitleWidth
         {
@@ -27,9 +27,11 @@ namespace FMSMonitoringUI.Controlls.CTextBox
             set
             {
                 _TitleWidth = value;
+
+                Single panelWidth = (Single)(this.Size.Width - (int)_TitleWidth);                
                 tableLayoutPanel.ColumnStyles.Clear();
                 tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-                tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, _TitleWidth));
+                tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, panelWidth));
                 Invalidate();
             }
         }
@@ -78,7 +80,7 @@ namespace FMSMonitoringUI.Controlls.CTextBox
             }
         }
         #endregion
-        public CtrlTextBox()
+        public CtrlLabelBox()
         {
             InitializeComponent();
         }
@@ -95,7 +97,7 @@ namespace FMSMonitoringUI.Controlls.CTextBox
         //    }
         //}
 
-        private void CtrlTextBox_Enter(object sender, EventArgs e)
+        private void CtrlLabelBox_Enter(object sender, EventArgs e)
         {
             lbTitle.Text = LocalLanguage.GetItemString(_LanguageID);
         }

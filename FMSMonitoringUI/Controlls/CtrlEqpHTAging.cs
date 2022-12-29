@@ -20,8 +20,8 @@ namespace FMSMonitoringUI.Controlls
         public CtrlEqpHTAging()
         {
             InitializeComponent();
-            ctrlTitleBarLabel1.Click_Evnet += CtrlTitleBarLabel_Click;
-        }        
+            ctrlButton1.Click += CtrlButton1_Click;
+        }
 
         #region Properties
         string _EqpType = "";
@@ -71,7 +71,7 @@ namespace FMSMonitoringUI.Controlls
         #endregion
 
         #region TitleBarLavel Click
-        private void CtrlTitleBarLabel_Click(string title)
+        private void CtrlButton1_Click(object sender, EventArgs e)
         {
             if (this.Click_Evnet != null)
                 Click_Evnet(_EqpType);

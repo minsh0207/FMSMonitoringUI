@@ -1,20 +1,13 @@
-﻿using FMSMonitoringUI.Controlls.WindowsForms;
-using MonitoringUI.Controlls;
-using MonitoringUI.Controlls.CComboBox;
-using MonitoringUI.Controlls.CDateTime;
-using RestClientLib;
+﻿using MonitoringUI.Controlls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Media.Media3D;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace FMSMonitoringUI.Monitoring
 {
@@ -25,190 +18,96 @@ namespace FMSMonitoringUI.Monitoring
         public WinAgingRackSetting()
         {
             InitializeComponent();
-            InitGridView();
-            InitControl();
         }
 
         private void WinAgingRackSetting_Load(object sender, EventArgs e)
         {
+            InitGridViewEqp();
+            InitGridViewTray();
+            InitsplitContainer();
+
             #region Title Mouse Event
             ctrlTitleBar.MouseDown_Evnet += Title_MouseDownEvnet;
             ctrlTitleBar.MouseMove_Evnet += Title_MouseMoveEvnet;
             #endregion
+
         }
 
-        private void InitControl()
+        private void InitsplitContainer()
         {
-            foreach (var ctl in splitContainer1.Panel2.Controls)
-            {
-                if (ctl.GetType() == typeof(CtrlLabel))
-                {
-                    CtrlLabel label = ctl as CtrlLabel;
-                    label.CallLocalLanguage();
-                }
-                else if (ctl.GetType() == typeof(CtrlComboBox))
-                {
-                    CtrlComboBox cboBox = ctl as CtrlComboBox;
-                    cboBox.CallLocalLanguage();
-                }
-                else if (ctl.GetType() == typeof(CtrlDateTimeDT))
-                {
-                    CtrlDateTimeDT dateTime = ctl as CtrlDateTimeDT;
-                    dateTime.CallLocalLanguage();
-                }
-            }
+            //splitContainer1.BackColor = Color.LightGray;            // Color.FromArgb(53, 53, 53);
+            //splitContainer1.BorderStyle = BorderStyle.FixedSingle;
+            //splitContainer2.Panel2.BackColor = Color.LightGray;     //Color.FromArgb(53, 53, 53);
+            //splitContainer2.BorderStyle = BorderStyle.FixedSingle;
+
+            //splitContainer3.BorderStyle = BorderStyle.FixedSingle;
+            //splitContainer3.Panel2.BackColor = Color.FromArgb(27, 27, 27);
         }
 
-        private void InitGridView()
+        private void InitGridViewEqp()
         {
             List<string> lstTitle = new List<string>();
             lstTitle.Add("Rack Information");
             lstTitle.Add("");
-            gridRackInfo.AddColumnHeaderList(lstTitle);
-
-            gridRackInfo.ColumnHeadersVisible(false);
+            gridEqpInfo.AddColumnHeaderList(lstTitle);
 
             lstTitle = new List<string>();
             lstTitle.Add("Rack ID");
-            lstTitle.Add("Tray ID L1");
-            lstTitle.Add("Tray ID L2");
-            lstTitle.Add("Model ID");
-            lstTitle.Add("Route ID");
-            lstTitle.Add("Lot ID");
+            lstTitle.Add("Rack Name");
             lstTitle.Add("Rack Status");
-            lstTitle.Add("Tray Zone");
-            lstTitle.Add("Cell Type");
-            lstTitle.Add("Cerrent Process");
-            lstTitle.Add("Input Time");
-            lstTitle.Add("Output Time");
-            lstTitle.Add("Plan Time");
             lstTitle.Add("Use Flag");
             lstTitle.Add("Trouble Code");
             lstTitle.Add("Trouble Name");
+            gridEqpInfo.AddRowsHeaderList(lstTitle);
+
+            gridEqpInfo.ColumnHeadersHeight(31);
+            gridEqpInfo.RowsHeight(31);
+
+            List<int> lstColumn = new List<int>();
+            lstColumn.Add(-1);      // DataGridView Header 병합
+            //lstColumn.Add(6);       // DataGridView 6번째 Column 병합
+            lstTitle = new List<string>();
+            lstTitle.Add("Rack Information");
+            //lstTitle.Add("Tray Information");
+            gridEqpInfo.ColumnMergeList(lstColumn, lstTitle);
+
+            gridEqpInfo.SetGridViewStyles();
+            gridEqpInfo.ColumnHeadersWidth(0, 140);
+        }
+
+        private void InitGridViewTray()
+        {
+            List<string> lstTitle = new List<string>();
+            lstTitle.Add("Tray Information");
             lstTitle.Add("");
+            gridTrayInfo.AddColumnHeaderList(lstTitle);
 
-            gridRackInfo.AddRowsHeaderList(lstTitle);
+            lstTitle = new List<string>();
+            lstTitle.Add("Tray ID 1");
+            lstTitle.Add("Tray ID 2");
+            lstTitle.Add("Tray Type");
+            lstTitle.Add("Model");
+            lstTitle.Add("Route");
+            lstTitle.Add("Recipe ID");
+            lstTitle.Add("Cerrent Process");
+            lstTitle.Add("Start Time");
+            lstTitle.Add("Plan Time");
+            gridTrayInfo.AddRowsHeaderList(lstTitle);
 
-            gridRackInfo.ColumnHeadersHeight(30);
-            gridRackInfo.RowsHeight(30);
+            gridTrayInfo.ColumnHeadersHeight(31);
+            gridTrayInfo.RowsHeight(31);
 
-            //List<int> lstColumn = new List<int>();
-            //lstColumn.Add(-1);      // DataGridView Header 병합
-            //lstTitle = new List<string>();
-            //lstTitle.Add("Rack Information");
-            //gridRackInfo.ColumnMergeList(lstColumn, lstTitle);
+            List<int> lstColumn = new List<int>();
+            lstColumn.Add(-1);      // DataGridView Header 병합
+            //lstColumn.Add(6);       // DataGridView 6번째 Column 병합
+            lstTitle = new List<string>();
+            //lstTitle.Add("Equipment Information");
+            lstTitle.Add("Tray Information");
+            gridTrayInfo.ColumnMergeList(lstColumn, lstTitle);
 
-            gridRackInfo.SetGridViewStyles();
-            gridRackInfo.ColumnHeadersWidth(0, 140);
+            gridTrayInfo.SetGridViewStyles();
+            gridTrayInfo.ColumnHeadersWidth(0, 140);
         }
-
-        public void SetData()
-        {
-            for (int i = 0; i < gridRackInfo.RowCount-1; i++)
-            {
-                gridRackInfo.SetValue(1, i, i.ToString());
-            }
-            
-        }
-
-        public void SetRackInfo(DataSet ds)
-        {
-            foreach (DataRow row in ds.Tables[0].Rows)
-            {
-                gridRackInfo.SetValue(1, 0, row["rack_id"].ToString());
-                gridRackInfo.SetValue(1, 1, row["tray_id"].ToString());
-                gridRackInfo.SetValue(1, 2, row["tray_id_2"].ToString());
-                gridRackInfo.SetValue(1, 3, row["in_model_id"].ToString());
-                gridRackInfo.SetValue(1, 4, row["in_route_id"].ToString());
-                gridRackInfo.SetValue(1, 5, "");        // Lot ID
-                gridRackInfo.SetValue(1, 6, row["status"].ToString());
-                gridRackInfo.SetValue(1, 7, row["in_tray_zone"].ToString());
-                gridRackInfo.SetValue(1, 8, row["in_cell_type"].ToString());
-                gridRackInfo.SetValue(1, 9, "");        // Cerrent Process
-                gridRackInfo.SetValue(1, 10, row["start_time"].ToString());
-                gridRackInfo.SetValue(1, 11, row["plan_time"].ToString());
-                gridRackInfo.SetValue(1, 12, "");        // Use Flag
-                gridRackInfo.SetValue(1, 13, row["trouble_code"].ToString());
-                gridRackInfo.SetValue(1, 14, ""); // trouble_name
-            }
-        }
-
-        #region Tray Tag Value
-        private string GetConveyorType(int idx)
-        {
-            string ret = string.Empty;
-
-            switch (idx)
-            {
-                case 1:
-                    ret = "Conveyor Unit";
-                    break;
-                case 2:
-                    ret = "InStation";
-                    break;
-                case 4:
-                    ret = "OutStation";
-                    break;
-                case 8:
-                    ret = "InOutStation";
-                    break;
-                case 16:
-                    ret = "BufferStation";
-                    break;
-                case 32:
-                    ret = "Diverter";
-                    break;
-                case 64:
-                    ret = "Magazine";
-                    break;
-                case 128:
-                    ret = "Dispenser";
-                    break;
-                case 256:
-                    ret = "MZ / DP";
-                    break;
-            }
-
-            return ret;
-        }
-
-        private string GetStationStatus(int idx)
-        {
-            string ret = string.Empty;
-
-            switch (idx)
-            {
-                case 0:
-                    ret = "Not Used";
-                    break;
-                case 1:
-                    ret = "Station Down";
-                    break;
-                case 2:
-                    ret = "Station Up";
-                    break;
-            }
-
-            return ret;
-        }
-
-        private string GetTrayType(int idx)
-        {
-            string ret = string.Empty;
-
-            switch (idx)
-            {
-                case 1:
-                    ret = "BD - Before Degas Long Tray";
-                    break;
-                case 2:
-                    ret = "AD - After Degas Short Tray";
-                    break;
-            }
-
-            return ret;
-        }
-        #endregion
 
         #region Titel Mouse Event
         private void Title_MouseDownEvnet(object sender, MouseEventArgs e)
@@ -225,11 +124,9 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
-        #region Button Click
-        private void ctrlButtonExit1_Click(object sender, EventArgs e)
+        private void Exit_Click(object sender, EventArgs e)
         {
             Close();
         }
-        #endregion
     }
 }

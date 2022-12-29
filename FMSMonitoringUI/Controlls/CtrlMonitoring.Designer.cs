@@ -31,6 +31,21 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CtrlMonitoring));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ctrlLabel9 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
+            this.ctrlLabel8 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
+            this.ctrlLabel7 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
+            this.pictureBox44 = new System.Windows.Forms.PictureBox();
+            this.pictureBox43 = new System.Windows.Forms.PictureBox();
+            this.pictureBox40 = new System.Windows.Forms.PictureBox();
+            this.ctrlLabel6 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
+            this.pictureBox39 = new System.Windows.Forms.PictureBox();
+            this.ctrlLabel5 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
+            this.ctrlLabel4 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
+            this.ctrlLabel3 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
+            this.ctrlLabel2 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
+            this.ctrlLabel1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
+            this.pictureBox34 = new System.Windows.Forms.PictureBox();
+            this.pictureBox33 = new System.Windows.Forms.PictureBox();
             this.ctrlTaggingName16 = new MonitoringUI.Controlls.CtrlTaggingName();
             this.ctrlTaggingName17 = new MonitoringUI.Controlls.CtrlTaggingName();
             this.ctrlTaggingName18 = new MonitoringUI.Controlls.CtrlTaggingName();
@@ -38,22 +53,17 @@
             this.ctrlTaggingName20 = new MonitoringUI.Controlls.CtrlTaggingName();
             this.ctrlTaggingName21 = new MonitoringUI.Controlls.CtrlTaggingName();
             this.label18 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
             this.pictureBox30 = new System.Windows.Forms.PictureBox();
             this.pictureBox26 = new System.Windows.Forms.PictureBox();
             this.pictureBox25 = new System.Windows.Forms.PictureBox();
-            this.ctrlTaggingName6 = new MonitoringUI.Controlls.CtrlTaggingName();
-            this.ctrlTaggingName2 = new MonitoringUI.Controlls.CtrlTaggingName();
-            this.ctrlTaggingName1 = new MonitoringUI.Controlls.CtrlTaggingName();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.ctrlEqpHPC1 = new FMSMonitoringUI.Controlls.CtrlEqpHPC();
+            this.ctrlEqpCharger1 = new FMSMonitoringUI.Controlls.CtrlEqpCharger();
+            this.ctrlEqpLTAging4 = new FMSMonitoringUI.Controlls.CtrlEqpLTAging();
+            this.ctrlEqpLTAging3 = new FMSMonitoringUI.Controlls.CtrlEqpLTAging();
+            this.ctrlEqpHTAging2 = new FMSMonitoringUI.Controlls.CtrlEqpHTAging();
             this.ctrlEqpLTAging2 = new FMSMonitoringUI.Controlls.CtrlEqpLTAging();
             this.ctrlEqpLTAging1 = new FMSMonitoringUI.Controlls.CtrlEqpLTAging();
             this.ctrlEqpHTAging1 = new FMSMonitoringUI.Controlls.CtrlEqpHTAging();
@@ -251,7 +261,6 @@
             this.bcrMarker1 = new ControlGallery.BCRMarker();
             this.ctrlSiteTrack34 = new ControlGallery.CtrlSiteTrack();
             this.label20 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
             this.ctrlSiteTrack31 = new ControlGallery.CtrlSiteTrack();
             this.ctrlSiteTrack30 = new ControlGallery.CtrlSiteTrack();
             this.ctrlSiteTrack29 = new ControlGallery.CtrlSiteTrack();
@@ -260,7 +269,6 @@
             this.ctrlSiteTrack1 = new ControlGallery.CtrlSiteTrack();
             this.ctrlSiteTrack2 = new ControlGallery.CtrlSiteTrack();
             this.ctrlSiteTrack28 = new ControlGallery.CtrlSiteTrack();
-            this.label17 = new System.Windows.Forms.Label();
             this.ctrlSiteTrack26 = new ControlGallery.CtrlSiteTrack();
             this.ctrlSiteTrack24 = new ControlGallery.CtrlSiteTrack();
             this.ctrlSiteTrack23 = new ControlGallery.CtrlSiteTrack();
@@ -299,12 +307,17 @@
             this.ctrlSiteTrack25 = new ControlGallery.CtrlSiteTrack();
             this.ctrlSiteTrack27 = new ControlGallery.CtrlSiteTrack();
             this.ctrlSiteTrack3 = new ControlGallery.CtrlSiteTrack();
-            this.ctrlEqpCHG = new FMSMonitoringUI.Controlls.CtrlEqpCharger();
             this.label2 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.m_timer = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox44)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox40)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox39)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox34)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox33)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox30)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).BeginInit();
@@ -434,6 +447,21 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.ctrlLabel9);
+            this.panel1.Controls.Add(this.ctrlLabel8);
+            this.panel1.Controls.Add(this.ctrlLabel7);
+            this.panel1.Controls.Add(this.pictureBox44);
+            this.panel1.Controls.Add(this.pictureBox43);
+            this.panel1.Controls.Add(this.pictureBox40);
+            this.panel1.Controls.Add(this.ctrlLabel6);
+            this.panel1.Controls.Add(this.pictureBox39);
+            this.panel1.Controls.Add(this.ctrlLabel5);
+            this.panel1.Controls.Add(this.ctrlLabel4);
+            this.panel1.Controls.Add(this.ctrlLabel3);
+            this.panel1.Controls.Add(this.ctrlLabel2);
+            this.panel1.Controls.Add(this.ctrlLabel1);
+            this.panel1.Controls.Add(this.pictureBox34);
+            this.panel1.Controls.Add(this.pictureBox33);
             this.panel1.Controls.Add(this.ctrlTaggingName16);
             this.panel1.Controls.Add(this.ctrlTaggingName17);
             this.panel1.Controls.Add(this.ctrlTaggingName18);
@@ -441,26 +469,191 @@
             this.panel1.Controls.Add(this.ctrlTaggingName20);
             this.panel1.Controls.Add(this.ctrlTaggingName21);
             this.panel1.Controls.Add(this.label18);
-            this.panel1.Controls.Add(this.label13);
-            this.panel1.Controls.Add(this.label12);
-            this.panel1.Controls.Add(this.label11);
-            this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.label28);
-            this.panel1.Controls.Add(this.label27);
-            this.panel1.Controls.Add(this.label26);
             this.panel1.Controls.Add(this.pictureBox30);
             this.panel1.Controls.Add(this.pictureBox26);
             this.panel1.Controls.Add(this.pictureBox25);
-            this.panel1.Controls.Add(this.ctrlTaggingName6);
-            this.panel1.Controls.Add(this.ctrlTaggingName2);
-            this.panel1.Controls.Add(this.ctrlTaggingName1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(204, 995);
             this.panel1.TabIndex = 331;
+            // 
+            // ctrlLabel9
+            // 
+            this.ctrlLabel9.AutoSize = true;
+            this.ctrlLabel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel9.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlLabel9.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel9.LanguageID = "";
+            this.ctrlLabel9.Location = new System.Drawing.Point(65, 137);
+            this.ctrlLabel9.Name = "ctrlLabel9";
+            this.ctrlLabel9.Size = new System.Drawing.Size(56, 13);
+            this.ctrlLabel9.TabIndex = 97;
+            this.ctrlLabel9.Text = "Trouble";
+            // 
+            // ctrlLabel8
+            // 
+            this.ctrlLabel8.AutoSize = true;
+            this.ctrlLabel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel8.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlLabel8.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel8.LanguageID = "";
+            this.ctrlLabel8.Location = new System.Drawing.Point(65, 88);
+            this.ctrlLabel8.Name = "ctrlLabel8";
+            this.ctrlLabel8.Size = new System.Drawing.Size(58, 13);
+            this.ctrlLabel8.TabIndex = 96;
+            this.ctrlLabel8.Text = "Tray On";
+            // 
+            // ctrlLabel7
+            // 
+            this.ctrlLabel7.AutoSize = true;
+            this.ctrlLabel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel7.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlLabel7.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel7.LanguageID = "";
+            this.ctrlLabel7.Location = new System.Drawing.Point(65, 46);
+            this.ctrlLabel7.Name = "ctrlLabel7";
+            this.ctrlLabel7.Size = new System.Drawing.Size(58, 13);
+            this.ctrlLabel7.TabIndex = 95;
+            this.ctrlLabel7.Text = "Tray Off";
+            // 
+            // pictureBox44
+            // 
+            this.pictureBox44.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox44.Image")));
+            this.pictureBox44.Location = new System.Drawing.Point(20, 124);
+            this.pictureBox44.Name = "pictureBox44";
+            this.pictureBox44.Size = new System.Drawing.Size(35, 38);
+            this.pictureBox44.TabIndex = 94;
+            this.pictureBox44.TabStop = false;
+            // 
+            // pictureBox43
+            // 
+            this.pictureBox43.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox43.Image")));
+            this.pictureBox43.Location = new System.Drawing.Point(20, 78);
+            this.pictureBox43.Name = "pictureBox43";
+            this.pictureBox43.Size = new System.Drawing.Size(36, 36);
+            this.pictureBox43.TabIndex = 93;
+            this.pictureBox43.TabStop = false;
+            // 
+            // pictureBox40
+            // 
+            this.pictureBox40.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox40.Image")));
+            this.pictureBox40.Location = new System.Drawing.Point(20, 32);
+            this.pictureBox40.Name = "pictureBox40";
+            this.pictureBox40.Size = new System.Drawing.Size(36, 38);
+            this.pictureBox40.TabIndex = 92;
+            this.pictureBox40.TabStop = false;
+            // 
+            // ctrlLabel6
+            // 
+            this.ctrlLabel6.AutoSize = true;
+            this.ctrlLabel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel6.Enabled = false;
+            this.ctrlLabel6.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlLabel6.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel6.LanguageID = "";
+            this.ctrlLabel6.Location = new System.Drawing.Point(65, 850);
+            this.ctrlLabel6.Name = "ctrlLabel6";
+            this.ctrlLabel6.Size = new System.Drawing.Size(40, 13);
+            this.ctrlLabel6.TabIndex = 91;
+            this.ctrlLabel6.Text = "None";
+            this.ctrlLabel6.Visible = false;
+            // 
+            // pictureBox39
+            // 
+            this.pictureBox39.Enabled = false;
+            this.pictureBox39.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox39.Image")));
+            this.pictureBox39.Location = new System.Drawing.Point(18, 837);
+            this.pictureBox39.Name = "pictureBox39";
+            this.pictureBox39.Size = new System.Drawing.Size(36, 38);
+            this.pictureBox39.TabIndex = 90;
+            this.pictureBox39.TabStop = false;
+            this.pictureBox39.Visible = false;
+            // 
+            // ctrlLabel5
+            // 
+            this.ctrlLabel5.AutoSize = true;
+            this.ctrlLabel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel5.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlLabel5.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel5.LanguageID = "";
+            this.ctrlLabel5.Location = new System.Drawing.Point(65, 291);
+            this.ctrlLabel5.Name = "ctrlLabel5";
+            this.ctrlLabel5.Size = new System.Drawing.Size(69, 13);
+            this.ctrlLabel5.TabIndex = 89;
+            this.ctrlLabel5.Text = "Real BCR";
+            // 
+            // ctrlLabel4
+            // 
+            this.ctrlLabel4.AutoSize = true;
+            this.ctrlLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel4.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlLabel4.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel4.LanguageID = "";
+            this.ctrlLabel4.Location = new System.Drawing.Point(65, 240);
+            this.ctrlLabel4.Name = "ctrlLabel4";
+            this.ctrlLabel4.Size = new System.Drawing.Size(82, 13);
+            this.ctrlLabel4.TabIndex = 88;
+            this.ctrlLabel4.Text = "Virtual BCR";
+            // 
+            // ctrlLabel3
+            // 
+            this.ctrlLabel3.AutoSize = true;
+            this.ctrlLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel3.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlLabel3.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel3.LanguageID = "";
+            this.ctrlLabel3.Location = new System.Drawing.Point(65, 426);
+            this.ctrlLabel3.Name = "ctrlLabel3";
+            this.ctrlLabel3.Size = new System.Drawing.Size(73, 13);
+            this.ctrlLabel3.TabIndex = 87;
+            this.ctrlLabel3.Text = "Dispenser";
+            // 
+            // ctrlLabel2
+            // 
+            this.ctrlLabel2.AutoSize = true;
+            this.ctrlLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel2.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlLabel2.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel2.LanguageID = "";
+            this.ctrlLabel2.Location = new System.Drawing.Point(65, 383);
+            this.ctrlLabel2.Name = "ctrlLabel2";
+            this.ctrlLabel2.Size = new System.Drawing.Size(71, 13);
+            this.ctrlLabel2.TabIndex = 86;
+            this.ctrlLabel2.Text = "Magazine";
+            // 
+            // ctrlLabel1
+            // 
+            this.ctrlLabel1.AutoSize = true;
+            this.ctrlLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlLabel1.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel1.LanguageID = "";
+            this.ctrlLabel1.Location = new System.Drawing.Point(65, 336);
+            this.ctrlLabel1.Name = "ctrlLabel1";
+            this.ctrlLabel1.Size = new System.Drawing.Size(53, 13);
+            this.ctrlLabel1.TabIndex = 85;
+            this.ctrlLabel1.Text = "MZ/DP";
+            // 
+            // pictureBox34
+            // 
+            this.pictureBox34.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox34.Image")));
+            this.pictureBox34.Location = new System.Drawing.Point(20, 274);
+            this.pictureBox34.Name = "pictureBox34";
+            this.pictureBox34.Size = new System.Drawing.Size(35, 41);
+            this.pictureBox34.TabIndex = 84;
+            this.pictureBox34.TabStop = false;
+            // 
+            // pictureBox33
+            // 
+            this.pictureBox33.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox33.Image")));
+            this.pictureBox33.Location = new System.Drawing.Point(20, 226);
+            this.pictureBox33.Name = "pictureBox33";
+            this.pictureBox33.Size = new System.Drawing.Size(35, 40);
+            this.pictureBox33.TabIndex = 83;
+            this.pictureBox33.TabStop = false;
             // 
             // ctrlTaggingName16
             // 
@@ -469,7 +662,7 @@
             this.ctrlTaggingName16.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlTaggingName16.LanguageID = "";
-            this.ctrlTaggingName16.Location = new System.Drawing.Point(14, 468);
+            this.ctrlTaggingName16.Location = new System.Drawing.Point(14, 673);
             this.ctrlTaggingName16.Name = "ctrlTaggingName16";
             this.ctrlTaggingName16.Size = new System.Drawing.Size(179, 30);
             this.ctrlTaggingName16.TabIndex = 82;
@@ -484,7 +677,7 @@
             this.ctrlTaggingName17.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlTaggingName17.LanguageID = "";
-            this.ctrlTaggingName17.Location = new System.Drawing.Point(14, 437);
+            this.ctrlTaggingName17.Location = new System.Drawing.Point(14, 642);
             this.ctrlTaggingName17.Name = "ctrlTaggingName17";
             this.ctrlTaggingName17.Size = new System.Drawing.Size(179, 30);
             this.ctrlTaggingName17.TabIndex = 81;
@@ -499,7 +692,7 @@
             this.ctrlTaggingName18.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlTaggingName18.LanguageID = "";
-            this.ctrlTaggingName18.Location = new System.Drawing.Point(14, 375);
+            this.ctrlTaggingName18.Location = new System.Drawing.Point(14, 580);
             this.ctrlTaggingName18.Name = "ctrlTaggingName18";
             this.ctrlTaggingName18.Size = new System.Drawing.Size(179, 30);
             this.ctrlTaggingName18.TabIndex = 80;
@@ -514,7 +707,7 @@
             this.ctrlTaggingName19.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlTaggingName19.LanguageID = "";
-            this.ctrlTaggingName19.Location = new System.Drawing.Point(14, 406);
+            this.ctrlTaggingName19.Location = new System.Drawing.Point(14, 611);
             this.ctrlTaggingName19.Name = "ctrlTaggingName19";
             this.ctrlTaggingName19.Size = new System.Drawing.Size(179, 30);
             this.ctrlTaggingName19.TabIndex = 79;
@@ -529,12 +722,12 @@
             this.ctrlTaggingName20.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlTaggingName20.LanguageID = "";
-            this.ctrlTaggingName20.Location = new System.Drawing.Point(14, 345);
+            this.ctrlTaggingName20.Location = new System.Drawing.Point(14, 550);
             this.ctrlTaggingName20.Name = "ctrlTaggingName20";
             this.ctrlTaggingName20.Size = new System.Drawing.Size(179, 30);
             this.ctrlTaggingName20.TabIndex = 78;
-            this.ctrlTaggingName20.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(49)))), ((int)(((byte)(208)))));
-            this.ctrlTaggingName20.TagText = "Loading";
+            this.ctrlTaggingName20.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.ctrlTaggingName20.TagText = "Tray On";
             this.ctrlTaggingName20.TextColor = System.Drawing.Color.Black;
             // 
             // ctrlTaggingName21
@@ -544,7 +737,7 @@
             this.ctrlTaggingName21.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlTaggingName21.LanguageID = "";
-            this.ctrlTaggingName21.Location = new System.Drawing.Point(14, 315);
+            this.ctrlTaggingName21.Location = new System.Drawing.Point(14, 520);
             this.ctrlTaggingName21.Name = "ctrlTaggingName21";
             this.ctrlTaggingName21.Size = new System.Drawing.Size(179, 30);
             this.ctrlTaggingName21.TabIndex = 77;
@@ -557,61 +750,21 @@
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.White;
-            this.label18.Location = new System.Drawing.Point(15, 292);
+            this.label18.Location = new System.Drawing.Point(15, 497);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(74, 16);
             this.label18.TabIndex = 76;
             this.label18.Text = "Eqp Status";
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(75, 565);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(69, 13);
-            this.label13.TabIndex = 56;
-            this.label13.Text = "Real BCR";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(75, 587);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(82, 13);
-            this.label12.TabIndex = 55;
-            this.label12.Text = "Virtual BCR";
-            // 
-            // label11
-            // 
-            this.label11.BackColor = System.Drawing.Color.Plum;
-            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label11.Location = new System.Drawing.Point(19, 590);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(50, 6);
-            this.label11.TabIndex = 54;
-            // 
-            // label6
-            // 
-            this.label6.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label6.Location = new System.Drawing.Point(19, 569);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(50, 6);
-            this.label6.TabIndex = 53;
-            // 
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(15, 540);
+            this.label5.Location = new System.Drawing.Point(15, 201);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(123, 18);
             this.label5.TabIndex = 52;
-            this.label5.Text = "Barcode Type";
+            this.label5.Text = "Conveyor Type";
             // 
             // label1
             // 
@@ -623,117 +776,41 @@
             this.label1.TabIndex = 40;
             this.label1.Text = "Conveyor Status";
             // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label28.ForeColor = System.Drawing.Color.White;
-            this.label28.Location = new System.Drawing.Point(75, 235);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(73, 13);
-            this.label28.TabIndex = 39;
-            this.label28.Text = "Dispenser";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label27.ForeColor = System.Drawing.Color.White;
-            this.label27.Location = new System.Drawing.Point(75, 189);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(71, 13);
-            this.label27.TabIndex = 38;
-            this.label27.Text = "Magazine";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label26.ForeColor = System.Drawing.Color.White;
-            this.label26.Location = new System.Drawing.Point(75, 133);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(78, 26);
-            this.label26.TabIndex = 37;
-            this.label26.Text = "Magazine/\r\nDispenser";
-            // 
             // pictureBox30
             // 
             this.pictureBox30.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox30.Image")));
-            this.pictureBox30.Location = new System.Drawing.Point(19, 221);
+            this.pictureBox30.Location = new System.Drawing.Point(18, 412);
             this.pictureBox30.Name = "pictureBox30";
-            this.pictureBox30.Size = new System.Drawing.Size(50, 38);
-            this.pictureBox30.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox30.Size = new System.Drawing.Size(36, 38);
             this.pictureBox30.TabIndex = 36;
             this.pictureBox30.TabStop = false;
             // 
             // pictureBox26
             // 
             this.pictureBox26.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox26.Image")));
-            this.pictureBox26.Location = new System.Drawing.Point(19, 175);
+            this.pictureBox26.Location = new System.Drawing.Point(19, 368);
             this.pictureBox26.Name = "pictureBox26";
-            this.pictureBox26.Size = new System.Drawing.Size(50, 38);
-            this.pictureBox26.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox26.Size = new System.Drawing.Size(35, 37);
             this.pictureBox26.TabIndex = 35;
             this.pictureBox26.TabStop = false;
             // 
             // pictureBox25
             // 
             this.pictureBox25.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox25.Image")));
-            this.pictureBox25.Location = new System.Drawing.Point(19, 127);
+            this.pictureBox25.Location = new System.Drawing.Point(19, 323);
             this.pictureBox25.Name = "pictureBox25";
-            this.pictureBox25.Size = new System.Drawing.Size(50, 38);
-            this.pictureBox25.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox25.Size = new System.Drawing.Size(36, 38);
             this.pictureBox25.TabIndex = 34;
             this.pictureBox25.TabStop = false;
-            // 
-            // ctrlTaggingName6
-            // 
-            this.ctrlTaggingName6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlTaggingName6.ColorText = "";
-            this.ctrlTaggingName6.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ctrlTaggingName6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlTaggingName6.LanguageID = "";
-            this.ctrlTaggingName6.Location = new System.Drawing.Point(14, 93);
-            this.ctrlTaggingName6.Name = "ctrlTaggingName6";
-            this.ctrlTaggingName6.Size = new System.Drawing.Size(179, 30);
-            this.ctrlTaggingName6.TabIndex = 33;
-            this.ctrlTaggingName6.TagColor = System.Drawing.Color.Red;
-            this.ctrlTaggingName6.TagText = "Trouble";
-            this.ctrlTaggingName6.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(238)))), ((int)(((byte)(244)))));
-            // 
-            // ctrlTaggingName2
-            // 
-            this.ctrlTaggingName2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlTaggingName2.ColorText = "";
-            this.ctrlTaggingName2.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ctrlTaggingName2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlTaggingName2.LanguageID = "DEF_TRAY_ON";
-            this.ctrlTaggingName2.Location = new System.Drawing.Point(14, 62);
-            this.ctrlTaggingName2.Name = "ctrlTaggingName2";
-            this.ctrlTaggingName2.Size = new System.Drawing.Size(179, 30);
-            this.ctrlTaggingName2.TabIndex = 30;
-            this.ctrlTaggingName2.TagColor = System.Drawing.Color.SpringGreen;
-            this.ctrlTaggingName2.TagText = "Tray On";
-            this.ctrlTaggingName2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(238)))), ((int)(((byte)(244)))));
-            // 
-            // ctrlTaggingName1
-            // 
-            this.ctrlTaggingName1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlTaggingName1.ColorText = "";
-            this.ctrlTaggingName1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ctrlTaggingName1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlTaggingName1.LanguageID = "DEF_NORMAT_STATUS";
-            this.ctrlTaggingName1.Location = new System.Drawing.Point(14, 32);
-            this.ctrlTaggingName1.Name = "ctrlTaggingName1";
-            this.ctrlTaggingName1.Size = new System.Drawing.Size(179, 30);
-            this.ctrlTaggingName1.TabIndex = 29;
-            this.ctrlTaggingName1.TagColor = System.Drawing.Color.DimGray;
-            this.ctrlTaggingName1.TagText = "Normal Status";
-            this.ctrlTaggingName1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(238)))), ((int)(((byte)(244)))));
             // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.ctrlEqpHPC1);
+            this.panel2.Controls.Add(this.ctrlEqpCharger1);
+            this.panel2.Controls.Add(this.ctrlEqpLTAging4);
+            this.panel2.Controls.Add(this.ctrlEqpLTAging3);
+            this.panel2.Controls.Add(this.ctrlEqpHTAging2);
             this.panel2.Controls.Add(this.ctrlEqpLTAging2);
             this.panel2.Controls.Add(this.ctrlEqpLTAging1);
             this.panel2.Controls.Add(this.ctrlEqpHTAging1);
@@ -928,7 +1005,6 @@
             this.panel2.Controls.Add(this.bcrMarker1);
             this.panel2.Controls.Add(this.ctrlSiteTrack34);
             this.panel2.Controls.Add(this.label20);
-            this.panel2.Controls.Add(this.label19);
             this.panel2.Controls.Add(this.ctrlSiteTrack31);
             this.panel2.Controls.Add(this.ctrlSiteTrack30);
             this.panel2.Controls.Add(this.ctrlSiteTrack29);
@@ -937,7 +1013,6 @@
             this.panel2.Controls.Add(this.ctrlSiteTrack1);
             this.panel2.Controls.Add(this.ctrlSiteTrack2);
             this.panel2.Controls.Add(this.ctrlSiteTrack28);
-            this.panel2.Controls.Add(this.label17);
             this.panel2.Controls.Add(this.ctrlSiteTrack26);
             this.panel2.Controls.Add(this.ctrlSiteTrack24);
             this.panel2.Controls.Add(this.ctrlSiteTrack23);
@@ -975,7 +1050,6 @@
             this.panel2.Controls.Add(this.ctrlSiteTrack25);
             this.panel2.Controls.Add(this.ctrlSiteTrack27);
             this.panel2.Controls.Add(this.ctrlSiteTrack3);
-            this.panel2.Controls.Add(this.ctrlEqpCHG);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label22);
             this.panel2.Controls.Add(this.label29);
@@ -985,6 +1059,70 @@
             this.panel2.Size = new System.Drawing.Size(1707, 995);
             this.panel2.TabIndex = 332;
             // 
+            // ctrlEqpHPC1
+            // 
+            this.ctrlEqpHPC1.BackColor = System.Drawing.Color.DimGray;
+            this.ctrlEqpHPC1.EqpID = "F1HPC02";
+            this.ctrlEqpHPC1.EqpType = " HPC JIG#2";
+            this.ctrlEqpHPC1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlEqpHPC1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.ctrlEqpHPC1.Location = new System.Drawing.Point(1584, 763);
+            this.ctrlEqpHPC1.Name = "ctrlEqpHPC1";
+            this.ctrlEqpHPC1.Size = new System.Drawing.Size(86, 116);
+            this.ctrlEqpHPC1.TabIndex = 585;
+            // 
+            // ctrlEqpCharger1
+            // 
+            this.ctrlEqpCharger1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlEqpCharger1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ctrlEqpCharger1.EqpID = "";
+            this.ctrlEqpCharger1.EqpType = "CHG";
+            this.ctrlEqpCharger1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlEqpCharger1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.ctrlEqpCharger1.Location = new System.Drawing.Point(1257, 745);
+            this.ctrlEqpCharger1.Name = "ctrlEqpCharger1";
+            this.ctrlEqpCharger1.Size = new System.Drawing.Size(165, 134);
+            this.ctrlEqpCharger1.TabIndex = 584;
+            // 
+            // ctrlEqpLTAging4
+            // 
+            this.ctrlEqpLTAging4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlEqpLTAging4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ctrlEqpLTAging4.EqpID = "";
+            this.ctrlEqpLTAging4.EqpType = "LTA2";
+            this.ctrlEqpLTAging4.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlEqpLTAging4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.ctrlEqpLTAging4.Location = new System.Drawing.Point(1532, 614);
+            this.ctrlEqpLTAging4.Name = "ctrlEqpLTAging4";
+            this.ctrlEqpLTAging4.Size = new System.Drawing.Size(142, 81);
+            this.ctrlEqpLTAging4.TabIndex = 582;
+            // 
+            // ctrlEqpLTAging3
+            // 
+            this.ctrlEqpLTAging3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlEqpLTAging3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ctrlEqpLTAging3.EqpID = "";
+            this.ctrlEqpLTAging3.EqpType = "LTA1";
+            this.ctrlEqpLTAging3.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlEqpLTAging3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.ctrlEqpLTAging3.Location = new System.Drawing.Point(1532, 410);
+            this.ctrlEqpLTAging3.Name = "ctrlEqpLTAging3";
+            this.ctrlEqpLTAging3.Size = new System.Drawing.Size(142, 81);
+            this.ctrlEqpLTAging3.TabIndex = 581;
+            // 
+            // ctrlEqpHTAging2
+            // 
+            this.ctrlEqpHTAging2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlEqpHTAging2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ctrlEqpHTAging2.EqpID = "";
+            this.ctrlEqpHTAging2.EqpType = "HTA";
+            this.ctrlEqpHTAging2.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlEqpHTAging2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.ctrlEqpHTAging2.Location = new System.Drawing.Point(1491, 210);
+            this.ctrlEqpHTAging2.Name = "ctrlEqpHTAging2";
+            this.ctrlEqpHTAging2.Size = new System.Drawing.Size(148, 82);
+            this.ctrlEqpHTAging2.TabIndex = 580;
+            // 
             // ctrlEqpLTAging2
             // 
             this.ctrlEqpLTAging2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
@@ -993,9 +1131,9 @@
             this.ctrlEqpLTAging2.EqpType = "LTA2";
             this.ctrlEqpLTAging2.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpLTAging2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlEqpLTAging2.Location = new System.Drawing.Point(1531, 545);
+            this.ctrlEqpLTAging2.Location = new System.Drawing.Point(1531, 518);
             this.ctrlEqpLTAging2.Name = "ctrlEqpLTAging2";
-            this.ctrlEqpLTAging2.Size = new System.Drawing.Size(142, 165);
+            this.ctrlEqpLTAging2.Size = new System.Drawing.Size(142, 81);
             this.ctrlEqpLTAging2.TabIndex = 579;
             // 
             // ctrlEqpLTAging1
@@ -1006,9 +1144,9 @@
             this.ctrlEqpLTAging1.EqpType = "LTA1";
             this.ctrlEqpLTAging1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpLTAging1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlEqpLTAging1.Location = new System.Drawing.Point(1534, 341);
+            this.ctrlEqpLTAging1.Location = new System.Drawing.Point(1532, 315);
             this.ctrlEqpLTAging1.Name = "ctrlEqpLTAging1";
-            this.ctrlEqpLTAging1.Size = new System.Drawing.Size(142, 165);
+            this.ctrlEqpLTAging1.Size = new System.Drawing.Size(142, 81);
             this.ctrlEqpLTAging1.TabIndex = 578;
             // 
             // ctrlEqpHTAging1
@@ -1019,9 +1157,9 @@
             this.ctrlEqpHTAging1.EqpType = "HTA";
             this.ctrlEqpHTAging1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpHTAging1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlEqpHTAging1.Location = new System.Drawing.Point(1492, 121);
+            this.ctrlEqpHTAging1.Location = new System.Drawing.Point(1491, 113);
             this.ctrlEqpHTAging1.Name = "ctrlEqpHTAging1";
-            this.ctrlEqpHTAging1.Size = new System.Drawing.Size(148, 162);
+            this.ctrlEqpHTAging1.Size = new System.Drawing.Size(148, 82);
             this.ctrlEqpHTAging1.TabIndex = 574;
             // 
             // ctrlSCraneH4
@@ -1036,7 +1174,7 @@
             this.ctrlSCraneH4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ctrlSCraneH4.MaxBayCount = 100;
             this.ctrlSCraneH4.Name = "ctrlSCraneH4";
-            this.ctrlSCraneH4.Size = new System.Drawing.Size(328, 32);
+            this.ctrlSCraneH4.Size = new System.Drawing.Size(224, 32);
             this.ctrlSCraneH4.TabIndex = 573;
             // 
             // ctrlSCraneH3
@@ -1049,7 +1187,7 @@
             this.ctrlSCraneH3.DeviceID = 2;
             this.ctrlSCraneH3.DisplayText = "";
             this.ctrlSCraneH3.Font = new System.Drawing.Font("Segoe UI Emoji", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctrlSCraneH3.Location = new System.Drawing.Point(1153, 611);
+            this.ctrlSCraneH3.Location = new System.Drawing.Point(1153, 590);
             this.ctrlSCraneH3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ctrlSCraneH3.MaxBayCount = 100;
             this.ctrlSCraneH3.Name = "ctrlSCraneH3";
@@ -1087,7 +1225,7 @@
             this.ctrlSCraneH2.DeviceID = 2;
             this.ctrlSCraneH2.DisplayText = "";
             this.ctrlSCraneH2.Font = new System.Drawing.Font("Segoe UI Emoji", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctrlSCraneH2.Location = new System.Drawing.Point(1153, 408);
+            this.ctrlSCraneH2.Location = new System.Drawing.Point(1153, 387);
             this.ctrlSCraneH2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ctrlSCraneH2.MaxBayCount = 100;
             this.ctrlSCraneH2.Name = "ctrlSCraneH2";
@@ -1134,7 +1272,7 @@
             this.bcrMarker35.Location = new System.Drawing.Point(150, 395);
             this.bcrMarker35.Name = "bcrMarker35";
             this.bcrMarker35.PLCNo = 136;
-            this.bcrMarker35.ShowSiteNo = true;
+            this.bcrMarker35.ShowSiteNo = false;
             this.bcrMarker35.ShowTroubleState = false;
             this.bcrMarker35.SiteNo = 0;
             this.bcrMarker35.Size = new System.Drawing.Size(30, 3);
@@ -1152,10 +1290,10 @@
             this.bcrMarker34.CVPLCListDeviceID = 0;
             this.bcrMarker34.DisplayText = "";
             this.bcrMarker34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker34.Location = new System.Drawing.Point(34, 475);
+            this.bcrMarker34.Location = new System.Drawing.Point(34, 435);
             this.bcrMarker34.Name = "bcrMarker34";
             this.bcrMarker34.PLCNo = 140;
-            this.bcrMarker34.ShowSiteNo = true;
+            this.bcrMarker34.ShowSiteNo = false;
             this.bcrMarker34.ShowTroubleState = false;
             this.bcrMarker34.SiteNo = 0;
             this.bcrMarker34.Size = new System.Drawing.Size(30, 3);
@@ -1176,7 +1314,7 @@
             this.bcrMarker33.Location = new System.Drawing.Point(645, 755);
             this.bcrMarker33.Name = "bcrMarker33";
             this.bcrMarker33.PLCNo = 169;
-            this.bcrMarker33.ShowSiteNo = true;
+            this.bcrMarker33.ShowSiteNo = false;
             this.bcrMarker33.ShowTroubleState = false;
             this.bcrMarker33.SiteNo = 0;
             this.bcrMarker33.Size = new System.Drawing.Size(30, 3);
@@ -1197,7 +1335,7 @@
             this.bcrMarker32.Location = new System.Drawing.Point(569, 755);
             this.bcrMarker32.Name = "bcrMarker32";
             this.bcrMarker32.PLCNo = 167;
-            this.bcrMarker32.ShowSiteNo = true;
+            this.bcrMarker32.ShowSiteNo = false;
             this.bcrMarker32.ShowTroubleState = false;
             this.bcrMarker32.SiteNo = 0;
             this.bcrMarker32.Size = new System.Drawing.Size(30, 3);
@@ -1218,7 +1356,7 @@
             this.bcrMarker31.Location = new System.Drawing.Point(491, 755);
             this.bcrMarker31.Name = "bcrMarker31";
             this.bcrMarker31.PLCNo = 164;
-            this.bcrMarker31.ShowSiteNo = true;
+            this.bcrMarker31.ShowSiteNo = false;
             this.bcrMarker31.ShowTroubleState = false;
             this.bcrMarker31.SiteNo = 0;
             this.bcrMarker31.Size = new System.Drawing.Size(30, 3);
@@ -1239,7 +1377,7 @@
             this.bcrMarker30.Location = new System.Drawing.Point(415, 755);
             this.bcrMarker30.Name = "bcrMarker30";
             this.bcrMarker30.PLCNo = 161;
-            this.bcrMarker30.ShowSiteNo = true;
+            this.bcrMarker30.ShowSiteNo = false;
             this.bcrMarker30.ShowTroubleState = false;
             this.bcrMarker30.SiteNo = 0;
             this.bcrMarker30.Size = new System.Drawing.Size(30, 3);
@@ -1260,7 +1398,7 @@
             this.bcrMarker29.Location = new System.Drawing.Point(149, 755);
             this.bcrMarker29.Name = "bcrMarker29";
             this.bcrMarker29.PLCNo = 146;
-            this.bcrMarker29.ShowSiteNo = true;
+            this.bcrMarker29.ShowSiteNo = false;
             this.bcrMarker29.ShowTroubleState = false;
             this.bcrMarker29.SiteNo = 0;
             this.bcrMarker29.Size = new System.Drawing.Size(30, 3);
@@ -1281,7 +1419,7 @@
             this.bcrMarker28.Location = new System.Drawing.Point(719, 435);
             this.bcrMarker28.Name = "bcrMarker28";
             this.bcrMarker28.PLCNo = 108;
-            this.bcrMarker28.ShowSiteNo = true;
+            this.bcrMarker28.ShowSiteNo = false;
             this.bcrMarker28.ShowTroubleState = false;
             this.bcrMarker28.SiteNo = 0;
             this.bcrMarker28.Size = new System.Drawing.Size(30, 3);
@@ -1302,7 +1440,7 @@
             this.bcrMarker27.Location = new System.Drawing.Point(1033, 880);
             this.bcrMarker27.Name = "bcrMarker27";
             this.bcrMarker27.PLCNo = 217;
-            this.bcrMarker27.ShowSiteNo = true;
+            this.bcrMarker27.ShowSiteNo = false;
             this.bcrMarker27.ShowTroubleState = false;
             this.bcrMarker27.SiteNo = 0;
             this.bcrMarker27.Size = new System.Drawing.Size(30, 3);
@@ -1320,10 +1458,10 @@
             this.bcrMarker26.CVPLCListDeviceID = 2;
             this.bcrMarker26.DisplayText = "";
             this.bcrMarker26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker26.Location = new System.Drawing.Point(1033, 569);
+            this.bcrMarker26.Location = new System.Drawing.Point(1033, 548);
             this.bcrMarker26.Name = "bcrMarker26";
             this.bcrMarker26.PLCNo = 212;
-            this.bcrMarker26.ShowSiteNo = true;
+            this.bcrMarker26.ShowSiteNo = false;
             this.bcrMarker26.ShowTroubleState = false;
             this.bcrMarker26.SiteNo = 0;
             this.bcrMarker26.Size = new System.Drawing.Size(30, 3);
@@ -1341,10 +1479,10 @@
             this.bcrMarker25.CVPLCListDeviceID = 2;
             this.bcrMarker25.DisplayText = "";
             this.bcrMarker25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker25.Location = new System.Drawing.Point(1147, 480);
+            this.bcrMarker25.Location = new System.Drawing.Point(1147, 459);
             this.bcrMarker25.Name = "bcrMarker25";
             this.bcrMarker25.PLCNo = 211;
-            this.bcrMarker25.ShowSiteNo = true;
+            this.bcrMarker25.ShowSiteNo = false;
             this.bcrMarker25.ShowTroubleState = false;
             this.bcrMarker25.SiteNo = 0;
             this.bcrMarker25.Size = new System.Drawing.Size(30, 3);
@@ -1362,10 +1500,10 @@
             this.bcrMarker24.CVPLCListDeviceID = 2;
             this.bcrMarker24.DisplayText = "";
             this.bcrMarker24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker24.Location = new System.Drawing.Point(1034, 367);
+            this.bcrMarker24.Location = new System.Drawing.Point(1034, 346);
             this.bcrMarker24.Name = "bcrMarker24";
             this.bcrMarker24.PLCNo = 207;
-            this.bcrMarker24.ShowSiteNo = true;
+            this.bcrMarker24.ShowSiteNo = false;
             this.bcrMarker24.ShowTroubleState = false;
             this.bcrMarker24.SiteNo = 0;
             this.bcrMarker24.Size = new System.Drawing.Size(30, 3);
@@ -1386,7 +1524,7 @@
             this.bcrMarker23.Location = new System.Drawing.Point(1186, 258);
             this.bcrMarker23.Name = "bcrMarker23";
             this.bcrMarker23.PLCNo = 206;
-            this.bcrMarker23.ShowSiteNo = true;
+            this.bcrMarker23.ShowSiteNo = false;
             this.bcrMarker23.ShowTroubleState = false;
             this.bcrMarker23.SiteNo = 0;
             this.bcrMarker23.Size = new System.Drawing.Size(30, 3);
@@ -1406,7 +1544,7 @@
             this.bcrMarker22.Location = new System.Drawing.Point(1218, 71);
             this.bcrMarker22.Name = "bcrMarker22";
             this.bcrMarker22.PLCNo = 217;
-            this.bcrMarker22.ShowSiteNo = true;
+            this.bcrMarker22.ShowSiteNo = false;
             this.bcrMarker22.ShowTroubleState = false;
             this.bcrMarker22.SiteNo = 0;
             this.bcrMarker22.Size = new System.Drawing.Size(3, 30);
@@ -1426,7 +1564,7 @@
             this.bcrMarker21.Location = new System.Drawing.Point(1105, 70);
             this.bcrMarker21.Name = "bcrMarker21";
             this.bcrMarker21.PLCNo = 216;
-            this.bcrMarker21.ShowSiteNo = true;
+            this.bcrMarker21.ShowSiteNo = false;
             this.bcrMarker21.ShowTroubleState = false;
             this.bcrMarker21.SiteNo = 0;
             this.bcrMarker21.Size = new System.Drawing.Size(3, 30);
@@ -1441,13 +1579,13 @@
             this.ctrlSiteTrack50.InterSitePadding = 2;
             this.ctrlSiteTrack50.IsControled = true;
             this.ctrlSiteTrack50.IsUpperStage = false;
-            this.ctrlSiteTrack50.Location = new System.Drawing.Point(1363, 842);
+            this.ctrlSiteTrack50.Location = new System.Drawing.Point(1424, 844);
             this.ctrlSiteTrack50.MainLoop = false;
             this.ctrlSiteTrack50.MarginHorizontal = 0;
             this.ctrlSiteTrack50.MarginVertical = 0;
             this.ctrlSiteTrack50.Name = "ctrlSiteTrack50";
             this.ctrlSiteTrack50.PLCNo = 50;
-            this.ctrlSiteTrack50.ShowSiteNo = true;
+            this.ctrlSiteTrack50.ShowSiteNo = false;
             this.ctrlSiteTrack50.ShowTroubleState = false;
             this.ctrlSiteTrack50.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack50.SiteBoxColor = System.Drawing.Color.Gray;
@@ -1472,13 +1610,13 @@
             this.ctrlSiteTrack49.InterSitePadding = 2;
             this.ctrlSiteTrack49.IsControled = true;
             this.ctrlSiteTrack49.IsUpperStage = false;
-            this.ctrlSiteTrack49.Location = new System.Drawing.Point(1496, 667);
+            this.ctrlSiteTrack49.Location = new System.Drawing.Point(1496, 646);
             this.ctrlSiteTrack49.MainLoop = false;
             this.ctrlSiteTrack49.MarginHorizontal = 0;
             this.ctrlSiteTrack49.MarginVertical = 0;
             this.ctrlSiteTrack49.Name = "ctrlSiteTrack49";
             this.ctrlSiteTrack49.PLCNo = 49;
-            this.ctrlSiteTrack49.ShowSiteNo = true;
+            this.ctrlSiteTrack49.ShowSiteNo = false;
             this.ctrlSiteTrack49.ShowTroubleState = false;
             this.ctrlSiteTrack49.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack49.SiteBoxColor = System.Drawing.Color.Gray;
@@ -1503,13 +1641,13 @@
             this.ctrlSiteTrack48.InterSitePadding = 2;
             this.ctrlSiteTrack48.IsControled = true;
             this.ctrlSiteTrack48.IsUpperStage = false;
-            this.ctrlSiteTrack48.Location = new System.Drawing.Point(1496, 568);
+            this.ctrlSiteTrack48.Location = new System.Drawing.Point(1496, 547);
             this.ctrlSiteTrack48.MainLoop = false;
             this.ctrlSiteTrack48.MarginHorizontal = 0;
             this.ctrlSiteTrack48.MarginVertical = 0;
             this.ctrlSiteTrack48.Name = "ctrlSiteTrack48";
             this.ctrlSiteTrack48.PLCNo = 48;
-            this.ctrlSiteTrack48.ShowSiteNo = true;
+            this.ctrlSiteTrack48.ShowSiteNo = false;
             this.ctrlSiteTrack48.ShowTroubleState = false;
             this.ctrlSiteTrack48.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack48.SiteBoxColor = System.Drawing.Color.Gray;
@@ -1534,13 +1672,13 @@
             this.ctrlSiteTrack47.InterSitePadding = 2;
             this.ctrlSiteTrack47.IsControled = true;
             this.ctrlSiteTrack47.IsUpperStage = false;
-            this.ctrlSiteTrack47.Location = new System.Drawing.Point(1495, 465);
+            this.ctrlSiteTrack47.Location = new System.Drawing.Point(1495, 444);
             this.ctrlSiteTrack47.MainLoop = false;
             this.ctrlSiteTrack47.MarginHorizontal = 0;
             this.ctrlSiteTrack47.MarginVertical = 0;
             this.ctrlSiteTrack47.Name = "ctrlSiteTrack47";
             this.ctrlSiteTrack47.PLCNo = 47;
-            this.ctrlSiteTrack47.ShowSiteNo = true;
+            this.ctrlSiteTrack47.ShowSiteNo = false;
             this.ctrlSiteTrack47.ShowTroubleState = false;
             this.ctrlSiteTrack47.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack47.SiteBoxColor = System.Drawing.Color.Gray;
@@ -1565,13 +1703,13 @@
             this.ctrlSiteTrack46.InterSitePadding = 2;
             this.ctrlSiteTrack46.IsControled = true;
             this.ctrlSiteTrack46.IsUpperStage = false;
-            this.ctrlSiteTrack46.Location = new System.Drawing.Point(1495, 368);
+            this.ctrlSiteTrack46.Location = new System.Drawing.Point(1495, 347);
             this.ctrlSiteTrack46.MainLoop = false;
             this.ctrlSiteTrack46.MarginHorizontal = 0;
             this.ctrlSiteTrack46.MarginVertical = 0;
             this.ctrlSiteTrack46.Name = "ctrlSiteTrack46";
             this.ctrlSiteTrack46.PLCNo = 46;
-            this.ctrlSiteTrack46.ShowSiteNo = true;
+            this.ctrlSiteTrack46.ShowSiteNo = false;
             this.ctrlSiteTrack46.ShowTroubleState = false;
             this.ctrlSiteTrack46.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack46.SiteBoxColor = System.Drawing.Color.Gray;
@@ -1602,7 +1740,7 @@
             this.ctrlSiteTrack45.MarginVertical = 0;
             this.ctrlSiteTrack45.Name = "ctrlSiteTrack45";
             this.ctrlSiteTrack45.PLCNo = 45;
-            this.ctrlSiteTrack45.ShowSiteNo = true;
+            this.ctrlSiteTrack45.ShowSiteNo = false;
             this.ctrlSiteTrack45.ShowTroubleState = false;
             this.ctrlSiteTrack45.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack45.SiteBoxColor = System.Drawing.Color.Gray;
@@ -1633,7 +1771,7 @@
             this.ctrlSiteTrack44.MarginVertical = 0;
             this.ctrlSiteTrack44.Name = "ctrlSiteTrack44";
             this.ctrlSiteTrack44.PLCNo = 44;
-            this.ctrlSiteTrack44.ShowSiteNo = true;
+            this.ctrlSiteTrack44.ShowSiteNo = false;
             this.ctrlSiteTrack44.ShowTroubleState = false;
             this.ctrlSiteTrack44.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack44.SiteBoxColor = System.Drawing.Color.Gray;
@@ -1696,12 +1834,12 @@
             // 
             this.ctrlEqpHPC.BackColor = System.Drawing.Color.DimGray;
             this.ctrlEqpHPC.EqpID = "F1HPC01";
-            this.ctrlEqpHPC.EqpType = " HPC";
+            this.ctrlEqpHPC.EqpType = " HPC JIG#1";
             this.ctrlEqpHPC.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpHPC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlEqpHPC.Location = new System.Drawing.Point(1564, 741);
+            this.ctrlEqpHPC.Location = new System.Drawing.Point(1493, 763);
             this.ctrlEqpHPC.Name = "ctrlEqpHPC";
-            this.ctrlEqpHPC.Size = new System.Drawing.Size(104, 142);
+            this.ctrlEqpHPC.Size = new System.Drawing.Size(86, 116);
             this.ctrlEqpHPC.TabIndex = 542;
             // 
             // ctrlEqpPAC
@@ -1802,7 +1940,7 @@
             this.ctrlSiteTrack43.MarginVertical = 0;
             this.ctrlSiteTrack43.Name = "ctrlSiteTrack43";
             this.ctrlSiteTrack43.PLCNo = 43;
-            this.ctrlSiteTrack43.ShowSiteNo = true;
+            this.ctrlSiteTrack43.ShowSiteNo = false;
             this.ctrlSiteTrack43.ShowTroubleState = false;
             this.ctrlSiteTrack43.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack43.SiteBoxColor = System.Drawing.Color.Gray;
@@ -1833,7 +1971,7 @@
             this.ctrlSiteTrack42.MarginVertical = 0;
             this.ctrlSiteTrack42.Name = "ctrlSiteTrack42";
             this.ctrlSiteTrack42.PLCNo = 42;
-            this.ctrlSiteTrack42.ShowSiteNo = true;
+            this.ctrlSiteTrack42.ShowSiteNo = false;
             this.ctrlSiteTrack42.ShowTroubleState = false;
             this.ctrlSiteTrack42.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack42.SiteBoxColor = System.Drawing.Color.Gray;
@@ -1864,7 +2002,7 @@
             this.ctrlSiteTrack41.MarginVertical = 0;
             this.ctrlSiteTrack41.Name = "ctrlSiteTrack41";
             this.ctrlSiteTrack41.PLCNo = 41;
-            this.ctrlSiteTrack41.ShowSiteNo = true;
+            this.ctrlSiteTrack41.ShowSiteNo = false;
             this.ctrlSiteTrack41.ShowTroubleState = false;
             this.ctrlSiteTrack41.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack41.SiteBoxColor = System.Drawing.Color.Gray;
@@ -1895,7 +2033,7 @@
             this.ctrlSiteTrack40.MarginVertical = 0;
             this.ctrlSiteTrack40.Name = "ctrlSiteTrack40";
             this.ctrlSiteTrack40.PLCNo = 40;
-            this.ctrlSiteTrack40.ShowSiteNo = true;
+            this.ctrlSiteTrack40.ShowSiteNo = false;
             this.ctrlSiteTrack40.ShowTroubleState = false;
             this.ctrlSiteTrack40.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack40.SiteBoxColor = System.Drawing.Color.Gray;
@@ -1907,7 +2045,7 @@
             this.ctrlSiteTrack40.SiteNoIncStep = 1;
             this.ctrlSiteTrack40.SiteNoList = null;
             this.ctrlSiteTrack40.SiteTextDisp = new string[] {
-        "69=G4"};
+        "169=G4"};
             this.ctrlSiteTrack40.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack40.Size = new System.Drawing.Size(33, 35);
             this.ctrlSiteTrack40.TabIndex = 531;
@@ -1916,7 +2054,7 @@
             // pictureBox20
             // 
             this.pictureBox20.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox20.Image")));
-            this.pictureBox20.Location = new System.Drawing.Point(1518, 863);
+            this.pictureBox20.Location = new System.Drawing.Point(1454, 863);
             this.pictureBox20.Name = "pictureBox20";
             this.pictureBox20.Size = new System.Drawing.Size(4, 12);
             this.pictureBox20.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1926,7 +2064,7 @@
             // pictureBox21
             // 
             this.pictureBox21.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox21.Image")));
-            this.pictureBox21.Location = new System.Drawing.Point(1518, 850);
+            this.pictureBox21.Location = new System.Drawing.Point(1454, 850);
             this.pictureBox21.Name = "pictureBox21";
             this.pictureBox21.Size = new System.Drawing.Size(4, 12);
             this.pictureBox21.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1936,7 +2074,7 @@
             // pictureBox23
             // 
             this.pictureBox23.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox23.Image")));
-            this.pictureBox23.Location = new System.Drawing.Point(1557, 863);
+            this.pictureBox23.Location = new System.Drawing.Point(1493, 863);
             this.pictureBox23.Name = "pictureBox23";
             this.pictureBox23.Size = new System.Drawing.Size(4, 12);
             this.pictureBox23.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1946,7 +2084,7 @@
             // pictureBox24
             // 
             this.pictureBox24.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox24.Image")));
-            this.pictureBox24.Location = new System.Drawing.Point(1557, 850);
+            this.pictureBox24.Location = new System.Drawing.Point(1493, 850);
             this.pictureBox24.Name = "pictureBox24";
             this.pictureBox24.Size = new System.Drawing.Size(4, 12);
             this.pictureBox24.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2131,7 +2269,7 @@
             this.ctrlSiteTrack39.MarginVertical = 0;
             this.ctrlSiteTrack39.Name = "ctrlSiteTrack39";
             this.ctrlSiteTrack39.PLCNo = 39;
-            this.ctrlSiteTrack39.ShowSiteNo = true;
+            this.ctrlSiteTrack39.ShowSiteNo = false;
             this.ctrlSiteTrack39.ShowTroubleState = false;
             this.ctrlSiteTrack39.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack39.SiteBoxColor = System.Drawing.Color.Gray;
@@ -2172,7 +2310,7 @@
             this.ctrlSiteTrack38.MarginVertical = 0;
             this.ctrlSiteTrack38.Name = "ctrlSiteTrack38";
             this.ctrlSiteTrack38.PLCNo = 38;
-            this.ctrlSiteTrack38.ShowSiteNo = true;
+            this.ctrlSiteTrack38.ShowSiteNo = false;
             this.ctrlSiteTrack38.ShowTroubleState = false;
             this.ctrlSiteTrack38.SiteBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ctrlSiteTrack38.SiteBoxColor = System.Drawing.Color.Gray;
@@ -2205,7 +2343,7 @@
             this.ctrlSiteTrack37.MarginVertical = 0;
             this.ctrlSiteTrack37.Name = "ctrlSiteTrack37";
             this.ctrlSiteTrack37.PLCNo = 37;
-            this.ctrlSiteTrack37.ShowSiteNo = true;
+            this.ctrlSiteTrack37.ShowSiteNo = false;
             this.ctrlSiteTrack37.ShowTroubleState = false;
             this.ctrlSiteTrack37.SiteBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ctrlSiteTrack37.SiteBoxColor = System.Drawing.Color.Gray;
@@ -2238,7 +2376,7 @@
             this.ctrlSiteTrack36.MarginVertical = 0;
             this.ctrlSiteTrack36.Name = "ctrlSiteTrack36";
             this.ctrlSiteTrack36.PLCNo = 36;
-            this.ctrlSiteTrack36.ShowSiteNo = true;
+            this.ctrlSiteTrack36.ShowSiteNo = false;
             this.ctrlSiteTrack36.ShowTroubleState = false;
             this.ctrlSiteTrack36.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack36.SiteBoxColor = System.Drawing.Color.Red;
@@ -2269,7 +2407,7 @@
             this.ctrlSiteTrack35.MarginVertical = 0;
             this.ctrlSiteTrack35.Name = "ctrlSiteTrack35";
             this.ctrlSiteTrack35.PLCNo = 35;
-            this.ctrlSiteTrack35.ShowSiteNo = true;
+            this.ctrlSiteTrack35.ShowSiteNo = false;
             this.ctrlSiteTrack35.ShowTroubleState = false;
             this.ctrlSiteTrack35.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack35.SiteBoxColor = System.Drawing.Color.Gray;
@@ -2529,7 +2667,7 @@
             // pictureBox130
             // 
             this.pictureBox130.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox130.Image")));
-            this.pictureBox130.Location = new System.Drawing.Point(1110, 568);
+            this.pictureBox130.Location = new System.Drawing.Point(1110, 547);
             this.pictureBox130.Name = "pictureBox130";
             this.pictureBox130.Size = new System.Drawing.Size(12, 4);
             this.pictureBox130.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2539,7 +2677,7 @@
             // pictureBox131
             // 
             this.pictureBox131.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox131.Image")));
-            this.pictureBox131.Location = new System.Drawing.Point(1124, 568);
+            this.pictureBox131.Location = new System.Drawing.Point(1124, 547);
             this.pictureBox131.Name = "pictureBox131";
             this.pictureBox131.Size = new System.Drawing.Size(12, 4);
             this.pictureBox131.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2549,7 +2687,7 @@
             // pictureBox128
             // 
             this.pictureBox128.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox128.Image")));
-            this.pictureBox128.Location = new System.Drawing.Point(1141, 590);
+            this.pictureBox128.Location = new System.Drawing.Point(1141, 569);
             this.pictureBox128.Name = "pictureBox128";
             this.pictureBox128.Size = new System.Drawing.Size(4, 12);
             this.pictureBox128.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2559,7 +2697,7 @@
             // pictureBox129
             // 
             this.pictureBox129.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox129.Image")));
-            this.pictureBox129.Location = new System.Drawing.Point(1142, 577);
+            this.pictureBox129.Location = new System.Drawing.Point(1142, 556);
             this.pictureBox129.Name = "pictureBox129";
             this.pictureBox129.Size = new System.Drawing.Size(4, 12);
             this.pictureBox129.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2569,7 +2707,7 @@
             // pictureBox126
             // 
             this.pictureBox126.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox126.Image")));
-            this.pictureBox126.Location = new System.Drawing.Point(1141, 389);
+            this.pictureBox126.Location = new System.Drawing.Point(1141, 368);
             this.pictureBox126.Name = "pictureBox126";
             this.pictureBox126.Size = new System.Drawing.Size(4, 12);
             this.pictureBox126.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2579,7 +2717,7 @@
             // pictureBox127
             // 
             this.pictureBox127.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox127.Image")));
-            this.pictureBox127.Location = new System.Drawing.Point(1142, 376);
+            this.pictureBox127.Location = new System.Drawing.Point(1142, 355);
             this.pictureBox127.Name = "pictureBox127";
             this.pictureBox127.Size = new System.Drawing.Size(4, 12);
             this.pictureBox127.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2609,7 +2747,7 @@
             // pictureBox120
             // 
             this.pictureBox120.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox120.Image")));
-            this.pictureBox120.Location = new System.Drawing.Point(1027, 590);
+            this.pictureBox120.Location = new System.Drawing.Point(1027, 569);
             this.pictureBox120.Name = "pictureBox120";
             this.pictureBox120.Size = new System.Drawing.Size(4, 12);
             this.pictureBox120.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2619,7 +2757,7 @@
             // pictureBox121
             // 
             this.pictureBox121.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox121.Image")));
-            this.pictureBox121.Location = new System.Drawing.Point(1028, 577);
+            this.pictureBox121.Location = new System.Drawing.Point(1028, 556);
             this.pictureBox121.Name = "pictureBox121";
             this.pictureBox121.Size = new System.Drawing.Size(4, 12);
             this.pictureBox121.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2629,7 +2767,7 @@
             // pictureBox118
             // 
             this.pictureBox118.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox118.Image")));
-            this.pictureBox118.Location = new System.Drawing.Point(1027, 389);
+            this.pictureBox118.Location = new System.Drawing.Point(1027, 368);
             this.pictureBox118.Name = "pictureBox118";
             this.pictureBox118.Size = new System.Drawing.Size(4, 12);
             this.pictureBox118.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2639,7 +2777,7 @@
             // pictureBox119
             // 
             this.pictureBox119.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox119.Image")));
-            this.pictureBox119.Location = new System.Drawing.Point(1028, 376);
+            this.pictureBox119.Location = new System.Drawing.Point(1028, 355);
             this.pictureBox119.Name = "pictureBox119";
             this.pictureBox119.Size = new System.Drawing.Size(4, 12);
             this.pictureBox119.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3283,7 +3421,7 @@
             this.bcrMarker20.Location = new System.Drawing.Point(377, 715);
             this.bcrMarker20.Name = "bcrMarker20";
             this.bcrMarker20.PLCNo = 160;
-            this.bcrMarker20.ShowSiteNo = true;
+            this.bcrMarker20.ShowSiteNo = false;
             this.bcrMarker20.ShowTroubleState = false;
             this.bcrMarker20.SiteNo = 0;
             this.bcrMarker20.Size = new System.Drawing.Size(30, 3);
@@ -3297,7 +3435,7 @@
             this.label25.CausesValidation = false;
             this.label25.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
             this.label25.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label25.Location = new System.Drawing.Point(1187, 646);
+            this.label25.Location = new System.Drawing.Point(1187, 625);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(307, 57);
             this.label25.TabIndex = 404;
@@ -3311,7 +3449,7 @@
             this.label24.CausesValidation = false;
             this.label24.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
             this.label24.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label24.Location = new System.Drawing.Point(1187, 444);
+            this.label24.Location = new System.Drawing.Point(1187, 423);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(307, 57);
             this.label24.TabIndex = 403;
@@ -3346,7 +3484,7 @@
             this.bcrMarker19.Location = new System.Drawing.Point(530, 715);
             this.bcrMarker19.Name = "bcrMarker19";
             this.bcrMarker19.PLCNo = 165;
-            this.bcrMarker19.ShowSiteNo = true;
+            this.bcrMarker19.ShowSiteNo = false;
             this.bcrMarker19.ShowTroubleState = false;
             this.bcrMarker19.SiteNo = 0;
             this.bcrMarker19.Size = new System.Drawing.Size(30, 3);
@@ -3367,7 +3505,7 @@
             this.bcrMarker18.Location = new System.Drawing.Point(453, 715);
             this.bcrMarker18.Name = "bcrMarker18";
             this.bcrMarker18.PLCNo = 162;
-            this.bcrMarker18.ShowSiteNo = true;
+            this.bcrMarker18.ShowSiteNo = false;
             this.bcrMarker18.ShowTroubleState = false;
             this.bcrMarker18.SiteNo = 0;
             this.bcrMarker18.Size = new System.Drawing.Size(30, 3);
@@ -3388,7 +3526,7 @@
             this.bcrMarker17.Location = new System.Drawing.Point(73, 715);
             this.bcrMarker17.Name = "bcrMarker17";
             this.bcrMarker17.PLCNo = 143;
-            this.bcrMarker17.ShowSiteNo = true;
+            this.bcrMarker17.ShowSiteNo = false;
             this.bcrMarker17.ShowTroubleState = false;
             this.bcrMarker17.SiteNo = 0;
             this.bcrMarker17.Size = new System.Drawing.Size(30, 3);
@@ -3408,7 +3546,7 @@
             this.bcrMarker16.Location = new System.Drawing.Point(220, 521);
             this.bcrMarker16.Name = "bcrMarker16";
             this.bcrMarker16.PLCNo = 152;
-            this.bcrMarker16.ShowSiteNo = true;
+            this.bcrMarker16.ShowSiteNo = false;
             this.bcrMarker16.ShowTroubleState = false;
             this.bcrMarker16.SiteNo = 0;
             this.bcrMarker16.Size = new System.Drawing.Size(3, 30);
@@ -3428,7 +3566,7 @@
             this.bcrMarker15.Location = new System.Drawing.Point(182, 641);
             this.bcrMarker15.Name = "bcrMarker15";
             this.bcrMarker15.PLCNo = 138;
-            this.bcrMarker15.ShowSiteNo = true;
+            this.bcrMarker15.ShowSiteNo = false;
             this.bcrMarker15.ShowTroubleState = false;
             this.bcrMarker15.SiteNo = 0;
             this.bcrMarker15.Size = new System.Drawing.Size(3, 30);
@@ -3448,7 +3586,7 @@
             this.bcrMarker14.Location = new System.Drawing.Point(106, 402);
             this.bcrMarker14.Name = "bcrMarker14";
             this.bcrMarker14.PLCNo = 133;
-            this.bcrMarker14.ShowSiteNo = true;
+            this.bcrMarker14.ShowSiteNo = false;
             this.bcrMarker14.ShowTroubleState = false;
             this.bcrMarker14.SiteNo = 0;
             this.bcrMarker14.Size = new System.Drawing.Size(3, 30);
@@ -3468,7 +3606,7 @@
             this.bcrMarker13.Location = new System.Drawing.Point(263, 435);
             this.bcrMarker13.Name = "bcrMarker13";
             this.bcrMarker13.PLCNo = 126;
-            this.bcrMarker13.ShowSiteNo = true;
+            this.bcrMarker13.ShowSiteNo = false;
             this.bcrMarker13.ShowTroubleState = false;
             this.bcrMarker13.SiteNo = 0;
             this.bcrMarker13.Size = new System.Drawing.Size(30, 3);
@@ -3488,7 +3626,7 @@
             this.bcrMarker12.Location = new System.Drawing.Point(491, 435);
             this.bcrMarker12.Name = "bcrMarker12";
             this.bcrMarker12.PLCNo = 116;
-            this.bcrMarker12.ShowSiteNo = true;
+            this.bcrMarker12.ShowSiteNo = false;
             this.bcrMarker12.ShowTroubleState = false;
             this.bcrMarker12.SiteNo = 0;
             this.bcrMarker12.Size = new System.Drawing.Size(30, 3);
@@ -3508,7 +3646,7 @@
             this.bcrMarker11.Location = new System.Drawing.Point(870, 435);
             this.bcrMarker11.Name = "bcrMarker11";
             this.bcrMarker11.PLCNo = 103;
-            this.bcrMarker11.ShowSiteNo = true;
+            this.bcrMarker11.ShowSiteNo = false;
             this.bcrMarker11.ShowTroubleState = false;
             this.bcrMarker11.SiteNo = 0;
             this.bcrMarker11.Size = new System.Drawing.Size(30, 3);
@@ -3529,7 +3667,7 @@
             this.bcrMarker10.Location = new System.Drawing.Point(872, 715);
             this.bcrMarker10.Name = "bcrMarker10";
             this.bcrMarker10.PLCNo = 173;
-            this.bcrMarker10.ShowSiteNo = true;
+            this.bcrMarker10.ShowSiteNo = false;
             this.bcrMarker10.ShowTroubleState = false;
             this.bcrMarker10.SiteNo = 0;
             this.bcrMarker10.Size = new System.Drawing.Size(30, 3);
@@ -3550,7 +3688,7 @@
             this.bcrMarker9.Location = new System.Drawing.Point(1184, 880);
             this.bcrMarker9.Name = "bcrMarker9";
             this.bcrMarker9.PLCNo = 221;
-            this.bcrMarker9.ShowSiteNo = true;
+            this.bcrMarker9.ShowSiteNo = false;
             this.bcrMarker9.ShowTroubleState = false;
             this.bcrMarker9.SiteNo = 0;
             this.bcrMarker9.Size = new System.Drawing.Size(30, 3);
@@ -3568,10 +3706,10 @@
             this.bcrMarker8.CVPLCListDeviceID = 2;
             this.bcrMarker8.DisplayText = "";
             this.bcrMarker8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker8.Location = new System.Drawing.Point(1147, 569);
+            this.bcrMarker8.Location = new System.Drawing.Point(1147, 548);
             this.bcrMarker8.Name = "bcrMarker8";
             this.bcrMarker8.PLCNo = 216;
-            this.bcrMarker8.ShowSiteNo = true;
+            this.bcrMarker8.ShowSiteNo = false;
             this.bcrMarker8.ShowTroubleState = false;
             this.bcrMarker8.SiteNo = 0;
             this.bcrMarker8.Size = new System.Drawing.Size(30, 3);
@@ -3589,10 +3727,10 @@
             this.bcrMarker7.CVPLCListDeviceID = 2;
             this.bcrMarker7.DisplayText = "";
             this.bcrMarker7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker7.Location = new System.Drawing.Point(1148, 367);
+            this.bcrMarker7.Location = new System.Drawing.Point(1148, 346);
             this.bcrMarker7.Name = "bcrMarker7";
             this.bcrMarker7.PLCNo = 210;
-            this.bcrMarker7.ShowSiteNo = true;
+            this.bcrMarker7.ShowSiteNo = false;
             this.bcrMarker7.ShowTroubleState = false;
             this.bcrMarker7.SiteNo = 0;
             this.bcrMarker7.Size = new System.Drawing.Size(30, 3);
@@ -3613,7 +3751,7 @@
             this.bcrMarker6.Location = new System.Drawing.Point(1032, 257);
             this.bcrMarker6.Name = "bcrMarker6";
             this.bcrMarker6.PLCNo = 201;
-            this.bcrMarker6.ShowSiteNo = true;
+            this.bcrMarker6.ShowSiteNo = false;
             this.bcrMarker6.ShowTroubleState = false;
             this.bcrMarker6.SiteNo = 0;
             this.bcrMarker6.Size = new System.Drawing.Size(30, 3);
@@ -3634,7 +3772,7 @@
             this.bcrMarker5.Location = new System.Drawing.Point(953, 819);
             this.bcrMarker5.Name = "bcrMarker5";
             this.bcrMarker5.PLCNo = 200;
-            this.bcrMarker5.ShowSiteNo = true;
+            this.bcrMarker5.ShowSiteNo = false;
             this.bcrMarker5.ShowTroubleState = false;
             this.bcrMarker5.SiteNo = 0;
             this.bcrMarker5.Size = new System.Drawing.Size(30, 3);
@@ -3655,7 +3793,7 @@
             this.bcrMarker4.Location = new System.Drawing.Point(952, 714);
             this.bcrMarker4.Name = "bcrMarker4";
             this.bcrMarker4.PLCNo = 175;
-            this.bcrMarker4.ShowSiteNo = true;
+            this.bcrMarker4.ShowSiteNo = false;
             this.bcrMarker4.ShowTroubleState = false;
             this.bcrMarker4.SiteNo = 0;
             this.bcrMarker4.Size = new System.Drawing.Size(30, 3);
@@ -3675,7 +3813,7 @@
             this.bcrMarker3.Location = new System.Drawing.Point(912, 333);
             this.bcrMarker3.Name = "bcrMarker3";
             this.bcrMarker3.PLCNo = 202;
-            this.bcrMarker3.ShowSiteNo = true;
+            this.bcrMarker3.ShowSiteNo = false;
             this.bcrMarker3.ShowTroubleState = false;
             this.bcrMarker3.SiteNo = 0;
             this.bcrMarker3.Size = new System.Drawing.Size(30, 3);
@@ -3695,7 +3833,7 @@
             this.bcrMarker2.Location = new System.Drawing.Point(833, 145);
             this.bcrMarker2.Name = "bcrMarker2";
             this.bcrMarker2.PLCNo = 208;
-            this.bcrMarker2.ShowSiteNo = true;
+            this.bcrMarker2.ShowSiteNo = false;
             this.bcrMarker2.ShowTroubleState = false;
             this.bcrMarker2.SiteNo = 0;
             this.bcrMarker2.Size = new System.Drawing.Size(30, 3);
@@ -3716,7 +3854,7 @@
             this.bcrMarker1.Location = new System.Drawing.Point(951, 145);
             this.bcrMarker1.Name = "bcrMarker1";
             this.bcrMarker1.PLCNo = 211;
-            this.bcrMarker1.ShowSiteNo = true;
+            this.bcrMarker1.ShowSiteNo = false;
             this.bcrMarker1.ShowTroubleState = false;
             this.bcrMarker1.SiteNo = 0;
             this.bcrMarker1.Size = new System.Drawing.Size(30, 3);
@@ -3739,7 +3877,7 @@
             this.ctrlSiteTrack34.MarginVertical = 0;
             this.ctrlSiteTrack34.Name = "ctrlSiteTrack34";
             this.ctrlSiteTrack34.PLCNo = 34;
-            this.ctrlSiteTrack34.ShowSiteNo = true;
+            this.ctrlSiteTrack34.ShowSiteNo = false;
             this.ctrlSiteTrack34.ShowTroubleState = false;
             this.ctrlSiteTrack34.SiteBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ctrlSiteTrack34.SiteBoxColor = System.Drawing.Color.Gray;
@@ -3765,26 +3903,12 @@
             this.label20.CausesValidation = false;
             this.label20.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
             this.label20.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label20.Location = new System.Drawing.Point(1068, 41);
+            this.label20.Location = new System.Drawing.Point(1089, 32);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(88, 20);
+            this.label20.Size = new System.Drawing.Size(72, 29);
             this.label20.TabIndex = 380;
-            this.label20.Text = "INPUT";
+            this.label20.Text = "OUTPUT";
             this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label19
-            // 
-            this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
-            this.label19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label19.CausesValidation = false;
-            this.label19.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
-            this.label19.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label19.Location = new System.Drawing.Point(1068, 7);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(177, 33);
-            this.label19.TabIndex = 379;
-            this.label19.Text = "AGV";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ctrlSiteTrack31
             // 
@@ -3800,7 +3924,7 @@
             this.ctrlSiteTrack31.MarginVertical = 0;
             this.ctrlSiteTrack31.Name = "ctrlSiteTrack31";
             this.ctrlSiteTrack31.PLCNo = 31;
-            this.ctrlSiteTrack31.ShowSiteNo = true;
+            this.ctrlSiteTrack31.ShowSiteNo = false;
             this.ctrlSiteTrack31.ShowTroubleState = false;
             this.ctrlSiteTrack31.SiteBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.ctrlSiteTrack31.SiteBoxColor = System.Drawing.Color.Gray;
@@ -3834,7 +3958,7 @@
             this.ctrlSiteTrack30.MarginVertical = 0;
             this.ctrlSiteTrack30.Name = "ctrlSiteTrack30";
             this.ctrlSiteTrack30.PLCNo = 30;
-            this.ctrlSiteTrack30.ShowSiteNo = true;
+            this.ctrlSiteTrack30.ShowSiteNo = false;
             this.ctrlSiteTrack30.ShowTroubleState = false;
             this.ctrlSiteTrack30.SiteBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ctrlSiteTrack30.SiteBoxColor = System.Drawing.Color.Gray;
@@ -3867,7 +3991,7 @@
             this.ctrlSiteTrack29.MarginVertical = 0;
             this.ctrlSiteTrack29.Name = "ctrlSiteTrack29";
             this.ctrlSiteTrack29.PLCNo = 29;
-            this.ctrlSiteTrack29.ShowSiteNo = true;
+            this.ctrlSiteTrack29.ShowSiteNo = false;
             this.ctrlSiteTrack29.ShowTroubleState = false;
             this.ctrlSiteTrack29.SiteBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.ctrlSiteTrack29.SiteBoxColor = System.Drawing.Color.Gray;
@@ -3904,11 +4028,11 @@
             this.label21.CausesValidation = false;
             this.label21.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
             this.label21.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label21.Location = new System.Drawing.Point(1157, 41);
+            this.label21.Location = new System.Drawing.Point(1164, 32);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(88, 20);
+            this.label21.Size = new System.Drawing.Size(72, 29);
             this.label21.TabIndex = 381;
-            this.label21.Text = "OUTPUT";
+            this.label21.Text = "INPUT";
             this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ctrlSiteTrack1
@@ -3926,7 +4050,7 @@
             this.ctrlSiteTrack1.MarginVertical = 0;
             this.ctrlSiteTrack1.Name = "ctrlSiteTrack1";
             this.ctrlSiteTrack1.PLCNo = 1;
-            this.ctrlSiteTrack1.ShowSiteNo = true;
+            this.ctrlSiteTrack1.ShowSiteNo = false;
             this.ctrlSiteTrack1.ShowTroubleState = false;
             this.ctrlSiteTrack1.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack1.SiteBoxColor = System.Drawing.Color.Gray;
@@ -3980,7 +4104,7 @@
             this.ctrlSiteTrack2.MarginVertical = 0;
             this.ctrlSiteTrack2.Name = "ctrlSiteTrack2";
             this.ctrlSiteTrack2.PLCNo = 2;
-            this.ctrlSiteTrack2.ShowSiteNo = true;
+            this.ctrlSiteTrack2.ShowSiteNo = false;
             this.ctrlSiteTrack2.ShowTroubleState = false;
             this.ctrlSiteTrack2.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack2.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4028,13 +4152,13 @@
             this.ctrlSiteTrack28.InterSitePadding = 2;
             this.ctrlSiteTrack28.IsControled = true;
             this.ctrlSiteTrack28.IsUpperStage = false;
-            this.ctrlSiteTrack28.Location = new System.Drawing.Point(1522, 844);
+            this.ctrlSiteTrack28.Location = new System.Drawing.Point(1458, 844);
             this.ctrlSiteTrack28.MainLoop = false;
             this.ctrlSiteTrack28.MarginHorizontal = 0;
             this.ctrlSiteTrack28.MarginVertical = 0;
             this.ctrlSiteTrack28.Name = "ctrlSiteTrack28";
             this.ctrlSiteTrack28.PLCNo = 28;
-            this.ctrlSiteTrack28.ShowSiteNo = true;
+            this.ctrlSiteTrack28.ShowSiteNo = false;
             this.ctrlSiteTrack28.ShowTroubleState = false;
             this.ctrlSiteTrack28.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack28.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4051,20 +4175,6 @@
             this.ctrlSiteTrack28.TabIndex = 373;
             this.ctrlSiteTrack28.TextRotateAngle = 0;
             // 
-            // label17
-            // 
-            this.label17.BackColor = System.Drawing.Color.Gray;
-            this.label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label17.CausesValidation = false;
-            this.label17.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
-            this.label17.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label17.Location = new System.Drawing.Point(1259, 759);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(102, 118);
-            this.label17.TabIndex = 372;
-            this.label17.Text = "CHARGING\r\nDISCHARGING";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // ctrlSiteTrack26
             // 
             this.ctrlSiteTrack26.CVPLCListDeviceID = 3;
@@ -4079,7 +4189,7 @@
             this.ctrlSiteTrack26.MarginVertical = 0;
             this.ctrlSiteTrack26.Name = "ctrlSiteTrack26";
             this.ctrlSiteTrack26.PLCNo = 26;
-            this.ctrlSiteTrack26.ShowSiteNo = true;
+            this.ctrlSiteTrack26.ShowSiteNo = false;
             this.ctrlSiteTrack26.ShowTroubleState = false;
             this.ctrlSiteTrack26.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack26.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4110,13 +4220,13 @@
             this.ctrlSiteTrack24.InterSitePadding = 2;
             this.ctrlSiteTrack24.IsControled = true;
             this.ctrlSiteTrack24.IsUpperStage = false;
-            this.ctrlSiteTrack24.Location = new System.Drawing.Point(1146, 443);
+            this.ctrlSiteTrack24.Location = new System.Drawing.Point(1146, 422);
             this.ctrlSiteTrack24.MainLoop = false;
             this.ctrlSiteTrack24.MarginHorizontal = 0;
             this.ctrlSiteTrack24.MarginVertical = 0;
             this.ctrlSiteTrack24.Name = "ctrlSiteTrack24";
             this.ctrlSiteTrack24.PLCNo = 24;
-            this.ctrlSiteTrack24.ShowSiteNo = true;
+            this.ctrlSiteTrack24.ShowSiteNo = false;
             this.ctrlSiteTrack24.ShowTroubleState = false;
             this.ctrlSiteTrack24.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack24.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4141,13 +4251,13 @@
             this.ctrlSiteTrack23.InterSitePadding = 6;
             this.ctrlSiteTrack23.IsControled = true;
             this.ctrlSiteTrack23.IsUpperStage = false;
-            this.ctrlSiteTrack23.Location = new System.Drawing.Point(1032, 573);
+            this.ctrlSiteTrack23.Location = new System.Drawing.Point(1032, 552);
             this.ctrlSiteTrack23.MainLoop = false;
             this.ctrlSiteTrack23.MarginHorizontal = 0;
             this.ctrlSiteTrack23.MarginVertical = 0;
             this.ctrlSiteTrack23.Name = "ctrlSiteTrack23";
             this.ctrlSiteTrack23.PLCNo = 23;
-            this.ctrlSiteTrack23.ShowSiteNo = true;
+            this.ctrlSiteTrack23.ShowSiteNo = false;
             this.ctrlSiteTrack23.ShowTroubleState = false;
             this.ctrlSiteTrack23.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack23.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4176,13 +4286,13 @@
             this.ctrlSiteTrack22.InterSitePadding = 6;
             this.ctrlSiteTrack22.IsControled = true;
             this.ctrlSiteTrack22.IsUpperStage = false;
-            this.ctrlSiteTrack22.Location = new System.Drawing.Point(1032, 371);
+            this.ctrlSiteTrack22.Location = new System.Drawing.Point(1032, 350);
             this.ctrlSiteTrack22.MainLoop = false;
             this.ctrlSiteTrack22.MarginHorizontal = 0;
             this.ctrlSiteTrack22.MarginVertical = 0;
             this.ctrlSiteTrack22.Name = "ctrlSiteTrack22";
             this.ctrlSiteTrack22.PLCNo = 22;
-            this.ctrlSiteTrack22.ShowSiteNo = true;
+            this.ctrlSiteTrack22.ShowSiteNo = false;
             this.ctrlSiteTrack22.ShowTroubleState = false;
             this.ctrlSiteTrack22.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack22.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4206,7 +4316,7 @@
             this.label16.CausesValidation = false;
             this.label16.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
             this.label16.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label16.Location = new System.Drawing.Point(1187, 548);
+            this.label16.Location = new System.Drawing.Point(1187, 527);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(307, 57);
             this.label16.TabIndex = 365;
@@ -4220,7 +4330,7 @@
             this.label15.CausesValidation = false;
             this.label15.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
             this.label15.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label15.Location = new System.Drawing.Point(1187, 346);
+            this.label15.Location = new System.Drawing.Point(1187, 325);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(307, 57);
             this.label15.TabIndex = 364;
@@ -4255,7 +4365,7 @@
             this.ctrlSiteTrack20.MarginVertical = 0;
             this.ctrlSiteTrack20.Name = "ctrlSiteTrack20";
             this.ctrlSiteTrack20.PLCNo = 20;
-            this.ctrlSiteTrack20.ShowSiteNo = true;
+            this.ctrlSiteTrack20.ShowSiteNo = false;
             this.ctrlSiteTrack20.ShowTroubleState = false;
             this.ctrlSiteTrack20.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack20.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4291,7 +4401,7 @@
             this.ctrlSiteTrack19.MarginVertical = 0;
             this.ctrlSiteTrack19.Name = "ctrlSiteTrack19";
             this.ctrlSiteTrack19.PLCNo = 19;
-            this.ctrlSiteTrack19.ShowSiteNo = true;
+            this.ctrlSiteTrack19.ShowSiteNo = false;
             this.ctrlSiteTrack19.ShowTroubleState = false;
             this.ctrlSiteTrack19.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack19.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4327,7 +4437,7 @@
             this.ctrlSiteTrack18.MarginVertical = 0;
             this.ctrlSiteTrack18.Name = "ctrlSiteTrack18";
             this.ctrlSiteTrack18.PLCNo = 18;
-            this.ctrlSiteTrack18.ShowSiteNo = true;
+            this.ctrlSiteTrack18.ShowSiteNo = false;
             this.ctrlSiteTrack18.ShowTroubleState = false;
             this.ctrlSiteTrack18.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack18.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4360,7 +4470,7 @@
             this.ctrlSiteTrack17.MarginVertical = 0;
             this.ctrlSiteTrack17.Name = "ctrlSiteTrack17";
             this.ctrlSiteTrack17.PLCNo = 17;
-            this.ctrlSiteTrack17.ShowSiteNo = true;
+            this.ctrlSiteTrack17.ShowSiteNo = false;
             this.ctrlSiteTrack17.ShowTroubleState = false;
             this.ctrlSiteTrack17.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack17.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4393,7 +4503,7 @@
             this.ctrlSiteTrack16.MarginVertical = 0;
             this.ctrlSiteTrack16.Name = "ctrlSiteTrack16";
             this.ctrlSiteTrack16.PLCNo = 16;
-            this.ctrlSiteTrack16.ShowSiteNo = true;
+            this.ctrlSiteTrack16.ShowSiteNo = false;
             this.ctrlSiteTrack16.ShowTroubleState = false;
             this.ctrlSiteTrack16.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack16.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4424,7 +4534,7 @@
             this.ctrlSiteTrack15.MarginVertical = 0;
             this.ctrlSiteTrack15.Name = "ctrlSiteTrack15";
             this.ctrlSiteTrack15.PLCNo = 15;
-            this.ctrlSiteTrack15.ShowSiteNo = true;
+            this.ctrlSiteTrack15.ShowSiteNo = false;
             this.ctrlSiteTrack15.ShowTroubleState = false;
             this.ctrlSiteTrack15.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack15.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4458,7 +4568,7 @@
             this.ctrlSiteTrack14.MarginVertical = 0;
             this.ctrlSiteTrack14.Name = "ctrlSiteTrack14";
             this.ctrlSiteTrack14.PLCNo = 14;
-            this.ctrlSiteTrack14.ShowSiteNo = true;
+            this.ctrlSiteTrack14.ShowSiteNo = false;
             this.ctrlSiteTrack14.ShowTroubleState = false;
             this.ctrlSiteTrack14.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack14.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4482,7 +4592,7 @@
             this.ctrlSCraneV1.CraneDirection = ControlGallery.EnumCraneDirection.Down;
             this.ctrlSCraneV1.CraneID = 0;
             this.ctrlSCraneV1.CurrentBay = 0;
-            this.ctrlSCraneV1.DeviceID = -1;
+            this.ctrlSCraneV1.DeviceID = 0;
             this.ctrlSCraneV1.DisplayText = "";
             this.ctrlSCraneV1.Font = new System.Drawing.Font("Segoe UI Emoji", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ctrlSCraneV1.Location = new System.Drawing.Point(992, 130);
@@ -4517,7 +4627,7 @@
             this.ctrlSiteTrack13.MarginVertical = 0;
             this.ctrlSiteTrack13.Name = "ctrlSiteTrack13";
             this.ctrlSiteTrack13.PLCNo = 13;
-            this.ctrlSiteTrack13.ShowSiteNo = true;
+            this.ctrlSiteTrack13.ShowSiteNo = false;
             this.ctrlSiteTrack13.ShowTroubleState = false;
             this.ctrlSiteTrack13.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack13.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4548,7 +4658,7 @@
             this.ctrlSiteTrack12.MarginVertical = 0;
             this.ctrlSiteTrack12.Name = "ctrlSiteTrack12";
             this.ctrlSiteTrack12.PLCNo = 12;
-            this.ctrlSiteTrack12.ShowSiteNo = true;
+            this.ctrlSiteTrack12.ShowSiteNo = false;
             this.ctrlSiteTrack12.ShowTroubleState = false;
             this.ctrlSiteTrack12.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack12.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4631,7 +4741,7 @@
             this.ctrlSiteTrack11.MarginVertical = 0;
             this.ctrlSiteTrack11.Name = "ctrlSiteTrack11";
             this.ctrlSiteTrack11.PLCNo = 11;
-            this.ctrlSiteTrack11.ShowSiteNo = true;
+            this.ctrlSiteTrack11.ShowSiteNo = false;
             this.ctrlSiteTrack11.ShowTroubleState = false;
             this.ctrlSiteTrack11.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack11.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4643,7 +4753,7 @@
             this.ctrlSiteTrack11.SiteNoIncStep = 1;
             this.ctrlSiteTrack11.SiteNoList = new int[0];
             this.ctrlSiteTrack11.SiteTextDisp = new string[] {
-        "67=G3"};
+        "167=G3"};
             this.ctrlSiteTrack11.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack11.Size = new System.Drawing.Size(33, 35);
             this.ctrlSiteTrack11.TabIndex = 347;
@@ -4663,7 +4773,7 @@
             this.ctrlSiteTrack10.MarginVertical = 0;
             this.ctrlSiteTrack10.Name = "ctrlSiteTrack10";
             this.ctrlSiteTrack10.PLCNo = 10;
-            this.ctrlSiteTrack10.ShowSiteNo = true;
+            this.ctrlSiteTrack10.ShowSiteNo = false;
             this.ctrlSiteTrack10.ShowTroubleState = false;
             this.ctrlSiteTrack10.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack10.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4682,7 +4792,7 @@
         -1,
         164};
             this.ctrlSiteTrack10.SiteTextDisp = new string[] {
-        "64=G2"};
+        "164=G2"};
             this.ctrlSiteTrack10.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack10.Size = new System.Drawing.Size(33, 275);
             this.ctrlSiteTrack10.TabIndex = 346;
@@ -4703,7 +4813,7 @@
             this.ctrlSiteTrack9.MarginVertical = 0;
             this.ctrlSiteTrack9.Name = "ctrlSiteTrack9";
             this.ctrlSiteTrack9.PLCNo = 9;
-            this.ctrlSiteTrack9.ShowSiteNo = true;
+            this.ctrlSiteTrack9.ShowSiteNo = false;
             this.ctrlSiteTrack9.ShowTroubleState = false;
             this.ctrlSiteTrack9.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack9.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4722,7 +4832,7 @@
         -1,
         161};
             this.ctrlSiteTrack9.SiteTextDisp = new string[] {
-        "61=G1"};
+        "161=G1"};
             this.ctrlSiteTrack9.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack9.Size = new System.Drawing.Size(33, 275);
             this.ctrlSiteTrack9.TabIndex = 345;
@@ -4742,7 +4852,7 @@
             this.ctrlSiteTrack8.MarginVertical = 0;
             this.ctrlSiteTrack8.Name = "ctrlSiteTrack8";
             this.ctrlSiteTrack8.PLCNo = 8;
-            this.ctrlSiteTrack8.ShowSiteNo = true;
+            this.ctrlSiteTrack8.ShowSiteNo = false;
             this.ctrlSiteTrack8.ShowTroubleState = false;
             this.ctrlSiteTrack8.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack8.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4799,7 +4909,7 @@
             this.ctrlSiteTrack7.MarginVertical = 0;
             this.ctrlSiteTrack7.Name = "ctrlSiteTrack7";
             this.ctrlSiteTrack7.PLCNo = 7;
-            this.ctrlSiteTrack7.ShowSiteNo = true;
+            this.ctrlSiteTrack7.ShowSiteNo = false;
             this.ctrlSiteTrack7.ShowTroubleState = false;
             this.ctrlSiteTrack7.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack7.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4833,7 +4943,7 @@
             this.ctrlSiteTrack6.MarginVertical = 0;
             this.ctrlSiteTrack6.Name = "ctrlSiteTrack6";
             this.ctrlSiteTrack6.PLCNo = 6;
-            this.ctrlSiteTrack6.ShowSiteNo = true;
+            this.ctrlSiteTrack6.ShowSiteNo = false;
             this.ctrlSiteTrack6.ShowTroubleState = false;
             this.ctrlSiteTrack6.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack6.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4872,7 +4982,7 @@
             this.ctrlSiteTrack5.MarginVertical = 0;
             this.ctrlSiteTrack5.Name = "ctrlSiteTrack5";
             this.ctrlSiteTrack5.PLCNo = 5;
-            this.ctrlSiteTrack5.ShowSiteNo = true;
+            this.ctrlSiteTrack5.ShowSiteNo = false;
             this.ctrlSiteTrack5.ShowTroubleState = false;
             this.ctrlSiteTrack5.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack5.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4914,7 +5024,7 @@
             this.ctrlSiteTrack4.MarginVertical = 0;
             this.ctrlSiteTrack4.Name = "ctrlSiteTrack4";
             this.ctrlSiteTrack4.PLCNo = 4;
-            this.ctrlSiteTrack4.ShowSiteNo = true;
+            this.ctrlSiteTrack4.ShowSiteNo = false;
             this.ctrlSiteTrack4.ShowTroubleState = false;
             this.ctrlSiteTrack4.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack4.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4954,7 +5064,7 @@
             this.ctrlSiteTrack21.MarginVertical = 0;
             this.ctrlSiteTrack21.Name = "ctrlSiteTrack21";
             this.ctrlSiteTrack21.PLCNo = 21;
-            this.ctrlSiteTrack21.ShowSiteNo = true;
+            this.ctrlSiteTrack21.ShowSiteNo = false;
             this.ctrlSiteTrack21.ShowTroubleState = false;
             this.ctrlSiteTrack21.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack21.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4985,7 +5095,7 @@
             this.ctrlSiteTrack33.MarginVertical = 0;
             this.ctrlSiteTrack33.Name = "ctrlSiteTrack33";
             this.ctrlSiteTrack33.PLCNo = 33;
-            this.ctrlSiteTrack33.ShowSiteNo = true;
+            this.ctrlSiteTrack33.ShowSiteNo = false;
             this.ctrlSiteTrack33.ShowTroubleState = false;
             this.ctrlSiteTrack33.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack33.SiteBoxColor = System.Drawing.Color.Gray;
@@ -5018,7 +5128,7 @@
             this.ctrlSiteTrack32.MarginVertical = 0;
             this.ctrlSiteTrack32.Name = "ctrlSiteTrack32";
             this.ctrlSiteTrack32.PLCNo = 32;
-            this.ctrlSiteTrack32.ShowSiteNo = true;
+            this.ctrlSiteTrack32.ShowSiteNo = false;
             this.ctrlSiteTrack32.ShowTroubleState = false;
             this.ctrlSiteTrack32.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack32.SiteBoxColor = System.Drawing.Color.Gray;
@@ -5045,13 +5155,13 @@
             this.ctrlSiteTrack25.InterSitePadding = 2;
             this.ctrlSiteTrack25.IsControled = true;
             this.ctrlSiteTrack25.IsUpperStage = false;
-            this.ctrlSiteTrack25.Location = new System.Drawing.Point(1108, 532);
+            this.ctrlSiteTrack25.Location = new System.Drawing.Point(1108, 511);
             this.ctrlSiteTrack25.MainLoop = false;
             this.ctrlSiteTrack25.MarginHorizontal = 0;
             this.ctrlSiteTrack25.MarginVertical = 0;
             this.ctrlSiteTrack25.Name = "ctrlSiteTrack25";
             this.ctrlSiteTrack25.PLCNo = 25;
-            this.ctrlSiteTrack25.ShowSiteNo = true;
+            this.ctrlSiteTrack25.ShowSiteNo = false;
             this.ctrlSiteTrack25.ShowTroubleState = false;
             this.ctrlSiteTrack25.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack25.SiteBoxColor = System.Drawing.Color.Gray;
@@ -5082,7 +5192,7 @@
             this.ctrlSiteTrack27.MarginVertical = 0;
             this.ctrlSiteTrack27.Name = "ctrlSiteTrack27";
             this.ctrlSiteTrack27.PLCNo = 27;
-            this.ctrlSiteTrack27.ShowSiteNo = true;
+            this.ctrlSiteTrack27.ShowSiteNo = false;
             this.ctrlSiteTrack27.ShowTroubleState = false;
             this.ctrlSiteTrack27.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack27.SiteBoxColor = System.Drawing.Color.Gray;
@@ -5113,7 +5223,7 @@
             this.ctrlSiteTrack3.MarginVertical = 0;
             this.ctrlSiteTrack3.Name = "ctrlSiteTrack3";
             this.ctrlSiteTrack3.PLCNo = 3;
-            this.ctrlSiteTrack3.ShowSiteNo = true;
+            this.ctrlSiteTrack3.ShowSiteNo = false;
             this.ctrlSiteTrack3.ShowTroubleState = false;
             this.ctrlSiteTrack3.SiteBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ctrlSiteTrack3.SiteBoxColor = System.Drawing.Color.Gray;
@@ -5132,22 +5242,10 @@
             this.ctrlSiteTrack3.TabIndex = 333;
             this.ctrlSiteTrack3.TextRotateAngle = 0;
             // 
-            // ctrlEqpCHG
-            // 
-            this.ctrlEqpCHG.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlEqpCHG.EqpID = "F1CHG01";
-            this.ctrlEqpCHG.EqpType = "CHG";
-            this.ctrlEqpCHG.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ctrlEqpCHG.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlEqpCHG.Location = new System.Drawing.Point(1256, 755);
-            this.ctrlEqpCHG.Name = "ctrlEqpCHG";
-            this.ctrlEqpCHG.Size = new System.Drawing.Size(259, 125);
-            this.ctrlEqpCHG.TabIndex = 547;
-            // 
             // label2
             // 
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Location = new System.Drawing.Point(1182, 341);
+            this.label2.Location = new System.Drawing.Point(1182, 320);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(346, 165);
             this.label2.TabIndex = 575;
@@ -5155,7 +5253,7 @@
             // label22
             // 
             this.label22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label22.Location = new System.Drawing.Point(1182, 545);
+            this.label22.Location = new System.Drawing.Point(1182, 524);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(346, 165);
             this.label22.TabIndex = 576;
@@ -5181,6 +5279,12 @@
             this.Load += new System.EventHandler(this.CtrlMain_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox44)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox40)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox39)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox34)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox33)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox30)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox26)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).EndInit();
@@ -5311,21 +5415,11 @@
 
         #endregion
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Label label26;
         private System.Windows.Forms.PictureBox pictureBox30;
         private System.Windows.Forms.PictureBox pictureBox26;
         private System.Windows.Forms.PictureBox pictureBox25;
-        private MonitoringUI.Controlls.CtrlTaggingName ctrlTaggingName6;
-        private MonitoringUI.Controlls.CtrlTaggingName ctrlTaggingName2;
-        private MonitoringUI.Controlls.CtrlTaggingName ctrlTaggingName1;
         private System.Windows.Forms.Panel panel2;
         private ControlGallery.BCRMarker bcrMarker35;
         private ControlGallery.BCRMarker bcrMarker34;
@@ -5514,7 +5608,6 @@
         private ControlGallery.BCRMarker bcrMarker1;
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack34;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label19;
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack31;
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack30;
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack29;
@@ -5523,7 +5616,6 @@
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack1;
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack2;
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack28;
-        private System.Windows.Forms.Label label17;
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack26;
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack24;
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack23;
@@ -5562,7 +5654,6 @@
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack25;
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack27;
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack3;
-        private CtrlEqpCharger ctrlEqpCHG;
         private System.Windows.Forms.Timer m_timer;
         private ControlGallery.CtrlSCraneH ctrlSCraneH2;
         private ControlGallery.CraneCarriageSmall cranebox;
@@ -5584,5 +5675,25 @@
         private CtrlEqpLTAging ctrlEqpLTAging1;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label29;
+        private CtrlEqpHTAging ctrlEqpHTAging2;
+        private CtrlEqpLTAging ctrlEqpLTAging3;
+        private CtrlEqpLTAging ctrlEqpLTAging4;
+        private System.Windows.Forms.PictureBox pictureBox34;
+        private System.Windows.Forms.PictureBox pictureBox33;
+        private WindowsForms.CtrlLabel ctrlLabel1;
+        private WindowsForms.CtrlLabel ctrlLabel2;
+        private WindowsForms.CtrlLabel ctrlLabel3;
+        private WindowsForms.CtrlLabel ctrlLabel5;
+        private WindowsForms.CtrlLabel ctrlLabel4;
+        private WindowsForms.CtrlLabel ctrlLabel9;
+        private WindowsForms.CtrlLabel ctrlLabel8;
+        private WindowsForms.CtrlLabel ctrlLabel7;
+        private System.Windows.Forms.PictureBox pictureBox44;
+        private System.Windows.Forms.PictureBox pictureBox43;
+        private System.Windows.Forms.PictureBox pictureBox40;
+        private WindowsForms.CtrlLabel ctrlLabel6;
+        private System.Windows.Forms.PictureBox pictureBox39;
+        private CtrlEqpCharger ctrlEqpCharger1;
+        private CtrlEqpHPC ctrlEqpHPC1;
     }
 }

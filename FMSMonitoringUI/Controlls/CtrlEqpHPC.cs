@@ -39,17 +39,15 @@ namespace FMSMonitoringUI.Controlls
         private void InitGridView()
         {
             List<string> lstTitle = new List<string>();
-            lstTitle.Add("JIG #1");
+            lstTitle.Add("JIG ID");
             TrayInfoView.AddColumnHeaderList(lstTitle);
 
             lstTitle = new List<string>();
             lstTitle.Add("");
-            lstTitle.Add("JIG #2");
-            lstTitle.Add("");
             TrayInfoView.AddRowsHeaderList(lstTitle);
 
-            TrayInfoView.ColumnHeadersHeight(21);
-            TrayInfoView.RowsHeight(20);
+            TrayInfoView.ColumnHeadersHeight(25);
+            TrayInfoView.RowsHeight(25);
 
             TrayInfoView.SetGridViewStyles();
 

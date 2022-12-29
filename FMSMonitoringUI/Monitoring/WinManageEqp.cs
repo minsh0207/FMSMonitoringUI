@@ -54,19 +54,10 @@ namespace FMSMonitoringUI.Monitoring
             lstTitle = new List<string>();
             lstTitle.Add("Equipment ID");
             lstTitle.Add("Equipment Name");
-            lstTitle.Add("Op Mode");
-            lstTitle.Add("Eqp Status");
+            lstTitle.Add("Control Mode");
+            lstTitle.Add("Equipment Status");                       
             lstTitle.Add("Trouble Code");
             lstTitle.Add("Trouble Name");
-            //lstTitle.Add("Tray Information");
-            //lstTitle.Add("Tray ID");
-            //lstTitle.Add("Model");
-            //lstTitle.Add("Lot ID");
-            //lstTitle.Add("Route ID");
-            //lstTitle.Add("Process Type");
-            //lstTitle.Add("Process Name");
-            //lstTitle.Add("Input Time");
-            //lstTitle.Add("Plan Time");
             gridEqpInfo.AddRowsHeaderList(lstTitle);
 
             gridEqpInfo.ColumnHeadersHeight(30);
@@ -92,24 +83,16 @@ namespace FMSMonitoringUI.Monitoring
             gridTrayInfo.AddColumnHeaderList(lstTitle);
 
             lstTitle = new List<string>();
-            //lstTitle.Add("Equipment ID");
-            //lstTitle.Add("Equipment Name");
-            //lstTitle.Add("Op Mode");
-            //lstTitle.Add("Eqp Status");
-            //lstTitle.Add("Trouble Code");
-            //lstTitle.Add("Trouble Name");
-            lstTitle.Add("Tray Information");
-            lstTitle.Add("Model");
             lstTitle.Add("Tray ID");
+            lstTitle.Add("Binding Time");       // DB Input Time        
+            lstTitle.Add("Tray Type");
+            lstTitle.Add("Model");
             lstTitle.Add("Route ID");
             lstTitle.Add("Lot ID");
             lstTitle.Add("Current Process");
-            lstTitle.Add("Next Process");
-            lstTitle.Add("Input Time");
+            lstTitle.Add("Start Time");
             lstTitle.Add("Plan Time");
-            lstTitle.Add("Input Count");
-            lstTitle.Add("Current Count");
-            lstTitle.Add("Tray Type");
+            lstTitle.Add("Cell Count");
             gridTrayInfo.AddRowsHeaderList(lstTitle);
 
             gridTrayInfo.ColumnHeadersHeight(30);
@@ -142,7 +125,7 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
-        private void ctrlButtonExit1_Click(object sender, EventArgs e)
+        private void Exit_Click(object sender, EventArgs e)
         {
             Close();
         }

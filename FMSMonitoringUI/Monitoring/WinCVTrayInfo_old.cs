@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace FMSMonitoringUI.Monitoring
 {
-    public partial class WinCVTrayInfo : Form
+    public partial class WinCVTrayInfo_old : Form
     {
         private Point point = new Point();
 
-        public WinCVTrayInfo()
+        public WinCVTrayInfo_old()
         {
             InitializeComponent();
 

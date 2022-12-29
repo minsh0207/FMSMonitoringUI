@@ -1,4 +1,5 @@
-﻿using OPCUAClientClassLib;
+﻿using MonitoringUI.Common;
+using MonitoringUI.Controlls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,72 +20,129 @@ namespace FMSMonitoringUI.Monitoring
         {
             InitializeComponent();
 
+            InitGridViewCraneStatus();
+            InitGridViewCraneCmd();
+        }
+
+        private void WinCraneInfo_Load(object sender, EventArgs e)
+        {
+            InitLedStatus();
+
             #region Title Mouse Event
             ctrlTitleBar.MouseDown_Evnet += Title_MouseDownEvnet;
             ctrlTitleBar.MouseMove_Evnet += Title_MouseMoveEvnet;
             #endregion
+
+            #region DataGridView Event
+            //gridCraneCmd.MouseCellClick_Evnet += GridProcessFlow_MouseCellClick;
+            #endregion
         }
 
-        public void SetTrayInfo(CraneTagInfo tagInfo)
+        private void InitLedStatus()
         {
-            _TrayIdL1.TextData = tagInfo.TrayIdL1;
-            _TrayIdL2.TextData = tagInfo.TrayIdL2;
-            _TrayExist.TextData = (tagInfo.TrayExist == true? "Exist" : "Not Exist");
-            _TrayCount.TextData = tagInfo.TrayCount.ToString();
-            _TrayType.TextData = GetJobType(tagInfo.JobType);
+            ledIdle.LedStatus(0);
+            ledRun.LedStatus(0);
+            ledTrouble.LedStatus(0);
+            ledIdle.LedStatus(1);
+
+            ledForkPosC.LedOnOff(false);
+            ledForkPosL1.LedOnOff(false);
+            ledForkPosL2.LedOnOff(false);
+            ledForkPosR1.LedOnOff(false);
+            ledForkPosR2.LedOnOff(false);
+            ledForkPosC.LedOnOff(true);
+
+            ledJogTypeIn.LedOnOff(false);
+            ledJogTypeOut.LedOnOff(false);
+            ledJogTypeRtoR.LedOnOff(false);
+            ledJogTypePass.LedOnOff(false);
+            ledJogTypeMove.LedOnOff(false);
+            ledJogTypeIn.LedOnOff(true);
         }
 
-        protected override void OnPaint(PaintEventArgs e)
+        private void InitGridViewCraneStatus()
         {
-            Rectangle clientRectangle = e.ClipRectangle;
+            List<string> lstTitle = new List<string>();
+            lstTitle.Add("Equipment Status");   //-1
+            lstTitle.Add("");
+            gridCraneStatus.AddColumnHeaderList(lstTitle);
+            gridCraneStatus.ColumnHeadersVisible(true);
 
-            clientRectangle.Y += 0;
-            clientRectangle.Height -= 0;
+            lstTitle = new List<string>();
+            lstTitle.Add("Power");
+            lstTitle.Add("Mode");
+            lstTitle.Add("Status");
+            lstTitle.Add("Trouble ErrorNo");
+            lstTitle.Add("Trouble ErrorLevel");
 
-            ControlPaint.DrawBorder(e.Graphics, clientRectangle, Color.White, ButtonBorderStyle.Solid);
+            lstTitle.Add("FMS Status");     // 5            
+            lstTitle.Add("Trouble Status");
+            lstTitle.Add("Trouble ErrorNo");
+            lstTitle.Add("TimeSync");
 
-            Rectangle textRectangle = e.ClipRectangle;
+            lstTitle.Add("Crane Information");       // 9
+            lstTitle.Add("Carriage PosBay");
+            lstTitle.Add("Carriage PosFloor");
+            lstTitle.Add("Carriage FireSensor");
+            gridCraneStatus.AddRowsHeaderList(lstTitle);
 
-            textRectangle.X += 0;
-            textRectangle.Width = 0;
-            textRectangle.Height = 0;
+            gridCraneStatus.ColumnHeadersHeight(22);
+            gridCraneStatus.RowsHeight(22);
 
-            e.Graphics.FillRectangle(new SolidBrush(BackColor), textRectangle);
-            e.Graphics.DrawString("", Font, new SolidBrush(ForeColor), textRectangle);
+            List<int> lstColumn = new List<int>();
+            lstColumn.Add(-1);      // DataGridView Header 병합
+            lstColumn.Add(5);
+            lstColumn.Add(9);
+            lstTitle = new List<string>();
+            lstTitle.Add("Equipment Status");
+            lstTitle.Add("FMS Status");
+            lstTitle.Add("Crane Information");
+            gridCraneStatus.ColumnMergeList(lstColumn, lstTitle);
+
+            gridCraneStatus.SetGridViewStyles();
+            gridCraneStatus.ColumnHeadersWidth(0, 180);
         }
 
-        private void ctrlButtonExit1_Click(object sender, EventArgs e)
+        private void InitGridViewCraneCmd()
         {
-            Close();
+            List<string> lstTitle = new List<string>();
+            lstTitle.Add("");
+            lstTitle.Add("From Location");   
+            lstTitle.Add("To Location");
+            gridCraneCmd.AddColumnHeaderList(lstTitle);
+            gridCraneCmd.ColumnHeadersVisible(true);
+
+            lstTitle = new List<string>();
+            lstTitle.Add("Line");
+            lstTitle.Add("Bay");
+            lstTitle.Add("Floor");
+            lstTitle.Add("Deep");
+            lstTitle.Add("Station");
+            lstTitle.Add("Forking Enable");
+            gridCraneCmd.AddRowsHeaderList(lstTitle);
+
+            gridCraneCmd.ColumnHeadersHeight(24);
+            gridCraneCmd.RowsHeight(24);
+
+            //List<int> lstColumn = new List<int>();
+            //lstColumn.Add(-1);      // DataGridView Header 병합
+            //lstTitle = new List<string>();
+            //lstTitle.Add("Crane Command");
+            //gridCraneCmd.ColumnMergeList(lstColumn, lstTitle);
+
+            gridCraneCmd.SetGridViewStyles();
+            gridCraneCmd.ColumnHeadersWidth(0, 100);
         }
 
-        #region Tray Tag Value
-        private string GetJobType(int idx)
+        public void SetData(string trayid)
         {
-            string ret = string.Empty;
-
-            switch (idx)
-            {
-                case 1:
-                    ret = "Input";
-                    break;
-                case 2:
-                    ret = "OutPut";
-                    break;
-                case 3:
-                    ret = "Move";
-                    break;
-                case 4:
-                    ret = "Pass";
-                    break;
-                case 5:
-                    ret = "Position";
-                    break;
-            }
-
-            return ret;
+            gridCraneStatus.SetValue(1, 1, trayid);
         }
-        #endregion
+
+        public void SetTitleName(string title)
+        {
+            ctrlTitleBar.TitleText = title;
+        }
 
         #region Titel Mouse Event
         private void Title_MouseDownEvnet(object sender, MouseEventArgs e)
@@ -100,5 +158,29 @@ namespace FMSMonitoringUI.Monitoring
             }
         }
         #endregion
+
+        #region DataGridView Event
+        //private void GridProcessFlow_MouseCellClick(int col, int row, object value)
+        //{
+        //    if (col == gridCraneCmd.ColumnCount -1 && row > -1)
+        //    {
+        //        WinCellDetailInfo form = new WinCellDetailInfo();
+        //        form.SetData();
+        //        form.ShowDialog();
+        //    }
+        //}
+        #endregion
+
+        //private void ctrlButton1_Click(object sender, EventArgs e)
+        //{
+        //    WinCellDetailInfo form = new WinCellDetailInfo();
+        //    form.SetData();
+        //    form.ShowDialog();
+        //}
+
+        private void Exit_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

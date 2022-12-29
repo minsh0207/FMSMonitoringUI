@@ -28,48 +28,67 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dtpFrom = new System.Windows.Forms.DateTimePicker();
+            this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.lbTitle = new System.Windows.Forms.Label();
+            this.dtpFrom = new System.Windows.Forms.DateTimePicker();
+            this.tableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // tableLayoutPanel
+            // 
+            this.tableLayoutPanel.ColumnCount = 2;
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.29075F));
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.70925F));
+            this.tableLayoutPanel.Controls.Add(this.dtpFrom, 0, 0);
+            this.tableLayoutPanel.Controls.Add(this.lbTitle, 0, 0);
+            this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel.Name = "tableLayoutPanel";
+            this.tableLayoutPanel.RowCount = 1;
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel.Size = new System.Drawing.Size(241, 29);
+            this.tableLayoutPanel.TabIndex = 0;
+            // 
+            // lbTitle
+            // 
+            this.lbTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbTitle.ForeColor = System.Drawing.Color.White;
+            this.lbTitle.Location = new System.Drawing.Point(3, 0);
+            this.lbTitle.Name = "lbTitle";
+            this.lbTitle.Size = new System.Drawing.Size(95, 29);
+            this.lbTitle.TabIndex = 0;
+            this.lbTitle.Text = "Title";
+            this.lbTitle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // dtpFrom
             // 
             this.dtpFrom.CalendarFont = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.dtpFrom.CustomFormat = "yyyy-MM-dd HH:mm";
+            this.dtpFrom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtpFrom.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFrom.Location = new System.Drawing.Point(109, 1);
+            this.dtpFrom.Location = new System.Drawing.Point(104, 3);
             this.dtpFrom.Name = "dtpFrom";
-            this.dtpFrom.Size = new System.Drawing.Size(140, 22);
-            this.dtpFrom.TabIndex = 2;
-            // 
-            // lbTitle
-            // 
-            this.lbTitle.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbTitle.ForeColor = System.Drawing.Color.White;
-            this.lbTitle.Location = new System.Drawing.Point(1, 1);
-            this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(100, 25);
-            this.lbTitle.TabIndex = 1;
-            this.lbTitle.Text = "Title";
-            this.lbTitle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.dtpFrom.Size = new System.Drawing.Size(134, 22);
+            this.dtpFrom.TabIndex = 3;
             // 
             // CtrlDateTimeDT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.Controls.Add(this.dtpFrom);
-            this.Controls.Add(this.lbTitle);
+            this.Controls.Add(this.tableLayoutPanel);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.Name = "CtrlDateTimeDT";
-            this.Size = new System.Drawing.Size(251, 27);
-            //this.Load += new System.EventHandler(this.CtrlDateTimeDT_Load);
+            this.Size = new System.Drawing.Size(241, 29);
+            this.tableLayoutPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
         private System.Windows.Forms.Label lbTitle;
         private System.Windows.Forms.DateTimePicker dtpFrom;
     }

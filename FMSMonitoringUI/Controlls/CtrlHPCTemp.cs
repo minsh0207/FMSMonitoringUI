@@ -1,6 +1,7 @@
 ﻿using FMSMonitoringUI.Monitoring;
 using FormationMonCtrl;
 using MonitoringUI;
+using MonitoringUI.Common;
 using MySqlX.XDevAPI.Relational;
 using OPCUAClientClassLib;
 using System;
@@ -17,66 +18,75 @@ namespace FMSMonitoringUI.Controlls
 {
     public partial class CtrlHPCTemp : UserControlEqp
     {
+        /// <summary>
+        /// Max Cell Count
+        /// </summary>
+        int _MaxCellCount = 30;
+        public int MaxCellCount
+        {
+            get => _MaxCellCount;
+            set => _MaxCellCount = value;
+        }
+
         public CtrlHPCTemp()
         {
             InitializeComponent();
         }
 
         #region Properties
-        //string _TitleName = "";
-        //[DisplayName("Title Name"), Description("Title Name"), Category("GroupBox Setting")]
-        //public string TitleName
-        //{
-        //    get
-        //    {
-        //        return _TitleName;
-        //    }
-        //    set
-        //    {
-        //        _TitleName = value;
-        //        lbRackID.Text = _TitleName;                
-        //    }
-        //}
+        string _TitleName = "";
+        [DisplayName("Title Name"), Description("Title Name"), Category("GroupBox Setting")]
+        public string TitleName
+        {
+            get
+            {
+                return _TitleName;
+            }
+            set
+            {
+                _TitleName = value;
+                lbTitle.Text = _TitleName;
+            }
+        }
         #endregion
 
         private void InitGridView()
         {
-            string[] columnName1 = { "JIG#1", "JIG#2", "JIG#3", "JIG#4", "JIG#5", "JIG#6", "JIG#7", "JIG#8",
-                                    "JIG#9", "JIG#10", "JIG#11", "JIG#12", "JIG#13", "JIG#14", "JIG#15"};
-
-            string[] columnName2 = { "JIG#16", "JIG#17", "JIG#18", "JIG#19", "JIG#20", "JIG#21", "JIG#22", "JIG#23",
-                                    "JIG#24", "JIG#25", "JIG#26", "JIG#27", "JIG#28", "JIG#29", "JIG#30"};
+            string[] columnName = { "CH", "Cell ID", "Templature" };
+            //string[] rowName = { "JIG#1", "JIG#2", "JIG#3", "JIG#4", "JIG#5", "JIG#6", "JIG#7", "JIG#8",
+            //                      "JIG#9", "JIG#10", "JIG#11", "JIG#12", "JIG#13", "JIG#14", "JIG#15",
+            //                      "JIG#16", "JIG#17", "JIG#18", "JIG#19", "JIG#20", "JIG#21", "JIG#22", "JIG#23",
+            //                      "JIG#24", "JIG#25", "JIG#26", "JIG#27", "JIG#28", "JIG#29", "JIG#30"};
 
             List<string> lstTitle = new List<string>();
+            lstTitle = columnName.ToList();
+            gridRackTemp.AddColumnHeaderList(lstTitle);
 
-            foreach (var item in columnName1)
+            lstTitle = new List<string>();            
+            for (int i = 0; i < _MaxCellCount; i++)
             {
-                lstTitle.Add(item);
+                lstTitle.Add((i + 1).ToString());                
             }
-            TrayInfoView.AddColumnHeaderList(lstTitle);
+            gridRackTemp.AddRowsHeaderList(lstTitle);
 
-            lstTitle = new List<string>();
-            lstTitle.Add("");
-            lstTitle.Add("");
-            lstTitle.Add("");
-            TrayInfoView.AddRowsHeaderList(lstTitle);
-
-            for (int i = 0; i < columnName2.Length; i++)
-            {
-                TrayInfoView.SetTitle(i, 1, columnName2[i]);
-            }
-            
-
-            TrayInfoView.ColumnHeadersHeight(30);
-            TrayInfoView.RowsHeight(30);
-
-            TrayInfoView.SetGridViewStyles();
-
-            //TrayInfoView.ColumnWidth(0, 100);
-            //for (int i = 0; i < columnName.Length; i++)
+            //for (int i = 0; i < rowName.Length; i++)
             //{
-            //    TrayInfoView.ColumnWidth(i, 50);
+            //    gridRackTemp.SetValue(2, i, rowName[i].ToString());
             //}
+
+            //List<int> lstColumn = new List<int>();
+            //lstColumn.Add(-1);      // DataGridView Header 병합
+            //lstTitle = new List<string>();
+            //lstTitle.Add("Templature");
+            //gridRackTemp.ColumnMergeList(lstColumn, lstTitle);
+
+            gridRackTemp.ColumnHeadersHeight(28);
+            gridRackTemp.RowsHeight(27);
+
+            gridRackTemp.SetGridViewStyles();
+            gridRackTemp.ColumnHeadersWidth(0, 60);
+            gridRackTemp.ColumnHeadersWidth(1, 200);
+
         }
 
         #region setData
@@ -88,7 +98,7 @@ namespace FMSMonitoringUI.Controlls
         }
         #endregion
 
-        private void CtrlEqpControl_Load(object sender, EventArgs e)
+        private void CtrlHPCTemp_Load(object sender, EventArgs e)
         {
             InitGridView();
         }

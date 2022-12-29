@@ -20,6 +20,7 @@ namespace FMSMonitoringUI.Monitoring
         {
             InitializeComponent();
 
+            InitGridViewCellList();
             InitGridViewCell();
             InitGridViewProcessName();
             InitGridViewRecipeInfo();
@@ -34,11 +35,34 @@ namespace FMSMonitoringUI.Monitoring
             #endregion
 
             #region DataGridView Event
+            gridCellIDLIst.MouseCellDoubleClick_Evnet += GridCellIDLIst_MouseCellDoubleClick;
             gridCellInfo.MouseCellDoubleClick_Evnet += GridCellInfo_MouseCellDoubleClick;
             #endregion
         }
 
         #region InitGridView
+        private void InitGridViewCellList()
+        {
+            List<string> lstTitle = new List<string>();
+            lstTitle.Add("No");      // -1
+            lstTitle.Add("Cell ID");
+            gridCellIDLIst.AddColumnHeaderList(lstTitle);
+
+            lstTitle = new List<string>();
+            for (int i = 1; i <= 30; i++)
+            {
+                lstTitle.Add(i.ToString());
+            }
+            lstTitle.Add("");
+            gridCellIDLIst.AddRowsHeaderList(lstTitle);
+
+            gridCellIDLIst.RowsHeight(26);
+
+            gridCellIDLIst.SetGridViewStyles();
+            gridCellIDLIst.ColumnHeadersWidth(0, 60);
+
+
+        }
         private void InitGridViewCell()
         {
             List<string> lstTitle = new List<string>();
@@ -138,7 +162,7 @@ namespace FMSMonitoringUI.Monitoring
             //gridCellInfo.ColumnMergeList(lstColumn, lstTitle);
 
             gridCellInfo.SetGridViewStyles();
-            gridCellInfo.ColumnHeadersWidth(0, 200);
+            gridCellInfo.ColumnHeadersWidth(0, 160);
 
             
         }
@@ -153,7 +177,7 @@ namespace FMSMonitoringUI.Monitoring
             lstTitle.Add("1");
             lstTitle.Add("2");
             lstTitle.Add("3");
-            lstTitle.Add("4");
+            lstTitle.Add("");
             gridProcessName.AddRowsHeaderList(lstTitle);
 
             gridProcessName.RowsHeight(26);
@@ -200,12 +224,11 @@ namespace FMSMonitoringUI.Monitoring
         #region SetData
         public void SetData()
         {
-            gridCellInfo.SetValue(1, 0, "133NMCVC222001A0002");
-
-            gridProcessName.SetValue(1, 0, "Assembly");
-            gridProcessName.SetValue(1, 1, "LT Aging #1");
-            gridProcessName.SetValue(1, 2, "OCV/ACIR");
-            gridProcessName.SetValue(1, 3, "NG Sorter #1");
+            for (int i = 0; i < 30; i++)
+            {
+                string cellid = string.Format("133NMCVC222001A00{0:D2}", i + 1)
+;                gridCellIDLIst.SetValue(1, i, cellid);
+            }
         }
         #endregion
 
@@ -225,6 +248,27 @@ namespace FMSMonitoringUI.Monitoring
         #endregion
 
         #region DataGridView Event
+        private void GridCellIDLIst_MouseCellDoubleClick(int col, int row, object value)
+        {
+            for (int i = 0; i < 30; i++)
+            {
+                gridCellIDLIst.SetStyleBackColor(col, i, Color.FromArgb(27,27,27));
+                gridCellIDLIst.SetStyleForeColor(col, i, Color.White);
+            }
+
+            if (col == 1 && row > -1)
+            {
+                gridCellIDLIst.SetStyleBackColor(col, row, Color.LightBlue);
+                gridCellIDLIst.SetStyleForeColor(col, row, Color.Black);
+
+                gridCellInfo.SetValue(1, 0, value.ToString());
+
+                //gridProcessName.SetValue(1, 0, "Assembly");
+                gridProcessName.SetValue(1, 0, "LT Aging #1");
+                gridProcessName.SetValue(1, 1, "OCV/ACIR");
+                gridProcessName.SetValue(1, 2, "NG Sorter #1");
+            }
+        }
         private void GridCellInfo_MouseCellDoubleClick(int col, int row, object value)
         {
             if (col == 1 && row > -1)

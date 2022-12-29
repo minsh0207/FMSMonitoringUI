@@ -22,7 +22,7 @@ namespace FMSMonitoringUI.Monitoring
             InitializeComponent();
 
             InitGridViewTray();
-            InitChart();
+            //InitChart();
         }
 
         private void WinLeadTime_Load(object sender, EventArgs e)
@@ -51,17 +51,17 @@ namespace FMSMonitoringUI.Monitoring
             //splitContainer3.Panel2.BackColor = Color.FromArgb(27, 27, 27);
         }
 
-        private void InitChart()
-        {
-            chart1.Series[0].Points.Add(80);
-            chart1.Series[0].Points.Add(50);
-            chart1.Series[0].Points.Add(90);
-            chart1.Series[0].Points.Add(40);
-            chart1.Series[0].Points.Add(70);
-            chart1.Series[0].Points.Add(60);
-            chart1.Series[0].Points.Add(70);
-            chart1.Series[0].Points.Add(80);
-        }
+        //private void InitChart()
+        //{
+        //    chart1.Series[0].Points.Add(80);
+        //    chart1.Series[0].Points.Add(50);
+        //    chart1.Series[0].Points.Add(90);
+        //    chart1.Series[0].Points.Add(40);
+        //    chart1.Series[0].Points.Add(70);
+        //    chart1.Series[0].Points.Add(60);
+        //    chart1.Series[0].Points.Add(70);
+        //    chart1.Series[0].Points.Add(80);
+        //}
 
         private void InitGridViewTray()
         {
@@ -69,8 +69,8 @@ namespace FMSMonitoringUI.Monitoring
             lstTitle.Add("No");
             lstTitle.Add("Location");
             lstTitle.Add("Tray ID");
-            lstTitle.Add("Start Operation");
-            lstTitle.Add("Plan Operation");
+            lstTitle.Add("Start Time");
+            lstTitle.Add("Plan Time");
             lstTitle.Add("Process Time");
             lstTitle.Add("Specs (MES)");
             gridTrayInfo.AddColumnHeaderList(lstTitle);

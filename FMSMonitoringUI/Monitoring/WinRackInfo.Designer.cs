@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this._TroubleName = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
-            this._TroubleCode = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
-            this._EndTime = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
-            this._StartTime = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
-            this._CellType = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
-            this._TrayZone = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
-            this._RackStatus = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
-            this._LotID = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
+            this._TroubleName = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
+            this._TroubleCode = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
+            this._EndTime = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
+            this._StartTime = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
+            this._CellType = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
+            this._TrayZone = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
+            this._RackStatus = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
+            this._LotID = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
             this.ctrlButtonExit1 = new MonitoringUI.Controlls.CButton.CtrlButtonExit();
-            this._RouteID = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
-            this._ModelID = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
-            this._TrayIdL2 = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
-            this._TrayIdL1 = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
-            this._RackID = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
+            this._RouteID = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
+            this._ModelID = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
+            this._TrayIdL2 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
+            this._TrayIdL1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
+            this._RackID = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
             this.ctrlTitleBar = new MonitoringUI.Controlls.CtrlTitleBar();
             this.SuspendLayout();
             // 
@@ -284,19 +284,19 @@
         #endregion
 
         private MonitoringUI.Controlls.CtrlTitleBar ctrlTitleBar;
-        private Controlls.CTextBox.CtrlTextBox _RackID;
-        private Controlls.CTextBox.CtrlTextBox _LotID;
-        private Controlls.CTextBox.CtrlTextBox _TrayIdL1;
-        private Controlls.CTextBox.CtrlTextBox _TrayIdL2;
-        private Controlls.CTextBox.CtrlTextBox _ModelID;
-        private Controlls.CTextBox.CtrlTextBox _RouteID;
-        private Controlls.CTextBox.CtrlTextBox _CellType;
+        private Controlls.WindowsForms.CtrlLabelBox _RackID;
+        private Controlls.WindowsForms.CtrlLabelBox _LotID;
+        private Controlls.WindowsForms.CtrlLabelBox _TrayIdL1;
+        private Controlls.WindowsForms.CtrlLabelBox _TrayIdL2;
+        private Controlls.WindowsForms.CtrlLabelBox _ModelID;
+        private Controlls.WindowsForms.CtrlLabelBox _RouteID;
+        private Controlls.WindowsForms.CtrlLabelBox _CellType;
         private MonitoringUI.Controlls.CButton.CtrlButtonExit ctrlButtonExit1;
-        private Controlls.CTextBox.CtrlTextBox _TrayZone;
-        private Controlls.CTextBox.CtrlTextBox _RackStatus;
-        private Controlls.CTextBox.CtrlTextBox _TroubleName;
-        private Controlls.CTextBox.CtrlTextBox _TroubleCode;
-        private Controlls.CTextBox.CtrlTextBox _EndTime;
-        private Controlls.CTextBox.CtrlTextBox _StartTime;
+        private Controlls.WindowsForms.CtrlLabelBox _TrayZone;
+        private Controlls.WindowsForms.CtrlLabelBox _RackStatus;
+        private Controlls.WindowsForms.CtrlLabelBox _TroubleName;
+        private Controlls.WindowsForms.CtrlLabelBox _TroubleCode;
+        private Controlls.WindowsForms.CtrlLabelBox _EndTime;
+        private Controlls.WindowsForms.CtrlLabelBox _StartTime;
     }
 }

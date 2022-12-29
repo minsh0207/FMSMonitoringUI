@@ -552,9 +552,10 @@ namespace MonitoringUI.Common
             dt.Columns.Add(CDefine.DEF_GRIDVIEW_COMBOXID);
             dt.Columns.Add(CDefine.DEF_GRIDVIEW_COMBOXNAME);
 
-            dt.Rows.Add("CHINESE", "CHINESE");
-            dt.Rows.Add("KOREAN", "KOREAN");
-            //dt.Rows.Add("ENGLISH", "ENGLISH");
+            //dt.Rows.Add("CHINESE", "CHINESE");
+            //dt.Rows.Add("KOREAN", "KOREAN");
+            dt.Rows.Add("ENGLISH", "ENGLISH");
+            dt.Rows.Add("ENGLISH", "FRANCE");
 
             return dt;
         }

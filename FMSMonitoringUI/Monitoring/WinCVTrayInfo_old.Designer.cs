@@ -1,6 +1,6 @@
 ﻿namespace FMSMonitoringUI.Monitoring
 {
-    partial class WinCVTrayInfo
+    partial class WinCVTrayInfo_old
     {
         /// <summary>
         /// Required designer variable.
@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this._TrayType = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
+            this._TrayType = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
             this.ctrlButtonExit1 = new MonitoringUI.Controlls.CButton.CtrlButtonExit();
-            this._StationStatus = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
-            this._TrayCount = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
-            this._TrayExist = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
-            this._TrayIdL2 = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
-            this._TrayIdL1 = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
-            this._ConveyorType = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
-            this._ConveyorNo = new FMSMonitoringUI.Controlls.CTextBox.CtrlTextBox();
+            this._StationStatus = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
+            this._TrayCount = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
+            this._TrayExist = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
+            this._TrayIdL2 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
+            this._TrayIdL1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
+            this._ConveyorType = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
+            this._ConveyorNo = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
             this.ctrlTitleBar = new MonitoringUI.Controlls.CtrlTitleBar();
             this.SuspendLayout();
             // 
@@ -176,7 +176,7 @@
             this.ctrlTitleBar.TabIndex = 1;
             this.ctrlTitleBar.TitleText = "Tray Infomation";
             // 
-            // WinCVTrayInfo
+            // WinCVTrayInfo_old
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -193,7 +193,7 @@
             this.Controls.Add(this._ConveyorNo);
             this.Controls.Add(this.ctrlTitleBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "WinCVTrayInfo";
+            this.Name = "WinCVTrayInfo_old";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WinTrayInfo";
             this.TopMost = true;
@@ -204,14 +204,14 @@
         #endregion
 
         private MonitoringUI.Controlls.CtrlTitleBar ctrlTitleBar;
-        private Controlls.CTextBox.CtrlTextBox _ConveyorNo;
-        private Controlls.CTextBox.CtrlTextBox _ConveyorType;
-        private Controlls.CTextBox.CtrlTextBox _TrayIdL1;
-        private Controlls.CTextBox.CtrlTextBox _TrayIdL2;
-        private Controlls.CTextBox.CtrlTextBox _TrayExist;
-        private Controlls.CTextBox.CtrlTextBox _TrayCount;
-        private Controlls.CTextBox.CtrlTextBox _StationStatus;
+        private Controlls.WindowsForms.CtrlLabelBox _ConveyorNo;
+        private Controlls.WindowsForms.CtrlLabelBox _ConveyorType;
+        private Controlls.WindowsForms.CtrlLabelBox _TrayIdL1;
+        private Controlls.WindowsForms.CtrlLabelBox _TrayIdL2;
+        private Controlls.WindowsForms.CtrlLabelBox _TrayExist;
+        private Controlls.WindowsForms.CtrlLabelBox _TrayCount;
+        private Controlls.WindowsForms.CtrlLabelBox _StationStatus;
         private MonitoringUI.Controlls.CButton.CtrlButtonExit ctrlButtonExit1;
-        private Controlls.CTextBox.CtrlTextBox _TrayType;
+        private Controlls.WindowsForms.CtrlLabelBox _TrayType;
     }
 }

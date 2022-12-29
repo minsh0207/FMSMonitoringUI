@@ -41,7 +41,7 @@
             // 
             // lbOPStatus
             // 
-            this.lbOPStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.lbOPStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.lbOPStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbOPStatus.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbOPStatus.ForeColor = System.Drawing.Color.Black;
@@ -49,13 +49,13 @@
             this.lbOPStatus.Name = "lbOPStatus";
             this.lbOPStatus.Size = new System.Drawing.Size(80, 25);
             this.lbOPStatus.TabIndex = 3;
-            this.lbOPStatus.Text = "Processing";
+            this.lbOPStatus.Text = "Running";
             this.lbOPStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbOPStatus.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseDoubleClick);
             // 
             // lbEqpStatus
             // 
-            this.lbEqpStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.lbEqpStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.lbEqpStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbEqpStatus.Dock = System.Windows.Forms.DockStyle.Left;
             this.lbEqpStatus.ForeColor = System.Drawing.Color.Black;

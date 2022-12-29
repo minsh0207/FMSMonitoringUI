@@ -45,9 +45,9 @@
             this.lbOPStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbOPStatus.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbOPStatus.ForeColor = System.Drawing.Color.Black;
-            this.lbOPStatus.Location = new System.Drawing.Point(138, 0);
+            this.lbOPStatus.Location = new System.Drawing.Point(154, 0);
             this.lbOPStatus.Name = "lbOPStatus";
-            this.lbOPStatus.Size = new System.Drawing.Size(107, 30);
+            this.lbOPStatus.Size = new System.Drawing.Size(149, 30);
             this.lbOPStatus.TabIndex = 3;
             this.lbOPStatus.Text = "Charge";
             this.lbOPStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -59,7 +59,7 @@
             this.lbEqpStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbEqpStatus.Dock = System.Windows.Forms.DockStyle.Left;
             this.lbEqpStatus.ForeColor = System.Drawing.Color.Black;
-            this.lbEqpStatus.Location = new System.Drawing.Point(94, 0);
+            this.lbEqpStatus.Location = new System.Drawing.Point(110, 0);
             this.lbEqpStatus.Name = "lbEqpStatus";
             this.lbEqpStatus.Size = new System.Drawing.Size(44, 30);
             this.lbEqpStatus.TabIndex = 2;
@@ -74,7 +74,7 @@
             this.lbRackID.ForeColor = System.Drawing.Color.White;
             this.lbRackID.Location = new System.Drawing.Point(0, 0);
             this.lbRackID.Name = "lbRackID";
-            this.lbRackID.Size = new System.Drawing.Size(94, 30);
+            this.lbRackID.Size = new System.Drawing.Size(110, 30);
             this.lbRackID.TabIndex = 1;
             this.lbRackID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lbRackID.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseDoubleClick);
@@ -83,6 +83,7 @@
             // 
             this.splitContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer1.Location = new System.Drawing.Point(1, 1);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -96,7 +97,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.TrayInfoView);
-            this.splitContainer1.Size = new System.Drawing.Size(247, 220);
+            this.splitContainer1.Size = new System.Drawing.Size(305, 341);
             this.splitContainer1.SplitterDistance = 32;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -105,7 +106,7 @@
             this.TrayInfoView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TrayInfoView.Location = new System.Drawing.Point(0, 0);
             this.TrayInfoView.Name = "TrayInfoView";
-            this.TrayInfoView.Size = new System.Drawing.Size(245, 182);
+            this.TrayInfoView.Size = new System.Drawing.Size(303, 303);
             this.TrayInfoView.TabIndex = 0;
             // 
             // CtrlHPC
@@ -115,7 +116,7 @@
             this.BackColor = System.Drawing.Color.DimGray;
             this.Controls.Add(this.splitContainer1);
             this.Name = "CtrlHPC";
-            this.Size = new System.Drawing.Size(263, 240);
+            this.Size = new System.Drawing.Size(320, 417);
             this.Load += new System.EventHandler(this.CtrlEqpControl_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

@@ -49,6 +49,8 @@ namespace OPCUAClientClassLib
 
         public int CarriagePos { get; set; }
 
+        public int Destination { get; set; }
+
         //public bool CommandReady { get; set; }
 
         //public int Destination { get; set; }

@@ -42,6 +42,23 @@ namespace MonitoringUI.Controlls.CDateTime
                 lbTitle.Text = _labelText;
             }
         }
+        Single _TitleWidth = 100F;
+        [DisplayName("Column Width"), Description("Column Width"), Category("TablePanel Setting")]
+        public Single TitleWidth
+        {
+            get
+            {
+                return _TitleWidth;
+            }
+            set
+            {
+                _TitleWidth = value;
+                tableLayoutPanel.ColumnStyles.Clear();
+                tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+                tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, _TitleWidth));
+                Invalidate();
+            }
+        }
         string _LanguageID = "";
         [DisplayName("LocalLanguage"), Description("Local Language"), Category("Language Setting")]
         public string LanguageID

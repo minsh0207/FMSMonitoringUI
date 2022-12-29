@@ -42,23 +42,29 @@ namespace FMSMonitoringUI.Controlls
         private void InitGridView()
         {
             List<string> lstTitle = new List<string>();
-            lstTitle.Add("Tray ID");
+            lstTitle.Add("");
             lstTitle.Add("");
             TrayInfoView.AddColumnHeaderList(lstTitle);
+            TrayInfoView.ColumnHeadersVisible(false);
 
             lstTitle = new List<string>();
-            lstTitle.Add("Lot ID");
+            lstTitle.Add("Control Mode");
+            lstTitle.Add("Status");
+            lstTitle.Add("Operation Mode");
+            lstTitle.Add("Current Process");
             lstTitle.Add("Start Time");
             lstTitle.Add("Plan Time");
             lstTitle.Add("Avg Temp");
             lstTitle.Add("Pressure");
+            lstTitle.Add("Trouble Code");
+            lstTitle.Add("Trouble Name");
             TrayInfoView.AddRowsHeaderList(lstTitle);
 
             TrayInfoView.ColumnHeadersHeight(30);
             TrayInfoView.RowsHeight(30);
 
             TrayInfoView.SetGridViewStyles();
-            TrayInfoView.ColumnWidth(0, 100);
+            TrayInfoView.ColumnWidth(0, 140);
         }
 
         #region setData
@@ -89,7 +95,7 @@ namespace FMSMonitoringUI.Controlls
 
         private void lbEqpType_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            WinManageEqp form = new WinManageEqp();
+            WinFormationHPC form = new WinFormationHPC();
             form.Show();
         }
     }

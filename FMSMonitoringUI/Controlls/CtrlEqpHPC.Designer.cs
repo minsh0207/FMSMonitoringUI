@@ -41,13 +41,13 @@
             // 
             // lbOPStatus
             // 
-            this.lbOPStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.lbOPStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.lbOPStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbOPStatus.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbOPStatus.ForeColor = System.Drawing.Color.Black;
-            this.lbOPStatus.Location = new System.Drawing.Point(35, 25);
+            this.lbOPStatus.Location = new System.Drawing.Point(27, 25);
             this.lbOPStatus.Name = "lbOPStatus";
-            this.lbOPStatus.Size = new System.Drawing.Size(65, 24);
+            this.lbOPStatus.Size = new System.Drawing.Size(55, 27);
             this.lbOPStatus.TabIndex = 3;
             this.lbOPStatus.Text = "Running";
             this.lbOPStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -55,13 +55,13 @@
             // 
             // lbEqpStatus
             // 
-            this.lbEqpStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.lbEqpStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.lbEqpStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbEqpStatus.Dock = System.Windows.Forms.DockStyle.Left;
             this.lbEqpStatus.ForeColor = System.Drawing.Color.Black;
             this.lbEqpStatus.Location = new System.Drawing.Point(0, 25);
             this.lbEqpStatus.Name = "lbEqpStatus";
-            this.lbEqpStatus.Size = new System.Drawing.Size(35, 24);
+            this.lbEqpStatus.Size = new System.Drawing.Size(27, 27);
             this.lbEqpStatus.TabIndex = 2;
             this.lbEqpStatus.Text = "R";
             this.lbEqpStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -74,7 +74,7 @@
             this.lbEqpType.ForeColor = System.Drawing.Color.White;
             this.lbEqpType.Location = new System.Drawing.Point(0, 0);
             this.lbEqpType.Name = "lbEqpType";
-            this.lbEqpType.Size = new System.Drawing.Size(100, 25);
+            this.lbEqpType.Size = new System.Drawing.Size(82, 25);
             this.lbEqpType.TabIndex = 1;
             this.lbEqpType.Text = "  EQP";
             this.lbEqpType.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -84,7 +84,6 @@
             // 
             this.splitContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainer1.IsSplitterFixed = true;
             this.splitContainer1.Location = new System.Drawing.Point(1, 1);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -99,8 +98,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.TrayInfoView);
-            this.splitContainer1.Size = new System.Drawing.Size(102, 140);
-            this.splitContainer1.SplitterDistance = 51;
+            this.splitContainer1.Size = new System.Drawing.Size(84, 114);
+            this.splitContainer1.SplitterDistance = 54;
             this.splitContainer1.TabIndex = 1;
             // 
             // TrayInfoView
@@ -108,7 +107,7 @@
             this.TrayInfoView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TrayInfoView.Location = new System.Drawing.Point(0, 0);
             this.TrayInfoView.Name = "TrayInfoView";
-            this.TrayInfoView.Size = new System.Drawing.Size(100, 83);
+            this.TrayInfoView.Size = new System.Drawing.Size(82, 54);
             this.TrayInfoView.TabIndex = 0;
             // 
             // CtrlEqpHPC
@@ -118,7 +117,7 @@
             this.BackColor = System.Drawing.Color.DimGray;
             this.Controls.Add(this.splitContainer1);
             this.Name = "CtrlEqpHPC";
-            this.Size = new System.Drawing.Size(142, 167);
+            this.Size = new System.Drawing.Size(120, 130);
             this.Load += new System.EventHandler(this.CtrlEqpControl_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

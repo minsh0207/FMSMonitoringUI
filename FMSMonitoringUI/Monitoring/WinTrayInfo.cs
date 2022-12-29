@@ -33,9 +33,9 @@ namespace FMSMonitoringUI.Monitoring
             ctrlTitleBar.MouseMove_Evnet += Title_MouseMoveEvnet;
             #endregion
 
-            btnCellInfo.Click_Evnet += BtnCellInfo_Click;
-            btnSearch.Click_Evnet += BtnSearch_Click;
-
+            #region DataGridView Event
+            gridProcessFlow.MouseCellClick_Evnet += GridProcessFlow_MouseCellClick;
+            #endregion
         }
 
         private void InitsplitContainer()
@@ -61,14 +61,14 @@ namespace FMSMonitoringUI.Monitoring
             lstTitle = new List<string>();
             lstTitle.Add("Model");
             lstTitle.Add("Tray ID");
+            lstTitle.Add("Binding Time");
             lstTitle.Add("Route ID");
             lstTitle.Add("Lot ID");
             lstTitle.Add("Current Process");
-            lstTitle.Add("Next Process");
-            lstTitle.Add("Input Time");
+            //lstTitle.Add("Next Process");
+            lstTitle.Add("Start Time");
             lstTitle.Add("Plan Time");
-            lstTitle.Add("Input Count");
-            lstTitle.Add("Current Count");
+            lstTitle.Add("Cell Count");
             lstTitle.Add("Tray Type");
 
             gridTrayInfo.AddRowsHeaderList(lstTitle);
@@ -88,8 +88,8 @@ namespace FMSMonitoringUI.Monitoring
 
         private void InitGridViewProcessFlow()
         {
-            string[] columnName = { "No", "Process", "Operation", "Description", "Unit", "Grade", 
-                                    "Start Time", "End Time", "Input Count", "Current Count", };
+            string[] columnName = { "No", "Process Name", "Equipment Name", 
+                                    "Start Time", "End Time", "Cell Count", "Recipe" };
             List<string> lstTitle = new List<string>();
             lstTitle = columnName.ToList();
             gridProcessFlow.AddColumnHeaderList(lstTitle);
@@ -103,6 +103,9 @@ namespace FMSMonitoringUI.Monitoring
 
             gridProcessFlow.SetGridViewStyles();
             gridProcessFlow.ColumnHeadersWidth(0, 50);
+
+            // Cell에 Button 추가
+            gridProcessFlow.SetStyleButton(columnName.Length - 1, 0, "Click");            
         }
 
         public void SetData(string trayid)
@@ -125,21 +128,28 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
-        private void ctrlButtonExit1_Click(object sender, EventArgs e)
+        #region DataGridView Event
+        private void GridProcessFlow_MouseCellClick(int col, int row, object value)
         {
-            Close();
+            if (col == gridProcessFlow.ColumnCount -1 && row > -1)
+            {
+                WinCellDetailInfo form = new WinCellDetailInfo();
+                form.SetData();
+                form.ShowDialog();
+            }
         }
+        #endregion
 
-        private void BtnCellInfo_Click(string title)
+        private void ctrlButton1_Click(object sender, EventArgs e)
         {
-            WinCellInfo form = new WinCellInfo();
+            WinCellDetailInfo form = new WinCellDetailInfo();
             form.SetData();
             form.ShowDialog();
         }
 
-        private void BtnSearch_Click(string title)
+        private void Exit_Click(object sender, EventArgs e)
         {
-            ;
+            Close();
         }
     }
 }

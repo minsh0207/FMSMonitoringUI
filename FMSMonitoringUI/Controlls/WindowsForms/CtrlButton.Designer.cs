@@ -34,10 +34,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Name = "CtrlButton";
-            this.Size = new System.Drawing.Size(98, 36);
-            this.Load += new System.EventHandler(this.CtrlButton_Load);
+            this.Size = new System.Drawing.Size(96, 34);
             this.ResumeLayout(false);
 
         }

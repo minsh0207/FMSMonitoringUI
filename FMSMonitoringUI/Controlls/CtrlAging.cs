@@ -635,7 +635,7 @@ namespace MonitoringUI.Monitoring
                         //winRack.Show();
 
                         WinAgingRackSetting winRack = new WinAgingRackSetting();
-                        winRack.SetRackInfo(ds);
+                        //winRack.SetRackInfo(ds);
                         winRack.Show();
                     }
 

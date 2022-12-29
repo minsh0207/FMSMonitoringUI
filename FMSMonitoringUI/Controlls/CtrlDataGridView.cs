@@ -17,11 +17,17 @@ namespace FMSMonitoringUI.Controlls
 {
     public partial class CtrlDataGridView : UserControl
     {
+        public delegate void MouseCellClickEventHandler(int col, int row, object value);
+        public event MouseCellClickEventHandler MouseCellClick_Evnet = null;
+
         public delegate void MouseCellDoubleClickEventHandler(int col, int row, object value);
         public event MouseCellDoubleClickEventHandler MouseCellDoubleClick_Evnet = null;
 
         public List<int> _CellMerge = new List<int>();
         public List<string> _CellMergeText = new List<string>();
+
+        private int _StartColIdx = 0;
+        private int _MergeColCount = 0;
 
         private int _columnIndex = -1;
         public int ColumnCount
@@ -129,16 +135,20 @@ namespace FMSMonitoringUI.Controlls
             {
                 return;
             }
-
-            int nextCellWidth;
+            
             Rectangle cellRectangle;
 
-            for (int i = 0; i < _CellMerge.Count*2;)
+            for (int i = 0; i < _CellMerge.Count* 2;)
             {
+                int nextCellWidth = 0;
                 int rowIndex = _CellMerge[i / 2];
                     
-                cellRectangle = this.dataGridView1.GetCellDisplayRectangle(0, rowIndex, true);
-                nextCellWidth = this.dataGridView1.GetCellDisplayRectangle(0 + 1, rowIndex, true).Width;
+                cellRectangle = this.dataGridView1.GetCellDisplayRectangle(_StartColIdx, rowIndex, true);
+
+                for (int col = 1; col < _MergeColCount; col++)
+                {
+                    nextCellWidth += this.dataGridView1.GetCellDisplayRectangle(_StartColIdx + col, rowIndex, true).Width;
+                }
 
                 cellRectangle.X += 1;
                 cellRectangle.Y += 1;
@@ -236,8 +246,10 @@ namespace FMSMonitoringUI.Controlls
         /// Merge할 Row No
         /// </summary>
         /// <param name="lstData"></param>
-        public void ColumnMergeList(List<int> lstData, List<string> lstText)
+        public void ColumnMergeList(List<int> lstData, List<string> lstText, int startColIdx=0, int mergeColCnt=2 )
         {
+            _StartColIdx = startColIdx;
+            _MergeColCount = mergeColCnt;
             _CellMerge = lstData;
             _CellMergeText = lstText;
         }
@@ -288,11 +300,16 @@ namespace FMSMonitoringUI.Controlls
             }
         }
 
-        public void SetValue(int col, int row, string value)
+        public void DataSource(object data)
+        {
+            dataGridView1.DataSource = data;
+        }
+
+        public void SetValue(int col, int row, object value)
         {
             dataGridView1[col, row].Value = value;
         }
-
+        
         public void SetReworkTray(int col, int row, string rework_flag)
         {
             if (rework_flag == "Y")
@@ -317,12 +334,53 @@ namespace FMSMonitoringUI.Controlls
             dataGridView1[col, row].Style.ForeColor = forecolor;
         }
 
+        public void SetStyleButton(int col, int row, string text)
+        {
+            dataGridView1[col, row] = new DataGridViewButtonCell();
+            dataGridView1[col, row].Value = text;
+            dataGridView1[col, row].Style.BackColor = Color.Black;
 
+            //DataGridViewButtonColumn buttons = new DataGridViewButtonColumn();
+            //{
+            //    buttons.HeaderText = "Sales";
+            //    buttons.Text = "Sales";
+            //    buttons.UseColumnTextForButtonValue = true;
+            //    buttons.AutoSizeMode =
+            //        DataGridViewAutoSizeColumnMode.AllCells;
+            //    buttons.FlatStyle = FlatStyle.Standard;
+            //    buttons.CellTemplate.Style.BackColor = Color.Red;
+            //    buttons.DisplayIndex = 0;
+            //}
+
+            //dataGridView1.Columns.Add(buttons);
+        }
 
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             dataGridView1.CurrentCell = null;
             dataGridView1.ClearSelection();
+
+            int col = e.ColumnIndex;
+            int row = e.RowIndex;
+
+            try
+            {
+                // Data Cell만 클릭하도록 하기 위해 추가
+                if ((row >= 0 && col > 0) ||
+                    (row >= 0 && bool.Parse(dataGridView1.Rows[row].Tag.ToString())))
+                {
+                    if (dataGridView1[col, row].Value != null)
+                    {
+                        if (this.MouseCellClick_Evnet != null)
+                            MouseCellClick_Evnet(col, row, dataGridView1[col, row].Value);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print(string.Format("### Get DataGridView Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                throw;
+            }
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

@@ -4,6 +4,7 @@ using MonitoringUI;
 using MonitoringUI.Common;
 using MonitoringUI.Controlls;
 using MonitoringUI.Monitoring;
+using MonitoringUI.Popup;
 using Novasoft.Logger;
 using OPCUAClientClassLib;
 using System;
@@ -86,11 +87,16 @@ namespace FMSMonitoringUI
             tCurrentTime.Start();
             #endregion
 
-            Title_ClickEvnet("Main");
+            //Title_ClickEvnet("Main");
 
             SetLocalizaion(enLoginLanguage.English);
 
+            WinLogin winform = new WinLogin();
+            winform.ShowDialog();
 
+            lbUserName.Text = CDefine.m_strLoginID;
+
+            Title_ClickEvnet("Main");
         }
 
         /// <summary>

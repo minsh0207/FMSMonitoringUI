@@ -85,7 +85,7 @@ namespace MonitoringUI.Common
         //	기타등등
         //===================================================================
         public const int DEF_MAX_TRAYID_LENGTH = 16;
-        public const int DEF_MAX_CELL_COUNT = 36;
+        public const int DEF_MAX_CELL_COUNT = 30;
         public const int DEF_MAX_CELLID_LENGTH = 24;
 
         /////////////////////////////////////////////////////////////////////

@@ -31,8 +31,8 @@
             this.lbEqpStatus = new System.Windows.Forms.Label();
             this.lbEqpType = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.TrayInfoView = new FMSMonitoringUI.Controlls.CtrlTrayInfoView();
             this.lbOPStatus = new System.Windows.Forms.Label();
+            this.TrayInfoView = new FMSMonitoringUI.Controlls.CtrlTrayInfoView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -41,7 +41,7 @@
             // 
             // lbEqpStatus
             // 
-            this.lbEqpStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.lbEqpStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.lbEqpStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbEqpStatus.Dock = System.Windows.Forms.DockStyle.Left;
             this.lbEqpStatus.ForeColor = System.Drawing.Color.Black;
@@ -88,17 +88,9 @@
             this.splitContainer1.SplitterDistance = 27;
             this.splitContainer1.TabIndex = 1;
             // 
-            // TrayInfoView
-            // 
-            this.TrayInfoView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TrayInfoView.Location = new System.Drawing.Point(0, 0);
-            this.TrayInfoView.Name = "TrayInfoView";
-            this.TrayInfoView.Size = new System.Drawing.Size(198, 47);
-            this.TrayInfoView.TabIndex = 0;
-            // 
             // lbOPStatus
             // 
-            this.lbOPStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.lbOPStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.lbOPStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbOPStatus.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbOPStatus.ForeColor = System.Drawing.Color.Black;
@@ -106,8 +98,16 @@
             this.lbOPStatus.Name = "lbOPStatus";
             this.lbOPStatus.Size = new System.Drawing.Size(76, 25);
             this.lbOPStatus.TabIndex = 4;
-            this.lbOPStatus.Text = "Processing";
+            this.lbOPStatus.Text = "Running";
             this.lbOPStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // TrayInfoView
+            // 
+            this.TrayInfoView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TrayInfoView.Location = new System.Drawing.Point(0, 0);
+            this.TrayInfoView.Name = "TrayInfoView";
+            this.TrayInfoView.Size = new System.Drawing.Size(198, 47);
+            this.TrayInfoView.TabIndex = 0;
             // 
             // CtrlEqpLeakCheck
             // 

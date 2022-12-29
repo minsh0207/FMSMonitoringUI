@@ -69,6 +69,8 @@
             this.ctrlTaggingNameLong2 = new MonitoringUI.Controlls.CtrlTaggingNameLong();
             this.ctrlTaggingNameLong1 = new MonitoringUI.Controlls.CtrlTaggingNameLong();
             this.label9 = new System.Windows.Forms.Label();
+            this.ctrlTaggingNameLong3 = new MonitoringUI.Controlls.CtrlTaggingNameLong();
+            this.ctrlTaggingNameLong6 = new MonitoringUI.Controlls.CtrlTaggingNameLong();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -525,7 +527,7 @@
             this.ctrlTaggingNameLong8.ColorText = "Data";
             this.ctrlTaggingNameLong8.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingNameLong8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlTaggingNameLong8.Location = new System.Drawing.Point(14, 581);
+            this.ctrlTaggingNameLong8.Location = new System.Drawing.Point(14, 639);
             this.ctrlTaggingNameLong8.Name = "ctrlTaggingNameLong8";
             this.ctrlTaggingNameLong8.Size = new System.Drawing.Size(232, 30);
             this.ctrlTaggingNameLong8.TabIndex = 107;
@@ -539,7 +541,7 @@
             this.ctrlTaggingNameLong5.ColorText = "RES";
             this.ctrlTaggingNameLong5.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingNameLong5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlTaggingNameLong5.Location = new System.Drawing.Point(14, 550);
+            this.ctrlTaggingNameLong5.Location = new System.Drawing.Point(14, 608);
             this.ctrlTaggingNameLong5.Name = "ctrlTaggingNameLong5";
             this.ctrlTaggingNameLong5.Size = new System.Drawing.Size(232, 30);
             this.ctrlTaggingNameLong5.TabIndex = 106;
@@ -553,7 +555,7 @@
             this.ctrlTaggingNameLong4.ColorText = "OCV";
             this.ctrlTaggingNameLong4.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingNameLong4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlTaggingNameLong4.Location = new System.Drawing.Point(14, 519);
+            this.ctrlTaggingNameLong4.Location = new System.Drawing.Point(14, 577);
             this.ctrlTaggingNameLong4.Name = "ctrlTaggingNameLong4";
             this.ctrlTaggingNameLong4.Size = new System.Drawing.Size(232, 30);
             this.ctrlTaggingNameLong4.TabIndex = 105;
@@ -564,10 +566,10 @@
             // ctrlTaggingNameLong2
             // 
             this.ctrlTaggingNameLong2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlTaggingNameLong2.ColorText = "DIS";
+            this.ctrlTaggingNameLong2.ColorText = "CC";
             this.ctrlTaggingNameLong2.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingNameLong2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlTaggingNameLong2.Location = new System.Drawing.Point(14, 488);
+            this.ctrlTaggingNameLong2.Location = new System.Drawing.Point(14, 517);
             this.ctrlTaggingNameLong2.Name = "ctrlTaggingNameLong2";
             this.ctrlTaggingNameLong2.Size = new System.Drawing.Size(253, 30);
             this.ctrlTaggingNameLong2.TabIndex = 104;
@@ -578,7 +580,7 @@
             // ctrlTaggingNameLong1
             // 
             this.ctrlTaggingNameLong1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlTaggingNameLong1.ColorText = "CHG";
+            this.ctrlTaggingNameLong1.ColorText = "CC";
             this.ctrlTaggingNameLong1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingNameLong1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlTaggingNameLong1.Location = new System.Drawing.Point(14, 458);
@@ -596,9 +598,37 @@
             this.label9.ForeColor = System.Drawing.Color.White;
             this.label9.Location = new System.Drawing.Point(15, 435);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(113, 16);
+            this.label9.Size = new System.Drawing.Size(109, 16);
             this.label9.TabIndex = 102;
-            this.label9.Text = "Operation Status";
+            this.label9.Text = "Operation Mode";
+            // 
+            // ctrlTaggingNameLong3
+            // 
+            this.ctrlTaggingNameLong3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlTaggingNameLong3.ColorText = "CCCV";
+            this.ctrlTaggingNameLong3.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlTaggingNameLong3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.ctrlTaggingNameLong3.Location = new System.Drawing.Point(14, 488);
+            this.ctrlTaggingNameLong3.Name = "ctrlTaggingNameLong3";
+            this.ctrlTaggingNameLong3.Size = new System.Drawing.Size(232, 30);
+            this.ctrlTaggingNameLong3.TabIndex = 121;
+            this.ctrlTaggingNameLong3.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.ctrlTaggingNameLong3.TagText = "Charge";
+            this.ctrlTaggingNameLong3.TextColor = System.Drawing.Color.Black;
+            // 
+            // ctrlTaggingNameLong6
+            // 
+            this.ctrlTaggingNameLong6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlTaggingNameLong6.ColorText = "CCCV";
+            this.ctrlTaggingNameLong6.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlTaggingNameLong6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.ctrlTaggingNameLong6.Location = new System.Drawing.Point(14, 547);
+            this.ctrlTaggingNameLong6.Name = "ctrlTaggingNameLong6";
+            this.ctrlTaggingNameLong6.Size = new System.Drawing.Size(253, 30);
+            this.ctrlTaggingNameLong6.TabIndex = 122;
+            this.ctrlTaggingNameLong6.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.ctrlTaggingNameLong6.TagText = "Discharge";
+            this.ctrlTaggingNameLong6.TextColor = System.Drawing.Color.Black;
             // 
             // CtrlFormationCHG
             // 
@@ -606,6 +636,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.ctrlTaggingNameLong6);
+            this.Controls.Add(this.ctrlTaggingNameLong3);
             this.Controls.Add(this.ctrlTaggingName15);
             this.Controls.Add(this.ctrlTaggingName14);
             this.Controls.Add(this.ctrlTaggingName13);
@@ -683,5 +715,7 @@
         private MonitoringUI.Controlls.CtrlTaggingNameLong ctrlTaggingNameLong2;
         private MonitoringUI.Controlls.CtrlTaggingNameLong ctrlTaggingNameLong1;
         private System.Windows.Forms.Label label9;
+        private MonitoringUI.Controlls.CtrlTaggingNameLong ctrlTaggingNameLong3;
+        private MonitoringUI.Controlls.CtrlTaggingNameLong ctrlTaggingNameLong6;
     }
 }

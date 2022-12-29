@@ -41,25 +41,25 @@
             // 
             // lbOPStatus
             // 
-            this.lbOPStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.lbOPStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.lbOPStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbOPStatus.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbOPStatus.ForeColor = System.Drawing.Color.Black;
-            this.lbOPStatus.Location = new System.Drawing.Point(173, 0);
+            this.lbOPStatus.Location = new System.Drawing.Point(183, 0);
             this.lbOPStatus.Name = "lbOPStatus";
-            this.lbOPStatus.Size = new System.Drawing.Size(123, 25);
+            this.lbOPStatus.Size = new System.Drawing.Size(113, 25);
             this.lbOPStatus.TabIndex = 3;
-            this.lbOPStatus.Text = "Processing";
+            this.lbOPStatus.Text = "Running";
             this.lbOPStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbOPStatus.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseDoubleClick);
             // 
             // lbEqpStatus
             // 
-            this.lbEqpStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.lbEqpStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.lbEqpStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbEqpStatus.Dock = System.Windows.Forms.DockStyle.Left;
             this.lbEqpStatus.ForeColor = System.Drawing.Color.Black;
-            this.lbEqpStatus.Location = new System.Drawing.Point(138, 0);
+            this.lbEqpStatus.Location = new System.Drawing.Point(148, 0);
             this.lbEqpStatus.Name = "lbEqpStatus";
             this.lbEqpStatus.Size = new System.Drawing.Size(35, 25);
             this.lbEqpStatus.TabIndex = 2;
@@ -74,7 +74,7 @@
             this.lbEqpType.ForeColor = System.Drawing.Color.White;
             this.lbEqpType.Location = new System.Drawing.Point(0, 0);
             this.lbEqpType.Name = "lbEqpType";
-            this.lbEqpType.Size = new System.Drawing.Size(138, 25);
+            this.lbEqpType.Size = new System.Drawing.Size(148, 25);
             this.lbEqpType.TabIndex = 1;
             this.lbEqpType.Text = "  EQP";
             this.lbEqpType.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
