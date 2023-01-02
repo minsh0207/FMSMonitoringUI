@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.ctrlTitleBar = new MonitoringUI.Controlls.CtrlTitleBar();
             this.panel2 = new System.Windows.Forms.Panel();
             this.ctrlButtonExit1 = new MonitoringUI.Controlls.CButton.CtrlButtonExit();
             this.panel3 = new System.Windows.Forms.Panel();
             this.gridCVInfo = new FMSMonitoringUI.Controlls.CtrlDataGridView();
+            this.m_timer = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -57,6 +59,7 @@
             this.ctrlTitleBar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ctrlTitleBar.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTitleBar.ForeColor = System.Drawing.Color.White;
+            this.ctrlTitleBar.LanguageID = "";
             this.ctrlTitleBar.Location = new System.Drawing.Point(0, 0);
             this.ctrlTitleBar.Margin = new System.Windows.Forms.Padding(4);
             this.ctrlTitleBar.Name = "ctrlTitleBar";
@@ -120,6 +123,7 @@
             this.Name = "WinConveyorInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.TopMost = true;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.WinCVTrayInfo_FormClosed);
             this.Load += new System.EventHandler(this.WinCVTrayInfo_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -136,5 +140,6 @@
         private MonitoringUI.Controlls.CButton.CtrlButtonExit ctrlButtonExit1;
         private System.Windows.Forms.Panel panel3;
         private Controlls.CtrlDataGridView gridCVInfo;
+        private System.Windows.Forms.Timer m_timer;
     }
 }

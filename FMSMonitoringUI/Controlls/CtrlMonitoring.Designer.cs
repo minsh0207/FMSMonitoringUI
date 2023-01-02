@@ -2223,26 +2223,22 @@
             // 
             // button2
             // 
-            this.button2.Enabled = false;
             this.button2.Location = new System.Drawing.Point(266, 820);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(191, 63);
             this.button2.TabIndex = 529;
             this.button2.Text = "TEST2";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Visible = false;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // button1
             // 
-            this.button1.Enabled = false;
             this.button1.Location = new System.Drawing.Point(37, 820);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(191, 63);
             this.button1.TabIndex = 528;
             this.button1.Text = "TEST";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // pictureBox38

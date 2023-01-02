@@ -2,6 +2,7 @@
 using FMSMonitoringUI.Controlls.WindowsForms;
 using MonitoringUI.Common;
 using MonitoringUI.Controlls;
+using MonitoringUI.Controlls.CButton;
 using MonitoringUI.Controlls.CComboBox;
 using MonitoringUI.Controlls.CDateTime;
 using OPCUAClientClassLib;
@@ -31,31 +32,71 @@ namespace FMSMonitoringUI.Monitoring
         CtrlLED[] _LedMode;
         CtrlLED[] _LedStatus;
 
-        public WinBCRConveyorInfo()
+        OPCUAClient _OPCUAClient = null;
+        List<ReadValueId> _ConveyorNodeID = null;
+
+        public WinBCRConveyorInfo(OPCUAClient opcua, List<ReadValueId> conveyorNodeID)
         {
             InitializeComponent();
 
-            //InitGridView();
+            _OPCUAClient = opcua;
+            _ConveyorNodeID = conveyorNodeID;
+
+            // Timer 
+            m_timer.Tick += new EventHandler(OnTimer);
+            m_timer.Stop();
 
             InitControl();
-
+            InitLanguage();
             InitLedStatus();
         }
 
-        private void WinCVTrayInfo_Load(object sender, EventArgs e)
+        #region WinBCRConveyorInfo Event
+        private void WinBCRConveyorInfo_Load(object sender, EventArgs e)
         {
             #region Title Mouse Event
             ctrlTitleBar.MouseDown_Evnet += Title_MouseDownEvnet;
             ctrlTitleBar.MouseMove_Evnet += Title_MouseMoveEvnet;
             #endregion
-
-            #region DataGridView Event
-            //gridCVInfo.MouseCellDoubleClick_Evnet += GridCellInfo_MouseCellDoubleClick;
-            #endregion
         }
 
-        private void InitControl()
+        private void WinBCRConveyorInfo_FormClosed(object sender, FormClosedEventArgs e)
         {
+            m_timer.Stop();
+        }
+        #endregion
+
+        #region MonitoringTimer
+        public void ShowForm()
+        {
+            // Timer
+            m_timer.Start();
+
+            this.Show();
+        }
+        #endregion
+
+        #region InitLanguage
+        private void InitLanguage()
+        {
+            foreach (var ctl in panel1.Controls)
+            {
+                if (ctl.GetType() == typeof(CtrlTitleBar))
+                {
+                    CtrlTitleBar control = ctl as CtrlTitleBar;
+                    control.CallLocalLanguage();
+                }
+            }
+
+            foreach (var ctl in panel2.Controls)
+            {
+                if (ctl.GetType() == typeof(CtrlButton))
+                {
+                    CtrlButton control = ctl as CtrlButton;
+                    control.CallLocalLanguage();
+                }
+            }
+
             foreach (var ctl in panel3.Controls)
             {
                 if (ctl.GetType() == typeof(CtrlGroupBox))
@@ -63,11 +104,26 @@ namespace FMSMonitoringUI.Monitoring
                     CtrlGroupBox control = ctl as CtrlGroupBox;
                     control.CallLocalLanguage();
                 }
+                else if (ctl.GetType() == typeof(CtrlLabelBox))
+                {
+                    CtrlLabelBox control = ctl as CtrlLabelBox;
+                    control.CallLocalLanguage();
+                }
+                else if (ctl.GetType() == typeof(CtrlLabel))
+                {
+                    CtrlLabel control = ctl as CtrlLabel;
+                    control.CallLocalLanguage();
+                }
             }
+        }
+        #endregion
+
+        private void InitControl()
+        {
 
             string[] titleMode = { "Maintenance Mode", "Manual Mode", "Control Mode" };
 
-            _LedMode = new CtrlLED[_CVModeCount];            
+            _LedMode = new CtrlLED[_CVModeCount];
             for (int i = 0; i < _CVModeCount; i++)
             {
                 _LedMode[i] = new CtrlLED();
@@ -89,11 +145,7 @@ namespace FMSMonitoringUI.Monitoring
 
         private void InitLedStatus()
         {
-            // Control Mode
-            //ledMaintMode.LedStatus(0);
-            //ledManualMode.LedStatus(0);
-            //ledControlMode.LedStatus(0);
-
+            // Mode
             for (int i = 0; i < _CVModeCount; i++)
             {
                 _LedMode[i].LedStatus(0);
@@ -106,152 +158,42 @@ namespace FMSMonitoringUI.Monitoring
             }
         }
 
-        private void InitGridView()
-        {
-            //List<string> lstTitle = new List<string>();
-            //lstTitle.Add("Equipment Status");   //-1
-            //lstTitle.Add("");
-            //gridCVInfo.AddColumnHeaderList(lstTitle);
-            //gridCVInfo.ColumnHeadersVisible(true);
-
-            //lstTitle = new List<string>();
-            //lstTitle.Add("Power");
-            //lstTitle.Add("Mode");
-            //lstTitle.Add("Status");
-            //lstTitle.Add("Trouble ErrorNo");
-            //lstTitle.Add("Trouble ErrorLevel");
-
-            //lstTitle.Add("FMS Status");     // 5            
-            //lstTitle.Add("Trouble Status");
-            //lstTitle.Add("Trouble ErrorNo");
-            //lstTitle.Add("TimeSync");
-
-            //lstTitle.Add("Conveyor Information");   // 9
-            //lstTitle.Add("Conveyor No");
-            //lstTitle.Add("Conveyor Type");
-            //lstTitle.Add("Station Status");
-            //lstTitle.Add("Tray Exist");
-            //lstTitle.Add("Tray Type");
-            //lstTitle.Add("Tray Count");
-            //lstTitle.Add("Tray ID 1");
-            //lstTitle.Add("Tray ID 2");
-            //lstTitle.Add("Carriage Pos");
-
-            //lstTitle.Add("Conveyor Command");       // 19
-            //lstTitle.Add("Command Ready");
-            //lstTitle.Add("Destination");
-            //lstTitle.Add("Magazine Command");
-            //gridCVInfo.AddRowsHeaderList(lstTitle);
-
-            //gridCVInfo.ColumnHeadersHeight(24);
-            //gridCVInfo.RowsHeight(24);
-
-            //List<int> lstColumn = new List<int>();
-            //lstColumn.Add(-1);      // DataGridView Header 병합
-            //lstColumn.Add(5);
-            //lstColumn.Add(9);
-            //lstColumn.Add(19);
-            //lstTitle = new List<string>();
-            //lstTitle.Add("Equipment Status");
-            //lstTitle.Add("FMS Status");
-            //lstTitle.Add("Conveyor Information");
-            //lstTitle.Add("Conveyor Command");
-            //gridCVInfo.ColumnMergeList(lstColumn, lstTitle);
-
-            //gridCVInfo.SetGridViewStyles();
-            //gridCVInfo.ColumnHeadersWidth(0, 200);            
-        }
-
         #region SetData
         public void SetData(List<DataValue> data)
         {
             InitLedStatus();
 
-            bool onoff = bool.Parse(data[(int)enSiteTagList.Power].Value.ToString());
-            ledPower.LedOnOff(true);
+            bool onoff = bool.Parse(data[(int)enCVTagList.Power].Value.ToString());
+            ledPower.LedOnOff(onoff);
 
-            int value = int.Parse(data[(int)enSiteTagList.Mode].Value.ToString());
+            int value = int.Parse(data[(int)enCVTagList.Mode].Value.ToString());
             int idx = GetDatatoBitIdx(value);
             _LedMode[idx].LedOnOff(true);
 
-            value = int.Parse(data[(int)enSiteTagList.Status].Value.ToString());
+            value = int.Parse(data[(int)enCVTagList.Status].Value.ToString());
             idx = GetDatatoBitIdx(value);
             _LedStatus[idx].LedStatus(value);
 
-            ledTroubleStatus.LedOnOff(false);
+            onoff = bool.Parse(data[(int)enCVTagList.FMSStatus].Value.ToString());
+            ledTroubleStatus.LedOnOff(onoff);
 
-            //int idx = 1;
-            //for (int i = 0; i < gridCVInfo.RowCount; i++)
-            //{
-            //    if (!gridCVInfo._CellMerge.Contains(i))
-            //    {
-            //        object value;
-            //        bool status = false;
+            // Conveyor
+            ConveyorNo.TextData= data[(int)enCVTagList.ConveyorNo].Value.ToString();
+            ConveyorType.TextData = GetConveyorType(data[(int)enCVTagList.ConveyorType].Value);
+            CVTroubleErrNo.TextData = data[(int)enCVTagList.EqpErrorNo].Value.ToString();
+            TroubleErrLevel.TextData = data[(int)enCVTagList.EqpErrorLevel].Value.ToString();
+            CommandReady.TextData = data[(int)enCVTagList.CommandReady].Value.ToString();
+            StationStatus.TextData = GetStationStatus(data[(int)enCVTagList.StationStatus].Value);
+            TrayExist.TextData = data[(int)enCVTagList.TrayExist].Value.ToString();
+            TrayType.TextData = GetTrayType(data[(int)enCVTagList.TrayType].Value);
+            TrayCount.TextData = data[(int)enCVTagList.TrayCount].Value.ToString();
+            TrayID1.TextData = data[(int)enCVTagList.TrayIdL1].Value.ToString();
+            TrayID2.TextData = data[(int)enCVTagList.TrayIdL2].Value.ToString();
 
-            //        switch (idx)
-            //        {
-            //            case (int)enSiteTagList.Power:
-            //                value = (bool.Parse(data[(int)enSiteTagList.Power].Value.ToString()) == true ? 
-            //                    "On" : "Off");
-                            
-            //                break;
-
-            //            case (int)enSiteTagList.ConveyorType:
-            //                value = GetConveyorType(int.Parse(data[(int)enSiteTagList.ConveyorType].Value.ToString()));
-            //                break;
-
-            //            case (int)enSiteTagList.StationStatus:
-            //                value = GetStationStatus(int.Parse(data[(int)enSiteTagList.StationStatus].Value.ToString()));
-            //                break;
-
-            //            case (int)enSiteTagList.TrayExist:
-            //                value = (bool.Parse(data[(int)enSiteTagList.TrayExist].Value.ToString()) == true ?
-            //                    "Exist" : "Not Exist");
-
-            //                status = bool.Parse(data[(int)enSiteTagList.TrayExist].Value.ToString());
-            //                ledPower.LedOnOff(status);
-            //                break;
-
-            //            case (int)enSiteTagList.TrayType:
-            //                value = GetTrayType(int.Parse(data[(int)enSiteTagList.TrayType].Value.ToString()));
-            //                break;
-
-            //            case (int)enSiteTagList.MagazineCommand:
-            //                value = GetMagazineCommand(int.Parse(data[(int)enSiteTagList.MagazineCommand].Value.ToString()));
-            //                break;
-
-            //            default:
-            //                value = data[idx].Value;
-            //                break;
-            //        }
-
-            //        gridCVInfo.SetValue(1, i, value);
-            //        idx++;
-            //    }                
-            //}
-
-            // Equipment Status
-            //gridCVInfo.SetValue(1, 0, data[(int)enSiteTagList.Power].Value);
-            //gridCVInfo.SetValue(1, 1, data[(int)enSiteTagList.ConveyorNo].Value);
-            //gridCVInfo.SetValue(1, 2, siteInfo.TrayIdL1);
-            //gridCVInfo.SetValue(1, 3, siteInfo.TrayIdL2);
-            //gridCVInfo.SetValue(1, 3, siteInfo.TrayIdL2);
-
-            //gridCVInfo.SetValue(1, 0, siteInfo.ConveyorNo);
-            //gridCVInfo.SetValue(1, 1, GetConveyorType(siteInfo.ConveyorType));
-            //gridCVInfo.SetValue(1, 2, siteInfo.TrayIdL1);
-            //gridCVInfo.SetValue(1, 3, siteInfo.TrayIdL2);
-            //gridCVInfo.SetValue(1, 4, (siteInfo.TrayExist == true ? "Exist" : "Not Exist"));
-            //gridCVInfo.SetValue(1, 5, siteInfo.TrayCount);
-            //gridCVInfo.SetValue(1, 6, GetTrayType(siteInfo.TrayType));
-            //gridCVInfo.SetValue(1, 7, GetStationStatus(siteInfo.StationStatus));
-            //gridCVInfo.SetValue(1, 8, siteInfo.Destination);
-
-            //BindingSource bindingSource = new BindingSource();
-
-            //bindingSource.DataSource = data;
-            //gridCVInfo.DataSource(bindingSource);
-
+            // FMS
+            FMSTroubleErrNo.TextData = data[(int)enCVTagList.FMSErrorNo].Value.ToString();
+            Destination.TextData = data[(int)enCVTagList.Destination].Value.ToString();
+            MagazineCommand.TextData = GetMagazineCommand(data[(int)enCVTagList.MagazineCommand].Value);
         }
         #endregion
 
@@ -270,35 +212,41 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
-        #region DataGridView Event
-        //private void GridCellInfo_MouseCellDoubleClick(int col, int row, object value)
-        //{
-        //    if (col == 1 && row > -1)
-        //    {
-        //        //MessageBox.Show($"TrayInfoView DoubleClick CellID = {value}");
-
-        //        WinCellDetailInfo form = new WinCellDetailInfo();
-        //        form.SetData();
-        //        form.ShowDialog();
-
-        //        Refresh();
-        //    }
-        //}
-        #endregion
-
         #region Button Event
-        private void ctrlButtonExit1_Click(object sender, EventArgs e)
+        private void Exit_Click(object sender, EventArgs e)
         {
             Close();
         }
         #endregion
 
+        #region OnTimer
+        private void OnTimer(object sender, EventArgs e)
+        {
+            try
+            {
+                m_timer.Stop();
+
+                List<DataValue> data = _OPCUAClient.ReadNodeID(_ConveyorNodeID);
+                SetData(data); 
+
+                if (m_timer.Interval != 1000)
+                    m_timer.Interval = 1000;
+                m_timer.Start();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(string.Format("[Exception:OnTimer] {0}", ex.ToString()));
+            }
+        }
+        #endregion
+
         #region Tray Tag Value
-        private string GetConveyorType(int idx)
+        private string GetConveyorType(object idx)
         {
             string ret = string.Empty;
+            int cvType = Convert.ToInt32(idx);
 
-            switch (idx)
+            switch (cvType)
             {
                 case 1:
                     ret = "Conveyor Unit";
@@ -332,11 +280,13 @@ namespace FMSMonitoringUI.Monitoring
             return ret;
         }
 
-        private string GetStationStatus(int idx)
+        private string GetStationStatus(object idx)
         {
             string ret = string.Empty;
 
-            switch (idx)
+            int cvStatus = Convert.ToInt32(idx);
+
+            switch (cvStatus)
             {
                 case 0:
                     ret = "Not Used";
@@ -352,28 +302,32 @@ namespace FMSMonitoringUI.Monitoring
             return ret;
         }
 
-        private string GetTrayType(int idx)
+        private string GetTrayType(object idx)
         {
             string ret = string.Empty;
 
-            switch (idx)
+            int trayType = Convert.ToInt32(idx);
+
+            switch (trayType)
             {
                 case 1:
-                    ret = "BD - Before Degas Long Tray";
+                    ret = "BD\nBefore Degas Long Tray";
                     break;
                 case 2:
-                    ret = "AD - After Degas Short Tray";
+                    ret = "AD\nAfter Degas Short Tray";
                     break;
             }
 
             return ret;
         }
 
-        private string GetMagazineCommand(int idx)
+        private string GetMagazineCommand(object idx)
         {
             string ret = string.Empty;
 
-            switch (idx)
+            int mzCmd = Convert.ToInt32(idx);
+
+            switch (mzCmd)
             {
                 case 1:
                     ret = "적재";
@@ -393,6 +347,7 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
+        #region GetDatatoBitIdx
         private int GetDatatoBitIdx(int data)
         {
             int idx = 0;
@@ -411,5 +366,6 @@ namespace FMSMonitoringUI.Monitoring
 
             return idx;
         }
+        #endregion   
     }
 }

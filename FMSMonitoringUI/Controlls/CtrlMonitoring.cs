@@ -25,6 +25,8 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Resources;
+using System.Runtime.InteropServices;
 using System.Security.Policy;
 using System.Threading;
 using System.Threading.Tasks;
@@ -33,6 +35,7 @@ using System.Windows.Forms;
 using System.Windows.Interop;
 using UnifiedAutomation.UaBase;
 using UnifiedAutomation.UaClient;
+using UnifiedAutomation.UaSchema;
 
 namespace FMSMonitoringUI.Controlls
 {
@@ -79,6 +82,9 @@ namespace FMSMonitoringUI.Controlls
         //}
 
         private MySqlManager _mysql;
+
+        private int _CVGroupNo = 0;
+        private int _CVTrackNo = 0;
 
         #region CtrlMain
         public CtrlMonitoring(ApplicationInstance applicationInstance)
@@ -463,12 +469,19 @@ namespace FMSMonitoringUI.Controlls
         #endregion
 
         #region [Mouse DBLCLK Event]
+        //[DllImport("user32.dll", SetLastError = true)]
+        //private static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
+        //List<WinBCRConveyorInfo> forms = new List<WinBCRConveyorInfo>();
+
         private void OnObjectDoubleClick(object sender, ObjectDoubleClickEventArgs arg)
         {
             try
             {
                 int groupno = arg.DeviceInfo.CVPLCListDeviceID;
                 int trackno = arg.DeviceInfo.SiteNo;
+
+                _CVGroupNo = groupno;
+                _CVTrackNo = trackno;
 
                 if (_clientFMS[groupno] == null) return;
 
@@ -483,36 +496,37 @@ namespace FMSMonitoringUI.Controlls
                     List<ReadValueId> cvInfo = _clientFMS[groupno].ConveyorNodeID[trackno];
                     List<DataValue> data = _clientFMS[groupno].ReadNodeID(cvInfo);
 
-                    SiteTagInfo siteInfo = new SiteTagInfo()
-                    {
-                        ConveyorNo = int.Parse(data[(int)enSiteTagList.ConveyorNo].Value.ToString()),
-                        ConveyorType = int.Parse(data[(int)enSiteTagList.ConveyorType].Value.ToString()),
-                        StationStatus = int.Parse(data[(int)enSiteTagList.StationStatus].Value.ToString()),
-                        TrayIdL1 = data[(int)enSiteTagList.TrayIdL1].Value.ToString(),
-                        TrayIdL2 = data[(int)enSiteTagList.TrayIdL2].Value.ToString(),
-                        TrayCount = int.Parse(data[(int)enSiteTagList.TrayCount].Value.ToString()),
-                        TrayExist = bool.Parse(data[(int)enSiteTagList.TrayExist].Value.ToString()),
-                        TrayType = int.Parse(data[(int)enSiteTagList.TrayType].Value.ToString()),
-                        Destination = int.Parse(data[(int)enSiteTagList.Destination].Value.ToString())
-                    };
+                    //SiteTagInfo siteInfo = new SiteTagInfo()
+                    //{
+                    //    ConveyorNo = int.Parse(data[(int)enCVTagList.ConveyorNo].Value.ToString()),
+                    //    ConveyorType = int.Parse(data[(int)enCVTagList.ConveyorType].Value.ToString()),
+                    //    StationStatus = int.Parse(data[(int)enCVTagList.StationStatus].Value.ToString()),
+                    //    TrayIdL1 = data[(int)enCVTagList.TrayIdL1].Value.ToString(),
+                    //    TrayIdL2 = data[(int)enCVTagList.TrayIdL2].Value.ToString(),
+                    //    TrayCount = int.Parse(data[(int)enCVTagList.TrayCount].Value.ToString()),
+                    //    TrayExist = bool.Parse(data[(int)enCVTagList.TrayExist].Value.ToString()),
+                    //    TrayType = int.Parse(data[(int)enCVTagList.TrayType].Value.ToString()),
+                    //    Destination = int.Parse(data[(int)enCVTagList.Destination].Value.ToString())
+                    //};
 
-                    string msg = $"Track No : {trackno}, TrayIdL1 : {siteInfo.TrayIdL1}, TrayIdL2 : {siteInfo.TrayIdL2}";
-                    _Logger.Write(LogLevel.Info, "", LogFileName.ButtonClick);
+                    //string msg = $"Track No : {trackno}, TrayIdL1 : {siteInfo.TrayIdL1}, TrayIdL2 : {siteInfo.TrayIdL2}";
+                    string msg = $"Track No : {trackno}";
+                    _Logger.Write(LogLevel.Info, msg, LogFileName.ButtonClick);
 
                     if (trackno > 0 && _ListBCR[groupno].ContainsKey(trackno) == false)
                     {
-                        WinConveyorInfo winForm = new WinConveyorInfo("Conveyor");
-                        winForm.SetData(siteInfo);
-                        winForm.Show();
+                        WinConveyorInfo winForm = new WinConveyorInfo("Conveyor", _clientFMS[groupno], cvInfo);
+                        //winForm.SetData(siteInfo);
+                        //winForm.Show();
+                        winForm.ShowForm();
                     }
                     else
                     {
-                        WinBCRConveyorInfo winForm = new WinBCRConveyorInfo();
-                        winForm.SetData(data);
-                        winForm.Show();
+                        WinBCRConveyorInfo winForm = new WinBCRConveyorInfo(_clientFMS[groupno], cvInfo);
+                        winForm.ShowForm();
                     }
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -560,22 +574,22 @@ namespace FMSMonitoringUI.Controlls
                     List<ReadValueId> cvInfo = _clientFMS[groupno].ConveyorNodeID[trackno];
                     List<DataValue> data = _clientFMS[groupno].ReadNodeID(cvInfo);
 
-                    SiteTagInfo siteInfo = new SiteTagInfo()
-                    {
-                        ConveyorNo = int.Parse(data[(int)enSiteTagList.ConveyorNo].Value.ToString()),
-                        ConveyorType = int.Parse(data[(int)enSiteTagList.ConveyorType].Value.ToString()),
-                        StationStatus = int.Parse(data[(int)enSiteTagList.StationStatus].Value.ToString()),
-                        TrayIdL1 = data[(int)enSiteTagList.TrayIdL1].Value.ToString(),
-                        TrayIdL2 = data[(int)enSiteTagList.TrayIdL2].Value.ToString(),
-                        TrayCount = int.Parse(data[(int)enSiteTagList.TrayCount].Value.ToString()),
-                        TrayExist = bool.Parse(data[(int)enSiteTagList.TrayExist].Value.ToString()),
-                        TrayType = int.Parse(data[(int)enSiteTagList.TrayType].Value.ToString()),
-                        Destination = int.Parse(data[(int)enSiteTagList.Destination].Value.ToString())
-                    };
+                    //SiteTagInfo siteInfo = new SiteTagInfo()
+                    //{
+                    //    ConveyorNo = int.Parse(data[(int)enCVTagList.ConveyorNo].Value.ToString()),
+                    //    ConveyorType = int.Parse(data[(int)enCVTagList.ConveyorType].Value.ToString()),
+                    //    StationStatus = int.Parse(data[(int)enCVTagList.StationStatus].Value.ToString()),
+                    //    TrayIdL1 = data[(int)enCVTagList.TrayIdL1].Value.ToString(),
+                    //    TrayIdL2 = data[(int)enCVTagList.TrayIdL2].Value.ToString(),
+                    //    TrayCount = int.Parse(data[(int)enCVTagList.TrayCount].Value.ToString()),
+                    //    TrayExist = bool.Parse(data[(int)enCVTagList.TrayExist].Value.ToString()),
+                    //    TrayType = int.Parse(data[(int)enCVTagList.TrayType].Value.ToString()),
+                    //    Destination = int.Parse(data[(int)enCVTagList.Destination].Value.ToString())
+                    //};
 
-                    WinConveyorInfo winForm = new WinConveyorInfo("RTV");
-                    winForm.SetData(siteInfo);
-                    winForm.Show();
+                    WinConveyorInfo winForm = new WinConveyorInfo("RTV", _clientFMS[groupno], cvInfo);
+                    //winForm.SetData(siteInfo);
+                    //winForm.Show();
                 }
             }
             catch (Exception ex)
@@ -694,8 +708,8 @@ namespace FMSMonitoringUI.Controlls
 
             SiteTagInfo tagInfo = new SiteTagInfo()
             {
-                TrayIdL1 = data[(int)enSiteTagList.TrayIdL1].Value.ToString(),
-                TrayIdL2 = data[(int)enSiteTagList.TrayIdL2].Value.ToString()
+                TrayIdL1 = data[(int)enCVTagList.TrayIdL1].Value.ToString(),
+                TrayIdL2 = data[(int)enCVTagList.TrayIdL2].Value.ToString()
             };
 
             return tagInfo;
@@ -1174,13 +1188,20 @@ namespace FMSMonitoringUI.Controlls
             //form.SetData();
             //form.ShowDialog();
 
-            WinLeadTime_old form = new WinLeadTime_old();
-            form.SetData("TVID00001");
-            form.ShowDialog();
+            //WinLeadTime_old form = new WinLeadTime_old();
+            //form.SetData("TVID00001");
+            //form.ShowDialog();
+
+            Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("fr-FR");
+            LocalLanguage.resxLanguage = new ResourceManager("MonitoringUI.WinFormRoot", typeof(WinFormRoot).Assembly);
+
         }
 
         private void button2_Click_1(object sender, EventArgs e)
         {
+            Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
+            LocalLanguage.resxLanguage = new ResourceManager("MonitoringUI.WinFormRoot", typeof(WinFormRoot).Assembly);
+
             //DataSet ds = _mysql.SelectEqpInfo();
 
             //foreach (DataRow row in ds.Tables[0].Rows)
@@ -1197,9 +1218,9 @@ namespace FMSMonitoringUI.Controlls
             //WinCellDetailInfo form = new WinCellDetailInfo();
             //form.ShowDialog();
 
-            WinLeadTime_old form = new WinLeadTime_old();
-            form.SetData("TVID00001");
-            form.ShowDialog();
+            //WinLeadTime_old form = new WinLeadTime_old();
+            //form.SetData("TVID00001");
+            //form.ShowDialog();
         }
 
         //private void ctrlEqpHTAging1_DoubleClick(object sender, EventArgs e)

@@ -90,7 +90,6 @@
             this.Margin = new System.Windows.Forms.Padding(30);
             this.Name = "CtrlLabelBox";
             this.Size = new System.Drawing.Size(373, 37);
-            this.Enter += new System.EventHandler(this.CtrlLabelBox_Enter);
             this.tableLayoutPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 

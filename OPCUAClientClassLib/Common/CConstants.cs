@@ -29,7 +29,7 @@ namespace OPCUAClientClassLib
         RTV,
     }
 
-    public enum enSiteTagList
+    public enum enCVTagList
     {
         Alive = 0,
         Power,

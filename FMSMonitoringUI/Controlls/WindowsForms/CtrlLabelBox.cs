@@ -85,21 +85,14 @@ namespace FMSMonitoringUI.Controlls.WindowsForms
             InitializeComponent();
         }
 
-        //private void CtrlTextBox_Load(object sender, EventArgs e)
-        //{
-        //    if (LanguageID == "")
-        //    {
-        //        lbTitle.Text = _labelText;
-        //    }
-        //    else
-        //    {
-        //        //lbTitle.Text = LocalLanguage.GetItemString(_LanguageID);
-        //    }
-        //}
-
-        private void CtrlLabelBox_Enter(object sender, EventArgs e)
+        #region CallLocalLanguage
+        public void CallLocalLanguage()
         {
-            lbTitle.Text = LocalLanguage.GetItemString(_LanguageID);
+            if (_LanguageID != "")
+            {
+                lbTitle.Text = LocalLanguage.GetItemString(_LanguageID);
+            }
         }
+        #endregion
     }
 }

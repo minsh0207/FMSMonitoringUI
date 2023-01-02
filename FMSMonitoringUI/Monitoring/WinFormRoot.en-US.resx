@@ -117,10 +117,70 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DEF_COMMAND_READY" xml:space="preserve">
+    <value>Command Ready </value>
+  </data>
   <data name="DEF_CONTROL_001" xml:space="preserve">
     <value>US_TEST</value>
   </data>
-  <data name="DEF_NORMAT_STATUS" xml:space="preserve">
-    <value>Normal Status</value>
+  <data name="DEF_CONTROL_MODE" xml:space="preserve">
+    <value>Control Mode</value>
+  </data>
+  <data name="DEF_CONVEYOR" xml:space="preserve">
+    <value>Conveyor</value>
+  </data>
+  <data name="DEF_CONVEYOR_INFORMATION" xml:space="preserve">
+    <value>Conveyor Information</value>
+  </data>
+  <data name="DEF_CONVEYOR_NO" xml:space="preserve">
+    <value>Conveyor No</value>
+  </data>
+  <data name="DEF_CONVEYOR_TYPE" xml:space="preserve">
+    <value>Conveyor Type</value>
+  </data>
+  <data name="DEF_DESTINATION" xml:space="preserve">
+    <value>Destination </value>
+  </data>
+  <data name="DEF_EXIT" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="DEF_FMS" xml:space="preserve">
+    <value>FMS</value>
+  </data>
+  <data name="DEF_MAGAZINE_COMMAND" xml:space="preserve">
+    <value>Magazine Command</value>
+  </data>
+  <data name="DEF_POWER" xml:space="preserve">
+    <value>Power</value>
+  </data>
+  <data name="DEF_STATION_STATUS" xml:space="preserve">
+    <value>Station Status </value>
+  </data>
+  <data name="DEF_STATUS" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="DEF_TRAY_COUNT" xml:space="preserve">
+    <value>Tray Count </value>
+  </data>
+  <data name="DEF_TRAY_EXIST" xml:space="preserve">
+    <value>Tray Exist </value>
+  </data>
+  <data name="DEF_TRAY_ID1" xml:space="preserve">
+    <value>Tray ID 1 </value>
+  </data>
+  <data name="DEF_TRAY_ID2" xml:space="preserve">
+    <value>Tray ID 2</value>
+  </data>
+  <data name="DEF_TRAY_TYPE" xml:space="preserve">
+    <value>Tray Type </value>
+  </data>
+  <data name="DEF_TROUBLE_ERRORLEVEL" xml:space="preserve">
+    <value>Trouble ErrorLevel </value>
+  </data>
+  <data name="DEF_TROUBLE_ERRORNO" xml:space="preserve">
+    <value>Trouble ErrorNo </value>
+  </data>
+  <data name="DEF_TROUBLE_STATUS" xml:space="preserve">
+    <value>Trouble Status</value>
   </data>
 </root>

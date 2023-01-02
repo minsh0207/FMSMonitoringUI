@@ -7,10 +7,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UnifiedAutomation.UaBase;
 
 namespace FMSMonitoringUI.Monitoring
 {
@@ -19,16 +21,26 @@ namespace FMSMonitoringUI.Monitoring
         private Point point = new Point();
         private string _cvTitle = null;
 
-        public WinConveyorInfo(string cvTitle)
+        OPCUAClient _OPCUAClient = null;
+        List<ReadValueId> _ConveyorNodeID = null;
+
+        public WinConveyorInfo(string cvTitle, OPCUAClient opcua, List<ReadValueId> conveyorNodeID)
         {
             InitializeComponent();
 
+            _OPCUAClient = opcua;
+            _ConveyorNodeID = conveyorNodeID;
+
+            // Timer 
+            m_timer.Tick += new EventHandler(OnTimer);
+            m_timer.Stop();
+
             _cvTitle = cvTitle;
-            //InitGridView(cvTitle, 2);
 
             ctrlTitleBar.TitleText = string.Format("{0} Information", cvTitle);
         }
 
+        #region WinCVTrayInfo Event
         private void WinCVTrayInfo_Load(object sender, EventArgs e)
         {
             
@@ -44,6 +56,22 @@ namespace FMSMonitoringUI.Monitoring
             #endregion
         }
 
+        private void WinCVTrayInfo_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            m_timer.Stop();
+        }
+        #endregion
+
+        #region MonitoringTimer
+        public void ShowForm()
+        {
+            // Timer
+            m_timer.Start();
+
+            this.Show();
+        }
+        #endregion
+
         private void InitsplitContainer()
         {
             //splitContainer1.BackColor = Color.LightGray;            // Color.FromArgb(53, 53, 53);
@@ -55,7 +83,7 @@ namespace FMSMonitoringUI.Monitoring
             //splitContainer3.Panel2.BackColor = Color.FromArgb(27, 27, 27);
         }
 
-        private void InitGridView(string cvTitle, int cvType)
+        private void InitGridView(string cvTitle, object cvType)
         {
             List<string> lstTitle = new List<string>();
             lstTitle.Add("");
@@ -126,6 +154,33 @@ namespace FMSMonitoringUI.Monitoring
 
             gridCVInfo.SetValue(1, row, siteInfo.Destination);
         }
+        public void SetData(List<DataValue> data)
+        {
+            InitGridView(_cvTitle, data[(int)enCVTagList.ConveyorType].Value);
+
+            int row = 0;
+            gridCVInfo.SetValue(1, row, data[(int)enCVTagList.ConveyorNo].Value); row++;
+
+            if (CheckConveyorType(data[(int)enCVTagList.ConveyorType].Value))
+            {
+                gridCVInfo.SetValue(1, row, data[(int)enCVTagList.ConveyorType].Value); row++;
+            }
+
+            gridCVInfo.SetValue(1, row, GetStationStatus(data[(int)enCVTagList.StationStatus].Value)); row++;
+            bool trayExist = Convert.ToBoolean(data[(int)enCVTagList.TrayExist].Value);
+            gridCVInfo.SetValue(1, row, (trayExist == true ? "Exist" : "Not Exist")); row++;
+            gridCVInfo.SetValue(1, row, GetTrayType(data[(int)enCVTagList.TrayType].Value)); row++;
+            gridCVInfo.SetValue(1, row, data[(int)enCVTagList.TrayCount].Value); row++;
+            gridCVInfo.SetValue(1, row, data[(int)enCVTagList.TrayIdL1].Value); row++;
+            gridCVInfo.SetValue(1, row, data[(int)enCVTagList.TrayIdL2].Value); row++;
+
+            if (_cvTitle == "RTV")
+            {
+                gridCVInfo.SetValue(1, row, data[(int)enCVTagList.CarriagePos].Value); row++;
+            }
+
+            gridCVInfo.SetValue(1, row, data[(int)enCVTagList.Destination].Value);
+        }
         #endregion
 
         #region SetTitleName
@@ -173,6 +228,27 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
+        #region OnTimer
+        private void OnTimer(object sender, EventArgs e)
+        {
+            try
+            {
+                m_timer.Stop();
+
+                List<DataValue> data = _OPCUAClient.ReadNodeID(_ConveyorNodeID);
+                SetData(data);
+
+                if (m_timer.Interval != 1000)
+                    m_timer.Interval = 1000;
+                m_timer.Start();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(string.Format("[Exception:OnTimer] {0}", ex.ToString()));
+            }
+        }
+        #endregion
+
         #region Tray Tag Value
         private string GetConveyorType(int idx)
         {
@@ -212,11 +288,13 @@ namespace FMSMonitoringUI.Monitoring
             return ret;
         }
 
-        private string GetStationStatus(int idx)
+        private string GetStationStatus(object idx)
         {
             string ret = string.Empty;
 
-            switch (idx)
+            int cvStatus = Convert.ToInt32(idx);
+
+            switch (cvStatus)
             {
                 case 0:
                     ret = "Not Used";
@@ -232,11 +310,13 @@ namespace FMSMonitoringUI.Monitoring
             return ret;
         }
 
-        private string GetTrayType(int idx)
+        private string GetTrayType(object idx)
         {
             string ret = string.Empty;
 
-            switch (idx)
+            int trayType = Convert.ToInt32(idx);
+
+            switch (trayType)
             {
                 case 1:
                     ret = "BD - Before Degas Long Tray";
@@ -253,8 +333,10 @@ namespace FMSMonitoringUI.Monitoring
         /// <summary>
         /// Conveyor Type이 2,4,8,32 일때만 Enable
         /// </summary>
-        private bool CheckConveyorType(int cvType)
+        private bool CheckConveyorType(object idx)
         {
+            int cvType = Convert.ToInt32(idx);
+
             if (cvType == 2 || cvType == 4 || cvType == 8 || cvType == 32)
             {
                 return true;
