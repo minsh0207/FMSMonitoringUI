@@ -186,11 +186,11 @@ namespace FMSMonitoringUI.Monitoring
             int row = 0;
             gridEqpInfo.SetValue(1, row, data[0].EQP_ID); row++;
             gridEqpInfo.SetValue(1, row, data[0].EQP_NAME); row++;
-            if (data[0].OPERRATION_MODE == null)
-            {
-                gridEqpInfo.RowsVisible(row, false);
-            }
-            gridEqpInfo.SetValue(1, row, data[0].OPERRATION_MODE); row++;
+
+            if (data[0].OPERATION_MODE == 0) gridEqpInfo.RowsVisible(row, false);
+            else gridEqpInfo.RowsVisible(row, true);
+
+            gridEqpInfo.SetValue(1, row, data[0].OPERATION_MODE); row++;
             gridEqpInfo.SetValue(1, row, data[0].EQP_STATUS); row++;
             gridEqpInfo.SetValue(1, row, data[0].TROUBLE_CODE); row++;
             gridEqpInfo.SetValue(1, row, data[0].TROUBLE_NAME);

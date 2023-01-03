@@ -16,7 +16,7 @@ namespace RestClientLib
         public string EQP_ID { get; set; }
         public string EQP_NAME { get; set; }
         public string EQP_NAME_LOCAL { get; set; }
-        public string OPERRATION_MODE { get; set; }
+        public int OPERATION_MODE { get; set; }
         public string EQP_STATUS { get; set; }
         public string TRAY_ID { get; set; }
         public string LEVEL { get; set; }
