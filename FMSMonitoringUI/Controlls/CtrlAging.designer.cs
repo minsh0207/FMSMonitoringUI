@@ -2447,7 +2447,7 @@
             this.ctrlTaggingName2.ColorText = "";
             this.ctrlTaggingName2.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlTaggingName2.LanguageID = "DEF_TRAY_ON";
+            this.ctrlTaggingName2.LanguageID = "DEF_EMPTY";
             this.ctrlTaggingName2.Location = new System.Drawing.Point(14, 62);
             this.ctrlTaggingName2.Name = "ctrlTaggingName2";
             this.ctrlTaggingName2.Size = new System.Drawing.Size(217, 30);
