@@ -3,6 +3,7 @@ using OPCUAClientClassLib;
 using Org.BouncyCastle.Ocsp;
 using RestClientLib;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,6 +23,7 @@ namespace FMSMonitoringUI.Monitoring
     {
         private Point point = new Point();
         private string _EqpID = string.Empty;
+        private string _EqpType = string.Empty;
         private int _TrayCnt = 0;
 
         #region Working Thread
@@ -29,11 +31,12 @@ namespace FMSMonitoringUI.Monitoring
         private bool _TheadVisiable;
         #endregion
 
-        public WinManageEqp(string eqpid, int traycnt)
+        public WinManageEqp(string eqpid, string eqpType, int traycnt)
         {
             InitializeComponent();
 
             _EqpID = eqpid;
+            _EqpType = eqpType;
             _TrayCnt = traycnt;
         }
 
@@ -98,8 +101,8 @@ namespace FMSMonitoringUI.Monitoring
         }
         private void InitGridViewTray()
         {
-            if (_TrayCnt > 1) this.Size = new System.Drawing.Size(1068, 510);
-            else this.Size = new System.Drawing.Size(918, 510);
+            if (_TrayCnt > 1) this.Size = new System.Drawing.Size(1080, 510);
+            else this.Size = new System.Drawing.Size(940, 510);
 
             List<string> lstTitle = new List<string>();
             lstTitle.Add("Tray Information");
@@ -136,6 +139,11 @@ namespace FMSMonitoringUI.Monitoring
 
         }
         #endregion
+
+        private void SetOperationMode()
+        {
+
+        }
 
         #region ProcessThreadCallback
         private void ProcessThreadCallback()
@@ -190,8 +198,8 @@ namespace FMSMonitoringUI.Monitoring
             if (data[0].OPERATION_MODE == 0) gridEqpInfo.RowsVisible(row, false);
             else gridEqpInfo.RowsVisible(row, true);
 
-            gridEqpInfo.SetValue(1, row, data[0].OPERATION_MODE); row++;
-            gridEqpInfo.SetValue(1, row, data[0].EQP_STATUS); row++;
+            gridEqpInfo.SetValue(1, row, GetOperationMode(data[0].OPERATION_MODE)); row++;
+            gridEqpInfo.SetValue(1, row, GetEqpStatus(data[0].EQP_STATUS)); row++;
             gridEqpInfo.SetValue(1, row, data[0].TROUBLE_CODE); row++;
             gridEqpInfo.SetValue(1, row, data[0].TROUBLE_NAME);
 
@@ -212,6 +220,122 @@ namespace FMSMonitoringUI.Monitoring
             }
         }
         #endregion
+
+        #region GetOperationMode 
+        private string GetOperationMode(int mode)
+        {
+            string opModeName = string.Empty;
+
+            if (_EqpType == "CHG")
+            {
+                switch (mode)
+                {
+                    case 1:
+                        opModeName = "OCV";
+                        break;
+                    case 2:
+                        opModeName = "Charge (CC)";
+                        break;
+                    case 4:
+                        opModeName = "Charge (CCCV)";
+                        break;
+                    case 8:
+                        opModeName = "Discharge (CC)";
+                        break;
+                    case 16:
+                        opModeName = "Discharge (CCCV)";
+                        break;
+                }
+            }
+            else if (_EqpType == "DCR")
+            {
+                switch (mode)
+                {
+                    case 1:
+                        opModeName = "OCV";
+                        break;
+                    case 64:
+                        opModeName = "Power Discharge";
+                        break;
+                    case 128:
+                        opModeName = "Power Charge";
+                        break;
+                }
+            }
+            else if (_EqpType == "OCV")
+            {
+                switch (mode)
+                {
+                    case 1:
+                        opModeName = "OCV";
+                        break;
+                    case 32:
+                        opModeName = "ACIR";
+                        break;
+                    case 33:
+                        opModeName = "OCV and ACIR";
+                        break;
+                }
+            }
+            else if (_EqpType == "MIC")
+            {
+                switch (mode)
+                {
+                    case 1:
+                        opModeName = "OCV";
+                        break;
+                    case 256:
+                        opModeName = "SDM";
+                        break;
+                }
+            }
+
+            return opModeName;
+        }
+        #endregion
+        #region GetEqpStatus
+        private string GetEqpStatus(string status)
+        {
+            string statusName = string.Empty;
+
+            switch (status)
+            {
+                case "C":
+                    statusName = "Control Mode";
+                    break;
+                case "M":
+                    statusName = "Maintenance Mode";
+                    break;
+                case "I":
+                    statusName = "Idle";
+                    break;
+                case "R":
+                    statusName = "Running";
+                    break;
+                case "T":
+                    statusName = "Machine Trouble";
+                    break;
+                case "P":
+                    statusName = "Pause";
+                    break;
+                case "S":
+                    statusName = "Stop";
+                    break;
+                case "L":
+                    statusName = "Loading";
+                    break;
+                case "F":
+                    statusName = string.Format($"Fire\r\n(Temperature Alarm Only)");
+                    break;
+                case "F2":
+                    statusName = $"Fire\n(Smoke Only or Both)";
+                    break;
+            }
+
+            return statusName;
+        }
+        #endregion
+
 
         #region Titel Mouse Event
         private void Title_MouseDownEvnet(object sender, MouseEventArgs e)

@@ -70,7 +70,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(918, 65);
+            this.panel2.Size = new System.Drawing.Size(901, 65);
             this.panel2.TabIndex = 1;
             // 
             // ctrlTitleBar
@@ -84,7 +84,7 @@
             this.ctrlTitleBar.Location = new System.Drawing.Point(0, 0);
             this.ctrlTitleBar.Margin = new System.Windows.Forms.Padding(4);
             this.ctrlTitleBar.Name = "ctrlTitleBar";
-            this.ctrlTitleBar.Size = new System.Drawing.Size(916, 63);
+            this.ctrlTitleBar.Size = new System.Drawing.Size(899, 63);
             this.ctrlTitleBar.TabIndex = 0;
             this.ctrlTitleBar.TitleText = "Manage EQP";
             // 
@@ -96,7 +96,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(0, 446);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(918, 64);
+            this.panel3.Size = new System.Drawing.Size(901, 64);
             this.panel3.TabIndex = 2;
             // 
             // Exit
@@ -127,8 +127,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(918, 381);
-            this.splitContainer1.SplitterDistance = 272;
+            this.splitContainer1.Size = new System.Drawing.Size(901, 381);
+            this.splitContainer1.SplitterDistance = 300;
             this.splitContainer1.TabIndex = 3;
             // 
             // gridEqpInfo
@@ -138,7 +138,7 @@
             this.gridEqpInfo.Location = new System.Drawing.Point(0, 0);
             this.gridEqpInfo.Name = "gridEqpInfo";
             this.gridEqpInfo.RowCount = -1;
-            this.gridEqpInfo.Size = new System.Drawing.Size(270, 379);
+            this.gridEqpInfo.Size = new System.Drawing.Size(298, 379);
             this.gridEqpInfo.TabIndex = 1;
             // 
             // splitContainer2
@@ -159,8 +159,8 @@
             this.splitContainer2.Panel2.Controls.Add(this.ctrlLabel1);
             this.splitContainer2.Panel2.Controls.Add(this.groupBox1);
             this.splitContainer2.Panel2.Controls.Add(this.label1);
-            this.splitContainer2.Size = new System.Drawing.Size(642, 381);
-            this.splitContainer2.SplitterDistance = 314;
+            this.splitContainer2.Size = new System.Drawing.Size(597, 381);
+            this.splitContainer2.SplitterDistance = 269;
             this.splitContainer2.TabIndex = 0;
             // 
             // gridTrayInfo
@@ -170,7 +170,7 @@
             this.gridTrayInfo.Location = new System.Drawing.Point(0, 0);
             this.gridTrayInfo.Name = "gridTrayInfo";
             this.gridTrayInfo.RowCount = -1;
-            this.gridTrayInfo.Size = new System.Drawing.Size(312, 379);
+            this.gridTrayInfo.Size = new System.Drawing.Size(267, 379);
             this.gridTrayInfo.TabIndex = 1;
             // 
             // ctrlGroupBox1
@@ -346,7 +346,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ClientSize = new System.Drawing.Size(918, 510);
+            this.ClientSize = new System.Drawing.Size(901, 510);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
