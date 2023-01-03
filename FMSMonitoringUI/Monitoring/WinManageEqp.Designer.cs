@@ -36,12 +36,6 @@
             this.gridEqpInfo = new FMSMonitoringUI.Controlls.CtrlDataGridView();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.gridTrayInfo = new FMSMonitoringUI.Controlls.CtrlDataGridView();
-            this.ctrlLabel1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.ctrlButton4 = new MonitoringUI.Controlls.CButton.CtrlButton();
-            this.ctrlRadioButton2 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
-            this.ctrlRadioButton1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
-            this.label1 = new System.Windows.Forms.Label();
             this.ctrlGroupBox1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlGroupBox();
             this.ctrlButton1 = new MonitoringUI.Controlls.CButton.CtrlButton();
             this.ctrlRadioButton8 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
@@ -49,6 +43,12 @@
             this.ctrlRadioButton6 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
             this.ctrlRadioButton5 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
             this.ctrlRadioButton4 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
+            this.ctrlLabel1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ctrlButton4 = new MonitoringUI.Controlls.CButton.CtrlButton();
+            this.ctrlRadioButton2 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
+            this.ctrlRadioButton1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -59,8 +59,8 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.ctrlGroupBox1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -70,7 +70,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(916, 65);
+            this.panel2.Size = new System.Drawing.Size(918, 65);
             this.panel2.TabIndex = 1;
             // 
             // ctrlTitleBar
@@ -80,10 +80,11 @@
             this.ctrlTitleBar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ctrlTitleBar.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTitleBar.ForeColor = System.Drawing.Color.White;
+            this.ctrlTitleBar.LanguageID = "";
             this.ctrlTitleBar.Location = new System.Drawing.Point(0, 0);
             this.ctrlTitleBar.Margin = new System.Windows.Forms.Padding(4);
             this.ctrlTitleBar.Name = "ctrlTitleBar";
-            this.ctrlTitleBar.Size = new System.Drawing.Size(914, 63);
+            this.ctrlTitleBar.Size = new System.Drawing.Size(916, 63);
             this.ctrlTitleBar.TabIndex = 0;
             this.ctrlTitleBar.TitleText = "Manage EQP";
             // 
@@ -95,7 +96,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(0, 446);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(916, 64);
+            this.panel3.Size = new System.Drawing.Size(918, 64);
             this.panel3.TabIndex = 2;
             // 
             // Exit
@@ -126,8 +127,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(916, 381);
-            this.splitContainer1.SplitterDistance = 294;
+            this.splitContainer1.Size = new System.Drawing.Size(918, 381);
+            this.splitContainer1.SplitterDistance = 272;
             this.splitContainer1.TabIndex = 3;
             // 
             // gridEqpInfo
@@ -137,14 +138,14 @@
             this.gridEqpInfo.Location = new System.Drawing.Point(0, 0);
             this.gridEqpInfo.Name = "gridEqpInfo";
             this.gridEqpInfo.RowCount = -1;
-            this.gridEqpInfo.Size = new System.Drawing.Size(292, 379);
+            this.gridEqpInfo.Size = new System.Drawing.Size(270, 379);
             this.gridEqpInfo.TabIndex = 1;
             // 
             // splitContainer2
             // 
             this.splitContainer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
             this.splitContainer2.Name = "splitContainer2";
             // 
@@ -158,8 +159,8 @@
             this.splitContainer2.Panel2.Controls.Add(this.ctrlLabel1);
             this.splitContainer2.Panel2.Controls.Add(this.groupBox1);
             this.splitContainer2.Panel2.Controls.Add(this.label1);
-            this.splitContainer2.Size = new System.Drawing.Size(618, 381);
-            this.splitContainer2.SplitterDistance = 292;
+            this.splitContainer2.Size = new System.Drawing.Size(642, 381);
+            this.splitContainer2.SplitterDistance = 314;
             this.splitContainer2.TabIndex = 0;
             // 
             // gridTrayInfo
@@ -169,80 +170,8 @@
             this.gridTrayInfo.Location = new System.Drawing.Point(0, 0);
             this.gridTrayInfo.Name = "gridTrayInfo";
             this.gridTrayInfo.RowCount = -1;
-            this.gridTrayInfo.Size = new System.Drawing.Size(290, 379);
+            this.gridTrayInfo.Size = new System.Drawing.Size(312, 379);
             this.gridTrayInfo.TabIndex = 1;
-            // 
-            // ctrlLabel1
-            // 
-            this.ctrlLabel1.AutoSize = true;
-            this.ctrlLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlLabel1.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ctrlLabel1.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel1.LanguageID = "";
-            this.ctrlLabel1.Location = new System.Drawing.Point(18, 40);
-            this.ctrlLabel1.Name = "ctrlLabel1";
-            this.ctrlLabel1.Size = new System.Drawing.Size(82, 13);
-            this.ctrlLabel1.TabIndex = 27;
-            this.ctrlLabel1.Text = "Data Clear";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.ctrlButton4);
-            this.groupBox1.Controls.Add(this.ctrlRadioButton2);
-            this.groupBox1.Controls.Add(this.ctrlRadioButton1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 42);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(297, 84);
-            this.groupBox1.TabIndex = 26;
-            this.groupBox1.TabStop = false;
-            // 
-            // ctrlButton4
-            // 
-            this.ctrlButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlButton4.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ctrlButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlButton4.LabelText = "Save";
-            this.ctrlButton4.LanguageID = "";
-            this.ctrlButton4.Location = new System.Drawing.Point(206, 23);
-            this.ctrlButton4.Name = "ctrlButton4";
-            this.ctrlButton4.Size = new System.Drawing.Size(78, 48);
-            this.ctrlButton4.TabIndex = 42;
-            // 
-            // ctrlRadioButton2
-            // 
-            this.ctrlRadioButton2.AutoSize = true;
-            this.ctrlRadioButton2.ForeColor = System.Drawing.Color.White;
-            this.ctrlRadioButton2.LanguageID = "";
-            this.ctrlRadioButton2.Location = new System.Drawing.Point(14, 51);
-            this.ctrlRadioButton2.Name = "ctrlRadioButton2";
-            this.ctrlRadioButton2.Size = new System.Drawing.Size(104, 16);
-            this.ctrlRadioButton2.TabIndex = 25;
-            this.ctrlRadioButton2.TabStop = true;
-            this.ctrlRadioButton2.Text = " Clear Trouble";
-            this.ctrlRadioButton2.UseVisualStyleBackColor = true;
-            // 
-            // ctrlRadioButton1
-            // 
-            this.ctrlRadioButton1.AutoSize = true;
-            this.ctrlRadioButton1.ForeColor = System.Drawing.Color.White;
-            this.ctrlRadioButton1.LanguageID = "";
-            this.ctrlRadioButton1.Location = new System.Drawing.Point(14, 25);
-            this.ctrlRadioButton1.Name = "ctrlRadioButton1";
-            this.ctrlRadioButton1.Size = new System.Drawing.Size(123, 16);
-            this.ctrlRadioButton1.TabIndex = 24;
-            this.ctrlRadioButton1.TabStop = true;
-            this.ctrlRadioButton1.Text = " Clear Information";
-            this.ctrlRadioButton1.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("굴림", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(9, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(158, 23);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Manual Command";
             // 
             // ctrlGroupBox1
             // 
@@ -340,12 +269,84 @@
             this.ctrlRadioButton4.Text = "Stop Current Process";
             this.ctrlRadioButton4.UseVisualStyleBackColor = true;
             // 
+            // ctrlLabel1
+            // 
+            this.ctrlLabel1.AutoSize = true;
+            this.ctrlLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel1.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlLabel1.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel1.LanguageID = "";
+            this.ctrlLabel1.Location = new System.Drawing.Point(18, 40);
+            this.ctrlLabel1.Name = "ctrlLabel1";
+            this.ctrlLabel1.Size = new System.Drawing.Size(82, 13);
+            this.ctrlLabel1.TabIndex = 27;
+            this.ctrlLabel1.Text = "Data Clear";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.ctrlButton4);
+            this.groupBox1.Controls.Add(this.ctrlRadioButton2);
+            this.groupBox1.Controls.Add(this.ctrlRadioButton1);
+            this.groupBox1.Location = new System.Drawing.Point(12, 42);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(297, 84);
+            this.groupBox1.TabIndex = 26;
+            this.groupBox1.TabStop = false;
+            // 
+            // ctrlButton4
+            // 
+            this.ctrlButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlButton4.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.ctrlButton4.LabelText = "Save";
+            this.ctrlButton4.LanguageID = "";
+            this.ctrlButton4.Location = new System.Drawing.Point(206, 23);
+            this.ctrlButton4.Name = "ctrlButton4";
+            this.ctrlButton4.Size = new System.Drawing.Size(78, 48);
+            this.ctrlButton4.TabIndex = 42;
+            // 
+            // ctrlRadioButton2
+            // 
+            this.ctrlRadioButton2.AutoSize = true;
+            this.ctrlRadioButton2.ForeColor = System.Drawing.Color.White;
+            this.ctrlRadioButton2.LanguageID = "";
+            this.ctrlRadioButton2.Location = new System.Drawing.Point(14, 51);
+            this.ctrlRadioButton2.Name = "ctrlRadioButton2";
+            this.ctrlRadioButton2.Size = new System.Drawing.Size(104, 16);
+            this.ctrlRadioButton2.TabIndex = 25;
+            this.ctrlRadioButton2.TabStop = true;
+            this.ctrlRadioButton2.Text = " Clear Trouble";
+            this.ctrlRadioButton2.UseVisualStyleBackColor = true;
+            // 
+            // ctrlRadioButton1
+            // 
+            this.ctrlRadioButton1.AutoSize = true;
+            this.ctrlRadioButton1.ForeColor = System.Drawing.Color.White;
+            this.ctrlRadioButton1.LanguageID = "";
+            this.ctrlRadioButton1.Location = new System.Drawing.Point(14, 25);
+            this.ctrlRadioButton1.Name = "ctrlRadioButton1";
+            this.ctrlRadioButton1.Size = new System.Drawing.Size(123, 16);
+            this.ctrlRadioButton1.TabIndex = 24;
+            this.ctrlRadioButton1.TabStop = true;
+            this.ctrlRadioButton1.Text = " Clear Information";
+            this.ctrlRadioButton1.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("굴림", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(9, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(158, 23);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Manual Command";
+            // 
             // WinManageEqp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ClientSize = new System.Drawing.Size(916, 510);
+            this.ClientSize = new System.Drawing.Size(918, 510);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -354,6 +355,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WinManageEqp";
             this.TopMost = true;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.WinManageEqp_FormClosed);
             this.Load += new System.EventHandler(this.WinManageEqp_Load);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -366,10 +368,10 @@
             this.splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ctrlGroupBox1.ResumeLayout(false);
             this.ctrlGroupBox1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }

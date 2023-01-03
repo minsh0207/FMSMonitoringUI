@@ -28,6 +28,7 @@ using System.Linq;
 using System.Resources;
 using System.Runtime.InteropServices;
 using System.Security.Policy;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
@@ -1180,6 +1181,9 @@ namespace FMSMonitoringUI.Controlls
 
             _jsonDatTrayResponse j2 = rest.ConvertDatTray(jsonResult);
 
+
+
+
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -1192,8 +1196,29 @@ namespace FMSMonitoringUI.Controlls
             //form.SetData("TVID00001");
             //form.ShowDialog();
 
-            Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("fr-FR");
-            LocalLanguage.resxLanguage = new ResourceManager("MonitoringUI.WinFormRoot", typeof(WinFormRoot).Assembly);
+            //Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("fr-FR");
+            //LocalLanguage.resxLanguage = new ResourceManager("MonitoringUI.WinFormRoot", typeof(WinFormRoot).Assembly);
+
+            string eqpid = "F1DGS01";
+            RESTClient rest = new RESTClient();
+            // Set Query
+            StringBuilder strSQL = new StringBuilder();
+
+            strSQL.Append(" SELECT A.eqp_id, A.eqp_name, A.operation_mode, A.eqp_status, A.tray_id, A.tray_id_2, A.eqp_trouble_code,");
+            strSQL.Append("        B.trouble_name,");
+            strSQL.Append("        C.tray_input_time, C.tray_zone, C.model_id, C.route_id, C.lot_id, C.start_time, C.plan_time, C.current_cell_cnt");
+            strSQL.Append(" FROM fms_v.tb_mst_eqp   A");
+            strSQL.Append(" LEFT OUTER JOIN fms_v.tb_mst_trouble    B");
+            strSQL.Append(" ON A.eqp_trouble_code = B.trouble_code AND A.eqp_type = B.eqp_type");
+            strSQL.Append(" LEFT OUTER JOIN fms_v.tb_dat_tray   C");
+            strSQL.Append(" ON A.tray_id = C.tray_id");
+            strSQL.Append(" LEFT OUTER JOIN fms_v.tb_mst_route_order    D");
+            strSQL.Append(" ON A.route_order_no = D.route_order_no AND C.route_id = D.route_id");
+            //필수값
+            strSQL.Append($" WHERE A.eqp_id = '{eqpid}' AND C.proc_work_index = 0");
+
+            string jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+            _jsonWinManageEqpResponse j1 = rest.ConvertWinManageEqp(jsonResult);
 
         }
 

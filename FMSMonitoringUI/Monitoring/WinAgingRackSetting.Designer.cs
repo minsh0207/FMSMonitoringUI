@@ -87,6 +87,7 @@
             this.ctrlTitleBar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ctrlTitleBar.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTitleBar.ForeColor = System.Drawing.Color.White;
+            this.ctrlTitleBar.LanguageID = "";
             this.ctrlTitleBar.Location = new System.Drawing.Point(0, 0);
             this.ctrlTitleBar.Margin = new System.Windows.Forms.Padding(4);
             this.ctrlTitleBar.Name = "ctrlTitleBar";
@@ -267,7 +268,7 @@
             this.ctrlButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlButton3.LabelText = "Save";
             this.ctrlButton3.LanguageID = "";
-            this.ctrlButton3.Location = new System.Drawing.Point(249, 27);
+            this.ctrlButton3.Location = new System.Drawing.Point(249, 23);
             this.ctrlButton3.Name = "ctrlButton3";
             this.ctrlButton3.Size = new System.Drawing.Size(78, 48);
             this.ctrlButton3.TabIndex = 41;
@@ -305,7 +306,7 @@
             this.ctrlButton2.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlButton2.LabelText = "Save";
-            this.ctrlButton2.LanguageID = "";
+            this.ctrlButton2.LanguageID = "DEF_SAVE";
             this.ctrlButton2.Location = new System.Drawing.Point(249, 20);
             this.ctrlButton2.Name = "ctrlButton2";
             this.ctrlButton2.Size = new System.Drawing.Size(78, 48);
@@ -384,7 +385,7 @@
             this.ctrlButton4.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlButton4.LabelText = "Save";
-            this.ctrlButton4.LanguageID = "";
+            this.ctrlButton4.LanguageID = "DEF_SAVE";
             this.ctrlButton4.Location = new System.Drawing.Point(249, 23);
             this.ctrlButton4.Name = "ctrlButton4";
             this.ctrlButton4.Size = new System.Drawing.Size(78, 48);

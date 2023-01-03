@@ -1,4 +1,5 @@
-﻿using FormationMonCtrl;
+﻿using FMSMonitoringUI.Monitoring;
+using FormationMonCtrl;
 using MonitoringUI;
 using System;
 using System.Collections.Generic;
@@ -84,7 +85,8 @@ namespace FMSMonitoringUI.Controlls
 
         private void lbEqpType_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            MessageBox.Show($"EqpType DoubleClick {EqpType}");
+            WinManageEqp form = new WinManageEqp(EqpID, 1);
+            form.ShowDialog();
         }
     }
 }

@@ -118,6 +118,8 @@
     <Compile Include="JSON\_jsonMstWindow.cs" />
     <Compile Include="JSON\_jsonMstWindowUser.cs" />
     <Compile Include="JSON\__baseBase.cs" />
+    <Compile Include="Monitoring\_jsonWinManageEqp.cs" />
+    <Compile Include="Monitoring\__winBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="JsonConvert.cs" />
     <Compile Include="RESTClient.cs" />
@@ -141,5 +143,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

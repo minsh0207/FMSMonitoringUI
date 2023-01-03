@@ -45,6 +45,7 @@
             this.ctrlTitleBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(90)))), ((int)(((byte)(107)))));
             this.ctrlTitleBar1.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTitleBar1.ForeColor = System.Drawing.Color.White;
+            this.ctrlTitleBar1.LanguageID = "";
             this.ctrlTitleBar1.Location = new System.Drawing.Point(0, 0);
             this.ctrlTitleBar1.Margin = new System.Windows.Forms.Padding(4);
             this.ctrlTitleBar1.Name = "ctrlTitleBar1";
@@ -69,11 +70,14 @@
             this.dtStartTime.Enabled = false;
             this.dtStartTime.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.dtStartTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.dtStartTime.LanguageID = "";
             this.dtStartTime.Location = new System.Drawing.Point(12, 144);
             this.dtStartTime.Name = "dtStartTime";
             this.dtStartTime.Size = new System.Drawing.Size(251, 27);
             this.dtStartTime.StartTime = new System.DateTime(2019, 10, 30, 12, 29, 34, 592);
             this.dtStartTime.TabIndex = 23;
+            this.dtStartTime.TitleText = "";
+            this.dtStartTime.TitleWidth = 100F;
             // 
             // btOutNow
             // 
@@ -101,7 +105,7 @@
             this.btExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(69)))), ((int)(((byte)(88)))));
             this.btExit.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.btExit.LabelText = "Exit";
+            this.btExit.LabelText = "ddd";
             this.btExit.Location = new System.Drawing.Point(285, 219);
             this.btExit.Name = "btExit";
             this.btExit.Size = new System.Drawing.Size(100, 38);
@@ -110,6 +114,7 @@
             // tbNextProcessName
             // 
             this.tbNextProcessName.BackColor = System.Drawing.Color.LightGray;
+            this.tbNextProcessName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbNextProcessName.Enabled = false;
             this.tbNextProcessName.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.tbNextProcessName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
@@ -127,6 +132,7 @@
             // tbCurrentProcessName
             // 
             this.tbCurrentProcessName.BackColor = System.Drawing.Color.LightGray;
+            this.tbCurrentProcessName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbCurrentProcessName.Enabled = false;
             this.tbCurrentProcessName.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.tbCurrentProcessName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
@@ -144,6 +150,7 @@
             // tbTrayID
             // 
             this.tbTrayID.BackColor = System.Drawing.Color.LightGray;
+            this.tbTrayID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbTrayID.Enabled = false;
             this.tbTrayID.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.tbTrayID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
@@ -161,6 +168,7 @@
             // tbRackID
             // 
             this.tbRackID.BackColor = System.Drawing.Color.LightGray;
+            this.tbRackID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbRackID.Enabled = false;
             this.tbRackID.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.tbRackID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));

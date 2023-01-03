@@ -1,4 +1,5 @@
-﻿using FormationMonCtrl;
+﻿using FMSMonitoringUI.Monitoring;
+using FormationMonCtrl;
 using MonitoringUI;
 using System;
 using System.Collections.Generic;
@@ -65,5 +66,11 @@ namespace FMSMonitoringUI.Controlls
             //opStatus.BackColor = Color.Yellow;
         }
         #endregion
+
+        private void lbEqpType_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            WinManageEqp form = new WinManageEqp(EqpID, 1);
+            form.ShowDialog();
+        }
     }
 }

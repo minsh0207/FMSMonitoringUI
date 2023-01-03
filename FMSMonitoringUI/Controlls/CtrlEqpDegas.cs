@@ -97,7 +97,7 @@ namespace FMSMonitoringUI.Controlls
 
         private void lbEqpType_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            WinManageEqp form = new WinManageEqp(EqpID);
+            WinManageEqp form = new WinManageEqp(EqpID, 2);
             form.ShowDialog();
         }
     }

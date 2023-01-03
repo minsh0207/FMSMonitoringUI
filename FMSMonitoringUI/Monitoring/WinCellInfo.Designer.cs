@@ -31,10 +31,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.ctrlTitleBar = new MonitoringUI.Controlls.CtrlTitleBar();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.ctrlButtonExit1 = new MonitoringUI.Controlls.CButton.CtrlButtonExit();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.gridCellInfo = new FMSMonitoringUI.Controlls.CtrlDataGridView();
+            this.ctrlButton1 = new MonitoringUI.Controlls.CButton.CtrlButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -58,6 +58,7 @@
             this.ctrlTitleBar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ctrlTitleBar.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTitleBar.ForeColor = System.Drawing.Color.White;
+            this.ctrlTitleBar.LanguageID = "";
             this.ctrlTitleBar.Location = new System.Drawing.Point(0, 0);
             this.ctrlTitleBar.Margin = new System.Windows.Forms.Padding(4);
             this.ctrlTitleBar.Name = "ctrlTitleBar";
@@ -69,24 +70,12 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.ctrlButtonExit1);
+            this.panel2.Controls.Add(this.ctrlButton1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 671);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1500, 65);
             this.panel2.TabIndex = 1;
-            // 
-            // ctrlButtonExit1
-            // 
-            this.ctrlButtonExit1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(69)))), ((int)(((byte)(88)))));
-            this.ctrlButtonExit1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ctrlButtonExit1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlButtonExit1.LabelText = "Exit";
-            this.ctrlButtonExit1.Location = new System.Drawing.Point(663, 8);
-            this.ctrlButtonExit1.Name = "ctrlButtonExit1";
-            this.ctrlButtonExit1.Size = new System.Drawing.Size(161, 45);
-            this.ctrlButtonExit1.TabIndex = 0;
-            this.ctrlButtonExit1.Click += new System.EventHandler(this.ctrlButtonExit1_Click);
             // 
             // panel3
             // 
@@ -121,6 +110,18 @@
             this.gridCellInfo.Size = new System.Drawing.Size(1498, 556);
             this.gridCellInfo.TabIndex = 1;
             // 
+            // ctrlButton1
+            // 
+            this.ctrlButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlButton1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.ctrlButton1.LabelText = "Exit";
+            this.ctrlButton1.LanguageID = "DEF_EXIT";
+            this.ctrlButton1.Location = new System.Drawing.Point(670, 12);
+            this.ctrlButton1.Name = "ctrlButton1";
+            this.ctrlButton1.Size = new System.Drawing.Size(156, 39);
+            this.ctrlButton1.TabIndex = 0;
+            // 
             // WinCellInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -146,9 +147,9 @@
         private System.Windows.Forms.Panel panel1;
         private MonitoringUI.Controlls.CtrlTitleBar ctrlTitleBar;
         private System.Windows.Forms.Panel panel2;
-        private MonitoringUI.Controlls.CButton.CtrlButtonExit ctrlButtonExit1;
         private System.Windows.Forms.Panel panel3;
         private Controlls.CtrlDataGridView gridCellInfo;
         private System.Windows.Forms.Label label2;
+        private MonitoringUI.Controlls.CButton.CtrlButton ctrlButton1;
     }
 }

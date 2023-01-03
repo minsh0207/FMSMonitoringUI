@@ -85,6 +85,7 @@
             this.lbTitle.TabIndex = 42;
             this.lbTitle.Text = "LTA";
             this.lbTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbTitle.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseDoubleClick);
             // 
             // ctrlButton1
             // 

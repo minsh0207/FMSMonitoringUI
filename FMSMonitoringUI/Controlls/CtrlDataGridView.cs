@@ -281,6 +281,11 @@ namespace FMSMonitoringUI.Controlls
             }
         }
 
+        public void RowsVisible(int row, bool visible)
+        {
+            dataGridView1.Rows[row].Visible = visible;
+        }
+
         public void SetAutoSizeMode(DataGridViewAutoSizeColumnMode mode)
         {
             for (int nCol = 0; nCol < dataGridView1.ColumnCount; nCol++)

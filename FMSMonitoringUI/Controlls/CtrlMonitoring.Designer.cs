@@ -54,7 +54,6 @@
             this.ctrlTaggingName21 = new MonitoringUI.Controlls.CtrlTaggingName();
             this.label18 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.pictureBox30 = new System.Windows.Forms.PictureBox();
             this.pictureBox26 = new System.Windows.Forms.PictureBox();
             this.pictureBox25 = new System.Windows.Forms.PictureBox();
@@ -311,6 +310,7 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.m_timer = new System.Windows.Forms.Timer(this.components);
+            this.ctrlLabel10 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox44)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).BeginInit();
@@ -447,6 +447,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.ctrlLabel10);
             this.panel1.Controls.Add(this.ctrlLabel9);
             this.panel1.Controls.Add(this.ctrlLabel8);
             this.panel1.Controls.Add(this.ctrlLabel7);
@@ -470,7 +471,6 @@
             this.panel1.Controls.Add(this.ctrlTaggingName21);
             this.panel1.Controls.Add(this.label18);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox30);
             this.panel1.Controls.Add(this.pictureBox26);
             this.panel1.Controls.Add(this.pictureBox25);
@@ -512,7 +512,7 @@
             this.ctrlLabel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel7.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlLabel7.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel7.LanguageID = "";
+            this.ctrlLabel7.LanguageID = "DEF_TRAY_OFF";
             this.ctrlLabel7.Location = new System.Drawing.Point(65, 46);
             this.ctrlLabel7.Name = "ctrlLabel7";
             this.ctrlLabel7.Size = new System.Drawing.Size(58, 13);
@@ -765,16 +765,6 @@
             this.label5.Size = new System.Drawing.Size(123, 18);
             this.label5.TabIndex = 52;
             this.label5.Text = "Conveyor Type";
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(15, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(123, 18);
-            this.label1.TabIndex = 40;
-            this.label1.Text = "Conveyor Status";
             // 
             // pictureBox30
             // 
@@ -5262,6 +5252,19 @@
             this.label29.Size = new System.Drawing.Size(269, 162);
             this.label29.TabIndex = 577;
             // 
+            // ctrlLabel10
+            // 
+            this.ctrlLabel10.AutoSize = true;
+            this.ctrlLabel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel10.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.ctrlLabel10.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel10.LanguageID = "DEF_CONVEYOR_STATUS";
+            this.ctrlLabel10.Location = new System.Drawing.Point(15, 9);
+            this.ctrlLabel10.Name = "ctrlLabel10";
+            this.ctrlLabel10.Size = new System.Drawing.Size(110, 16);
+            this.ctrlLabel10.TabIndex = 98;
+            this.ctrlLabel10.Text = "Conveyor Status";
+            // 
             // CtrlMonitoring
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -5412,7 +5415,6 @@
         #endregion
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox30;
         private System.Windows.Forms.PictureBox pictureBox26;
         private System.Windows.Forms.PictureBox pictureBox25;
@@ -5691,5 +5693,6 @@
         private System.Windows.Forms.PictureBox pictureBox39;
         private CtrlEqpCharger ctrlEqpCharger1;
         private CtrlEqpHPC ctrlEqpHPC1;
+        private WindowsForms.CtrlLabel ctrlLabel10;
     }
 }
