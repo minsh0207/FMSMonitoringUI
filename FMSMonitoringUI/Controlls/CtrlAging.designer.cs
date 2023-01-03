@@ -2272,7 +2272,7 @@
             this.ctrlTaggingName19.ColorText = "";
             this.ctrlTaggingName19.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlTaggingName19.LanguageID = "";
+            this.ctrlTaggingName19.LanguageID = "DEF_2nd_Aging";
             this.ctrlTaggingName19.Location = new System.Drawing.Point(14, 151);
             this.ctrlTaggingName19.Name = "ctrlTaggingName19";
             this.ctrlTaggingName19.Size = new System.Drawing.Size(217, 30);
