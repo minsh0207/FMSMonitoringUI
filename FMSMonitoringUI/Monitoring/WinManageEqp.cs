@@ -14,17 +14,19 @@ namespace FMSMonitoringUI.Monitoring
     public partial class WinManageEqp : Form
     {
         private Point point = new Point();
+        private string _EQPID = string.Empty;
 
-        public WinManageEqp()
+        public WinManageEqp(string eqpid)
         {
             InitializeComponent();
+
+            _EQPID = eqpid;
         }
 
-        private void WinTrayInformation_Load(object sender, EventArgs e)
+        private void WinManageEqp_Load(object sender, EventArgs e)
         {
             InitGridViewEqp();
             InitGridViewTray();
-            InitsplitContainer();
 
             #region Title Mouse Event
             ctrlTitleBar.MouseDown_Evnet += Title_MouseDownEvnet;
@@ -33,17 +35,7 @@ namespace FMSMonitoringUI.Monitoring
 
         }
 
-        private void InitsplitContainer()
-        {
-            //splitContainer1.BackColor = Color.LightGray;            // Color.FromArgb(53, 53, 53);
-            //splitContainer1.BorderStyle = BorderStyle.FixedSingle;
-            //splitContainer2.Panel2.BackColor = Color.LightGray;     //Color.FromArgb(53, 53, 53);
-            //splitContainer2.BorderStyle = BorderStyle.FixedSingle;
-
-            //splitContainer3.BorderStyle = BorderStyle.FixedSingle;
-            //splitContainer3.Panel2.BackColor = Color.FromArgb(27, 27, 27);
-        }
-
+        #region InitGridView
         private void InitGridViewEqp()
         {
             List<string> lstTitle = new List<string>();
@@ -54,7 +46,7 @@ namespace FMSMonitoringUI.Monitoring
             lstTitle = new List<string>();
             lstTitle.Add("Equipment ID");
             lstTitle.Add("Equipment Name");
-            lstTitle.Add("Control Mode");
+            lstTitle.Add("Control Mode");       // Operation Mode
             lstTitle.Add("Equipment Status");                       
             lstTitle.Add("Trouble Code");
             lstTitle.Add("Trouble Name");
@@ -64,8 +56,8 @@ namespace FMSMonitoringUI.Monitoring
             gridEqpInfo.RowsHeight(30);
 
             List<int> lstColumn = new List<int>();
-            lstColumn.Add(-1);      // DataGridView Header 병합
-            //lstColumn.Add(6);       // DataGridView 6번째 Column 병합
+            lstColumn.Add(-1);          // DataGridView Header 병합
+            //lstColumn.Add(6);         // DataGridView 6번째 Column 병합
             lstTitle = new List<string>();
             lstTitle.Add("Equipment Information");
             //lstTitle.Add("Tray Information");
@@ -74,7 +66,6 @@ namespace FMSMonitoringUI.Monitoring
             gridEqpInfo.SetGridViewStyles();
             gridEqpInfo.ColumnHeadersWidth(0, 140);
         }
-
         private void InitGridViewTray()
         {
             List<string> lstTitle = new List<string>();
@@ -84,12 +75,12 @@ namespace FMSMonitoringUI.Monitoring
 
             lstTitle = new List<string>();
             lstTitle.Add("Tray ID");
-            lstTitle.Add("Binding Time");       // DB Input Time        
-            lstTitle.Add("Tray Type");
+            lstTitle.Add("Binding Time");           // tray_input_time      
+            lstTitle.Add("Tray Type");              // tray_zone
             lstTitle.Add("Model");
             lstTitle.Add("Route ID");
             lstTitle.Add("Lot ID");
-            lstTitle.Add("Current Process");
+            lstTitle.Add("Current Process");        // Porcess_Name
             lstTitle.Add("Start Time");
             lstTitle.Add("Plan Time");
             lstTitle.Add("Cell Count");
@@ -109,6 +100,7 @@ namespace FMSMonitoringUI.Monitoring
             gridTrayInfo.SetGridViewStyles();
             gridTrayInfo.ColumnHeadersWidth(0, 140);
         }
+        #endregion
 
         #region Titel Mouse Event
         private void Title_MouseDownEvnet(object sender, MouseEventArgs e)
@@ -125,9 +117,11 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
+        #region Exit_Click
         private void Exit_Click(object sender, EventArgs e)
         {
             Close();
         }
+        #endregion
     }
 }

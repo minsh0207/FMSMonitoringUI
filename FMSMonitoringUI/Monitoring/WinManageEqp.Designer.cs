@@ -354,7 +354,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WinManageEqp";
             this.TopMost = true;
-            this.Load += new System.EventHandler(this.WinTrayInformation_Load);
+            this.Load += new System.EventHandler(this.WinManageEqp_Load);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);

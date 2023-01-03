@@ -160,13 +160,13 @@ namespace FMSMonitoringUI.Monitoring
 
             int row = 0;
             gridCVInfo.SetValue(1, row, data[(int)enCVTagList.ConveyorNo].Value); row++;
+            gridCVInfo.SetValue(1, row, GetConveyorType(data[(int)enCVTagList.ConveyorType].Value)); row++;
 
             if (CheckConveyorType(data[(int)enCVTagList.ConveyorType].Value))
             {
-                gridCVInfo.SetValue(1, row, data[(int)enCVTagList.ConveyorType].Value); row++;
+                gridCVInfo.SetValue(1, row, GetStationStatus(data[(int)enCVTagList.StationStatus].Value)); row++;
             }
 
-            gridCVInfo.SetValue(1, row, GetStationStatus(data[(int)enCVTagList.StationStatus].Value)); row++;
             bool trayExist = Convert.ToBoolean(data[(int)enCVTagList.TrayExist].Value);
             gridCVInfo.SetValue(1, row, (trayExist == true ? "Exist" : "Not Exist")); row++;
             gridCVInfo.SetValue(1, row, GetTrayType(data[(int)enCVTagList.TrayType].Value)); row++;
@@ -250,11 +250,13 @@ namespace FMSMonitoringUI.Monitoring
         #endregion
 
         #region Tray Tag Value
-        private string GetConveyorType(int idx)
+        private string GetConveyorType(object idx)
         {
             string ret = string.Empty;
 
-            switch (idx)
+            int cvType = Convert.ToInt32(idx);
+
+            switch (cvType)
             {
                 case 1:
                     ret = "Conveyor Unit";
@@ -331,7 +333,7 @@ namespace FMSMonitoringUI.Monitoring
         #endregion
 
         /// <summary>
-        /// Conveyor Type이 2,4,8,32 일때만 Enable
+        /// Conveyor Type이 2,4,8,32 일때만 StationStatus Tag을 Enable
         /// </summary>
         private bool CheckConveyorType(object idx)
         {
