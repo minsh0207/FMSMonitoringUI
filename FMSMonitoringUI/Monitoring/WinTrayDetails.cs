@@ -105,11 +105,11 @@ namespace FMSMonitoringUI.Monitoring
             {
                 //MessageBox.Show($"TrayInfoView DoubleClick CellID = {value}");
 
-                WinCellDetailInfo form = new WinCellDetailInfo();
-                form.SetData();
-                form.ShowDialog();
+                //WinCellDetailInfo form = new WinCellDetailInfo(value.ToString());
+                //form.SetData();
+                //form.ShowDialog();
 
-                Refresh();
+                //Refresh();
             }
         }
         #endregion

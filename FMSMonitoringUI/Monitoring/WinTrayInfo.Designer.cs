@@ -34,7 +34,7 @@
             this.Exit = new MonitoringUI.Controlls.CButton.CtrlButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.ctrlButton1 = new MonitoringUI.Controlls.CButton.CtrlButton();
+            this.CellInfo = new MonitoringUI.Controlls.CButton.CtrlButton();
             this.label2 = new System.Windows.Forms.Label();
             this.gridTrayInfo = new FMSMonitoringUI.Controlls.CtrlDataGridView();
             this.gridProcessFlow = new FMSMonitoringUI.Controlls.CtrlDataGridView();
@@ -118,7 +118,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.ctrlButton1);
+            this.splitContainer1.Panel1.Controls.Add(this.CellInfo);
             this.splitContainer1.Panel1.Controls.Add(this.label2);
             this.splitContainer1.Panel1.Controls.Add(this.gridTrayInfo);
             // 
@@ -130,18 +130,18 @@
             this.splitContainer1.SplitterDistance = 328;
             this.splitContainer1.TabIndex = 0;
             // 
-            // ctrlButton1
+            // CellInfo
             // 
-            this.ctrlButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlButton1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ctrlButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlButton1.LabelText = "Cell Information";
-            this.ctrlButton1.LanguageID = "";
-            this.ctrlButton1.Location = new System.Drawing.Point(176, 5);
-            this.ctrlButton1.Name = "ctrlButton1";
-            this.ctrlButton1.Size = new System.Drawing.Size(147, 33);
-            this.ctrlButton1.TabIndex = 2;
-            this.ctrlButton1.Click += new System.EventHandler(this.ctrlButton1_Click);
+            this.CellInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.CellInfo.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.CellInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.CellInfo.LabelText = "Cell Information";
+            this.CellInfo.LanguageID = "";
+            this.CellInfo.Location = new System.Drawing.Point(176, 5);
+            this.CellInfo.Name = "CellInfo";
+            this.CellInfo.Size = new System.Drawing.Size(147, 33);
+            this.CellInfo.TabIndex = 2;
+            this.CellInfo.Click += new System.EventHandler(this.CellInfo_Click);
             // 
             // label2
             // 
@@ -219,7 +219,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private Controlls.CtrlDataGridView gridProcessFlow;
-        private MonitoringUI.Controlls.CButton.CtrlButton ctrlButton1;
+        private MonitoringUI.Controlls.CButton.CtrlButton CellInfo;
         private MonitoringUI.Controlls.CButton.CtrlButton Exit;
     }
 }

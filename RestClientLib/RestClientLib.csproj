@@ -90,7 +90,7 @@
     <Compile Include="Common\CConstants.cs" />
     <Compile Include="Common\CRestDefine.cs" />
     <Compile Include="JSON\_jsonDatCell.cs" />
-    <Compile Include="JSON\_jsonDatCellProcess.cs" />
+    <Compile Include="JSON\_jsonDatCellProc.cs" />
     <Compile Include="JSON\_jsonDatLot.cs" />
     <Compile Include="JSON\_jsonDatProcessData.cs" />
     <Compile Include="JSON\_jsonDatStatusEqp.cs" />
@@ -114,7 +114,10 @@
     <Compile Include="JSON\_jsonMstWindow.cs" />
     <Compile Include="JSON\_jsonMstWindowUser.cs" />
     <Compile Include="JSON\__baseBase.cs" />
+    <Compile Include="Monitoring\_jsonCellProcessFlow.cs" />
+    <Compile Include="Monitoring\_jsonProcessData.cs" />
     <Compile Include="Monitoring\_jsonTrayProcessFlow.cs" />
+    <Compile Include="Monitoring\_jsonRecipeInfo.cs" />
     <Compile Include="Monitoring\_jsonWinTrayInfo.cs" />
     <Compile Include="Monitoring\_jsonWinManageEqp.cs" />
     <Compile Include="Monitoring\__winBase.cs" />

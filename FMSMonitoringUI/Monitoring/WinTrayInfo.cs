@@ -68,6 +68,7 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
+        #region InitGridView
         private void InitGridViewTray()
         {
             List<string> lstTitle = new List<string>();
@@ -104,10 +105,9 @@ namespace FMSMonitoringUI.Monitoring
             gridTrayInfo.SetGridViewStyles();
             gridTrayInfo.ColumnHeadersWidth(0, 140);
         }
-
         private void InitGridViewProcessFlow(int rowCount)
         {
-            string[] columnName = { "No", "Process Name", "Equipment Name", 
+            string[] columnName = { "No", "Process Name", "Equipment Name",
                                     "Start Time", "End Time", "Cell Count", "Recipe" };
             List<string> lstTitle = new List<string>();
             lstTitle = columnName.ToList();
@@ -116,9 +116,9 @@ namespace FMSMonitoringUI.Monitoring
             lstTitle = new List<string>();
             for (int i = 0; i < rowCount; i++)
             {
-                lstTitle.Add("");                
+                lstTitle.Add("");
             }
-            
+
             gridProcessFlow.AddRowsHeaderList(lstTitle);
 
             gridProcessFlow.ColumnHeadersHeight(24);
@@ -126,14 +126,11 @@ namespace FMSMonitoringUI.Monitoring
 
             gridProcessFlow.SetGridViewStyles();
             gridProcessFlow.ColumnHeadersWidth(0, 50);
-
-            // Cell에 Button 추가
-            //for (int i = 0; i < rowCount; i++)
-            //{
-            //    gridProcessFlow.SetStyleButton(columnName.Length - 1, i, "Click");
-            //}            
+            gridProcessFlow.ColumnHeadersWidth(columnName.Length - 2, 120);
         }
+        #endregion
 
+        #region SetData
         public void SetData(List<_win_tray_info> data)
         {
             int row = 0;
@@ -152,6 +149,8 @@ namespace FMSMonitoringUI.Monitoring
 
         public void SetData(List<_tray_process_flow> data)
         {
+            if (data.Count == 0) return;
+
             InitGridViewProcessFlow(data.Count);
 
             for (int i = 0; i < data.Count; i++)
@@ -162,35 +161,8 @@ namespace FMSMonitoringUI.Monitoring
                 gridProcessFlow.SetValue(col, i, data[i].EQP_NAME); col++;
                 gridProcessFlow.SetValue(col, i, data[i].START_TIME); col++;
                 gridProcessFlow.SetValue(col, i, data[i].END_TIME); col++;
-                gridProcessFlow.SetValue(col, i, data[i].CURRENT_CELL_CNT);
-                gridProcessFlow.ColumnHeadersWidth(col, 100);
-                gridProcessFlow.SetStyleButton(gridProcessFlow.ColumnCount - 1, i, data[i].RECIPE_ID);
-            }
-        }
-
-        #region Titel Mouse Event
-        private void Title_MouseDownEvnet(object sender, MouseEventArgs e)
-        {
-            point = new Point(e.X, e.Y);
-        }
-
-        private void Title_MouseMoveEvnet(object sender, MouseEventArgs e)
-        {
-            if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
-            {
-                this.Location = new Point(this.Left - (point.X - e.X), this.Top - (point.Y - e.Y));
-            }
-        }
-        #endregion
-
-        #region DataGridView Event
-        private void GridProcessFlow_MouseCellClick(int col, int row, object value)
-        {
-            if (col == gridProcessFlow.ColumnCount -1 && row > -1)
-            {
-                WinCellDetailInfo form = new WinCellDetailInfo();
-                form.SetData();
-                form.ShowDialog();
+                gridProcessFlow.SetValue(col, i, data[i].CURRENT_CELL_CNT); col++;
+                gridProcessFlow.SetStyleButton(col, i, data[i].RECIPE_ID);
             }
         }
         #endregion
@@ -268,10 +240,37 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
-        private void ctrlButton1_Click(object sender, EventArgs e)
+        #region Titel Mouse Event
+        private void Title_MouseDownEvnet(object sender, MouseEventArgs e)
         {
-            WinCellDetailInfo form = new WinCellDetailInfo();
-            form.SetData();
+            point = new Point(e.X, e.Y);
+        }
+
+        private void Title_MouseMoveEvnet(object sender, MouseEventArgs e)
+        {
+            if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
+            {
+                this.Location = new Point(this.Left - (point.X - e.X), this.Top - (point.Y - e.Y));
+            }
+        }
+        #endregion
+
+        #region DataGridView Event
+        private void GridProcessFlow_MouseCellClick(int col, int row, object value)
+        {
+            if (col == gridProcessFlow.ColumnCount -1 && row > -1)
+            {
+                //WinCellDetailInfo form = new WinCellDetailInfo(value.ToString());
+                //form.SetData();
+                //form.ShowDialog();
+            }
+        }
+        #endregion
+
+        #region Button Event
+        private void CellInfo_Click(object sender, EventArgs e)
+        {
+            WinCellDetailInfo form = new WinCellDetailInfo(_TrayId);
             form.ShowDialog();
         }
 
@@ -279,7 +278,6 @@ namespace FMSMonitoringUI.Monitoring
         {
             Close();
         }
-
-        
+        #endregion
     }
 }

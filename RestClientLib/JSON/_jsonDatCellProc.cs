@@ -24,7 +24,7 @@ namespace RestClientLib
         public _jsonDatCellProcessResponse() { }
         ~_jsonDatCellProcessResponse() { }
 
-        public List<_dat_cell_process> DATA;
+        public List<_dat_cell_proc> DATA;
     }
 
 }

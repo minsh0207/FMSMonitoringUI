@@ -68,6 +68,7 @@ namespace RestClientLib
         public string PROCESS_TYPE { get; set; }
         public int PROCESS_NO { get; set; }
         public string NEXT_OPERATION_EXIST { get; set; }
+        public string OPERATION_MODE { get; set; }
 
         public Dictionary<string, object> RECIPE_ITEM;
     }
@@ -95,6 +96,8 @@ namespace RestClientLib
         public int CELL_COUNT { get; set; }
 
         public List<_cell_data_request> CELL_DATA;
+
+        public Dictionary<string, object> RESULT_DATA;
     }
 
 
@@ -178,21 +181,23 @@ namespace RestClientLib
     public class _dat_cell
     {
         public string CELL_ID { get; set; }
-        public string IN_TRAY_ID { get; set; }
-        public int IN_CELL_NO { get; set; }
-        public string IN_TRAY_INPUT_TIME { get; set; }
-        public string IN_TRAY_INPUT_EQP_ID { get; set; }
-        public string OUT_TRAY_ID { get; set; }
-        public int OUT_CELL_NO { get; set; }
-        public string OUT_TRAY_INPUT_TIME { get; set; }
-        public string OUT_TRAY_INPUT_EQP_ID { get; set; }
+        public string TRAY_ID { get; set; }
+        public int CELL_NO { get; set; }
+        public string TRAY_INPUT_TIME { get; set; }
+        public string TRAY_INPUT_EQP_ID { get; set; }
+        public string PREV_TRAY_ID { get; set; }
+        public int PREV_CELL_NO { get; set; }
+        public string PREV_TRAY_INPUT_TIME { get; set; }
+        public string PREV_TRAY_INPUT_EQP_ID { get; set; }
         public string GRADE { get; set; }
         public string GRADE_CODE { get; set; }
+        public string GRADE_NG_TYPE { get; set; }
         public string GRADE_DEFECT_TYPE { get; set; }
         public string GRADE_EQP_TYPE { get; set; }
         public string GRADE_PROCESS_TYPE { get; set; }
         public int GRADE_PROCESS_NO { get; set; }
         public int GRADE_STEP_NO { get; set; }
+        public string GRADE_EQP_ID { get; set; }
         public string MODEL_ID { get; set; }
         public string ROUTE_ID { get; set; }
         public string LOT_ID { get; set; }
@@ -225,11 +230,11 @@ namespace RestClientLib
         public string CREATE_TIME { get; set; }
     }
     #endregion
-    #region tb_dat_cell_process
+    #region tb_dat_cell_proc
     /// <summary>
     /// JSON base format : tb_dat_cell_process
     /// </summary>
-    public class _dat_cell_process
+    public class _dat_cell_proc
     {
         public int ID { get; set; }
         public string CELL_ID { get; set; }

@@ -308,9 +308,9 @@ namespace FMSMonitoringUI.Controlls
             }
         }
 
-        public void DataSource(object data)
+        public void DataSource(DataTable dtData)
         {
-            dataGridView1.DataSource = data;
+            dataGridView1.DataSource = dtData;
         }
 
         public void SetValue(int col, int row, object value)

@@ -70,6 +70,17 @@ namespace RestClientLib
         public string JSON_RECIPE { get; set; }
     }
     #endregion
+    #region WinCellDetailInfo
+    /// <summary>
+    /// JSON base format : WinCellDetailInfo
+    /// </summary>
+    public class _cell_process_flow
+    {
+        public string PROCESS_NAME { get; set; }
+        public string JSON_RECIPE { get; set; }
+        public string json_process_data { get; set; }
+    }
+    #endregion
 
     /*
     #region tb_dat_cell

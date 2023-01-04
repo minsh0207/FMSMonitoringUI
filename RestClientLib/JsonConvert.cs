@@ -476,6 +476,44 @@ namespace RestClientLib
         }
         #endregion
 
+        #region ConvertRecipelInfo
+        /// <summary>
+        /// _jsonRecipeInfoResponse 형태의 Class로 변환한다.
+        /// </summary>
+        public _jsonRecipeInfoResponse ConvertRecipeInfo(string jsonResult)
+        {
+            try
+            {
+                // Recv Body의 JSON string을 class 변수에 할당
+                _jsonRecipeInfoResponse recvBody = JsonConvert.DeserializeObject<_jsonRecipeInfoResponse>(jsonResult, _jsonSettings);
+                return recvBody;
+            }
+            catch (Exception ex)
+            {
+                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                return null;
+            }
+        }
+        #endregion
+        #region ConvertProcessData
+        /// <summary>
+        /// _jsonRecipeInfoResponse 형태의 Class로 변환한다.
+        /// </summary>
+        public _jsonProcessDataResponse ConvertProcessData(string jsonResult)
+        {
+            try
+            {
+                // Recv Body의 JSON string을 class 변수에 할당
+                _jsonProcessDataResponse recvBody = JsonConvert.DeserializeObject<_jsonProcessDataResponse>(jsonResult, _jsonSettings);
+                return recvBody;
+            }
+            catch (Exception ex)
+            {
+                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                return null;
+            }
+        }
+        #endregion
         #region ConvertWinManageEqp
         /// <summary>
         /// _jsonWinManageEqpResponse 형태의 Class로 변환한다.
@@ -524,6 +562,25 @@ namespace RestClientLib
             {
                 // Recv Body의 JSON string을 class 변수에 할당
                 _jsonTrayProcessFlowResponse recvBody = JsonConvert.DeserializeObject<_jsonTrayProcessFlowResponse>(jsonResult, _jsonSettings);
+                return recvBody;
+            }
+            catch (Exception ex)
+            {
+                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                return null;
+            }
+        }
+        #endregion
+        #region ConvertWinCellDetailInfo
+        /// <summary>
+        /// _jsonWinManageEqpResponse 형태의 Class로 변환한다.
+        /// </summary>
+        public _jsonCellProcessFlowResponse ConvertCellPorcessFlow(string jsonResult)
+        {
+            try
+            {
+                // Recv Body의 JSON string을 class 변수에 할당
+                _jsonCellProcessFlowResponse recvBody = JsonConvert.DeserializeObject<_jsonCellProcessFlowResponse>(jsonResult, _jsonSettings);
                 return recvBody;
             }
             catch (Exception ex)

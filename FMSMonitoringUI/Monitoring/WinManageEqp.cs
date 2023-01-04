@@ -31,6 +31,7 @@ namespace FMSMonitoringUI.Monitoring
         private bool _TheadVisiable;
         #endregion
 
+
         public WinManageEqp(string eqpid, string eqpType, int traycnt)
         {
             InitializeComponent();
@@ -140,54 +141,6 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
-        private void SetOperationMode()
-        {
-
-        }
-
-        #region ProcessThreadCallback
-        private void ProcessThreadCallback()
-        {
-            try
-            {
-                while (this._TheadVisiable == true)
-                {
-                    GC.Collect();
-
-                    RESTClient rest = new RESTClient();
-                    // Set Query
-                    StringBuilder strSQL = new StringBuilder();
-
-                    strSQL.Append(" SELECT A.eqp_id, A.eqp_name, A.operation_mode, A.eqp_status, A.eqp_trouble_code,C.tray_id, IF(A.tray_id = C.tray_id, '1', '2') AS level,");
-                    strSQL.Append("        B.trouble_name,");
-                    strSQL.Append("        C.tray_input_time, C.tray_zone, C.model_id, C.route_id, C.lot_id, C.start_time, C.plan_time, C.current_cell_cnt,");
-                    strSQL.Append("        D.process_name");
-                    strSQL.Append(" FROM fms_v.tb_mst_eqp   A");
-                    strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_trouble    B");
-                    strSQL.Append("         ON A.eqp_trouble_code = B.trouble_code AND A.eqp_type = B.eqp_type");
-                    strSQL.Append("     LEFT OUTER JOIN fms_v.tb_dat_tray   C");
-                    strSQL.Append("         ON C.tray_id IN (A.tray_id, A.tray_id_2)");
-                    strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_route_order    D");
-                    strSQL.Append("         ON A.route_order_no = D.route_order_no AND C.route_id = D.route_id");
-                    //필수값
-                    strSQL.Append($" WHERE A.eqp_id = '{_EqpID}'");
-
-                    string jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
-                    _jsonWinManageEqpResponse result = rest.ConvertWinManageEqp(jsonResult);
-
-                    this.BeginInvoke(new Action(() => SetData(result.DATA)));
-
-                    Thread.Sleep(3000);
-                }
-            }
-            catch (Exception ex)
-            {
-                // System Debug
-                System.Diagnostics.Debug.Print(string.Format("### Get ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
-            }            
-        }
-        #endregion
-
         #region SetData
         public void SetData(List<_win_manage_eqp> data)
         {
@@ -217,6 +170,53 @@ namespace FMSMonitoringUI.Monitoring
                 gridTrayInfo.SetValue(i + 1, row, data[i].START_TIME); row++;
                 gridTrayInfo.SetValue(i + 1, row, data[i].PLAN_TIME); row++;
                 gridTrayInfo.SetValue(i + 1, row, data[i].CURRENT_CELL_CNT);
+            }
+        }
+        #endregion
+
+        #region ProcessThreadCallback
+        private void ProcessThreadCallback()
+        {
+            try
+            {
+                while (this._TheadVisiable == true)
+                {
+                    GC.Collect();
+
+                    RESTClient rest = new RESTClient();
+                    // Set Query
+                    StringBuilder strSQL = new StringBuilder();
+
+                    strSQL.Append(" SELECT A.eqp_id, A.eqp_name, A.operation_mode, A.eqp_status, A.eqp_trouble_code,C.tray_id, IF(A.tray_id = C.tray_id, '1', '2') AS level,");
+                    strSQL.Append("        B.trouble_name,");
+                    strSQL.Append("        C.tray_input_time, C.tray_zone, C.model_id, C.route_id, C.lot_id, C.start_time, C.plan_time, C.current_cell_cnt,");
+                    strSQL.Append("        D.process_name");
+                    strSQL.Append(" FROM fms_v.tb_mst_eqp   A");
+                    strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_trouble    B");
+                    strSQL.Append("         ON A.eqp_trouble_code = B.trouble_code AND A.eqp_type = B.eqp_type");
+                    strSQL.Append("     LEFT OUTER JOIN fms_v.tb_dat_tray   C");
+                    strSQL.Append("         ON C.tray_id IN (A.tray_id, A.tray_id_2)");
+                    strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_route_order    D");
+                    strSQL.Append("         ON A.route_order_no = D.route_order_no AND C.route_id = D.route_id");
+                    //필수값
+                    strSQL.Append($" WHERE A.eqp_id = '{_EqpID}'");
+
+                    string jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+
+                    if (jsonResult != null)
+                    {
+                        _jsonWinManageEqpResponse result = rest.ConvertWinManageEqp(jsonResult);
+
+                        this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                    }
+
+                    Thread.Sleep(3000);
+                }
+            }
+            catch (Exception ex)
+            {
+                // System Debug
+                System.Diagnostics.Debug.Print(string.Format("### Get ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
             }
         }
         #endregion
@@ -293,6 +293,7 @@ namespace FMSMonitoringUI.Monitoring
             return opModeName;
         }
         #endregion
+
         #region GetEqpStatus
         private string GetEqpStatus(string status)
         {
@@ -335,7 +336,6 @@ namespace FMSMonitoringUI.Monitoring
             return statusName;
         }
         #endregion
-
 
         #region Titel Mouse Event
         private void Title_MouseDownEvnet(object sender, MouseEventArgs e)

@@ -108,8 +108,7 @@ namespace FMSMonitoringUI.Monitoring
             {
                 //MessageBox.Show($"TrayInfoView DoubleClick CellID = {value}");
 
-                WinCellDetailInfo form = new WinCellDetailInfo();
-                form.SetData();
+                WinCellDetailInfo form = new WinCellDetailInfo(value.ToString());
                 form.ShowDialog();
 
                 Refresh();

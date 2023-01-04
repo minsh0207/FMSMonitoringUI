@@ -1,5 +1,10 @@
-﻿using MonitoringUI.Common;
+﻿using Google.Protobuf.WellKnownTypes;
+using MonitoringUI.Common;
 using MonitoringUI.Controlls;
+using MySqlX.XDevAPI.Common;
+using Newtonsoft.Json.Linq;
+using Org.BouncyCastle.Ocsp;
+using RestClientLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,7 +12,9 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Web.Http.Results;
 using System.Windows.Forms;
 
 namespace FMSMonitoringUI.Monitoring
@@ -15,18 +22,32 @@ namespace FMSMonitoringUI.Monitoring
     public partial class WinCellDetailInfo : Form
     {
         private Point point = new Point();
+        private string _TrayId = string.Empty;
 
-        public WinCellDetailInfo()
+        private List<_dat_cell> _CellInfo;
+        private List<_cell_process_flow> _CellProcessFlow;
+
+        #region Working Thread
+        private Thread _ProcessThread;
+        private bool _TheadVisiable;
+        #endregion
+
+        public WinCellDetailInfo(string trayId)
         {
             InitializeComponent();
 
             InitGridViewCellList();
             InitGridViewCell();
-            InitGridViewProcessName();
-            InitGridViewRecipeInfo();
-            InitGridViewProcessData();
+            InitGridViewProcessName(1);
+            Dictionary<string, object> data = new Dictionary<string, object>();
+            data.Add("", "");
+            InitGridViewRecipeInfo(data);
+            InitGridViewProcessData(data);
+
+            _TrayId = trayId;
         }
 
+        #region WinCellDetailInfo Event
         private void WinCellDetailInfo_Load(object sender, EventArgs e)
         {
             #region Title Mouse Event
@@ -36,9 +57,30 @@ namespace FMSMonitoringUI.Monitoring
 
             #region DataGridView Event
             gridCellIDLIst.MouseCellDoubleClick_Evnet += GridCellIDLIst_MouseCellDoubleClick;
-            gridCellInfo.MouseCellDoubleClick_Evnet += GridCellInfo_MouseCellDoubleClick;
+            gridProcessName.MouseCellDoubleClick_Evnet += GridProcessName_MouseCellDoubleClick;
             #endregion
+
+            _TheadVisiable = true;
+
+            GetCellIDList(_TrayId);
+
+            //this.BeginInvoke(new MethodInvoker(delegate ()
+            //{
+            //    _ProcessThread = new Thread(() => ProcessThreadCallback());
+            //    _ProcessThread.IsBackground = true; _ProcessThread.Start();
+            //}));
         }
+
+        
+
+        private void WinCellDetailInfo_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //if (this._ProcessThread.IsAlive)
+            //    this._TheadVisiable = false;
+
+            //this._ProcessThread.Abort();
+        }
+        #endregion
 
         #region InitGridView
         private void InitGridViewCellList()
@@ -49,7 +91,7 @@ namespace FMSMonitoringUI.Monitoring
             gridCellIDLIst.AddColumnHeaderList(lstTitle);
 
             lstTitle = new List<string>();
-            for (int i = 1; i <= 30; i++)
+            for (int i = 1; i <= CDefine.DEF_MAX_CELL_COUNT; i++)
             {
                 lstTitle.Add(i.ToString());
             }
@@ -83,6 +125,7 @@ namespace FMSMonitoringUI.Monitoring
 
             // 등급 판정 관련
             //lstTitle.Add("Cerrent Grade");              // 6
+            lstTitle.Add("Grade");
             lstTitle.Add("Grade Code");
             lstTitle.Add("Grade NG Type");
             lstTitle.Add("Grade Defect Type");
@@ -166,7 +209,7 @@ namespace FMSMonitoringUI.Monitoring
 
             
         }
-        private void InitGridViewProcessName()
+        private void InitGridViewProcessName(int rowCount)
         {
             List<string> lstTitle = new List<string>();
             lstTitle.Add("No");      // -1
@@ -174,10 +217,10 @@ namespace FMSMonitoringUI.Monitoring
             gridProcessName.AddColumnHeaderList(lstTitle);
 
             lstTitle = new List<string>();
-            lstTitle.Add("1");
-            lstTitle.Add("2");
-            lstTitle.Add("3");
-            lstTitle.Add("");
+            for (int i = 0; i < rowCount; i++)
+            {
+                lstTitle.Add((i+1).ToString());
+            }
             gridProcessName.AddRowsHeaderList(lstTitle);
 
             gridProcessName.RowsHeight(26);
@@ -187,7 +230,7 @@ namespace FMSMonitoringUI.Monitoring
 
 
         }
-        private void InitGridViewRecipeInfo()
+        private void InitGridViewRecipeInfo(Dictionary<string, object> rcpItem)
         {
             List<string> lstTitle = new List<string>();
             lstTitle.Add("Name");      // -1
@@ -195,39 +238,202 @@ namespace FMSMonitoringUI.Monitoring
             gridRecipeInfo.AddColumnHeaderList(lstTitle);
 
             lstTitle = new List<string>();
-            lstTitle.Add("");
+            foreach (var item in rcpItem)
+            {
+                lstTitle.Add(item.Key);
+            }
             gridRecipeInfo.AddRowsHeaderList(lstTitle);
 
             gridRecipeInfo.RowsHeight(26);
 
             gridRecipeInfo.SetGridViewStyles();
             //gridRecipeInfo.ColumnHeadersWidth(0, 140);
+
+            for (int i = 0; i < rcpItem.Count; i++)
+            {
+                gridRecipeInfo.SetValue(1, i, rcpItem.Values.ToList()[i]);
+            }
         }
-        private void InitGridViewProcessData()
+        private void InitGridViewProcessData(Dictionary<string, object> dataItem)
         {
+            if (dataItem == null) return;
+
             List<string> lstTitle = new List<string>();
             lstTitle.Add("Name");      // -1
             lstTitle.Add("Value");
             gridProcessData.AddColumnHeaderList(lstTitle);
 
             lstTitle = new List<string>();
-            lstTitle.Add("");
+            foreach (var item in dataItem)
+            {
+                lstTitle.Add(item.Key);
+            }
             gridProcessData.AddRowsHeaderList(lstTitle);
 
             gridProcessData.RowsHeight(26);
 
             gridProcessData.SetGridViewStyles();
             //gridProcessData.ColumnHeadersWidth(0, 140);
+
+            for (int i = 0; i < dataItem.Count; i++)
+            {
+                gridProcessData.SetValue(1, i, dataItem.Values.ToList()[i]);
+            }
         }
         #endregion
 
         #region SetData
-        public void SetData()
+        private void SetCellList(List<_dat_cell> data)
         {
-            for (int i = 0; i < 30; i++)
+            for (int i = 0; i < CDefine.DEF_MAX_CELL_COUNT; i++)
             {
-                string cellid = string.Format("133NMCVC222001A00{0:D2}", i + 1)
-;                gridCellIDLIst.SetValue(1, i, cellid);
+;                gridCellIDLIst.SetValue(1, i, data[i].CELL_ID);
+            }
+        }
+        private void SetCellInfo(int cellNo)
+        {
+            int row = 0;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].CELL_ID); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].TRAY_ID); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].CELL_NO); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].TRAY_INPUT_TIME); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].TRAY_INPUT_EQP_ID); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].GRADE); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].GRADE_CODE); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].GRADE_NG_TYPE); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].GRADE_DEFECT_TYPE); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].GRADE_EQP_TYPE); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].GRADE_PROCESS_TYPE); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].GRADE_PROCESS_NO); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].GRADE_STEP_NO); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].GRADE_EQP_ID); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].MODEL_ID); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].ROUTE_ID); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].LOT_ID); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].EQP_ID); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].UNIT_ID); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].UNIT_ID_LEVEL); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].RECIPE_ID); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].ROUTE_ORDER_NO); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].EQP_TYPE); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].PROCESS_TYPE); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].PROCESS_NO); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].START_TIME); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].END_TIME); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].REWORK_FLAG); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].REWORK_TIME); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].REWORK_EQP_ID); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].REWORK_UNIT_ID); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].FIRE_FLAG); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].FIRE_TIME); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].FIRE_EQP_ID); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].FIRE_UNIT_ID); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].SCRAP_FLAG); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].SCRAP_USER); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].SCRAP_TIME); row++;
+
+        }
+        private void SetProcessName(List<_cell_process_flow> data)
+        {
+            InitGridViewProcessName(data.Count);
+
+            for (int i = 0; i < data.Count; i++)
+            {
+                gridProcessName.SetValue(1, i, data[i].PROCESS_NAME);
+            }
+            
+        }
+        private void SetRecipeInfo(int idx)
+        {
+            RESTClient rest = new RESTClient();
+
+            string jsonResult = _CellProcessFlow[idx].JSON_RECIPE;
+            _jsonRecipeInfoResponse result = rest.ConvertRecipeInfo(jsonResult);
+
+            if (result != null)
+            {
+                InitGridViewRecipeInfo(result.RECIPE_ITEM);
+            }
+            else
+            {
+                Dictionary<string, object> data = new Dictionary<string, object>();
+                data.Add("", "");
+                InitGridViewRecipeInfo(data);
+            }
+        }
+        private void SetProcessData(int idx)
+        {
+            RESTClient rest = new RESTClient();
+
+            string jsonResult = _CellProcessFlow[idx].json_process_data;
+            _jsonProcessDataResponse result = rest.ConvertProcessData(jsonResult);
+
+            if (result != null)
+            {
+                InitGridViewProcessData(result.RESULT_DATA);
+            }
+            else
+            {
+                Dictionary<string, object> data = new Dictionary<string, object>();
+                data.Add("", "");
+                InitGridViewProcessData(data);
+            }
+        }
+        #endregion
+
+        #region GetCellIDList
+        private void GetCellIDList(string trayId)
+        {
+            RESTClient rest = new RESTClient();
+            //// Set Query
+            StringBuilder strSQL = new StringBuilder();
+            // Tray Information
+            strSQL.Append(" SELECT *");
+            strSQL.Append(" FROM fms_v.tb_dat_cell");
+            //필수값
+            strSQL.Append($" WHERE tray_id = '{trayId}'");
+
+            string jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+
+            if (jsonResult != null)
+            {
+                _jsonDatCellResponse result = rest.ConvertDatCell(jsonResult);
+
+                this.BeginInvoke(new Action(() => SetCellList(result.DATA)));
+
+                _CellInfo = result.DATA;
+            }
+        }
+        #endregion
+
+        #region GetCellIDList
+        private void GetCellProcessName(string cellId)
+        {
+            RESTClient rest = new RESTClient();
+            //// Set Query
+            StringBuilder strSQL = new StringBuilder();
+            // Tray Information
+            strSQL.Append(" SELECT B.process_name,");
+            strSQL.Append("        A.json_recipe, A.json_process_data");
+            strSQL.Append(" FROM tb_dat_cell_proc A, tb_mst_route_order B");
+            //필수값
+            strSQL.Append($" WHERE A.cell_id = '{cellId}'");
+            strSQL.Append("    AND A.proc_work_index = 0");
+            strSQL.Append("    AND B.route_id = A.route_id");
+            strSQL.Append("    AND B.eqp_type = A.eqp_type");
+            strSQL.Append("    AND B.process_type = A.process_type");
+            strSQL.Append("    AND B.process_no = A.process_no");
+            strSQL.Append(" ORDER BY A.start_time");
+
+            string jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+
+            if (jsonResult != null)
+            {
+                _jsonCellProcessFlowResponse result = rest.ConvertCellPorcessFlow(jsonResult);
+
+                this.BeginInvoke(new Action(() => SetProcessName(result.DATA)));
+
+                _CellProcessFlow = result.DATA;
             }
         }
         #endregion
@@ -261,19 +467,33 @@ namespace FMSMonitoringUI.Monitoring
                 gridCellIDLIst.SetStyleBackColor(col, row, Color.LightBlue);
                 gridCellIDLIst.SetStyleForeColor(col, row, Color.Black);
 
-                gridCellInfo.SetValue(1, 0, value.ToString());
+                //gridCellInfo.SetValue(1, 0, value.ToString());
+
+                SetCellInfo(row);
+
+                GetCellProcessName(value.ToString());
 
                 //gridProcessName.SetValue(1, 0, "Assembly");
-                gridProcessName.SetValue(1, 0, "LT Aging #1");
-                gridProcessName.SetValue(1, 1, "OCV/ACIR");
-                gridProcessName.SetValue(1, 2, "NG Sorter #1");
+                //gridProcessName.SetValue(1, 0, "LT Aging #1");
+                //gridProcessName.SetValue(1, 1, "OCV/ACIR");
+                //gridProcessName.SetValue(1, 2, "NG Sorter #1");
             }
-        }
-        private void GridCellInfo_MouseCellDoubleClick(int col, int row, object value)
+        }        
+        private void GridProcessName_MouseCellDoubleClick(int col, int row, object value)
         {
+            for (int i = 0; i < _CellProcessFlow.Count; i++)
+            {
+                gridProcessName.SetStyleBackColor(col, i, Color.FromArgb(27, 27, 27));
+                gridProcessName.SetStyleForeColor(col, i, Color.White);
+            }
+
             if (col == 1 && row > -1)
             {
-                MessageBox.Show($"TrayInfoView DoubleClick CellID = {value}");
+                gridProcessName.SetStyleBackColor(col, row, Color.LightBlue);
+                gridProcessName.SetStyleForeColor(col, row, Color.Black);
+
+                SetRecipeInfo(row);
+                SetProcessData(row);
             }
         }
         #endregion
@@ -284,5 +504,51 @@ namespace FMSMonitoringUI.Monitoring
             Close();
         }
         #endregion
+
+        #region ProcessThreadCallback
+        private void ProcessThreadCallback()
+        {
+            try
+            {
+                //while (this._TheadVisiable == true)
+                //{
+                //    GC.Collect();
+
+                //    RESTClient rest = new RESTClient();
+                //    //// Set Query
+                //    StringBuilder strSQL = new StringBuilder();
+                //    // Tray Information
+                //    strSQL.Append(" SELECT A.eqp_name,");
+                //    strSQL.Append("        B.model_id, B.tray_id, B.tray_input_time, B.route_id, B.lot_id, B.start_time, B.plan_time, B.current_cell_cnt,");
+                //    strSQL.Append("        C.process_name");
+                //    strSQL.Append(" FROM fms_v.tb_mst_eqp   A");
+                //    strSQL.Append("     LEFT OUTER JOIN fms_v.tb_dat_tray   B");
+                //    strSQL.Append("         ON B.tray_id IN (A.tray_id, A.tray_id_2)");
+                //    strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_route_order   C");
+                //    strSQL.Append("         ON B.route_order_no = C.route_order_no AND B.route_id = C.route_id");
+                //    //필수값
+                //    strSQL.Append($" WHERE B.eqp_id = '{_EqpID}' AND B.tray_id = '{_TrayId}'");
+
+                //    string jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+
+                //    if (jsonResult != null)
+                //    {
+                //        _jsonWinTrayInfoResponse result = rest.ConvertWinTrayInfo(jsonResult);
+
+                //        this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                //    }
+
+                //    Thread.Sleep(3000);
+                //}
+            }
+            catch (Exception ex)
+            {
+                // System Debug
+                System.Diagnostics.Debug.Print(string.Format("### Get ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+            }
+        }
+        #endregion
+
+        
     }
 }
