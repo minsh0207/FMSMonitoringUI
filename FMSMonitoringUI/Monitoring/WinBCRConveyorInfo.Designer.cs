@@ -30,15 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ctrlTitleBar = new MonitoringUI.Controlls.CtrlTitleBar();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.Exit = new MonitoringUI.Controlls.CButton.CtrlButton();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.uiTlbStatus = new System.Windows.Forms.TableLayoutPanel();
-            this.uiTlbMode = new System.Windows.Forms.TableLayoutPanel();
-            this.m_timer = new System.Windows.Forms.Timer(this.components);
             this.ctrlLabel3 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
+            this.uiTlbStatus = new System.Windows.Forms.TableLayoutPanel();
             this.ctrlLabel2 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.ctrlLabel4 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.ctrlLabel1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
+            this.uiTlbMode = new System.Windows.Forms.TableLayoutPanel();
             this.MagazineCommand = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
             this.Destination = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
             this.FMSTroubleErrNo = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
@@ -57,8 +58,7 @@
             this.ctrlGroupBox1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlGroupBox();
             this.ConveyorType = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
             this.ConveyorNo = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
-            this.Exit = new MonitoringUI.Controlls.CButton.CtrlButton();
-            this.ctrlTitleBar = new MonitoringUI.Controlls.CtrlTitleBar();
+            this.m_timer = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -75,6 +75,21 @@
             this.panel1.Size = new System.Drawing.Size(706, 66);
             this.panel1.TabIndex = 0;
             // 
+            // ctrlTitleBar
+            // 
+            this.ctrlTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlTitleBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ctrlTitleBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ctrlTitleBar.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlTitleBar.ForeColor = System.Drawing.Color.White;
+            this.ctrlTitleBar.LanguageID = "DEF_Conveyor_Information";
+            this.ctrlTitleBar.Location = new System.Drawing.Point(0, 0);
+            this.ctrlTitleBar.Margin = new System.Windows.Forms.Padding(4);
+            this.ctrlTitleBar.Name = "ctrlTitleBar";
+            this.ctrlTitleBar.Size = new System.Drawing.Size(704, 64);
+            this.ctrlTitleBar.TabIndex = 0;
+            this.ctrlTitleBar.TitleText = "Conveyor Information";
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
@@ -85,6 +100,19 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(706, 65);
             this.panel2.TabIndex = 1;
+            // 
+            // Exit
+            // 
+            this.Exit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.Exit.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Exit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.Exit.LabelText = "Exit";
+            this.Exit.LanguageID = "DEF_Exit";
+            this.Exit.Location = new System.Drawing.Point(283, 11);
+            this.Exit.Name = "Exit";
+            this.Exit.Size = new System.Drawing.Size(139, 41);
+            this.Exit.TabIndex = 0;
+            this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
             // panel3
             // 
@@ -120,18 +148,66 @@
             this.panel3.Size = new System.Drawing.Size(706, 536);
             this.panel3.TabIndex = 2;
             // 
+            // ctrlLabel3
+            // 
+            this.ctrlLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel3.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel3.LanguageID = "DEF_Status_:";
+            this.ctrlLabel3.Location = new System.Drawing.Point(27, 203);
+            this.ctrlLabel3.Name = "ctrlLabel3";
+            this.ctrlLabel3.Size = new System.Drawing.Size(97, 22);
+            this.ctrlLabel3.TabIndex = 12;
+            this.ctrlLabel3.Text = "Status :";
+            this.ctrlLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // uiTlbStatus
             // 
             this.uiTlbStatus.ColumnCount = 3;
             this.uiTlbStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.4F));
             this.uiTlbStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 53.6F));
-            this.uiTlbStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 83F));
+            this.uiTlbStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 84F));
             this.uiTlbStatus.Location = new System.Drawing.Point(119, 203);
             this.uiTlbStatus.Name = "uiTlbStatus";
             this.uiTlbStatus.RowCount = 1;
             this.uiTlbStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.uiTlbStatus.Size = new System.Drawing.Size(208, 22);
             this.uiTlbStatus.TabIndex = 68;
+            // 
+            // ctrlLabel2
+            // 
+            this.ctrlLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel2.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel2.LanguageID = "DEF_Control_Mode_:";
+            this.ctrlLabel2.Location = new System.Drawing.Point(27, 132);
+            this.ctrlLabel2.Name = "ctrlLabel2";
+            this.ctrlLabel2.Size = new System.Drawing.Size(97, 22);
+            this.ctrlLabel2.TabIndex = 10;
+            this.ctrlLabel2.Text = "Control Mode :";
+            this.ctrlLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ctrlLabel4
+            // 
+            this.ctrlLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel4.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel4.LanguageID = "DEF_Trouble_Status_:";
+            this.ctrlLabel4.Location = new System.Drawing.Point(373, 203);
+            this.ctrlLabel4.Name = "ctrlLabel4";
+            this.ctrlLabel4.Size = new System.Drawing.Size(97, 22);
+            this.ctrlLabel4.TabIndex = 14;
+            this.ctrlLabel4.Text = "Trouble Status :";
+            this.ctrlLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ctrlLabel1
+            // 
+            this.ctrlLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel1.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel1.LanguageID = "DEF_Power_:";
+            this.ctrlLabel1.Location = new System.Drawing.Point(27, 106);
+            this.ctrlLabel1.Name = "ctrlLabel1";
+            this.ctrlLabel1.Size = new System.Drawing.Size(97, 22);
+            this.ctrlLabel1.TabIndex = 8;
+            this.ctrlLabel1.Text = "Power :";
+            this.ctrlLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // uiTlbMode
             // 
@@ -147,59 +223,11 @@
             this.uiTlbMode.Size = new System.Drawing.Size(200, 65);
             this.uiTlbMode.TabIndex = 67;
             // 
-            // ctrlLabel3
-            // 
-            this.ctrlLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlLabel3.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel3.LanguageID = "DEF_STATUS";
-            this.ctrlLabel3.Location = new System.Drawing.Point(27, 203);
-            this.ctrlLabel3.Name = "ctrlLabel3";
-            this.ctrlLabel3.Size = new System.Drawing.Size(97, 22);
-            this.ctrlLabel3.TabIndex = 12;
-            this.ctrlLabel3.Text = "Status :";
-            this.ctrlLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ctrlLabel2
-            // 
-            this.ctrlLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlLabel2.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel2.LanguageID = "DEF_CONTROL_MODE";
-            this.ctrlLabel2.Location = new System.Drawing.Point(27, 132);
-            this.ctrlLabel2.Name = "ctrlLabel2";
-            this.ctrlLabel2.Size = new System.Drawing.Size(97, 22);
-            this.ctrlLabel2.TabIndex = 10;
-            this.ctrlLabel2.Text = "Control Mode :";
-            this.ctrlLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ctrlLabel4
-            // 
-            this.ctrlLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlLabel4.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel4.LanguageID = "DEF_TROUBLE_STATUS";
-            this.ctrlLabel4.Location = new System.Drawing.Point(373, 203);
-            this.ctrlLabel4.Name = "ctrlLabel4";
-            this.ctrlLabel4.Size = new System.Drawing.Size(97, 22);
-            this.ctrlLabel4.TabIndex = 14;
-            this.ctrlLabel4.Text = "Trouble Status :";
-            this.ctrlLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ctrlLabel1
-            // 
-            this.ctrlLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlLabel1.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel1.LanguageID = "DEF_POWER";
-            this.ctrlLabel1.Location = new System.Drawing.Point(27, 106);
-            this.ctrlLabel1.Name = "ctrlLabel1";
-            this.ctrlLabel1.Size = new System.Drawing.Size(97, 22);
-            this.ctrlLabel1.TabIndex = 8;
-            this.ctrlLabel1.Text = "Power :";
-            this.ctrlLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // MagazineCommand
             // 
             this.MagazineCommand.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.MagazineCommand.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.MagazineCommand.LanguageID = "DEF_MAGAZINE_COMMAND";
+            this.MagazineCommand.LanguageID = "DEF_Magazine_Command_";
             this.MagazineCommand.Location = new System.Drawing.Point(375, 295);
             this.MagazineCommand.Margin = new System.Windows.Forms.Padding(30);
             this.MagazineCommand.Name = "MagazineCommand";
@@ -213,7 +241,7 @@
             // 
             this.Destination.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.Destination.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Destination.LanguageID = "DEF_DESTINATION";
+            this.Destination.LanguageID = "DEF_Destination_";
             this.Destination.Location = new System.Drawing.Point(375, 264);
             this.Destination.Margin = new System.Windows.Forms.Padding(30);
             this.Destination.Name = "Destination";
@@ -227,7 +255,7 @@
             // 
             this.FMSTroubleErrNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.FMSTroubleErrNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.FMSTroubleErrNo.LanguageID = "DEF_TROUBLE_ERRORNO";
+            this.FMSTroubleErrNo.LanguageID = "DEF_Trouble_ErrorNo_";
             this.FMSTroubleErrNo.Location = new System.Drawing.Point(375, 233);
             this.FMSTroubleErrNo.Margin = new System.Windows.Forms.Padding(30);
             this.FMSTroubleErrNo.Name = "FMSTroubleErrNo";
@@ -241,7 +269,7 @@
             // 
             this.TrayID2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.TrayID2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TrayID2.LanguageID = "DEF_TRAY_ID2";
+            this.TrayID2.LanguageID = "DEF_Tray_ID_2_";
             this.TrayID2.Location = new System.Drawing.Point(29, 485);
             this.TrayID2.Margin = new System.Windows.Forms.Padding(30);
             this.TrayID2.Name = "TrayID2";
@@ -255,7 +283,7 @@
             // 
             this.TrayID1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.TrayID1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TrayID1.LanguageID = "DEF_TRAY_ID1";
+            this.TrayID1.LanguageID = "DEF_Tray_ID_1_";
             this.TrayID1.Location = new System.Drawing.Point(29, 453);
             this.TrayID1.Margin = new System.Windows.Forms.Padding(30);
             this.TrayID1.Name = "TrayID1";
@@ -269,7 +297,7 @@
             // 
             this.TrayCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.TrayCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TrayCount.LanguageID = "DEF_TRAY_COUNT";
+            this.TrayCount.LanguageID = "DEF_Tray_Count_";
             this.TrayCount.Location = new System.Drawing.Point(29, 422);
             this.TrayCount.Margin = new System.Windows.Forms.Padding(30);
             this.TrayCount.Name = "TrayCount";
@@ -283,7 +311,7 @@
             // 
             this.TrayType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.TrayType.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TrayType.LanguageID = "DEF_TRAY_TYPE";
+            this.TrayType.LanguageID = "DEF_Tray_Type_";
             this.TrayType.Location = new System.Drawing.Point(29, 390);
             this.TrayType.Margin = new System.Windows.Forms.Padding(30);
             this.TrayType.Name = "TrayType";
@@ -297,7 +325,7 @@
             // 
             this.TrayExist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.TrayExist.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TrayExist.LanguageID = "DEF_TRAY_EXIST";
+            this.TrayExist.LanguageID = "DEF_Tray_Exist_";
             this.TrayExist.Location = new System.Drawing.Point(29, 358);
             this.TrayExist.Margin = new System.Windows.Forms.Padding(30);
             this.TrayExist.Name = "TrayExist";
@@ -311,7 +339,7 @@
             // 
             this.StationStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.StationStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.StationStatus.LanguageID = "DEF_STATION_STATUS";
+            this.StationStatus.LanguageID = "DEF_Station_Status_";
             this.StationStatus.Location = new System.Drawing.Point(29, 326);
             this.StationStatus.Margin = new System.Windows.Forms.Padding(30);
             this.StationStatus.Name = "StationStatus";
@@ -325,7 +353,7 @@
             // 
             this.CommandReady.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.CommandReady.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CommandReady.LanguageID = "DEF_COMMAND_READY";
+            this.CommandReady.LanguageID = "DEF_Command_Ready_";
             this.CommandReady.Location = new System.Drawing.Point(29, 295);
             this.CommandReady.Margin = new System.Windows.Forms.Padding(30);
             this.CommandReady.Name = "CommandReady";
@@ -339,7 +367,7 @@
             // 
             this.TroubleErrLevel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.TroubleErrLevel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TroubleErrLevel.LanguageID = "DEF_TROUBLE_ERRORLEVEL";
+            this.TroubleErrLevel.LanguageID = "DEF_Trouble_ErrorLevel_";
             this.TroubleErrLevel.Location = new System.Drawing.Point(29, 264);
             this.TroubleErrLevel.Margin = new System.Windows.Forms.Padding(30);
             this.TroubleErrLevel.Name = "TroubleErrLevel";
@@ -353,7 +381,7 @@
             // 
             this.CVTroubleErrNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.CVTroubleErrNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CVTroubleErrNo.LanguageID = "DEF_TROUBLE_ERRORNO";
+            this.CVTroubleErrNo.LanguageID = "DEF_Trouble_ErrorNo_";
             this.CVTroubleErrNo.Location = new System.Drawing.Point(29, 233);
             this.CVTroubleErrNo.Margin = new System.Windows.Forms.Padding(30);
             this.CVTroubleErrNo.Name = "CVTroubleErrNo";
@@ -398,7 +426,7 @@
             // 
             this.ctrlGroupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlGroupBox1.ForeColor = System.Drawing.Color.White;
-            this.ctrlGroupBox1.LanguageID = "DEF_CONVEYOR";
+            this.ctrlGroupBox1.LanguageID = "DEF_Conveyor";
             this.ctrlGroupBox1.Location = new System.Drawing.Point(14, 82);
             this.ctrlGroupBox1.Name = "ctrlGroupBox1";
             this.ctrlGroupBox1.Size = new System.Drawing.Size(330, 441);
@@ -411,7 +439,7 @@
             // 
             this.ConveyorType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ConveyorType.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ConveyorType.LanguageID = "DEF_CONVEYOR_TYPE";
+            this.ConveyorType.LanguageID = "DEF_Conveyor_Type";
             this.ConveyorType.Location = new System.Drawing.Point(29, 46);
             this.ConveyorType.Margin = new System.Windows.Forms.Padding(30);
             this.ConveyorType.Name = "ConveyorType";
@@ -425,7 +453,7 @@
             // 
             this.ConveyorNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ConveyorNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ConveyorNo.LanguageID = "DEF_CONVEYOR_NO";
+            this.ConveyorNo.LanguageID = "DEF_Conveyor_No";
             this.ConveyorNo.Location = new System.Drawing.Point(29, 14);
             this.ConveyorNo.Margin = new System.Windows.Forms.Padding(30);
             this.ConveyorNo.Name = "ConveyorNo";
@@ -434,34 +462,6 @@
             this.ConveyorNo.TextData = "100";
             this.ConveyorNo.TitleText = "Conveyor No";
             this.ConveyorNo.TitleWidth = 130F;
-            // 
-            // Exit
-            // 
-            this.Exit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.Exit.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Exit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.Exit.LabelText = "Exit";
-            this.Exit.LanguageID = "DEF_EXIT";
-            this.Exit.Location = new System.Drawing.Point(283, 11);
-            this.Exit.Name = "Exit";
-            this.Exit.Size = new System.Drawing.Size(139, 41);
-            this.Exit.TabIndex = 0;
-            this.Exit.Click += new System.EventHandler(this.Exit_Click);
-            // 
-            // ctrlTitleBar
-            // 
-            this.ctrlTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlTitleBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ctrlTitleBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ctrlTitleBar.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ctrlTitleBar.ForeColor = System.Drawing.Color.White;
-            this.ctrlTitleBar.LanguageID = "DEF_CONVEYOR_INFORMATION";
-            this.ctrlTitleBar.Location = new System.Drawing.Point(0, 0);
-            this.ctrlTitleBar.Margin = new System.Windows.Forms.Padding(4);
-            this.ctrlTitleBar.Name = "ctrlTitleBar";
-            this.ctrlTitleBar.Size = new System.Drawing.Size(704, 64);
-            this.ctrlTitleBar.TabIndex = 0;
-            this.ctrlTitleBar.TitleText = "Conveyor Information";
             // 
             // WinBCRConveyorInfo
             // 

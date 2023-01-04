@@ -87,7 +87,7 @@
             this.ctrlTitleBar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ctrlTitleBar.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTitleBar.ForeColor = System.Drawing.Color.White;
-            this.ctrlTitleBar.LanguageID = "";
+            this.ctrlTitleBar.LanguageID = "DEF_Aging_Rack_Setting";
             this.ctrlTitleBar.Location = new System.Drawing.Point(0, 0);
             this.ctrlTitleBar.Margin = new System.Windows.Forms.Padding(4);
             this.ctrlTitleBar.Name = "ctrlTitleBar";
@@ -112,7 +112,7 @@
             this.Exit.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Exit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.Exit.LabelText = "Exit";
-            this.Exit.LanguageID = "DEF_EXIT";
+            this.Exit.LanguageID = "DEF_Exit";
             this.Exit.Location = new System.Drawing.Point(394, 11);
             this.Exit.Name = "Exit";
             this.Exit.Size = new System.Drawing.Size(131, 41);
@@ -189,7 +189,7 @@
             this.ctrlLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel1.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlLabel1.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel1.LanguageID = "";
+            this.ctrlLabel1.LanguageID = "DEF_Data_Clear";
             this.ctrlLabel1.Location = new System.Drawing.Point(18, 231);
             this.ctrlLabel1.Name = "ctrlLabel1";
             this.ctrlLabel1.Size = new System.Drawing.Size(82, 13);
@@ -202,7 +202,7 @@
             this.ctrlLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel2.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlLabel2.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel2.LanguageID = "";
+            this.ctrlLabel2.LanguageID = "DEF_Configuration";
             this.ctrlLabel2.Location = new System.Drawing.Point(18, 33);
             this.ctrlLabel2.Name = "ctrlLabel2";
             this.ctrlLabel2.Size = new System.Drawing.Size(102, 13);
@@ -239,7 +239,7 @@
             // 
             this.ctrlRadioButton4.AutoSize = true;
             this.ctrlRadioButton4.ForeColor = System.Drawing.Color.White;
-            this.ctrlRadioButton4.LanguageID = "";
+            this.ctrlRadioButton4.LanguageID = "DEF_Plan_Time";
             this.ctrlRadioButton4.Location = new System.Drawing.Point(14, 54);
             this.ctrlRadioButton4.Name = "ctrlRadioButton4";
             this.ctrlRadioButton4.Size = new System.Drawing.Size(81, 16);
@@ -252,7 +252,7 @@
             // 
             this.ctrlRadioButton3.AutoSize = true;
             this.ctrlRadioButton3.ForeColor = System.Drawing.Color.White;
-            this.ctrlRadioButton3.LanguageID = "";
+            this.ctrlRadioButton3.LanguageID = "DEF_Force_Tray_Unload_now";
             this.ctrlRadioButton3.Location = new System.Drawing.Point(14, 28);
             this.ctrlRadioButton3.Name = "ctrlRadioButton3";
             this.ctrlRadioButton3.Size = new System.Drawing.Size(156, 16);
@@ -267,7 +267,7 @@
             this.ctrlButton3.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlButton3.LabelText = "Save";
-            this.ctrlButton3.LanguageID = "";
+            this.ctrlButton3.LanguageID = "DEF_Save";
             this.ctrlButton3.Location = new System.Drawing.Point(249, 23);
             this.ctrlButton3.Name = "ctrlButton3";
             this.ctrlButton3.Size = new System.Drawing.Size(78, 48);
@@ -306,7 +306,7 @@
             this.ctrlButton2.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlButton2.LabelText = "Save";
-            this.ctrlButton2.LanguageID = "DEF_SAVE";
+            this.ctrlButton2.LanguageID = "DEF_Save";
             this.ctrlButton2.Location = new System.Drawing.Point(249, 20);
             this.ctrlButton2.Name = "ctrlButton2";
             this.ctrlButton2.Size = new System.Drawing.Size(78, 48);
@@ -316,20 +316,20 @@
             // 
             this.rbNoOut.AutoSize = true;
             this.rbNoOut.ForeColor = System.Drawing.Color.White;
-            this.rbNoOut.LanguageID = "";
+            this.rbNoOut.LanguageID = "DEF_Disable_Tray_Unload";
             this.rbNoOut.Location = new System.Drawing.Point(14, 52);
             this.rbNoOut.Name = "rbNoOut";
-            this.rbNoOut.Size = new System.Drawing.Size(131, 16);
+            this.rbNoOut.Size = new System.Drawing.Size(138, 16);
             this.rbNoOut.TabIndex = 35;
             this.rbNoOut.TabStop = true;
-            this.rbNoOut.Text = "Disable Try Unload";
+            this.rbNoOut.Text = "Disable Tray Unload";
             this.rbNoOut.UseVisualStyleBackColor = true;
             // 
             // rbYesOut
             // 
             this.rbYesOut.AutoSize = true;
             this.rbYesOut.ForeColor = System.Drawing.Color.White;
-            this.rbYesOut.LanguageID = "";
+            this.rbYesOut.LanguageID = "DEF_Enable_Tray_Unload";
             this.rbYesOut.Location = new System.Drawing.Point(14, 24);
             this.rbYesOut.Name = "rbYesOut";
             this.rbYesOut.Size = new System.Drawing.Size(135, 16);
@@ -343,7 +343,7 @@
             this.rbNoIn.AutoSize = true;
             this.rbNoIn.Enabled = false;
             this.rbNoIn.ForeColor = System.Drawing.Color.White;
-            this.rbNoIn.LanguageID = "";
+            this.rbNoIn.LanguageID = "DEF_Disable_Tray_Load";
             this.rbNoIn.Location = new System.Drawing.Point(127, 52);
             this.rbNoIn.Name = "rbNoIn";
             this.rbNoIn.Size = new System.Drawing.Size(127, 16);
@@ -358,7 +358,7 @@
             this.rbYesIn.AutoSize = true;
             this.rbYesIn.Enabled = false;
             this.rbYesIn.ForeColor = System.Drawing.Color.White;
-            this.rbYesIn.LanguageID = "";
+            this.rbYesIn.LanguageID = "DEF_Enable_Tray_Load";
             this.rbYesIn.Location = new System.Drawing.Point(127, 24);
             this.rbYesIn.Name = "rbYesIn";
             this.rbYesIn.Size = new System.Drawing.Size(124, 16);
@@ -385,7 +385,7 @@
             this.ctrlButton4.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlButton4.LabelText = "Save";
-            this.ctrlButton4.LanguageID = "DEF_SAVE";
+            this.ctrlButton4.LanguageID = "DEF_Save";
             this.ctrlButton4.Location = new System.Drawing.Point(249, 23);
             this.ctrlButton4.Name = "ctrlButton4";
             this.ctrlButton4.Size = new System.Drawing.Size(78, 48);
@@ -395,26 +395,26 @@
             // 
             this.ctrlRadioButton2.AutoSize = true;
             this.ctrlRadioButton2.ForeColor = System.Drawing.Color.White;
-            this.ctrlRadioButton2.LanguageID = "";
+            this.ctrlRadioButton2.LanguageID = "DEF_Clear_Trouble";
             this.ctrlRadioButton2.Location = new System.Drawing.Point(14, 51);
             this.ctrlRadioButton2.Name = "ctrlRadioButton2";
-            this.ctrlRadioButton2.Size = new System.Drawing.Size(104, 16);
+            this.ctrlRadioButton2.Size = new System.Drawing.Size(100, 16);
             this.ctrlRadioButton2.TabIndex = 25;
             this.ctrlRadioButton2.TabStop = true;
-            this.ctrlRadioButton2.Text = " Clear Trouble";
+            this.ctrlRadioButton2.Text = "Clear Trouble";
             this.ctrlRadioButton2.UseVisualStyleBackColor = true;
             // 
             // ctrlRadioButton1
             // 
             this.ctrlRadioButton1.AutoSize = true;
             this.ctrlRadioButton1.ForeColor = System.Drawing.Color.White;
-            this.ctrlRadioButton1.LanguageID = "";
+            this.ctrlRadioButton1.LanguageID = "DEF_Clear_Information";
             this.ctrlRadioButton1.Location = new System.Drawing.Point(14, 25);
             this.ctrlRadioButton1.Name = "ctrlRadioButton1";
-            this.ctrlRadioButton1.Size = new System.Drawing.Size(123, 16);
+            this.ctrlRadioButton1.Size = new System.Drawing.Size(119, 16);
             this.ctrlRadioButton1.TabIndex = 24;
             this.ctrlRadioButton1.TabStop = true;
-            this.ctrlRadioButton1.Text = " Clear Information";
+            this.ctrlRadioButton1.Text = "Clear Information";
             this.ctrlRadioButton1.UseVisualStyleBackColor = true;
             // 
             // label1

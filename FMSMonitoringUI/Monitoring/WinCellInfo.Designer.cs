@@ -58,7 +58,7 @@
             this.ctrlTitleBar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ctrlTitleBar.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTitleBar.ForeColor = System.Drawing.Color.White;
-            this.ctrlTitleBar.LanguageID = "";
+            this.ctrlTitleBar.LanguageID = "DEF_Cell_Information";
             this.ctrlTitleBar.Location = new System.Drawing.Point(0, 0);
             this.ctrlTitleBar.Margin = new System.Windows.Forms.Padding(4);
             this.ctrlTitleBar.Name = "ctrlTitleBar";
@@ -116,7 +116,7 @@
             this.ctrlButton1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlButton1.LabelText = "Exit";
-            this.ctrlButton1.LanguageID = "DEF_EXIT";
+            this.ctrlButton1.LanguageID = "DEF_Exit";
             this.ctrlButton1.Location = new System.Drawing.Point(670, 12);
             this.ctrlButton1.Name = "ctrlButton1";
             this.ctrlButton1.Size = new System.Drawing.Size(156, 39);

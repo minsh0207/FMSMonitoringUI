@@ -112,7 +112,7 @@
             // 
             this.tbLoginID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.tbLoginID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbLoginID.LanguageID = "";
+            this.tbLoginID.LanguageID = "DEF_Login_ID";
             this.tbLoginID.Location = new System.Drawing.Point(76, 158);
             this.tbLoginID.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
             this.tbLoginID.Name = "tbLoginID";
@@ -127,7 +127,7 @@
             // 
             this.tbPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.tbPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbPassword.LanguageID = "";
+            this.tbPassword.LanguageID = "DEF_Password";
             this.tbPassword.Location = new System.Drawing.Point(76, 199);
             this.tbPassword.Margin = new System.Windows.Forms.Padding(30, 35, 30, 35);
             this.tbPassword.Name = "tbPassword";

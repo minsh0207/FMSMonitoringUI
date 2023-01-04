@@ -59,7 +59,7 @@
             this.ctrlTitleBar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ctrlTitleBar.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTitleBar.ForeColor = System.Drawing.Color.White;
-            this.ctrlTitleBar.LanguageID = "";
+            this.ctrlTitleBar.LanguageID = "DEF_Conveyor_Information";
             this.ctrlTitleBar.Location = new System.Drawing.Point(0, 0);
             this.ctrlTitleBar.Margin = new System.Windows.Forms.Padding(4);
             this.ctrlTitleBar.Name = "ctrlTitleBar";
