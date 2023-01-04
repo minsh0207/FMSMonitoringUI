@@ -116,8 +116,7 @@ namespace FMSMonitoringUI.Monitoring
             lstTitle = new List<string>();
             for (int i = 0; i < rowCount; i++)
             {
-                lstTitle.Add("");
-                gridProcessFlow.SetStyleButton(columnName.Length - 1, i, "Click");
+                lstTitle.Add("");                
             }
             
             gridProcessFlow.AddRowsHeaderList(lstTitle);
@@ -129,7 +128,10 @@ namespace FMSMonitoringUI.Monitoring
             gridProcessFlow.ColumnHeadersWidth(0, 50);
 
             // Cell에 Button 추가
-            //gridProcessFlow.SetStyleButton(columnName.Length - 1, 0, "Click");
+            //for (int i = 0; i < rowCount; i++)
+            //{
+            //    gridProcessFlow.SetStyleButton(columnName.Length - 1, i, "Click");
+            //}            
         }
 
         public void SetData(List<_win_tray_info> data)
@@ -161,6 +163,8 @@ namespace FMSMonitoringUI.Monitoring
                 gridProcessFlow.SetValue(col, i, data[i].START_TIME); col++;
                 gridProcessFlow.SetValue(col, i, data[i].END_TIME); col++;
                 gridProcessFlow.SetValue(col, i, data[i].CURRENT_CELL_CNT);
+                gridProcessFlow.ColumnHeadersWidth(col, 100);
+                gridProcessFlow.SetStyleButton(gridProcessFlow.ColumnCount - 1, i, data[i].RECIPE_ID);
             }
         }
 

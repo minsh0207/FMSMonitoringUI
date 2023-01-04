@@ -66,7 +66,7 @@ namespace RestClientLib
         public DateTime START_TIME { get; set; }
         public DateTime END_TIME { get; set; }
         public int CURRENT_CELL_CNT { get; set; }
-        public string ROUTE_ID { get; set; }
+        public string RECIPE_ID { get; set; }
         public string JSON_RECIPE { get; set; }
     }
     #endregion
