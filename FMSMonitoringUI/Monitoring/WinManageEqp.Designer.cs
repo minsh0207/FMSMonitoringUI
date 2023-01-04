@@ -185,7 +185,7 @@
             this.ctrlGroupBox1.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold);
             this.ctrlGroupBox1.ForeColor = System.Drawing.Color.White;
             this.ctrlGroupBox1.LanguageID = "DEF_Equipment_Control";
-            this.ctrlGroupBox1.Location = new System.Drawing.Point(12, 140);
+            this.ctrlGroupBox1.Location = new System.Drawing.Point(12, 33);
             this.ctrlGroupBox1.Name = "ctrlGroupBox1";
             this.ctrlGroupBox1.Size = new System.Drawing.Size(297, 155);
             this.ctrlGroupBox1.TabIndex = 55;
@@ -282,7 +282,7 @@
             this.ctrlLabel1.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlLabel1.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel1.LanguageID = "DEF_Data_Clear";
-            this.ctrlLabel1.Location = new System.Drawing.Point(18, 40);
+            this.ctrlLabel1.Location = new System.Drawing.Point(18, 202);
             this.ctrlLabel1.Name = "ctrlLabel1";
             this.ctrlLabel1.Size = new System.Drawing.Size(82, 13);
             this.ctrlLabel1.TabIndex = 27;
@@ -293,7 +293,7 @@
             this.groupBox1.Controls.Add(this.ctrlButton4);
             this.groupBox1.Controls.Add(this.ctrlRadioButton2);
             this.groupBox1.Controls.Add(this.ctrlRadioButton1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 42);
+            this.groupBox1.Location = new System.Drawing.Point(12, 204);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(297, 84);
             this.groupBox1.TabIndex = 26;
