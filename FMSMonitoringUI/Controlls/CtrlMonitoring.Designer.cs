@@ -489,7 +489,7 @@
             this.ctrlLabel10.LanguageID = "DEF_CONVEYOR_STATUS";
             this.ctrlLabel10.Location = new System.Drawing.Point(15, 9);
             this.ctrlLabel10.Name = "ctrlLabel10";
-            this.ctrlLabel10.Size = new System.Drawing.Size(111, 16);
+            this.ctrlLabel10.Size = new System.Drawing.Size(110, 16);
             this.ctrlLabel10.TabIndex = 98;
             this.ctrlLabel10.Text = "Conveyor Status";
             // 
@@ -704,7 +704,7 @@
             this.ctrlTaggingName18.ColorText = "I";
             this.ctrlTaggingName18.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlTaggingName18.LanguageID = "";
+            this.ctrlTaggingName18.LanguageID = "DEF_Idle";
             this.ctrlTaggingName18.Location = new System.Drawing.Point(14, 580);
             this.ctrlTaggingName18.Name = "ctrlTaggingName18";
             this.ctrlTaggingName18.Size = new System.Drawing.Size(179, 30);
@@ -765,7 +765,7 @@
             this.label18.ForeColor = System.Drawing.Color.White;
             this.label18.Location = new System.Drawing.Point(15, 497);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(75, 16);
+            this.label18.Size = new System.Drawing.Size(74, 16);
             this.label18.TabIndex = 76;
             this.label18.Text = "Eqp Status";
             // 
