@@ -95,7 +95,7 @@
             this.barFormationHPC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.barFormationHPC.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.barFormationHPC.ForeColor = System.Drawing.Color.White;
-            this.barFormationHPC.LanguageID = "";
+            this.barFormationHPC.LanguageID = "DEF_Formation(HPC)";
             this.barFormationHPC.Location = new System.Drawing.Point(641, 10);
             this.barFormationHPC.Margin = new System.Windows.Forms.Padding(4);
             this.barFormationHPC.Name = "barFormationHPC";
@@ -110,7 +110,7 @@
             this.barMain.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.barMain.ForeColor = System.Drawing.Color.White;
             this.barMain.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.barMain.LanguageID = "";
+            this.barMain.LanguageID = "DEF_Main";
             this.barMain.Location = new System.Drawing.Point(212, 10);
             this.barMain.Margin = new System.Windows.Forms.Padding(4);
             this.barMain.Name = "barMain";
@@ -124,7 +124,7 @@
             this.barAging.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.barAging.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.barAging.ForeColor = System.Drawing.Color.White;
-            this.barAging.LanguageID = "";
+            this.barAging.LanguageID = "DEF_Aging";
             this.barAging.Location = new System.Drawing.Point(334, 10);
             this.barAging.Margin = new System.Windows.Forms.Padding(4);
             this.barAging.Name = "barAging";
@@ -138,7 +138,7 @@
             this.barFormationCHG.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.barFormationCHG.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.barFormationCHG.ForeColor = System.Drawing.Color.White;
-            this.barFormationCHG.LanguageID = "";
+            this.barFormationCHG.LanguageID = "DEF_Formation(CHG)";
             this.barFormationCHG.Location = new System.Drawing.Point(457, 10);
             this.barFormationCHG.Margin = new System.Windows.Forms.Padding(4);
             this.barFormationCHG.Name = "barFormationCHG";
@@ -152,7 +152,7 @@
             this.lbUserName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.lbUserName.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lbUserName.ForeColor = System.Drawing.Color.White;
-            this.lbUserName.LanguageID = "";
+            this.lbUserName.LanguageID = "DEF_User";
             this.lbUserName.Location = new System.Drawing.Point(1760, 28);
             this.lbUserName.Name = "lbUserName";
             this.lbUserName.Size = new System.Drawing.Size(41, 13);
