@@ -119,9 +119,9 @@ namespace FMSMonitoringUI.Monitoring
         {
             if (col == 2 && row > -1)
             {
-                WinTrayInfo form = new WinTrayInfo();
-                form.SetData(value.ToString());
-                form.ShowDialog();
+                //WinTrayInfo form = new WinTrayInfo();
+                //form.SetData(value.ToString());
+                //form.ShowDialog();
             }
         }
         #endregion

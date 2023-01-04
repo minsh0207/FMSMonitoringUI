@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
-            this.ctrlTitleBar = new MonitoringUI.Controlls.CtrlTitleBar();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.Exit = new MonitoringUI.Controlls.CButton.CtrlButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.gridEqpInfo = new FMSMonitoringUI.Controlls.CtrlDataGridView();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.gridEqpInfo = new FMSMonitoringUI.Controlls.CtrlDataGridView();
             this.gridTrayInfo = new FMSMonitoringUI.Controlls.CtrlDataGridView();
             this.ctrlGroupBox1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlGroupBox();
             this.ctrlButton1 = new MonitoringUI.Controlls.CButton.CtrlButton();
@@ -44,11 +44,11 @@
             this.ctrlRadioButton5 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
             this.ctrlRadioButton4 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
             this.ctrlLabel1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ctrlButton4 = new MonitoringUI.Controlls.CButton.CtrlButton();
             this.ctrlRadioButton2 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
             this.ctrlRadioButton1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
-            this.label1 = new System.Windows.Forms.Label();
+            this.Exit = new MonitoringUI.Controlls.CButton.CtrlButton();
+            this.ctrlTitleBar = new MonitoringUI.Controlls.CtrlTitleBar();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -59,8 +59,8 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            this.ctrlGroupBox1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.ctrlGroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -70,23 +70,8 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(901, 65);
+            this.panel2.Size = new System.Drawing.Size(940, 65);
             this.panel2.TabIndex = 1;
-            // 
-            // ctrlTitleBar
-            // 
-            this.ctrlTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlTitleBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ctrlTitleBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ctrlTitleBar.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ctrlTitleBar.ForeColor = System.Drawing.Color.White;
-            this.ctrlTitleBar.LanguageID = "";
-            this.ctrlTitleBar.Location = new System.Drawing.Point(0, 0);
-            this.ctrlTitleBar.Margin = new System.Windows.Forms.Padding(4);
-            this.ctrlTitleBar.Name = "ctrlTitleBar";
-            this.ctrlTitleBar.Size = new System.Drawing.Size(899, 63);
-            this.ctrlTitleBar.TabIndex = 0;
-            this.ctrlTitleBar.TitleText = "Manage EQP";
             // 
             // panel3
             // 
@@ -96,21 +81,8 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(0, 446);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(901, 64);
+            this.panel3.Size = new System.Drawing.Size(940, 64);
             this.panel3.TabIndex = 2;
-            // 
-            // Exit
-            // 
-            this.Exit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.Exit.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Exit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.Exit.LabelText = "Exit";
-            this.Exit.LanguageID = "DEF_EXIT";
-            this.Exit.Location = new System.Drawing.Point(382, 11);
-            this.Exit.Name = "Exit";
-            this.Exit.Size = new System.Drawing.Size(131, 41);
-            this.Exit.TabIndex = 1;
-            this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
             // splitContainer1
             // 
@@ -127,19 +99,9 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(901, 381);
+            this.splitContainer1.Size = new System.Drawing.Size(940, 381);
             this.splitContainer1.SplitterDistance = 300;
             this.splitContainer1.TabIndex = 3;
-            // 
-            // gridEqpInfo
-            // 
-            this.gridEqpInfo.ColumnCount = -1;
-            this.gridEqpInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridEqpInfo.Location = new System.Drawing.Point(0, 0);
-            this.gridEqpInfo.Name = "gridEqpInfo";
-            this.gridEqpInfo.RowCount = -1;
-            this.gridEqpInfo.Size = new System.Drawing.Size(298, 379);
-            this.gridEqpInfo.TabIndex = 1;
             // 
             // splitContainer2
             // 
@@ -159,9 +121,40 @@
             this.splitContainer2.Panel2.Controls.Add(this.ctrlLabel1);
             this.splitContainer2.Panel2.Controls.Add(this.groupBox1);
             this.splitContainer2.Panel2.Controls.Add(this.label1);
-            this.splitContainer2.Size = new System.Drawing.Size(597, 381);
-            this.splitContainer2.SplitterDistance = 269;
+            this.splitContainer2.Size = new System.Drawing.Size(636, 381);
+            this.splitContainer2.SplitterDistance = 308;
             this.splitContainer2.TabIndex = 0;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.ctrlButton4);
+            this.groupBox1.Controls.Add(this.ctrlRadioButton2);
+            this.groupBox1.Controls.Add(this.ctrlRadioButton1);
+            this.groupBox1.Location = new System.Drawing.Point(12, 42);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(297, 84);
+            this.groupBox1.TabIndex = 26;
+            this.groupBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("굴림", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(9, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(158, 23);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Manual Command";
+            // 
+            // gridEqpInfo
+            // 
+            this.gridEqpInfo.ColumnCount = -1;
+            this.gridEqpInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridEqpInfo.Location = new System.Drawing.Point(0, 0);
+            this.gridEqpInfo.Name = "gridEqpInfo";
+            this.gridEqpInfo.RowCount = -1;
+            this.gridEqpInfo.Size = new System.Drawing.Size(298, 379);
+            this.gridEqpInfo.TabIndex = 1;
             // 
             // gridTrayInfo
             // 
@@ -170,7 +163,7 @@
             this.gridTrayInfo.Location = new System.Drawing.Point(0, 0);
             this.gridTrayInfo.Name = "gridTrayInfo";
             this.gridTrayInfo.RowCount = -1;
-            this.gridTrayInfo.Size = new System.Drawing.Size(267, 379);
+            this.gridTrayInfo.Size = new System.Drawing.Size(306, 379);
             this.gridTrayInfo.TabIndex = 1;
             // 
             // ctrlGroupBox1
@@ -282,17 +275,6 @@
             this.ctrlLabel1.TabIndex = 27;
             this.ctrlLabel1.Text = "Data Clear";
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.ctrlButton4);
-            this.groupBox1.Controls.Add(this.ctrlRadioButton2);
-            this.groupBox1.Controls.Add(this.ctrlRadioButton1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 42);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(297, 84);
-            this.groupBox1.TabIndex = 26;
-            this.groupBox1.TabStop = false;
-            // 
             // ctrlButton4
             // 
             this.ctrlButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
@@ -331,22 +313,40 @@
             this.ctrlRadioButton1.Text = " Clear Information";
             this.ctrlRadioButton1.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // Exit
             // 
-            this.label1.Font = new System.Drawing.Font("굴림", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(9, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(158, 23);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Manual Command";
+            this.Exit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.Exit.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Exit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.Exit.LabelText = "Exit";
+            this.Exit.LanguageID = "DEF_EXIT";
+            this.Exit.Location = new System.Drawing.Point(382, 11);
+            this.Exit.Name = "Exit";
+            this.Exit.Size = new System.Drawing.Size(131, 41);
+            this.Exit.TabIndex = 1;
+            this.Exit.Click += new System.EventHandler(this.Exit_Click);
+            // 
+            // ctrlTitleBar
+            // 
+            this.ctrlTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlTitleBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ctrlTitleBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ctrlTitleBar.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlTitleBar.ForeColor = System.Drawing.Color.White;
+            this.ctrlTitleBar.LanguageID = "";
+            this.ctrlTitleBar.Location = new System.Drawing.Point(0, 0);
+            this.ctrlTitleBar.Margin = new System.Windows.Forms.Padding(4);
+            this.ctrlTitleBar.Name = "ctrlTitleBar";
+            this.ctrlTitleBar.Size = new System.Drawing.Size(938, 63);
+            this.ctrlTitleBar.TabIndex = 0;
+            this.ctrlTitleBar.TitleText = "Manage EQP";
             // 
             // WinManageEqp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ClientSize = new System.Drawing.Size(901, 510);
+            this.ClientSize = new System.Drawing.Size(940, 510);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -368,10 +368,10 @@
             this.splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            this.ctrlGroupBox1.ResumeLayout(false);
-            this.ctrlGroupBox1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.ctrlGroupBox1.ResumeLayout(false);
+            this.ctrlGroupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }

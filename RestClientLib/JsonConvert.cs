@@ -495,6 +495,44 @@ namespace RestClientLib
             }
         }
         #endregion
+        #region ConvertWinTrayInfo
+        /// <summary>
+        /// _jsonWinManageEqpResponse 형태의 Class로 변환한다.
+        /// </summary>
+        public _jsonWinTrayInfoResponse ConvertWinTrayInfo(string jsonResult)
+        {
+            try
+            {
+                // Recv Body의 JSON string을 class 변수에 할당
+                _jsonWinTrayInfoResponse recvBody = JsonConvert.DeserializeObject<_jsonWinTrayInfoResponse>(jsonResult, _jsonSettings);
+                return recvBody;
+            }
+            catch (Exception ex)
+            {
+                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                return null;
+            }
+        }
+        #endregion
+        #region ConvertWinTrayInfo
+        /// <summary>
+        /// _jsonWinManageEqpResponse 형태의 Class로 변환한다.
+        /// </summary>
+        public _jsonTrayProcessFlowResponse ConvertTrayPorcessFlow(string jsonResult)
+        {
+            try
+            {
+                // Recv Body의 JSON string을 class 변수에 할당
+                _jsonTrayProcessFlowResponse recvBody = JsonConvert.DeserializeObject<_jsonTrayProcessFlowResponse>(jsonResult, _jsonSettings);
+                return recvBody;
+            }
+            catch (Exception ex)
+            {
+                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                return null;
+            }
+        }
+        #endregion
 
 
 

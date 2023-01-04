@@ -114,6 +114,8 @@
     <Compile Include="JSON\_jsonMstWindow.cs" />
     <Compile Include="JSON\_jsonMstWindowUser.cs" />
     <Compile Include="JSON\__baseBase.cs" />
+    <Compile Include="Monitoring\_jsonTrayProcessFlow.cs" />
+    <Compile Include="Monitoring\_jsonWinTrayInfo.cs" />
     <Compile Include="Monitoring\_jsonWinManageEqp.cs" />
     <Compile Include="Monitoring\__winBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

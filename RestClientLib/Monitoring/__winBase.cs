@@ -31,42 +31,46 @@ namespace RestClientLib
         public DateTime PLAN_TIME { get; set; }
         public int CURRENT_CELL_CNT { get; set; }
         public string PROCESS_NAME { get; set; }
-
-        //public string TRAY_STATUS { get; set; }        
-        //public string TRAY_GRADE { get; set; }
-        //public string TRAY_INPUT_EQP_ID { get; set; }
-        //public int TRAY_INPUT_CELL_CNT { get; set; }        
-        //public string UNIT_ID { get; set; }
-        //public string UNIT_ID_LEVEL { get; set; }
-        //public int ROUTE_ORDER_NO { get; set; }
-        //public string EQP_TYPE { get; set; }
-        //public string PROCESS_TYPE { get; set; }
-        //public int PROCESS_NO { get; set; }
-        //public int STEP_NO { get; set; }        
-        //public string NEXT_MANUAL_SET_FLAG { get; set; }
-        //public string NEXT_EQP_TYPE { get; set; }
-        //public string NEXT_PROCESS_TYPE { get; set; }
-        //public int NEXT_PROCESS_NO { get; set; }
-        //public string NEXT_EQP_ID { get; set; }
-        //public string NEXT_UNIT_ID { get; set; }
-        //public string REWORK_FLAG { get; set; }
-        //public string REWORK_USER { get; set; }
-        //public string REWORK_TIME { get; set; }
-        //public string REWORK_EQP_ID { get; set; }
-        //public string REWORK_UNIT_ID { get; set; }
-        //public string FIRE_FLAG { get; set; }
-        //public string FIRE_TIME { get; set; }
-        //public string FIRE_EQP_ID { get; set; }
-        //public string FIRE_UNIT_ID { get; set; }
-        //public string RECIPE_ID { get; set; }
-        //public string JSON_RECIPE { get; set; }
-        //public string JSON_PROCESS_DATA { get; set; }
-        //public string JSON_PROCESS_START_DATA { get; set; }
-        //public string UPDATE_USER { get; set; }
-        //public string UPDATE_TIME { get; set; }
-        //public string CREATE_TIME { get; set; }
     }
     #endregion
+
+    #region WinTrayInfo
+    /// <summary>
+    /// JSON base format : WinTrayInfo
+    /// </summary>
+    public class _win_tray_info
+    {
+        public string MODEL_ID { get; set; }
+        public string TRAY_ID { get; set; }
+        public DateTime TRAY_INPUT_TIME { get; set; }
+        public string ROUTE_ID { get; set; }
+        public string LOT_ID { get; set; }
+        public string PROCESS_NAME { get; set; }        
+        public string EQP_NAME { get; set; }
+        public string EQP_NAME_LOCAL { get; set; }
+        public DateTime START_TIME { get; set; }
+        public DateTime PLAN_TIME { get; set; }
+        public int CURRENT_CELL_CNT { get; set; }
+        public string TRAY_ZONE { get; set; }
+    }
+    #endregion
+    #region WinTrayInfo
+    /// <summary>
+    /// JSON base format : WinTrayInfo
+    /// </summary>
+    public class _tray_process_flow
+    {
+        public string PROCESS_NAME { get; set; }
+        public string EQP_NAME { get; set; }
+        public string EQP_NAME_LOCAL { get; set; }
+        public DateTime START_TIME { get; set; }
+        public DateTime END_TIME { get; set; }
+        public int CURRENT_CELL_CNT { get; set; }
+        public string ROUTE_ID { get; set; }
+        public string JSON_RECIPE { get; set; }
+    }
+    #endregion
+
     /*
     #region tb_dat_cell
     /// <summary>
