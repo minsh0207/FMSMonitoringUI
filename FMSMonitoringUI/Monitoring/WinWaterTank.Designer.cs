@@ -33,24 +33,24 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.ctrlButtonExit1 = new MonitoringUI.Controlls.CButton.CtrlButtonExit();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.ctrlGroupBox1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlGroupBox();
-            this.ctrlGroupBox2 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlGroupBox();
-            this.gridWaterTank = new FMSMonitoringUI.Controlls.CtrlDataGridView();
-            this.ctrlLabelBox11 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
-            this.ctrlLabelBox10 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
-            this.ctrlLabelBox9 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
-            this.ctrlLED3 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
-            this.ctrlLabel6 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
-            this.ctrlLED2 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
-            this.ctrlLabel5 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
-            this.ctrlLED1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
-            this.ctrlLabel4 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.ctrlLED4 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
             this.ctrlLabel1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.ctrlLED5 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
             this.ctrlLabel2 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.ctrlLED6 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
             this.ctrlLabel3 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
+            this.ctrlLED3 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
+            this.ctrlLabel6 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
+            this.ctrlLED2 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
+            this.ctrlLabel5 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
+            this.ctrlLED1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
+            this.ctrlLabel4 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
+            this.ctrlLabelBox11 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
+            this.ctrlLabelBox10 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
+            this.ctrlLabelBox9 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
+            this.gridWaterTank = new FMSMonitoringUI.Controlls.CtrlDataGridView();
+            this.ctrlGroupBox2 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlGroupBox();
+            this.ctrlGroupBox1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlGroupBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -74,6 +74,7 @@
             this.ctrlTitleBar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ctrlTitleBar.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTitleBar.ForeColor = System.Drawing.Color.White;
+            this.ctrlTitleBar.LanguageID = "DEF_WaterTank_Information";
             this.ctrlTitleBar.Location = new System.Drawing.Point(0, 0);
             this.ctrlTitleBar.Margin = new System.Windows.Forms.Padding(4);
             this.ctrlTitleBar.Name = "ctrlTitleBar";
@@ -132,137 +133,6 @@
             this.panel3.Size = new System.Drawing.Size(566, 370);
             this.panel3.TabIndex = 2;
             // 
-            // ctrlGroupBox1
-            // 
-            this.ctrlGroupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlGroupBox1.LanguageID = "";
-            this.ctrlGroupBox1.Location = new System.Drawing.Point(17, 15);
-            this.ctrlGroupBox1.Name = "ctrlGroupBox1";
-            this.ctrlGroupBox1.Size = new System.Drawing.Size(257, 322);
-            this.ctrlGroupBox1.TabIndex = 2;
-            this.ctrlGroupBox1.TitleText = "Water Tank";
-            // 
-            // ctrlGroupBox2
-            // 
-            this.ctrlGroupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlGroupBox2.LanguageID = "";
-            this.ctrlGroupBox2.Location = new System.Drawing.Point(294, 15);
-            this.ctrlGroupBox2.Name = "ctrlGroupBox2";
-            this.ctrlGroupBox2.Size = new System.Drawing.Size(257, 322);
-            this.ctrlGroupBox2.TabIndex = 3;
-            this.ctrlGroupBox2.TitleText = "FMS";
-            // 
-            // gridWaterTank
-            // 
-            this.gridWaterTank.ColumnCount = -1;
-            this.gridWaterTank.Location = new System.Drawing.Point(307, 165);
-            this.gridWaterTank.Name = "gridWaterTank";
-            this.gridWaterTank.RowCount = -1;
-            this.gridWaterTank.Size = new System.Drawing.Size(234, 155);
-            this.gridWaterTank.TabIndex = 4;
-            // 
-            // ctrlLabelBox11
-            // 
-            this.ctrlLabelBox11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlLabelBox11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ctrlLabelBox11.LanguageID = "";
-            this.ctrlLabelBox11.Location = new System.Drawing.Point(307, 110);
-            this.ctrlLabelBox11.Margin = new System.Windows.Forms.Padding(30);
-            this.ctrlLabelBox11.Name = "ctrlLabelBox11";
-            this.ctrlLabelBox11.Size = new System.Drawing.Size(234, 31);
-            this.ctrlLabelBox11.TabIndex = 56;
-            this.ctrlLabelBox11.TextData = "";
-            this.ctrlLabelBox11.TitleText = "Tray ID 2 ";
-            this.ctrlLabelBox11.TitleWidth = 140F;
-            // 
-            // ctrlLabelBox10
-            // 
-            this.ctrlLabelBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlLabelBox10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ctrlLabelBox10.LanguageID = "";
-            this.ctrlLabelBox10.Location = new System.Drawing.Point(307, 76);
-            this.ctrlLabelBox10.Margin = new System.Windows.Forms.Padding(30);
-            this.ctrlLabelBox10.Name = "ctrlLabelBox10";
-            this.ctrlLabelBox10.Size = new System.Drawing.Size(234, 31);
-            this.ctrlLabelBox10.TabIndex = 55;
-            this.ctrlLabelBox10.TextData = "";
-            this.ctrlLabelBox10.TitleText = "Tray ID 1 ";
-            this.ctrlLabelBox10.TitleWidth = 140F;
-            // 
-            // ctrlLabelBox9
-            // 
-            this.ctrlLabelBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlLabelBox9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ctrlLabelBox9.LanguageID = "";
-            this.ctrlLabelBox9.Location = new System.Drawing.Point(307, 42);
-            this.ctrlLabelBox9.Margin = new System.Windows.Forms.Padding(30);
-            this.ctrlLabelBox9.Name = "ctrlLabelBox9";
-            this.ctrlLabelBox9.Size = new System.Drawing.Size(234, 31);
-            this.ctrlLabelBox9.TabIndex = 54;
-            this.ctrlLabelBox9.TextData = "";
-            this.ctrlLabelBox9.TitleText = "Tray Count ";
-            this.ctrlLabelBox9.TitleWidth = 140F;
-            // 
-            // ctrlLED3
-            // 
-            this.ctrlLED3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlLED3.Location = new System.Drawing.Point(174, 100);
-            this.ctrlLED3.Name = "ctrlLED3";
-            this.ctrlLED3.Size = new System.Drawing.Size(81, 20);
-            this.ctrlLED3.TabIndex = 62;
-            // 
-            // ctrlLabel6
-            // 
-            this.ctrlLabel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlLabel6.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel6.LanguageID = "";
-            this.ctrlLabel6.Location = new System.Drawing.Point(33, 99);
-            this.ctrlLabel6.Name = "ctrlLabel6";
-            this.ctrlLabel6.Size = new System.Drawing.Size(140, 22);
-            this.ctrlLabel6.TabIndex = 61;
-            this.ctrlLabel6.Text = "Tray Exist :";
-            this.ctrlLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ctrlLED2
-            // 
-            this.ctrlLED2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlLED2.Location = new System.Drawing.Point(174, 76);
-            this.ctrlLED2.Name = "ctrlLED2";
-            this.ctrlLED2.Size = new System.Drawing.Size(81, 20);
-            this.ctrlLED2.TabIndex = 60;
-            // 
-            // ctrlLabel5
-            // 
-            this.ctrlLabel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlLabel5.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel5.LanguageID = "";
-            this.ctrlLabel5.Location = new System.Drawing.Point(33, 75);
-            this.ctrlLabel5.Name = "ctrlLabel5";
-            this.ctrlLabel5.Size = new System.Drawing.Size(140, 22);
-            this.ctrlLabel5.TabIndex = 59;
-            this.ctrlLabel5.Text = "Input Enable :";
-            this.ctrlLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ctrlLED1
-            // 
-            this.ctrlLED1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlLED1.Location = new System.Drawing.Point(174, 52);
-            this.ctrlLED1.Name = "ctrlLED1";
-            this.ctrlLED1.Size = new System.Drawing.Size(81, 20);
-            this.ctrlLED1.TabIndex = 58;
-            // 
-            // ctrlLabel4
-            // 
-            this.ctrlLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlLabel4.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel4.LanguageID = "";
-            this.ctrlLabel4.Location = new System.Drawing.Point(33, 51);
-            this.ctrlLabel4.Name = "ctrlLabel4";
-            this.ctrlLabel4.Size = new System.Drawing.Size(140, 22);
-            this.ctrlLabel4.TabIndex = 57;
-            this.ctrlLabel4.Text = "Control Mode :";
-            this.ctrlLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // ctrlLED4
             // 
             this.ctrlLED4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
@@ -270,12 +140,13 @@
             this.ctrlLED4.Name = "ctrlLED4";
             this.ctrlLED4.Size = new System.Drawing.Size(81, 20);
             this.ctrlLED4.TabIndex = 68;
+            this.ctrlLED4.TitleText = "";
             // 
             // ctrlLabel1
             // 
             this.ctrlLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel1.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel1.LanguageID = "";
+            this.ctrlLabel1.LanguageID = "DEF_RestockButtonPressed_:";
             this.ctrlLabel1.Location = new System.Drawing.Point(33, 212);
             this.ctrlLabel1.Name = "ctrlLabel1";
             this.ctrlLabel1.Size = new System.Drawing.Size(140, 22);
@@ -290,12 +161,13 @@
             this.ctrlLED5.Name = "ctrlLED5";
             this.ctrlLED5.Size = new System.Drawing.Size(81, 20);
             this.ctrlLED5.TabIndex = 66;
+            this.ctrlLED5.TitleText = "";
             // 
             // ctrlLabel2
             // 
             this.ctrlLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel2.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel2.LanguageID = "";
+            this.ctrlLabel2.LanguageID = "DEF_Fire_Sensor_:";
             this.ctrlLabel2.Location = new System.Drawing.Point(33, 188);
             this.ctrlLabel2.Name = "ctrlLabel2";
             this.ctrlLabel2.Size = new System.Drawing.Size(140, 22);
@@ -310,18 +182,161 @@
             this.ctrlLED6.Name = "ctrlLED6";
             this.ctrlLED6.Size = new System.Drawing.Size(81, 20);
             this.ctrlLED6.TabIndex = 64;
+            this.ctrlLED6.TitleText = "";
             // 
             // ctrlLabel3
             // 
             this.ctrlLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel3.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel3.LanguageID = "";
+            this.ctrlLabel3.LanguageID = "DEF_Station_Sink_:";
             this.ctrlLabel3.Location = new System.Drawing.Point(33, 164);
             this.ctrlLabel3.Name = "ctrlLabel3";
             this.ctrlLabel3.Size = new System.Drawing.Size(140, 22);
             this.ctrlLabel3.TabIndex = 63;
             this.ctrlLabel3.Text = "Station Sink :";
             this.ctrlLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ctrlLED3
+            // 
+            this.ctrlLED3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLED3.Location = new System.Drawing.Point(174, 100);
+            this.ctrlLED3.Name = "ctrlLED3";
+            this.ctrlLED3.Size = new System.Drawing.Size(81, 20);
+            this.ctrlLED3.TabIndex = 62;
+            this.ctrlLED3.TitleText = "";
+            // 
+            // ctrlLabel6
+            // 
+            this.ctrlLabel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel6.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel6.LanguageID = "DEF_Tray_Exist_:";
+            this.ctrlLabel6.Location = new System.Drawing.Point(33, 99);
+            this.ctrlLabel6.Name = "ctrlLabel6";
+            this.ctrlLabel6.Size = new System.Drawing.Size(140, 22);
+            this.ctrlLabel6.TabIndex = 61;
+            this.ctrlLabel6.Text = "Tray Exist :";
+            this.ctrlLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ctrlLED2
+            // 
+            this.ctrlLED2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLED2.Location = new System.Drawing.Point(174, 76);
+            this.ctrlLED2.Name = "ctrlLED2";
+            this.ctrlLED2.Size = new System.Drawing.Size(81, 20);
+            this.ctrlLED2.TabIndex = 60;
+            this.ctrlLED2.TitleText = "";
+            // 
+            // ctrlLabel5
+            // 
+            this.ctrlLabel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel5.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel5.LanguageID = "DEF_Input_Enable_:";
+            this.ctrlLabel5.Location = new System.Drawing.Point(33, 75);
+            this.ctrlLabel5.Name = "ctrlLabel5";
+            this.ctrlLabel5.Size = new System.Drawing.Size(140, 22);
+            this.ctrlLabel5.TabIndex = 59;
+            this.ctrlLabel5.Text = "Input Enable :";
+            this.ctrlLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ctrlLED1
+            // 
+            this.ctrlLED1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLED1.Location = new System.Drawing.Point(174, 52);
+            this.ctrlLED1.Name = "ctrlLED1";
+            this.ctrlLED1.Size = new System.Drawing.Size(81, 20);
+            this.ctrlLED1.TabIndex = 58;
+            this.ctrlLED1.TitleText = "";
+            // 
+            // ctrlLabel4
+            // 
+            this.ctrlLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel4.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel4.LanguageID = "DEF_Control_Mode_:";
+            this.ctrlLabel4.Location = new System.Drawing.Point(33, 51);
+            this.ctrlLabel4.Name = "ctrlLabel4";
+            this.ctrlLabel4.Size = new System.Drawing.Size(140, 22);
+            this.ctrlLabel4.TabIndex = 57;
+            this.ctrlLabel4.Text = "Control Mode :";
+            this.ctrlLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ctrlLabelBox11
+            // 
+            this.ctrlLabelBox11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabelBox11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ctrlLabelBox11.LanguageID = "DEF_Tray_ID_2_";
+            this.ctrlLabelBox11.Location = new System.Drawing.Point(307, 110);
+            this.ctrlLabelBox11.Margin = new System.Windows.Forms.Padding(30);
+            this.ctrlLabelBox11.Name = "ctrlLabelBox11";
+            this.ctrlLabelBox11.Size = new System.Drawing.Size(234, 31);
+            this.ctrlLabelBox11.TabIndex = 56;
+            this.ctrlLabelBox11.TextData = "";
+            this.ctrlLabelBox11.TitleText = "Tray ID 2 ";
+            this.ctrlLabelBox11.TitleWidth = 140F;
+            // 
+            // ctrlLabelBox10
+            // 
+            this.ctrlLabelBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabelBox10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ctrlLabelBox10.LanguageID = "DEF_Tray_ID_1_";
+            this.ctrlLabelBox10.Location = new System.Drawing.Point(307, 76);
+            this.ctrlLabelBox10.Margin = new System.Windows.Forms.Padding(30);
+            this.ctrlLabelBox10.Name = "ctrlLabelBox10";
+            this.ctrlLabelBox10.Size = new System.Drawing.Size(234, 31);
+            this.ctrlLabelBox10.TabIndex = 55;
+            this.ctrlLabelBox10.TextData = "";
+            this.ctrlLabelBox10.TitleText = "Tray ID 1 ";
+            this.ctrlLabelBox10.TitleWidth = 140F;
+            // 
+            // ctrlLabelBox9
+            // 
+            this.ctrlLabelBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabelBox9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ctrlLabelBox9.LanguageID = "DEF_Tray_Count_";
+            this.ctrlLabelBox9.Location = new System.Drawing.Point(307, 42);
+            this.ctrlLabelBox9.Margin = new System.Windows.Forms.Padding(30);
+            this.ctrlLabelBox9.Name = "ctrlLabelBox9";
+            this.ctrlLabelBox9.Size = new System.Drawing.Size(234, 31);
+            this.ctrlLabelBox9.TabIndex = 54;
+            this.ctrlLabelBox9.TextData = "";
+            this.ctrlLabelBox9.TitleText = "Tray Count ";
+            this.ctrlLabelBox9.TitleWidth = 140F;
+            // 
+            // gridWaterTank
+            // 
+            this.gridWaterTank.ColumnCount = -1;
+            this.gridWaterTank.Location = new System.Drawing.Point(307, 165);
+            this.gridWaterTank.Name = "gridWaterTank";
+            this.gridWaterTank.RowCount = -1;
+            this.gridWaterTank.Size = new System.Drawing.Size(234, 155);
+            this.gridWaterTank.TabIndex = 4;
+            // 
+            // ctrlGroupBox2
+            // 
+            this.ctrlGroupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlGroupBox2.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold);
+            this.ctrlGroupBox2.ForeColor = System.Drawing.Color.White;
+            this.ctrlGroupBox2.LanguageID = "DEF_FMS";
+            this.ctrlGroupBox2.Location = new System.Drawing.Point(294, 15);
+            this.ctrlGroupBox2.Name = "ctrlGroupBox2";
+            this.ctrlGroupBox2.Size = new System.Drawing.Size(257, 322);
+            this.ctrlGroupBox2.TabIndex = 3;
+            this.ctrlGroupBox2.TabStop = false;
+            this.ctrlGroupBox2.Text = "FMS";
+            this.ctrlGroupBox2.TitleText = "FMS";
+            // 
+            // ctrlGroupBox1
+            // 
+            this.ctrlGroupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlGroupBox1.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold);
+            this.ctrlGroupBox1.ForeColor = System.Drawing.Color.White;
+            this.ctrlGroupBox1.LanguageID = "DEF_Water_Tank";
+            this.ctrlGroupBox1.Location = new System.Drawing.Point(17, 15);
+            this.ctrlGroupBox1.Name = "ctrlGroupBox1";
+            this.ctrlGroupBox1.Size = new System.Drawing.Size(257, 322);
+            this.ctrlGroupBox1.TabIndex = 2;
+            this.ctrlGroupBox1.TabStop = false;
+            this.ctrlGroupBox1.Text = "Water Tank";
+            this.ctrlGroupBox1.TitleText = "Water Tank";
             // 
             // WinWaterTank
             // 
