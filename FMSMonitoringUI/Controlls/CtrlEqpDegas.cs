@@ -84,8 +84,8 @@ namespace FMSMonitoringUI.Controlls
         #region DataGridView Event
         private void TrayInfoView_MouseCellDoubleClick(int col, int row, object value)
         {
-            WinTrayInfo form = new WinTrayInfo();
-            form.SetData(value.ToString());
+            WinTrayInfo form = new WinTrayInfo(EqpID, EqpType, value.ToString());
+            //form.SetData(value.ToString());
             form.ShowDialog();
         }
         #endregion
@@ -97,7 +97,7 @@ namespace FMSMonitoringUI.Controlls
 
         private void lbEqpType_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            WinManageEqp form = new WinManageEqp(EqpID, 2);
+            WinManageEqp form = new WinManageEqp(EqpID, EqpType, 2);
             form.ShowDialog();
         }
     }

@@ -111,13 +111,16 @@ namespace FMSMonitoringUI.Controlls
                     dataGridView1[nCol, nRow].Style.BackColor = Color.FromArgb(27, 27, 27);
 
                     // Column 열 조정 안됨
-                    dataGridView1.Rows[nRow].Resizable = DataGridViewTriState.False;
+                    dataGridView1.Rows[nRow].Resizable = DataGridViewTriState.False;                    
                 }
 
                 // Column 열 조정 안됨
                 dataGridView1.Columns[nCol].Resizable = DataGridViewTriState.False;
                 //dataGridView1.Columns[nCol].MinimumWidth = 5;
                 dataGridView1.Columns[nCol].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                // 여러줄 입력
+                dataGridView1.Columns[nCol].DefaultCellStyle.WrapMode= DataGridViewTriState.True;
             }
                         
             dataGridView1.CurrentCell = null;

@@ -1,5 +1,7 @@
 ﻿using MonitoringUI.Common;
 using MonitoringUI.Controlls;
+using Org.BouncyCastle.Ocsp;
+using RestClientLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,6 +9,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,19 +18,30 @@ namespace FMSMonitoringUI.Monitoring
     public partial class WinTrayInfo : Form
     {
         private Point point = new Point();
+        private string _EqpID = string.Empty;
+        private string _EqpType = string.Empty;
+        private string _TrayId = string.Empty;
 
-        public WinTrayInfo()
+        #region Working Thread
+        private Thread _ProcessThread;
+        private bool _TheadVisiable;
+        #endregion
+
+        public WinTrayInfo(string eqpid, string eqpType, string trayId)
         {
             InitializeComponent();
 
+            _EqpID = eqpid;
+            _EqpType = eqpType;
+            _TrayId = trayId;
+
             InitGridViewTray();
-            InitGridViewProcessFlow();
+            InitGridViewProcessFlow(1);
         }
 
+        #region WinManageEqp Event
         private void WinTrayInfo_Load(object sender, EventArgs e)
-        {            
-            InitsplitContainer();
-
+        {
             #region Title Mouse Event
             ctrlTitleBar.MouseDown_Evnet += Title_MouseDownEvnet;
             ctrlTitleBar.MouseMove_Evnet += Title_MouseMoveEvnet;
@@ -36,18 +50,23 @@ namespace FMSMonitoringUI.Monitoring
             #region DataGridView Event
             gridProcessFlow.MouseCellClick_Evnet += GridProcessFlow_MouseCellClick;
             #endregion
-        }
 
-        private void InitsplitContainer()
+            _TheadVisiable = true;
+
+            this.BeginInvoke(new MethodInvoker(delegate ()
+            {
+                _ProcessThread = new Thread(() => ProcessThreadCallback());
+                _ProcessThread.IsBackground = true; _ProcessThread.Start();
+            }));
+        }
+        private void WinTrayInfo_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //splitContainer1.BackColor = Color.LightGray;            // Color.FromArgb(53, 53, 53);
-            //splitContainer1.BorderStyle = BorderStyle.FixedSingle;
-            //splitContainer2.Panel2.BackColor = Color.LightGray;     //Color.FromArgb(53, 53, 53);
-            //splitContainer2.BorderStyle = BorderStyle.FixedSingle;
+            if (this._ProcessThread.IsAlive)
+                this._TheadVisiable = false;
 
-            //splitContainer3.BorderStyle = BorderStyle.FixedSingle;
-            //splitContainer3.Panel2.BackColor = Color.FromArgb(27, 27, 27);
+            this._ProcessThread.Abort();
         }
+        #endregion
 
         private void InitGridViewTray()
         {
@@ -86,7 +105,7 @@ namespace FMSMonitoringUI.Monitoring
             gridTrayInfo.ColumnHeadersWidth(0, 140);
         }
 
-        private void InitGridViewProcessFlow()
+        private void InitGridViewProcessFlow(int rowCount)
         {
             string[] columnName = { "No", "Process Name", "Equipment Name", 
                                     "Start Time", "End Time", "Cell Count", "Recipe" };
@@ -95,7 +114,11 @@ namespace FMSMonitoringUI.Monitoring
             gridProcessFlow.AddColumnHeaderList(lstTitle);
 
             lstTitle = new List<string>();
-            lstTitle.Add("");
+            for (int i = 0; i < rowCount; i++)
+            {
+                lstTitle.Add("");                
+            }
+            
             gridProcessFlow.AddRowsHeaderList(lstTitle);
 
             gridProcessFlow.ColumnHeadersHeight(24);
@@ -105,12 +128,44 @@ namespace FMSMonitoringUI.Monitoring
             gridProcessFlow.ColumnHeadersWidth(0, 50);
 
             // Cell에 Button 추가
-            gridProcessFlow.SetStyleButton(columnName.Length - 1, 0, "Click");            
+            //for (int i = 0; i < rowCount; i++)
+            //{
+            //    gridProcessFlow.SetStyleButton(columnName.Length - 1, i, "Click");
+            //}            
         }
 
-        public void SetData(string trayid)
+        public void SetData(List<_win_tray_info> data)
         {
-            gridTrayInfo.SetValue(1, 1, trayid);
+            int row = 0;
+            gridTrayInfo.SetValue(1, row, data[0].MODEL_ID); row++;
+            gridTrayInfo.SetValue(1, row, data[0].TRAY_ID); row++;
+            gridTrayInfo.SetValue(1, row, data[0].TRAY_INPUT_TIME); row++;
+            gridTrayInfo.SetValue(1, row, data[0].ROUTE_ID); row++;
+            gridTrayInfo.SetValue(1, row, data[0].LOT_ID); row++;
+            gridTrayInfo.SetValue(1, row, data[0].PROCESS_NAME); row++;
+            gridTrayInfo.SetValue(1, row, data[0].EQP_NAME); row++;
+            gridTrayInfo.SetValue(1, row, data[0].START_TIME); row++;
+            gridTrayInfo.SetValue(1, row, data[0].PLAN_TIME); row++;
+            gridTrayInfo.SetValue(1, row, data[0].CURRENT_CELL_CNT);
+            gridTrayInfo.SetValue(1, row, data[0].TRAY_ZONE); row++;
+        }
+
+        public void SetData(List<_tray_process_flow> data)
+        {
+            InitGridViewProcessFlow(data.Count);
+
+            for (int i = 0; i < data.Count; i++)
+            {
+                int col = 0;
+                gridProcessFlow.SetValue(col, i, i + 1); col++;
+                gridProcessFlow.SetValue(col, i, data[i].PROCESS_NAME); col++;
+                gridProcessFlow.SetValue(col, i, data[i].EQP_NAME); col++;
+                gridProcessFlow.SetValue(col, i, data[i].START_TIME); col++;
+                gridProcessFlow.SetValue(col, i, data[i].END_TIME); col++;
+                gridProcessFlow.SetValue(col, i, data[i].CURRENT_CELL_CNT);
+                gridProcessFlow.ColumnHeadersWidth(col, 100);
+                gridProcessFlow.SetStyleButton(gridProcessFlow.ColumnCount - 1, i, data[i].RECIPE_ID);
+            }
         }
 
         #region Titel Mouse Event
@@ -140,6 +195,79 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
+        #region ProcessThreadCallback
+        private void ProcessThreadCallback()
+        {
+            try
+            {
+                //while (this._TheadVisiable == true)
+                {
+                    GC.Collect();
+
+                    RESTClient rest = new RESTClient();
+                    // Set Query
+                    StringBuilder strSQL = new StringBuilder();
+                    // Tray Information
+                    strSQL.Append(" SELECT A.eqp_name,");
+                    strSQL.Append("        B.model_id, B.tray_id, B.tray_input_time, B.route_id, B.lot_id, B.start_time, B.plan_time, B.current_cell_cnt,");
+                    strSQL.Append("        C.process_name");
+                    strSQL.Append(" FROM fms_v.tb_mst_eqp   A");
+                    strSQL.Append("     LEFT OUTER JOIN fms_v.tb_dat_tray   B");
+                    strSQL.Append("         ON B.tray_id IN (A.tray_id, A.tray_id_2)");
+                    strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_route_order   C");
+                    strSQL.Append("         ON B.route_order_no = C.route_order_no AND B.route_id = C.route_id");
+                    //필수값
+                    strSQL.Append($" WHERE B.eqp_id = '{_EqpID}' AND B.tray_id = '{_TrayId}'");
+
+                    string jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+
+                    if (jsonResult != null)
+                    {
+                        _jsonWinTrayInfoResponse result = rest.ConvertWinTrayInfo(jsonResult);
+
+                        this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                    }
+
+                    Thread.Sleep(100);
+
+                    strSQL = new StringBuilder();
+                    // Process Flow
+                    strSQL.Append(" SELECT A.start_time, A.end_time, A.current_cell_cnt, A.recipe_id, A.json_recipe,");
+                    strSQL.Append("        B.process_name,");
+                    strSQL.Append("        C.eqp_name");
+                    strSQL.Append(" FROM fms_v.tb_dat_tray_proc     A");
+                    strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_route_order    B");
+                    strSQL.Append("         ON A.route_id = B.route_id");
+                    strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_eqp    C");
+                    strSQL.Append("         ON A.eqp_type = C.eqp_type AND A.unit_id = C.unit_id");
+                    //필수값
+                    _TrayId = "TEST00001";
+                    strSQL.Append($" WHERE A.tray_id = '{_TrayId}'");
+                    strSQL.Append("    AND A.model_id = B.model_id");
+                    strSQL.Append("    AND A.process_type = B.process_type");
+                    strSQL.Append("    AND A.process_no = B.process_no");
+                    strSQL.Append("  ORDER BY A.start_time");
+
+                    jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+
+                    if (jsonResult != null)
+                    {
+                        _jsonTrayProcessFlowResponse result = rest.ConvertTrayPorcessFlow(jsonResult);
+
+                        this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                    }
+
+                    //Thread.Sleep(3000);
+                }
+            }
+            catch (Exception ex)
+            {
+                // System Debug
+                System.Diagnostics.Debug.Print(string.Format("### Get ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+            }
+        }
+        #endregion
+
         private void ctrlButton1_Click(object sender, EventArgs e)
         {
             WinCellDetailInfo form = new WinCellDetailInfo();
@@ -151,5 +279,7 @@ namespace FMSMonitoringUI.Monitoring
         {
             Close();
         }
+
+        
     }
 }
