@@ -152,7 +152,7 @@
             // 
             this.ctrlLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel3.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel3.LanguageID = "DEF_Status_:";
+            this.ctrlLabel3.LanguageID = "DEF_Status";
             this.ctrlLabel3.Location = new System.Drawing.Point(27, 203);
             this.ctrlLabel3.Name = "ctrlLabel3";
             this.ctrlLabel3.Size = new System.Drawing.Size(97, 22);
@@ -177,7 +177,7 @@
             // 
             this.ctrlLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel2.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel2.LanguageID = "DEF_Control_Mode_:";
+            this.ctrlLabel2.LanguageID = "DEF_Control_Mode";
             this.ctrlLabel2.Location = new System.Drawing.Point(27, 132);
             this.ctrlLabel2.Name = "ctrlLabel2";
             this.ctrlLabel2.Size = new System.Drawing.Size(97, 22);
@@ -189,7 +189,7 @@
             // 
             this.ctrlLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel4.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel4.LanguageID = "DEF_Trouble_Status_:";
+            this.ctrlLabel4.LanguageID = "DEF_Trouble_Status";
             this.ctrlLabel4.Location = new System.Drawing.Point(373, 203);
             this.ctrlLabel4.Name = "ctrlLabel4";
             this.ctrlLabel4.Size = new System.Drawing.Size(97, 22);
@@ -201,7 +201,7 @@
             // 
             this.ctrlLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel1.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel1.LanguageID = "DEF_Power_:";
+            this.ctrlLabel1.LanguageID = "DEF_Power";
             this.ctrlLabel1.Location = new System.Drawing.Point(27, 106);
             this.ctrlLabel1.Name = "ctrlLabel1";
             this.ctrlLabel1.Size = new System.Drawing.Size(97, 22);
