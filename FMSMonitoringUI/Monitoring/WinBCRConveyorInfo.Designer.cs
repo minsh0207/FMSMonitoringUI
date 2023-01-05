@@ -152,7 +152,7 @@
             // 
             this.ctrlLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel3.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel3.LanguageID = "DEF_Status_:";
+            this.ctrlLabel3.LanguageID = "DEF_Status";
             this.ctrlLabel3.Location = new System.Drawing.Point(27, 203);
             this.ctrlLabel3.Name = "ctrlLabel3";
             this.ctrlLabel3.Size = new System.Drawing.Size(97, 22);
@@ -177,7 +177,7 @@
             // 
             this.ctrlLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel2.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel2.LanguageID = "DEF_Control_Mode_:";
+            this.ctrlLabel2.LanguageID = "DEF_Control_Mode";
             this.ctrlLabel2.Location = new System.Drawing.Point(27, 132);
             this.ctrlLabel2.Name = "ctrlLabel2";
             this.ctrlLabel2.Size = new System.Drawing.Size(97, 22);
@@ -189,7 +189,7 @@
             // 
             this.ctrlLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel4.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel4.LanguageID = "DEF_Trouble_Status_:";
+            this.ctrlLabel4.LanguageID = "DEF_Trouble_Status";
             this.ctrlLabel4.Location = new System.Drawing.Point(373, 203);
             this.ctrlLabel4.Name = "ctrlLabel4";
             this.ctrlLabel4.Size = new System.Drawing.Size(97, 22);
@@ -201,7 +201,7 @@
             // 
             this.ctrlLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel1.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel1.LanguageID = "DEF_Power_:";
+            this.ctrlLabel1.LanguageID = "DEF_Power";
             this.ctrlLabel1.Location = new System.Drawing.Point(27, 106);
             this.ctrlLabel1.Name = "ctrlLabel1";
             this.ctrlLabel1.Size = new System.Drawing.Size(97, 22);
@@ -227,7 +227,7 @@
             // 
             this.MagazineCommand.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.MagazineCommand.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.MagazineCommand.LanguageID = "DEF_Magazine_Command_";
+            this.MagazineCommand.LanguageID = "DEF_Magazine_Command";
             this.MagazineCommand.Location = new System.Drawing.Point(375, 295);
             this.MagazineCommand.Margin = new System.Windows.Forms.Padding(30);
             this.MagazineCommand.Name = "MagazineCommand";
@@ -241,7 +241,7 @@
             // 
             this.Destination.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.Destination.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Destination.LanguageID = "DEF_Destination_";
+            this.Destination.LanguageID = "DEF_Destination";
             this.Destination.Location = new System.Drawing.Point(375, 264);
             this.Destination.Margin = new System.Windows.Forms.Padding(30);
             this.Destination.Name = "Destination";
@@ -255,7 +255,7 @@
             // 
             this.FMSTroubleErrNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.FMSTroubleErrNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.FMSTroubleErrNo.LanguageID = "DEF_Trouble_ErrorNo_";
+            this.FMSTroubleErrNo.LanguageID = "DEF_Trouble_ErrorNo";
             this.FMSTroubleErrNo.Location = new System.Drawing.Point(375, 233);
             this.FMSTroubleErrNo.Margin = new System.Windows.Forms.Padding(30);
             this.FMSTroubleErrNo.Name = "FMSTroubleErrNo";
@@ -269,7 +269,7 @@
             // 
             this.TrayID2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.TrayID2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TrayID2.LanguageID = "DEF_Tray_ID_2_";
+            this.TrayID2.LanguageID = "DEF_Tray_ID_2";
             this.TrayID2.Location = new System.Drawing.Point(29, 485);
             this.TrayID2.Margin = new System.Windows.Forms.Padding(30);
             this.TrayID2.Name = "TrayID2";
@@ -283,7 +283,7 @@
             // 
             this.TrayID1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.TrayID1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TrayID1.LanguageID = "DEF_Tray_ID_1_";
+            this.TrayID1.LanguageID = "DEF_Tray_ID_1";
             this.TrayID1.Location = new System.Drawing.Point(29, 453);
             this.TrayID1.Margin = new System.Windows.Forms.Padding(30);
             this.TrayID1.Name = "TrayID1";
@@ -297,7 +297,7 @@
             // 
             this.TrayCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.TrayCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TrayCount.LanguageID = "DEF_Tray_Count_";
+            this.TrayCount.LanguageID = "DEF_Tray_Count";
             this.TrayCount.Location = new System.Drawing.Point(29, 422);
             this.TrayCount.Margin = new System.Windows.Forms.Padding(30);
             this.TrayCount.Name = "TrayCount";
@@ -311,7 +311,7 @@
             // 
             this.TrayType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.TrayType.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TrayType.LanguageID = "DEF_Tray_Type_";
+            this.TrayType.LanguageID = "DEF_Tray_Type";
             this.TrayType.Location = new System.Drawing.Point(29, 390);
             this.TrayType.Margin = new System.Windows.Forms.Padding(30);
             this.TrayType.Name = "TrayType";
@@ -325,7 +325,7 @@
             // 
             this.TrayExist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.TrayExist.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TrayExist.LanguageID = "DEF_Tray_Exist_";
+            this.TrayExist.LanguageID = "DEF_Tray_Exist";
             this.TrayExist.Location = new System.Drawing.Point(29, 358);
             this.TrayExist.Margin = new System.Windows.Forms.Padding(30);
             this.TrayExist.Name = "TrayExist";
@@ -339,7 +339,7 @@
             // 
             this.StationStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.StationStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.StationStatus.LanguageID = "DEF_Station_Status_";
+            this.StationStatus.LanguageID = "DEF_Station_Status";
             this.StationStatus.Location = new System.Drawing.Point(29, 326);
             this.StationStatus.Margin = new System.Windows.Forms.Padding(30);
             this.StationStatus.Name = "StationStatus";
@@ -353,7 +353,7 @@
             // 
             this.CommandReady.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.CommandReady.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CommandReady.LanguageID = "DEF_Command_Ready_";
+            this.CommandReady.LanguageID = "DEF_Command_Ready";
             this.CommandReady.Location = new System.Drawing.Point(29, 295);
             this.CommandReady.Margin = new System.Windows.Forms.Padding(30);
             this.CommandReady.Name = "CommandReady";
@@ -367,7 +367,7 @@
             // 
             this.TroubleErrLevel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.TroubleErrLevel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TroubleErrLevel.LanguageID = "DEF_Trouble_ErrorLevel_";
+            this.TroubleErrLevel.LanguageID = "DEF_Trouble_ErrorLevel";
             this.TroubleErrLevel.Location = new System.Drawing.Point(29, 264);
             this.TroubleErrLevel.Margin = new System.Windows.Forms.Padding(30);
             this.TroubleErrLevel.Name = "TroubleErrLevel";
@@ -381,7 +381,7 @@
             // 
             this.CVTroubleErrNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.CVTroubleErrNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CVTroubleErrNo.LanguageID = "DEF_Trouble_ErrorNo_";
+            this.CVTroubleErrNo.LanguageID = "DEF_Trouble_ErrorNo";
             this.CVTroubleErrNo.Location = new System.Drawing.Point(29, 233);
             this.CVTroubleErrNo.Margin = new System.Windows.Forms.Padding(30);
             this.CVTroubleErrNo.Name = "CVTroubleErrNo";
