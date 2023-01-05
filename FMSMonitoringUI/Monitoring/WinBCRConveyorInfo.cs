@@ -161,6 +161,8 @@ namespace FMSMonitoringUI.Monitoring
         #region SetData
         public void SetData(List<DataValue> data)
         {
+            if (data.Count == 0) return;
+
             InitLedStatus();
 
             bool onoff = bool.Parse(data[(int)enCVTagList.Power].Value.ToString());

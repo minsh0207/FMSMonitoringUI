@@ -14,7 +14,7 @@ namespace FMSMonitoringUI.Controlls
 {
     public partial class CtrlEqpLTAging : UserControlEqp
     {
-        public delegate void EventHandler(string title);
+        public delegate void EventHandler(string eqpId, string eqpType, int eqpLevel);
         public event EventHandler Click_Evnet = null;
 
         public CtrlEqpLTAging()
@@ -37,6 +37,19 @@ namespace FMSMonitoringUI.Controlls
             {
                 _EqpType = value;
                 lbTitle.Text = _EqpType;
+            }
+        }
+        int _EqpLevel = 0;
+        [DisplayName("EQP Level"), Description("EQP Level"), Category("GroupBox Setting")]
+        public int EqpLevel
+        {
+            get
+            {
+                return _EqpLevel;
+            }
+            set
+            {
+                _EqpLevel = value;
             }
         }
         #endregion
@@ -75,7 +88,7 @@ namespace FMSMonitoringUI.Controlls
         private void CtrlButton1_Click(object sender, EventArgs e)
         {
             if (this.Click_Evnet != null)
-                Click_Evnet(_EqpType);
+                Click_Evnet(EqpID, _EqpType, _EqpLevel);
         }
         #endregion
     }

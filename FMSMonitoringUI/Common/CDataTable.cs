@@ -555,7 +555,7 @@ namespace MonitoringUI.Common
             //dt.Rows.Add("CHINESE", "CHINESE");
             //dt.Rows.Add("KOREAN", "KOREAN");
             dt.Rows.Add("ENGLISH", "ENGLISH");
-            dt.Rows.Add("ENGLISH", "FRANCE");
+            dt.Rows.Add("FRANCE", "FRANCE");
 
             return dt;
         }

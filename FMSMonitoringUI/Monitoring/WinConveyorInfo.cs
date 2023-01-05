@@ -156,6 +156,8 @@ namespace FMSMonitoringUI.Monitoring
         }
         public void SetData(List<DataValue> data)
         {
+            if (data.Count == 0) return;
+
             InitGridView(_cvTitle, data[(int)enCVTagList.ConveyorType].Value);
 
             int row = 0;

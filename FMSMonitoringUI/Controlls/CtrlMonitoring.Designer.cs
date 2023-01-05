@@ -53,8 +53,6 @@
             this.ctrlTaggingName19 = new MonitoringUI.Controlls.CtrlTaggingName();
             this.ctrlTaggingName20 = new MonitoringUI.Controlls.CtrlTaggingName();
             this.ctrlTaggingName21 = new MonitoringUI.Controlls.CtrlTaggingName();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.pictureBox30 = new System.Windows.Forms.PictureBox();
             this.pictureBox26 = new System.Windows.Forms.PictureBox();
             this.pictureBox25 = new System.Windows.Forms.PictureBox();
@@ -311,6 +309,8 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.m_timer = new System.Windows.Forms.Timer(this.components);
+            this.ctrlLabel11 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
+            this.ctrlLabel12 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox44)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).BeginInit();
@@ -447,6 +447,8 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.ctrlLabel12);
+            this.panel1.Controls.Add(this.ctrlLabel11);
             this.panel1.Controls.Add(this.ctrlLabel10);
             this.panel1.Controls.Add(this.ctrlLabel9);
             this.panel1.Controls.Add(this.ctrlLabel8);
@@ -469,8 +471,6 @@
             this.panel1.Controls.Add(this.ctrlTaggingName19);
             this.panel1.Controls.Add(this.ctrlTaggingName20);
             this.panel1.Controls.Add(this.ctrlTaggingName21);
-            this.panel1.Controls.Add(this.label18);
-            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.pictureBox30);
             this.panel1.Controls.Add(this.pictureBox26);
             this.panel1.Controls.Add(this.pictureBox25);
@@ -489,7 +489,7 @@
             this.ctrlLabel10.LanguageID = "DEF_Conveyor_Status";
             this.ctrlLabel10.Location = new System.Drawing.Point(15, 9);
             this.ctrlLabel10.Name = "ctrlLabel10";
-            this.ctrlLabel10.Size = new System.Drawing.Size(111, 16);
+            this.ctrlLabel10.Size = new System.Drawing.Size(110, 16);
             this.ctrlLabel10.TabIndex = 98;
             this.ctrlLabel10.Text = "Conveyor Status";
             // 
@@ -757,27 +757,6 @@
             this.ctrlTaggingName21.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(135)))), ((int)(((byte)(21)))));
             this.ctrlTaggingName21.TagText = "Maintenance";
             this.ctrlTaggingName21.TextColor = System.Drawing.Color.Black;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.Color.White;
-            this.label18.Location = new System.Drawing.Point(15, 497);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(75, 16);
-            this.label18.TabIndex = 76;
-            this.label18.Text = "Eqp Status";
-            // 
-            // label5
-            // 
-            this.label5.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(15, 201);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(123, 18);
-            this.label5.TabIndex = 52;
-            this.label5.Text = "Conveyor Type";
             // 
             // pictureBox30
             // 
@@ -1091,7 +1070,8 @@
             // 
             this.ctrlEqpLTAging4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlEqpLTAging4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ctrlEqpLTAging4.EqpID = "";
+            this.ctrlEqpLTAging4.EqpID = "F1LTA02";
+            this.ctrlEqpLTAging4.EqpLevel = 2;
             this.ctrlEqpLTAging4.EqpType = "LTA2";
             this.ctrlEqpLTAging4.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpLTAging4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
@@ -1104,11 +1084,12 @@
             // 
             this.ctrlEqpLTAging3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlEqpLTAging3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ctrlEqpLTAging3.EqpID = "";
-            this.ctrlEqpLTAging3.EqpType = "LTA1";
+            this.ctrlEqpLTAging3.EqpID = "F1LTA02";
+            this.ctrlEqpLTAging3.EqpLevel = 1;
+            this.ctrlEqpLTAging3.EqpType = "LTA2";
             this.ctrlEqpLTAging3.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpLTAging3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlEqpLTAging3.Location = new System.Drawing.Point(1532, 410);
+            this.ctrlEqpLTAging3.Location = new System.Drawing.Point(1532, 518);
             this.ctrlEqpLTAging3.Name = "ctrlEqpLTAging3";
             this.ctrlEqpLTAging3.Size = new System.Drawing.Size(142, 81);
             this.ctrlEqpLTAging3.TabIndex = 581;
@@ -1117,7 +1098,8 @@
             // 
             this.ctrlEqpHTAging2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlEqpHTAging2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ctrlEqpHTAging2.EqpID = "";
+            this.ctrlEqpHTAging2.EqpID = "F1HTA01";
+            this.ctrlEqpHTAging2.EqpLevel = 2;
             this.ctrlEqpHTAging2.EqpType = "HTA";
             this.ctrlEqpHTAging2.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpHTAging2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
@@ -1130,11 +1112,12 @@
             // 
             this.ctrlEqpLTAging2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlEqpLTAging2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ctrlEqpLTAging2.EqpID = "";
-            this.ctrlEqpLTAging2.EqpType = "LTA2";
+            this.ctrlEqpLTAging2.EqpID = "F1LTA01";
+            this.ctrlEqpLTAging2.EqpLevel = 2;
+            this.ctrlEqpLTAging2.EqpType = "LTA1";
             this.ctrlEqpLTAging2.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpLTAging2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlEqpLTAging2.Location = new System.Drawing.Point(1531, 518);
+            this.ctrlEqpLTAging2.Location = new System.Drawing.Point(1531, 413);
             this.ctrlEqpLTAging2.Name = "ctrlEqpLTAging2";
             this.ctrlEqpLTAging2.Size = new System.Drawing.Size(142, 81);
             this.ctrlEqpLTAging2.TabIndex = 579;
@@ -1143,7 +1126,8 @@
             // 
             this.ctrlEqpLTAging1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlEqpLTAging1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ctrlEqpLTAging1.EqpID = "";
+            this.ctrlEqpLTAging1.EqpID = "F1LTA01";
+            this.ctrlEqpLTAging1.EqpLevel = 1;
             this.ctrlEqpLTAging1.EqpType = "LTA1";
             this.ctrlEqpLTAging1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpLTAging1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
@@ -1156,7 +1140,8 @@
             // 
             this.ctrlEqpHTAging1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlEqpHTAging1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ctrlEqpHTAging1.EqpID = "";
+            this.ctrlEqpHTAging1.EqpID = "F1HTA01";
+            this.ctrlEqpHTAging1.EqpLevel = 1;
             this.ctrlEqpHTAging1.EqpType = "HTA";
             this.ctrlEqpHTAging1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpHTAging1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
@@ -5265,6 +5250,32 @@
             this.label29.Size = new System.Drawing.Size(269, 162);
             this.label29.TabIndex = 577;
             // 
+            // ctrlLabel11
+            // 
+            this.ctrlLabel11.AutoSize = true;
+            this.ctrlLabel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel11.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.ctrlLabel11.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel11.LanguageID = "DEF_Conveyor_Trye";
+            this.ctrlLabel11.Location = new System.Drawing.Point(15, 202);
+            this.ctrlLabel11.Name = "ctrlLabel11";
+            this.ctrlLabel11.Size = new System.Drawing.Size(101, 16);
+            this.ctrlLabel11.TabIndex = 99;
+            this.ctrlLabel11.Text = "Conveyor Type";
+            // 
+            // ctrlLabel12
+            // 
+            this.ctrlLabel12.AutoSize = true;
+            this.ctrlLabel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel12.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.ctrlLabel12.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel12.LanguageID = "DEF_Eqp_Status";
+            this.ctrlLabel12.Location = new System.Drawing.Point(15, 502);
+            this.ctrlLabel12.Name = "ctrlLabel12";
+            this.ctrlLabel12.Size = new System.Drawing.Size(74, 16);
+            this.ctrlLabel12.TabIndex = 100;
+            this.ctrlLabel12.Text = "Eqp Status";
+            // 
             // CtrlMonitoring
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -5414,7 +5425,6 @@
 
         #endregion
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox30;
         private System.Windows.Forms.PictureBox pictureBox26;
         private System.Windows.Forms.PictureBox pictureBox25;
@@ -5666,7 +5676,6 @@
         private MonitoringUI.Controlls.CtrlTaggingName ctrlTaggingName19;
         private MonitoringUI.Controlls.CtrlTaggingName ctrlTaggingName20;
         private MonitoringUI.Controlls.CtrlTaggingName ctrlTaggingName21;
-        private System.Windows.Forms.Label label18;
         private CtrlEqpHTAging ctrlEqpHTAging1;
         private System.Windows.Forms.Label label2;
         private CtrlEqpLTAging ctrlEqpLTAging2;
@@ -5694,5 +5703,7 @@
         private CtrlEqpCharger ctrlEqpCharger1;
         private CtrlEqpHPC ctrlEqpHPC1;
         private WindowsForms.CtrlLabel ctrlLabel10;
+        private WindowsForms.CtrlLabel ctrlLabel11;
+        private WindowsForms.CtrlLabel ctrlLabel12;
     }
 }

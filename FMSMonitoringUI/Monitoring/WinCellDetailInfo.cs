@@ -467,17 +467,15 @@ namespace FMSMonitoringUI.Monitoring
                 gridCellIDLIst.SetStyleBackColor(col, row, Color.LightBlue);
                 gridCellIDLIst.SetStyleForeColor(col, row, Color.Black);
 
-                //gridCellInfo.SetValue(1, 0, value.ToString());
-
                 SetCellInfo(row);
 
                 GetCellProcessName(value.ToString());
-
-                //gridProcessName.SetValue(1, 0, "Assembly");
-                //gridProcessName.SetValue(1, 0, "LT Aging #1");
-                //gridProcessName.SetValue(1, 1, "OCV/ACIR");
-                //gridProcessName.SetValue(1, 2, "NG Sorter #1");
             }
+
+            Dictionary<string, object> data = new Dictionary<string, object>();
+            data.Add("", "");
+            InitGridViewRecipeInfo(data);
+            InitGridViewProcessData(data);
         }        
         private void GridProcessName_MouseCellDoubleClick(int col, int row, object value)
         {

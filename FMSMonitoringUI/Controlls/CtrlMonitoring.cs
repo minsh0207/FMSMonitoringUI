@@ -2,6 +2,7 @@
 using CSVMgr;
 using DBHandler;
 using FMSMonitoringUI.Common;
+using FMSMonitoringUI.Controlls.WindowsForms;
 using FMSMonitoringUI.Monitoring;
 using FormationMonCtrl;
 //using Microsoft.Office.Interop.Excel;
@@ -116,6 +117,7 @@ namespace FMSMonitoringUI.Controlls
             string msg = $"Full Monitoring";
             _Logger.Write(LogLevel.Info, msg, LogFileName.AllLog);
 
+            InitLanguage();
             InitMonitoring();
         }
         #endregion
@@ -343,16 +345,6 @@ namespace FMSMonitoringUI.Controlls
                 }
             }
 
-            // CtrlTaggingName 언어 변환 호출
-            foreach (var ctl in panel1.Controls)
-            {
-                if (ctl.GetType() == typeof(CtrlTaggingName))
-                {
-                    CtrlTaggingName tagName = ctl as CtrlTaggingName;
-                    tagName.CallLocalLanguage();
-                }
-            }
-
             for (int i = 0; i < CDefine.DEF_PLC_SERVER_COUNT; i++)
             {
                 if (craneInfo[i].Item.Count > 0)
@@ -361,9 +353,12 @@ namespace FMSMonitoringUI.Controlls
                 }
             }
 
-            ctrlEqpHTAging1.Click_Evnet += CtrlEqpAging1_Click;
-            ctrlEqpLTAging1.Click_Evnet += CtrlEqpAging1_Click;
-            ctrlEqpLTAging2.Click_Evnet += CtrlEqpAging1_Click;
+            ctrlEqpHTAging1.Click_Evnet += CtrlEqpAging_Click;
+            ctrlEqpHTAging2.Click_Evnet += CtrlEqpAging_Click;
+            ctrlEqpLTAging1.Click_Evnet += CtrlEqpAging_Click;
+            ctrlEqpLTAging2.Click_Evnet += CtrlEqpAging_Click;
+            ctrlEqpLTAging3.Click_Evnet += CtrlEqpAging_Click;
+            ctrlEqpLTAging4.Click_Evnet += CtrlEqpAging_Click;
             //ctrlEqpDGS.MouseClick += CtrlEqp_MouseClick_Evnet;
 
             //int idx = 0;
@@ -385,10 +380,10 @@ namespace FMSMonitoringUI.Controlls
             return groupCtrl;
         }
 
-        private void CtrlEqpAging1_Click(string rackid)
+        private void CtrlEqpAging_Click(string eqpId, string eqpType, int level)
         {
             string agingType = string.Empty;
-            switch (rackid)
+            switch (eqpType)
             {
                 case "HTA":
                     agingType = "HT Aging";
@@ -403,8 +398,7 @@ namespace FMSMonitoringUI.Controlls
                 default:
                     break;
             }
-            WinLeadTime form = new WinLeadTime();            
-            form.SetData(agingType);
+            WinLeadTime form = new WinLeadTime(eqpId, agingType, level);
             form.ShowDialog();
         }
 
@@ -419,6 +413,24 @@ namespace FMSMonitoringUI.Controlls
             //ctrlEqpDGS.Refresh();
         }
         #endregion
+
+        private void InitLanguage()
+        {
+            // CtrlTaggingName 언어 변환 호출
+            foreach (var ctl in panel1.Controls)
+            {
+                if (ctl.GetType() == typeof(CtrlTaggingName))
+                {
+                    CtrlTaggingName tagName = ctl as CtrlTaggingName;
+                    tagName.CallLocalLanguage();
+                }
+                else if (ctl.GetType() == typeof(CtrlLabel))
+                {
+                    CtrlLabel tagName = ctl as CtrlLabel;
+                    tagName.CallLocalLanguage();
+                }
+            }
+        }
 
         #region OnTimer
         private void OnTimer(object sender, EventArgs e)
@@ -485,6 +497,7 @@ namespace FMSMonitoringUI.Controlls
                 _CVTrackNo = trackno;
 
                 if (_clientFMS[groupno] == null) return;
+                if (_clientFMS[groupno].ConveyorNodeID == null) return;
 
                 if (trackno > 300)      // Water Tank
                 {
@@ -1226,6 +1239,10 @@ namespace FMSMonitoringUI.Controlls
         {
             Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
             LocalLanguage.resxLanguage = new ResourceManager("MonitoringUI.WinFormRoot", typeof(WinFormRoot).Assembly);
+
+            InitLanguage();
+
+            Refresh();
 
             //DataSet ds = _mysql.SelectEqpInfo();
 

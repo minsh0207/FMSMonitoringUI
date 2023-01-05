@@ -1,11 +1,14 @@
 ﻿using MonitoringUI.Common;
 using MonitoringUI.Controlls;
+using Org.BouncyCastle.Ocsp;
+using RestClientLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,19 +19,26 @@ namespace FMSMonitoringUI.Monitoring
     public partial class WinLeadTime : Form
     {
         private Point point = new Point();
+        private string _EqpId = string.Empty;
+        private string _EqpType = string.Empty;
+        private int _Eqplevel = 0;
 
-        public WinLeadTime()
+        public WinLeadTime(string eqpId, string eqpType, int eqpLevel)
         {
             InitializeComponent();
 
+            _EqpId = eqpId;
+            _EqpType = eqpType;
+            _Eqplevel = eqpLevel;
+
             InitGridViewTray();
+
+            GetAgingTrayInfo(eqpType, eqpLevel);
             //InitChart();
         }
 
         private void WinLeadTime_Load(object sender, EventArgs e)
-        {            
-            InitsplitContainer();
-
+        {
             #region Title Mouse Event
             ctrlTitleBar.MouseDown_Evnet += Title_MouseDownEvnet;
             ctrlTitleBar.MouseMove_Evnet += Title_MouseMoveEvnet;
@@ -38,17 +48,6 @@ namespace FMSMonitoringUI.Monitoring
             gridTrayInfo.MouseCellDoubleClick_Evnet += GridTrayInfo_MouseCellDoubleClick;
             #endregion
 
-        }
-
-        private void InitsplitContainer()
-        {
-            //splitContainer1.BackColor = Color.LightGray;            // Color.FromArgb(53, 53, 53);
-            //splitContainer1.BorderStyle = BorderStyle.FixedSingle;
-            //splitContainer2.Panel2.BackColor = Color.LightGray;     //Color.FromArgb(53, 53, 53);
-            //splitContainer2.BorderStyle = BorderStyle.FixedSingle;
-
-            //splitContainer3.BorderStyle = BorderStyle.FixedSingle;
-            //splitContainer3.Panel2.BackColor = Color.FromArgb(27, 27, 27);
         }
 
         //private void InitChart()
@@ -66,8 +65,8 @@ namespace FMSMonitoringUI.Monitoring
         private void InitGridViewTray()
         {
             List<string> lstTitle = new List<string>();
-            lstTitle.Add("No");
             lstTitle.Add("Location");
+            lstTitle.Add("Rack ID");            
             lstTitle.Add("Tray ID");
             lstTitle.Add("Start Time");
             lstTitle.Add("Plan Time");
@@ -79,8 +78,8 @@ namespace FMSMonitoringUI.Monitoring
             lstTitle.Add("");
             gridTrayInfo.AddRowsHeaderList(lstTitle);
 
-            gridTrayInfo.ColumnHeadersHeight(30);
-            gridTrayInfo.RowsHeight(30);
+            gridTrayInfo.ColumnHeadersHeight(26);
+            gridTrayInfo.RowsHeight(26);
 
             //List<int> lstColumn = new List<int>();
             //lstColumn.Add(-1);      // DataGridView Header 병합
@@ -89,14 +88,73 @@ namespace FMSMonitoringUI.Monitoring
             //TrayInfoView.ColumnMergeList(lstColumn, lstTitle);
 
             gridTrayInfo.SetGridViewStyles();
-            gridTrayInfo.ColumnHeadersWidth(0, 60);
+            gridTrayInfo.ColumnHeadersWidth(0, 80);
+            gridTrayInfo.ColumnHeadersWidth(1, 100);
         }
 
-        public void SetData(string rackid)
+        private void SetData(List<_win_lead_time> data)
         {
-            gridTrayInfo.SetValue(0, 0, "1");
-            gridTrayInfo.SetValue(1, 0, rackid);
-            gridTrayInfo.SetValue(2, 0, "TRV000001");
+            gridTrayInfo.RowCount= data.Count;
+            int row = 0;
+
+            foreach (var item in data)
+            {
+                int col = 0;
+
+                gridTrayInfo.SetValue(col, row, item.LANE); col++;
+                gridTrayInfo.SetValue(col, row, item.RACK_ID); col++;
+                gridTrayInfo.SetValue(col, row, item.TRAY_ID); col++;
+                gridTrayInfo.SetValue(col, row, item.START_TIME); col++;
+                gridTrayInfo.SetValue(col, row, item.PLAN_TIME); col++;
+                gridTrayInfo.SetValue(col, row, GetTimeSpan(item.START_TIME)); col++;
+                gridTrayInfo.SetValue(col, row, "0000");
+                row++;
+            }
+
+            gridTrayInfo.SetGridViewStyles();
+        }
+
+        #region GetCellIDList
+        private void GetAgingTrayInfo(string eqpType, int level)
+        {
+            RESTClient rest = new RESTClient();
+            //// Set Query
+            StringBuilder strSQL = new StringBuilder();
+            // Tray Information
+            strSQL.Append(" SELECT lane, tray_id, rack_id, start_time, plan_time");
+            strSQL.Append(" FROM fms_v.tb_mst_aging");
+            //필수값
+            strSQL.Append($" WHERE aging_type = '{eqpType.Substring(0, 1)}'");
+            strSQL.Append($"    AND lane = {level * 2 - 1}");
+            strSQL.Append($"    OR aging_type = '{eqpType.Substring(0, 1)}'");
+            strSQL.Append($"    AND lane = {level * 2}");
+
+            string jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+
+            if (jsonResult != null)
+            {
+                _jsonWinLeadTimeResponse result = rest.ConvertWinLeadTime(jsonResult);
+
+                SetData(result.DATA);
+
+                //this.BeginInvoke(new Action(() => SetData(result.DATA)));
+
+                //_CellProcessFlow = result.DATA;
+            }
+        }
+        #endregion
+        private string GetTimeSpan(DateTime StartDate)
+        {
+            DateTime CurrentTime = DateTime.Now;
+            TimeSpan dateDiff = CurrentTime - StartDate;
+
+            int diffDay = dateDiff.Days;
+            int diffHour = dateDiff.Hours;
+            int diffMinute = dateDiff.Minutes;
+            int diffSecond = dateDiff.Seconds;
+
+            string timeSpan = string.Format($"{diffDay}day {diffDay}hour:{diffMinute}min:{diffSecond}sec");
+            return timeSpan;
         }
 
         #region Titel Mouse Event
@@ -122,6 +180,8 @@ namespace FMSMonitoringUI.Monitoring
                 //WinTrayInfo form = new WinTrayInfo();
                 //form.SetData(value.ToString());
                 //form.ShowDialog();
+                WinTrayInfo form = new WinTrayInfo(_EqpId, value.ToString());
+                form.ShowDialog();
             }
         }
         #endregion

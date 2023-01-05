@@ -671,6 +671,12 @@
     <Compile Include="Monitoring\WinAgingRackOutManage.Designer.cs">
       <DependentUpon>WinAgingRackOutManage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Monitoring\WinRecipeInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Monitoring\WinRecipeInfo.Designer.cs">
+      <DependentUpon>WinRecipeInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Monitoring\WinFormationHPC.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1079,6 +1085,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Monitoring\WinAgingRackOutManage.resx">
       <DependentUpon>WinAgingRackOutManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Monitoring\WinRecipeInfo.resx">
+      <DependentUpon>WinRecipeInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Monitoring\WinFormationHPC.resx">
       <DependentUpon>WinFormationHPC.cs</DependentUpon>

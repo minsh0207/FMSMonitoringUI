@@ -1,5 +1,6 @@
 ﻿using MonitoringUI.Common;
 using MonitoringUI.Controlls;
+using MySqlX.XDevAPI.Common;
 using Org.BouncyCastle.Ocsp;
 using RestClientLib;
 using System;
@@ -19,20 +20,20 @@ namespace FMSMonitoringUI.Monitoring
     {
         private Point point = new Point();
         private string _EqpID = string.Empty;
-        private string _EqpType = string.Empty;
         private string _TrayId = string.Empty;
+
+        private List<_tray_process_flow> _TrayProcessInfo;
 
         #region Working Thread
         private Thread _ProcessThread;
         private bool _TheadVisiable;
         #endregion
 
-        public WinTrayInfo(string eqpid, string eqpType, string trayId)
+        public WinTrayInfo(string eqpid, string trayId)
         {
             InitializeComponent();
 
             _EqpID = eqpid;
-            _EqpType = eqpType;
             _TrayId = trayId;
 
             InitGridViewTray();
@@ -133,6 +134,8 @@ namespace FMSMonitoringUI.Monitoring
         #region SetData
         public void SetData(List<_win_tray_info> data)
         {
+            if (data.Count == 0) return;
+
             int row = 0;
             gridTrayInfo.SetValue(1, row, data[0].MODEL_ID); row++;
             gridTrayInfo.SetValue(1, row, data[0].TRAY_ID); row++;
@@ -227,6 +230,8 @@ namespace FMSMonitoringUI.Monitoring
                         _jsonTrayProcessFlowResponse result = rest.ConvertTrayPorcessFlow(jsonResult);
 
                         this.BeginInvoke(new Action(() => SetData(result.DATA)));
+
+                        _TrayProcessInfo = result.DATA;
                     }
 
                     //Thread.Sleep(3000);
@@ -260,9 +265,10 @@ namespace FMSMonitoringUI.Monitoring
         {
             if (col == gridProcessFlow.ColumnCount -1 && row > -1)
             {
-                //WinCellDetailInfo form = new WinCellDetailInfo(value.ToString());
-                //form.SetData();
-                //form.ShowDialog();
+                WinRecipeInfo form = new WinRecipeInfo();
+                form.SetData(_TrayProcessInfo[row], value.ToString());
+                form.ShowDialog();
+
             }
         }
         #endregion

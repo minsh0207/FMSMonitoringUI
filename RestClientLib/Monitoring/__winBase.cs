@@ -81,6 +81,19 @@ namespace RestClientLib
         public string json_process_data { get; set; }
     }
     #endregion
+    #region WinLeadTime
+    /// <summary>
+    /// JSON base format : WinLeadTime
+    /// </summary>
+    public class _win_lead_time
+    {
+        public string LANE { get; set; }
+        public string RACK_ID { get; set; }
+        public string TRAY_ID { get; set; }
+        public DateTime START_TIME { get; set; }
+        public DateTime PLAN_TIME { get; set; }
+    }
+    #endregion
 
     /*
     #region tb_dat_cell

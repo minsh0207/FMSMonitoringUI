@@ -144,6 +144,8 @@ namespace FMSMonitoringUI.Monitoring
         #region SetData
         public void SetData(List<_win_manage_eqp> data)
         {
+            if (data.Count == 0) return;
+
             int row = 0;
             gridEqpInfo.SetValue(1, row, data[0].EQP_ID); row++;
             gridEqpInfo.SetValue(1, row, data[0].EQP_NAME); row++;

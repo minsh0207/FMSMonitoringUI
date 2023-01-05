@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MonitoringUI.Controlls.CComboBox;
+using System.Resources;
+using System.Threading;
 //using AutoUpdaterDotNET;
 //using System.Windows.Input;
 
@@ -104,16 +106,21 @@ namespace MonitoringUI.Popup
             switch (cbLanguage.SelectedItem.ToString())
             {
                 case "FRANCE":
+                    Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("fr-FR");
                     CDefine.m_enLanguage = enLoginLanguage.France;
                     break;
                 case "KOREAN":
                     CDefine.m_enLanguage = enLoginLanguage.Korean;
+                    Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
                     break;
                 case "ENGLISH":
                     CDefine.m_enLanguage = enLoginLanguage.English;
+                    Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");                    
                     break;
 
             }
+
+            LocalLanguage.resxLanguage = new ResourceManager("MonitoringUI.WinFormRoot", typeof(WinFormRoot).Assembly);
 
             this.Close();
         }

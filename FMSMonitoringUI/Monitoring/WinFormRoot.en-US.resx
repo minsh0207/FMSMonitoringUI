@@ -117,70 +117,331 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DEF_COMMAND_READY" xml:space="preserve">
+  <data name="DEF_1st_Aging" xml:space="preserve">
+    <value>1st Aging</value>
+  </data>
+  <data name="DEF_2nd_Aging" xml:space="preserve">
+    <value>2nd Aging</value>
+  </data>
+  <data name="DEF_3rd_Aging" xml:space="preserve">
+    <value>3rd Aging</value>
+  </data>
+  <data name="DEF_4th_Aging" xml:space="preserve">
+    <value>4th Aging</value>
+  </data>
+  <data name="DEF_Aging" xml:space="preserve">
+    <value>Aging</value>
+  </data>
+  <data name="DEF_Aging_Rack_Setting" xml:space="preserve">
+    <value>Aging Rack Setting</value>
+  </data>
+  <data name="DEF_Carriage_Fire_Sensor_:" xml:space="preserve">
+    <value>Carriage Fire Sensor :</value>
+  </data>
+  <data name="DEF_Carriage_Position_" xml:space="preserve">
+    <value>Carriage Position </value>
+  </data>
+  <data name="DEF_Cell_Information" xml:space="preserve">
+    <value>Cell Information</value>
+  </data>
+  <data name="DEF_Clear_Information" xml:space="preserve">
+    <value>Clear Information</value>
+  </data>
+  <data name="DEF_Clear_Trouble" xml:space="preserve">
+    <value>Clear Trouble</value>
+  </data>
+  <data name="DEF_Command_Ready_" xml:space="preserve">
     <value>Command Ready </value>
   </data>
-  <data name="DEF_CONTROL_001" xml:space="preserve">
-    <value>US_TEST</value>
+  <data name="DEF_Command_Ready_:" xml:space="preserve">
+    <value>Command Ready :</value>
   </data>
-  <data name="DEF_CONTROL_MODE" xml:space="preserve">
-    <value>Control Mode</value>
+  <data name="DEF_Configuration" xml:space="preserve">
+    <value>Configuration</value>
   </data>
-  <data name="DEF_CONVEYOR" xml:space="preserve">
+  <data name="DEF_Control_Mode_:" xml:space="preserve">
+    <value>Control Mode :</value>
+  </data>
+  <data name="DEF_Conveyor" xml:space="preserve">
     <value>Conveyor</value>
   </data>
-  <data name="DEF_CONVEYOR_INFORMATION" xml:space="preserve">
+  <data name="DEF_Conveyor_Information" xml:space="preserve">
     <value>Conveyor Information</value>
   </data>
-  <data name="DEF_CONVEYOR_NO" xml:space="preserve">
+  <data name="DEF_Conveyor_No" xml:space="preserve">
     <value>Conveyor No</value>
   </data>
-  <data name="DEF_CONVEYOR_TYPE" xml:space="preserve">
+  <data name="DEF_Conveyor_Status" xml:space="preserve">
+    <value>Conveyor Status</value>
+  </data>
+  <data name="DEF_Conveyor_Trye" xml:space="preserve">
     <value>Conveyor Type</value>
   </data>
-  <data name="DEF_DESTINATION" xml:space="preserve">
+  <data name="DEF_Conveyor_Type" xml:space="preserve">
+    <value>Conveyor Type</value>
+  </data>
+  <data name="DEF_Data_Clear" xml:space="preserve">
+    <value>Data Clear</value>
+  </data>
+  <data name="DEF_Destination_" xml:space="preserve">
     <value>Destination </value>
   </data>
-  <data name="DEF_EXIT" xml:space="preserve">
+  <data name="DEF_Disable_Tray_Load" xml:space="preserve">
+    <value>Disable Tray Load</value>
+  </data>
+  <data name="DEF_Disable_Tray_Unload" xml:space="preserve">
+    <value>Disable Tray Unload</value>
+  </data>
+  <data name="DEF_Dispenser" xml:space="preserve">
+    <value>Dispenser</value>
+  </data>
+  <data name="DEF_DoubleIn_:" xml:space="preserve">
+    <value>DoubleIn :</value>
+  </data>
+  <data name="DEF_Duplication" xml:space="preserve">
+    <value>Duplication</value>
+  </data>
+  <data name="DEF_Empty" xml:space="preserve">
+    <value>Empty</value>
+  </data>
+  <data name="DEF_Empty_Out_:" xml:space="preserve">
+    <value>Empty Out :</value>
+  </data>
+  <data name="DEF_Empty_Release" xml:space="preserve">
+    <value>Empty Release</value>
+  </data>
+  <data name="DEF_Enable_Tray_Load" xml:space="preserve">
+    <value>Enable Tray Load</value>
+  </data>
+  <data name="DEF_Enable_Tray_Unload" xml:space="preserve">
+    <value>Enable Tray Unload</value>
+  </data>
+  <data name="DEF_Eqp_Status" xml:space="preserve">
+    <value>Eqp Status</value>
+  </data>
+  <data name="DEF_Equipment_Control" xml:space="preserve">
+    <value>Equipment Control</value>
+  </data>
+  <data name="DEF_Etc_Aging" xml:space="preserve">
+    <value>Etc Aging</value>
+  </data>
+  <data name="DEF_Exit" xml:space="preserve">
     <value>Exit</value>
+  </data>
+  <data name="DEF_Fire" xml:space="preserve">
+    <value>Fire</value>
+  </data>
+  <data name="DEF_Fire_Sensor_:" xml:space="preserve">
+    <value>Fire Sensor :</value>
   </data>
   <data name="DEF_FMS" xml:space="preserve">
     <value>FMS</value>
   </data>
-  <data name="DEF_MAGAZINE_COMMAND" xml:space="preserve">
-    <value>Magazine Command</value>
+  <data name="DEF_Force_Tray_Unload" xml:space="preserve">
+    <value>Force Tray Unload</value>
   </data>
-  <data name="DEF_POWER" xml:space="preserve">
-    <value>Power</value>
+  <data name="DEF_Force_Tray_Unload_now" xml:space="preserve">
+    <value>Force Tray Unload now</value>
   </data>
-  <data name="DEF_STATION_STATUS" xml:space="preserve">
+  <data name="DEF_Fork_Position_:" xml:space="preserve">
+    <value>Fork Position :</value>
+  </data>
+  <data name="DEF_Formation(CHG)" xml:space="preserve">
+    <value>Formation(CHG)</value>
+  </data>
+  <data name="DEF_Formation(HPC)" xml:space="preserve">
+    <value>Formation(HPC)</value>
+  </data>
+  <data name="DEF_Formation_Box" xml:space="preserve">
+    <value>Formation Box</value>
+  </data>
+  <data name="DEF_HPC" xml:space="preserve">
+    <value>HPC</value>
+  </data>
+  <data name="DEF_Idle" xml:space="preserve">
+    <value>Idle</value>
+  </data>
+  <data name="DEF_Input_Enable_:" xml:space="preserve">
+    <value>Input Enable :</value>
+  </data>
+  <data name="DEF_Job_Cancel_:" xml:space="preserve">
+    <value>Job Cancel :</value>
+  </data>
+  <data name="DEF_Job_Cancel_Response_:" xml:space="preserve">
+    <value>Job Cancel Response :</value>
+  </data>
+  <data name="DEF_Job_Command_:" xml:space="preserve">
+    <value>Job Command :</value>
+  </data>
+  <data name="DEF_Job_Complete_:" xml:space="preserve">
+    <value>Job Complete :</value>
+  </data>
+  <data name="DEF_Job_Complete_Response_:" xml:space="preserve">
+    <value>Job Complete Response :</value>
+  </data>
+  <data name="DEF_Job_Type_:" xml:space="preserve">
+    <value>Job Type :</value>
+  </data>
+  <data name="DEF_Loading" xml:space="preserve">
+    <value>Loading</value>
+  </data>
+  <data name="DEF_Load_Request" xml:space="preserve">
+    <value>Load Request</value>
+  </data>
+  <data name="DEF_Login_ID" xml:space="preserve">
+    <value>Login ID</value>
+  </data>
+  <data name="DEF_Magazine" xml:space="preserve">
+    <value>Magazine</value>
+  </data>
+  <data name="DEF_Magazine_Command_" xml:space="preserve">
+    <value>Magazine Command </value>
+  </data>
+  <data name="DEF_Main" xml:space="preserve">
+    <value>Main</value>
+  </data>
+  <data name="DEF_Maintenance" xml:space="preserve">
+    <value>Maintenance</value>
+  </data>
+  <data name="DEF_Manage_EQP" xml:space="preserve">
+    <value>Manage EQP</value>
+  </data>
+  <data name="DEF_MZ/DP" xml:space="preserve">
+    <value>MZ/DP</value>
+  </data>
+  <data name="DEF_NoInput_Rack" xml:space="preserve">
+    <value>NoInput Rack</value>
+  </data>
+  <data name="DEF_None" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="DEF_NoOut_Rack" xml:space="preserve">
+    <value>NoOut Rack</value>
+  </data>
+  <data name="DEF_Not_Use" xml:space="preserve">
+    <value>Not Use</value>
+  </data>
+  <data name="DEF_Parameter" xml:space="preserve">
+    <value>Parameter</value>
+  </data>
+  <data name="DEF_Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="DEF_Pause" xml:space="preserve">
+    <value>Pause</value>
+  </data>
+  <data name="DEF_Pause_Current_Process" xml:space="preserve">
+    <value>Pause Current Process</value>
+  </data>
+  <data name="DEF_Plan_Time" xml:space="preserve">
+    <value>Plan Time</value>
+  </data>
+  <data name="DEF_Plan_Unloading" xml:space="preserve">
+    <value>Plan Unloading</value>
+  </data>
+  <data name="DEF_Power_:" xml:space="preserve">
+    <value>Power :</value>
+  </data>
+  <data name="DEF_Process_Lead_Time" xml:space="preserve">
+    <value>Process Lead Time</value>
+  </data>
+  <data name="DEF_Real_BCR" xml:space="preserve">
+    <value>Real BCR</value>
+  </data>
+  <data name="DEF_Reset_DoubleIn_:" xml:space="preserve">
+    <value>Reset DoubleIn :</value>
+  </data>
+  <data name="DEF_Reset_EmptyOut_:" xml:space="preserve">
+    <value>Reset EmptyOut :</value>
+  </data>
+  <data name="DEF_Restart_Current_Process" xml:space="preserve">
+    <value>Restart Current Process</value>
+  </data>
+  <data name="DEF_RestockButtonPressed_:" xml:space="preserve">
+    <value>RestockButtonPressed :</value>
+  </data>
+  <data name="DEF_Resume_Paused_Process" xml:space="preserve">
+    <value>Resume Paused Process</value>
+  </data>
+  <data name="DEF_Running" xml:space="preserve">
+    <value>Running</value>
+  </data>
+  <data name="DEF_S/Crane" xml:space="preserve">
+    <value>S/Crane</value>
+  </data>
+  <data name="DEF_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="DEF_Shipping_Storage" xml:space="preserve">
+    <value>Shipping Storage</value>
+  </data>
+  <data name="DEF_Station_Sink_:" xml:space="preserve">
+    <value>Station Sink :</value>
+  </data>
+  <data name="DEF_Station_Status_" xml:space="preserve">
     <value>Station Status </value>
   </data>
-  <data name="DEF_STATUS" xml:space="preserve">
-    <value>Status</value>
+  <data name="DEF_Status_:" xml:space="preserve">
+    <value>Status :</value>
   </data>
-  <data name="DEF_TRAY_COUNT" xml:space="preserve">
+  <data name="DEF_Stop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="DEF_Stop_Current_Process" xml:space="preserve">
+    <value>Stop Current Process</value>
+  </data>
+  <data name="DEF_Tray_Arrived" xml:space="preserve">
+    <value>Tray Arrived</value>
+  </data>
+  <data name="DEF_Tray_Count_" xml:space="preserve">
     <value>Tray Count </value>
   </data>
-  <data name="DEF_TRAY_EXIST" xml:space="preserve">
+  <data name="DEF_Tray_Exist_" xml:space="preserve">
     <value>Tray Exist </value>
   </data>
-  <data name="DEF_TRAY_ID1" xml:space="preserve">
+  <data name="DEF_Tray_Exist_:" xml:space="preserve">
+    <value>Tray Exist :</value>
+  </data>
+  <data name="DEF_Tray_ID_1_" xml:space="preserve">
     <value>Tray ID 1 </value>
   </data>
-  <data name="DEF_TRAY_ID2" xml:space="preserve">
-    <value>Tray ID 2</value>
+  <data name="DEF_Tray_ID_2_" xml:space="preserve">
+    <value>Tray ID 2 </value>
   </data>
-  <data name="DEF_TRAY_TYPE" xml:space="preserve">
+  <data name="DEF_Tray_Off" xml:space="preserve">
+    <value>Tray Off</value>
+  </data>
+  <data name="DEF_Tray_On" xml:space="preserve">
+    <value>Tray On</value>
+  </data>
+  <data name="DEF_Tray_Type_" xml:space="preserve">
     <value>Tray Type </value>
   </data>
-  <data name="DEF_TROUBLE_ERRORLEVEL" xml:space="preserve">
+  <data name="DEF_Trouble" xml:space="preserve">
+    <value>Trouble</value>
+  </data>
+  <data name="DEF_Trouble_ErrorLevel_" xml:space="preserve">
     <value>Trouble ErrorLevel </value>
   </data>
-  <data name="DEF_TROUBLE_ERRORNO" xml:space="preserve">
+  <data name="DEF_Trouble_ErrorNo_" xml:space="preserve">
     <value>Trouble ErrorNo </value>
   </data>
-  <data name="DEF_TROUBLE_STATUS" xml:space="preserve">
-    <value>Trouble Status</value>
+  <data name="DEF_Trouble_Status_:" xml:space="preserve">
+    <value>Trouble Status :</value>
+  </data>
+  <data name="DEF_Unloading" xml:space="preserve">
+    <value>Unloading</value>
+  </data>
+  <data name="DEF_User" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="DEF_Virtual_BCR" xml:space="preserve">
+    <value>Virtual BCR</value>
+  </data>
+  <data name="DEF_WaterTank_Information" xml:space="preserve">
+    <value>WaterTank Information</value>
+  </data>
+  <data name="DEF_Water_Tank" xml:space="preserve">
+    <value>Water Tank</value>
   </data>
 </root>
