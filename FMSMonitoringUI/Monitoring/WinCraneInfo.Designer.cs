@@ -390,7 +390,7 @@
             // 
             this.ctrlLabelBox11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabelBox11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ctrlLabelBox11.LanguageID = "DEF_Tray_ID_2_";
+            this.ctrlLabelBox11.LanguageID = "DEF_Tray_ID_2";
             this.ctrlLabelBox11.Location = new System.Drawing.Point(370, 379);
             this.ctrlLabelBox11.Margin = new System.Windows.Forms.Padding(30);
             this.ctrlLabelBox11.Name = "ctrlLabelBox11";
@@ -404,7 +404,7 @@
             // 
             this.ctrlLabelBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabelBox10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ctrlLabelBox10.LanguageID = "DEF_Tray_ID_1_";
+            this.ctrlLabelBox10.LanguageID = "DEF_Tray_ID_1";
             this.ctrlLabelBox10.Location = new System.Drawing.Point(370, 346);
             this.ctrlLabelBox10.Margin = new System.Windows.Forms.Padding(30);
             this.ctrlLabelBox10.Name = "ctrlLabelBox10";
@@ -418,7 +418,7 @@
             // 
             this.ctrlLabelBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabelBox9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ctrlLabelBox9.LanguageID = "DEF_Tray_Count_";
+            this.ctrlLabelBox9.LanguageID = "DEF_Tray_Count";
             this.ctrlLabelBox9.Location = new System.Drawing.Point(370, 313);
             this.ctrlLabelBox9.Margin = new System.Windows.Forms.Padding(30);
             this.ctrlLabelBox9.Name = "ctrlLabelBox9";
@@ -441,7 +441,7 @@
             // 
             this.ctrlLabel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel12.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel12.LanguageID = "DEF_Reset_DoubleIn_:";
+            this.ctrlLabel12.LanguageID = "DEF_Reset_DoubleIn";
             this.ctrlLabel12.Location = new System.Drawing.Point(368, 284);
             this.ctrlLabel12.Name = "ctrlLabel12";
             this.ctrlLabel12.Size = new System.Drawing.Size(153, 22);
@@ -462,7 +462,7 @@
             // 
             this.ctrlLabel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel13.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel13.LanguageID = "DEF_Reset_EmptyOut_:";
+            this.ctrlLabel13.LanguageID = "DEF_Reset_EmptyOut";
             this.ctrlLabel13.Location = new System.Drawing.Point(368, 259);
             this.ctrlLabel13.Name = "ctrlLabel13";
             this.ctrlLabel13.Size = new System.Drawing.Size(153, 22);
@@ -483,7 +483,7 @@
             // 
             this.ctrlLabel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel14.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel14.LanguageID = "DEF_Job_Cancel_Response_:";
+            this.ctrlLabel14.LanguageID = "DEF_Job_Cancel_Response";
             this.ctrlLabel14.Location = new System.Drawing.Point(368, 234);
             this.ctrlLabel14.Name = "ctrlLabel14";
             this.ctrlLabel14.Size = new System.Drawing.Size(153, 22);
@@ -504,7 +504,7 @@
             // 
             this.ctrlLabel15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel15.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel15.LanguageID = "DEF_Job_Complete_Response_:";
+            this.ctrlLabel15.LanguageID = "DEF_Job_Complete_Response";
             this.ctrlLabel15.Location = new System.Drawing.Point(368, 208);
             this.ctrlLabel15.Name = "ctrlLabel15";
             this.ctrlLabel15.Size = new System.Drawing.Size(153, 22);
@@ -525,7 +525,7 @@
             // 
             this.ctrlLabel16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel16.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel16.LanguageID = "DEF_Job_Command_:";
+            this.ctrlLabel16.LanguageID = "DEF_Job_Command";
             this.ctrlLabel16.Location = new System.Drawing.Point(368, 186);
             this.ctrlLabel16.Name = "ctrlLabel16";
             this.ctrlLabel16.Size = new System.Drawing.Size(153, 22);
@@ -537,7 +537,7 @@
             // 
             this.ctrlLabel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel11.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel11.LanguageID = "DEF_Trouble_Status_:";
+            this.ctrlLabel11.LanguageID = "DEF_Trouble_Status";
             this.ctrlLabel11.Location = new System.Drawing.Point(368, 82);
             this.ctrlLabel11.Name = "ctrlLabel11";
             this.ctrlLabel11.Size = new System.Drawing.Size(153, 22);
@@ -549,7 +549,7 @@
             // 
             this.ctrlLabelBox12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabelBox12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ctrlLabelBox12.LanguageID = "DEF_Trouble_ErrorNo_";
+            this.ctrlLabelBox12.LanguageID = "DEF_Trouble_ErrorNo";
             this.ctrlLabelBox12.Location = new System.Drawing.Point(370, 111);
             this.ctrlLabelBox12.Margin = new System.Windows.Forms.Padding(30);
             this.ctrlLabelBox12.Name = "ctrlLabelBox12";
@@ -582,7 +582,7 @@
             this.ctrlLabel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel10.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel10.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.ctrlLabel10.LanguageID = "DEF_Carriage_Fire_Sensor_:";
+            this.ctrlLabel10.LanguageID = "DEF_Carriage_Fire_Sensor";
             this.ctrlLabel10.Location = new System.Drawing.Point(29, 526);
             this.ctrlLabel10.Name = "ctrlLabel10";
             this.ctrlLabel10.Size = new System.Drawing.Size(131, 22);
@@ -594,7 +594,7 @@
             // 
             this.ctrlLabelBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabelBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ctrlLabelBox1.LanguageID = "DEF_Carriage_Position_";
+            this.ctrlLabelBox1.LanguageID = "DEF_Carriage_Position";
             this.ctrlLabelBox1.Location = new System.Drawing.Point(31, 487);
             this.ctrlLabelBox1.Margin = new System.Windows.Forms.Padding(30);
             this.ctrlLabelBox1.Name = "ctrlLabelBox1";
@@ -618,7 +618,7 @@
             this.ctrlLabel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel9.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel9.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.ctrlLabel9.LanguageID = "DEF_Tray_Exist_:";
+            this.ctrlLabel9.LanguageID = "DEF_Tray_Exist";
             this.ctrlLabel9.Location = new System.Drawing.Point(29, 308);
             this.ctrlLabel9.Name = "ctrlLabel9";
             this.ctrlLabel9.Size = new System.Drawing.Size(131, 22);
@@ -639,7 +639,7 @@
             // 
             this.ctrlLabel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel8.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel8.LanguageID = "DEF_DoubleIn_:";
+            this.ctrlLabel8.LanguageID = "DEF_DoubleIn";
             this.ctrlLabel8.Location = new System.Drawing.Point(29, 283);
             this.ctrlLabel8.Name = "ctrlLabel8";
             this.ctrlLabel8.Size = new System.Drawing.Size(131, 22);
@@ -660,7 +660,7 @@
             // 
             this.ctrlLabel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel7.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel7.LanguageID = "DEF_Empty_Out_:";
+            this.ctrlLabel7.LanguageID = "DEF_Empty_Out";
             this.ctrlLabel7.Location = new System.Drawing.Point(29, 258);
             this.ctrlLabel7.Name = "ctrlLabel7";
             this.ctrlLabel7.Size = new System.Drawing.Size(131, 22);
@@ -681,7 +681,7 @@
             // 
             this.ctrlLabel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel6.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel6.LanguageID = "DEF_Job_Cancel_:";
+            this.ctrlLabel6.LanguageID = "DEF_Job_Cancel";
             this.ctrlLabel6.Location = new System.Drawing.Point(29, 233);
             this.ctrlLabel6.Name = "ctrlLabel6";
             this.ctrlLabel6.Size = new System.Drawing.Size(131, 22);
@@ -702,7 +702,7 @@
             // 
             this.ctrlLabel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel5.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel5.LanguageID = "DEF_Job_Complete_:";
+            this.ctrlLabel5.LanguageID = "DEF_Job_Complete";
             this.ctrlLabel5.Location = new System.Drawing.Point(29, 209);
             this.ctrlLabel5.Name = "ctrlLabel5";
             this.ctrlLabel5.Size = new System.Drawing.Size(131, 22);
@@ -723,7 +723,7 @@
             // 
             this.ctrlLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel4.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel4.LanguageID = "DEF_Command_Ready_:";
+            this.ctrlLabel4.LanguageID = "DEF_Command_Ready";
             this.ctrlLabel4.Location = new System.Drawing.Point(29, 185);
             this.ctrlLabel4.Name = "ctrlLabel4";
             this.ctrlLabel4.Size = new System.Drawing.Size(131, 22);
@@ -735,7 +735,7 @@
             // 
             this.ctrlLabelBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabelBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ctrlLabelBox4.LanguageID = "DEF_Trouble_ErrorLevel_";
+            this.ctrlLabelBox4.LanguageID = "DEF_Trouble_ErrorLevel";
             this.ctrlLabelBox4.Location = new System.Drawing.Point(31, 144);
             this.ctrlLabelBox4.Margin = new System.Windows.Forms.Padding(30);
             this.ctrlLabelBox4.Name = "ctrlLabelBox4";
@@ -749,7 +749,7 @@
             // 
             this.ctrlLabelBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabelBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ctrlLabelBox3.LanguageID = "DEF_Trouble_ErrorNo_";
+            this.ctrlLabelBox3.LanguageID = "DEF_Trouble_ErrorNo";
             this.ctrlLabelBox3.Location = new System.Drawing.Point(31, 111);
             this.ctrlLabelBox3.Margin = new System.Windows.Forms.Padding(30);
             this.ctrlLabelBox3.Name = "ctrlLabelBox3";
@@ -763,7 +763,7 @@
             // 
             this.ctrlLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel3.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel3.LanguageID = "DEF_Status_:";
+            this.ctrlLabel3.LanguageID = "DEF_Status";
             this.ctrlLabel3.Location = new System.Drawing.Point(31, 82);
             this.ctrlLabel3.Name = "ctrlLabel3";
             this.ctrlLabel3.Size = new System.Drawing.Size(92, 22);
@@ -784,7 +784,7 @@
             // 
             this.ctrlLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel2.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel2.LanguageID = "DEF_Control_Mode_:";
+            this.ctrlLabel2.LanguageID = "DEF_Control_Mode";
             this.ctrlLabel2.Location = new System.Drawing.Point(31, 57);
             this.ctrlLabel2.Name = "ctrlLabel2";
             this.ctrlLabel2.Size = new System.Drawing.Size(92, 22);
@@ -805,7 +805,7 @@
             // 
             this.ctrlLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel1.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel1.LanguageID = "DEF_Power_:";
+            this.ctrlLabel1.LanguageID = "DEF_Power";
             this.ctrlLabel1.Location = new System.Drawing.Point(31, 35);
             this.ctrlLabel1.Name = "ctrlLabel1";
             this.ctrlLabel1.Size = new System.Drawing.Size(92, 22);
@@ -849,6 +849,149 @@
             this.gridCraneStatus.Size = new System.Drawing.Size(278, 57);
             this.gridCraneStatus.TabIndex = 54;
             this.gridCraneStatus.Visible = false;
+            // 
+            // Exit
+            // 
+            this.Exit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.Exit.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Exit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.Exit.LabelText = "Exit";
+            this.Exit.LanguageID = "DEF_Exit";
+            this.Exit.Location = new System.Drawing.Point(274, 11);
+            this.Exit.Name = "Exit";
+            this.Exit.Size = new System.Drawing.Size(173, 42);
+            this.Exit.TabIndex = 3;
+            this.Exit.Click += new System.EventHandler(this.Exit_Click);
+            // 
+            // ctrlTitleBar
+            // 
+            this.ctrlTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlTitleBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ctrlTitleBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ctrlTitleBar.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlTitleBar.ForeColor = System.Drawing.Color.White;
+            this.ctrlTitleBar.Location = new System.Drawing.Point(0, 0);
+            this.ctrlTitleBar.Margin = new System.Windows.Forms.Padding(4);
+            this.ctrlTitleBar.Name = "ctrlTitleBar";
+            this.ctrlTitleBar.Size = new System.Drawing.Size(712, 64);
+            this.ctrlTitleBar.TabIndex = 0;
+            this.ctrlTitleBar.TitleText = "Crane Information";
+            // 
+            // ctrlLabel17
+            // 
+            this.ctrlLabel17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel17.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel17.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.ctrlLabel17.LanguageID = "DEF_Fork_Position";
+            this.ctrlLabel17.Location = new System.Drawing.Point(29, 337);
+            this.ctrlLabel17.Name = "ctrlLabel17";
+            this.ctrlLabel17.Size = new System.Drawing.Size(131, 22);
+            this.ctrlLabel17.TabIndex = 68;
+            this.ctrlLabel17.Text = "Fork Position :";
+            this.ctrlLabel17.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ledForkPosC
+            // 
+            this.ledForkPosC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ledForkPosC.Location = new System.Drawing.Point(161, 339);
+            this.ledForkPosC.Name = "ledForkPosC";
+            this.ledForkPosC.Size = new System.Drawing.Size(118, 20);
+            this.ledForkPosC.TabIndex = 69;
+            this.ledForkPosC.TitleText = "Center";
+            // 
+            // ledForkPosL1
+            // 
+            this.ledForkPosL1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ledForkPosL1.Location = new System.Drawing.Point(161, 365);
+            this.ledForkPosL1.Name = "ledForkPosL1";
+            this.ledForkPosL1.Size = new System.Drawing.Size(118, 20);
+            this.ledForkPosL1.TabIndex = 70;
+            this.ledForkPosL1.TitleText = "Left depth 1";
+            // 
+            // ledForkPosL2
+            // 
+            this.ledForkPosL2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ledForkPosL2.Location = new System.Drawing.Point(161, 392);
+            this.ledForkPosL2.Name = "ledForkPosL2";
+            this.ledForkPosL2.Size = new System.Drawing.Size(118, 20);
+            this.ledForkPosL2.TabIndex = 71;
+            this.ledForkPosL2.TitleText = "Left depth 2";
+            // 
+            // ledForkPosR1
+            // 
+            this.ledForkPosR1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ledForkPosR1.Location = new System.Drawing.Point(161, 418);
+            this.ledForkPosR1.Name = "ledForkPosR1";
+            this.ledForkPosR1.Size = new System.Drawing.Size(118, 20);
+            this.ledForkPosR1.TabIndex = 72;
+            this.ledForkPosR1.TitleText = "Right depth 1";
+            // 
+            // ledForkPosR2
+            // 
+            this.ledForkPosR2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ledForkPosR2.Location = new System.Drawing.Point(161, 444);
+            this.ledForkPosR2.Name = "ledForkPosR2";
+            this.ledForkPosR2.Size = new System.Drawing.Size(118, 20);
+            this.ledForkPosR2.TabIndex = 73;
+            this.ledForkPosR2.TitleText = "Right depth 2";
+            // 
+            // ctrlLabel18
+            // 
+            this.ctrlLabel18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel18.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel18.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.ctrlLabel18.LanguageID = "DEF_Job_Type";
+            this.ctrlLabel18.Location = new System.Drawing.Point(372, 419);
+            this.ctrlLabel18.Name = "ctrlLabel18";
+            this.ctrlLabel18.Size = new System.Drawing.Size(80, 22);
+            this.ctrlLabel18.TabIndex = 74;
+            this.ctrlLabel18.Text = "Job Type :";
+            this.ctrlLabel18.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ledJogTypeIn
+            // 
+            this.ledJogTypeIn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ledJogTypeIn.Location = new System.Drawing.Point(458, 419);
+            this.ledJogTypeIn.Name = "ledJogTypeIn";
+            this.ledJogTypeIn.Size = new System.Drawing.Size(45, 20);
+            this.ledJogTypeIn.TabIndex = 75;
+            this.ledJogTypeIn.TitleText = "In";
+            // 
+            // ledJogTypeOut
+            // 
+            this.ledJogTypeOut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ledJogTypeOut.Location = new System.Drawing.Point(509, 419);
+            this.ledJogTypeOut.Name = "ledJogTypeOut";
+            this.ledJogTypeOut.Size = new System.Drawing.Size(59, 20);
+            this.ledJogTypeOut.TabIndex = 76;
+            this.ledJogTypeOut.TitleText = "Out";
+            // 
+            // ledJogTypeRtoR
+            // 
+            this.ledJogTypeRtoR.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ledJogTypeRtoR.Location = new System.Drawing.Point(458, 444);
+            this.ledJogTypeRtoR.Name = "ledJogTypeRtoR";
+            this.ledJogTypeRtoR.Size = new System.Drawing.Size(110, 20);
+            this.ledJogTypeRtoR.TabIndex = 77;
+            this.ledJogTypeRtoR.TitleText = "RackToRack";
+            // 
+            // ledJogTypeMove
+            // 
+            this.ledJogTypeMove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ledJogTypeMove.Location = new System.Drawing.Point(573, 444);
+            this.ledJogTypeMove.Name = "ledJogTypeMove";
+            this.ledJogTypeMove.Size = new System.Drawing.Size(79, 20);
+            this.ledJogTypeMove.TabIndex = 79;
+            this.ledJogTypeMove.TitleText = "Move";
+            // 
+            // ledJogTypePass
+            // 
+            this.ledJogTypePass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ledJogTypePass.Location = new System.Drawing.Point(573, 419);
+            this.ledJogTypePass.Name = "ledJogTypePass";
+            this.ledJogTypePass.Size = new System.Drawing.Size(76, 20);
+            this.ledJogTypePass.TabIndex = 78;
+            this.ledJogTypePass.TitleText = "Pass";
             // 
             // WinCraneInfo
             // 

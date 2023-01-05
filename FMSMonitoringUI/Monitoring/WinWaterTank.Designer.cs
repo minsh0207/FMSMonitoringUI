@@ -146,7 +146,7 @@
             // 
             this.ctrlLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel1.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel1.LanguageID = "DEF_RestockButtonPressed_:";
+            this.ctrlLabel1.LanguageID = "DEF_RestockButtonPressed";
             this.ctrlLabel1.Location = new System.Drawing.Point(33, 212);
             this.ctrlLabel1.Name = "ctrlLabel1";
             this.ctrlLabel1.Size = new System.Drawing.Size(140, 22);
@@ -167,7 +167,7 @@
             // 
             this.ctrlLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel2.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel2.LanguageID = "DEF_Fire_Sensor_:";
+            this.ctrlLabel2.LanguageID = "DEF_Fire_Sensor";
             this.ctrlLabel2.Location = new System.Drawing.Point(33, 188);
             this.ctrlLabel2.Name = "ctrlLabel2";
             this.ctrlLabel2.Size = new System.Drawing.Size(140, 22);
@@ -188,7 +188,7 @@
             // 
             this.ctrlLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel3.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel3.LanguageID = "DEF_Station_Sink_:";
+            this.ctrlLabel3.LanguageID = "DEF_Station_Sink";
             this.ctrlLabel3.Location = new System.Drawing.Point(33, 164);
             this.ctrlLabel3.Name = "ctrlLabel3";
             this.ctrlLabel3.Size = new System.Drawing.Size(140, 22);
@@ -209,7 +209,7 @@
             // 
             this.ctrlLabel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel6.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel6.LanguageID = "DEF_Tray_Exist_:";
+            this.ctrlLabel6.LanguageID = "DEF_Tray_Exist";
             this.ctrlLabel6.Location = new System.Drawing.Point(33, 99);
             this.ctrlLabel6.Name = "ctrlLabel6";
             this.ctrlLabel6.Size = new System.Drawing.Size(140, 22);
@@ -230,7 +230,7 @@
             // 
             this.ctrlLabel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel5.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel5.LanguageID = "DEF_Input_Enable_:";
+            this.ctrlLabel5.LanguageID = "DEF_Input_Enable";
             this.ctrlLabel5.Location = new System.Drawing.Point(33, 75);
             this.ctrlLabel5.Name = "ctrlLabel5";
             this.ctrlLabel5.Size = new System.Drawing.Size(140, 22);
@@ -251,7 +251,7 @@
             // 
             this.ctrlLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel4.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel4.LanguageID = "DEF_Control_Mode_:";
+            this.ctrlLabel4.LanguageID = "DEF_Control_Mode";
             this.ctrlLabel4.Location = new System.Drawing.Point(33, 51);
             this.ctrlLabel4.Name = "ctrlLabel4";
             this.ctrlLabel4.Size = new System.Drawing.Size(140, 22);
@@ -263,7 +263,7 @@
             // 
             this.ctrlLabelBox11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabelBox11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ctrlLabelBox11.LanguageID = "DEF_Tray_ID_2_";
+            this.ctrlLabelBox11.LanguageID = "DEF_Tray_ID_2";
             this.ctrlLabelBox11.Location = new System.Drawing.Point(307, 110);
             this.ctrlLabelBox11.Margin = new System.Windows.Forms.Padding(30);
             this.ctrlLabelBox11.Name = "ctrlLabelBox11";
@@ -277,7 +277,7 @@
             // 
             this.ctrlLabelBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabelBox10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ctrlLabelBox10.LanguageID = "DEF_Tray_ID_1_";
+            this.ctrlLabelBox10.LanguageID = "DEF_Tray_ID_1";
             this.ctrlLabelBox10.Location = new System.Drawing.Point(307, 76);
             this.ctrlLabelBox10.Margin = new System.Windows.Forms.Padding(30);
             this.ctrlLabelBox10.Name = "ctrlLabelBox10";
@@ -291,7 +291,7 @@
             // 
             this.ctrlLabelBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabelBox9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ctrlLabelBox9.LanguageID = "DEF_Tray_Count_";
+            this.ctrlLabelBox9.LanguageID = "DEF_Tray_Count";
             this.ctrlLabelBox9.Location = new System.Drawing.Point(307, 42);
             this.ctrlLabelBox9.Margin = new System.Windows.Forms.Padding(30);
             this.ctrlLabelBox9.Name = "ctrlLabelBox9";
