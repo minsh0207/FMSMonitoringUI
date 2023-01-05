@@ -1,7 +1,10 @@
 ﻿using MonitoringUI.Common;
 using MonitoringUI.Controlls;
+using MySqlX.XDevAPI.Common;
 using OPCUAClientClassLib;
 using Org.BouncyCastle.Asn1.Tsp;
+using Org.BouncyCastle.Ocsp;
+using RestClientLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +13,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UnifiedAutomation.UaBase;
@@ -24,6 +28,11 @@ namespace FMSMonitoringUI.Monitoring
         OPCUAClient _OPCUAClient = null;
         List<ReadValueId> _ConveyorNodeID = null;
 
+        #region Working Thread
+        private Thread _ProcessThread;
+        private bool _TheadVisiable;
+        #endregion
+
         public WinConveyorInfo(string cvTitle, OPCUAClient opcua, List<ReadValueId> conveyorNodeID)
         {
             InitializeComponent();
@@ -32,8 +41,8 @@ namespace FMSMonitoringUI.Monitoring
             _ConveyorNodeID = conveyorNodeID;
 
             // Timer 
-            m_timer.Tick += new EventHandler(OnTimer);
-            m_timer.Stop();
+            //m_timer.Tick += new EventHandler(OnTimer);
+            //m_timer.Stop();
 
             _cvTitle = cvTitle;
 
@@ -43,8 +52,7 @@ namespace FMSMonitoringUI.Monitoring
         #region WinCVTrayInfo Event
         private void WinCVTrayInfo_Load(object sender, EventArgs e)
         {
-            
-            InitsplitContainer();
+            InitGridView();
 
             #region Title Mouse Event
             ctrlTitleBar.MouseDown_Evnet += Title_MouseDownEvnet;
@@ -54,11 +62,24 @@ namespace FMSMonitoringUI.Monitoring
             #region DataGridView Event
             gridCVInfo.MouseCellDoubleClick_Evnet += GridCellInfo_MouseCellDoubleClick;
             #endregion
+
+            _TheadVisiable = true;
+
+            this.BeginInvoke(new MethodInvoker(delegate ()
+            {
+                _ProcessThread = new Thread(() => ProcessThreadCallback());
+                _ProcessThread.IsBackground = true; _ProcessThread.Start();
+            }));
         }
 
         private void WinCVTrayInfo_FormClosed(object sender, FormClosedEventArgs e)
         {
-            m_timer.Stop();
+            //m_timer.Stop();
+
+            if (this._ProcessThread.IsAlive)
+                this._TheadVisiable = false;
+
+            this._ProcessThread.Abort();
         }
         #endregion
 
@@ -72,18 +93,7 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
-        private void InitsplitContainer()
-        {
-            //splitContainer1.BackColor = Color.LightGray;            // Color.FromArgb(53, 53, 53);
-            //splitContainer1.BorderStyle = BorderStyle.FixedSingle;
-            //splitContainer2.Panel2.BackColor = Color.LightGray;     //Color.FromArgb(53, 53, 53);
-            //splitContainer2.BorderStyle = BorderStyle.FixedSingle;
-
-            //splitContainer3.BorderStyle = BorderStyle.FixedSingle;
-            //splitContainer3.Panel2.BackColor = Color.FromArgb(27, 27, 27);
-        }
-
-        private void InitGridView(string cvTitle, object cvType)
+        private void InitGridView()
         {
             List<string> lstTitle = new List<string>();
             lstTitle.Add("");
@@ -94,23 +104,13 @@ namespace FMSMonitoringUI.Monitoring
             lstTitle = new List<string>();
             lstTitle.Add("Conveyor No");
             lstTitle.Add("Conveyor Type");
-
-            if (CheckConveyorType(cvType))
-            {
-                lstTitle.Add("Station Status");
-            }                
-
+            lstTitle.Add("Station Status");
             lstTitle.Add("Tray Exist");
             lstTitle.Add("Tray Type");
             lstTitle.Add("Tray Count");
             lstTitle.Add("Tray ID 1");
             lstTitle.Add("Tray ID 2");
-
-            if (cvTitle == "RTV")
-            {
-                lstTitle.Add("Carriage Pos");
-            }    
-            
+            lstTitle.Add("Carriage Pos");
             lstTitle.Add("Destination");
             gridCVInfo.AddRowsHeaderList(lstTitle);
 
@@ -128,46 +128,40 @@ namespace FMSMonitoringUI.Monitoring
         }
 
         #region SetData
-        public void SetData(SiteTagInfo siteInfo)
-        {
-            InitGridView(_cvTitle, siteInfo.ConveyorType);
+        //public void SetData(SiteTagInfo siteInfo)
+        //{
+        //    int row = 0;
+        //    gridCVInfo.SetValue(1, row, siteInfo.ConveyorNo); row++;
 
-            int row = 0;
-            gridCVInfo.SetValue(1, row, siteInfo.ConveyorNo); row++;
+        //    if (CheckConveyorType(siteInfo.ConveyorType)) gridCVInfo.RowsVisible(row, true);
+        //    else gridCVInfo.RowsVisible(row, false);
 
-            if (CheckConveyorType(siteInfo.ConveyorType))
-            {
-                gridCVInfo.SetValue(1, row, GetConveyorType(siteInfo.ConveyorType)); row++;
-            }                
+        //    gridCVInfo.SetValue(1, row, GetConveyorType(siteInfo.ConveyorType)); row++;
+        //    gridCVInfo.SetValue(1, row, GetStationStatus(siteInfo.StationStatus)); row++;
+        //    gridCVInfo.SetValue(1, row, (siteInfo.TrayExist == true ? "Exist" : "Not Exist")); row++;
+        //    gridCVInfo.SetValue(1, row, GetTrayType(siteInfo.TrayType)); row++;
+        //    gridCVInfo.SetValue(1, row, siteInfo.TrayCount); row++;
+        //    gridCVInfo.SetValue(1, row, siteInfo.TrayIdL1); row++;
+        //    gridCVInfo.SetValue(1, row, siteInfo.TrayIdL2); row++;
 
-            gridCVInfo.SetValue(1, row, GetStationStatus(siteInfo.StationStatus)); row++;
-            gridCVInfo.SetValue(1, row, (siteInfo.TrayExist == true ? "Exist" : "Not Exist")); row++;
-            gridCVInfo.SetValue(1, row, GetTrayType(siteInfo.TrayType)); row++;
-            gridCVInfo.SetValue(1, row, siteInfo.TrayCount); row++;
-            gridCVInfo.SetValue(1, row, siteInfo.TrayIdL1); row++;
-            gridCVInfo.SetValue(1, row, siteInfo.TrayIdL2); row++;
+        //    if (_cvTitle == "RTV") gridCVInfo.RowsVisible(row, true);
+        //    else gridCVInfo.RowsVisible(row, false);
 
-            if (_cvTitle == "RTV")
-            {
-                gridCVInfo.SetValue(1, row, siteInfo.CarriagePos); row++;
-            }            
-
-            gridCVInfo.SetValue(1, row, siteInfo.Destination);
-        }
+        //    gridCVInfo.SetValue(1, row, siteInfo.CarriagePos); row++;
+        //    gridCVInfo.SetValue(1, row, siteInfo.Destination);
+        //}
         public void SetData(List<DataValue> data)
         {
             if (data.Count == 0) return;
-
-            InitGridView(_cvTitle, data[(int)enCVTagList.ConveyorType].Value);
 
             int row = 0;
             gridCVInfo.SetValue(1, row, data[(int)enCVTagList.ConveyorNo].Value); row++;
             gridCVInfo.SetValue(1, row, GetConveyorType(data[(int)enCVTagList.ConveyorType].Value)); row++;
 
-            if (CheckConveyorType(data[(int)enCVTagList.ConveyorType].Value))
-            {
-                gridCVInfo.SetValue(1, row, GetStationStatus(data[(int)enCVTagList.StationStatus].Value)); row++;
-            }
+            if (CheckConveyorType(data[(int)enCVTagList.ConveyorType].Value)) 
+                gridCVInfo.RowsVisible(row, true);
+            else gridCVInfo.RowsVisible(row, false);
+            gridCVInfo.SetValue(1, row, GetStationStatus(data[(int)enCVTagList.StationStatus].Value)); row++;
 
             bool trayExist = Convert.ToBoolean(data[(int)enCVTagList.TrayExist].Value);
             gridCVInfo.SetValue(1, row, (trayExist == true ? "Exist" : "Not Exist")); row++;
@@ -176,10 +170,9 @@ namespace FMSMonitoringUI.Monitoring
             gridCVInfo.SetValue(1, row, data[(int)enCVTagList.TrayIdL1].Value); row++;
             gridCVInfo.SetValue(1, row, data[(int)enCVTagList.TrayIdL2].Value); row++;
 
-            if (_cvTitle == "RTV")
-            {
-                gridCVInfo.SetValue(1, row, data[(int)enCVTagList.CarriagePos].Value); row++;
-            }
+            if (_cvTitle == "RTV") gridCVInfo.RowsVisible(row, true);
+            else gridCVInfo.RowsVisible(row, false);
+            gridCVInfo.SetValue(1, row, data[(int)enCVTagList.CarriagePos].Value); row++;
 
             gridCVInfo.SetValue(1, row, data[(int)enCVTagList.Destination].Value);
         }
@@ -231,22 +224,45 @@ namespace FMSMonitoringUI.Monitoring
         #endregion
 
         #region OnTimer
-        private void OnTimer(object sender, EventArgs e)
+        //private void OnTimer(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        m_timer.Stop();
+
+        //        List<DataValue> data = _OPCUAClient.ReadNodeID(_ConveyorNodeID);
+        //        SetData(data);
+
+        //        if (m_timer.Interval != 1000)
+        //            m_timer.Interval = 1000;
+        //        m_timer.Start();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(string.Format("[Exception:OnTimer] {0}", ex.ToString()));
+        //    }
+        //}
+        #endregion
+
+        #region ProcessThreadCallback
+        private void ProcessThreadCallback()
         {
             try
             {
-                m_timer.Stop();
+                while (this._TheadVisiable == true)
+                {
+                    GC.Collect();
 
-                List<DataValue> data = _OPCUAClient.ReadNodeID(_ConveyorNodeID);
-                SetData(data);
+                    List<DataValue> data = _OPCUAClient.ReadNodeID(_ConveyorNodeID);
+                    this.BeginInvoke(new Action(() => SetData(data)));
 
-                if (m_timer.Interval != 1000)
-                    m_timer.Interval = 1000;
-                m_timer.Start();
+                    Thread.Sleep(2000);
+                }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(string.Format("[Exception:OnTimer] {0}", ex.ToString()));
+                // System Debug
+                System.Diagnostics.Debug.Print(string.Format("### WinConveyorInfo ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
             }
         }
         #endregion

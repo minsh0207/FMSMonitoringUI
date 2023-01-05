@@ -15,6 +15,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
@@ -29,6 +30,11 @@ namespace FMSMonitoringUI.Monitoring
 
         private Point _Point = new Point();
 
+        #region Working Thread
+        private Thread _ProcessThread;
+        private bool _TheadVisiable;
+        #endregion
+
         CtrlLED[] _LedMode;
         CtrlLED[] _LedStatus;
 
@@ -42,10 +48,6 @@ namespace FMSMonitoringUI.Monitoring
             _OPCUAClient = opcua;
             _ConveyorNodeID = conveyorNodeID;
 
-            // Timer 
-            m_timer.Tick += new EventHandler(OnTimer);
-            m_timer.Stop();
-
             InitControl();
             InitLanguage();
             InitLedStatus();
@@ -58,20 +60,28 @@ namespace FMSMonitoringUI.Monitoring
             ctrlTitleBar.MouseDown_Evnet += Title_MouseDownEvnet;
             ctrlTitleBar.MouseMove_Evnet += Title_MouseMoveEvnet;
             #endregion
+
+            _TheadVisiable = true;
+
+            this.BeginInvoke(new MethodInvoker(delegate ()
+            {
+                _ProcessThread = new Thread(() => ProcessThreadCallback());
+                _ProcessThread.IsBackground = true; _ProcessThread.Start();
+            }));
         }
 
         private void WinBCRConveyorInfo_FormClosed(object sender, FormClosedEventArgs e)
         {
-            m_timer.Stop();
+            if (this._ProcessThread.IsAlive)
+                this._TheadVisiable = false;
+
+            this._ProcessThread.Abort();
         }
         #endregion
 
         #region MonitoringTimer
         public void ShowForm()
         {
-            // Timer
-            m_timer.Start();
-
             this.Show();
         }
         #endregion
@@ -221,23 +231,25 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
-        #region OnTimer
-        private void OnTimer(object sender, EventArgs e)
+        #region ProcessThreadCallback
+        private void ProcessThreadCallback()
         {
             try
             {
-                m_timer.Stop();
+                while (this._TheadVisiable == true)
+                {
+                    GC.Collect();
 
-                List<DataValue> data = _OPCUAClient.ReadNodeID(_ConveyorNodeID);
-                SetData(data); 
+                    List<DataValue> data = _OPCUAClient.ReadNodeID(_ConveyorNodeID);
+                    this.BeginInvoke(new Action(() => SetData(data)));
 
-                if (m_timer.Interval != 1000)
-                    m_timer.Interval = 1000;
-                m_timer.Start();
+                    Thread.Sleep(2000);
+                }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(string.Format("[Exception:OnTimer] {0}", ex.ToString()));
+                // System Debug
+                System.Diagnostics.Debug.Print(string.Format("### WinConveyorInfo ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
             }
         }
         #endregion

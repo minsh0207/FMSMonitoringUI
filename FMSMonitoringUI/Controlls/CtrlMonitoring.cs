@@ -530,8 +530,6 @@ namespace FMSMonitoringUI.Controlls
                     if (trackno > 0 && _ListBCR[groupno].ContainsKey(trackno) == false)
                     {
                         WinConveyorInfo winForm = new WinConveyorInfo("Conveyor", _clientFMS[groupno], cvInfo);
-                        //winForm.SetData(siteInfo);
-                        //winForm.Show();
                         winForm.ShowForm();
                     }
                     else

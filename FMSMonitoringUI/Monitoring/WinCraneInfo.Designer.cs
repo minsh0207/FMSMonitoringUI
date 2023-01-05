@@ -29,8 +29,22 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ctrlTitleBar = new MonitoringUI.Controlls.CtrlTitleBar();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.Exit = new MonitoringUI.Controlls.CButton.CtrlButton();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.ledJogTypeMove = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
+            this.ledJogTypePass = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
+            this.ledJogTypeRtoR = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
+            this.ledJogTypeOut = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
+            this.ledJogTypeIn = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
+            this.ctrlLabel18 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
+            this.ledForkPosR2 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
+            this.ledForkPosR1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
+            this.ledForkPosL2 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
+            this.ledForkPosL1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
+            this.ledForkPosC = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
+            this.ctrlLabel17 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.ledTrouble = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
             this.ledRun = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
             this.ledIdle = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
@@ -78,20 +92,6 @@
             this.ctrlGroupBox2 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlGroupBox();
             this.ctrlGroupBox1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlGroupBox();
             this.gridCraneStatus = new FMSMonitoringUI.Controlls.CtrlDataGridView();
-            this.Exit = new MonitoringUI.Controlls.CButton.CtrlButton();
-            this.ctrlTitleBar = new MonitoringUI.Controlls.CtrlTitleBar();
-            this.ctrlLabel17 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
-            this.ledForkPosC = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
-            this.ledForkPosL1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
-            this.ledForkPosL2 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
-            this.ledForkPosR1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
-            this.ledForkPosR2 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
-            this.ctrlLabel18 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
-            this.ledJogTypeIn = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
-            this.ledJogTypeOut = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
-            this.ledJogTypeRtoR = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
-            this.ledJogTypeMove = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
-            this.ledJogTypePass = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -108,6 +108,21 @@
             this.panel1.Size = new System.Drawing.Size(714, 66);
             this.panel1.TabIndex = 0;
             // 
+            // ctrlTitleBar
+            // 
+            this.ctrlTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlTitleBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ctrlTitleBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ctrlTitleBar.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlTitleBar.ForeColor = System.Drawing.Color.White;
+            this.ctrlTitleBar.LanguageID = "";
+            this.ctrlTitleBar.Location = new System.Drawing.Point(0, 0);
+            this.ctrlTitleBar.Margin = new System.Windows.Forms.Padding(4);
+            this.ctrlTitleBar.Name = "ctrlTitleBar";
+            this.ctrlTitleBar.Size = new System.Drawing.Size(712, 64);
+            this.ctrlTitleBar.TabIndex = 0;
+            this.ctrlTitleBar.TitleText = "Crane Information";
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
@@ -118,6 +133,19 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(714, 65);
             this.panel2.TabIndex = 1;
+            // 
+            // Exit
+            // 
+            this.Exit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.Exit.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Exit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.Exit.LabelText = "Exit";
+            this.Exit.LanguageID = "DEF_Exit";
+            this.Exit.Location = new System.Drawing.Point(274, 11);
+            this.Exit.Name = "Exit";
+            this.Exit.Size = new System.Drawing.Size(173, 42);
+            this.Exit.TabIndex = 3;
+            this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
             // panel3
             // 
@@ -187,6 +215,122 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(714, 670);
             this.panel3.TabIndex = 2;
+            // 
+            // ledJogTypeMove
+            // 
+            this.ledJogTypeMove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ledJogTypeMove.Location = new System.Drawing.Point(573, 444);
+            this.ledJogTypeMove.Name = "ledJogTypeMove";
+            this.ledJogTypeMove.Size = new System.Drawing.Size(79, 20);
+            this.ledJogTypeMove.TabIndex = 79;
+            this.ledJogTypeMove.TitleText = "Move";
+            // 
+            // ledJogTypePass
+            // 
+            this.ledJogTypePass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ledJogTypePass.Location = new System.Drawing.Point(573, 419);
+            this.ledJogTypePass.Name = "ledJogTypePass";
+            this.ledJogTypePass.Size = new System.Drawing.Size(76, 20);
+            this.ledJogTypePass.TabIndex = 78;
+            this.ledJogTypePass.TitleText = "Pass";
+            // 
+            // ledJogTypeRtoR
+            // 
+            this.ledJogTypeRtoR.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ledJogTypeRtoR.Location = new System.Drawing.Point(458, 444);
+            this.ledJogTypeRtoR.Name = "ledJogTypeRtoR";
+            this.ledJogTypeRtoR.Size = new System.Drawing.Size(110, 20);
+            this.ledJogTypeRtoR.TabIndex = 77;
+            this.ledJogTypeRtoR.TitleText = "RackToRack";
+            // 
+            // ledJogTypeOut
+            // 
+            this.ledJogTypeOut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ledJogTypeOut.Location = new System.Drawing.Point(509, 419);
+            this.ledJogTypeOut.Name = "ledJogTypeOut";
+            this.ledJogTypeOut.Size = new System.Drawing.Size(59, 20);
+            this.ledJogTypeOut.TabIndex = 76;
+            this.ledJogTypeOut.TitleText = "Out";
+            // 
+            // ledJogTypeIn
+            // 
+            this.ledJogTypeIn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ledJogTypeIn.Location = new System.Drawing.Point(458, 419);
+            this.ledJogTypeIn.Name = "ledJogTypeIn";
+            this.ledJogTypeIn.Size = new System.Drawing.Size(45, 20);
+            this.ledJogTypeIn.TabIndex = 75;
+            this.ledJogTypeIn.TitleText = "In";
+            // 
+            // ctrlLabel18
+            // 
+            this.ctrlLabel18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel18.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel18.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.ctrlLabel18.LanguageID = "DEF_Job_Type_:";
+            this.ctrlLabel18.Location = new System.Drawing.Point(372, 419);
+            this.ctrlLabel18.Name = "ctrlLabel18";
+            this.ctrlLabel18.Size = new System.Drawing.Size(80, 22);
+            this.ctrlLabel18.TabIndex = 74;
+            this.ctrlLabel18.Text = "Job Type :";
+            this.ctrlLabel18.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ledForkPosR2
+            // 
+            this.ledForkPosR2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ledForkPosR2.Location = new System.Drawing.Point(161, 444);
+            this.ledForkPosR2.Name = "ledForkPosR2";
+            this.ledForkPosR2.Size = new System.Drawing.Size(118, 20);
+            this.ledForkPosR2.TabIndex = 73;
+            this.ledForkPosR2.TitleText = "Right depth 2";
+            // 
+            // ledForkPosR1
+            // 
+            this.ledForkPosR1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ledForkPosR1.Location = new System.Drawing.Point(161, 418);
+            this.ledForkPosR1.Name = "ledForkPosR1";
+            this.ledForkPosR1.Size = new System.Drawing.Size(118, 20);
+            this.ledForkPosR1.TabIndex = 72;
+            this.ledForkPosR1.TitleText = "Right depth 1";
+            // 
+            // ledForkPosL2
+            // 
+            this.ledForkPosL2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ledForkPosL2.Location = new System.Drawing.Point(161, 392);
+            this.ledForkPosL2.Name = "ledForkPosL2";
+            this.ledForkPosL2.Size = new System.Drawing.Size(118, 20);
+            this.ledForkPosL2.TabIndex = 71;
+            this.ledForkPosL2.TitleText = "Left depth 2";
+            // 
+            // ledForkPosL1
+            // 
+            this.ledForkPosL1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ledForkPosL1.Location = new System.Drawing.Point(161, 365);
+            this.ledForkPosL1.Name = "ledForkPosL1";
+            this.ledForkPosL1.Size = new System.Drawing.Size(118, 20);
+            this.ledForkPosL1.TabIndex = 70;
+            this.ledForkPosL1.TitleText = "Left depth 1";
+            // 
+            // ledForkPosC
+            // 
+            this.ledForkPosC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ledForkPosC.Location = new System.Drawing.Point(161, 339);
+            this.ledForkPosC.Name = "ledForkPosC";
+            this.ledForkPosC.Size = new System.Drawing.Size(118, 20);
+            this.ledForkPosC.TabIndex = 69;
+            this.ledForkPosC.TitleText = "Center";
+            // 
+            // ctrlLabel17
+            // 
+            this.ctrlLabel17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel17.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel17.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.ctrlLabel17.LanguageID = "DEF_Fork_Position_:";
+            this.ctrlLabel17.Location = new System.Drawing.Point(29, 337);
+            this.ctrlLabel17.Name = "ctrlLabel17";
+            this.ctrlLabel17.Size = new System.Drawing.Size(131, 22);
+            this.ctrlLabel17.TabIndex = 68;
+            this.ctrlLabel17.Text = "Fork Position :";
+            this.ctrlLabel17.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // ledTrouble
             // 
@@ -672,21 +816,27 @@
             // ctrlGroupBox2
             // 
             this.ctrlGroupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlGroupBox2.ForeColor = System.Drawing.Color.White;
             this.ctrlGroupBox2.LanguageID = "DEF_FMS";
             this.ctrlGroupBox2.Location = new System.Drawing.Point(355, 15);
             this.ctrlGroupBox2.Name = "ctrlGroupBox2";
             this.ctrlGroupBox2.Size = new System.Drawing.Size(343, 648);
             this.ctrlGroupBox2.TabIndex = 5;
+            this.ctrlGroupBox2.TabStop = false;
+            this.ctrlGroupBox2.Text = "FMS";
             this.ctrlGroupBox2.TitleText = "FMS";
             // 
             // ctrlGroupBox1
             // 
             this.ctrlGroupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlGroupBox1.ForeColor = System.Drawing.Color.White;
             this.ctrlGroupBox1.LanguageID = "DEF_S/Crane";
             this.ctrlGroupBox1.Location = new System.Drawing.Point(17, 15);
             this.ctrlGroupBox1.Name = "ctrlGroupBox1";
             this.ctrlGroupBox1.Size = new System.Drawing.Size(323, 648);
             this.ctrlGroupBox1.TabIndex = 4;
+            this.ctrlGroupBox1.TabStop = false;
+            this.ctrlGroupBox1.Text = "S/Crane";
             this.ctrlGroupBox1.TitleText = "S/Crane";
             // 
             // gridCraneStatus
@@ -699,149 +849,6 @@
             this.gridCraneStatus.Size = new System.Drawing.Size(278, 57);
             this.gridCraneStatus.TabIndex = 54;
             this.gridCraneStatus.Visible = false;
-            // 
-            // Exit
-            // 
-            this.Exit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.Exit.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Exit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.Exit.LabelText = "Exit";
-            this.Exit.LanguageID = "DEF_Exit";
-            this.Exit.Location = new System.Drawing.Point(274, 11);
-            this.Exit.Name = "Exit";
-            this.Exit.Size = new System.Drawing.Size(173, 42);
-            this.Exit.TabIndex = 3;
-            this.Exit.Click += new System.EventHandler(this.Exit_Click);
-            // 
-            // ctrlTitleBar
-            // 
-            this.ctrlTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlTitleBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ctrlTitleBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ctrlTitleBar.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ctrlTitleBar.ForeColor = System.Drawing.Color.White;
-            this.ctrlTitleBar.Location = new System.Drawing.Point(0, 0);
-            this.ctrlTitleBar.Margin = new System.Windows.Forms.Padding(4);
-            this.ctrlTitleBar.Name = "ctrlTitleBar";
-            this.ctrlTitleBar.Size = new System.Drawing.Size(712, 64);
-            this.ctrlTitleBar.TabIndex = 0;
-            this.ctrlTitleBar.TitleText = "Crane Information";
-            // 
-            // ctrlLabel17
-            // 
-            this.ctrlLabel17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlLabel17.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel17.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.ctrlLabel17.LanguageID = "DEF_Fork_Position_:";
-            this.ctrlLabel17.Location = new System.Drawing.Point(29, 337);
-            this.ctrlLabel17.Name = "ctrlLabel17";
-            this.ctrlLabel17.Size = new System.Drawing.Size(131, 22);
-            this.ctrlLabel17.TabIndex = 68;
-            this.ctrlLabel17.Text = "Fork Position :";
-            this.ctrlLabel17.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ledForkPosC
-            // 
-            this.ledForkPosC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ledForkPosC.Location = new System.Drawing.Point(161, 339);
-            this.ledForkPosC.Name = "ledForkPosC";
-            this.ledForkPosC.Size = new System.Drawing.Size(118, 20);
-            this.ledForkPosC.TabIndex = 69;
-            this.ledForkPosC.TitleText = "Center";
-            // 
-            // ledForkPosL1
-            // 
-            this.ledForkPosL1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ledForkPosL1.Location = new System.Drawing.Point(161, 365);
-            this.ledForkPosL1.Name = "ledForkPosL1";
-            this.ledForkPosL1.Size = new System.Drawing.Size(118, 20);
-            this.ledForkPosL1.TabIndex = 70;
-            this.ledForkPosL1.TitleText = "Left depth 1";
-            // 
-            // ledForkPosL2
-            // 
-            this.ledForkPosL2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ledForkPosL2.Location = new System.Drawing.Point(161, 392);
-            this.ledForkPosL2.Name = "ledForkPosL2";
-            this.ledForkPosL2.Size = new System.Drawing.Size(118, 20);
-            this.ledForkPosL2.TabIndex = 71;
-            this.ledForkPosL2.TitleText = "Left depth 2";
-            // 
-            // ledForkPosR1
-            // 
-            this.ledForkPosR1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ledForkPosR1.Location = new System.Drawing.Point(161, 418);
-            this.ledForkPosR1.Name = "ledForkPosR1";
-            this.ledForkPosR1.Size = new System.Drawing.Size(118, 20);
-            this.ledForkPosR1.TabIndex = 72;
-            this.ledForkPosR1.TitleText = "Right depth 1";
-            // 
-            // ledForkPosR2
-            // 
-            this.ledForkPosR2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ledForkPosR2.Location = new System.Drawing.Point(161, 444);
-            this.ledForkPosR2.Name = "ledForkPosR2";
-            this.ledForkPosR2.Size = new System.Drawing.Size(118, 20);
-            this.ledForkPosR2.TabIndex = 73;
-            this.ledForkPosR2.TitleText = "Right depth 2";
-            // 
-            // ctrlLabel18
-            // 
-            this.ctrlLabel18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlLabel18.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel18.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.ctrlLabel18.LanguageID = "DEF_Job_Type_:";
-            this.ctrlLabel18.Location = new System.Drawing.Point(372, 419);
-            this.ctrlLabel18.Name = "ctrlLabel18";
-            this.ctrlLabel18.Size = new System.Drawing.Size(80, 22);
-            this.ctrlLabel18.TabIndex = 74;
-            this.ctrlLabel18.Text = "Job Type :";
-            this.ctrlLabel18.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ledJogTypeIn
-            // 
-            this.ledJogTypeIn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ledJogTypeIn.Location = new System.Drawing.Point(458, 419);
-            this.ledJogTypeIn.Name = "ledJogTypeIn";
-            this.ledJogTypeIn.Size = new System.Drawing.Size(45, 20);
-            this.ledJogTypeIn.TabIndex = 75;
-            this.ledJogTypeIn.TitleText = "In";
-            // 
-            // ledJogTypeOut
-            // 
-            this.ledJogTypeOut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ledJogTypeOut.Location = new System.Drawing.Point(509, 419);
-            this.ledJogTypeOut.Name = "ledJogTypeOut";
-            this.ledJogTypeOut.Size = new System.Drawing.Size(59, 20);
-            this.ledJogTypeOut.TabIndex = 76;
-            this.ledJogTypeOut.TitleText = "Out";
-            // 
-            // ledJogTypeRtoR
-            // 
-            this.ledJogTypeRtoR.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ledJogTypeRtoR.Location = new System.Drawing.Point(458, 444);
-            this.ledJogTypeRtoR.Name = "ledJogTypeRtoR";
-            this.ledJogTypeRtoR.Size = new System.Drawing.Size(110, 20);
-            this.ledJogTypeRtoR.TabIndex = 77;
-            this.ledJogTypeRtoR.TitleText = "RackToRack";
-            // 
-            // ledJogTypeMove
-            // 
-            this.ledJogTypeMove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ledJogTypeMove.Location = new System.Drawing.Point(573, 444);
-            this.ledJogTypeMove.Name = "ledJogTypeMove";
-            this.ledJogTypeMove.Size = new System.Drawing.Size(79, 20);
-            this.ledJogTypeMove.TabIndex = 79;
-            this.ledJogTypeMove.TitleText = "Move";
-            // 
-            // ledJogTypePass
-            // 
-            this.ledJogTypePass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ledJogTypePass.Location = new System.Drawing.Point(573, 419);
-            this.ledJogTypePass.Name = "ledJogTypePass";
-            this.ledJogTypePass.Size = new System.Drawing.Size(76, 20);
-            this.ledJogTypePass.TabIndex = 78;
-            this.ledJogTypePass.TitleText = "Pass";
             // 
             // WinCraneInfo
             // 

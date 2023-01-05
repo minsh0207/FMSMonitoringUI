@@ -500,7 +500,7 @@
             this.ctrlLabel9.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlLabel9.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel9.LanguageID = "DEF_Trouble";
-            this.ctrlLabel9.Location = new System.Drawing.Point(65, 137);
+            this.ctrlLabel9.Location = new System.Drawing.Point(62, 138);
             this.ctrlLabel9.Name = "ctrlLabel9";
             this.ctrlLabel9.Size = new System.Drawing.Size(56, 13);
             this.ctrlLabel9.TabIndex = 97;
@@ -513,7 +513,7 @@
             this.ctrlLabel8.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlLabel8.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel8.LanguageID = "DEF_Tray_On";
-            this.ctrlLabel8.Location = new System.Drawing.Point(65, 88);
+            this.ctrlLabel8.Location = new System.Drawing.Point(62, 91);
             this.ctrlLabel8.Name = "ctrlLabel8";
             this.ctrlLabel8.Size = new System.Drawing.Size(58, 13);
             this.ctrlLabel8.TabIndex = 96;
@@ -526,7 +526,7 @@
             this.ctrlLabel7.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlLabel7.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel7.LanguageID = "DEF_Tray_Off";
-            this.ctrlLabel7.Location = new System.Drawing.Point(65, 46);
+            this.ctrlLabel7.Location = new System.Drawing.Point(62, 46);
             this.ctrlLabel7.Name = "ctrlLabel7";
             this.ctrlLabel7.Size = new System.Drawing.Size(58, 13);
             this.ctrlLabel7.TabIndex = 95;
@@ -592,7 +592,7 @@
             this.ctrlLabel5.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlLabel5.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel5.LanguageID = "DEF_Real_BCR";
-            this.ctrlLabel5.Location = new System.Drawing.Point(65, 291);
+            this.ctrlLabel5.Location = new System.Drawing.Point(62, 291);
             this.ctrlLabel5.Name = "ctrlLabel5";
             this.ctrlLabel5.Size = new System.Drawing.Size(69, 13);
             this.ctrlLabel5.TabIndex = 89;
@@ -605,7 +605,7 @@
             this.ctrlLabel4.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlLabel4.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel4.LanguageID = "DEF_Virtual_BCR";
-            this.ctrlLabel4.Location = new System.Drawing.Point(65, 240);
+            this.ctrlLabel4.Location = new System.Drawing.Point(62, 240);
             this.ctrlLabel4.Name = "ctrlLabel4";
             this.ctrlLabel4.Size = new System.Drawing.Size(82, 13);
             this.ctrlLabel4.TabIndex = 88;
@@ -618,7 +618,7 @@
             this.ctrlLabel3.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlLabel3.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel3.LanguageID = "DEF_Dispenser";
-            this.ctrlLabel3.Location = new System.Drawing.Point(65, 426);
+            this.ctrlLabel3.Location = new System.Drawing.Point(62, 426);
             this.ctrlLabel3.Name = "ctrlLabel3";
             this.ctrlLabel3.Size = new System.Drawing.Size(73, 13);
             this.ctrlLabel3.TabIndex = 87;
@@ -631,7 +631,7 @@
             this.ctrlLabel2.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlLabel2.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel2.LanguageID = "DEF_Magazine";
-            this.ctrlLabel2.Location = new System.Drawing.Point(65, 383);
+            this.ctrlLabel2.Location = new System.Drawing.Point(62, 383);
             this.ctrlLabel2.Name = "ctrlLabel2";
             this.ctrlLabel2.Size = new System.Drawing.Size(71, 13);
             this.ctrlLabel2.TabIndex = 86;
@@ -644,7 +644,7 @@
             this.ctrlLabel1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlLabel1.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel1.LanguageID = "DEF_MZ/DP";
-            this.ctrlLabel1.Location = new System.Drawing.Point(65, 336);
+            this.ctrlLabel1.Location = new System.Drawing.Point(62, 336);
             this.ctrlLabel1.Name = "ctrlLabel1";
             this.ctrlLabel1.Size = new System.Drawing.Size(53, 13);
             this.ctrlLabel1.TabIndex = 85;
@@ -5270,7 +5270,7 @@
             this.ctrlLabel12.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.ctrlLabel12.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel12.LanguageID = "DEF_Eqp_Status";
-            this.ctrlLabel12.Location = new System.Drawing.Point(15, 502);
+            this.ctrlLabel12.Location = new System.Drawing.Point(15, 501);
             this.ctrlLabel12.Name = "ctrlLabel12";
             this.ctrlLabel12.Size = new System.Drawing.Size(74, 16);
             this.ctrlLabel12.TabIndex = 100;

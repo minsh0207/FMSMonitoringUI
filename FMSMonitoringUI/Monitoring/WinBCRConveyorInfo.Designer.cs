@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.ctrlTitleBar = new MonitoringUI.Controlls.CtrlTitleBar();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -58,7 +57,6 @@
             this.ctrlGroupBox1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlGroupBox();
             this.ConveyorType = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
             this.ConveyorNo = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
-            this.m_timer = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -165,7 +163,7 @@
             this.uiTlbStatus.ColumnCount = 3;
             this.uiTlbStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.4F));
             this.uiTlbStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 53.6F));
-            this.uiTlbStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 84F));
+            this.uiTlbStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
             this.uiTlbStatus.Location = new System.Drawing.Point(119, 203);
             this.uiTlbStatus.Name = "uiTlbStatus";
             this.uiTlbStatus.RowCount = 1;
@@ -516,6 +514,5 @@
         private System.Windows.Forms.TableLayoutPanel uiTlbMode;
         private System.Windows.Forms.TableLayoutPanel uiTlbStatus;
         private MonitoringUI.Controlls.CButton.CtrlButton Exit;
-        private System.Windows.Forms.Timer m_timer;
     }
 }
