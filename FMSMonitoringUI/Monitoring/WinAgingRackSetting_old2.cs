@@ -73,7 +73,7 @@ namespace FMSMonitoringUI.Monitoring
             lstTitle.Add("Tray ID L1");
             lstTitle.Add("Tray ID L2");
             lstTitle.Add("Model ID");
-            lstTitle.Add("Route ID");
+            lstTitle.Add("Route");
             lstTitle.Add("Lot ID");
             lstTitle.Add("Rack Status");
             lstTitle.Add("Tray Zone");

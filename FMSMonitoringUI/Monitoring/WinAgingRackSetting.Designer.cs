@@ -77,7 +77,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(916, 65);
+            this.panel2.Size = new System.Drawing.Size(1130, 60);
             this.panel2.TabIndex = 1;
             // 
             // ctrlTitleBar
@@ -91,7 +91,7 @@
             this.ctrlTitleBar.Location = new System.Drawing.Point(0, 0);
             this.ctrlTitleBar.Margin = new System.Windows.Forms.Padding(4);
             this.ctrlTitleBar.Name = "ctrlTitleBar";
-            this.ctrlTitleBar.Size = new System.Drawing.Size(914, 63);
+            this.ctrlTitleBar.Size = new System.Drawing.Size(1128, 58);
             this.ctrlTitleBar.TabIndex = 0;
             this.ctrlTitleBar.TitleText = "Aging Rack Setting";
             // 
@@ -101,9 +101,9 @@
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.Exit);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 446);
+            this.panel3.Location = new System.Drawing.Point(0, 450);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(916, 64);
+            this.panel3.Size = new System.Drawing.Size(1130, 60);
             this.panel3.TabIndex = 2;
             // 
             // Exit
@@ -113,7 +113,7 @@
             this.Exit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.Exit.LabelText = "Exit";
             this.Exit.LanguageID = "DEF_Exit";
-            this.Exit.Location = new System.Drawing.Point(394, 11);
+            this.Exit.Location = new System.Drawing.Point(494, 9);
             this.Exit.Name = "Exit";
             this.Exit.Size = new System.Drawing.Size(131, 41);
             this.Exit.TabIndex = 1;
@@ -124,7 +124,8 @@
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 65);
+            this.splitContainer1.IsSplitterFixed = true;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 60);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -134,8 +135,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(916, 381);
-            this.splitContainer1.SplitterDistance = 271;
+            this.splitContainer1.Size = new System.Drawing.Size(1130, 390);
+            this.splitContainer1.SplitterDistance = 314;
             this.splitContainer1.TabIndex = 3;
             // 
             // gridEqpInfo
@@ -145,14 +146,15 @@
             this.gridEqpInfo.Location = new System.Drawing.Point(0, 0);
             this.gridEqpInfo.Name = "gridEqpInfo";
             this.gridEqpInfo.RowCount = -1;
-            this.gridEqpInfo.Size = new System.Drawing.Size(269, 379);
+            this.gridEqpInfo.Size = new System.Drawing.Size(312, 388);
             this.gridEqpInfo.TabIndex = 1;
             // 
             // splitContainer2
             // 
             this.splitContainer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer2.IsSplitterFixed = true;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
             this.splitContainer2.Name = "splitContainer2";
             // 
@@ -169,8 +171,8 @@
             this.splitContainer2.Panel2.Controls.Add(this.groupBox2);
             this.splitContainer2.Panel2.Controls.Add(this.groupBox1);
             this.splitContainer2.Panel2.Controls.Add(this.label1);
-            this.splitContainer2.Size = new System.Drawing.Size(641, 381);
-            this.splitContainer2.SplitterDistance = 272;
+            this.splitContainer2.Size = new System.Drawing.Size(812, 390);
+            this.splitContainer2.SplitterDistance = 443;
             this.splitContainer2.TabIndex = 0;
             // 
             // gridTrayInfo
@@ -180,7 +182,7 @@
             this.gridTrayInfo.Location = new System.Drawing.Point(0, 0);
             this.gridTrayInfo.Name = "gridTrayInfo";
             this.gridTrayInfo.RowCount = -1;
-            this.gridTrayInfo.Size = new System.Drawing.Size(270, 379);
+            this.gridTrayInfo.Size = new System.Drawing.Size(441, 388);
             this.gridTrayInfo.TabIndex = 1;
             // 
             // ctrlLabel1
@@ -432,7 +434,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ClientSize = new System.Drawing.Size(916, 510);
+            this.ClientSize = new System.Drawing.Size(1130, 510);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -441,6 +443,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WinAgingRackSetting";
             this.TopMost = true;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.WinAgingRackSetting_FormClosed);
             this.Load += new System.EventHandler(this.WinAgingRackSetting_Load);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);

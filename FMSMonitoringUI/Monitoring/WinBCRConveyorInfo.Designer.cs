@@ -161,9 +161,9 @@
             // uiTlbStatus
             // 
             this.uiTlbStatus.ColumnCount = 3;
-            this.uiTlbStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.4F));
-            this.uiTlbStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 53.6F));
-            this.uiTlbStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
+            this.uiTlbStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.uiTlbStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.uiTlbStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.uiTlbStatus.Location = new System.Drawing.Point(119, 203);
             this.uiTlbStatus.Name = "uiTlbStatus";
             this.uiTlbStatus.RowCount = 1;
@@ -215,10 +215,10 @@
             this.uiTlbMode.Location = new System.Drawing.Point(119, 132);
             this.uiTlbMode.Name = "uiTlbMode";
             this.uiTlbMode.RowCount = 3;
-            this.uiTlbMode.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.uiTlbMode.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
-            this.uiTlbMode.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.uiTlbMode.Size = new System.Drawing.Size(200, 65);
+            this.uiTlbMode.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
+            this.uiTlbMode.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
+            this.uiTlbMode.Size = new System.Drawing.Size(200, 66);
             this.uiTlbMode.TabIndex = 67;
             // 
             // MagazineCommand

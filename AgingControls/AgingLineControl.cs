@@ -464,6 +464,19 @@ namespace AgingControls
         #endregion
 
         #region [Layout Properties]
+        string _EqpID = "";
+        [DisplayName("EQP ID"), Description("Equipment ID"), Category("GroupBox Setting")]
+        public string EqpID
+        {
+            get
+            {
+                return _EqpID;
+            }
+            set
+            {
+                _EqpID = value;
+            }
+        }
         int _BoxMargin = 2;
         [DisplayName("Margin"), Description("Margin Among Boxes in Pixels"), Category("Aging Line Layout")]
         public int BoxMargin

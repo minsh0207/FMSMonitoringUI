@@ -1,5 +1,6 @@
 ﻿using MonitoringUI.Common;
 using MonitoringUI.Controlls;
+using MySqlX.XDevAPI.Common;
 using Org.BouncyCastle.Ocsp;
 using RestClientLib;
 using System;
@@ -10,6 +11,7 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
@@ -23,6 +25,11 @@ namespace FMSMonitoringUI.Monitoring
         private string _EqpType = string.Empty;
         private int _Eqplevel = 0;
 
+        #region Working Thread
+        private Thread _ProcessThread;
+        private bool _TheadVisiable;
+        #endregion
+
         public WinLeadTime(string eqpId, string eqpType, int eqpLevel)
         {
             InitializeComponent();
@@ -33,10 +40,13 @@ namespace FMSMonitoringUI.Monitoring
 
             InitGridViewTray();
 
-            GetAgingTrayInfo(eqpType, eqpLevel);
+            //GetAgingTrayInfo(eqpType, eqpLevel);
+
+            
             //InitChart();
         }
 
+        #region WinLeadTime
         private void WinLeadTime_Load(object sender, EventArgs e)
         {
             #region Title Mouse Event
@@ -48,7 +58,23 @@ namespace FMSMonitoringUI.Monitoring
             gridTrayInfo.MouseCellDoubleClick_Evnet += GridTrayInfo_MouseCellDoubleClick;
             #endregion
 
+            _TheadVisiable = true;
+
+            this.BeginInvoke(new MethodInvoker(delegate ()
+            {
+                _ProcessThread = new Thread(() => ProcessThreadCallback());
+                _ProcessThread.IsBackground = true; _ProcessThread.Start();
+            }));
+
         }
+        private void WinLeadTime_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (this._ProcessThread.IsAlive)
+                this._TheadVisiable = false;
+
+            this._ProcessThread.Abort();
+        }
+        #endregion
 
         //private void InitChart()
         //{
@@ -92,6 +118,7 @@ namespace FMSMonitoringUI.Monitoring
             gridTrayInfo.ColumnHeadersWidth(1, 100);
         }
 
+        #region SetData
         private void SetData(List<_win_lead_time> data)
         {
             gridTrayInfo.RowCount= data.Count;
@@ -113,8 +140,37 @@ namespace FMSMonitoringUI.Monitoring
 
             gridTrayInfo.SetGridViewStyles();
         }
+        private void SetData1(List<_win_lead_time> data)
+        {
+            DataTable dt = new DataTable();
 
-        #region GetCellIDList
+            dt.Columns.Add("Location");            
+            dt.Columns.Add("Rack ID");
+            dt.Columns.Add("Tray ID");
+            dt.Columns.Add("Start Time");
+            dt.Columns.Add("Plan Time");
+            dt.Columns.Add("Process Time");
+            dt.Columns.Add("Specs (MES)");
+
+            foreach (var item in data)
+            {
+                DataRow rowEx1 = dt.NewRow();
+
+                rowEx1["Location"] = item.LANE;
+                rowEx1["Rack ID"] = item.RACK_ID;
+                rowEx1["Tray ID"] = item.TRAY_ID;
+                rowEx1["Start Time"] = item.START_TIME;
+                rowEx1["Plan Time"] = item.PLAN_TIME;
+                rowEx1["Process Time"] = GetTimeSpan(item.START_TIME);
+                rowEx1["Specs (MES)"] = "0000";
+
+                dt.Rows.Add(rowEx1);
+            }
+
+            gridTrayInfo.DataSource(dt);
+        }
+        #endregion
+        //#region GetCellIDList
         private void GetAgingTrayInfo(string eqpType, int level)
         {
             RESTClient rest = new RESTClient();
@@ -136,13 +192,53 @@ namespace FMSMonitoringUI.Monitoring
                 _jsonWinLeadTimeResponse result = rest.ConvertWinLeadTime(jsonResult);
 
                 SetData(result.DATA);
+            }
+        }
+        //#endregion
 
-                //this.BeginInvoke(new Action(() => SetData(result.DATA)));
+        #region ProcessThreadCallback
+        private void ProcessThreadCallback()
+        {
+            try
+            {
+                //while (this._TheadVisiable == true)
+                {
+                    GC.Collect();
 
-                //_CellProcessFlow = result.DATA;
+                    this.BeginInvoke(new Action(() => GetAgingTrayInfo(_EqpType, _Eqplevel)));
+
+                    //RESTClient rest = new RESTClient();
+                    ////// Set Query
+                    //StringBuilder strSQL = new StringBuilder();
+                    //// Tray Information
+                    //strSQL.Append(" SELECT lane, tray_id, rack_id, start_time, plan_time");
+                    //strSQL.Append(" FROM fms_v.tb_mst_aging");
+                    ////필수값
+                    //strSQL.Append($" WHERE aging_type = '{_EqpType.Substring(0, 1)}'");
+                    //strSQL.Append($"    AND lane = {_Eqplevel * 2 - 1}");
+                    //strSQL.Append($"    OR aging_type = '{_EqpType.Substring(0, 1)}'");
+                    //strSQL.Append($"    AND lane = {_Eqplevel * 2}");
+
+                    //string jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+
+                    //if (jsonResult != null)
+                    //{
+                    //    _jsonWinLeadTimeResponse result = rest.ConvertWinLeadTime(jsonResult);
+
+                    //    this.BeginInvoke(new Action(() => SetData1(result.DATA)));
+                    //}
+
+                    //Thread.Sleep(3000);
+                }
+            }
+            catch (Exception ex)
+            {
+                // System Debug
+                System.Diagnostics.Debug.Print(string.Format("### Get ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
             }
         }
         #endregion
+
         private string GetTimeSpan(DateTime StartDate)
         {
             DateTime CurrentTime = DateTime.Now;
@@ -180,7 +276,7 @@ namespace FMSMonitoringUI.Monitoring
                 //WinTrayInfo form = new WinTrayInfo();
                 //form.SetData(value.ToString());
                 //form.ShowDialog();
-                WinTrayInfo form = new WinTrayInfo(_EqpId, value.ToString());
+                WinTrayInfo form = new WinTrayInfo(_EqpId, "", value.ToString());
                 form.ShowDialog();
             }
         }
@@ -192,5 +288,7 @@ namespace FMSMonitoringUI.Monitoring
             Close();
         }
         #endregion
+
+        
     }
 }

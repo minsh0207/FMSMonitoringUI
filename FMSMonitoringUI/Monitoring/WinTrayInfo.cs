@@ -20,6 +20,7 @@ namespace FMSMonitoringUI.Monitoring
     {
         private Point point = new Point();
         private string _EqpID = string.Empty;
+        private string _RackID = string.Empty;
         private string _TrayId = string.Empty;
 
         private List<_tray_process_flow> _TrayProcessInfo;
@@ -29,11 +30,12 @@ namespace FMSMonitoringUI.Monitoring
         private bool _TheadVisiable;
         #endregion
 
-        public WinTrayInfo(string eqpid, string trayId)
+        public WinTrayInfo(string eqpid, string rackid, string trayId)
         {
             InitializeComponent();
 
             _EqpID = eqpid;
+            _RackID = rackid;
             _TrayId = trayId;
 
             InitGridViewTray();
@@ -83,14 +85,15 @@ namespace FMSMonitoringUI.Monitoring
             lstTitle.Add("Model");
             lstTitle.Add("Tray ID");
             lstTitle.Add("Binding Time");
-            lstTitle.Add("Route ID");
+            lstTitle.Add("Tray Type");
+            lstTitle.Add("Route");
             lstTitle.Add("Lot ID");
             lstTitle.Add("Current Process");
             lstTitle.Add("Current Equipment");
             lstTitle.Add("Start Time");
             lstTitle.Add("Plan Time");
             lstTitle.Add("Cell Count");
-            lstTitle.Add("Tray Type");
+            
 
             gridTrayInfo.AddRowsHeaderList(lstTitle);
 
@@ -140,14 +143,15 @@ namespace FMSMonitoringUI.Monitoring
             gridTrayInfo.SetValue(1, row, data[0].MODEL_ID); row++;
             gridTrayInfo.SetValue(1, row, data[0].TRAY_ID); row++;
             gridTrayInfo.SetValue(1, row, data[0].TRAY_INPUT_TIME); row++;
+            gridTrayInfo.SetValue(1, row, data[0].TRAY_ZONE);
             gridTrayInfo.SetValue(1, row, data[0].ROUTE_ID); row++;
             gridTrayInfo.SetValue(1, row, data[0].LOT_ID); row++;
             gridTrayInfo.SetValue(1, row, data[0].PROCESS_NAME); row++;
             gridTrayInfo.SetValue(1, row, data[0].EQP_NAME); row++;
             gridTrayInfo.SetValue(1, row, data[0].START_TIME); row++;
             gridTrayInfo.SetValue(1, row, data[0].PLAN_TIME); row++;
-            gridTrayInfo.SetValue(1, row, data[0].CURRENT_CELL_CNT);
-            gridTrayInfo.SetValue(1, row, data[0].TRAY_ZONE); row++;
+            gridTrayInfo.SetValue(1, row, data[0].CURRENT_CELL_CNT); row++;
+            
         }
 
         public void SetData(List<_tray_process_flow> data)
@@ -183,16 +187,35 @@ namespace FMSMonitoringUI.Monitoring
                     // Set Query
                     StringBuilder strSQL = new StringBuilder();
                     // Tray Information
-                    strSQL.Append(" SELECT A.eqp_name,");
-                    strSQL.Append("        B.model_id, B.tray_id, B.tray_input_time, B.route_id, B.lot_id, B.start_time, B.plan_time, B.current_cell_cnt,");
-                    strSQL.Append("        C.process_name");
-                    strSQL.Append(" FROM fms_v.tb_mst_eqp   A");
-                    strSQL.Append("     LEFT OUTER JOIN fms_v.tb_dat_tray   B");
-                    strSQL.Append("         ON B.tray_id IN (A.tray_id, A.tray_id_2)");
-                    strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_route_order   C");
-                    strSQL.Append("         ON B.route_order_no = C.route_order_no AND B.route_id = C.route_id");
-                    //필수값
-                    strSQL.Append($" WHERE B.eqp_id = '{_EqpID}' AND B.tray_id = '{_TrayId}'");
+                    if (_RackID == "")
+                    {
+                        strSQL.Append(" SELECT A.eqp_name,");
+                        strSQL.Append("        B.model_id, B.tray_id, B.tray_input_time, B.route_id, B.lot_id, B.start_time, B.plan_time, B.current_cell_cnt, B.tray_zone,");
+                        strSQL.Append("        C.process_name");
+                        strSQL.Append(" FROM fms_v.tb_mst_eqp   A");
+                        strSQL.Append("     LEFT OUTER JOIN fms_v.tb_dat_tray   B");
+                        strSQL.Append("         ON B.tray_id IN (A.tray_id, A.tray_id_2)");
+                        strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_route_order   C");
+                        strSQL.Append("         ON B.route_order_no = C.route_order_no AND B.route_id = C.route_id");
+                        //필수값
+                        strSQL.Append($" WHERE B.eqp_id = '{_EqpID}' AND B.tray_id = '{_TrayId}'");
+                    }
+                    else
+                    {
+                        strSQL.Append(" SELECT A.rack_id,");
+                        strSQL.Append("        B.model_id, B.tray_id, B.tray_input_time, B.route_id, B.lot_id, B.start_time, B.plan_time, B.current_cell_cnt, B.tray_zone,");
+                        strSQL.Append("        C.process_name,");
+                        strSQL.Append("        D.eqp_name");
+                        strSQL.Append(" FROM fms_v.tb_mst_aging   A");
+                        strSQL.Append("     LEFT OUTER JOIN fms_v.tb_dat_tray   B");
+                        strSQL.Append("         ON B.tray_id IN (A.tray_id, A.tray_id_2)");
+                        strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_route_order   C");
+                        strSQL.Append("         ON B.route_order_no = C.route_order_no AND B.route_id = C.route_id");
+                        strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_eqp   D");
+                        strSQL.Append("         ON B.eqp_id = D.eqp_id");
+                        //필수값
+                        strSQL.Append($" WHERE B.unit_id = '{_RackID}' AND B.tray_id = '{_TrayId}' AND D.eqp_id = '{_EqpID}'");
+                    }
 
                     string jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
 

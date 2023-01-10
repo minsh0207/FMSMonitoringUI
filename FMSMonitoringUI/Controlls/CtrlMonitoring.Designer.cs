@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CtrlMonitoring));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ctrlLabel12 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
+            this.ctrlLabel11 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.ctrlLabel10 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.ctrlLabel9 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.ctrlLabel8 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
@@ -309,8 +311,6 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.m_timer = new System.Windows.Forms.Timer(this.components);
-            this.ctrlLabel11 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
-            this.ctrlLabel12 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox44)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).BeginInit();
@@ -479,6 +479,32 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(204, 995);
             this.panel1.TabIndex = 331;
+            // 
+            // ctrlLabel12
+            // 
+            this.ctrlLabel12.AutoSize = true;
+            this.ctrlLabel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel12.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.ctrlLabel12.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel12.LanguageID = "DEF_Eqp_Status";
+            this.ctrlLabel12.Location = new System.Drawing.Point(15, 501);
+            this.ctrlLabel12.Name = "ctrlLabel12";
+            this.ctrlLabel12.Size = new System.Drawing.Size(74, 16);
+            this.ctrlLabel12.TabIndex = 100;
+            this.ctrlLabel12.Text = "Eqp Status";
+            // 
+            // ctrlLabel11
+            // 
+            this.ctrlLabel11.AutoSize = true;
+            this.ctrlLabel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel11.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.ctrlLabel11.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel11.LanguageID = "DEF_Conveyor_Trye";
+            this.ctrlLabel11.Location = new System.Drawing.Point(15, 202);
+            this.ctrlLabel11.Name = "ctrlLabel11";
+            this.ctrlLabel11.Size = new System.Drawing.Size(101, 16);
+            this.ctrlLabel11.TabIndex = 99;
+            this.ctrlLabel11.Text = "Conveyor Type";
             // 
             // ctrlLabel10
             // 
@@ -1164,6 +1190,7 @@
             this.ctrlSCraneH4.Name = "ctrlSCraneH4";
             this.ctrlSCraneH4.Size = new System.Drawing.Size(224, 32);
             this.ctrlSCraneH4.TabIndex = 573;
+            this.ctrlSCraneH4.Tag = "HPC S/Crane";
             // 
             // ctrlSCraneH3
             // 
@@ -1181,6 +1208,7 @@
             this.ctrlSCraneH3.Name = "ctrlSCraneH3";
             this.ctrlSCraneH3.Size = new System.Drawing.Size(373, 32);
             this.ctrlSCraneH3.TabIndex = 572;
+            this.ctrlSCraneH3.Tag = "LTA S/Crane #2";
             // 
             // object_85b0f3cb_bd20_487a_bfd7_03e370778b9c
             // 
@@ -1219,6 +1247,7 @@
             this.ctrlSCraneH2.Name = "ctrlSCraneH2";
             this.ctrlSCraneH2.Size = new System.Drawing.Size(373, 32);
             this.ctrlSCraneH2.TabIndex = 571;
+            this.ctrlSCraneH2.Tag = "LTA S/Crane #1";
             // 
             // cranebox
             // 
@@ -1245,6 +1274,7 @@
             this.ctrlSCraneH1.Name = "ctrlSCraneH1";
             this.ctrlSCraneH1.Size = new System.Drawing.Size(293, 32);
             this.ctrlSCraneH1.TabIndex = 570;
+            this.ctrlSCraneH1.Tag = "HTA S/Crane";
             // 
             // bcrMarker35
             // 
@@ -5249,32 +5279,6 @@
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(269, 162);
             this.label29.TabIndex = 577;
-            // 
-            // ctrlLabel11
-            // 
-            this.ctrlLabel11.AutoSize = true;
-            this.ctrlLabel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlLabel11.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.ctrlLabel11.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel11.LanguageID = "DEF_Conveyor_Trye";
-            this.ctrlLabel11.Location = new System.Drawing.Point(15, 202);
-            this.ctrlLabel11.Name = "ctrlLabel11";
-            this.ctrlLabel11.Size = new System.Drawing.Size(101, 16);
-            this.ctrlLabel11.TabIndex = 99;
-            this.ctrlLabel11.Text = "Conveyor Type";
-            // 
-            // ctrlLabel12
-            // 
-            this.ctrlLabel12.AutoSize = true;
-            this.ctrlLabel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlLabel12.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.ctrlLabel12.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel12.LanguageID = "DEF_Eqp_Status";
-            this.ctrlLabel12.Location = new System.Drawing.Point(15, 501);
-            this.ctrlLabel12.Name = "ctrlLabel12";
-            this.ctrlLabel12.Size = new System.Drawing.Size(74, 16);
-            this.ctrlLabel12.TabIndex = 100;
-            this.ctrlLabel12.Text = "Eqp Status";
             // 
             // CtrlMonitoring
             // 

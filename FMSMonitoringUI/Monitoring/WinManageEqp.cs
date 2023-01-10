@@ -80,8 +80,9 @@ namespace FMSMonitoringUI.Monitoring
             lstTitle = new List<string>();
             lstTitle.Add("Equipment ID");
             lstTitle.Add("Equipment Name");
-            lstTitle.Add("Control Mode");       // Operation Mode
-            lstTitle.Add("Equipment Status");                       
+            lstTitle.Add("Control Mode");       // Eqp Mode
+            lstTitle.Add("Status");
+            lstTitle.Add("Operation Mode");       // Operation Mode
             lstTitle.Add("Trouble Code");
             lstTitle.Add("Trouble Name");
             gridEqpInfo.AddRowsHeaderList(lstTitle);
@@ -118,7 +119,7 @@ namespace FMSMonitoringUI.Monitoring
             lstTitle.Add("Binding Time");           // tray_input_time      
             lstTitle.Add("Tray Type");              // tray_zone
             lstTitle.Add("Model");
-            lstTitle.Add("Route ID");
+            lstTitle.Add("Route");
             lstTitle.Add("Lot ID");
             lstTitle.Add("Current Process");        // Porcess_Name
             lstTitle.Add("Start Time");
@@ -150,11 +151,13 @@ namespace FMSMonitoringUI.Monitoring
             gridEqpInfo.SetValue(1, row, data[0].EQP_ID); row++;
             gridEqpInfo.SetValue(1, row, data[0].EQP_NAME); row++;
 
+            gridEqpInfo.SetValue(1, row, GetEqpStatus(data[0].EQP_MODE)); row++;
+            gridEqpInfo.SetValue(1, row, GetEqpStatus(data[0].EQP_STATUS)); row++;
+
             if (data[0].OPERATION_MODE == 0) gridEqpInfo.RowsVisible(row, false);
             else gridEqpInfo.RowsVisible(row, true);
-
             gridEqpInfo.SetValue(1, row, GetOperationMode(data[0].OPERATION_MODE)); row++;
-            gridEqpInfo.SetValue(1, row, GetEqpStatus(data[0].EQP_STATUS)); row++;
+
             gridEqpInfo.SetValue(1, row, data[0].TROUBLE_CODE); row++;
             gridEqpInfo.SetValue(1, row, data[0].TROUBLE_NAME);
 
@@ -181,7 +184,7 @@ namespace FMSMonitoringUI.Monitoring
         {
             try
             {
-                while (this._TheadVisiable == true)
+                //while (this._TheadVisiable == true)
                 {
                     GC.Collect();
 
@@ -189,7 +192,7 @@ namespace FMSMonitoringUI.Monitoring
                     // Set Query
                     StringBuilder strSQL = new StringBuilder();
 
-                    strSQL.Append(" SELECT A.eqp_id, A.eqp_name, A.operation_mode, A.eqp_status, A.eqp_trouble_code,C.tray_id, IF(A.tray_id = C.tray_id, '1', '2') AS level,");
+                    strSQL.Append(" SELECT A.eqp_id, A.eqp_name, A.eqp_mode, A.operation_mode, A.eqp_status, A.eqp_trouble_code,C.tray_id, IF(A.tray_id = C.tray_id, '1', '2') AS level,");
                     strSQL.Append("        B.trouble_name,");
                     strSQL.Append("        C.tray_input_time, C.tray_zone, C.model_id, C.route_id, C.lot_id, C.start_time, C.plan_time, C.current_cell_cnt,");
                     strSQL.Append("        D.process_name");
@@ -212,7 +215,7 @@ namespace FMSMonitoringUI.Monitoring
                         this.BeginInvoke(new Action(() => SetData(result.DATA)));
                     }
 
-                    Thread.Sleep(3000);
+                    //Thread.Sleep(3000);
                 }
             }
             catch (Exception ex)
@@ -354,7 +357,7 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
-        #region Exit_Click
+        #region Button Event
         private void Exit_Click(object sender, EventArgs e)
         {
             Close();

@@ -10,6 +10,7 @@
 #region [using]
 using System;
 using System.ComponentModel;
+using System.Drawing;
 #endregion
 
 namespace MonitoringUI.Controlls.CButton

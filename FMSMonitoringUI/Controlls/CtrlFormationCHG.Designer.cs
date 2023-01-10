@@ -135,146 +135,159 @@
             // 
             this.ctrlRack12.BackColor = System.Drawing.Color.DimGray;
             this.ctrlRack12.Enabled = false;
-            this.ctrlRack12.EqpID = "CHG0110304";
+            this.ctrlRack12.EqpID = "F1CHG01";
             this.ctrlRack12.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlRack12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlRack12.Location = new System.Drawing.Point(1087, 17);
             this.ctrlRack12.Name = "ctrlRack12";
-            this.ctrlRack12.RackID = "1Lane-3Bay-4F";
             this.ctrlRack12.Size = new System.Drawing.Size(448, 119);
             this.ctrlRack12.TabIndex = 103;
+            this.ctrlRack12.TextBoxText = "1Lane-3Bay-4F";
+            this.ctrlRack12.UnitID = "CHG0110304";
+            this.ctrlRack12.Visible = false;
             // 
             // ctrlRack9
             // 
             this.ctrlRack9.BackColor = System.Drawing.Color.DimGray;
-            this.ctrlRack9.EqpID = "CHG0110301";
+            this.ctrlRack9.EqpID = "F1CHG01";
             this.ctrlRack9.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlRack9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlRack9.Location = new System.Drawing.Point(1087, 402);
             this.ctrlRack9.Name = "ctrlRack9";
-            this.ctrlRack9.RackID = "1Lane-3Bay-1F";
             this.ctrlRack9.Size = new System.Drawing.Size(448, 119);
             this.ctrlRack9.TabIndex = 102;
+            this.ctrlRack9.TextBoxText = "1Lane-3Bay-1F";
+            this.ctrlRack9.UnitID = "CHG0110301";
             // 
             // ctrlRack10
             // 
             this.ctrlRack10.BackColor = System.Drawing.Color.DimGray;
-            this.ctrlRack10.EqpID = "CHG0110302";
+            this.ctrlRack10.EqpID = "F1CHG01";
             this.ctrlRack10.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlRack10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlRack10.Location = new System.Drawing.Point(1087, 273);
             this.ctrlRack10.Name = "ctrlRack10";
-            this.ctrlRack10.RackID = "1Lane-3Bay-2F";
             this.ctrlRack10.Size = new System.Drawing.Size(448, 119);
             this.ctrlRack10.TabIndex = 101;
+            this.ctrlRack10.TextBoxText = "1Lane-3Bay-2F";
+            this.ctrlRack10.UnitID = "CHG0110302";
             // 
             // ctrlRack11
             // 
             this.ctrlRack11.BackColor = System.Drawing.Color.DimGray;
-            this.ctrlRack11.EqpID = "CHG0110303";
+            this.ctrlRack11.EqpID = "F1CHG01";
             this.ctrlRack11.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlRack11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlRack11.Location = new System.Drawing.Point(1087, 145);
             this.ctrlRack11.Name = "ctrlRack11";
-            this.ctrlRack11.RackID = "1Lane-3Bay-3F";
             this.ctrlRack11.Size = new System.Drawing.Size(448, 119);
             this.ctrlRack11.TabIndex = 100;
+            this.ctrlRack11.TextBoxText = "1Lane-3Bay-3F";
+            this.ctrlRack11.UnitID = "CHG0110303";
             // 
             // ctrlRack5
             // 
             this.ctrlRack5.BackColor = System.Drawing.Color.DimGray;
-            this.ctrlRack5.EqpID = "CHG0110201";
+            this.ctrlRack5.EqpID = "F1CHG01";
             this.ctrlRack5.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlRack5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlRack5.Location = new System.Drawing.Point(593, 403);
             this.ctrlRack5.Name = "ctrlRack5";
-            this.ctrlRack5.RackID = "1Lane-2Bay-1F";
             this.ctrlRack5.Size = new System.Drawing.Size(448, 119);
             this.ctrlRack5.TabIndex = 98;
+            this.ctrlRack5.TextBoxText = "1Lane-2Bay-1F";
+            this.ctrlRack5.UnitID = "CHG0110201";
             // 
             // ctrlRack6
             // 
             this.ctrlRack6.BackColor = System.Drawing.Color.DimGray;
-            this.ctrlRack6.EqpID = "CHG0110202";
+            this.ctrlRack6.EqpID = "F1CHG01";
             this.ctrlRack6.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlRack6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlRack6.Location = new System.Drawing.Point(593, 274);
             this.ctrlRack6.Name = "ctrlRack6";
-            this.ctrlRack6.RackID = "1Lane-2Bay-2F";
             this.ctrlRack6.Size = new System.Drawing.Size(448, 119);
             this.ctrlRack6.TabIndex = 97;
+            this.ctrlRack6.TextBoxText = "1Lane-2Bay-2F";
+            this.ctrlRack6.UnitID = "CHG0110202";
             // 
             // ctrlRack7
             // 
             this.ctrlRack7.BackColor = System.Drawing.Color.DimGray;
-            this.ctrlRack7.EqpID = "CHG0110203";
+            this.ctrlRack7.EqpID = "F1CHG01";
             this.ctrlRack7.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlRack7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlRack7.Location = new System.Drawing.Point(593, 146);
             this.ctrlRack7.Name = "ctrlRack7";
-            this.ctrlRack7.RackID = "1Lane-2Bay-3F";
             this.ctrlRack7.Size = new System.Drawing.Size(448, 119);
             this.ctrlRack7.TabIndex = 96;
+            this.ctrlRack7.TextBoxText = "1Lane-2Bay-3F";
+            this.ctrlRack7.UnitID = "CHG0110203";
             // 
             // ctrlRack8
             // 
             this.ctrlRack8.BackColor = System.Drawing.Color.DimGray;
-            this.ctrlRack8.EqpID = "CHG0110204";
+            this.ctrlRack8.EqpID = "F1CHG01";
             this.ctrlRack8.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlRack8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlRack8.Location = new System.Drawing.Point(593, 17);
             this.ctrlRack8.Name = "ctrlRack8";
-            this.ctrlRack8.RackID = "1Lane-2Bay-4F";
             this.ctrlRack8.Size = new System.Drawing.Size(448, 119);
             this.ctrlRack8.TabIndex = 95;
+            this.ctrlRack8.TextBoxText = "1Lane-2Bay-4F";
+            this.ctrlRack8.UnitID = "CHG0110204";
             // 
             // ctrlRack4
             // 
             this.ctrlRack4.BackColor = System.Drawing.Color.DimGray;
-            this.ctrlRack4.EqpID = "CHG0110101";
+            this.ctrlRack4.EqpID = "F1CHG01";
             this.ctrlRack4.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlRack4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlRack4.Location = new System.Drawing.Point(97, 403);
             this.ctrlRack4.Name = "ctrlRack4";
-            this.ctrlRack4.RackID = "1Lane-1Bay-1F";
             this.ctrlRack4.Size = new System.Drawing.Size(448, 119);
             this.ctrlRack4.TabIndex = 94;
+            this.ctrlRack4.TextBoxText = "1Lane-1Bay-1F";
+            this.ctrlRack4.UnitID = "CHG0110101";
             // 
             // ctrlRack3
             // 
             this.ctrlRack3.BackColor = System.Drawing.Color.DimGray;
-            this.ctrlRack3.EqpID = "CHG0110102";
+            this.ctrlRack3.EqpID = "F1CHG01";
             this.ctrlRack3.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlRack3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlRack3.Location = new System.Drawing.Point(97, 274);
             this.ctrlRack3.Name = "ctrlRack3";
-            this.ctrlRack3.RackID = "1Lane-1Bay-2F";
             this.ctrlRack3.Size = new System.Drawing.Size(448, 119);
             this.ctrlRack3.TabIndex = 93;
+            this.ctrlRack3.TextBoxText = "1Lane-1Bay-2F";
+            this.ctrlRack3.UnitID = "CHG0110102";
             // 
             // ctrlRack2
             // 
             this.ctrlRack2.BackColor = System.Drawing.Color.DimGray;
-            this.ctrlRack2.EqpID = "CHG0110103";
+            this.ctrlRack2.EqpID = "F1CHG01";
             this.ctrlRack2.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlRack2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlRack2.Location = new System.Drawing.Point(97, 146);
             this.ctrlRack2.Name = "ctrlRack2";
-            this.ctrlRack2.RackID = "1Lane-1Bay-3F";
             this.ctrlRack2.Size = new System.Drawing.Size(448, 119);
             this.ctrlRack2.TabIndex = 92;
+            this.ctrlRack2.TextBoxText = "1Lane-1Bay-3F";
+            this.ctrlRack2.UnitID = "CHG0110103";
             // 
             // ctrlRack1
             // 
             this.ctrlRack1.BackColor = System.Drawing.Color.DimGray;
-            this.ctrlRack1.EqpID = "CHG0110104";
+            this.ctrlRack1.EqpID = "F1CHG01";
             this.ctrlRack1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlRack1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlRack1.Location = new System.Drawing.Point(97, 17);
             this.ctrlRack1.Name = "ctrlRack1";
-            this.ctrlRack1.RackID = "1Lane-1Bay-4F";
             this.ctrlRack1.Size = new System.Drawing.Size(448, 119);
             this.ctrlRack1.TabIndex = 91;
+            this.ctrlRack1.TextBoxText = "1Lane-1Bay-4F";
+            this.ctrlRack1.UnitID = "CHG0110104";
             // 
             // label3
             // 
@@ -598,7 +611,7 @@
             this.label9.ForeColor = System.Drawing.Color.White;
             this.label9.Location = new System.Drawing.Point(15, 435);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(110, 16);
+            this.label9.Size = new System.Drawing.Size(109, 16);
             this.label9.TabIndex = 102;
             this.label9.Text = "Operation Mode";
             // 

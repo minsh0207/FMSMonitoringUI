@@ -43,10 +43,10 @@ namespace FMSMonitoringUI
             m_timer.Stop();
         }
         
-        private void CtrlFormationBox_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
+        //private void CtrlFormationBox_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        //{
             
-        }
+        //}
 
         #region FormationTimer
         public void FormationTimer(bool onoff)

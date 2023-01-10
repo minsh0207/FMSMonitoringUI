@@ -174,9 +174,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.btnHTAging = new System.Windows.Forms.Button();
-            this.btnLTAging1 = new System.Windows.Forms.Button();
-            this.btnLTAging2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.ctrlButtonDataView = new MonitoringUI.Controlls.CButton.CtrlButtonRoot();
@@ -200,6 +197,9 @@
             this.ctrlTaggingName4 = new MonitoringUI.Controlls.CtrlTaggingName();
             this.ctrlTaggingName2 = new MonitoringUI.Controlls.CtrlTaggingName();
             this.ctrlTaggingName1 = new MonitoringUI.Controlls.CtrlTaggingName();
+            this.btnHTAging = new FMSMonitoringUI.Controlls.WindowsForms.CtrlButtonType2();
+            this.btnLTAging1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlButtonType2();
+            this.btnLTAging2 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlButtonType2();
             this.AgingTab.SuspendLayout();
             this.tpHTAging.SuspendLayout();
             this.tpLTAging1.SuspendLayout();
@@ -719,6 +719,7 @@
             this.ht014.DoubleReach = false;
             this.ht014.DoubleReachLinePrefix = "";
             this.ht014.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.ht014.EqpID = "F1HTA01";
             this.ht014.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ht014.LinePrefix = "H014";
             this.ht014.Location = new System.Drawing.Point(65, 579);
@@ -741,6 +742,7 @@
             this.ht011.DoubleReach = false;
             this.ht011.DoubleReachLinePrefix = "";
             this.ht011.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.ht011.EqpID = "F1HTA01";
             this.ht011.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ht011.LinePrefix = "H011";
             this.ht011.Location = new System.Drawing.Point(65, 30);
@@ -763,6 +765,7 @@
             this.ht012.DoubleReach = false;
             this.ht012.DoubleReachLinePrefix = "";
             this.ht012.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.ht012.EqpID = "F1HTA01";
             this.ht012.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ht012.LinePrefix = "H012";
             this.ht012.Location = new System.Drawing.Point(65, 197);
@@ -785,6 +788,7 @@
             this.ht013.DoubleReach = false;
             this.ht013.DoubleReachLinePrefix = "";
             this.ht013.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.ht013.EqpID = "F1HTA01";
             this.ht013.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ht013.LinePrefix = "H013";
             this.ht013.Location = new System.Drawing.Point(65, 412);
@@ -1345,6 +1349,7 @@
             this.lt014.DoubleReach = false;
             this.lt014.DoubleReachLinePrefix = "";
             this.lt014.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.lt014.EqpID = "F1LTA01";
             this.lt014.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lt014.LinePrefix = "L014";
             this.lt014.Location = new System.Drawing.Point(65, 579);
@@ -1367,6 +1372,7 @@
             this.lt011.DoubleReach = false;
             this.lt011.DoubleReachLinePrefix = "";
             this.lt011.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.lt011.EqpID = "F1LTA01";
             this.lt011.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lt011.LinePrefix = "L011";
             this.lt011.Location = new System.Drawing.Point(65, 30);
@@ -1389,6 +1395,7 @@
             this.lt012.DoubleReach = false;
             this.lt012.DoubleReachLinePrefix = "";
             this.lt012.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.lt012.EqpID = "F1LTA01";
             this.lt012.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lt012.LinePrefix = "L012";
             this.lt012.Location = new System.Drawing.Point(65, 197);
@@ -1411,6 +1418,7 @@
             this.lt013.DoubleReach = false;
             this.lt013.DoubleReachLinePrefix = "";
             this.lt013.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.lt013.EqpID = "F1LTA01";
             this.lt013.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lt013.LinePrefix = "L013";
             this.lt013.Location = new System.Drawing.Point(65, 412);
@@ -1939,6 +1947,7 @@
             this.lt024.DoubleReach = false;
             this.lt024.DoubleReachLinePrefix = "";
             this.lt024.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.lt024.EqpID = "F1LTA02";
             this.lt024.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lt024.LinePrefix = "L024";
             this.lt024.Location = new System.Drawing.Point(65, 579);
@@ -1961,6 +1970,7 @@
             this.lt021.DoubleReach = false;
             this.lt021.DoubleReachLinePrefix = "";
             this.lt021.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.lt021.EqpID = "F1LTA02";
             this.lt021.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lt021.LinePrefix = "L021";
             this.lt021.Location = new System.Drawing.Point(65, 30);
@@ -1983,6 +1993,7 @@
             this.lt022.DoubleReach = false;
             this.lt022.DoubleReachLinePrefix = "";
             this.lt022.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.lt022.EqpID = "F1LTA02";
             this.lt022.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lt022.LinePrefix = "L022";
             this.lt022.Location = new System.Drawing.Point(65, 197);
@@ -2005,6 +2016,7 @@
             this.lt023.DoubleReach = false;
             this.lt023.DoubleReachLinePrefix = "";
             this.lt023.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.lt023.EqpID = "F1LTA02";
             this.lt023.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lt023.LinePrefix = "L023";
             this.lt023.Location = new System.Drawing.Point(65, 412);
@@ -2087,45 +2099,6 @@
             this.label11.TabIndex = 34;
             this.label11.Text = "R6-2";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnHTAging
-            // 
-            this.btnHTAging.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHTAging.ForeColor = System.Drawing.Color.White;
-            this.btnHTAging.Location = new System.Drawing.Point(319, 8);
-            this.btnHTAging.Name = "btnHTAging";
-            this.btnHTAging.Size = new System.Drawing.Size(134, 31);
-            this.btnHTAging.TabIndex = 81;
-            this.btnHTAging.Tag = "0";
-            this.btnHTAging.Text = "HT Aging";
-            this.btnHTAging.UseVisualStyleBackColor = true;
-            this.btnHTAging.Click += new System.EventHandler(this.AgingTab_Click);
-            // 
-            // btnLTAging1
-            // 
-            this.btnLTAging1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLTAging1.ForeColor = System.Drawing.Color.White;
-            this.btnLTAging1.Location = new System.Drawing.Point(452, 8);
-            this.btnLTAging1.Name = "btnLTAging1";
-            this.btnLTAging1.Size = new System.Drawing.Size(134, 31);
-            this.btnLTAging1.TabIndex = 84;
-            this.btnLTAging1.Tag = "1";
-            this.btnLTAging1.Text = "LT Aging #1";
-            this.btnLTAging1.UseVisualStyleBackColor = true;
-            this.btnLTAging1.Click += new System.EventHandler(this.AgingTab_Click);
-            // 
-            // btnLTAging2
-            // 
-            this.btnLTAging2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLTAging2.ForeColor = System.Drawing.Color.White;
-            this.btnLTAging2.Location = new System.Drawing.Point(585, 8);
-            this.btnLTAging2.Name = "btnLTAging2";
-            this.btnLTAging2.Size = new System.Drawing.Size(134, 31);
-            this.btnLTAging2.TabIndex = 85;
-            this.btnLTAging2.Tag = "2";
-            this.btnLTAging2.Text = "LT Aging #2";
-            this.btnLTAging2.UseVisualStyleBackColor = true;
-            this.btnLTAging2.Click += new System.EventHandler(this.AgingTab_Click);
             // 
             // panel1
             // 
@@ -2471,16 +2444,55 @@
             this.ctrlTaggingName1.TagText = "Not Use";
             this.ctrlTaggingName1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(238)))), ((int)(((byte)(244)))));
             // 
+            // btnHTAging
+            // 
+            this.btnHTAging.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHTAging.ForeColor = System.Drawing.Color.White;
+            this.btnHTAging.Location = new System.Drawing.Point(318, 10);
+            this.btnHTAging.Name = "btnHTAging";
+            this.btnHTAging.Size = new System.Drawing.Size(147, 28);
+            this.btnHTAging.TabIndex = 87;
+            this.btnHTAging.Tag = "0";
+            this.btnHTAging.Text = "HT Aging";
+            this.btnHTAging.UseVisualStyleBackColor = true;
+            this.btnHTAging.Click += new System.EventHandler(this.AgingTab_Click);
+            // 
+            // btnLTAging1
+            // 
+            this.btnLTAging1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLTAging1.ForeColor = System.Drawing.Color.White;
+            this.btnLTAging1.Location = new System.Drawing.Point(464, 10);
+            this.btnLTAging1.Name = "btnLTAging1";
+            this.btnLTAging1.Size = new System.Drawing.Size(147, 28);
+            this.btnLTAging1.TabIndex = 88;
+            this.btnLTAging1.Tag = "1";
+            this.btnLTAging1.Text = "LT Aging #1";
+            this.btnLTAging1.UseVisualStyleBackColor = true;
+            this.btnLTAging1.Click += new System.EventHandler(this.AgingTab_Click);
+            // 
+            // btnLTAging2
+            // 
+            this.btnLTAging2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLTAging2.ForeColor = System.Drawing.Color.White;
+            this.btnLTAging2.Location = new System.Drawing.Point(610, 10);
+            this.btnLTAging2.Name = "btnLTAging2";
+            this.btnLTAging2.Size = new System.Drawing.Size(147, 28);
+            this.btnLTAging2.TabIndex = 89;
+            this.btnLTAging2.Tag = "2";
+            this.btnLTAging2.Text = "LT Aging #2";
+            this.btnLTAging2.UseVisualStyleBackColor = true;
+            this.btnLTAging2.Click += new System.EventHandler(this.AgingTab_Click);
+            // 
             // CtrlAging
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnLTAging2);
             this.Controls.Add(this.btnLTAging1);
             this.Controls.Add(this.btnHTAging);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.AgingTab);
             this.Name = "CtrlAging";
             this.Size = new System.Drawing.Size(1920, 945);
@@ -2542,9 +2554,6 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Button btnHTAging;
-        private System.Windows.Forms.Button btnLTAging1;
-        private System.Windows.Forms.Button btnLTAging2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label label37;
@@ -2667,5 +2676,8 @@
         private Controlls.CtrlTaggingName ctrlTaggingName4;
         private Controlls.CtrlTaggingName ctrlTaggingName2;
         private Controlls.CtrlTaggingName ctrlTaggingName1;
+        private FMSMonitoringUI.Controlls.WindowsForms.CtrlButtonType2 btnHTAging;
+        private FMSMonitoringUI.Controlls.WindowsForms.CtrlButtonType2 btnLTAging1;
+        private FMSMonitoringUI.Controlls.WindowsForms.CtrlButtonType2 btnLTAging2;
     }
 }

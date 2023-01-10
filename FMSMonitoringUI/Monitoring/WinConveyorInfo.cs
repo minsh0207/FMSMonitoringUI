@@ -26,19 +26,19 @@ namespace FMSMonitoringUI.Monitoring
         private string _cvTitle = null;
 
         OPCUAClient _OPCUAClient = null;
-        List<ReadValueId> _ConveyorNodeID = null;
+        int _ConveyorNo = 0;
 
         #region Working Thread
         private Thread _ProcessThread;
         private bool _TheadVisiable;
         #endregion
 
-        public WinConveyorInfo(string cvTitle, OPCUAClient opcua, List<ReadValueId> conveyorNodeID)
+        public WinConveyorInfo(string cvTitle, OPCUAClient opcua, int conveyorNo)
         {
             InitializeComponent();
 
             _OPCUAClient = opcua;
-            _ConveyorNodeID = conveyorNodeID;
+            _ConveyorNo = conveyorNo;
 
             // Timer 
             //m_timer.Tick += new EventHandler(OnTimer);
@@ -253,7 +253,8 @@ namespace FMSMonitoringUI.Monitoring
                 {
                     GC.Collect();
 
-                    List<DataValue> data = _OPCUAClient.ReadNodeID(_ConveyorNodeID);
+                    List<ReadValueId> cvInfo = _OPCUAClient.ConveyorNodeID[_ConveyorNo];
+                    List<DataValue> data = _OPCUAClient.ReadNodeID(cvInfo);
                     this.BeginInvoke(new Action(() => SetData(data)));
 
                     Thread.Sleep(2000);

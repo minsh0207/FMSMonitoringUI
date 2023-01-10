@@ -22,28 +22,42 @@ using FMSMonitoringUI.Monitoring;
 using OPCUAClientClassLib;
 using ControlGallery;
 using FMSMonitoringUI.Controlls;
+using Org.BouncyCastle.Ocsp;
+using RestClientLib;
+using MonitoringUI.Controlls.CButton;
+using FMSMonitoringUI.Controlls.WindowsForms;
 
 namespace MonitoringUI.Monitoring
 {
     public partial class CtrlAging : UserControlRoot
     {
         #region [Variable]
-        // Timer
-        //DispatcherTimer m_timer;
+        private MySqlManager _mysql;
+        private Logger _Logger;
+
+        private string _AgingType = string.Empty;
+        private string _AgingLine = string.Empty;
         #endregion
 
-        private MySqlManager _mysql;
+        #region Working Thread
+        private Thread _ProcessThread;
+        private bool _TheadVisiable;
+        #endregion
 
         public CtrlAging()
         {
             InitializeComponent();
+
+            string logPath = ConfigurationManager.AppSettings["LOG_PATH"];
+            _Logger = new Logger(logPath, LogMode.Hour);
+
             InitTag();
             InitAgingRack();
             InitGridView();
 
             // Timer 
-            m_timer.Tick += new EventHandler(OnTimer);
-            m_timer.Stop();
+            //m_timer.Tick += new EventHandler(OnTimer);
+            //m_timer.Stop();
 
             _mysql = new MySqlManager(ConfigurationManager.ConnectionStrings["DB_CONNECTION_STRING"].ConnectionString);
 
@@ -62,8 +76,8 @@ namespace MonitoringUI.Monitoring
             btnHTAging.BackColor = Color.LightYellow;
             btnHTAging.ForeColor = Color.Black;
 
-            //string log = $"Aging Monitoring";
-            //_Logger.Write(LogLevel.Info, log, LogFileName.AllLog);
+            string log = $"Aging Monitoring";
+            _Logger.Write(LogLevel.Info, log, LogFileName.AllLog);
         }
         #endregion
 
@@ -71,14 +85,36 @@ namespace MonitoringUI.Monitoring
         public void AgingTimer(bool onoff)
         {
             // Timer
-            if (onoff) m_timer.Start();
-            else m_timer.Stop();
+            if (onoff)
+            {
+                //m_timer.Start();
+
+                _TheadVisiable = true;
+
+                this.BeginInvoke(new MethodInvoker(delegate ()
+                {
+                    _ProcessThread = new Thread(() => ProcessThreadCallback());
+                    _ProcessThread.IsBackground = true; _ProcessThread.Start();
+                }));
+            }
+            else
+            {
+                //m_timer.Stop();
+
+                if (_TheadVisiable && this._ProcessThread.IsAlive)
+                    this._TheadVisiable = false;
+
+                if (_TheadVisiable)
+                    this._ProcessThread.Abort();
+            }
         }
         #endregion
 
         private void CtrlRTAging_Disposed(object sender, EventArgs e)
         {
             m_timer.Stop();
+
+            
         }
 
         private void CtrlRTAging_HandleDestroyed(object sender, EventArgs e)
@@ -96,7 +132,8 @@ namespace MonitoringUI.Monitoring
                 if(cbRTAutoChange.Checked)
                 {
                     MoveNextRTAgingTab();
-                } else
+                } 
+                else
                 {
                     int selectedIndex = AgingTab.SelectedIndex;
                     // data load
@@ -467,18 +504,18 @@ namespace MonitoringUI.Monitoring
             lt024.MouseDoubleClick += AgingLineControl_DoubleClick;
 
             // 우클릭 - Trouble
-            //ht011.Click += Rack_Click;
-            //ht012.Click += Rack_Click;
-            //ht013.Click += Rack_Click;
-            //ht014.Click += Rack_Click;
-            //lt011.Click += Rack_Click;
-            //lt012.Click += Rack_Click;
-            //lt013.Click += Rack_Click;
-            //lt014.Click += Rack_Click;
-            //lt021.Click += Rack_Click;
-            //lt022.Click += Rack_Click;
-            //lt023.Click += Rack_Click;
-            //lt024.Click += Rack_Click;
+            ht011.Click += Rack_Click;
+            ht012.Click += Rack_Click;
+            ht013.Click += Rack_Click;
+            ht014.Click += Rack_Click;
+            lt011.Click += Rack_Click;
+            lt012.Click += Rack_Click;
+            lt013.Click += Rack_Click;
+            lt014.Click += Rack_Click;
+            lt021.Click += Rack_Click;
+            lt022.Click += Rack_Click;
+            lt023.Click += Rack_Click;
+            lt024.Click += Rack_Click;
 
             /// 
             /// 화면권한 관련
@@ -532,6 +569,9 @@ namespace MonitoringUI.Monitoring
             AgingInfoView_LT2.SetGridViewStyles();
             AgingInfoView_LT2.ColumnHeadersWidth(0, 140);
 
+            AgingTab.SelectedIndex = 0;
+            _AgingType = "H";
+            _AgingLine = "01";
 
             //string[] columnName = { "Total Rack Count", "In Aging", "Empty Rack", "Unloading Rack", "No Input Rack","No Output Rack","Bad Rack", "Tatal Trouble"}; 
 
@@ -583,7 +623,6 @@ namespace MonitoringUI.Monitoring
                         if (strUnitID.Length < 1) return;
 
                         // Trouble Window
-                        //WinTroubleInfo troubleInfoWindow = new WinTroubleInfo(CDefine.DEF_EQP_TYPE_ID_AGING, strUnitID);
                         WinTroubleInfo winTroubleInfo = new WinTroubleInfo(CDefine.DEF_EQP_TYPE_ID_AGING, strUnitID);
                         winTroubleInfo.ShowDialog();
                     }
@@ -626,17 +665,12 @@ namespace MonitoringUI.Monitoring
                         //winAgingRackSetting.ShowDialog();
 
                         // Rack Info
-                        DataSet ds = _mysql.SelectRackInfo(strRackID);
+                        //DataSet ds = _mysql.SelectRackInfo(strRackID);
 
-                        //string msg = $"Track No : {trackno}, TrayIdL1 : {siteInfo.TrayIdL1}, TrayIdL2 : {siteInfo.TrayIdL2}";
-                        //_Logger.Write(LogLevel.Info, "", LogFileName.ButtonClick);
+                        string msg = $"Rack ID : {strRackID}";
+                        _Logger.Write(LogLevel.Info, msg, LogFileName.ButtonClick);
 
-                        //WinRackInfo winRack = new WinRackInfo();
-                        //winRack.SetRackInfo(ds);
-                        //winRack.Show();
-
-                        WinAgingRackSetting winRack = new WinAgingRackSetting();
-                        //winRack.SetRackInfo(ds);
+                        WinAgingRackSetting winRack = new WinAgingRackSetting(agingBay.EqpID, strRackID);
                         winRack.Show();
                     }
 
@@ -870,6 +904,88 @@ namespace MonitoringUI.Monitoring
             }
         }
 
+        #region SetData
+        private void SetData(List<_aging_rack_count> data)
+        {
+            if (data.Count == 0) return;
+
+            int col = 1;
+
+            int selectedIndex = AgingTab.SelectedIndex;
+            CtrlDataGridView gridRackCount = new CtrlDataGridView();
+
+            switch (selectedIndex)
+            {
+                case 0:
+                    gridRackCount = AgingInfoView_HT;
+                    break;
+                case 1:
+                    gridRackCount = AgingInfoView_LT1;
+                    break;
+                case 2:
+                    gridRackCount = AgingInfoView_LT2;
+                    break;
+            }
+
+            gridRackCount.SetValue(col, 0, data[0].TOTAL_RACK_CNT); col++;
+            gridRackCount.SetValue(col, 0, data[0].IN_AGING); col++;
+            gridRackCount.SetValue(col, 0, data[0].EMPTY_RACK); col++;
+            gridRackCount.SetValue(col, 0, data[0].UNLOADING_RACK); col++;
+            gridRackCount.SetValue(col, 0, data[0].NO_INPUT_RACK); col++;
+            gridRackCount.SetValue(col, 0, data[0].NO_OUTPUT_RACK); col++;
+            gridRackCount.SetValue(col, 0, data[0].BAD_RACK); col++;
+            gridRackCount.SetValue(col, 0, data[0].TOTAL_TROUBLE);
+        }
+        #endregion
+
+        #region ProcessThreadCallback
+        private void ProcessThreadCallback()
+        {
+            try
+            {
+
+                while (this._TheadVisiable == true)
+                {
+                    GC.Collect();
+
+                    Task task = LoadAgingRackData();
+
+                    RESTClient rest = new RESTClient();
+                    // Set Query
+                    StringBuilder strSQL = new StringBuilder();
+
+                    strSQL.Append(" SELECT COUNT(aging_type) AS total_rack_cnt,");
+                    strSQL.Append("        COUNT(if(tray_cnt > 0, tray_cnt, null)) AS in_aging,");
+                    strSQL.Append("        COUNT(if(tray_cnt = 0, tray_cnt, null)) AS empty_rack,");
+                    strSQL.Append("        COUNT(if(status = 'U', status, null)) AS unloading_rack,");
+                    strSQL.Append("        COUNT(if(status = 'X', status, null)) AS no_input_rack,");
+                    strSQL.Append("        COUNT(if(status = 'O', status, null)) AS no_output_rack,");
+                    strSQL.Append("        COUNT(if(status = 'B', status, null)) AS bad_rack,");
+                    strSQL.Append("        COUNT(if(status = 'T', status, null)) AS total_trouble");
+                    strSQL.Append(" FROM fms_v.tb_mst_aging");
+                    //필수값
+                    strSQL.Append($" WHERE aging_type = '{_AgingType}' AND line = '{_AgingLine}'");
+
+                    string jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+
+                    if (jsonResult != null)
+                    {
+                        _jsonAgingRackCountResponse result = rest.ConvertAgingRackCount(jsonResult);
+
+                        this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                    }
+
+                    Thread.Sleep(3000);
+                }
+            }
+            catch (Exception ex)
+            {
+                // System Debug
+                System.Diagnostics.Debug.Print(string.Format("### Get ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+            }
+        }
+        #endregion
+
         private void selectTable(string connectionAddress)
         {
             try
@@ -908,22 +1024,42 @@ namespace MonitoringUI.Monitoring
 
         private void AgingTab_Click(object sender, EventArgs e)
         {
-            Button btn = (Button)sender;
+            CtrlButtonType2 btn = (CtrlButtonType2)sender;
             int tabIdx = int.Parse(btn.Tag.ToString());
 
-            btnHTAging.BackColor = Color.FromArgb(27, 27, 27);
-            btnHTAging.ForeColor = Color.White;
+            foreach (var ctl in this.Controls)
+            {
+                if (ctl.GetType() == typeof(CtrlButtonType2))
+                {
+                    CtrlButtonType2 btnCtrl = ctl as CtrlButtonType2;
 
-            btnLTAging1.BackColor = Color.FromArgb(27, 27, 27);
-            btnLTAging1.ForeColor = Color.White;
-
-            btnLTAging2.BackColor = Color.FromArgb(27, 27, 27);
-            btnLTAging2.ForeColor = Color.White;
+                    btnCtrl.BackColor = Color.FromArgb(27, 27, 27);
+                    btnCtrl.ForeColor = Color.White;
+                }
+            }
 
             btn.BackColor = Color.LightYellow;
             btn.ForeColor = Color.Black;
 
             AgingTab.SelectedTab = AgingTab.TabPages[tabIdx];
+
+            switch (tabIdx)
+            {
+                case 0:
+                    _AgingType = "H";
+                    _AgingLine = "01";
+                    break;
+                case 1:
+                    _AgingType = "L";
+                    _AgingLine = "01";
+                    break;
+                case 2:
+                    _AgingType = "L";
+                    _AgingLine = "02";
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

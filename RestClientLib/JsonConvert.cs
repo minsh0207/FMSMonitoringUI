@@ -609,6 +609,63 @@ namespace RestClientLib
             }
         }
         #endregion
+        #region ConvertWinAgingRackSetting
+        /// <summary>
+        /// _jsonWinAgingRackSettingResponse 형태의 Class로 변환한다.
+        /// </summary>
+        public _jsonWinAgingRackSettingResponse ConvertWinAgingRackSetting(string jsonResult)
+        {
+            try
+            {
+                // Recv Body의 JSON string을 class 변수에 할당
+                _jsonWinAgingRackSettingResponse recvBody = JsonConvert.DeserializeObject<_jsonWinAgingRackSettingResponse>(jsonResult, _jsonSettings);
+                return recvBody;
+            }
+            catch (Exception ex)
+            {
+                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                return null;
+            }
+        }
+        #endregion
+        #region ConvertAgingRackCount
+        /// <summary>
+        /// _jsonAgingRackCountResponse 형태의 Class로 변환한다.
+        /// </summary>
+        public _jsonAgingRackCountResponse ConvertAgingRackCount(string jsonResult)
+        {
+            try
+            {
+                // Recv Body의 JSON string을 class 변수에 할당
+                _jsonAgingRackCountResponse recvBody = JsonConvert.DeserializeObject<_jsonAgingRackCountResponse>(jsonResult, _jsonSettings);
+                return recvBody;
+            }
+            catch (Exception ex)
+            {
+                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                return null;
+            }
+        }
+        #endregion
+        #region ConvertWinFormationBox
+        /// <summary>
+        /// _jsonWinFormationBoxResponse 형태의 Class로 변환한다.
+        /// </summary>
+        public _jsonWinFormationBoxResponse ConvertWinFormationBox(string jsonResult)
+        {
+            try
+            {
+                // Recv Body의 JSON string을 class 변수에 할당
+                _jsonWinFormationBoxResponse recvBody = JsonConvert.DeserializeObject<_jsonWinFormationBoxResponse>(jsonResult, _jsonSettings);
+                return recvBody;
+            }
+            catch (Exception ex)
+            {
+                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                return null;
+            }
+        }
+        #endregion
 
 
     }

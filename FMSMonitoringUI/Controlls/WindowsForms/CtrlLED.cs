@@ -34,26 +34,28 @@ namespace FMSMonitoringUI.Controlls.WindowsForms
         }
 
         public void LedOnOff(bool onoff)
-        {
-            //string ledOff = @"D:\0000.GIT\FMSMonitoringUI\FMSMonitoringUI\res\LedNone.ico";
-            //string ledOn = @"D:\0000.GIT\FMSMonitoringUI\FMSMonitoringUI\res\LedGreen.ico";
-
-            //Image img = null;
-            
+        {            
             if (onoff)
             {
-                //img = Image.FromFile(ledOn);
                 ledLamp.Image = Properties.Resources.LedGreen.ToBitmap();
                 lbTitle.Text = (_labelText == "" ? "On" : _labelText);
             }
             else
             {
-                //img = Image.FromFile(ledOff);
                 ledLamp.Image = Properties.Resources.LedNone.ToBitmap();
                 lbTitle.Text = (_labelText == "" ? "Off" : _labelText);
             }
-            
-            //ledLamp.Image = img.GetThumbnailImage(16, 16, null, IntPtr.Zero);
+        }
+        public void LedOnOff(int value)
+        {
+            if (value > 0)
+            {
+                ledLamp.Image = Properties.Resources.LedGreen.ToBitmap();
+            }
+            else
+            {
+                ledLamp.Image = Properties.Resources.LedNone.ToBitmap();
+            }
         }
 
         /// <summary>

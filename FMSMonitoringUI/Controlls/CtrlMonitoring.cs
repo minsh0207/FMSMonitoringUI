@@ -74,7 +74,7 @@ namespace FMSMonitoringUI.Controlls
                 
         private COPCGroupCtrl _OPCGroupList= new COPCGroupCtrl();
 
-        private Logger _Logger; // { get; set; }
+        private Logger _Logger;
 
         private ApplicationInstance _OPCApplication = null;
         //public ApplicationInstance OPCApplication
@@ -97,7 +97,7 @@ namespace FMSMonitoringUI.Controlls
 
             // Timer 
             m_timer.Tick += new EventHandler(OnTimer);
-            m_timer.Stop();
+            m_timer.Start();
 
             _mysql = new MySqlManager(ConfigurationManager.ConnectionStrings["DB_CONNECTION_STRING"].ConnectionString);
 
@@ -379,6 +379,27 @@ namespace FMSMonitoringUI.Controlls
 
             return groupCtrl;
         }
+        #endregion
+
+        #region InitLanguage
+        private void InitLanguage()
+        {
+            // CtrlTaggingName 언어 변환 호출
+            foreach (var ctl in panel1.Controls)
+            {
+                if (ctl.GetType() == typeof(CtrlTaggingName))
+                {
+                    CtrlTaggingName tagName = ctl as CtrlTaggingName;
+                    tagName.CallLocalLanguage();
+                }
+                else if (ctl.GetType() == typeof(CtrlLabel))
+                {
+                    CtrlLabel tagName = ctl as CtrlLabel;
+                    tagName.CallLocalLanguage();
+                }
+            }
+        }
+        #endregion
 
         private void CtrlEqpAging_Click(string eqpId, string eqpType, int level)
         {
@@ -412,25 +433,9 @@ namespace FMSMonitoringUI.Controlls
 
             //ctrlEqpDGS.Refresh();
         }
-        #endregion
+        
 
-        private void InitLanguage()
-        {
-            // CtrlTaggingName 언어 변환 호출
-            foreach (var ctl in panel1.Controls)
-            {
-                if (ctl.GetType() == typeof(CtrlTaggingName))
-                {
-                    CtrlTaggingName tagName = ctl as CtrlTaggingName;
-                    tagName.CallLocalLanguage();
-                }
-                else if (ctl.GetType() == typeof(CtrlLabel))
-                {
-                    CtrlLabel tagName = ctl as CtrlLabel;
-                    tagName.CallLocalLanguage();
-                }
-            }
-        }
+        
 
         #region OnTimer
         private void OnTimer(object sender, EventArgs e)
@@ -507,8 +512,8 @@ namespace FMSMonitoringUI.Controlls
                 }
                 else
                 {
-                    List<ReadValueId> cvInfo = _clientFMS[groupno].ConveyorNodeID[trackno];
-                    List<DataValue> data = _clientFMS[groupno].ReadNodeID(cvInfo);
+                    //List<ReadValueId> cvInfo = _clientFMS[groupno].ConveyorNodeID[trackno];
+                    //List<DataValue> data = _clientFMS[groupno].ReadNodeID(cvInfo);
 
                     //SiteTagInfo siteInfo = new SiteTagInfo()
                     //{
@@ -529,12 +534,12 @@ namespace FMSMonitoringUI.Controlls
 
                     if (trackno > 0 && _ListBCR[groupno].ContainsKey(trackno) == false)
                     {
-                        WinConveyorInfo winForm = new WinConveyorInfo("Conveyor", _clientFMS[groupno], cvInfo);
+                        WinConveyorInfo winForm = new WinConveyorInfo("Conveyor", _clientFMS[groupno], trackno);
                         winForm.ShowForm();
                     }
                     else
                     {
-                        WinBCRConveyorInfo winForm = new WinBCRConveyorInfo(_clientFMS[groupno], cvInfo);
+                        WinBCRConveyorInfo winForm = new WinBCRConveyorInfo(_clientFMS[groupno], trackno);
                         winForm.ShowForm();
                     }
                 }
@@ -551,40 +556,51 @@ namespace FMSMonitoringUI.Controlls
         {
             CtrlSCrane crane = sender as CtrlSCrane;
 
+            if (_clientFMS[crane.DeviceID] == null || 
+                _clientFMS[crane.DeviceID].Connected == false)
+            {
+                string msg = ($"Connection error to S/Crane OPC Server [{crane.Tag}] ");
+                _Logger.Write(LogLevel.Error, msg, LogFileName.ErrorLog);
+
+                MessageBox.Show(msg, "ERROR");
+
+                return;
+            }
+
             try
             {
                 if (crane.DeviceID > 0)
                 {
-                    if (_clientFMS[crane.DeviceID] != null)
+                    if (_clientFMS[crane.DeviceID].CraneNodeID != null)
                     {
                         List<ReadValueId> craneInfo = _clientFMS[crane.DeviceID].CraneNodeID[crane.CraneID];
                         List<DataValue> data = _clientFMS[crane.DeviceID].ReadNodeID(craneInfo);
 
-                        CraneTagInfo item = new CraneTagInfo()
-                        {
-                            TrayIdL1 = data[(int)enCraneTagList.TrayIdL1].Value.ToString(),
-                            TrayIdL2 = data[(int)enCraneTagList.TrayIdL2].Value.ToString(),
-                            TrayCount = int.Parse(data[(int)enCraneTagList.TrayCount].Value.ToString()),
-                            TrayExist = bool.Parse(data[(int)enCraneTagList.TrayExist].Value.ToString()),
-                            JobType = int.Parse(data[(int)enCraneTagList.JobType].Value.ToString())
-                        };
+                        //CraneTagInfo item = new CraneTagInfo()
+                        //{
+                        //    TrayIdL1 = data[(int)enCraneTagList.TrayIdL1].Value.ToString(),
+                        //    TrayIdL2 = data[(int)enCraneTagList.TrayIdL2].Value.ToString(),
+                        //    TrayCount = int.Parse(data[(int)enCraneTagList.TrayCount].Value.ToString()),
+                        //    TrayExist = bool.Parse(data[(int)enCraneTagList.TrayExist].Value.ToString()),
+                        //    JobType = int.Parse(data[(int)enCraneTagList.JobType].Value.ToString())
+                        //};
 
-                        string msg = $"Crane No : {crane.CraneID}, TrayIdL1 : {item.TrayIdL1}, TrayIdL2 : {item.TrayIdL2}";
+                        //string msg = $"Crane No : {crane.CraneID}, TrayIdL1 : {item.TrayIdL1}, TrayIdL2 : {item.TrayIdL2}";
+                        string msg = $"Crane No : {crane.CraneID}";
                         _Logger.Write(LogLevel.Info, "", LogFileName.ButtonClick);
 
-                        WinCraneInfo winCrane = new WinCraneInfo();
-                        //winCrane.SetTrayInfo(item);
-                        winCrane.Show();
+                        WinCraneInfo winCrane = new WinCraneInfo(_clientFMS[crane.DeviceID], crane.CraneID);
+                        winCrane.ShowForm();
 
                     }
                 }
                 else
                 {
                     int groupno = crane.DeviceID;
-                    int trackno = 101;
+                    int conveyorNo = 101;
 
-                    List<ReadValueId> cvInfo = _clientFMS[groupno].ConveyorNodeID[trackno];
-                    List<DataValue> data = _clientFMS[groupno].ReadNodeID(cvInfo);
+                    //List<ReadValueId> cvInfo = _clientFMS[groupno].ConveyorNodeID[conveyorNo];
+                    //List<DataValue> data = _clientFMS[groupno].ReadNodeID(cvInfo);
 
                     //SiteTagInfo siteInfo = new SiteTagInfo()
                     //{
@@ -599,9 +615,8 @@ namespace FMSMonitoringUI.Controlls
                     //    Destination = int.Parse(data[(int)enCVTagList.Destination].Value.ToString())
                     //};
 
-                    WinConveyorInfo winForm = new WinConveyorInfo("RTV", _clientFMS[groupno], cvInfo);
-                    //winForm.SetData(siteInfo);
-                    //winForm.Show();
+                    WinConveyorInfo winForm = new WinConveyorInfo("RTV", _clientFMS[groupno], conveyorNo);
+                    winForm.ShowForm();
                 }
             }
             catch (Exception ex)

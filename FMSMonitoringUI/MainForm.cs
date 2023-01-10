@@ -122,7 +122,7 @@ namespace FMSMonitoringUI
                     ctrlMonitoring.MonitoringTimer(true);
                     break;
                 case "Aging":
-                   
+
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls[0].Dispose();
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
                     scMainPanel.Panel2.Controls.Add(ctrlAging);
@@ -149,6 +149,7 @@ namespace FMSMonitoringUI
             _Logger.Write(LogLevel.Info, $"MonitoringUI - {title}", LogFileName.AllLog);
         }
 
+        #region Application_UntrustedCertificate
         public void Application_UntrustedCertificate(object sender, UntrustedCertificateEventArgs e)
         {
             if (InvokeRequired)
@@ -181,6 +182,7 @@ namespace FMSMonitoringUI
                 _Logger.Write(LogLevel.Error, $"{ex}", LogFileName.ErrorLog);
             }
         }
+        #endregion
 
         //private void button1_Click(object sender, EventArgs e)
         //{
@@ -226,7 +228,6 @@ namespace FMSMonitoringUI
                 Task.Delay(1000).GetAwaiter().GetResult();
             }
         }
-
         private void SetCurrentTime(string strCurrentTime)
         {
 
@@ -248,7 +249,6 @@ namespace FMSMonitoringUI
                 return;
             }
         }
-
         #endregion
     }
 }

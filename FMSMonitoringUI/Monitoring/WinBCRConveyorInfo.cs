@@ -25,8 +25,8 @@ namespace FMSMonitoringUI.Monitoring
 {
     public partial class WinBCRConveyorInfo : Form
     {
-        public static readonly int _CVModeCount = 3;
-        public static readonly int _CVStatusCount = 3;
+        public static readonly int _ModeCount = 3;
+        public static readonly int _StatusCount = 3;
 
         private Point _Point = new Point();
 
@@ -39,14 +39,14 @@ namespace FMSMonitoringUI.Monitoring
         CtrlLED[] _LedStatus;
 
         OPCUAClient _OPCUAClient = null;
-        List<ReadValueId> _ConveyorNodeID = null;
+        int _ConveyorNo = 0;
 
-        public WinBCRConveyorInfo(OPCUAClient opcua, List<ReadValueId> conveyorNodeID)
+        public WinBCRConveyorInfo(OPCUAClient opcua, int conveyorNo)
         {
             InitializeComponent();
 
             _OPCUAClient = opcua;
-            _ConveyorNodeID = conveyorNodeID;
+            _ConveyorNo = conveyorNo;
 
             InitControl();
             InitLanguage();
@@ -83,6 +83,34 @@ namespace FMSMonitoringUI.Monitoring
         public void ShowForm()
         {
             this.Show();
+        }
+        #endregion
+
+        #region InitControl
+        private void InitControl()
+        {
+            string[] titleMode = { "Maintenance Mode", "Manual Mode", "Control Mode" };
+
+            _LedMode = new CtrlLED[_ModeCount];
+            for (int i = 0; i < _ModeCount; i++)
+            {
+                _LedMode[i] = new CtrlLED();
+                _LedMode[i].TitleText = titleMode[i];
+                _LedMode[i].Dock = DockStyle.Fill;
+                _LedMode[i].Tag = "EquipmentStatus.Mode";
+                uiTlbMode.Controls.Add(_LedMode[i], 0, i);
+            }
+
+            string[] titleStatus = { "Idle", "Run", "Trouble" };
+            _LedStatus = new CtrlLED[_StatusCount];
+            for (int i = 0; i < _ModeCount; i++)
+            {
+                _LedStatus[i] = new CtrlLED();
+                _LedStatus[i].TitleText = titleStatus[i];
+                _LedStatus[i].Dock = DockStyle.Fill;
+                _LedStatus[i].Tag = "EquipmentStatus.Status";
+                uiTlbStatus.Controls.Add(_LedStatus[i], i, 0);
+            }
         }
         #endregion
 
@@ -128,45 +156,22 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
-        private void InitControl()
-        {
-
-            string[] titleMode = { "Maintenance Mode", "Manual Mode", "Control Mode" };
-
-            _LedMode = new CtrlLED[_CVModeCount];
-            for (int i = 0; i < _CVModeCount; i++)
-            {
-                _LedMode[i] = new CtrlLED();
-                _LedMode[i].TitleText = titleMode[i];
-                _LedMode[i].Dock = DockStyle.Fill;
-                uiTlbMode.Controls.Add(_LedMode[i], 0, i);
-            }
-
-            string[] titleStatus = { "Idle", "Run", "Trouble" };
-            _LedStatus = new CtrlLED[_CVStatusCount];
-            for (int i = 0; i < _CVModeCount; i++)
-            {
-                _LedStatus[i] = new CtrlLED();
-                _LedStatus[i].TitleText = titleStatus[i];
-                _LedStatus[i].Dock = DockStyle.Fill;
-                uiTlbStatus.Controls.Add(_LedStatus[i], i, 0);
-            }
-        }
-
+        #region InitLedStatus
         private void InitLedStatus()
         {
             // Mode
-            for (int i = 0; i < _CVModeCount; i++)
+            for (int i = 0; i < _ModeCount; i++)
             {
                 _LedMode[i].LedStatus(0);
             }
 
             // Status
-            for (int i = 0; i < _CVStatusCount; i++)
+            for (int i = 0; i < _StatusCount; i++)
             {
                 _LedStatus[i].LedStatus(0);
             }
         }
+        #endregion
 
         #region SetData
         public void SetData(List<DataValue> data)
@@ -240,7 +245,8 @@ namespace FMSMonitoringUI.Monitoring
                 {
                     GC.Collect();
 
-                    List<DataValue> data = _OPCUAClient.ReadNodeID(_ConveyorNodeID);
+                    List<ReadValueId> cvInfo = _OPCUAClient.ConveyorNodeID[_ConveyorNo];
+                    List<DataValue> data = _OPCUAClient.ReadNodeID(cvInfo);
                     this.BeginInvoke(new Action(() => SetData(data)));
 
                     Thread.Sleep(2000);

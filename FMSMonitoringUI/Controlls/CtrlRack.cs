@@ -23,18 +23,31 @@ namespace FMSMonitoringUI.Controlls
         }
 
         #region Properties
-        string _RackID = "";
-        [DisplayName("Rack ID"), Description("Rack ID"), Category("GroupBox Setting")]
-        public string RackID
+        string _unitD = "";
+        [DisplayName("Unit ID"), Description("Unit ID"), Category("GroupBox Setting")]
+        public string UnitID
         {
             get
             {
-                return _RackID;
+                return _unitD;
             }
             set
             {
-                _RackID = value;
-                lbRackID.Text = string.Format(" Rack ID : {0}", _RackID);                
+                _unitD = value;                
+            }
+        }
+        string _textBoxText = "";
+        [DisplayName("TextBoxText"), Description("TextBox Text"), Category("GroupBox Setting")]
+        public string TextBoxText
+        {
+            get
+            {
+                return _textBoxText;
+            }
+            set
+            {
+                _textBoxText = value;
+                lbRackID.Text = string.Format(" Rack ID : {0}", _textBoxText);
             }
         }
         #endregion
@@ -103,7 +116,7 @@ namespace FMSMonitoringUI.Controlls
 
         private void lbEqpType_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            WinFormationBox form = new WinFormationBox();
+            WinFormationBox form = new WinFormationBox(EqpID, _unitD);
             form.Show();
         }
     }

@@ -238,6 +238,12 @@
     <Compile Include="Controlls\CComboBox\CtrlComboLotID.Designer.cs">
       <DependentUpon>CtrlComboLotID.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controlls\WindowsForms\CtrlButtonType2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controlls\WindowsForms\CtrlButtonType2.Designer.cs">
+      <DependentUpon>CtrlButtonType2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controlls\WindowsForms\CtrlComboBox.cs">
       <SubType>UserControl</SubType>
     </Compile>

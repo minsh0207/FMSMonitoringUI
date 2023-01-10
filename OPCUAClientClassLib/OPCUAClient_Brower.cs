@@ -177,20 +177,28 @@ namespace OPCUAClientClassLib
                     string sNodeId = browerResult[j].Targets[0].TargetId.ToString();
                     string[] taglevel = browsePath[j].ToString().Replace("/2:", ".").Split('.');
 
-                    string tagLevel1 = taglevel[taglevel.Count() - 2];
-                    string tagLevel2 = taglevel[taglevel.Count() - 1];
+                    //string tagLevel1 = taglevel[taglevel.Count() - 2];
+                    //string tagLevel2 = taglevel[taglevel.Count() - 1];
 
-                    if ( (tagLevel1 == "CraneCommand") &&
-                        ((tagLevel2 == "JobType") || (tagLevel2 == "TrayIdL1") ||
-                         (tagLevel2 == "TrayIdL2") || (tagLevel2 == "TrayExist") || 
-                         (tagLevel2 == "TrayCount")) )
+                    //if ( (tagLevel1 == "CraneCommand") &&
+                    //    ((tagLevel2 == "JobType") || (tagLevel2 == "TrayIdL1") ||
+                    //     (tagLevel2 == "TrayIdL2") || (tagLevel2 == "TrayExist") || 
+                    //     (tagLevel2 == "TrayCount")) )
+                    //{
+                    //    nodesToRead.Add(new ReadValueId() 
+                    //    {
+                    //        NodeId = NodeId.Parse(sNodeId), 
+                    //        AttributeId = Attributes.Value
+                    //    });
+                    //}
+
+                    
+                    nodesToRead.Add(new ReadValueId()
                     {
-                        nodesToRead.Add(new ReadValueId() 
-                        {
-                            NodeId = NodeId.Parse(sNodeId), 
-                            AttributeId = Attributes.Value
-                        });
-                    }
+                        NodeId = NodeId.Parse(sNodeId),
+                        AttributeId = Attributes.Value,
+                        UserData = string.Format($"{taglevel[taglevel.Length - 2]}.{taglevel[taglevel.Length - 1]}")
+                    });
 
                     if (taglevel[taglevel.Count() - 1] == "RestockButtonPressed")
                     {

@@ -135,10 +135,10 @@
   <data name="DEF_Aging_Rack_Setting" xml:space="preserve">
     <value>FR-Aging Rack Setting</value>
   </data>
-  <data name="DEF_Carriage_Fire_Sensor_:" xml:space="preserve">
+  <data name="DEF_Carriage_Fire_Sensor" xml:space="preserve">
     <value>FR-Carriage Fire Sensor :</value>
   </data>
-  <data name="DEF_Carriage_Position_" xml:space="preserve">
+  <data name="DEF_Carriage_Position" xml:space="preserve">
     <value>FR-Carriage Position </value>
   </data>
   <data name="DEF_Cell_Information" xml:space="preserve">
@@ -150,16 +150,16 @@
   <data name="DEF_Clear_Trouble" xml:space="preserve">
     <value>FR-Clear Trouble</value>
   </data>
-  <data name="DEF_Command_Ready_" xml:space="preserve">
+  <data name="DEF_Command_Ready" xml:space="preserve">
     <value>FR-Command Ready </value>
   </data>
-  <data name="DEF_Command_Ready_:" xml:space="preserve">
+  <data name="DEF_Command_Ready1" xml:space="preserve">
     <value>FR-Command Ready :</value>
   </data>
   <data name="DEF_Configuration" xml:space="preserve">
     <value>FR-Configuration</value>
   </data>
-  <data name="DEF_Control_Mode_:" xml:space="preserve">
+  <data name="DEF_Control_Mode" xml:space="preserve">
     <value>FR-Control Mode :</value>
   </data>
   <data name="DEF_Conveyor" xml:space="preserve">
@@ -183,7 +183,7 @@
   <data name="DEF_Data_Clear" xml:space="preserve">
     <value>FR-Data Clear</value>
   </data>
-  <data name="DEF_Destination_" xml:space="preserve">
+  <data name="DEF_Destination" xml:space="preserve">
     <value>FR-Destination </value>
   </data>
   <data name="DEF_Disable_Tray_Load" xml:space="preserve">
@@ -195,7 +195,7 @@
   <data name="DEF_Dispenser" xml:space="preserve">
     <value>FR-Dispenser</value>
   </data>
-  <data name="DEF_DoubleIn_:" xml:space="preserve">
+  <data name="DEF_DoubleIn" xml:space="preserve">
     <value>FR-DoubleIn :</value>
   </data>
   <data name="DEF_Duplication" xml:space="preserve">
@@ -204,7 +204,7 @@
   <data name="DEF_Empty" xml:space="preserve">
     <value>FR-Empty</value>
   </data>
-  <data name="DEF_Empty_Out_:" xml:space="preserve">
+  <data name="DEF_Empty_Out" xml:space="preserve">
     <value>FR-Empty Out :</value>
   </data>
   <data name="DEF_Empty_Release" xml:space="preserve">
@@ -231,7 +231,7 @@
   <data name="DEF_Fire" xml:space="preserve">
     <value>FR-Fire</value>
   </data>
-  <data name="DEF_Fire_Sensor_:" xml:space="preserve">
+  <data name="DEF_Fire_Sensor" xml:space="preserve">
     <value>FR-Fire Sensor :</value>
   </data>
   <data name="DEF_FMS" xml:space="preserve">
@@ -243,7 +243,7 @@
   <data name="DEF_Force_Tray_Unload_now" xml:space="preserve">
     <value>FR-Force Tray Unload now</value>
   </data>
-  <data name="DEF_Fork_Position_:" xml:space="preserve">
+  <data name="DEF_Fork_Position" xml:space="preserve">
     <value>FR-Fork Position :</value>
   </data>
   <data name="DEF_Formation(CHG)" xml:space="preserve">
@@ -261,25 +261,25 @@
   <data name="DEF_Idle" xml:space="preserve">
     <value>FR-Idle</value>
   </data>
-  <data name="DEF_Input_Enable_:" xml:space="preserve">
+  <data name="DEF_Input_Enable" xml:space="preserve">
     <value>FR-Input Enable :</value>
   </data>
-  <data name="DEF_Job_Cancel_:" xml:space="preserve">
+  <data name="DEF_Job_Cancel" xml:space="preserve">
     <value>FR-Job Cancel :</value>
   </data>
-  <data name="DEF_Job_Cancel_Response_:" xml:space="preserve">
+  <data name="DEF_Job_Cancel_Response" xml:space="preserve">
     <value>FR-Job Cancel Response :</value>
   </data>
-  <data name="DEF_Job_Command_:" xml:space="preserve">
+  <data name="DEF_Job_Command" xml:space="preserve">
     <value>FR-Job Command :</value>
   </data>
-  <data name="DEF_Job_Complete_:" xml:space="preserve">
+  <data name="DEF_Job_Complete" xml:space="preserve">
     <value>FR-Job Complete :</value>
   </data>
-  <data name="DEF_Job_Complete_Response_:" xml:space="preserve">
+  <data name="DEF_Job_Complete_Response" xml:space="preserve">
     <value>FR-Job Complete Response :</value>
   </data>
-  <data name="DEF_Job_Type_:" xml:space="preserve">
+  <data name="DEF_Job_Type" xml:space="preserve">
     <value>FR-Job Type :</value>
   </data>
   <data name="DEF_Loading" xml:space="preserve">
@@ -294,7 +294,7 @@
   <data name="DEF_Magazine" xml:space="preserve">
     <value>FR-Magazine</value>
   </data>
-  <data name="DEF_Magazine_Command_" xml:space="preserve">
+  <data name="DEF_Magazine_Command" xml:space="preserve">
     <value>FR-Magazine Command </value>
   </data>
   <data name="DEF_Main" xml:space="preserve">
@@ -339,7 +339,7 @@
   <data name="DEF_Plan_Unloading" xml:space="preserve">
     <value>FR-Plan Unloading</value>
   </data>
-  <data name="DEF_Power_:" xml:space="preserve">
+  <data name="DEF_Power" xml:space="preserve">
     <value>FR-Power :</value>
   </data>
   <data name="DEF_Process_Lead_Time" xml:space="preserve">
@@ -348,16 +348,16 @@
   <data name="DEF_Real_BCR" xml:space="preserve">
     <value>FR-Real BCR</value>
   </data>
-  <data name="DEF_Reset_DoubleIn_:" xml:space="preserve">
+  <data name="DEF_Reset_DoubleIn" xml:space="preserve">
     <value>FR-Reset DoubleIn :</value>
   </data>
-  <data name="DEF_Reset_EmptyOut_:" xml:space="preserve">
+  <data name="DEF_Reset_EmptyOut" xml:space="preserve">
     <value>FR-Reset EmptyOut :</value>
   </data>
   <data name="DEF_Restart_Current_Process" xml:space="preserve">
     <value>FR-Restart Current Process</value>
   </data>
-  <data name="DEF_RestockButtonPressed_:" xml:space="preserve">
+  <data name="DEF_RestockButtonPressed" xml:space="preserve">
     <value>FR-RestockButtonPressed :</value>
   </data>
   <data name="DEF_Resume_Paused_Process" xml:space="preserve">
@@ -375,13 +375,13 @@
   <data name="DEF_Shipping_Storage" xml:space="preserve">
     <value>FR-Shipping Storage</value>
   </data>
-  <data name="DEF_Station_Sink_:" xml:space="preserve">
+  <data name="DEF_Station_Sink" xml:space="preserve">
     <value>FR-Station Sink :</value>
   </data>
-  <data name="DEF_Station_Status_" xml:space="preserve">
+  <data name="DEF_Station_Status" xml:space="preserve">
     <value>FR-Station Status </value>
   </data>
-  <data name="DEF_Status_:" xml:space="preserve">
+  <data name="DEF_Status" xml:space="preserve">
     <value>FR-Status :</value>
   </data>
   <data name="DEF_Stop" xml:space="preserve">
@@ -393,19 +393,19 @@
   <data name="DEF_Tray_Arrived" xml:space="preserve">
     <value>FR-Tray Arrived</value>
   </data>
-  <data name="DEF_Tray_Count_" xml:space="preserve">
+  <data name="DEF_Tray_Count" xml:space="preserve">
     <value>FR-Tray Count </value>
   </data>
-  <data name="DEF_Tray_Exist_" xml:space="preserve">
+  <data name="DEF_Tray_Exist" xml:space="preserve">
     <value>FR-Tray Exist </value>
   </data>
-  <data name="DEF_Tray_Exist_:" xml:space="preserve">
+  <data name="DEF_Tray_Exist1" xml:space="preserve">
     <value>FR-Tray Exist :</value>
   </data>
-  <data name="DEF_Tray_ID_1_" xml:space="preserve">
+  <data name="DEF_Tray_ID_1" xml:space="preserve">
     <value>FR-Tray ID 1 </value>
   </data>
-  <data name="DEF_Tray_ID_2_" xml:space="preserve">
+  <data name="DEF_Tray_ID_2" xml:space="preserve">
     <value>FR-Tray ID 2 </value>
   </data>
   <data name="DEF_Tray_Off" xml:space="preserve">
@@ -414,19 +414,19 @@
   <data name="DEF_Tray_On" xml:space="preserve">
     <value>FR-Tray On</value>
   </data>
-  <data name="DEF_Tray_Type_" xml:space="preserve">
+  <data name="DEF_Tray_Type" xml:space="preserve">
     <value>FR-Tray Type </value>
   </data>
   <data name="DEF_Trouble" xml:space="preserve">
     <value>FR-Trouble</value>
   </data>
-  <data name="DEF_Trouble_ErrorLevel_" xml:space="preserve">
+  <data name="DEF_Trouble_ErrorLevel" xml:space="preserve">
     <value>FR-Trouble ErrorLevel </value>
   </data>
-  <data name="DEF_Trouble_ErrorNo_" xml:space="preserve">
+  <data name="DEF_Trouble_ErrorNo" xml:space="preserve">
     <value>FR-Trouble ErrorNo </value>
   </data>
-  <data name="DEF_Trouble_Status_:" xml:space="preserve">
+  <data name="DEF_Trouble_Status" xml:space="preserve">
     <value>FR-Trouble Status :</value>
   </data>
   <data name="DEF_Unloading" xml:space="preserve">

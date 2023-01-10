@@ -67,6 +67,9 @@ namespace FMSMonitoringUI.Controlls
         private void InitDataGridView()
         {
             dataGridView1.Paint += dataGridView_Paint;
+
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.BackgroundColor = Color.FromArgb(27, 27, 27);
         }
 
         public void SetGridViewStyles()

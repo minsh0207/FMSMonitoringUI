@@ -1,6 +1,7 @@
 ﻿using ControlGallery;
 using DBHandler;
 using FMSMonitoringUI.Controlls;
+using FMSMonitoringUI.Monitoring;
 using FormationMonCtrl;
 using MonitoringUI;
 using MySqlX.XDevAPI;
@@ -39,21 +40,21 @@ namespace FMSMonitoringUI
             InitControls();
 
             // Timer
-            m_timer.Tick += new EventHandler(OnTimer);
-            m_timer.Stop();
+            //m_timer.Tick += new EventHandler(OnTimer);
+            //m_timer.Stop();
         }
         
-        private void CtrlFormationBox_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
+        //private void CtrlFormationBox_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        //{
             
-        }
+        //}
 
         #region FormationTimer
         public void FormationTimer(bool onoff)
         {
             // Timer
-            if (onoff) m_timer.Start();
-            else m_timer.Stop();
+            //if (onoff) m_timer.Start();
+            //else m_timer.Stop();
         }
         #endregion
 
@@ -100,14 +101,17 @@ namespace FMSMonitoringUI
                     CtrlRack charger = ctl as CtrlRack;
 
                     charger.MouseDoubleClick += Charger_MouseDoubleClick;
-                    _ListCharger.Add(charger.EqpID, charger);
+                    _ListCharger.Add(charger.UnitID, charger);
                 }
             }
         }
 
         private void Charger_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            
+            CtrlRack unit = sender as CtrlRack;
+
+            WinFormationBox form = new WinFormationBox(unit.EqpID, unit.UnitID);
+            form.ShowDialog();
         }
 
         public static CtrlFormationBoxCHG FindByName(Control root, string strName)
@@ -251,23 +255,23 @@ namespace FMSMonitoringUI
             }
         }
 
-        private void OnTimer(object sender, EventArgs e)
-        {
-            try
-            {
-                m_timer.Stop();
+        //private void OnTimer(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        m_timer.Stop();
 
-                Task task = LoadChargerRackData();
+        //        Task task = LoadChargerRackData();
 
-                if (m_timer.Interval != 5000)
-                    m_timer.Interval = 5000;
-                m_timer.Start();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(string.Format("[Exception:OnTimer] {0}", ex.ToString()));
-            }
-        }
+        //        if (m_timer.Interval != 5000)
+        //            m_timer.Interval = 5000;
+        //        m_timer.Start();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(string.Format("[Exception:OnTimer] {0}", ex.ToString()));
+        //    }
+        //}
 
         private void CtrlFormation_HandleDestroyed(object sender, EventArgs e)
         {

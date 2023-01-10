@@ -137,7 +137,7 @@ namespace FMSMonitoringUI.Monitoring
             // Cell 정보
             //lstTitle.Add("Cerrent Cell Info");          // 14
             lstTitle.Add("Model ID");
-            lstTitle.Add("Route ID");
+            lstTitle.Add("Route");
             lstTitle.Add("Lot ID");
 
             // Cell의 현재 설비 정보
