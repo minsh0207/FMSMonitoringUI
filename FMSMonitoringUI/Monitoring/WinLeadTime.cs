@@ -25,6 +25,8 @@ namespace FMSMonitoringUI.Monitoring
         private string _EqpType = string.Empty;
         private int _Eqplevel = 0;
 
+        private List<_win_lead_time> _AgingTrayInfo = new List<_win_lead_time>();
+
         #region Working Thread
         private Thread _ProcessThread;
         private bool _TheadVisiable;
@@ -46,7 +48,7 @@ namespace FMSMonitoringUI.Monitoring
             //InitChart();
         }
 
-        #region WinLeadTime
+        #region WinLeadTime Event
         private void WinLeadTime_Load(object sender, EventArgs e)
         {
             #region Title Mouse Event
@@ -93,7 +95,8 @@ namespace FMSMonitoringUI.Monitoring
             List<string> lstTitle = new List<string>();
             lstTitle.Add("Location");
             lstTitle.Add("Rack ID");            
-            lstTitle.Add("Tray ID");
+            lstTitle.Add("Tray ID L1");
+            lstTitle.Add("Tray ID L2");
             lstTitle.Add("Start Time");
             lstTitle.Add("Plan Time");
             lstTitle.Add("Process Time");
@@ -104,7 +107,7 @@ namespace FMSMonitoringUI.Monitoring
             lstTitle.Add("");
             gridTrayInfo.AddRowsHeaderList(lstTitle);
 
-            gridTrayInfo.ColumnHeadersHeight(26);
+            gridTrayInfo.ColumnHeadersHeight(30);
             gridTrayInfo.RowsHeight(26);
 
             //List<int> lstColumn = new List<int>();
@@ -114,8 +117,9 @@ namespace FMSMonitoringUI.Monitoring
             //TrayInfoView.ColumnMergeList(lstColumn, lstTitle);
 
             gridTrayInfo.SetGridViewStyles();
-            gridTrayInfo.ColumnHeadersWidth(0, 80);
-            gridTrayInfo.ColumnHeadersWidth(1, 100);
+            gridTrayInfo.ColumnHeadersWidth(0, 180);
+            gridTrayInfo.ColumnHeadersWidth(1, 120);
+            gridTrayInfo.ColumnHeadersWidth(7, 120);
         }
 
         #region SetData
@@ -129,10 +133,11 @@ namespace FMSMonitoringUI.Monitoring
             foreach (var item in data)
             {
                 int col = 0;
-
-                gridTrayInfo.SetValue(col, row, item.LANE); col++;
+                string location = string.Format($"{item.LINE}Line-{item.LANE}Lane-{item.BAY}Bay-{item.FLOOR}F");
+                gridTrayInfo.SetValue(col, row, location); col++;
                 gridTrayInfo.SetValue(col, row, item.RACK_ID); col++;
                 gridTrayInfo.SetValue(col, row, item.TRAY_ID); col++;
+                gridTrayInfo.SetValue(col, row, item.TRAY_ID_2); col++;
                 gridTrayInfo.SetValue(col, row, item.START_TIME); col++;
                 gridTrayInfo.SetValue(col, row, item.PLAN_TIME); col++;
                 gridTrayInfo.SetValue(col, row, GetTimeSpan(item.START_TIME)); col++;
@@ -148,7 +153,8 @@ namespace FMSMonitoringUI.Monitoring
 
             dt.Columns.Add("Location");            
             dt.Columns.Add("Rack ID");
-            dt.Columns.Add("Tray ID");
+            dt.Columns.Add("Tray ID L1");
+            dt.Columns.Add("Tray ID L2");
             dt.Columns.Add("Start Time");
             dt.Columns.Add("Plan Time");
             dt.Columns.Add("Process Time");
@@ -160,7 +166,8 @@ namespace FMSMonitoringUI.Monitoring
 
                 rowEx1["Location"] = item.LANE;
                 rowEx1["Rack ID"] = item.RACK_ID;
-                rowEx1["Tray ID"] = item.TRAY_ID;
+                rowEx1["Tray ID L1"] = item.TRAY_ID;
+                rowEx1["Tray ID L2"] = item.TRAY_ID_2;
                 rowEx1["Start Time"] = item.START_TIME;
                 rowEx1["Plan Time"] = item.PLAN_TIME;
                 rowEx1["Process Time"] = GetTimeSpan(item.START_TIME);
@@ -179,7 +186,7 @@ namespace FMSMonitoringUI.Monitoring
             //// Set Query
             StringBuilder strSQL = new StringBuilder();
             // Tray Information
-            strSQL.Append(" SELECT lane, tray_id, rack_id, start_time, plan_time");
+            strSQL.Append(" SELECT line, lane, bay, floor, tray_id, rack_id, rack_id_2, start_time, plan_time");
             strSQL.Append(" FROM fms_v.tb_mst_aging");
             //필수값
             strSQL.Append($" WHERE aging_type = '{eqpType.Substring(0, 1)}'");
@@ -207,28 +214,28 @@ namespace FMSMonitoringUI.Monitoring
                 {
                     GC.Collect();
 
-                    this.BeginInvoke(new Action(() => GetAgingTrayInfo(_EqpType, _Eqplevel)));
+                    RESTClient rest = new RESTClient();
+                    //// Set Query
+                    StringBuilder strSQL = new StringBuilder();
+                    // Tray Information
+                    strSQL.Append(" SELECT line, lane, bay, floor, tray_id, tray_id_2, rack_id, start_time, plan_time");
+                    strSQL.Append(" FROM fms_v.tb_mst_aging");
+                    //필수값
+                    strSQL.Append($" WHERE aging_type = '{_EqpType.Substring(0, 1)}'");
+                    strSQL.Append($"    AND lane = {_Eqplevel * 2 - 1}");
+                    strSQL.Append($"    OR aging_type = '{_EqpType.Substring(0, 1)}'");
+                    strSQL.Append($"    AND lane = {_Eqplevel * 2}");
 
-                    //RESTClient rest = new RESTClient();
-                    ////// Set Query
-                    //StringBuilder strSQL = new StringBuilder();
-                    //// Tray Information
-                    //strSQL.Append(" SELECT lane, tray_id, rack_id, start_time, plan_time");
-                    //strSQL.Append(" FROM fms_v.tb_mst_aging");
-                    ////필수값
-                    //strSQL.Append($" WHERE aging_type = '{_EqpType.Substring(0, 1)}'");
-                    //strSQL.Append($"    AND lane = {_Eqplevel * 2 - 1}");
-                    //strSQL.Append($"    OR aging_type = '{_EqpType.Substring(0, 1)}'");
-                    //strSQL.Append($"    AND lane = {_Eqplevel * 2}");
+                    string jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
 
-                    //string jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+                    if (jsonResult != null)
+                    {
+                        _jsonWinLeadTimeResponse result = rest.ConvertWinLeadTime(jsonResult);
 
-                    //if (jsonResult != null)
-                    //{
-                    //    _jsonWinLeadTimeResponse result = rest.ConvertWinLeadTime(jsonResult);
+                        this.BeginInvoke(new Action(() => SetData(result.DATA)));
 
-                    //    this.BeginInvoke(new Action(() => SetData1(result.DATA)));
-                    //}
+                        _AgingTrayInfo = result.DATA;
+                    }
 
                     //Thread.Sleep(3000);
                 }
@@ -251,7 +258,7 @@ namespace FMSMonitoringUI.Monitoring
             int diffMinute = dateDiff.Minutes;
             int diffSecond = dateDiff.Seconds;
 
-            string timeSpan = string.Format($"{diffDay}day {diffDay}hour:{diffMinute}min:{diffSecond}sec");
+            string timeSpan = string.Format("{0:D2}day {1:D2}:{2:D2}:{3:D2}", diffDay, diffHour, diffMinute, diffSecond);
             return timeSpan;
         }
 
@@ -273,12 +280,13 @@ namespace FMSMonitoringUI.Monitoring
         #region DataGridView Event
         private void GridTrayInfo_MouseCellDoubleClick(int col, int row, object value)
         {
-            if (col == 2 && row > -1)
+            if (col == 2 && row > -1 || col == 3 && row > -1)
             {
                 //WinTrayInfo form = new WinTrayInfo();
                 //form.SetData(value.ToString());
                 //form.ShowDialog();
-                WinTrayInfo form = new WinTrayInfo(_EqpId, "", value.ToString());
+                _win_lead_time data = _AgingTrayInfo[row];
+                WinTrayInfo form = new WinTrayInfo(_EqpId, data.RACK_ID, value.ToString());
                 form.ShowDialog();
             }
         }

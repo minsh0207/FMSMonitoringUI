@@ -193,7 +193,7 @@ namespace FMSMonitoringUI.Monitoring
                     StringBuilder strSQL = new StringBuilder();
 
                     strSQL.Append(" SELECT A.eqp_id, A.eqp_name, A.eqp_mode, A.operation_mode, A.eqp_status, A.eqp_trouble_code,C.tray_id, IF(A.tray_id = C.tray_id, '1', '2') AS level,");
-                    strSQL.Append("        B.trouble_name,");
+                    strSQL.Append("        B.trouble_code, B.trouble_name,");
                     strSQL.Append("        C.tray_input_time, C.tray_zone, C.model_id, C.route_id, C.lot_id, C.start_time, C.plan_time, C.current_cell_cnt,");
                     strSQL.Append("        D.process_name");
                     strSQL.Append(" FROM fms_v.tb_mst_eqp   A");

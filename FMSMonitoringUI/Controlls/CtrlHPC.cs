@@ -18,11 +18,6 @@ namespace FMSMonitoringUI.Controlls
 {
     public partial class CtrlHPC : UserControlEqp
     {
-        public CtrlHPC()
-        {
-            InitializeComponent();
-        }
-
         #region Properties
         string _unitD = "";
         [DisplayName("Unit ID"), Description("Unit ID"), Category("GroupBox Setting")]
@@ -53,6 +48,21 @@ namespace FMSMonitoringUI.Controlls
         }
         #endregion
 
+        public CtrlHPC()
+        {
+            InitializeComponent();
+
+            TrayInfoView.MouseCellDoubleClick_Evnet += TrayInfoView_MouseCellDoubleClick;
+        }
+
+        #region CtrlHPC Event
+        private void CtrlHPC_Load(object sender, EventArgs e)
+        {
+            InitGridView();
+        }
+        #endregion
+
+        #region InitGridView
         private void InitGridView()
         {
             List<string> lstTitle = new List<string>();
@@ -81,18 +91,16 @@ namespace FMSMonitoringUI.Controlls
             TrayInfoView.SetGridViewStyles();
             TrayInfoView.ColumnWidth(0, 140);
         }
+        #endregion
 
         #region setData
-        public override void SetData(DataRow row)
-        {
-        }
         public void SetData(_ctrl_formation_hpc data)
         {
             int nRow = 0;
             TrayInfoView.SetValue(1, nRow, data.TRAY_ID); nRow++;
-            TrayInfoView.SetValue(1, nRow, data.EQP_MODE); nRow++;
-            TrayInfoView.SetValue(1, nRow, data.EQP_STATUS); nRow++;
-            TrayInfoView.SetValue(1, nRow, data.OPERATION_MODE); nRow++;
+            TrayInfoView.SetValue(1, nRow, GetEqpStatus(data.EQP_MODE)); nRow++;
+            TrayInfoView.SetValue(1, nRow, GetEqpStatus(data.EQP_STATUS)); nRow++;
+            TrayInfoView.SetValue(1, nRow, GetOperationMode(data.OPERATION_MODE)); nRow++;
             TrayInfoView.SetValue(1, nRow, data.PROCESS_NAME); nRow++;
             TrayInfoView.SetValue(1, nRow, data.START_TIME.ToString()); nRow++;
             TrayInfoView.SetValue(1, nRow, data.PLAN_TIME.ToString()); nRow++;
@@ -114,17 +122,94 @@ namespace FMSMonitoringUI.Controlls
             lbOPStatus.Text = op_status;
             lbOPStatus.BackColor = color;
         }
-        
 
-        private void CtrlEqpControl_Load(object sender, EventArgs e)
+
+        #region DataGridView Event
+        private void TrayInfoView_MouseCellDoubleClick(int col, int row, object value)
         {
-            InitGridView();
+            if (col == 1 && row == 0)
+            {
+                WinTrayInfo form = new WinTrayInfo(EqpID, "", value.ToString());
+                form.ShowDialog();
+            }
         }
+        #endregion
 
         private void lbEqpType_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            WinFormationHPC form = new WinFormationHPC(lbRackID.Text);            
+            WinFormationHPC form = new WinFormationHPC(lbRackID.Text, UnitID);            
             form.Show();
         }
+
+        #region GetOperationMode 
+        private string GetOperationMode(int mode)
+        {
+            string opModeName = string.Empty;
+
+            switch (mode)
+            {
+                case 1:
+                    opModeName = "OCV";
+                    break;
+                case 2:
+                    opModeName = "Charge (CC)";
+                    break;
+                case 4:
+                    opModeName = "Charge (CCCV)";
+                    break;
+                case 8:
+                    opModeName = "Discharge (CC)";
+                    break;
+                case 16:
+                    opModeName = "Discharge (CCCV)";
+                    break;
+            }
+
+            return opModeName;
+        }
+        #endregion
+
+        #region GetEqpStatus
+        private string GetEqpStatus(string status)
+        {
+            string statusName = string.Empty;
+
+            switch (status)
+            {
+                case "C":
+                    statusName = "Control Mode";
+                    break;
+                case "M":
+                    statusName = "Maintenance Mode";
+                    break;
+                case "I":
+                    statusName = "Idle";
+                    break;
+                case "R":
+                    statusName = "Running";
+                    break;
+                case "T":
+                    statusName = "Machine Trouble";
+                    break;
+                case "P":
+                    statusName = "Pause";
+                    break;
+                case "S":
+                    statusName = "Stop";
+                    break;
+                case "L":
+                    statusName = "Loading";
+                    break;
+                case "F":
+                    statusName = string.Format($"Fire\r\n(Temperature Alarm Only)");
+                    break;
+                case "F2":
+                    statusName = $"Fire\n(Smoke Only or Both)";
+                    break;
+            }
+
+            return statusName;
+        }
+        #endregion
     }
 }

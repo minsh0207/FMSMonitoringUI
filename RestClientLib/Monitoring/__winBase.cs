@@ -88,9 +88,13 @@ namespace RestClientLib
     /// </summary>
     public class _win_lead_time
     {
+        public string LINE { get; set; }
         public string LANE { get; set; }
+        public string BAY { get; set; }
+        public string FLOOR { get; set; }
         public string RACK_ID { get; set; }
         public string TRAY_ID { get; set; }
+        public string TRAY_ID_2 { get; set; }
         public DateTime START_TIME { get; set; }
         public DateTime PLAN_TIME { get; set; }
     }
@@ -149,6 +153,15 @@ namespace RestClientLib
         public string PROCESS_STATUS { get; set; }
         public string USE_FLAG { get; set; }
         public string RECIPE_ID { get; set; }
+    }
+    #endregion
+    #region WinFormationHPC
+    /// <summary>
+    /// JSON base format : WinFormationBox
+    /// </summary>
+    public class _win_formation_hpc : _win_manage_eqp
+    {
+        public string UNIT_ID { get; set; }
     }
     #endregion
     #region CtrlFormationCHG

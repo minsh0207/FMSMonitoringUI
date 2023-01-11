@@ -39,6 +39,11 @@ namespace FMSMonitoringUI.Controlls
         //}
         #endregion
 
+        private void CtrlEqpControl_Load(object sender, EventArgs e)
+        {
+            InitGridView();
+        }
+
         private void InitGridView()
         {
             string[] columnName1 = { "JIG#1", "JIG#2", "JIG#3", "JIG#4", "JIG#5", "JIG#6", "JIG#7", "JIG#8",
@@ -87,11 +92,6 @@ namespace FMSMonitoringUI.Controlls
             //TrayInfoView.SetReworkTray(1, nRow, row["rework_flag"].ToString());
         }
         #endregion
-
-        private void CtrlEqpControl_Load(object sender, EventArgs e)
-        {
-            InitGridView();
-        }
 
         private void lbEqpType_MouseDoubleClick(object sender, MouseEventArgs e)
         {

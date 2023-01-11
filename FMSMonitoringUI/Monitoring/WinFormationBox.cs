@@ -19,7 +19,6 @@ namespace FMSMonitoringUI.Monitoring
     {
         private Point point = new Point();
         private string _EQPID = string.Empty;
-        private string _EqpType = string.Empty;
         private string _UnitID = string.Empty;
 
         #region Working Thread
@@ -32,7 +31,6 @@ namespace FMSMonitoringUI.Monitoring
             InitializeComponent();
 
             _EQPID = eqpid;
-            _EqpType = "CHG";
             _UnitID = unitid;
         }
 
@@ -223,68 +221,23 @@ namespace FMSMonitoringUI.Monitoring
         {
             string opModeName = string.Empty;
 
-            if (_EqpType == "CHG")
+            switch (mode)
             {
-                switch (mode)
-                {
-                    case 1:
-                        opModeName = "OCV";
-                        break;
-                    case 2:
-                        opModeName = "Charge (CC)";
-                        break;
-                    case 4:
-                        opModeName = "Charge (CCCV)";
-                        break;
-                    case 8:
-                        opModeName = "Discharge (CC)";
-                        break;
-                    case 16:
-                        opModeName = "Discharge (CCCV)";
-                        break;
-                }
-            }
-            else if (_EqpType == "DCR")
-            {
-                switch (mode)
-                {
-                    case 1:
-                        opModeName = "OCV";
-                        break;
-                    case 64:
-                        opModeName = "Power Discharge";
-                        break;
-                    case 128:
-                        opModeName = "Power Charge";
-                        break;
-                }
-            }
-            else if (_EqpType == "OCV")
-            {
-                switch (mode)
-                {
-                    case 1:
-                        opModeName = "OCV";
-                        break;
-                    case 32:
-                        opModeName = "ACIR";
-                        break;
-                    case 33:
-                        opModeName = "OCV and ACIR";
-                        break;
-                }
-            }
-            else if (_EqpType == "MIC")
-            {
-                switch (mode)
-                {
-                    case 1:
-                        opModeName = "OCV";
-                        break;
-                    case 256:
-                        opModeName = "SDM";
-                        break;
-                }
+                case 1:
+                    opModeName = "OCV";
+                    break;
+                case 2:
+                    opModeName = "Charge (CC)";
+                    break;
+                case 4:
+                    opModeName = "Charge (CCCV)";
+                    break;
+                case 8:
+                    opModeName = "Discharge (CC)";
+                    break;
+                case 16:
+                    opModeName = "Discharge (CCCV)";
+                    break;
             }
 
             return opModeName;

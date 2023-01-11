@@ -977,33 +977,6 @@ namespace FMSMonitoringUI.Controlls
         /// <param name="crane"></param>
         /// <param name="endPos"></param>
         /// <returns></returns>
-        private async Task CallWinTrayInfoAsync(SiteTagInfo tagInfo)
-        {
-            Task task = TrayInfoPopup(tagInfo);
-
-            await task;
-        }
-        private async Task TrayInfoPopup(SiteTagInfo tagInfo)
-        {
-            //if (this.InvokeRequired)
-            {
-                await Task.Run(() =>
-                {
-                    WinCVTrayInfo_old winTray = new WinCVTrayInfo_old();
-                    winTray.SetTrayInfo(tagInfo);
-                    winTray.Show();
-                });
-            }
-        }
-        #endregion
-
-        #region WinTrayInfo
-        /// <summary>
-        /// Crane 동작 처리
-        /// </summary>
-        /// <param name="crane"></param>
-        /// <param name="endPos"></param>
-        /// <returns></returns>
         private async Task SubscriptionAsync(DataChangedEventArgs e)
         {
             await SubscriptionDataChange(e);

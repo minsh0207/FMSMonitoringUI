@@ -59,25 +59,22 @@ namespace FMSMonitoringUI.Monitoring
             gridProcessName.MouseCellDoubleClick_Evnet += GridProcessName_MouseCellDoubleClick;
             #endregion
 
-            _TheadVisiable = true;
+            //GetCellIDList(_TrayId);
 
-            GetCellIDList(_TrayId);
+            _TheadVisiable = true;            
 
-            //this.BeginInvoke(new MethodInvoker(delegate ()
-            //{
-            //    _ProcessThread = new Thread(() => ProcessThreadCallback());
-            //    _ProcessThread.IsBackground = true; _ProcessThread.Start();
-            //}));
+            this.BeginInvoke(new MethodInvoker(delegate ()
+            {
+                _ProcessThread = new Thread(() => ProcessThreadCallback());
+                _ProcessThread.IsBackground = true; _ProcessThread.Start();
+            }));
         }
-
-        
-
         private void WinCellDetailInfo_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //if (this._ProcessThread.IsAlive)
-            //    this._TheadVisiable = false;
+            if (this._ProcessThread.IsAlive)
+                this._TheadVisiable = false;
 
-            //this._ProcessThread.Abort();
+            this._ProcessThread.Abort();
         }
         #endregion
 
@@ -406,7 +403,7 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
-        #region GetCellIDList
+        #region GetCellProcessName
         private void GetCellProcessName(string cellId)
         {
             RESTClient rest = new RESTClient();
@@ -508,35 +505,31 @@ namespace FMSMonitoringUI.Monitoring
             try
             {
                 //while (this._TheadVisiable == true)
-                //{
-                //    GC.Collect();
+                {
+                    GC.Collect();
 
-                //    RESTClient rest = new RESTClient();
-                //    //// Set Query
-                //    StringBuilder strSQL = new StringBuilder();
-                //    // Tray Information
-                //    strSQL.Append(" SELECT A.eqp_name,");
-                //    strSQL.Append("        B.model_id, B.tray_id, B.tray_input_time, B.route_id, B.lot_id, B.start_time, B.plan_time, B.current_cell_cnt,");
-                //    strSQL.Append("        C.process_name");
-                //    strSQL.Append(" FROM fms_v.tb_mst_eqp   A");
-                //    strSQL.Append("     LEFT OUTER JOIN fms_v.tb_dat_tray   B");
-                //    strSQL.Append("         ON B.tray_id IN (A.tray_id, A.tray_id_2)");
-                //    strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_route_order   C");
-                //    strSQL.Append("         ON B.route_order_no = C.route_order_no AND B.route_id = C.route_id");
-                //    //필수값
-                //    strSQL.Append($" WHERE B.eqp_id = '{_EqpID}' AND B.tray_id = '{_TrayId}'");
+                    RESTClient rest = new RESTClient();
+                    //// Set Query
+                    StringBuilder strSQL = new StringBuilder();
+                    // Tray Information
+                    strSQL.Append(" SELECT *");
+                    strSQL.Append(" FROM fms_v.tb_dat_cell");
+                    //필수값
+                    strSQL.Append($" WHERE tray_id = '{_TrayId}'");
 
-                //    string jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+                    string jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
 
-                //    if (jsonResult != null)
-                //    {
-                //        _jsonWinTrayInfoResponse result = rest.ConvertWinTrayInfo(jsonResult);
+                    if (jsonResult != null)
+                    {
+                        _jsonDatCellResponse result = rest.ConvertDatCell(jsonResult);
 
-                //        this.BeginInvoke(new Action(() => SetData(result.DATA)));
-                //    }
+                        this.BeginInvoke(new Action(() => SetCellList(result.DATA)));
 
-                //    Thread.Sleep(3000);
-                //}
+                        _CellInfo = result.DATA;
+                    }
+
+                    //Thread.Sleep(3000);
+                }
             }
             catch (Exception ex)
             {

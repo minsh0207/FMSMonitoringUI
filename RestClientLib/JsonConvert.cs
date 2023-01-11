@@ -685,6 +685,25 @@ namespace RestClientLib
             }
         }
         #endregion
+        #region ConvertWinFormationHPC
+        /// <summary>
+        /// _jsonWinFormationHPCResponse 형태의 Class로 변환한다.
+        /// </summary>
+        public _jsonWinFormationHPCResponse ConvertWinFormationHPC(string jsonResult)
+        {
+            try
+            {
+                // Recv Body의 JSON string을 class 변수에 할당
+                _jsonWinFormationHPCResponse recvBody = JsonConvert.DeserializeObject<_jsonWinFormationHPCResponse>(jsonResult, _jsonSettings);
+                return recvBody;
+            }
+            catch (Exception ex)
+            {
+                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                return null;
+            }
+        }
+        #endregion
         #region ConvertCtrlFormationCHG
         /// <summary>
         /// _jsonCtrlFormationCHGResponse 형태의 Class로 변환한다.

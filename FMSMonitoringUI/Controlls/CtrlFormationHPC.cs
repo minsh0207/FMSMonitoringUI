@@ -173,9 +173,10 @@ namespace FMSMonitoringUI
                     StringBuilder strSQL = new StringBuilder();
 
                     strSQL.Append(" SELECT A.unit_id, A.tray_id, A.eqp_mode, A.eqp_status, A.operation_mode, A.start_time, A.plan_time,");
-                    strSQL.Append($"       B.pressure, B.event_time, ROUND(SUM({GetJigNoString("B")})/{CDefine.DEF_MAX_CELL_COUNT}, 1) as temp_avg,");
-                    strSQL.Append($"       C.trouble_code, C.trouble_name,");
-                    strSQL.Append($"       D.process_name");
+                    //strSQL.Append($"       B.pressure, B.event_time, ROUND(SUM({GetJigNoString("B")})/{CDefine.DEF_MAX_CELL_COUNT}, 1) as temp_avg,");
+                    strSQL.Append("       B.pressure, B.event_time,");
+                    strSQL.Append("       C.trouble_code, C.trouble_name,");
+                    strSQL.Append("       D.process_name");
                     strSQL.Append(" FROM fms_v.tb_mst_eqp   A");
                     strSQL.Append("        LEFT OUTER JOIN fms_v.tb_dat_temp_hpc    B");
                     strSQL.Append("             ON A.eqp_id = B.eqp_id AND B.unit_id = A.unit_id ");
@@ -186,8 +187,9 @@ namespace FMSMonitoringUI
                     strSQL.Append("             ON A.route_order_no = D.route_order_no");
                     //필수값
                     strSQL.Append($" WHERE A.eqp_id = '{_EqpID}'");
-                    strSQL.Append($"    AND A.unit_id = B.unit_id");
-                    strSQL.Append($" GROUP BY A.unit_id");
+                    strSQL.Append("    AND A.unit_id = B.unit_id");
+                    strSQL.Append("    AND A.eqp_type = D.eqp_type");
+                    strSQL.Append(" GROUP BY A.unit_id");
 
                     string jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
 

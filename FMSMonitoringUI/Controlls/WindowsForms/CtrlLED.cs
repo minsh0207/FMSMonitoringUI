@@ -58,31 +58,49 @@ namespace FMSMonitoringUI.Controlls.WindowsForms
             }
         }
 
+        #region LedControlMode
+        /// <summary>
+        /// 1=Maintenace Mode, 2=Manual Mode, 4=Control Mode, 0=None
+        /// </summary>
+        /// <param name="status"></param>
+        public void LedControlMode(int status)
+        {
+            switch (status)
+            {
+                case 1:
+                    ledLamp.Image = Properties.Resources.LedRed.ToBitmap();
+                    break;
+                case 2:
+                    ledLamp.Image = Properties.Resources.LedYellow.ToBitmap();
+                    break;
+                case 4:
+                    ledLamp.Image = Properties.Resources.LedGreen.ToBitmap();
+                    break;
+                default:
+                    ledLamp.Image = Properties.Resources.LedNone.ToBitmap();
+                    break;
+            }
+
+            lbTitle.Text = _labelText;
+        }
+        #endregion
+
+        #region LedStatus
         /// <summary>
         /// 1=Idle, 2=Run, 4=Trouble, 0=None
         /// </summary>
         /// <param name="status"></param>
         public void LedStatus(int status)
         {
-            //string path = Application.StartupPath;
-            //string ledIdle = @"D:\0000.GIT\FMSMonitoringUI\FMSMonitoringUI\res\LedYellow.ico";
-            //string ledRun = @"D:\0000.GIT\FMSMonitoringUI\FMSMonitoringUI\res\LedGreen.ico";
-            //string ledError = @"D:\0000.GIT\FMSMonitoringUI\FMSMonitoringUI\res\LedRed.ico";
-
-            //Image img = null;
-
             switch (status)
             {
                 case 1:
-                    //img = Image.FromFile(ledIdle);
                     ledLamp.Image = Properties.Resources.LedYellow.ToBitmap();
                     break;
                 case 2:
-                    //img = Image.FromFile(ledRun);
                     ledLamp.Image = Properties.Resources.LedGreen.ToBitmap();
                     break;
                 case 4:
-                    //img = Image.FromFile(ledError);
                     ledLamp.Image = Properties.Resources.LedRed.ToBitmap();
                     break;
                 default:
@@ -91,7 +109,7 @@ namespace FMSMonitoringUI.Controlls.WindowsForms
             }
 
             lbTitle.Text = _labelText;
-            //ledLamp.Image = img.GetThumbnailImage(16, 16, null, IntPtr.Zero);
         }
+        #endregion
     }
 }

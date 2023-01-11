@@ -70,7 +70,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(881, 65);
+            this.panel2.Size = new System.Drawing.Size(940, 65);
             this.panel2.TabIndex = 1;
             // 
             // ctrlTitleBar
@@ -84,7 +84,7 @@
             this.ctrlTitleBar.Location = new System.Drawing.Point(0, 0);
             this.ctrlTitleBar.Margin = new System.Windows.Forms.Padding(4);
             this.ctrlTitleBar.Name = "ctrlTitleBar";
-            this.ctrlTitleBar.Size = new System.Drawing.Size(879, 63);
+            this.ctrlTitleBar.Size = new System.Drawing.Size(938, 63);
             this.ctrlTitleBar.TabIndex = 0;
             this.ctrlTitleBar.TitleText = "HPC";
             // 
@@ -96,7 +96,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(0, 446);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(881, 64);
+            this.panel3.Size = new System.Drawing.Size(940, 64);
             this.panel3.TabIndex = 2;
             // 
             // Exit
@@ -127,8 +127,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(881, 381);
-            this.splitContainer1.SplitterDistance = 272;
+            this.splitContainer1.Size = new System.Drawing.Size(940, 381);
+            this.splitContainer1.SplitterDistance = 300;
             this.splitContainer1.TabIndex = 3;
             // 
             // gridEqpInfo
@@ -138,14 +138,14 @@
             this.gridEqpInfo.Location = new System.Drawing.Point(0, 0);
             this.gridEqpInfo.Name = "gridEqpInfo";
             this.gridEqpInfo.RowCount = -1;
-            this.gridEqpInfo.Size = new System.Drawing.Size(270, 379);
+            this.gridEqpInfo.Size = new System.Drawing.Size(298, 379);
             this.gridEqpInfo.TabIndex = 1;
             // 
             // splitContainer2
             // 
             this.splitContainer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
             this.splitContainer2.Name = "splitContainer2";
             // 
@@ -159,8 +159,8 @@
             this.splitContainer2.Panel2.Controls.Add(this.ctrlLabel1);
             this.splitContainer2.Panel2.Controls.Add(this.groupBox1);
             this.splitContainer2.Panel2.Controls.Add(this.label1);
-            this.splitContainer2.Size = new System.Drawing.Size(605, 381);
-            this.splitContainer2.SplitterDistance = 272;
+            this.splitContainer2.Size = new System.Drawing.Size(636, 381);
+            this.splitContainer2.SplitterDistance = 303;
             this.splitContainer2.TabIndex = 0;
             // 
             // gridTrayInfo
@@ -170,7 +170,7 @@
             this.gridTrayInfo.Location = new System.Drawing.Point(0, 0);
             this.gridTrayInfo.Name = "gridTrayInfo";
             this.gridTrayInfo.RowCount = -1;
-            this.gridTrayInfo.Size = new System.Drawing.Size(270, 379);
+            this.gridTrayInfo.Size = new System.Drawing.Size(301, 379);
             this.gridTrayInfo.TabIndex = 1;
             // 
             // ctrlGroupBox1
@@ -352,7 +352,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ClientSize = new System.Drawing.Size(881, 510);
+            this.ClientSize = new System.Drawing.Size(940, 510);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -361,6 +361,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WinFormationHPC";
             this.TopMost = true;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.WinFormationHPC_FormClosed);
             this.Load += new System.EventHandler(this.WinFormationHPC_Load);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);

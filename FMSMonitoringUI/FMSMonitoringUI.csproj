@@ -478,12 +478,6 @@
     <Compile Include="Controlls\CtrlHPC.Designer.cs">
       <DependentUpon>CtrlHPC.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controlls\CtrlHPCTemp_old.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CtrlHPCTemp_old.Designer.cs">
-      <DependentUpon>CtrlHPCTemp_old.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controlls\CtrlRackTemp.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -695,23 +689,11 @@
     <Compile Include="Monitoring\WinFormationBox.Designer.cs">
       <DependentUpon>WinFormationBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Monitoring\WinAgingRackSetting_old.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Monitoring\WinAgingRackSetting_old.Designer.cs">
-      <DependentUpon>WinAgingRackSetting_old.cs</DependentUpon>
-    </Compile>
     <Compile Include="Monitoring\WinCellDetailInfo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Monitoring\WinCellDetailInfo.Designer.cs">
       <DependentUpon>WinCellDetailInfo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Monitoring\WinAgingRackSetting_old2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Monitoring\WinAgingRackSetting_old2.Designer.cs">
-      <DependentUpon>WinAgingRackSetting_old2.cs</DependentUpon>
     </Compile>
     <Compile Include="Monitoring\WinBCRConveyorInfo.cs">
       <SubType>Form</SubType>
@@ -796,12 +778,6 @@
     </Compile>
     <Compile Include="Monitoring\WinRackInfo.Designer.cs">
       <DependentUpon>WinRackInfo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Monitoring\WinCVTrayInfo_old.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Monitoring\WinCVTrayInfo_old.Designer.cs">
-      <DependentUpon>WinCVTrayInfo_old.cs</DependentUpon>
     </Compile>
     <Compile Include="Monitoring\WinTroubleInfo.cs">
       <SubType>Form</SubType>
@@ -996,9 +972,6 @@
     <EmbeddedResource Include="Controlls\CtrlHPC.resx">
       <DependentUpon>CtrlHPC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CtrlHPCTemp_old.resx">
-      <DependentUpon>CtrlHPCTemp_old.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Controlls\CtrlRackTemp.resx">
       <DependentUpon>CtrlRackTemp.cs</DependentUpon>
     </EmbeddedResource>
@@ -1101,9 +1074,6 @@
     <EmbeddedResource Include="Monitoring\WinFormationBox.resx">
       <DependentUpon>WinFormationBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Monitoring\WinAgingRackSetting_old.resx">
-      <DependentUpon>WinAgingRackSetting_old.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Monitoring\WinCellDetailInfo.resx">
       <DependentUpon>WinCellDetailInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -1131,9 +1101,6 @@
     <EmbeddedResource Include="Monitoring\WinFormRoot.fr-FR.resx">
       <DependentUpon>WinFormRoot.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Monitoring\WinAgingRackSetting_old2.resx">
-      <DependentUpon>WinAgingRackSetting_old2.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Monitoring\WinManageEqp.resx">
       <DependentUpon>WinManageEqp.cs</DependentUpon>
     </EmbeddedResource>
@@ -1157,9 +1124,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Monitoring\WinRackInfo.resx">
       <DependentUpon>WinRackInfo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Monitoring\WinCVTrayInfo_old.resx">
-      <DependentUpon>WinCVTrayInfo_old.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Monitoring\WinTroubleInfo.resx">
       <DependentUpon>WinTroubleInfo.cs</DependentUpon>

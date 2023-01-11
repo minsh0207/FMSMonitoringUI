@@ -185,7 +185,7 @@ namespace FMSMonitoringUI.Monitoring
 
             int value = int.Parse(data[(int)enCVTagList.Mode].Value.ToString());
             int idx = GetDatatoBitIdx(value);
-            _LedMode[idx].LedOnOff(true);
+            _LedMode[idx].LedControlMode(value);
 
             value = int.Parse(data[(int)enCVTagList.Status].Value.ToString());
             idx = GetDatatoBitIdx(value);
@@ -207,10 +207,20 @@ namespace FMSMonitoringUI.Monitoring
             TrayID1.TextData = data[(int)enCVTagList.TrayIdL1].Value.ToString();
             TrayID2.TextData = data[(int)enCVTagList.TrayIdL2].Value.ToString();
 
+            if (CheckStationStatus(data[(int)enCVTagList.ConveyorType].Value))
+                StationStatus.Visible = true;
+            else
+                StationStatus.Visible = false;
+
             // FMS
             FMSTroubleErrNo.TextData = data[(int)enCVTagList.FMSErrorNo].Value.ToString();
             Destination.TextData = data[(int)enCVTagList.Destination].Value.ToString();
             MagazineCommand.TextData = GetMagazineCommand(data[(int)enCVTagList.MagazineCommand].Value);
+
+            if (CheckMagazineCommand(data[(int)enCVTagList.ConveyorType].Value))
+                MagazineCommand.Visible = true;
+            else
+                MagazineCommand.Visible = false;
         }
         #endregion
 
@@ -387,5 +397,38 @@ namespace FMSMonitoringUI.Monitoring
             return idx;
         }
         #endregion   
+
+        #region CheckStationStatus
+        /// <summary>
+        /// Conveyor Type이 2,4,8,32 일때만 StationStatus Tag을 Enable
+        /// </summary>
+        private bool CheckStationStatus(object idx)
+        {
+            int cvType = Convert.ToInt32(idx);
+
+            if (cvType == 2 || cvType == 4 || cvType == 8 || cvType == 32)
+            {
+                return true;
+            }
+
+            return false;
+        }
+        #endregion
+        #region CheckMagazineCommand
+        /// <summary>
+        /// Conveyor Type이 64,128,256 일때만 StationStatus Tag을 Enable
+        /// </summary>
+        private bool CheckMagazineCommand(object idx)
+        {
+            int cvType = Convert.ToInt32(idx);
+
+            if (cvType == 64 || cvType == 128 || cvType == 256)
+            {
+                return true;
+            }
+
+            return false;
+        }
+        #endregion
     }
 }

@@ -158,7 +158,7 @@ namespace FMSMonitoringUI.Monitoring
             gridCVInfo.SetValue(1, row, data[(int)enCVTagList.ConveyorNo].Value); row++;
             gridCVInfo.SetValue(1, row, GetConveyorType(data[(int)enCVTagList.ConveyorType].Value)); row++;
 
-            if (CheckConveyorType(data[(int)enCVTagList.ConveyorType].Value)) 
+            if (CheckStationStatus(data[(int)enCVTagList.ConveyorType].Value)) 
                 gridCVInfo.RowsVisible(row, true);
             else gridCVInfo.RowsVisible(row, false);
             gridCVInfo.SetValue(1, row, GetStationStatus(data[(int)enCVTagList.StationStatus].Value)); row++;
@@ -351,10 +351,11 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
+        #region CheckStationStatus
         /// <summary>
         /// Conveyor Type이 2,4,8,32 일때만 StationStatus Tag을 Enable
         /// </summary>
-        private bool CheckConveyorType(object idx)
+        private bool CheckStationStatus(object idx)
         {
             int cvType = Convert.ToInt32(idx);
 
@@ -365,5 +366,6 @@ namespace FMSMonitoringUI.Monitoring
 
             return false;
         }
+        #endregion
     }
 }

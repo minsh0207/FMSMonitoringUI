@@ -60,6 +60,7 @@
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.ctrlGroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -130,7 +131,6 @@
             this.panel3.Controls.Add(this.TrayCount);
             this.panel3.Controls.Add(this.TrayType);
             this.panel3.Controls.Add(this.TrayExist);
-            this.panel3.Controls.Add(this.StationStatus);
             this.panel3.Controls.Add(this.CommandReady);
             this.panel3.Controls.Add(this.TroubleErrLevel);
             this.panel3.Controls.Add(this.CVTroubleErrNo);
@@ -268,7 +268,7 @@
             this.TrayID2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.TrayID2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TrayID2.LanguageID = "DEF_Tray_ID_2";
-            this.TrayID2.Location = new System.Drawing.Point(29, 485);
+            this.TrayID2.Location = new System.Drawing.Point(29, 453);
             this.TrayID2.Margin = new System.Windows.Forms.Padding(30);
             this.TrayID2.Name = "TrayID2";
             this.TrayID2.Size = new System.Drawing.Size(303, 29);
@@ -282,7 +282,7 @@
             this.TrayID1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.TrayID1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TrayID1.LanguageID = "DEF_Tray_ID_1";
-            this.TrayID1.Location = new System.Drawing.Point(29, 453);
+            this.TrayID1.Location = new System.Drawing.Point(29, 421);
             this.TrayID1.Margin = new System.Windows.Forms.Padding(30);
             this.TrayID1.Name = "TrayID1";
             this.TrayID1.Size = new System.Drawing.Size(303, 29);
@@ -296,7 +296,7 @@
             this.TrayCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.TrayCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TrayCount.LanguageID = "DEF_Tray_Count";
-            this.TrayCount.Location = new System.Drawing.Point(29, 422);
+            this.TrayCount.Location = new System.Drawing.Point(29, 390);
             this.TrayCount.Margin = new System.Windows.Forms.Padding(30);
             this.TrayCount.Name = "TrayCount";
             this.TrayCount.Size = new System.Drawing.Size(303, 29);
@@ -310,7 +310,7 @@
             this.TrayType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.TrayType.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TrayType.LanguageID = "DEF_Tray_Type";
-            this.TrayType.Location = new System.Drawing.Point(29, 390);
+            this.TrayType.Location = new System.Drawing.Point(29, 358);
             this.TrayType.Margin = new System.Windows.Forms.Padding(30);
             this.TrayType.Name = "TrayType";
             this.TrayType.Size = new System.Drawing.Size(303, 29);
@@ -324,7 +324,7 @@
             this.TrayExist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.TrayExist.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TrayExist.LanguageID = "DEF_Tray_Exist";
-            this.TrayExist.Location = new System.Drawing.Point(29, 358);
+            this.TrayExist.Location = new System.Drawing.Point(29, 326);
             this.TrayExist.Margin = new System.Windows.Forms.Padding(30);
             this.TrayExist.Name = "TrayExist";
             this.TrayExist.Size = new System.Drawing.Size(303, 29);
@@ -338,7 +338,7 @@
             this.StationStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.StationStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.StationStatus.LanguageID = "DEF_Station_Status";
-            this.StationStatus.Location = new System.Drawing.Point(29, 326);
+            this.StationStatus.Location = new System.Drawing.Point(15, 403);
             this.StationStatus.Margin = new System.Windows.Forms.Padding(30);
             this.StationStatus.Name = "StationStatus";
             this.StationStatus.Size = new System.Drawing.Size(303, 29);
@@ -423,6 +423,7 @@
             // ctrlGroupBox1
             // 
             this.ctrlGroupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlGroupBox1.Controls.Add(this.StationStatus);
             this.ctrlGroupBox1.ForeColor = System.Drawing.Color.White;
             this.ctrlGroupBox1.LanguageID = "DEF_Conveyor";
             this.ctrlGroupBox1.Location = new System.Drawing.Point(14, 82);
@@ -479,6 +480,7 @@
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.ctrlGroupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
