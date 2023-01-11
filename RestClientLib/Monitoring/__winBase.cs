@@ -151,4 +151,51 @@ namespace RestClientLib
         public string RECIPE_ID { get; set; }
     }
     #endregion
+    #region CtrlFormationCHG
+    /// <summary>
+    /// JSON base format : CtrlFormationCHG
+    /// </summary>
+    public class _ctrl_formation_chg : _dat_temp_unit
+    {
+        public string EQP_NAME { get; set; }
+        public string EQP_NAME_LOCAL { get; set; }
+        public DateTime START_TIME { get; set; }
+        public DateTime PLAN_TIME { get; set; }
+    }
+    #endregion
+    #region CtrlFormationHPC
+    /// <summary>
+    /// JSON base format : CtrlFormationHPC
+    /// </summary>
+    public class _ctrl_formation_hpc : _dat_temp_hpc
+    {
+        public string EQP_NAME { get; set; }
+        public string EQP_NAME_LOCAL { get; set; }
+        public string EQP_MODE { get; set; }
+        public string EQP_STATUS { get; set; }
+        public int OPERATION_MODE { get; set; }
+        public string PROCESS_NAME { get; set; }
+        public DateTime START_TIME { get; set; }
+        public DateTime PLAN_TIME { get; set; }
+        public string TROUBLE_CODE { get; set; }
+        public string TROUBLE_NAME { get; set; }
+        public float TEMP_AVG { get; set; }
+
+    }
+    #endregion
+    #region CtrlFormationHPC
+    /// <summary>
+    /// JSON base format : CtrlFormationHPCTemp
+    /// </summary>
+    public class _ctrl_formation_hpc_temp
+    {
+        public string UNIT_ID { get; set; }
+        public string TRAY_ID { get; set; }
+        public string CELL_NO { get; set; }
+        public string CELL_ID { get; set; }
+        public DateTime EVENT_TIME { get; set; }
+        public float TEMP_JIG { get; set; }
+
+    }
+    #endregion
 }

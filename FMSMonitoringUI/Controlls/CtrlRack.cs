@@ -17,11 +17,6 @@ namespace FMSMonitoringUI.Controlls
 {
     public partial class CtrlRack : UserControlEqp
     {
-        public CtrlRack()
-        {
-            InitializeComponent();
-        }
-
         #region Properties
         string _unitD = "";
         [DisplayName("Unit ID"), Description("Unit ID"), Category("GroupBox Setting")]
@@ -33,7 +28,7 @@ namespace FMSMonitoringUI.Controlls
             }
             set
             {
-                _unitD = value;                
+                _unitD = value;
             }
         }
         string _textBoxText = "";
@@ -52,6 +47,21 @@ namespace FMSMonitoringUI.Controlls
         }
         #endregion
 
+        public CtrlRack()
+        {
+            InitializeComponent();
+        }
+
+        #region CtrlRack Event
+        private void CtrlRack_Load(object sender, EventArgs e)
+        {
+            InitGridView();
+
+            TrayInfoView.MouseCellDoubleClick_Evnet += TrayInfoView_MouseCellDoubleClick;
+        }        
+        #endregion
+
+        #region InitGridView
         private void InitGridView()
         {
             List<string> lstTitle = new List<string>();
@@ -72,29 +82,33 @@ namespace FMSMonitoringUI.Controlls
             TrayInfoView.RowsHeight(25);
 
             TrayInfoView.SetGridViewStyles();
-            TrayInfoView.ColumnWidth(0, 60);
+            TrayInfoView.ColumnWidth(0, 50);
+            TrayInfoView.ColumnWidth(1, 120);
+            TrayInfoView.ColumnWidth(2, 100);
 
             TrayInfoView.SetTitle(1, 0, "Tray ID");
-            TrayInfoView.SetTitle(2, 0, "Lot ID");
+            TrayInfoView.SetTitle(2, 0, "Templature");
             TrayInfoView.SetTitle(2, 1, "Start Time");
             TrayInfoView.SetTitle(2, 2, "Plan Time");
 
             //TrayInfoView.SetTitle(0, 0, "1");
             //TrayInfoView.SetTitle(0, 1, "2");
         }
+        #endregion
 
         #region setData
         public override void SetData(DataRow row)
         {
-            //int nRow = int.Parse(row["Location"].ToString());
-            TrayInfoView.SetValue(1, 1, row["tray_id"].ToString());
-            TrayInfoView.SetValue(1, 2, row["tray_id_2"].ToString());
-            TrayInfoView.SetValue(3, 0, row["lot_id"].ToString());
-            //TrayInfoView.SetValue(3, 1, row["start_time"].ToString());
-            //TrayInfoView.SetValue(3, 2, row["end_time"].ToString());
-            TrayInfoView.SetValue(3, 1, "2022-12-28 10:44:01");
-            TrayInfoView.SetValue(3, 2, "2022-12-29 10:44:02");
         }
+        public void SetData(string trayid, string trayid2, float temp, DateTime startTime, DateTime planTime)
+        {
+            TrayInfoView.SetValue(1, 1, trayid);
+            TrayInfoView.SetValue(1, 2, trayid2);
+            TrayInfoView.SetValue(3, 0, temp.ToString());
+            TrayInfoView.SetValue(3, 1, startTime.ToString());
+            TrayInfoView.SetValue(3, 2, planTime.ToString());
+        }
+        #endregion
 
         public void SetEqpStatus(string eqp_status, Color color)
         {
@@ -107,17 +121,22 @@ namespace FMSMonitoringUI.Controlls
             lbOPStatus.Text = op_status;
             lbOPStatus.BackColor = color;
         }
-        #endregion
 
-        private void CtrlEqpControl_Load(object sender, EventArgs e)
+        #region DataGridView Event
+        private void TrayInfoView_MouseCellDoubleClick(int col, int row, object value)
         {
-            InitGridView();
+            if (col == 1 && row > 0)
+            {
+                WinTrayInfo form = new WinTrayInfo(EqpID, "", value.ToString());
+                form.ShowDialog();
+            }
         }
+        #endregion
 
         private void lbEqpType_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            WinFormationBox form = new WinFormationBox(EqpID, _unitD);
-            form.Show();
+            WinFormationBox form = new WinFormationBox(EqpID, UnitID);
+            form.ShowDialog();
         }
     }
 }

@@ -101,19 +101,20 @@
             // ctrlHPC1
             // 
             this.ctrlHPC1.BackColor = System.Drawing.Color.DimGray;
-            this.ctrlHPC1.EqpID = "";
+            this.ctrlHPC1.EqpID = "F1HPC01";
             this.ctrlHPC1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlHPC1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlHPC1.HpcID = " HPC JIG#1";
             this.ctrlHPC1.Location = new System.Drawing.Point(21, 28);
             this.ctrlHPC1.Name = "ctrlHPC1";
             this.ctrlHPC1.Size = new System.Drawing.Size(307, 373);
             this.ctrlHPC1.TabIndex = 2;
+            this.ctrlHPC1.TextBoxText = " HPC JIG#1";
+            this.ctrlHPC1.UnitID = "HPC0100001";
             // 
             // ctrlHPCTemp1
             // 
             this.ctrlHPCTemp1.BackColor = System.Drawing.Color.DimGray;
-            this.ctrlHPCTemp1.EqpID = "";
+            this.ctrlHPCTemp1.EqpID = "F1HPC01";
             this.ctrlHPCTemp1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlHPCTemp1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlHPCTemp1.Location = new System.Drawing.Point(353, 28);
@@ -122,23 +123,25 @@
             this.ctrlHPCTemp1.Size = new System.Drawing.Size(420, 882);
             this.ctrlHPCTemp1.TabIndex = 1;
             this.ctrlHPCTemp1.TitleName = "JIG#1 Information";
+            this.ctrlHPCTemp1.UnitID = "HPC0100001";
             // 
             // ctrlHPC2
             // 
             this.ctrlHPC2.BackColor = System.Drawing.Color.DimGray;
-            this.ctrlHPC2.EqpID = "";
+            this.ctrlHPC2.EqpID = "F1HPC01";
             this.ctrlHPC2.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlHPC2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlHPC2.HpcID = " HPC JIG#2";
             this.ctrlHPC2.Location = new System.Drawing.Point(21, 28);
             this.ctrlHPC2.Name = "ctrlHPC2";
             this.ctrlHPC2.Size = new System.Drawing.Size(307, 373);
             this.ctrlHPC2.TabIndex = 3;
+            this.ctrlHPC2.TextBoxText = " HPC JIG#2";
+            this.ctrlHPC2.UnitID = "HPC0100002";
             // 
             // ctrlHPCTemp2
             // 
             this.ctrlHPCTemp2.BackColor = System.Drawing.Color.DimGray;
-            this.ctrlHPCTemp2.EqpID = "";
+            this.ctrlHPCTemp2.EqpID = "F1HPC01";
             this.ctrlHPCTemp2.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlHPCTemp2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlHPCTemp2.Location = new System.Drawing.Point(353, 28);
@@ -147,6 +150,7 @@
             this.ctrlHPCTemp2.Size = new System.Drawing.Size(420, 882);
             this.ctrlHPCTemp2.TabIndex = 2;
             this.ctrlHPCTemp2.TitleName = "JIG#2 Information";
+            this.ctrlHPCTemp2.UnitID = "HPC0100002";
             // 
             // ctrlTaggingName16
             // 
@@ -245,7 +249,7 @@
             this.label18.ForeColor = System.Drawing.Color.White;
             this.label18.Location = new System.Drawing.Point(15, 9);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(75, 16);
+            this.label18.Size = new System.Drawing.Size(74, 16);
             this.label18.TabIndex = 89;
             this.label18.Text = "Eqp Status";
             // 
@@ -354,7 +358,7 @@
             this.label9.ForeColor = System.Drawing.Color.White;
             this.label9.Location = new System.Drawing.Point(15, 250);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(110, 16);
+            this.label9.Size = new System.Drawing.Size(109, 16);
             this.label9.TabIndex = 123;
             this.label9.Text = "Operation Mode";
             // 

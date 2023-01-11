@@ -143,14 +143,14 @@ namespace FMSMonitoringUI.Monitoring
             gridTrayInfo.SetValue(1, row, data[0].MODEL_ID); row++;
             gridTrayInfo.SetValue(1, row, data[0].TRAY_ID); row++;
             gridTrayInfo.SetValue(1, row, data[0].TRAY_INPUT_TIME); row++;
-            gridTrayInfo.SetValue(1, row, data[0].TRAY_ZONE);
+            gridTrayInfo.SetValue(1, row, data[0].TRAY_ZONE); row++;
             gridTrayInfo.SetValue(1, row, data[0].ROUTE_ID); row++;
             gridTrayInfo.SetValue(1, row, data[0].LOT_ID); row++;
             gridTrayInfo.SetValue(1, row, data[0].PROCESS_NAME); row++;
             gridTrayInfo.SetValue(1, row, data[0].EQP_NAME); row++;
             gridTrayInfo.SetValue(1, row, data[0].START_TIME); row++;
             gridTrayInfo.SetValue(1, row, data[0].PLAN_TIME); row++;
-            gridTrayInfo.SetValue(1, row, data[0].CURRENT_CELL_CNT); row++;
+            gridTrayInfo.SetValue(1, row, data[0].CURRENT_CELL_CNT);
             
         }
 
@@ -263,7 +263,7 @@ namespace FMSMonitoringUI.Monitoring
             catch (Exception ex)
             {
                 // System Debug
-                System.Diagnostics.Debug.Print(string.Format("### Get ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                System.Diagnostics.Debug.Print(string.Format("### WinTrayInfo ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
             }
         }
         #endregion

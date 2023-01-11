@@ -410,6 +410,37 @@ namespace RestClientLib
         public float JIG_30 { get; set; }
     }
     #endregion
+    #region tb_dat_temp_unit
+    /// <summary>
+    /// JSON base format : tb_dat_temp_unit
+    /// </summary>
+    public class _dat_temp_unit
+    {
+        public string EQP_TYPE { get; set; }
+        public string EQP_ID { get; set; }
+        public string UNIT_ID { get; set; }
+        public string EVENT_TIME { get; set; }
+        public string TRAY_ID { get; set; }
+        public string TRAY_ID_2 { get; set; }
+        public float JIG_11 { get; set; }
+        public float JIG_12 { get; set; }
+        public float JIG_13 { get; set; }
+        public float JIG_14 { get; set; }
+        public float JIG_15 { get; set; }
+        public float JIG_16 { get; set; }
+        public float JIG_17 { get; set; }
+        public float JIG_18 { get; set; }
+        public float JIG_21 { get; set; }
+        public float JIG_22 { get; set; }
+        public float JIG_23 { get; set; }
+        public float JIG_24 { get; set; }
+        public float JIG_25 { get; set; }
+        public float JIG_26 { get; set; }
+        public float JIG_27 { get; set; }
+        public float JIG_28 { get; set; }
+        public float JIG_AVG { get; set; }
+    }
+    #endregion
     #region tb_dat_tray_proc
     /// <summary>
     /// JSON base format : tb_dat_tray_proc

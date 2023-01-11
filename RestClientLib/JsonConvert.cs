@@ -151,6 +151,25 @@ namespace RestClientLib
             }
         }
         #endregion
+        #region ConvertDatTempUnit
+        /// <summary>
+        /// _jsonDatTempUnitResponse 형태의 Class로 변환한다.
+        /// </summary>
+        public _jsonDatTempUnitResponse ConvertDatTempUnit(string jsonResult)
+        {
+            try
+            {
+                // Recv Body의 JSON string을 class 변수에 할당
+                _jsonDatTempUnitResponse recvBody = JsonConvert.DeserializeObject<_jsonDatTempUnitResponse>(jsonResult, _jsonSettings);
+                return recvBody;
+            }
+            catch (Exception ex)
+            {
+                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                return null;
+            }
+        }
+        #endregion
         #region ConvertDatTray
         /// <summary>
         /// _jsonDatTrayResponse 형태의 Class로 변환한다.
@@ -657,6 +676,63 @@ namespace RestClientLib
             {
                 // Recv Body의 JSON string을 class 변수에 할당
                 _jsonWinFormationBoxResponse recvBody = JsonConvert.DeserializeObject<_jsonWinFormationBoxResponse>(jsonResult, _jsonSettings);
+                return recvBody;
+            }
+            catch (Exception ex)
+            {
+                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                return null;
+            }
+        }
+        #endregion
+        #region ConvertCtrlFormationCHG
+        /// <summary>
+        /// _jsonCtrlFormationCHGResponse 형태의 Class로 변환한다.
+        /// </summary>
+        public _jsonCtrlFormationCHGResponse ConvertCtrlFormationCHG(string jsonResult)
+        {
+            try
+            {
+                // Recv Body의 JSON string을 class 변수에 할당
+                _jsonCtrlFormationCHGResponse recvBody = JsonConvert.DeserializeObject<_jsonCtrlFormationCHGResponse>(jsonResult, _jsonSettings);
+                return recvBody;
+            }
+            catch (Exception ex)
+            {
+                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                return null;
+            }
+        }
+        #endregion
+        #region ConvertCtrlFormationHPC
+        /// <summary>
+        /// _jsonCtrlFormationHPCResponse 형태의 Class로 변환한다.
+        /// </summary>
+        public _jsonCtrlFormationHPCResponse ConvertCtrlFormationHPC(string jsonResult)
+        {
+            try
+            {
+                // Recv Body의 JSON string을 class 변수에 할당
+                _jsonCtrlFormationHPCResponse recvBody = JsonConvert.DeserializeObject<_jsonCtrlFormationHPCResponse>(jsonResult, _jsonSettings);
+                return recvBody;
+            }
+            catch (Exception ex)
+            {
+                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                return null;
+            }
+        }
+        #endregion
+        #region ConvertCtrlFormationHPCTemp
+        /// <summary>
+        /// _jsonCtrlFormationHPCTempResponse 형태의 Class로 변환한다.
+        /// </summary>
+        public _jsonCtrlFormationHPCTempResponse ConvertCtrlFormationHPCTemp(string jsonResult)
+        {
+            try
+            {
+                // Recv Body의 JSON string을 class 변수에 할당
+                _jsonCtrlFormationHPCTempResponse recvBody = JsonConvert.DeserializeObject<_jsonCtrlFormationHPCTempResponse>(jsonResult, _jsonSettings);
                 return recvBody;
             }
             catch (Exception ex)

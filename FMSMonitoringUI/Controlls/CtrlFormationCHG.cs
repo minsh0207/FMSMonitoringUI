@@ -5,7 +5,10 @@ using FMSMonitoringUI.Monitoring;
 using FormationMonCtrl;
 using MonitoringUI;
 using MySqlX.XDevAPI;
+using Novasoft.Logger;
 using OPCUAClientClassLib;
+using Org.BouncyCastle.Ocsp;
+using RestClientLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +17,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.Integration;
@@ -22,7 +26,18 @@ namespace FMSMonitoringUI
 {
     public partial class CtrlFormationCHG : UserControlRoot
     {
-        private MySqlManager _mysql;
+        #region [Variable]
+        private Logger _Logger;
+
+        private string _EqpID = string.Empty;
+        #endregion
+
+        #region Working Thread
+        private Thread _ProcessThread;
+        private bool _TheadVisiable;
+        #endregion
+
+        //private MySqlManager _mysql;
 
         /// <summary>
         /// First=Charger UnitID, Second=Charger Control
@@ -35,7 +50,7 @@ namespace FMSMonitoringUI
 
             InitFormationBox();
 
-            _mysql = new MySqlManager(ConfigurationManager.ConnectionStrings["DB_CONNECTION_STRING"].ConnectionString);
+            //_mysql = new MySqlManager(ConfigurationManager.ConnectionStrings["DB_CONNECTION_STRING"].ConnectionString);
 
             InitControls();
 
@@ -43,15 +58,34 @@ namespace FMSMonitoringUI
             //m_timer.Tick += new EventHandler(OnTimer);
             //m_timer.Stop();
         }
-        
+
         //private void CtrlFormationBox_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         //{
-            
+
         //}
 
-        #region FormationTimer
-        public void FormationTimer(bool onoff)
+        #region ProcessStart
+        public void ProcessStart(bool start)
         {
+            if (start)
+            {
+                _TheadVisiable = true;
+
+                this.BeginInvoke(new MethodInvoker(delegate ()
+                {
+                    _ProcessThread = new Thread(() => ProcessThreadCallback());
+                    _ProcessThread.IsBackground = true; _ProcessThread.Start();
+                }));
+            }
+            else
+            {
+                if (this._TheadVisiable && this._ProcessThread.IsAlive)
+                    this._TheadVisiable = false;
+
+                if (this._TheadVisiable)
+                    this._ProcessThread.Abort();
+            }            
+
             // Timer
             //if (onoff) m_timer.Start();
             //else m_timer.Stop();
@@ -102,9 +136,68 @@ namespace FMSMonitoringUI
 
                     charger.MouseDoubleClick += Charger_MouseDoubleClick;
                     _ListCharger.Add(charger.UnitID, charger);
+
+                    if (_EqpID == "") _EqpID = charger.EqpID;
                 }
             }
         }
+
+        #region SetData
+        public void SetData(List<_ctrl_formation_chg> data)
+        {
+            if (data.Count == 0) return;
+
+            for (int i = 0; i < data.Count; i++)
+            {
+                CtrlRack chg = _ListCharger[data[i].UNIT_ID];
+                chg.SetData(data[i].TRAY_ID, data[i].TRAY_ID_2, data[i].JIG_AVG, data[i].START_TIME, data[i].PLAN_TIME);
+            }
+
+            ctrlRackTemp.SetData(data);
+        }
+        #endregion
+
+        #region ProcessThreadCallback
+        private void ProcessThreadCallback()
+        {
+            try
+            {
+                while (this._TheadVisiable == true)
+                {
+                    GC.Collect();
+
+                    RESTClient rest = new RESTClient();
+                    // Set Query
+                    StringBuilder strSQL = new StringBuilder();
+
+                    strSQL.Append(" SELECT A.unit_id, A.eqp_name, A.eqp_name_local, A.tray_id, A.tray_id_2, A.start_time, A.plan_time,");
+                    strSQL.Append("        B.*");
+                    strSQL.Append(" FROM fms_v.tb_mst_eqp   A, fms_v.tb_dat_temp_unit   B");
+                    //필수값
+                    strSQL.Append($" WHERE A.eqp_id = '{_EqpID}'");
+                    strSQL.Append($"    AND A.unit_id = B.unit_id");
+                    strSQL.Append($"    AND B.event_time = (SELECT MAX(event_time) FROM tb_dat_temp_unit)");
+                    strSQL.Append($" ORDER BY A.unit_id");
+
+                    string jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+
+                    if (jsonResult != null)
+                    {
+                        _jsonCtrlFormationCHGResponse result = rest.ConvertCtrlFormationCHG(jsonResult);
+
+                        this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                    }
+
+                    Thread.Sleep(3000);
+                }
+            }
+            catch (Exception ex)
+            {
+                // System Debug
+                System.Diagnostics.Debug.Print(string.Format("### FormationCHG ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+            }
+        }
+        #endregion
 
         private void Charger_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -174,7 +267,7 @@ namespace FMSMonitoringUI
 
             //updateTable();
 
-            DataSet ds = _mysql.SelectChargerInfo();
+            //DataSet ds = _mysql.SelectChargerInfo();
         }
 
 
@@ -196,7 +289,7 @@ namespace FMSMonitoringUI
                         string value = DateTime.Now.ToString("yyyy-MM-dd hh-mm-ss");
                         string unitid = string.Format($"CHG0110{bay}0{floor}");
 
-                        _mysql.UpdateChargerInfo("start_time", value, "unit_id", unitid);
+                        //_mysql.UpdateChargerInfo("start_time", value, "unit_id", unitid);
 
 
 
@@ -321,15 +414,15 @@ namespace FMSMonitoringUI
 
         private void UpdateCharger()
         {
-            DataSet ds = _mysql.SelectChargerInfo();
+            //DataSet ds = _mysql.SelectChargerInfo();
 
-            foreach (DataRow row in ds.Tables[0].Rows)
-            {
-                string unit_id = row["unit_id"].ToString();
+            //foreach (DataRow row in ds.Tables[0].Rows)
+            //{
+            //    string unit_id = row["unit_id"].ToString();
 
-                CtrlRack chg = _ListCharger[unit_id];
-                chg.SetData(row);
-            }
+            //    CtrlRack chg = _ListCharger[unit_id];
+            //    chg.SetData(row);
+            //}
         }
     }
 }

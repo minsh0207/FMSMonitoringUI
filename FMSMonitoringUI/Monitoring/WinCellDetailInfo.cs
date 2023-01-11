@@ -38,9 +38,8 @@ namespace FMSMonitoringUI.Monitoring
 
             InitGridViewCellList();
             InitGridViewCell();
-            InitGridViewProcessName(1);
+            InitGridViewProcessName(0);
             Dictionary<string, object> data = new Dictionary<string, object>();
-            data.Add("", "");
             InitGridViewRecipeInfo(data);
             InitGridViewProcessData(data);
 
@@ -219,7 +218,7 @@ namespace FMSMonitoringUI.Monitoring
             lstTitle = new List<string>();
             for (int i = 0; i < rowCount; i++)
             {
-                lstTitle.Add((i+1).ToString());
+                lstTitle.Add((i + 1).ToString());
             }
             gridProcessName.AddRowsHeaderList(lstTitle);
 
@@ -285,9 +284,11 @@ namespace FMSMonitoringUI.Monitoring
         #region SetData
         private void SetCellList(List<_dat_cell> data)
         {
+            if (data.Count == 0) return;
+
             for (int i = 0; i < CDefine.DEF_MAX_CELL_COUNT; i++)
             {
-;                gridCellIDLIst.SetValue(1, i, data[i].CELL_ID);
+                gridCellIDLIst.SetValue(1, i, data[i].CELL_ID);
             }
         }
         private void SetCellInfo(int cellNo)
@@ -337,11 +338,12 @@ namespace FMSMonitoringUI.Monitoring
         {
             InitGridViewProcessName(data.Count);
 
+            if (data.Count == 0) return;
+
             for (int i = 0; i < data.Count; i++)
             {
                 gridProcessName.SetValue(1, i, data[i].PROCESS_NAME);
-            }
-            
+            }            
         }
         private void SetRecipeInfo(int idx)
         {
@@ -357,7 +359,6 @@ namespace FMSMonitoringUI.Monitoring
             else
             {
                 Dictionary<string, object> data = new Dictionary<string, object>();
-                data.Add("", "");
                 InitGridViewRecipeInfo(data);
             }
         }
@@ -375,7 +376,6 @@ namespace FMSMonitoringUI.Monitoring
             else
             {
                 Dictionary<string, object> data = new Dictionary<string, object>();
-                data.Add("", "");
                 InitGridViewProcessData(data);
             }
         }
@@ -473,7 +473,6 @@ namespace FMSMonitoringUI.Monitoring
             }
 
             Dictionary<string, object> data = new Dictionary<string, object>();
-            data.Add("", "");
             InitGridViewRecipeInfo(data);
             InitGridViewProcessData(data);
         }        
@@ -542,7 +541,7 @@ namespace FMSMonitoringUI.Monitoring
             catch (Exception ex)
             {
                 // System Debug
-                System.Diagnostics.Debug.Print(string.Format("### Get ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                System.Diagnostics.Debug.Print(string.Format("### WinCellDetailInfo ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
             }
         }
         #endregion

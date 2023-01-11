@@ -3,8 +3,11 @@ using DBHandler;
 using FMSMonitoringUI.Controlls;
 using FormationMonCtrl;
 using MonitoringUI;
+using MonitoringUI.Common;
 using MySqlX.XDevAPI;
+using Novasoft.Logger;
 using OPCUAClientClassLib;
+using RestClientLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +16,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.Integration;
@@ -21,7 +25,18 @@ namespace FMSMonitoringUI
 {
     public partial class CtrlFormationHPC : UserControlRoot
     {
-        private MySqlManager _mysql;
+        #region [Variable]
+        private Logger _Logger;
+
+        private string _EqpID = string.Empty;
+        #endregion
+
+        #region Working Thread
+        private Thread _ProcessThread;
+        private bool _TheadVisiable;
+        #endregion
+
+        //private MySqlManager _mysql;
 
         /// <summary>
         /// First=Charger UnitID, Second=Charger Control
@@ -34,26 +49,45 @@ namespace FMSMonitoringUI
 
             InitFormationBox();
 
-            _mysql = new MySqlManager(ConfigurationManager.ConnectionStrings["DB_CONNECTION_STRING"].ConnectionString);
+            //_mysql = new MySqlManager(ConfigurationManager.ConnectionStrings["DB_CONNECTION_STRING"].ConnectionString);
 
             InitControls();
 
             // Timer
-            m_timer.Tick += new EventHandler(OnTimer);
-            m_timer.Stop();
+            //m_timer.Tick += new EventHandler(OnTimer);
+            //m_timer.Stop();
         }
-        
+
         //private void CtrlFormationBox_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         //{
-            
+
         //}
 
-        #region FormationTimer
-        public void FormationTimer(bool onoff)
+        #region ProcessStart
+        public void ProcessStart(bool start)
         {
+            if (start)
+            {
+                _TheadVisiable = true;
+
+                this.BeginInvoke(new MethodInvoker(delegate ()
+                {
+                    _ProcessThread = new Thread(() => ProcessThreadCallback());
+                    _ProcessThread.IsBackground = true; _ProcessThread.Start();
+                }));
+            }
+            else
+            {
+                if (this._TheadVisiable && this._ProcessThread.IsAlive)
+                    this._TheadVisiable = false;
+
+                if (this._TheadVisiable)
+                    this._ProcessThread.Abort();
+            }
+
             // Timer
-            if (onoff) m_timer.Start();
-            else m_timer.Stop();
+            //if (onoff) m_timer.Start();
+            //else m_timer.Stop();
         }
         #endregion
 
@@ -93,17 +127,114 @@ namespace FMSMonitoringUI
         {
             _ListHPC.Clear();
 
-            foreach (var ctl in Controls)
-            {   
-                if (ctl.GetType() == typeof(CtrlHPC))
-                {
-                    CtrlHPC charger = ctl as CtrlHPC;
+            ctrlHPC1.MouseDoubleClick += Charger_MouseDoubleClick;
+            _ListHPC.Add(ctrlHPC1.UnitID, ctrlHPC1);
 
-                    charger.MouseDoubleClick += Charger_MouseDoubleClick;
-                    _ListHPC.Add(charger.Name, charger);
+            ctrlHPC2.MouseDoubleClick += Charger_MouseDoubleClick;
+            _ListHPC.Add(ctrlHPC2.UnitID, ctrlHPC2);
+
+            if (_EqpID == "") _EqpID = ctrlHPC2.EqpID;
+        }
+
+        #region SetData
+        public void SetData(List<_ctrl_formation_hpc> data)
+        {
+            if (data.Count == 0) return;
+
+            for (int i = 0; i < data.Count; i++)
+            {
+                if (_ListHPC.ContainsKey(data[i].UNIT_ID))
+                {
+                    CtrlHPC hpc = _ListHPC[data[i].UNIT_ID];
+                    hpc.SetData(data[i]);
                 }
             }
         }
+        public void SetData(List<_ctrl_formation_hpc_temp> data)
+        {
+            if (data.Count == 0) return;
+
+            ctrlHPCTemp1.SetData(data);
+            ctrlHPCTemp2.SetData(data);
+        }
+        #endregion
+
+        #region ProcessThreadCallback
+        private void ProcessThreadCallback()
+        {
+            try
+            {
+                while (this._TheadVisiable == true)
+                {
+                    GC.Collect();
+
+                    RESTClient rest = new RESTClient();
+                    // Set Query
+                    StringBuilder strSQL = new StringBuilder();
+
+                    strSQL.Append(" SELECT A.unit_id, A.tray_id, A.eqp_mode, A.eqp_status, A.operation_mode, A.start_time, A.plan_time,");
+                    strSQL.Append($"       B.pressure, B.event_time, ROUND(SUM({GetJigNoString("B")})/{CDefine.DEF_MAX_CELL_COUNT}, 1) as temp_avg,");
+                    strSQL.Append($"       C.trouble_code, C.trouble_name,");
+                    strSQL.Append($"       D.process_name");
+                    strSQL.Append(" FROM fms_v.tb_mst_eqp   A");
+                    strSQL.Append("        LEFT OUTER JOIN fms_v.tb_dat_temp_hpc    B");
+                    strSQL.Append("             ON A.eqp_id = B.eqp_id AND B.unit_id = A.unit_id ");
+                    strSQL.Append("                 AND B.event_time = (SELECT MAX(event_time) FROM tb_dat_temp_hpc WHERE eqp_id = A.eqp_id AND unit_id = B.unit_id)");
+                    strSQL.Append("         LEFT OUTER JOIN fms_v.tb_mst_trouble   C");
+                    strSQL.Append("             ON A.eqp_trouble_code = C.trouble_code AND A.eqp_type = C.eqp_type");
+                    strSQL.Append("         LEFT OUTER JOIN fms_v.tb_mst_route_order    D");
+                    strSQL.Append("             ON A.route_order_no = D.route_order_no");
+                    //필수값
+                    strSQL.Append($" WHERE A.eqp_id = '{_EqpID}'");
+                    strSQL.Append($"    AND A.unit_id = B.unit_id");
+                    strSQL.Append($" GROUP BY A.unit_id");
+
+                    string jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+
+                    if (jsonResult != null)
+                    {
+                        _jsonCtrlFormationHPCResponse result = rest.ConvertCtrlFormationHPC(jsonResult);
+
+                        this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                    }
+
+                    Thread.Sleep(100);
+
+                    // Cell ID별 온도
+                    strSQL = new StringBuilder();
+
+                    strSQL.Append(" SELECT A.unit_id, A.tray_id,");
+                    strSQL.Append("        B.event_time,");
+                    strSQL.Append("        C.cell_no, C.cell_id,");
+                    strSQL.Append($"             CASE {GetJigTempString()} END AS temp_jig");
+                    strSQL.Append(" FROM fms_v.tb_mst_eqp   A");
+                    strSQL.Append("        LEFT OUTER JOIN fms_v.tb_dat_temp_hpc    B");
+                    strSQL.Append("             ON A.eqp_id = B.eqp_id AND B.unit_id = A.unit_id ");
+                    strSQL.Append("                 AND B.event_time = (SELECT MAX(event_time) FROM tb_dat_temp_hpc WHERE eqp_id = A.eqp_id AND unit_id = B.unit_id)");
+                    strSQL.Append("         LEFT OUTER JOIN fms_v.tb_dat_cell   C");
+                    strSQL.Append("             ON A.tray_id = C.tray_id");
+                    //필수값
+                    strSQL.Append($" WHERE A.eqp_id = '{_EqpID}'");
+
+                    jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+
+                    if (jsonResult != null)
+                    {
+                        _jsonCtrlFormationHPCTempResponse result = rest.ConvertCtrlFormationHPCTemp(jsonResult);
+
+                        this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                    }
+
+                    Thread.Sleep(3000);
+                }
+            }
+            catch (Exception ex)
+            {
+                // System Debug
+                System.Diagnostics.Debug.Print(string.Format("### FormationCHG ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+            }
+        }
+        #endregion
 
         private void Charger_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -170,7 +301,7 @@ namespace FMSMonitoringUI
 
             //updateTable();
 
-            DataSet ds = _mysql.SelectChargerInfo();
+            //DataSet ds = _mysql.SelectChargerInfo();
         }
 
 
@@ -192,7 +323,7 @@ namespace FMSMonitoringUI
                         string value = DateTime.Now.ToString("yyyy-MM-dd hh-mm-ss");
                         string unitid = string.Format($"CHG0110{bay}0{floor}");
 
-                        _mysql.UpdateChargerInfo("start_time", value, "unit_id", unitid);
+                        //_mysql.UpdateChargerInfo("start_time", value, "unit_id", unitid);
 
 
 
@@ -251,27 +382,27 @@ namespace FMSMonitoringUI
             }
         }
 
-        private void OnTimer(object sender, EventArgs e)
-        {
-            try
-            {
-                m_timer.Stop();
+        //private void OnTimer(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        m_timer.Stop();
 
-                Task task = LoadChargerRackData();
+        //        Task task = LoadChargerRackData();
 
-                if (m_timer.Interval != 5000)
-                    m_timer.Interval = 5000;
-                m_timer.Start();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(string.Format("[Exception:OnTimer] {0}", ex.ToString()));
-            }
-        }
+        //        if (m_timer.Interval != 5000)
+        //            m_timer.Interval = 5000;
+        //        m_timer.Start();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(string.Format("[Exception:OnTimer] {0}", ex.ToString()));
+        //    }
+        //}
 
         private void CtrlFormation_HandleDestroyed(object sender, EventArgs e)
         {
-            m_timer.Stop();
+            //m_timer.Stop();
         }
 
         private async Task LoadChargerRackData()
@@ -317,15 +448,48 @@ namespace FMSMonitoringUI
 
         private void UpdateHPC()
         {
-            DataSet ds = _mysql.SelectHPCInfo();
+            //DataSet ds = _mysql.SelectHPCInfo();
 
-            foreach (DataRow row in ds.Tables[0].Rows)
+            //foreach (DataRow row in ds.Tables[0].Rows)
+            //{
+            //    string unit_id = row["unit_id"].ToString();
+
+            //    CtrlHPC chg = _ListHPC[unit_id];
+            //    chg.SetData(row);
+            //}
+        }
+
+        private string GetJigNoString(string alias)
+        {
+            StringBuilder strJIGNo = new StringBuilder();
+
+            for (int i = 0; i < CDefine.DEF_MAX_CELL_COUNT; i++)
             {
-                string unit_id = row["unit_id"].ToString();
-
-                CtrlHPC chg = _ListHPC[unit_id];
-                chg.SetData(row);
+                string jigNo = string.Format("{0:D2}", i + 1);
+                if (i < CDefine.DEF_MAX_CELL_COUNT-1)
+                {
+                    strJIGNo.Append($"{alias}.jig_{jigNo}+");
+                }
+                else
+                {
+                    strJIGNo.Append($"{alias}.jig_{jigNo}");
+                }
             }
+
+            return strJIGNo.ToString();
+        }
+
+        private string GetJigTempString()
+        {
+            StringBuilder strJIGNo = new StringBuilder();
+
+            for (int i = 0; i < CDefine.DEF_MAX_CELL_COUNT; i++)
+            {
+                string jigNo = string.Format("{0:D2}", i + 1);
+                strJIGNo.Append($"WHEN C.cell_no = {i + 1} THEN B.jig_{jigNo} ");
+            }
+
+            return strJIGNo.ToString();
         }
     }
 }

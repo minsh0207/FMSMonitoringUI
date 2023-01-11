@@ -77,7 +77,6 @@ namespace FMSMonitoringUI.Monitoring
             else
             {
                 Dictionary<string, object> data = new Dictionary<string, object>();
-                data.Add("", "");
                 InitGridView(data);
             }
         }

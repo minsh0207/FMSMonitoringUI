@@ -14,6 +14,11 @@ namespace FMSMonitoringUI.Controlls
 {
     public partial class CtrlTrayInfoView : UserControl
     {
+        public int RowCount
+        {
+            get { return dataGridView1.RowCount; }
+        }
+
         public delegate void MouseCellDoubleClickEventHandler(int col, int row, object value);
         public event MouseCellDoubleClickEventHandler MouseCellDoubleClick_Evnet = null;
 
@@ -205,6 +210,10 @@ namespace FMSMonitoringUI.Controlls
         }
 
         public void SetValue(int col, int row, string value)
+        {
+            dataGridView1[col, row].Value = value;
+        }
+        public void SetValue(int col, int row, float value)
         {
             dataGridView1[col, row].Value = value;
         }

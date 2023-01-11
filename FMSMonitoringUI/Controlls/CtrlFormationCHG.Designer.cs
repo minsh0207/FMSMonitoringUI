@@ -49,7 +49,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.ctrlRackTemp1 = new FMSMonitoringUI.Controlls.CtrlRackTemp();
+            this.ctrlRackTemp = new FMSMonitoringUI.Controlls.CtrlRackTemp();
             this.ctrlTaggingName15 = new MonitoringUI.Controlls.CtrlTaggingName();
             this.ctrlTaggingName14 = new MonitoringUI.Controlls.CtrlTaggingName();
             this.ctrlTaggingName13 = new MonitoringUI.Controlls.CtrlTaggingName();
@@ -126,7 +126,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.label4);
-            this.splitContainer1.Panel2.Controls.Add(this.ctrlRackTemp1);
+            this.splitContainer1.Panel2.Controls.Add(this.ctrlRackTemp);
             this.splitContainer1.Size = new System.Drawing.Size(1604, 945);
             this.splitContainer1.SplitterDistance = 547;
             this.splitContainer1.TabIndex = 88;
@@ -333,16 +333,16 @@
             this.label4.TabIndex = 89;
             this.label4.Text = "T\r\nE\r\nM\r\nP";
             // 
-            // ctrlRackTemp1
+            // ctrlRackTemp
             // 
-            this.ctrlRackTemp1.BackColor = System.Drawing.Color.DimGray;
-            this.ctrlRackTemp1.EqpID = "";
-            this.ctrlRackTemp1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ctrlRackTemp1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlRackTemp1.Location = new System.Drawing.Point(97, 20);
-            this.ctrlRackTemp1.Name = "ctrlRackTemp1";
-            this.ctrlRackTemp1.Size = new System.Drawing.Size(1439, 349);
-            this.ctrlRackTemp1.TabIndex = 0;
+            this.ctrlRackTemp.BackColor = System.Drawing.Color.DimGray;
+            this.ctrlRackTemp.EqpID = "";
+            this.ctrlRackTemp.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlRackTemp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.ctrlRackTemp.Location = new System.Drawing.Point(97, 20);
+            this.ctrlRackTemp.Name = "ctrlRackTemp";
+            this.ctrlRackTemp.Size = new System.Drawing.Size(1439, 349);
+            this.ctrlRackTemp.TabIndex = 0;
             // 
             // ctrlTaggingName15
             // 
@@ -706,7 +706,7 @@
         private Controlls.CtrlRack ctrlRack4;
         private Controlls.CtrlRack ctrlRack3;
         private Controlls.CtrlRack ctrlRack2;
-        private Controlls.CtrlRackTemp ctrlRackTemp1;
+        private Controlls.CtrlRackTemp ctrlRackTemp;
         private System.Windows.Forms.Label label4;
         private Controlls.CtrlRack ctrlRack12;
         private MonitoringUI.Controlls.CtrlTaggingName ctrlTaggingName15;

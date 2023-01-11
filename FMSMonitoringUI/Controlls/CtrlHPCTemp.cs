@@ -4,6 +4,7 @@ using MonitoringUI;
 using MonitoringUI.Common;
 using MySqlX.XDevAPI.Relational;
 using OPCUAClientClassLib;
+using RestClientLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,6 +35,19 @@ namespace FMSMonitoringUI.Controlls
         }
 
         #region Properties
+        string _unitD = "";
+        [DisplayName("Unit ID"), Description("Unit ID"), Category("GroupBox Setting")]
+        public string UnitID
+        {
+            get
+            {
+                return _unitD;
+            }
+            set
+            {
+                _unitD = value;
+            }
+        }
         string _TitleName = "";
         [DisplayName("Title Name"), Description("Title Name"), Category("GroupBox Setting")]
         public string TitleName
@@ -92,9 +106,19 @@ namespace FMSMonitoringUI.Controlls
         #region setData
         public override void SetData(DataRow row)
         {
-            //int nRow = int.Parse(row["Location"].ToString());
-            //TrayInfoView.SetValue(1, nRow, row["tray_id"].ToString());
-            //TrayInfoView.SetReworkTray(1, nRow, row["rework_flag"].ToString());
+        }
+        public void SetData(List<_ctrl_formation_hpc_temp> data)
+        {
+            foreach (var hpc in data)
+            {
+                if (hpc.UNIT_ID != _unitD) continue;
+
+                int row = int.Parse(hpc.CELL_NO) - 1;
+
+                gridRackTemp.SetValue(0, row, hpc.CELL_NO);
+                gridRackTemp.SetValue(1, row, hpc.CELL_ID);
+                gridRackTemp.SetValue(2, row, hpc.TEMP_JIG);
+            }
         }
         #endregion
 

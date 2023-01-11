@@ -121,6 +121,8 @@ namespace FMSMonitoringUI.Monitoring
         #region SetData
         private void SetData(List<_win_lead_time> data)
         {
+            if (data.Count == 0) return;
+
             gridTrayInfo.RowCount= data.Count;
             int row = 0;
 
@@ -234,7 +236,7 @@ namespace FMSMonitoringUI.Monitoring
             catch (Exception ex)
             {
                 // System Debug
-                System.Diagnostics.Debug.Print(string.Format("### Get ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                System.Diagnostics.Debug.Print(string.Format("### WinLeadTime ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
             }
         }
         #endregion

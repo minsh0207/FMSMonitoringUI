@@ -3,6 +3,7 @@ using FormationMonCtrl;
 using MonitoringUI;
 using MySqlX.XDevAPI.Relational;
 using OPCUAClientClassLib;
+using RestClientLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,6 +40,7 @@ namespace FMSMonitoringUI.Controlls
         //}
         #endregion
 
+        #region InitGridView
         private void InitGridView()
         {
             string[] columnName = { "", "JIG#1", "JIG#2", "JIG#3", "JIG#4", "JIG#5", "JIG#6", "JIG#7", "JIG#8",
@@ -72,25 +74,58 @@ namespace FMSMonitoringUI.Controlls
             //    TrayInfoView.ColumnWidth(i, 50);
             //}
         }
+        #endregion
 
         #region setData
         public override void SetData(DataRow row)
         {
-            //int nRow = int.Parse(row["Location"].ToString());
-            //TrayInfoView.SetValue(1, nRow, row["tray_id"].ToString());
-            //TrayInfoView.SetReworkTray(1, nRow, row["rework_flag"].ToString());
+        }
+        public void SetData(List<_ctrl_formation_chg> data)
+        {
+            foreach (var jig in data) 
+            {
+                // Lower JIG 온도
+                int col = 1;
+                int row;
+
+                if (int.Parse(jig.UNIT_ID.Substring(jig.UNIT_ID.Length - 3, 1)) > 1)
+                {
+                    row = int.Parse(jig.UNIT_ID.Substring(jig.UNIT_ID.Length - 3, 1)) * 2 + int.Parse(jig.UNIT_ID.Substring(jig.UNIT_ID.Length - 1, 1));
+                    row--;
+                }
+                else
+                {
+                    row = int.Parse(jig.UNIT_ID.Substring(jig.UNIT_ID.Length - 1, 1));
+                    row--;
+                }
+
+                TrayInfoView.SetValue(col, row, jig.JIG_11); col++;
+                TrayInfoView.SetValue(col, row, jig.JIG_12); col++;
+                TrayInfoView.SetValue(col, row, jig.JIG_13); col++;
+                TrayInfoView.SetValue(col, row, jig.JIG_14); col++;
+                TrayInfoView.SetValue(col, row, jig.JIG_15); col++;
+                TrayInfoView.SetValue(col, row, jig.JIG_16); col++;
+                TrayInfoView.SetValue(col, row, jig.JIG_17); col++;
+                TrayInfoView.SetValue(col, row, jig.JIG_18); col++;
+
+                // Upper JIG 온도
+                TrayInfoView.SetValue(col, row, jig.JIG_21); col++;
+                TrayInfoView.SetValue(col, row, jig.JIG_22); col++;
+                TrayInfoView.SetValue(col, row, jig.JIG_23); col++;
+                TrayInfoView.SetValue(col, row, jig.JIG_24); col++;
+                TrayInfoView.SetValue(col, row, jig.JIG_25); col++;
+                TrayInfoView.SetValue(col, row, jig.JIG_26); col++;
+                TrayInfoView.SetValue(col, row, jig.JIG_27); col++;
+                TrayInfoView.SetValue(col, row, jig.JIG_28);
+            }
         }
         #endregion
 
-        private void CtrlEqpControl_Load(object sender, EventArgs e)
+        #region CtrlRackTemp
+        private void CtrlRackTemp_Load(object sender, EventArgs e)
         {
             InitGridView();
         }
-
-        private void lbEqpType_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            //WinManageEqp form = new WinManageEqp();
-            //form.Show();
-        }
+        #endregion
     }
 }

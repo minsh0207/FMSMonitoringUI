@@ -95,6 +95,7 @@
     <Compile Include="JSON\_jsonDatProcessData.cs" />
     <Compile Include="JSON\_jsonDatStatusEqp.cs" />
     <Compile Include="JSON\_jsonDatStatusUnit.cs" />
+    <Compile Include="JSON\_jsonDatTempUnit.cs" />
     <Compile Include="JSON\_jsonDatTempHpc.cs" />
     <Compile Include="JSON\_jsonDatTray.cs" />
     <Compile Include="JSON\_jsonDatTrayProc.cs" />
@@ -115,6 +116,9 @@
     <Compile Include="JSON\_jsonMstWindowUser.cs" />
     <Compile Include="JSON\__baseBase.cs" />
     <Compile Include="Monitoring\_jsonAgingRackCount.cs" />
+    <Compile Include="Monitoring\_jsonCtrlFormationHPCTemp.cs" />
+    <Compile Include="Monitoring\_jsonCtrlFormationHPC.cs" />
+    <Compile Include="Monitoring\_jsonCtrlFormationCHG.cs" />
     <Compile Include="Monitoring\_jsonWinLeadTime.cs" />
     <Compile Include="Monitoring\_jsonCellProcessFlow.cs" />
     <Compile Include="Monitoring\_jsonProcessData.cs" />

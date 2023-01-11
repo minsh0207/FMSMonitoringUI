@@ -3,6 +3,7 @@ using FormationMonCtrl;
 using MonitoringUI;
 using MySqlX.XDevAPI.Relational;
 using OPCUAClientClassLib;
+using RestClientLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,18 +24,31 @@ namespace FMSMonitoringUI.Controlls
         }
 
         #region Properties
-        string _HpcID = "";
-        [DisplayName("HPC ID"), Description("HPC ID"), Category("GroupBox Setting")]
-        public string HpcID
+        string _unitD = "";
+        [DisplayName("Unit ID"), Description("Unit ID"), Category("GroupBox Setting")]
+        public string UnitID
         {
             get
             {
-                return _HpcID;
+                return _unitD;
             }
             set
             {
-                _HpcID = value;
-                lbRackID.Text = _HpcID;
+                _unitD = value;
+            }
+        }
+        string _textBoxText = "";
+        [DisplayName("TextBoxText"), Description("TextBox Text"), Category("GroupBox Setting")]
+        public string TextBoxText
+        {
+            get
+            {
+                return _textBoxText;
+            }
+            set
+            {
+                _textBoxText = value;
+                lbRackID.Text = string.Format(" {0}", _textBoxText);
             }
         }
         #endregion
@@ -71,10 +85,23 @@ namespace FMSMonitoringUI.Controlls
         #region setData
         public override void SetData(DataRow row)
         {
-            //int nRow = int.Parse(row["Location"].ToString());
-            //TrayInfoView.SetValue(1, nRow, row["tray_id"].ToString());
-            //TrayInfoView.SetReworkTray(1, nRow, row["rework_flag"].ToString());
         }
+        public void SetData(_ctrl_formation_hpc data)
+        {
+            int nRow = 0;
+            TrayInfoView.SetValue(1, nRow, data.TRAY_ID); nRow++;
+            TrayInfoView.SetValue(1, nRow, data.EQP_MODE); nRow++;
+            TrayInfoView.SetValue(1, nRow, data.EQP_STATUS); nRow++;
+            TrayInfoView.SetValue(1, nRow, data.OPERATION_MODE); nRow++;
+            TrayInfoView.SetValue(1, nRow, data.PROCESS_NAME); nRow++;
+            TrayInfoView.SetValue(1, nRow, data.START_TIME.ToString()); nRow++;
+            TrayInfoView.SetValue(1, nRow, data.PLAN_TIME.ToString()); nRow++;
+            TrayInfoView.SetValue(1, nRow, data.TEMP_AVG); nRow++;
+            TrayInfoView.SetValue(1, nRow, data.PRESSURE); nRow++;
+            TrayInfoView.SetValue(1, nRow, data.TROUBLE_CODE); nRow++;
+            TrayInfoView.SetValue(1, nRow, data.TROUBLE_NAME);
+        }
+        #endregion
 
         public void SetEqpStatus(string eqp_status, Color color)
         {
@@ -87,7 +114,7 @@ namespace FMSMonitoringUI.Controlls
             lbOPStatus.Text = op_status;
             lbOPStatus.BackColor = color;
         }
-        #endregion
+        
 
         private void CtrlEqpControl_Load(object sender, EventArgs e)
         {

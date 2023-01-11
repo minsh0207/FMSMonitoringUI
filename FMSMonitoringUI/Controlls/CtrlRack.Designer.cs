@@ -118,7 +118,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Name = "CtrlRack";
             this.Size = new System.Drawing.Size(452, 129);
-            this.Load += new System.EventHandler(this.CtrlEqpControl_Load);
+            this.Load += new System.EventHandler(this.CtrlRack_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();

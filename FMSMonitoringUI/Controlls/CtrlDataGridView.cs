@@ -219,8 +219,14 @@ namespace FMSMonitoringUI.Controlls
         public void AddRowsHeaderList(List<string> lstData)
         {
             int nMax = lstData.Count;
-            //dataGridView1.RowCount = nMax;
-            RowCount= nMax;
+
+            if (nMax == 0)
+            {
+                dataGridView1.Rows.Clear();
+                //dataGridView1.Refresh();
+                return;
+            }
+            dataGridView1.RowCount = nMax;
 
             for (int nRow = 0; nRow < nMax; nRow++)
             {

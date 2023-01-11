@@ -45,9 +45,9 @@
             this.lbOPStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbOPStatus.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbOPStatus.ForeColor = System.Drawing.Color.Black;
-            this.lbOPStatus.Location = new System.Drawing.Point(154, 0);
+            this.lbOPStatus.Location = new System.Drawing.Point(185, 0);
             this.lbOPStatus.Name = "lbOPStatus";
-            this.lbOPStatus.Size = new System.Drawing.Size(149, 30);
+            this.lbOPStatus.Size = new System.Drawing.Size(118, 30);
             this.lbOPStatus.TabIndex = 3;
             this.lbOPStatus.Text = "Charge";
             this.lbOPStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -59,7 +59,7 @@
             this.lbEqpStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbEqpStatus.Dock = System.Windows.Forms.DockStyle.Left;
             this.lbEqpStatus.ForeColor = System.Drawing.Color.Black;
-            this.lbEqpStatus.Location = new System.Drawing.Point(110, 0);
+            this.lbEqpStatus.Location = new System.Drawing.Point(141, 0);
             this.lbEqpStatus.Name = "lbEqpStatus";
             this.lbEqpStatus.Size = new System.Drawing.Size(44, 30);
             this.lbEqpStatus.TabIndex = 2;
@@ -74,7 +74,7 @@
             this.lbRackID.ForeColor = System.Drawing.Color.White;
             this.lbRackID.Location = new System.Drawing.Point(0, 0);
             this.lbRackID.Name = "lbRackID";
-            this.lbRackID.Size = new System.Drawing.Size(110, 30);
+            this.lbRackID.Size = new System.Drawing.Size(141, 30);
             this.lbRackID.TabIndex = 1;
             this.lbRackID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lbRackID.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseDoubleClick);

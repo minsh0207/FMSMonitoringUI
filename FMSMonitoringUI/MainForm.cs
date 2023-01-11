@@ -109,8 +109,8 @@ namespace FMSMonitoringUI
 
             ctrlMonitoring.MonitoringTimer(false);
             ctrlAging.AgingTimer(false);
-            ctrlFormationCHG.FormationTimer(false);
-            ctrlFormationHPC.FormationTimer(false);
+            ctrlFormationCHG.ProcessStart(false);
+            ctrlFormationHPC.ProcessStart(false);
 
             switch (title)
             {
@@ -133,14 +133,14 @@ namespace FMSMonitoringUI
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls[0].Dispose();
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
                     scMainPanel.Panel2.Controls.Add(ctrlFormationCHG);
-                    ctrlFormationCHG.FormationTimer(true);
+                    ctrlFormationCHG.ProcessStart(true);
                     break;
                 case "Formation(HPC)":
 
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls[0].Dispose();
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
                     scMainPanel.Panel2.Controls.Add(ctrlFormationHPC);
-                    ctrlFormationHPC.FormationTimer(true);
+                    ctrlFormationHPC.ProcessStart(true);
                     break;
             }
 
