@@ -95,6 +95,11 @@ namespace FMSMonitoringUI
             winform.ShowDialog();
 
             lbUserName.Text = CDefine.m_strLoginID;
+        }
+
+        protected override void OnHandleCreated(EventArgs e)
+        {
+            base.OnHandleCreated(e);
 
             Title_ClickEvnet("Main");
         }
@@ -107,7 +112,7 @@ namespace FMSMonitoringUI
         {
             if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
 
-            ctrlMonitoring.MonitoringTimer(false);
+            ctrlMonitoring.ProcessStart(false);
             ctrlAging.AgingTimer(false);
             ctrlFormationCHG.ProcessStart(false);
             ctrlFormationHPC.ProcessStart(false);
@@ -119,7 +124,7 @@ namespace FMSMonitoringUI
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls[0].Dispose();
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
                     scMainPanel.Panel2.Controls.Add(ctrlMonitoring);
-                    ctrlMonitoring.MonitoringTimer(true);
+                    ctrlMonitoring.ProcessStart(true);
                     break;
                 case "Aging":
 

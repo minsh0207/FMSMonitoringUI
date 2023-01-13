@@ -955,8 +955,8 @@ namespace MonitoringUI.Monitoring
                     StringBuilder strSQL = new StringBuilder();
 
                     strSQL.Append(" SELECT COUNT(aging_type) AS total_rack_cnt,");
-                    strSQL.Append("        COUNT(if(tray_cnt > 0, tray_cnt, null)) AS in_aging,");
-                    strSQL.Append("        COUNT(if(tray_cnt = 0, tray_cnt, null)) AS empty_rack,");
+                    strSQL.Append("        COUNT(if(status = 'F', tray_cnt, null)) AS in_aging,");
+                    strSQL.Append("        COUNT(if(status = 'E', tray_cnt, null)) AS empty_rack,");
                     strSQL.Append("        COUNT(if(status = 'U', status, null)) AS unloading_rack,");
                     strSQL.Append("        COUNT(if(status = 'X', status, null)) AS no_input_rack,");
                     strSQL.Append("        COUNT(if(status = 'O', status, null)) AS no_output_rack,");
@@ -966,11 +966,11 @@ namespace MonitoringUI.Monitoring
                     //필수값
                     strSQL.Append($" WHERE aging_type = '{_AgingType}' AND line = '{_AgingLine}'");
 
-                    string jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+                    var jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
 
                     if (jsonResult != null)
                     {
-                        _jsonAgingRackCountResponse result = rest.ConvertAgingRackCount(jsonResult);
+                        _jsonAgingRackCountResponse result = rest.ConvertAgingRackCount(jsonResult.Result);
 
                         this.BeginInvoke(new Action(() => SetData(result.DATA)));
                     }

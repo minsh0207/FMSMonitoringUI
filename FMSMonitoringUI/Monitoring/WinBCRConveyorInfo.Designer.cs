@@ -47,7 +47,6 @@
             this.TrayCount = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
             this.TrayType = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
             this.TrayExist = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
-            this.StationStatus = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
             this.CommandReady = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
             this.TroubleErrLevel = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
             this.CVTroubleErrNo = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
@@ -55,6 +54,7 @@
             this.ledPower = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
             this.ctrlGroupBox2 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlGroupBox();
             this.ctrlGroupBox1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlGroupBox();
+            this.StationStatus = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
             this.ConveyorType = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
             this.ConveyorNo = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
             this.panel1.SuspendLayout();
@@ -333,20 +333,6 @@
             this.TrayExist.TitleText = "Tray Exist ";
             this.TrayExist.TitleWidth = 140F;
             // 
-            // StationStatus
-            // 
-            this.StationStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.StationStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.StationStatus.LanguageID = "DEF_Station_Status";
-            this.StationStatus.Location = new System.Drawing.Point(15, 403);
-            this.StationStatus.Margin = new System.Windows.Forms.Padding(30);
-            this.StationStatus.Name = "StationStatus";
-            this.StationStatus.Size = new System.Drawing.Size(303, 29);
-            this.StationStatus.TabIndex = 19;
-            this.StationStatus.TextData = "";
-            this.StationStatus.TitleText = "Station Status ";
-            this.StationStatus.TitleWidth = 140F;
-            // 
             // CommandReady
             // 
             this.CommandReady.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
@@ -433,6 +419,20 @@
             this.ctrlGroupBox1.TabStop = false;
             this.ctrlGroupBox1.Text = "Conveyor";
             this.ctrlGroupBox1.TitleText = "Conveyor";
+            // 
+            // StationStatus
+            // 
+            this.StationStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.StationStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.StationStatus.LanguageID = "DEF_Station_Status";
+            this.StationStatus.Location = new System.Drawing.Point(15, 403);
+            this.StationStatus.Margin = new System.Windows.Forms.Padding(30);
+            this.StationStatus.Name = "StationStatus";
+            this.StationStatus.Size = new System.Drawing.Size(303, 29);
+            this.StationStatus.TabIndex = 19;
+            this.StationStatus.TextData = "";
+            this.StationStatus.TitleText = "Station Status ";
+            this.StationStatus.TitleWidth = 140F;
             // 
             // ConveyorType
             // 

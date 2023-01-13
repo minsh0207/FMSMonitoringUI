@@ -191,11 +191,11 @@ namespace FMSMonitoringUI
                     strSQL.Append("    AND A.eqp_type = D.eqp_type");
                     strSQL.Append(" GROUP BY A.unit_id");
 
-                    string jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+                    var jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
 
                     if (jsonResult != null)
                     {
-                        _jsonCtrlFormationHPCResponse result = rest.ConvertCtrlFormationHPC(jsonResult);
+                        _jsonCtrlFormationHPCResponse result = rest.ConvertCtrlFormationHPC(jsonResult.Result);
 
                         this.BeginInvoke(new Action(() => SetData(result.DATA)));
                     }
@@ -222,7 +222,7 @@ namespace FMSMonitoringUI
 
                     if (jsonResult != null)
                     {
-                        _jsonCtrlFormationHPCTempResponse result = rest.ConvertCtrlFormationHPCTemp(jsonResult);
+                        _jsonCtrlFormationHPCTempResponse result = rest.ConvertCtrlFormationHPCTemp(jsonResult.Result);
 
                         this.BeginInvoke(new Action(() => SetData(result.DATA)));
                     }

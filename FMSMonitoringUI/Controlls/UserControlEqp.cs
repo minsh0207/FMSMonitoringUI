@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using OPCUAClientClassLib;
-
+using RestClientLib;
 
 namespace MonitoringUI
 {
@@ -35,11 +35,9 @@ namespace MonitoringUI
             InitializeComponent();
         }
 
-        public virtual void SetData(DataRow row)
+        public virtual void SetData(List<_entire_eqp_list> data, Dictionary<string, Color> eqpStatus)
         {
             ;
-        }
-
-        
+        }        
     }
 }

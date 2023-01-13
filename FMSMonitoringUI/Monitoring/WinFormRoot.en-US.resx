@@ -159,6 +159,9 @@
   <data name="DEF_Configuration" xml:space="preserve">
     <value>Configuration</value>
   </data>
+  <data name="DEF_Control" xml:space="preserve">
+    <value>Control</value>
+  </data>
   <data name="DEF_Control_Mode" xml:space="preserve">
     <value>Control Mode :</value>
   </data>
@@ -216,6 +219,9 @@
   <data name="DEF_Enable_Tray_Unload" xml:space="preserve">
     <value>Enable Tray Unload</value>
   </data>
+  <data name="DEF_Eqp_Mode" xml:space="preserve">
+    <value>Eqp Mode</value>
+  </data>
   <data name="DEF_Eqp_Status" xml:space="preserve">
     <value>Eqp Status</value>
   </data>
@@ -230,6 +236,9 @@
   </data>
   <data name="DEF_Fire" xml:space="preserve">
     <value>Fire</value>
+  </data>
+  <data name="DEF_Fire2" xml:space="preserve">
+    <value>Fire2</value>
   </data>
   <data name="DEF_Fire_Sensor" xml:space="preserve">
     <value>Fire Sensor :</value>
@@ -290,6 +299,9 @@
   </data>
   <data name="DEF_Login_ID" xml:space="preserve">
     <value>Login ID</value>
+  </data>
+  <data name="DEF_Machine_Trouble" xml:space="preserve">
+    <value>Machine Trouble</value>
   </data>
   <data name="DEF_Magazine" xml:space="preserve">
     <value>Magazine</value>
@@ -375,6 +387,9 @@
   <data name="DEF_Shipping_Storage" xml:space="preserve">
     <value>Shipping Storage</value>
   </data>
+  <data name="DEF_Smoke_Only_or_Both" xml:space="preserve">
+    <value>(Smoke Only or Both)</value>
+  </data>
   <data name="DEF_Station_Sink" xml:space="preserve">
     <value>Station Sink :</value>
   </data>
@@ -389,6 +404,9 @@
   </data>
   <data name="DEF_Stop_Current_Process" xml:space="preserve">
     <value>Stop Current Process</value>
+  </data>
+  <data name="DEF_Temperature_Alarm_Only" xml:space="preserve">
+    <value>(Temperature Alarm Only)</value>
   </data>
   <data name="DEF_Tray_Arrived" xml:space="preserve">
     <value>Tray Arrived</value>

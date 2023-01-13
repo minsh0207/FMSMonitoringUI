@@ -77,9 +77,6 @@ namespace FMSMonitoringUI.Controlls
         #endregion
 
         #region setData
-        public override void SetData(DataRow row)
-        {
-        }
         public void SetData(List<_ctrl_formation_chg> data)
         {
             foreach (var jig in data) 

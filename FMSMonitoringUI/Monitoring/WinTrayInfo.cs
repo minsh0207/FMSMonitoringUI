@@ -217,11 +217,11 @@ namespace FMSMonitoringUI.Monitoring
                         strSQL.Append($" WHERE B.unit_id = '{_RackID}' AND B.tray_id = '{_TrayId}' AND D.eqp_id = '{_EqpID}'");
                     }
 
-                    string jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+                    var jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
 
                     if (jsonResult != null)
                     {
-                        _jsonWinTrayInfoResponse result = rest.ConvertWinTrayInfo(jsonResult);
+                        _jsonWinTrayInfoResponse result = rest.ConvertWinTrayInfo(jsonResult.Result);
 
                         this.BeginInvoke(new Action(() => SetData(result.DATA)));
                     }
@@ -250,7 +250,7 @@ namespace FMSMonitoringUI.Monitoring
 
                     if (jsonResult != null)
                     {
-                        _jsonTrayProcessFlowResponse result = rest.ConvertTrayPorcessFlow(jsonResult);
+                        _jsonTrayProcessFlowResponse result = rest.ConvertTrayPorcessFlow(jsonResult.Result);
 
                         this.BeginInvoke(new Action(() => SetData(result.DATA)));
 

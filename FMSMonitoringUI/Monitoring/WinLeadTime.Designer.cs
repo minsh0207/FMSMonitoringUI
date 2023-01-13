@@ -100,6 +100,7 @@
             // 
             // gridTrayInfo
             // 
+            this.gridTrayInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.gridTrayInfo.ColumnCount = -1;
             this.gridTrayInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridTrayInfo.Location = new System.Drawing.Point(0, 0);
@@ -107,6 +108,7 @@
             this.gridTrayInfo.RowCount = -1;
             this.gridTrayInfo.Size = new System.Drawing.Size(1258, 603);
             this.gridTrayInfo.TabIndex = 1;
+            this.gridTrayInfo.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             // 
             // WinLeadTime
             // 

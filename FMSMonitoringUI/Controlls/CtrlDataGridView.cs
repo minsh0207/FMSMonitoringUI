@@ -57,6 +57,22 @@ namespace FMSMonitoringUI.Controlls
             }
         }
 
+        #region Properties
+        Color _tagColor = Color.FromArgb(27,27,27);
+        [DisplayName("BackColor"), Description("Back Color"), Category("DataGridView Setting")]
+        public Color TagColor
+        {
+            get
+            {
+                return this.BackColor;
+            }
+            set
+            {
+                _tagColor = value;
+                this.BackColor = _tagColor;
+            }
+        }
+        #endregion
         public CtrlDataGridView()
         {
             InitializeComponent();
@@ -69,16 +85,16 @@ namespace FMSMonitoringUI.Controlls
             dataGridView1.Paint += dataGridView_Paint;
 
             dataGridView1.RowHeadersVisible = false;
-            dataGridView1.BackgroundColor = Color.FromArgb(27, 27, 27);
+            //dataGridView1.BackgroundColor = Color.FromArgb(27, 27, 27);
         }
 
         public void SetGridViewStyles()
         {
             dataGridView1.EnableHeadersVisualStyles = false;
-            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(27, 27, 27);
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = _tagColor;  // Color.FromArgb(46, 46, 46); //Color.FromArgb(27, 27, 27);
             dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            dataGridView1.BackgroundColor = Color.FromArgb(27, 27, 27);
+            dataGridView1.BackgroundColor = _tagColor;  //Color.FromArgb(46, 46, 46);
 
             // Column Header 생상
             dataGridView1.EnableHeadersVisualStyles = false;
@@ -103,7 +119,7 @@ namespace FMSMonitoringUI.Controlls
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
 
             // 선택된 Cell의 색상
-            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.FromArgb(27, 27, 27);
+            dataGridView1.DefaultCellStyle.SelectionBackColor = _tagColor;  //Color.FromArgb(27, 27, 27);
             //dataGridView1.DefaultCellStyle.SelectionForeColor = Color.White;
 
             for (int nCol = 0; nCol < dataGridView1.ColumnCount; nCol++)
@@ -111,7 +127,7 @@ namespace FMSMonitoringUI.Controlls
                 for (int nRow = 0; nRow < dataGridView1.RowCount; nRow++)
                 {
                     dataGridView1[nCol, nRow].Style.ForeColor = Color.White;
-                    dataGridView1[nCol, nRow].Style.BackColor = Color.FromArgb(27, 27, 27);
+                    dataGridView1[nCol, nRow].Style.BackColor = _tagColor;  // Color.FromArgb(46, 46, 46);
 
                     // Column 열 조정 안됨
                     dataGridView1.Rows[nRow].Resizable = DataGridViewTriState.False;                    
@@ -312,7 +328,7 @@ namespace FMSMonitoringUI.Controlls
 
             for (int i = 0; i < dataGridView1.RowCount; i++)
             {
-                dataGridView1.Rows[i].DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(27, 27, 27);
+                //dataGridView1.Rows[i].DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(27, 27, 27);
                 
             }
         }

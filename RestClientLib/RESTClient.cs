@@ -6,61 +6,99 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
-using RestSharp;
+//using RestSharp;
 using Novasoft.Logger;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Net;
 
 namespace RestClientLib
 {
     public partial class RESTClient : IDisposable
     {
         private Logger _Logger;
-        RestClient _RESTClient = null;
+        
+        static HttpClient httpClient = null;
 
         public RESTClient()
         {
-            _RESTClient = new RestClient(CRestModulePath.BaseUrl);
+            httpClient = new HttpClient();
+
+            ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
+
+            //httpClient.BaseAddress = new Uri("https://210.91.148.176:30011/");
+            httpClient.BaseAddress = new Uri("http://localhost:30001/");
+
+
+            httpClient.DefaultRequestHeaders.Accept.Clear();
+            httpClient.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
 
             _Logger = new Logger(CRestModulePath.LOG_PATH, LogMode.Hour);
+        }
+        public async Task<string> GetJson(enActionType actionID, object RequestBody)
+        {
+            try
+            {
+                string RequestUri = CRestModulePath.POST_SQL;
+
+                JObject reqBody = new JObject();
+                reqBody["ACTION_ID"] = actionID.ToString();
+                reqBody["REQUEST_TIME"] = DateTime.Now.ToString();
+                reqBody["QUERY"] = RequestBody.ToString();
+
+                HttpResponseMessage response = httpClient.PostAsJsonAsync(RequestUri, reqBody).Result;
+
+                var responseString = await response.Content.ReadAsStringAsync();
+
+                return responseString;
+            }
+            catch (Exception ex)
+            {
+                // System Debug
+                System.Diagnostics.Debug.Print(string.Format("### GetJson, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                return null;
+            }
         }
 
         /// <summary>
         /// Json data를 가져온다.
         /// </summary>
-        public string GetJson(enActionType actionID, string queryBody)
-        {
-            try
-            {
-                string dateTime = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}";
+        //public string GetJson(enActionType actionID, string queryBody)
+        //{
+        //    try
+        //    {
+        //        string dateTime = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}";
 
-                var request = new RestRequest();
-                request.Resource = CRestModulePath.POST_SQL;
+        //        var request = new RestRequest();
+        //        request.Resource = CRestModulePath.POST_SQL;
 
-                JObject reqBody = new JObject();
-                reqBody["ACTION_ID"] = actionID.ToString();
-                reqBody["REQUEST_TIME"] = dateTime;
-                reqBody["QUERY"] = queryBody;
-                request.AddJsonBody(reqBody.ToString());
+        //        JObject reqBody = new JObject();
+        //        reqBody["ACTION_ID"] = actionID.ToString();
+        //        reqBody["REQUEST_TIME"] = dateTime;
+        //        reqBody["QUERY"] = queryBody;
+        //        request.AddJsonBody(reqBody.ToString());
 
-                var response = _RESTClient.Post(request);
+        //        var response = _RESTClient.Post(request);
 
-                if ((response != null) &&
-                    (response.StatusCode == System.Net.HttpStatusCode.OK) &&
-                    (response.ResponseStatus == ResponseStatus.Completed))
-                {
-                    string msg = $"Send a message to ECS.\n{reqBody}";
-                    _Logger.Write(LogLevel.REST, msg, LogFileName.REST);
-                    return response.Content;
-                }
+        //        if ((response != null) &&
+        //            (response.StatusCode == System.Net.HttpStatusCode.OK) &&
+        //            (response.ResponseStatus == ResponseStatus.Completed))
+        //        {
+        //            string msg = $"Send a message to ECS.\n{reqBody}";
+        //            _Logger.Write(LogLevel.REST, msg, LogFileName.REST);
+        //            return response.Content;
+        //        }
 
-                _Logger.Write(LogLevel.Error, response.ErrorMessage, LogFileName.ErrorLog);
-                return null;
-            }
-            catch (Exception ex)
-            {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
-                return null;
-            }
-        }
+        //        _Logger.Write(LogLevel.Error, response.ErrorMessage, LogFileName.ErrorLog);
+        //        return null;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+        //        return null;
+        //    }
+        //}
 
         //public async Task<string> GetJsonAsync(enActionType actionID, string queryBody)
         //{

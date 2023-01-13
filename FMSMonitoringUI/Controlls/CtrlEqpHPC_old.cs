@@ -1,6 +1,7 @@
 ﻿using FMSMonitoringUI.Monitoring;
 using FormationMonCtrl;
 using MonitoringUI;
+using RestClientLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -75,16 +76,16 @@ namespace FMSMonitoringUI.Controlls
         }
 
         #region setData
-        public override void SetData(DataRow row)
+        public override void SetData(List<_entire_eqp_list> data)
         {
-            int nLocation = int.Parse(row["Location"].ToString());
+            //int nLocation = int.Parse(row["Location"].ToString());
 
-            int nRow = (nLocation == 0 ? 0 : 2); 
-            TrayInfoView.SetValue(0, nRow, row["tray_id"].ToString());
-            TrayInfoView.SetReworkTray(0, nRow, row["rework_flag"].ToString());
+            //int nRow = (nLocation == 0 ? 0 : 2); 
+            //TrayInfoView.SetValue(0, nRow, row["tray_id"].ToString());
+            //TrayInfoView.SetReworkTray(0, nRow, row["rework_flag"].ToString());
         }
 
-        public void SetEqpStatus(string eqp_status, Color color)
+        public override void SetEqpStatus(string eqp_status, Color color)
         {
             lbEqpStatus.Text = eqp_status;
             lbEqpStatus.BackColor = color;

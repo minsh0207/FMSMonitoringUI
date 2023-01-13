@@ -23,6 +23,7 @@ namespace FMSMonitoringUI.Monitoring
     {
         private Point point = new Point();
         private string _EqpID = string.Empty;
+        private string _UnitID = string.Empty;
         private string _EqpType = string.Empty;
         private int _TrayCnt = 0;
 
@@ -32,11 +33,12 @@ namespace FMSMonitoringUI.Monitoring
         #endregion
 
 
-        public WinManageEqp(string eqpid, string eqpType, int traycnt)
+        public WinManageEqp(string eqpid, string unitid, string eqpType, int traycnt)
         {
             InitializeComponent();
 
             _EqpID = eqpid;
+            _UnitID = unitid;
             _EqpType = eqpType;
             _TrayCnt = traycnt;
         }
@@ -204,13 +206,21 @@ namespace FMSMonitoringUI.Monitoring
                     strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_route_order    D");
                     strSQL.Append("         ON A.route_order_no = D.route_order_no AND C.route_id = D.route_id");
                     //필수값
-                    strSQL.Append($" WHERE A.eqp_id = '{_EqpID}'");
+                    if (_EqpType == "HPC")
+                    {
+                        strSQL.Append($" WHERE A.unit_id = '{_UnitID}'");
+                        strSQL.Append($"    AND (A.eqp_type = '{_EqpType}' AND A.unit_id IS NOT NULL)");
+                    }
+                    else
+                    {
+                        strSQL.Append($" WHERE A.eqp_id = '{_EqpID}'");
+                    }
 
-                    string jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+                    var jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
 
                     if (jsonResult != null)
                     {
-                        _jsonWinManageEqpResponse result = rest.ConvertWinManageEqp(jsonResult);
+                        _jsonWinManageEqpResponse result = rest.ConvertWinManageEqp(jsonResult.Result);
 
                         this.BeginInvoke(new Action(() => SetData(result.DATA)));
                     }

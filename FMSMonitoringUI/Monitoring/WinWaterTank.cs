@@ -1,5 +1,7 @@
-﻿using MonitoringUI.Common;
+﻿using FMSMonitoringUI.Controlls.WindowsForms;
+using MonitoringUI.Common;
 using MonitoringUI.Controlls;
+using MonitoringUI.Controlls.CButton;
 using OPCUAClientClassLib;
 using Org.BouncyCastle.Asn1.Tsp;
 using System;
@@ -9,8 +11,10 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UnifiedAutomation.UaBase;
 
 namespace FMSMonitoringUI.Monitoring
 {
@@ -18,18 +22,38 @@ namespace FMSMonitoringUI.Monitoring
     {
         private Point point = new Point();
 
-        public WinWaterTank()
+        #region Working Thread
+        private Thread _ProcessThread;
+        private bool _TheadVisiable;
+        #endregion
+
+        CtrlLED[] _LedMode;
+
+        List<ReadValueId> _CraneInfo;
+        List<DataValue> _CraneData;
+
+        OPCUAClient _OPCUAClient = null;
+        int _CraneNo = 0;
+
+        public WinWaterTank(OPCUAClient opcua, int craneNo)
         {
             InitializeComponent();
 
+            _OPCUAClient = opcua;
+            _CraneNo = craneNo;
+
+            InitControl();
+            InitLanguage();
+            InitLedStatus();
             InitGridView();
+
+            Exit.Left = (this.panel2.Width - Exit.Width) / 2;
+            Exit.Top = (this.panel2.Height - Exit.Height) / 2;
         }
 
+        #region WinWaterTank Event
         private void WinWaterTank_Load(object sender, EventArgs e)
         {
-            
-            InitsplitContainer();
-
             #region Title Mouse Event
             ctrlTitleBar.MouseDown_Evnet += Title_MouseDownEvnet;
             ctrlTitleBar.MouseMove_Evnet += Title_MouseMoveEvnet;
@@ -38,18 +62,95 @@ namespace FMSMonitoringUI.Monitoring
             #region DataGridView Event
             gridWaterTank.MouseCellDoubleClick_Evnet += GridCellInfo_MouseCellDoubleClick;
             #endregion
-        }
 
-        private void InitsplitContainer()
+            _TheadVisiable = true;
+
+            this.BeginInvoke(new MethodInvoker(delegate ()
+            {
+                _ProcessThread = new Thread(() => ProcessThreadCallback());
+                _ProcessThread.IsBackground = true; _ProcessThread.Start();
+            }));
+        }
+        private void WinWaterTank_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //splitContainer1.BackColor = Color.LightGray;            // Color.FromArgb(53, 53, 53);
-            //splitContainer1.BorderStyle = BorderStyle.FixedSingle;
-            //splitContainer2.Panel2.BackColor = Color.LightGray;     //Color.FromArgb(53, 53, 53);
-            //splitContainer2.BorderStyle = BorderStyle.FixedSingle;
+            if (this._ProcessThread.IsAlive)
+                this._TheadVisiable = false;
 
-            //splitContainer3.BorderStyle = BorderStyle.FixedSingle;
-            //splitContainer3.Panel2.BackColor = Color.FromArgb(27, 27, 27);
+            this._ProcessThread.Abort();
         }
+        #endregion
+
+        #region InitControl
+        private void InitControl()
+        {
+            string[] titleMode = { "Maintenance Mode", "Manual Mode", "Control Mode" };
+
+            _LedMode = new CtrlLED[titleMode.Length];
+            for (int i = 0; i < titleMode.Length; i++)
+            {
+                _LedMode[i] = new CtrlLED();
+                _LedMode[i].TitleText = titleMode[i];
+                //_LedMode[i].Dock = DockStyle.Fill;
+                _LedMode[i].Tag = "WaterTank.Mode";
+                uiTlbMode.Controls.Add(_LedMode[i], 0, i);
+            }
+        }
+        #endregion
+
+        #region InitLanguage
+        private void InitLanguage()
+        {
+            foreach (var ctl in panel1.Controls)
+            {
+                if (ctl.GetType() == typeof(CtrlTitleBar))
+                {
+                    CtrlTitleBar control = ctl as CtrlTitleBar;
+                    control.CallLocalLanguage();
+                }
+            }
+
+            foreach (var ctl in panel2.Controls)
+            {
+                if (ctl.GetType() == typeof(CtrlButton))
+                {
+                    CtrlButton control = ctl as CtrlButton;
+                    control.CallLocalLanguage();
+                }
+            }
+
+            foreach (var ctl in gbFMS.Controls)
+            {
+                if (ctl.GetType() == typeof(CtrlGroupBox))
+                {
+                    CtrlGroupBox control = ctl as CtrlGroupBox;
+                    control.CallLocalLanguage();
+                }
+                else if (ctl.GetType() == typeof(CtrlLabelBox))
+                {
+                    CtrlLabelBox control = ctl as CtrlLabelBox;
+                    control.CallLocalLanguage();
+                    //control.BackColor = Color.FromArgb(27, 27, 27);
+                }
+                //else if (ctl.GetType() == typeof(CtrlLabel))
+                //{
+                //    CtrlLabel control = ctl as CtrlLabel;
+                //    control.CallLocalLanguage();
+                //}
+            }
+        }
+        #endregion
+
+        #region InitLedStatus
+        private void InitLedStatus()
+        {
+            // Mode
+            for (int i = 0; i < _LedMode.Count(); i++)
+            {
+                _LedMode[i].LedStatus(0);
+                _LedMode[i].BackColor = Color.FromArgb(46, 46, 46);
+            }
+        }
+        #endregion
 
         private void InitGridView()
         {
@@ -66,7 +167,7 @@ namespace FMSMonitoringUI.Monitoring
             lstTitle.Add("Station");
             gridWaterTank.AddRowsHeaderList(lstTitle);
 
-            gridWaterTank.ColumnHeadersHeight(24);
+            gridWaterTank.ColumnHeadersHeight(28);
             gridWaterTank.RowsHeight(24);
 
             List<int> lstColumn = new List<int>();
@@ -76,21 +177,81 @@ namespace FMSMonitoringUI.Monitoring
             gridWaterTank.ColumnMergeList(lstColumn, lstTitle);
 
             gridWaterTank.SetGridViewStyles();
-            gridWaterTank.ColumnHeadersWidth(0, 100);            
+            gridWaterTank.ColumnHeadersWidth(0, 110);            
         }
 
         #region SetData
-        public void SetData(SiteTagInfo siteInfo)
+        public void SetData()
         {
-            //gridWaterTank.SetValue(1, 0, siteInfo.ConveyorNo);
-            //gridWaterTank.SetValue(1, 1, GetConveyorType(siteInfo.ConveyorType));
-            //gridWaterTank.SetValue(1, 2, siteInfo.TrayIdL1);
-            //gridWaterTank.SetValue(1, 3, siteInfo.TrayIdL2);
-            //gridWaterTank.SetValue(1, 4, (siteInfo.TrayExist == true ? "Exist" : "Not Exist"));
-            //gridWaterTank.SetValue(1, 5, siteInfo.TrayCount);
-            //gridWaterTank.SetValue(1, 6, GetTrayType(siteInfo.TrayType));
-            //gridWaterTank.SetValue(1, 7, GetStationStatus(siteInfo.StationStatus));
-            //gridWaterTank.SetValue(1, 8, siteInfo.Destination);
+            InitLedStatus();
+            bool onoff = false;
+
+            // Water Tank
+            foreach (var control in gbWaterTank.Controls)
+            {
+                if (control.GetType() == typeof(CtrlLED))
+                {
+                    CtrlLED ctl = control as CtrlLED;
+
+                    onoff = GetTagValuetoBool(ctl.Tag);
+                    ctl.LedOnOff(onoff);
+                }
+            }
+
+            int nVal = GetTagValuetoInt(_LedMode[0].Tag);
+            int idx = GetDatatoBitIdx(nVal);
+            _LedMode[idx].LedOnOff(nVal);
+
+            // FMS
+            foreach (var control in gbFMS.Controls)
+            {
+                if (control.GetType() == typeof(CtrlLabelBox))
+                {
+                    CtrlLabelBox ctl = control as CtrlLabelBox;
+
+                    ctl.TextData = GetTagValuetoString(ctl.Tag);
+                }
+            }
+
+            string[] location = { "PrevLocation" };
+            string[] item = { "Line", "Bay", "Floor", "Deep", "Station" };
+
+            for (int col = 0; col < location.Length; col++)
+            {
+                for (int row = 0; row < item.Length; row++)
+                {
+                    string tagName = string.Format($"{location[col]}.{item[row]}");
+                    gridWaterTank.SetValue(col + 1, row, (GetTagValuetoString(tagName)));
+                }
+            }
+        }
+        #endregion
+
+        #region ProcessThreadCallback
+        private void ProcessThreadCallback()
+        {
+            try
+            {
+                while (this._TheadVisiable == true)
+                {
+                    GC.Collect();
+
+                    _CraneInfo = _OPCUAClient.CraneNodeID[_CraneNo];
+                    _CraneData = _OPCUAClient.ReadNodeID(_CraneInfo);
+
+                    if (_CraneData.Count > 0)
+                    {
+                        this.BeginInvoke(new Action(() => SetData()));
+                    }
+
+                    Thread.Sleep(2000);
+                }
+            }
+            catch (Exception ex)
+            {
+                // System Debug
+                System.Diagnostics.Debug.Print(string.Format("### WinConveyorInfo ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+            }
         }
         #endregion
 
@@ -124,6 +285,54 @@ namespace FMSMonitoringUI.Monitoring
             }
         }
         #endregion
+
+        #region GetTagValue
+        private bool GetTagValuetoBool(object browerName)
+        {
+            int tagIdx = _CraneInfo.FindIndex(x => x.UserData.ToString() == browerName.ToString());
+
+            if (tagIdx < 0) return false;
+
+            return Convert.ToBoolean(_CraneData[tagIdx].Value.ToString());
+        }
+        private int GetTagValuetoInt(object browerName)
+        {
+            int tagIdx = _CraneInfo.FindIndex(x => x.UserData.ToString() == browerName.ToString());
+
+            if (tagIdx < 0) return 0;
+
+            return Convert.ToInt32(_CraneData[tagIdx].Value.ToString());
+        }
+        private string GetTagValuetoString(object browerName)
+        {
+            int tagIdx = _CraneInfo.FindIndex(x => x.UserData.ToString() == browerName.ToString());
+
+            if (tagIdx < 0) return "";
+
+            return _CraneData[tagIdx].Value.ToString();
+        }
+        #endregion
+
+        #region GetDatatoBitIdx
+        private int GetDatatoBitIdx(int data)
+        {
+            int idx = 0;
+
+            for (int i = 0; i < 8; i++)
+            {
+                int val = (0x1 << i);
+                bool bitOn = ((int)data & val) == val;
+
+                if (bitOn)
+                {
+                    idx = i;
+                    break;
+                }
+            }
+
+            return idx;
+        }
+        #endregion   
 
         #region Button Event
         private void ctrlButtonExit1_Click(object sender, EventArgs e)
@@ -168,7 +377,9 @@ namespace FMSMonitoringUI.Monitoring
             }
 
             return ret;
-        }        
+        }
         #endregion
+
+        
     }
 }

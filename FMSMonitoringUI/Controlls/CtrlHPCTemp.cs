@@ -104,9 +104,6 @@ namespace FMSMonitoringUI.Controlls
         }
 
         #region setData
-        public override void SetData(DataRow row)
-        {
-        }
         public void SetData(List<_ctrl_formation_hpc_temp> data)
         {
             foreach (var hpc in data)

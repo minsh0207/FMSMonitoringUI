@@ -1,6 +1,7 @@
 ﻿using FMSMonitoringUI.Monitoring;
 using FormationMonCtrl;
 using MonitoringUI;
+using RestClientLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,11 +16,6 @@ namespace FMSMonitoringUI.Controlls
 {
     public partial class CtrlEqpVisionInsp : UserControlEqp
     {
-        public CtrlEqpVisionInsp()
-        {
-            InitializeComponent();            
-        }
-
         #region Properties
         string _EqpType = "";
         [DisplayName("EQP TYPE"), Description("EQP TYPE"), Category("GroupBox Setting")]
@@ -32,11 +28,24 @@ namespace FMSMonitoringUI.Controlls
             set
             {
                 _EqpType = value;
-                lbEqpType.Text = _EqpType;                
+                lbEqpType.Text = string.Format($" {_EqpType}");                
             }
         }
         #endregion
 
+        public CtrlEqpVisionInsp()
+        {
+            InitializeComponent();            
+        }
+
+        #region CtrlEqpControl_Load
+        private void CtrlEqpControl_Load(object sender, EventArgs e)
+        {
+            InitGridView();
+        }
+        #endregion
+
+        #region InitGridView
         private void InitGridView()
         {
             List<string> lstTitle = new List<string>();
@@ -53,37 +62,79 @@ namespace FMSMonitoringUI.Controlls
 
             TrayInfoView.SetGridViewStyles();
         }
+        #endregion
 
         #region setData
-        public override void SetData(DataRow row)
+        public override void SetData(List<_entire_eqp_list> data, Dictionary<string, Color> eqpStatus)
         {
-            int nCol = int.Parse(row["Location"].ToString());
+            for (int i = 0; i < data.Count; i++)
+            {
+                if (i > 1) break;
 
-            TrayInfoView.SetValue(nCol, 0, row["tray_id"].ToString());
-            TrayInfoView.SetReworkTray(nCol, 0, row["rework_flag"].ToString());
+                int col = 1 - Convert.ToInt16(data[i].LEVEL);  // Column 0번재가 Level2
+                TrayInfoView.SetValue(col, 0, data[i].TRAY_ID);
+                TrayInfoView.SetReworkTray(col, 0, data[i].REWORK_FLAG);
+            }
+
+            SetEqpMode(data[0].EQP_MODE, eqpStatus[data[0].EQP_MODE]);
+            SetEqpStatus(data[0].EQP_STATUS, eqpStatus[data[0].EQP_STATUS]);
+        }
+        private void SetEqpMode(string eqp_mode, Color color)
+        {
+            lbEqpMode.Text = eqp_mode;
+            lbEqpMode.BackColor = color;
         }
 
-        public void SetEqpStatus(string eqp_status, Color color)
+        private void SetEqpStatus(string eqp_status, Color color)
         {
-            lbEqpStatus.Text = eqp_status;
+            lbEqpStatus.Text = GetEqpStatusText(eqp_status);
             lbEqpStatus.BackColor = color;
-        }
-
-        public void SetOperationStatus(string op_status, Color color)
-        {
-            lbOPStatus.Text = op_status;
-            lbOPStatus.BackColor = color;
         }
         #endregion
 
-        private void CtrlEqpControl_Load(object sender, EventArgs e)
+        #region GetEqpStatusText
+        private string GetEqpStatusText(string eqp_status)
         {
-            InitGridView();
+            string statusText;
+
+            switch (eqp_status)
+            {
+                case "I":
+                    statusText = "Idle";
+                    break;
+                case "R":
+                    statusText = "Running";
+                    break;
+                case "T":
+                    statusText = "Trouble";
+                    break;
+                case "P":
+                    statusText = "Pause";
+                    break;
+                case "S":
+                    statusText = "Stop";
+                    break;
+                case "L":
+                    statusText = "Loading";
+                    break;
+                case "F":
+                    statusText = "Fire";
+                    break;
+                case "F2":
+                    statusText = "Fire2";
+                    break;
+                default:
+                    statusText = "None";
+                    break;
+            }
+
+            return statusText;
         }
+        #endregion
 
         private void lbEqpType_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            WinManageEqp form = new WinManageEqp(EqpID, EqpType, 2);
+            WinManageEqp form = new WinManageEqp(EqpID, "", EqpType, 2);
             form.ShowDialog();
         }
     }

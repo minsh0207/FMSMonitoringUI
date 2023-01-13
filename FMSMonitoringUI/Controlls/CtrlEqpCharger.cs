@@ -1,6 +1,9 @@
-﻿using FMSMonitoringUI.Monitoring;
+﻿using FMSMonitoringUI.Controlls.WindowsForms;
+using FMSMonitoringUI.Monitoring;
 using FormationMonCtrl;
 using MonitoringUI;
+using MySqlX.XDevAPI.Relational;
+using RestClientLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,11 +18,6 @@ namespace FMSMonitoringUI.Controlls
 {
     public partial class CtrlEqpCharger : UserControlEqp
     {
-        public CtrlEqpCharger()
-        {
-            InitializeComponent();
-        }
-
         #region Properties
         string _EqpType = "";
         [DisplayName("EQP TYPE"), Description("EQP TYPE"), Category("GroupBox Setting")]
@@ -32,45 +30,110 @@ namespace FMSMonitoringUI.Controlls
             set
             {
                 _EqpType = value;
-                lbTitle.Text = _EqpType;
+                lbTitle.Text = string.Format($" {_EqpType}");
+            }
+        }
+        #endregion
+
+        private List<string> _UnitID { get; set; }
+
+        private Label[,] _chgEqpStatus;
+        private Label[,] _chgEqpMode;
+
+        public CtrlEqpCharger()
+        {
+            InitializeComponent();
+        }
+
+        #region CtrlEqpControl_Load
+        private void CtrlEqpControl_Load(object sender, EventArgs e)
+        {
+            InitControl();
+        }
+        #endregion
+
+        #region InitControl
+        private void InitControl()
+        {
+            _chgEqpStatus = new Label[uiTlbEqpStatus.ColumnCount, uiTlbEqpStatus.RowCount];
+            _chgEqpMode = new Label[uiTlbEqpStatus.ColumnCount, uiTlbEqpStatus.RowCount];
+
+            _UnitID = new List<string>();
+
+            for (int col = 0; col < uiTlbEqpStatus.ColumnCount; col++)
+            {
+                for (int row = 0; row < uiTlbEqpStatus.RowCount; row++)
+                {
+                    if (col == 2 && row == 0)
+                    {
+                        _chgEqpStatus[col, row] = new Label
+                        {
+                            Text = "  X",
+                            TextAlign = ContentAlignment.MiddleCenter,
+                            BackColor = Color.LightGray
+                        };
+                        _chgEqpMode[col, row] = new Label
+                        {
+                            BackColor = Color.LightGray
+                        };
+                    }
+                    else
+                    {
+                        _chgEqpStatus[col, row] = new Label
+                        {
+                            Text = "I",
+                            TextAlign = ContentAlignment.MiddleCenter,
+                            BackColor = Color.FromArgb(255, 255, 128)
+                        };
+
+                        _chgEqpMode[col, row] = new Label
+                        {
+                            BackColor = Color.FromArgb(197, 135, 21)
+                        };
+                        
+                    }
+
+                    uiTlbEqpStatus.Controls.Add(_chgEqpStatus[col, row], col, row);
+
+                    string chgUnitID = string.Format($"CHG0110{col+1}0{row+1}");
+                    _UnitID.Add(chgUnitID);
+                }
+            }
+
+            for (int row = 0; row < uiTlbEqpStatus.RowCount; row++)
+            {
+                uiTlbEqpMode1.Controls.Add(_chgEqpMode[0, row], 0, row);
+                uiTlbEqpMode2.Controls.Add(_chgEqpMode[1, row], 0, row);
+                uiTlbEqpMode3.Controls.Add(_chgEqpMode[2, row], 0, row);
             }
         }
         #endregion
 
         #region setData
-        public void setData(DataRow row)
+        public override void SetData(List<_entire_eqp_list> data, Dictionary<string, Color> eqpStatus)
         {
-            //string[] trayID = { $"{row["tray_id"]}", $"{row["tray_id_2"]}" };
-            //string startTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");    //row["start_time"].ToString();
-            //string templature = string.Format($"{40}℃");            //row["jig_avg"].ToString();
-            //string lotID = string.Format($"LotID001");              //row["lot_id"].ToString();
-            //string eqpStatus = "N";             //row["eqp_status"].ToString();
-            //string opStatus = "Discharge";             //row["eqp_status"].ToString();
+            for (int i = 0; i < data.Count; i++)
+            {
+                if (data[i].UNIT_ID == null) continue;
 
-            //SetEqpStatus(eqpStatus);
-            //SetOperationStatus(opStatus);
+                int col = int.Parse(data[i].UNIT_ID.Substring(data[i].UNIT_ID.Length - 3, 1)) -1;
+                int row = uiTlbEqpStatus.RowCount - int.Parse(data[i].UNIT_ID.Substring(data[i].UNIT_ID.Length - 1, 1));
 
-            //CtrlFormationBoxCHG chg = (CtrlFormationBoxCHG)formationCHG.Child;
-            //chg.setBox(trayID, startTime, templature, lotID);
-        }
+                _chgEqpStatus[col, row].Text = string.Format($"  {data[i].EQP_STATUS}");
+                _chgEqpStatus[col, row].BackColor = eqpStatus[data[i].EQP_STATUS];
 
-        public void SetEqpStatus(string eqp_status)
-        {
-            //eqpStatus.Text = eqp_status;
-            //eqpStatus.BackColor = Color.Red;
-        }
-
-        public void SetOperationStatus(string op_status)
-        {
-            //opStatus.Text = op_status;
-            //opStatus.BackColor = Color.Yellow;
+                _chgEqpMode[col, row].Text = string.Format($"  {data[i].EQP_MODE}");
+                _chgEqpMode[col, row].BackColor = eqpStatus[data[i].EQP_MODE];
+            }
         }
         #endregion
 
         private void lbEqpType_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            WinManageEqp form = new WinManageEqp(EqpID, EqpType, 1);
+            WinManageEqp form = new WinManageEqp(EqpID, "", EqpType, 1);
             form.ShowDialog();
         }
+
+        
     }
 }

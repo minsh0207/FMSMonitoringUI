@@ -559,13 +559,16 @@ namespace RestClientLib
     /// </summary>
     public class _mst_eqp
     {
+        public int ID { get; set; }
         public string EQP_TYPE { get; set; }
         public string EQP_ID { get; set; }
+        public string UNIT_ID { get; set; }
         public string EQP_NAME { get; set; }
         public string EQP_NAME_LOCAL { get; set; }
         public string USE_FLAG { get; set; }
         public string EQP_MODE { get; set; }
         public string EQP_STATUS { get; set; }
+        public string EQP_TROUBLE_CODE { get; set; }
         public float EQP_TEMP { get; set; }
         public string PROCESS_STATUS { get; set; }
         public string TRAY_ID { get; set; }
@@ -574,11 +577,12 @@ namespace RestClientLib
         public string PROCESS_TYPE { get; set; }
         public int PROCESS_NO { get; set; }
         public int STEP_NO { get; set; }
-        public string START_TIME { get; set; }
-        public string END_TIME { get; set; }
-        public string PLAN_TIME { get; set; }
+        public int OPERATION_NO { get; set; }
+        public DateTime START_TIME { get; set; }
+        public DateTime END_TIME { get; set; }
+        public DateTime PLAN_TIME { get; set; }
         public string FIRE_FLAG { get; set; }
-        public string FIRE_TIME { get; set; }
+        public DateTime FIRE_TIME { get; set; }
         public int GRIPPER_CNT { get; set; }
         public string IN_MODEL_ID { get; set; }
         public string IN_ROUTE_ID { get; set; }
@@ -588,8 +592,8 @@ namespace RestClientLib
         public string IN_TRAY_ZONE { get; set; }
         public string IN_CELL_TYPE { get; set; }
         public string UPDATE_USER { get; set; }
-        public string UPDATE_TIME { get; set; }
-        public string CREATE_TIME { get; set; }
+        public DateTime UPDATE_TIME { get; set; }
+        public DateTime CREATE_TIME { get; set; }
     }
     #endregion
     #region tb_mst_eqp_type
@@ -602,8 +606,8 @@ namespace RestClientLib
         public string EQP_TYPE_NAME { get; set; }
         public string EQP_TYPE_NAME_LOCAL { get; set; }
         public string UPDATE_USER { get; set; }
-        public string UPDATE_TIME { get; set; }
-        public string CREATE_TIME { get; set; }
+        public DateTime UPDATE_TIME { get; set; }
+        public DateTime CREATE_TIME { get; set; }
     }
     #endregion
     #region tb_mst_model

@@ -72,9 +72,9 @@
             this.lbTotalRack.ForeColor = System.Drawing.Color.White;
             this.lbTotalRack.Location = new System.Drawing.Point(90, 31);
             this.lbTotalRack.Name = "lbTotalRack";
-            this.lbTotalRack.Size = new System.Drawing.Size(28, 15);
+            this.lbTotalRack.Size = new System.Drawing.Size(27, 15);
             this.lbTotalRack.TabIndex = 46;
-            this.lbTotalRack.Text = "220";
+            this.lbTotalRack.Text = "110";
             // 
             // label3
             // 

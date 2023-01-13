@@ -133,6 +133,9 @@ namespace RestClientLib
     /// </summary>
     public class _aging_rack_count
     {
+        public string AGING_TYPE { get; set; }
+        public string LINE { get; set; }
+        public string LANE { get; set; }
         public int TOTAL_RACK_CNT { get; set; }
         public int IN_AGING { get; set; }
         public int EMPTY_RACK{ get; set; }
@@ -196,7 +199,7 @@ namespace RestClientLib
 
     }
     #endregion
-    #region CtrlFormationHPC
+    #region CtrlFormationHPCTemp
     /// <summary>
     /// JSON base format : CtrlFormationHPCTemp
     /// </summary>
@@ -208,6 +211,22 @@ namespace RestClientLib
         public string CELL_ID { get; set; }
         public DateTime EVENT_TIME { get; set; }
         public float TEMP_JIG { get; set; }
+
+    }
+    #endregion
+    #region EntireEqpList
+    /// <summary>
+    /// JSON base format : EntireEqp
+    /// </summary>
+    public class _entire_eqp_list
+    {
+        public string EQP_ID { get; set; }
+        public string UNIT_ID { get; set; }
+        public string EQP_MODE { get; set; }
+        public string EQP_STATUS { get; set; }
+        public string TRAY_ID { get; set; }
+        public string LEVEL { get; set; }
+        public string REWORK_FLAG { get; set; }
 
     }
     #endregion

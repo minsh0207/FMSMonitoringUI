@@ -74,7 +74,7 @@
             this.lbTotalRack.Name = "lbTotalRack";
             this.lbTotalRack.Size = new System.Drawing.Size(28, 15);
             this.lbTotalRack.TabIndex = 29;
-            this.lbTotalRack.Text = "220";
+            this.lbTotalRack.Text = "164";
             // 
             // label3
             // 

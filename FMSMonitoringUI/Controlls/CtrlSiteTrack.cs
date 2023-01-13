@@ -469,14 +469,14 @@ namespace ControlGallery
                                 switch (SiteNoDirection)
                                 {
                                     case SiteTrackDirection.LeftToRight:
-                                        rectangle = new Rectangle(sitebox.Rect.X + 10, sitebox.Rect.Y + 10, 0, 0);
+                                        rectangle = new Rectangle(sitebox.Rect.X + 6, sitebox.Rect.Y + 10, 0, 0);
                                         break;
 
                                     case SiteTrackDirection.RightToLeft:
                                         break;
 
                                     case SiteTrackDirection.TopToBottom:
-                                        rectangle = new Rectangle(10, sitebox.Rect.Y + 10, 0, 0);
+                                        rectangle = new Rectangle(6, sitebox.Rect.Y + 10, 0, 0);
                                         break;
 
                                     case SiteTrackDirection.BottomToTop:

@@ -97,9 +97,6 @@ namespace FMSMonitoringUI.Controlls
         #endregion
 
         #region setData
-        public override void SetData(DataRow row)
-        {
-        }
         public void SetData(string trayid, string trayid2, float temp, DateTime startTime, DateTime planTime)
         {
             TrayInfoView.SetValue(1, 1, trayid);

@@ -194,11 +194,11 @@ namespace FMSMonitoringUI.Monitoring
             strSQL.Append($"    OR aging_type = '{eqpType.Substring(0, 1)}'");
             strSQL.Append($"    AND lane = {level * 2}");
 
-            string jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+            var jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
 
             if (jsonResult != null)
             {
-                _jsonWinLeadTimeResponse result = rest.ConvertWinLeadTime(jsonResult);
+                _jsonWinLeadTimeResponse result = rest.ConvertWinLeadTime(jsonResult.Result);
 
                 SetData(result.DATA);
             }
@@ -226,11 +226,11 @@ namespace FMSMonitoringUI.Monitoring
                     strSQL.Append($"    OR aging_type = '{_EqpType.Substring(0, 1)}'");
                     strSQL.Append($"    AND lane = {_Eqplevel * 2}");
 
-                    string jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+                    var jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
 
                     if (jsonResult != null)
                     {
-                        _jsonWinLeadTimeResponse result = rest.ConvertWinLeadTime(jsonResult);
+                        _jsonWinLeadTimeResponse result = rest.ConvertWinLeadTime(jsonResult.Result);
 
                         this.BeginInvoke(new Action(() => SetData(result.DATA)));
 

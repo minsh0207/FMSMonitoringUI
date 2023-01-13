@@ -179,11 +179,11 @@ namespace FMSMonitoringUI
                     strSQL.Append($"    AND B.event_time = (SELECT MAX(event_time) FROM tb_dat_temp_unit)");
                     strSQL.Append($" ORDER BY A.unit_id");
 
-                    string jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+                    var jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
 
                     if (jsonResult != null)
                     {
-                        _jsonCtrlFormationCHGResponse result = rest.ConvertCtrlFormationCHG(jsonResult);
+                        _jsonCtrlFormationCHGResponse result = rest.ConvertCtrlFormationCHG(jsonResult.Result);
 
                         this.BeginInvoke(new Action(() => SetData(result.DATA)));
                     }

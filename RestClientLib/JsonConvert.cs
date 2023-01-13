@@ -4,10 +4,11 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Http.Results;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Novasoft.Logger;
-using RestSharp;
+//using RestSharp;
 
 namespace RestClientLib
 {
@@ -752,6 +753,25 @@ namespace RestClientLib
             {
                 // Recv Body의 JSON string을 class 변수에 할당
                 _jsonCtrlFormationHPCTempResponse recvBody = JsonConvert.DeserializeObject<_jsonCtrlFormationHPCTempResponse>(jsonResult, _jsonSettings);
+                return recvBody;
+            }
+            catch (Exception ex)
+            {
+                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                return null;
+            }
+        }
+        #endregion
+        #region ConvertEntireEqpList
+        /// <summary>
+        /// _jsonEntireEqpListResponse 형태의 Class로 변환한다.
+        /// </summary>
+        public _jsonEntireEqpListResponse ConvertEntireEqpList(string jsonResult)
+        {
+            try
+            {
+                // Recv Body의 JSON string을 class 변수에 할당
+                _jsonEntireEqpListResponse recvBody = JsonConvert.DeserializeObject<_jsonEntireEqpListResponse>(jsonResult, _jsonSettings);
                 return recvBody;
             }
             catch (Exception ex)

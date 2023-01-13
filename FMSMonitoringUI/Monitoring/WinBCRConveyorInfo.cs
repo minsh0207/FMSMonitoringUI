@@ -25,9 +25,6 @@ namespace FMSMonitoringUI.Monitoring
 {
     public partial class WinBCRConveyorInfo : Form
     {
-        public static readonly int _ModeCount = 3;
-        public static readonly int _StatusCount = 3;
-
         private Point _Point = new Point();
 
         #region Working Thread
@@ -91,23 +88,23 @@ namespace FMSMonitoringUI.Monitoring
         {
             string[] titleMode = { "Maintenance Mode", "Manual Mode", "Control Mode" };
 
-            _LedMode = new CtrlLED[_ModeCount];
-            for (int i = 0; i < _ModeCount; i++)
+            _LedMode = new CtrlLED[titleMode.Length];
+            for (int i = 0; i < titleMode.Length; i++)
             {
                 _LedMode[i] = new CtrlLED();
                 _LedMode[i].TitleText = titleMode[i];
-                _LedMode[i].Dock = DockStyle.Fill;
+                //_LedMode[i].Dock = DockStyle.Fill;
                 _LedMode[i].Tag = "EquipmentStatus.Mode";
                 uiTlbMode.Controls.Add(_LedMode[i], 0, i);
             }
 
             string[] titleStatus = { "Idle", "Run", "Trouble" };
-            _LedStatus = new CtrlLED[_StatusCount];
-            for (int i = 0; i < _ModeCount; i++)
+            _LedStatus = new CtrlLED[titleStatus.Length];
+            for (int i = 0; i < titleStatus.Length; i++)
             {
                 _LedStatus[i] = new CtrlLED();
                 _LedStatus[i].TitleText = titleStatus[i];
-                _LedStatus[i].Dock = DockStyle.Fill;
+                //_LedStatus[i].Dock = DockStyle.Fill;
                 _LedStatus[i].Tag = "EquipmentStatus.Status";
                 uiTlbStatus.Controls.Add(_LedStatus[i], i, 0);
             }
@@ -160,13 +157,13 @@ namespace FMSMonitoringUI.Monitoring
         private void InitLedStatus()
         {
             // Mode
-            for (int i = 0; i < _ModeCount; i++)
+            for (int i = 0; i < _LedMode.Count(); i++)
             {
                 _LedMode[i].LedStatus(0);
             }
 
             // Status
-            for (int i = 0; i < _StatusCount; i++)
+            for (int i = 0; i < _LedStatus.Count(); i++)
             {
                 _LedStatus[i].LedStatus(0);
             }
@@ -224,28 +221,6 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
-        #region Titel Mouse Event
-        private void Title_MouseDownEvnet(object sender, MouseEventArgs e)
-        {
-            _Point = new Point(e.X, e.Y);
-        }
-
-        private void Title_MouseMoveEvnet(object sender, MouseEventArgs e)
-        {
-            if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
-            {
-                this.Location = new Point(this.Left - (_Point.X - e.X), this.Top - (_Point.Y - e.Y));
-            }
-        }
-        #endregion
-
-        #region Button Event
-        private void Exit_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-        #endregion
-
         #region ProcessThreadCallback
         private void ProcessThreadCallback()
         {
@@ -269,6 +244,30 @@ namespace FMSMonitoringUI.Monitoring
             }
         }
         #endregion
+
+        #region Titel Mouse Event
+        private void Title_MouseDownEvnet(object sender, MouseEventArgs e)
+        {
+            _Point = new Point(e.X, e.Y);
+        }
+
+        private void Title_MouseMoveEvnet(object sender, MouseEventArgs e)
+        {
+            if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
+            {
+                this.Location = new Point(this.Left - (_Point.X - e.X), this.Top - (_Point.Y - e.Y));
+            }
+        }
+        #endregion
+
+        #region Button Event
+        private void Exit_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+        #endregion
+
+        
 
         #region Tray Tag Value
         private string GetConveyorType(object idx)

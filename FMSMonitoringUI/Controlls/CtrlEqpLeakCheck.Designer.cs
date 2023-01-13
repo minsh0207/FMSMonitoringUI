@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lbEqpStatus = new System.Windows.Forms.Label();
+            this.lbEqpMode = new System.Windows.Forms.Label();
             this.lbEqpType = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.lbOPStatus = new System.Windows.Forms.Label();
+            this.lbEqpStatus = new System.Windows.Forms.Label();
             this.TrayInfoView = new FMSMonitoringUI.Controlls.CtrlTrayInfoView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -39,19 +39,19 @@
             this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lbEqpStatus
+            // lbEqpMode
             // 
-            this.lbEqpStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.lbEqpStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbEqpStatus.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lbEqpStatus.ForeColor = System.Drawing.Color.Black;
-            this.lbEqpStatus.Location = new System.Drawing.Point(87, 0);
-            this.lbEqpStatus.Name = "lbEqpStatus";
-            this.lbEqpStatus.Size = new System.Drawing.Size(35, 25);
-            this.lbEqpStatus.TabIndex = 2;
-            this.lbEqpStatus.Text = "R";
-            this.lbEqpStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbEqpStatus.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseDoubleClick);
+            this.lbEqpMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.lbEqpMode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbEqpMode.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lbEqpMode.ForeColor = System.Drawing.Color.Black;
+            this.lbEqpMode.Location = new System.Drawing.Point(87, 0);
+            this.lbEqpMode.Name = "lbEqpMode";
+            this.lbEqpMode.Size = new System.Drawing.Size(35, 25);
+            this.lbEqpMode.TabIndex = 2;
+            this.lbEqpMode.Text = "R";
+            this.lbEqpMode.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbEqpMode.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseDoubleClick);
             // 
             // lbEqpType
             // 
@@ -77,8 +77,8 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.lbOPStatus);
             this.splitContainer1.Panel1.Controls.Add(this.lbEqpStatus);
+            this.splitContainer1.Panel1.Controls.Add(this.lbEqpMode);
             this.splitContainer1.Panel1.Controls.Add(this.lbEqpType);
             // 
             // splitContainer1.Panel2
@@ -88,18 +88,18 @@
             this.splitContainer1.SplitterDistance = 27;
             this.splitContainer1.TabIndex = 1;
             // 
-            // lbOPStatus
+            // lbEqpStatus
             // 
-            this.lbOPStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.lbOPStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbOPStatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbOPStatus.ForeColor = System.Drawing.Color.Black;
-            this.lbOPStatus.Location = new System.Drawing.Point(122, 0);
-            this.lbOPStatus.Name = "lbOPStatus";
-            this.lbOPStatus.Size = new System.Drawing.Size(76, 25);
-            this.lbOPStatus.TabIndex = 4;
-            this.lbOPStatus.Text = "Running";
-            this.lbOPStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbEqpStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.lbEqpStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbEqpStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbEqpStatus.ForeColor = System.Drawing.Color.Black;
+            this.lbEqpStatus.Location = new System.Drawing.Point(122, 0);
+            this.lbEqpStatus.Name = "lbEqpStatus";
+            this.lbEqpStatus.Size = new System.Drawing.Size(76, 25);
+            this.lbEqpStatus.TabIndex = 4;
+            this.lbEqpStatus.Text = "Running";
+            this.lbEqpStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TrayInfoView
             // 
@@ -127,10 +127,10 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label lbEqpStatus;
+        private System.Windows.Forms.Label lbEqpMode;
         private System.Windows.Forms.Label lbEqpType;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private CtrlTrayInfoView TrayInfoView;
-        private System.Windows.Forms.Label lbOPStatus;
+        private System.Windows.Forms.Label lbEqpStatus;
     }
 }

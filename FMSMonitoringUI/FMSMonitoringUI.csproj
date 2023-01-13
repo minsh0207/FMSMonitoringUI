@@ -490,12 +490,6 @@
     <Compile Include="Controlls\CtrlRack.Designer.cs">
       <DependentUpon>CtrlRack.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controlls\CtrlEqpHPC_old.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CtrlEqpHPC_old.Designer.cs">
-      <DependentUpon>CtrlEqpHPC_old.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controlls\CtrlEqpPacking.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -767,12 +761,6 @@
     <Compile Include="Monitoring\WinReserveChangeRouteID.Designer.cs">
       <DependentUpon>WinReserveChangeRouteID.cs</DependentUpon>
     </Compile>
-    <Compile Include="Monitoring\WinCraneInfo_old.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Monitoring\WinCraneInfo_old.Designer.cs">
-      <DependentUpon>WinCraneInfo_old.cs</DependentUpon>
-    </Compile>
     <Compile Include="Monitoring\WinRackInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -987,9 +975,6 @@
     <EmbeddedResource Include="Controlls\CtrlEqpDCIR.resx">
       <DependentUpon>CtrlEqpDCIR.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CtrlEqpHPC_old.resx">
-      <DependentUpon>CtrlEqpHPC_old.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Controlls\CtrlEqpPacking.resx">
       <DependentUpon>CtrlEqpPacking.cs</DependentUpon>
     </EmbeddedResource>
@@ -1118,9 +1103,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Monitoring\WinReserveChangeRouteID.resx">
       <DependentUpon>WinReserveChangeRouteID.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Monitoring\WinCraneInfo_old.resx">
-      <DependentUpon>WinCraneInfo_old.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Monitoring\WinRackInfo.resx">
       <DependentUpon>WinRackInfo.cs</DependentUpon>

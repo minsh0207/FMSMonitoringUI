@@ -390,11 +390,11 @@ namespace FMSMonitoringUI.Monitoring
             //필수값
             strSQL.Append($" WHERE tray_id = '{trayId}'");
 
-            string jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+            var jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
 
             if (jsonResult != null)
             {
-                _jsonDatCellResponse result = rest.ConvertDatCell(jsonResult);
+                _jsonDatCellResponse result = rest.ConvertDatCell(jsonResult.Result);
 
                 this.BeginInvoke(new Action(() => SetCellList(result.DATA)));
 
@@ -422,11 +422,11 @@ namespace FMSMonitoringUI.Monitoring
             strSQL.Append("    AND B.process_no = A.process_no");
             strSQL.Append(" ORDER BY A.start_time");
 
-            string jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+            var jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
 
             if (jsonResult != null)
             {
-                _jsonCellProcessFlowResponse result = rest.ConvertCellPorcessFlow(jsonResult);
+                _jsonCellProcessFlowResponse result = rest.ConvertCellPorcessFlow(jsonResult.Result);
 
                 this.BeginInvoke(new Action(() => SetProcessName(result.DATA)));
 
@@ -517,11 +517,11 @@ namespace FMSMonitoringUI.Monitoring
                     //필수값
                     strSQL.Append($" WHERE tray_id = '{_TrayId}'");
 
-                    string jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+                    var jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
 
                     if (jsonResult != null)
                     {
-                        _jsonDatCellResponse result = rest.ConvertDatCell(jsonResult);
+                        _jsonDatCellResponse result = rest.ConvertDatCell(jsonResult.Result);
 
                         this.BeginInvoke(new Action(() => SetCellList(result.DATA)));
 

@@ -193,11 +193,11 @@ namespace FMSMonitoringUI.Monitoring
                     //필수값
                     strSQL.Append($" WHERE A.rack_id = '{_RackID}'");
 
-                    string jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+                    var jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
 
                     if (jsonResult != null)
                     {
-                        _jsonWinAgingRackSettingResponse result = rest.ConvertWinAgingRackSetting(jsonResult);
+                        _jsonWinAgingRackSettingResponse result = rest.ConvertWinAgingRackSetting(jsonResult.Result);
 
                         this.BeginInvoke(new Action(() => SetData(result.DATA)));
                     }

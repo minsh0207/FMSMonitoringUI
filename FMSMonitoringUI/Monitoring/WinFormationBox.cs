@@ -196,11 +196,11 @@ namespace FMSMonitoringUI.Monitoring
                     //필수값
                     strSQL.Append($" WHERE A.unit_id = '{_UnitID}'");
 
-                    string jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+                    var jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
 
                     if (jsonResult != null)
                     {
-                        _jsonWinFormationBoxResponse result = rest.ConvertWinFormationBox(jsonResult);
+                        _jsonWinFormationBoxResponse result = rest.ConvertWinFormationBox(jsonResult.Result);
 
                         this.BeginInvoke(new Action(() => SetData(result.DATA)));
                     }

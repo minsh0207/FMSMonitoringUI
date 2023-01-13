@@ -23,9 +23,6 @@ namespace FMSMonitoringUI.Monitoring
 {
     public partial class WinCraneInfo : Form
     {
-        List<ReadValueId> _CraneInfo;
-        List<DataValue> _CraneData;
-
         private Point point = new Point();
 
         #region Working Thread
@@ -37,6 +34,9 @@ namespace FMSMonitoringUI.Monitoring
         CtrlLED[] _LedStatus;
         CtrlLED[] _LedForkPos;
         CtrlLED[] _LedJobType;
+
+        List<ReadValueId> _CraneInfo;
+        List<DataValue> _CraneData;
 
         OPCUAClient _OPCUAClient = null;
         int _CraneNo = 0;
@@ -390,7 +390,7 @@ namespace FMSMonitoringUI.Monitoring
         //    form.ShowDialog();
         //}
 
-        #region
+        #region GetTagValue
         private bool GetTagValuetoBool(object browerName)
         {
             int tagIdx = _CraneInfo.FindIndex(x => x.UserData.ToString() == browerName.ToString());
