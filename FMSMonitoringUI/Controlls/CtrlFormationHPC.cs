@@ -197,7 +197,20 @@ namespace FMSMonitoringUI
                     {
                         _jsonCtrlFormationHPCResponse result = rest.ConvertCtrlFormationHPC(jsonResult.Result);
 
-                        this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                        if (result != null)
+                        {
+                            this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                        }
+                        else
+                        {
+                            string log = "CtrlFormationHPC : jsonResult is null";
+                            _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                        }
+                    }
+                    else
+                    {
+                        string log = "CtrlFormationHPC : jsonResult is null";
+                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
                     }
 
                     Thread.Sleep(100);
@@ -224,7 +237,20 @@ namespace FMSMonitoringUI
                     {
                         _jsonCtrlFormationHPCTempResponse result = rest.ConvertCtrlFormationHPCTemp(jsonResult.Result);
 
-                        this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                        if (result != null)
+                        {
+                            this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                        }
+                        else
+                        {
+                            string log = "CtrlFormationHPCTemp : jsonResult is null";
+                            _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                        }
+                    }
+                    else
+                    {
+                        string log = "CtrlFormationHPCTemp : jsonResult is null";
+                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
                     }
 
                     Thread.Sleep(3000);

@@ -185,7 +185,20 @@ namespace FMSMonitoringUI
                     {
                         _jsonCtrlFormationCHGResponse result = rest.ConvertCtrlFormationCHG(jsonResult.Result);
 
-                        this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                        if (result != null)
+                        {
+                            this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                        }
+                        else
+                        {
+                            string log = "CtrlFormationCHG : jsonResult is null";
+                            _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                        }
+                    }
+                    else
+                    {
+                        string log = "CtrlFormationCHG : jsonResult is null";
+                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
                     }
 
                     Thread.Sleep(3000);

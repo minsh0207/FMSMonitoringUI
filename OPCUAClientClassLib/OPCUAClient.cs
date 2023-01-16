@@ -153,26 +153,27 @@ namespace OPCUAClientClassLib
         public Subscription Subscription
         {
             get { return _Subscription; }
+            set { _Subscription = value; }           
         }
 
         /// <summary>
         /// Publishing enabled for the subscription
         /// </summary>
         private bool _PublishingEnabled = true;
-        //public bool PublishingEnabled
-        //{
-        //    get => _PublishingEnabled;
-        //    set => _PublishingEnabled = value;
-        //}
+        public bool PublishingEnabled
+        {
+            get => _PublishingEnabled;
+            set => _PublishingEnabled = value;
+        }
         /// <summary>
         /// The publishing interval for the subscription
         /// </summary>
         private double _PublishingInterval = 500;        // Default 500
-        //public double PublishingInterval
-        //{
-        //    get => _PublishingInterval;
-        //    set => _PublishingInterval = value;
-        //}
+        public double PublishingInterval
+        {
+            get => _PublishingInterval;
+            set => _PublishingInterval = value;
+        }
 
         private bool _Connected = false;
         public bool Connected
@@ -188,6 +189,16 @@ namespace OPCUAClientClassLib
                     _Connected = value;
                 }
             }
+        }
+
+        /// <summary>
+        /// CreateMonitoredItems 상태 코드
+        /// </summary>
+        bool _StatusCode;
+        public bool StatusCode
+        {
+            get => _StatusCode;
+            set => _StatusCode = value;
         }
 
         private ApplicationInstance _OPCApplication;
@@ -411,6 +422,9 @@ namespace OPCUAClientClassLib
         {
             CreateSession();
 
+            _session.UseDnsNameAndPortFromDiscoveryUrl = true;
+            _session.DefaultRequestSettings.OperationTimeout = 30000;
+
             // Attach to events
             _session.ConnectionStatusUpdate += new ServerConnectionStatusUpdateEventHandler(Session_ServerConnectionStatusUpdate);
 
@@ -485,36 +499,42 @@ namespace OPCUAClientClassLib
                         UpdateAfterDisconnect();                                               
                         break;
                     case ServerConnectionStatus.Connected:
-                        Connected = true;
+                        _LOG_(LogLevel.OPCUA, $"333-Connected to [{_session.EndpointDescription.EndpointUrl}]");
 
-                        foreach (KeyValuePair<string, List<CBrowerInfo>> kv in OPCTagList)
+                        if (Connected == false)
                         {
-                            string eqpType = kv.Key;
-                            List<CBrowerInfo> tagList = kv.Value;
+                            Connected = true;
 
-                            string startNodeID = GetStartNodeID(eqpType);
-
-                            Dictionary<int, List<BrowsePath>> dictBrowsePath = AddBrowsePath(startNodeID, eqpType, tagList);
-                            Dictionary<int, List<BrowsePathResult>> dictResultPath = ReadBrowse(dictBrowsePath);
-
-                            if (eqpType == enEqpType.CNV.ToString())
+                            foreach (KeyValuePair<string, List<CBrowerInfo>> kv in OPCTagList)
                             {
-                                AddConveyorNodeID(dictResultPath, dictBrowsePath);
-                            }
-                            else if (eqpType == enEqpType.STC.ToString())
-                            {
-                                AddCraneNodeID(dictResultPath, dictBrowsePath, _ControlIdx);
-                            }
+                                string eqpType = kv.Key;
+                                List<CBrowerInfo> tagList = kv.Value;
 
-                            dictBrowsePath = AddSubscibeBrowsePath(startNodeID, eqpType, tagList);
-                            dictResultPath = ReadBrowse(dictBrowsePath);
+                                string startNodeID = GetStartNodeID(eqpType);
 
-                            SubscribeNodes(dictResultPath, dictBrowsePath, _ListSite, _ControlIdx);
+                                Dictionary<int, List<BrowsePath>> dictBrowsePath = AddBrowsePath(startNodeID, eqpType, tagList);
+                                Dictionary<int, List<BrowsePathResult>> dictResultPath = ReadBrowse(dictBrowsePath);
+
+                                if (eqpType == enEqpType.CNV.ToString())
+                                {
+                                    AddConveyorNodeID(dictResultPath, dictBrowsePath);
+                                }
+                                else if (eqpType == enEqpType.STC.ToString())
+                                {
+                                    AddCraneNodeID(dictResultPath, dictBrowsePath, _ControlIdx);
+                                }
+
+                                dictBrowsePath = AddSubscibeBrowsePath(startNodeID, eqpType, tagList);
+                                dictResultPath = ReadBrowse(dictBrowsePath);
+
+                                SubscribeNodes(dictResultPath, dictBrowsePath, _ListSite, _ControlIdx);
+                            }
 
                             OnSubscriptionEvent(ServerNo, _session.EndpointDescription.EndpointUrl);
-                        }
 
-                        _LOG_(LogLevel.OPCUA, $"Connected to [{_session.EndpointDescription.EndpointUrl}]");
+                            _LOG_(LogLevel.OPCUA, $"Connected to [{_session.EndpointDescription.EndpointUrl}]");
+                        }
+                       
 
 
                         // Update ToolStripMenu
@@ -998,13 +1018,13 @@ namespace OPCUAClientClassLib
 #region GetEndPoint
         private EndpointDescription GetEndPoint(string connect_uri)
         {
-            CreateSession();
+            //CreateSession();
 
-            _session.UseDnsNameAndPortFromDiscoveryUrl = true;
-            _session.DefaultRequestSettings.OperationTimeout = 30000;
+            //_session.UseDnsNameAndPortFromDiscoveryUrl = true;
+            //_session.DefaultRequestSettings.OperationTimeout = 30000;
 
             // Attach to events
-            _session.ConnectionStatusUpdate += new ServerConnectionStatusUpdateEventHandler(Session_ServerConnectionStatusUpdate);
+            //_session.ConnectionStatusUpdate += new ServerConnectionStatusUpdateEventHandler(Session_ServerConnectionStatusUpdate);
 
 
             //m_Session.ReverseConnect(DiscoveryUrl, SecuritySelection.None);

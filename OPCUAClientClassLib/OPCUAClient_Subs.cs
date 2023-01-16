@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using UnifiedAutomation.UaBase;
 using UnifiedAutomation.UaClient;
@@ -71,20 +72,9 @@ namespace OPCUAClientClassLib
                                    Dictionary<int, ItemInfo> siteInfo,
                                    Dictionary<string, ItemInfo> controlInfo)
         {
-            // Create the subscription if it does not already exist.
-            //if (_Subscription == null)
-            //{
-            //    _Subscription = new Subscription(_session)
-            //    {
-            //        PublishingEnabled = _PublishingEnabled,
-            //        PublishingInterval = _PublishingInterval,
-            //        DataChanged += new DataChangedEventHandler(Subscription_DataChanged)
-            //        //StatusChanged += new SubscriptionStatusChangedEventHandler(Subscription_StatusChanged); 
-            //    };
+            if (results == null)    return;
 
-            //    _Subscription.Create();
-            //}
-
+            //Create the subscription if it does not already exist.
             if (_Subscription == null)
             {
                 _Subscription = new Subscription(_session);
@@ -117,8 +107,9 @@ namespace OPCUAClientClassLib
                     {
                         item.CraneNo = groupInfo.CraneNo;
                         item.GroupNo = groupInfo.GroupNo;
-                        item.BrowseName = taglevel[taglevel.Count() - 1];
+                        item.BrowseName = string.Format($"{taglevel[taglevel.Count() - 2]}.{taglevel[taglevel.Count() - 1]}");
                         item.ControlType = groupInfo.ControlType;
+                        item.ServerNo = _serverNo;
                     }
                     else
                     {
@@ -132,8 +123,9 @@ namespace OPCUAClientClassLib
 
                         item.SiteNo = siteno;
                         item.GroupNo = groupInfo.GroupNo;
-                        item.BrowseName = taglevel[taglevel.Count() - 1];
+                        item.BrowseName = string.Format($"{taglevel[taglevel.Count() - 2]}.{taglevel[taglevel.Count() - 1]}");
                         item.ControlType = siteInfo[siteno].ControlType;
+                        item.ServerNo = _serverNo;
                         //item.ControlType = groupInfo.ControlType;
                     }
 
@@ -141,12 +133,12 @@ namespace OPCUAClientClassLib
                     {
                         DiscardOldest = true,
                         QueueSize = 1,
-                        SamplingInterval = 100,                     //250 -> 100
+                        SamplingInterval = 250,                     //250 -> 100
                         UserData = item,
                         // DataChangeTrigger.Status                 : Status 가 변경되었을 때에만 감지 (PLC와의 연결 상태에 대한 것만을 감지한다고 보면 됨)
                         // DataChangeTrigger.StatusValue            : Status 또는 Value 가 변경되었을 때에만 감지(위의 것 + 값이 변경되었을 때만 감지함.True->True 로 새로 write 하더라도 감지 안됨)
                         // DataChangeTrigger.StatusValueTimestamp   : Status, Value, 또는 Timestamp 가 변경되었을 때에만 감지(연결상태, 값, write 모두에 대해 감지함)
-                        DataChangeTrigger = DataChangeTrigger.StatusValue                        
+                        DataChangeTrigger = DataChangeTrigger.StatusValue
                     });
                 }
             }
@@ -155,6 +147,13 @@ namespace OPCUAClientClassLib
             {
                 // Add the item and apply any changes to it.
                 List<StatusCode> statusCode = _Subscription.CreateMonitoredItems(monitoredItems);
+
+                //while (statusCode[0].IsGood() == false)
+                //{
+                //    Thread.Sleep(100);
+                //}
+
+                StatusCode = true;
 
                 // Update status label.
                 //OnUpdateStatusLabel("Adding monitored item succeeded for NodeId:" +
@@ -178,45 +177,12 @@ namespace OPCUAClientClassLib
         /// <param name="value">The instance containing the changed data.</param>
         private void Subscription_DataChanged(Subscription subscription, DataChangedEventArgs e)
         {
-            //if (e.DataChanges.Count > 1)        // 프로그램 기동시 모든 구독목록이 들어온다. 처음연결시 들어오는 event는 무시한다.
-            //{
-            //    return;
-            //}
 
-            // Update the value
-            //bool trayExist = false;
             string msg = string.Empty;
 
             msg = $"Item Count = {e.DataChanges.Count}";
             _LOG_(LogLevel.Receive, msg);
 
-            //foreach (DataChange change in e.DataChanges)
-            //{
-            //    ItemInfo item = change.MonitoredItem.UserData as ItemInfo;
-
-                
-
-            //    if (item.BrowseName == "TrayExist")
-            //        trayExist = bool.Parse(change.Value.ToString());
-
-            //    if (item.ControlType == enEqpType.CNV)
-            //    {
-            //        msg = string.Format("[{0}-CNV{1:D4}] {2} = {3}",
-            //            item.ControlType, item.SiteNo, item.BrowseName, change.Value);
-            //    }
-            //    else if (item.ControlType == enEqpType.STC)
-            //    {
-            //        msg = string.Format("[{0}-CraneNo{1:D2}] {2} = {3}",
-            //            item.ControlType, item.CraneNo + 1, item.BrowseName, change.Value);
-            //    }
-            //    else if (item.ControlType == enEqpType.RTV)
-            //    {
-            //        msg = string.Format("[{0}-{1:D2}] {2} = {3}",
-            //            item.ControlType, 1, item.BrowseName, change.Value);
-            //    }
-
-            //    _LOG_(LogLevel.Receive, msg);
-            //}
         }
 
 /// <summary>

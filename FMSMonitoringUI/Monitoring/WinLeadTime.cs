@@ -1,11 +1,13 @@
 ﻿using MonitoringUI.Common;
 using MonitoringUI.Controlls;
 using MySqlX.XDevAPI.Common;
+using Novasoft.Logger;
 using Org.BouncyCastle.Ocsp;
 using RestClientLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -25,6 +27,8 @@ namespace FMSMonitoringUI.Monitoring
         private string _EqpType = string.Empty;
         private int _Eqplevel = 0;
 
+        private Logger _Logger;
+
         private List<_win_lead_time> _AgingTrayInfo = new List<_win_lead_time>();
 
         #region Working Thread
@@ -39,6 +43,9 @@ namespace FMSMonitoringUI.Monitoring
             _EqpId = eqpId;
             _EqpType = eqpType;
             _Eqplevel = eqpLevel;
+
+            string logPath = ConfigurationManager.AppSettings["LOG_PATH"];
+            _Logger = new Logger(logPath, LogMode.Hour);
 
             InitGridViewTray();
 
@@ -232,9 +239,22 @@ namespace FMSMonitoringUI.Monitoring
                     {
                         _jsonWinLeadTimeResponse result = rest.ConvertWinLeadTime(jsonResult.Result);
 
-                        this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                        if (result != null)
+                        {
+                            this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                        }
+                        else
+                        {
+                            string log = "WinFormationHPC : jsonResult is null";
+                            _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                        }
 
                         _AgingTrayInfo = result.DATA;
+                    }
+                    else
+                    {
+                        string log = "WinFormationHPC : jsonResult is null";
+                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
                     }
 
                     //Thread.Sleep(3000);

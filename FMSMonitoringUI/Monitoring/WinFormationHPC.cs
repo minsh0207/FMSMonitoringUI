@@ -1,10 +1,12 @@
 ﻿using MonitoringUI.Controlls;
+using Novasoft.Logger;
 using OPCUAClientClassLib;
 using Org.BouncyCastle.Ocsp;
 using RestClientLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -20,6 +22,8 @@ namespace FMSMonitoringUI.Monitoring
         private Point point = new Point();
         private string _UnitID = string.Empty;
 
+        private Logger _Logger;
+
         #region Working Thread
         private Thread _ProcessThread;
         private bool _TheadVisiable;
@@ -32,6 +36,9 @@ namespace FMSMonitoringUI.Monitoring
             _UnitID = unitid;
 
             ctrlTitleBar.TitleText = titleText;
+
+            string logPath = ConfigurationManager.AppSettings["LOG_PATH"];
+            _Logger = new Logger(logPath, LogMode.Hour);
         }
 
         #region WinFormationHPC Event
@@ -197,7 +204,20 @@ namespace FMSMonitoringUI.Monitoring
                     {
                         _jsonWinFormationHPCResponse result = rest.ConvertWinFormationHPC(jsonResult.Result);
 
-                        this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                        if (result != null)
+                        {
+                            this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                        }
+                        else
+                        {
+                            string log = "WinFormationHPC : jsonResult is null";
+                            _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                        }
+                    }
+                    else
+                    {
+                        string log = "WinFormationHPC : jsonResult is null";
+                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
                     }
 
                     //Thread.Sleep(3000);

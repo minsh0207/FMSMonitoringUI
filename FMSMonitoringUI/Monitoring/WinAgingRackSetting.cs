@@ -1,9 +1,11 @@
 ﻿using MonitoringUI.Controlls;
+using Novasoft.Logger;
 using Org.BouncyCastle.Ocsp;
 using RestClientLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -20,6 +22,8 @@ namespace FMSMonitoringUI.Monitoring
         private string _EQPID = string.Empty;
         private string _RackID = string.Empty;
 
+        private Logger _Logger;
+
         #region Working Thread
         private Thread _ProcessThread;
         private bool _TheadVisiable;
@@ -32,9 +36,11 @@ namespace FMSMonitoringUI.Monitoring
             _EQPID = eqpid;
             _RackID = rackId;
 
+            string logPath = ConfigurationManager.AppSettings["LOG_PATH"];
+            _Logger = new Logger(logPath, LogMode.Hour);
+
             InitGridViewEqp();
             InitGridViewTray();
-
         }
 
         #region WinAgingRackSetting Event
@@ -199,7 +205,20 @@ namespace FMSMonitoringUI.Monitoring
                     {
                         _jsonWinAgingRackSettingResponse result = rest.ConvertWinAgingRackSetting(jsonResult.Result);
 
-                        this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                        if (result != null)
+                        {
+                            this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                        }
+                        else
+                        {
+                            string log = "WinAgingRackSetting : jsonResult is null";
+                            _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                        }
+                    }
+                    else
+                    {
+                        string log = "WinAgingRackSetting : jsonResult is null";
+                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
                     }
 
                     //Thread.Sleep(3000);

@@ -82,6 +82,7 @@ namespace Novasoft.Logger
             if (level == LogLevel.Error)
             {
                 this._logger.Add(level, logText, LogFileName.ErrorLog);
+                return;
             }
 
             this._logger.Add(level, logText, strLogFileName);

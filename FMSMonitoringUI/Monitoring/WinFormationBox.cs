@@ -1,10 +1,13 @@
-﻿using MonitoringUI.Controlls;
+﻿using MonitoringUI.Common;
+using MonitoringUI.Controlls;
+using Novasoft.Logger;
 using OPCUAClientClassLib;
 using Org.BouncyCastle.Ocsp;
 using RestClientLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -21,6 +24,8 @@ namespace FMSMonitoringUI.Monitoring
         private string _EQPID = string.Empty;
         private string _UnitID = string.Empty;
 
+        private Logger _Logger;
+
         #region Working Thread
         private Thread _ProcessThread;
         private bool _TheadVisiable;
@@ -32,6 +37,9 @@ namespace FMSMonitoringUI.Monitoring
 
             _EQPID = eqpid;
             _UnitID = unitid;
+
+            string logPath = ConfigurationManager.AppSettings["LOG_PATH"];
+            _Logger = new Logger(logPath, LogMode.Hour);
         }
 
         #region WinFormationBox
@@ -202,7 +210,20 @@ namespace FMSMonitoringUI.Monitoring
                     {
                         _jsonWinFormationBoxResponse result = rest.ConvertWinFormationBox(jsonResult.Result);
 
-                        this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                        if (result != null)
+                        {
+                            this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                        }
+                        else
+                        {
+                            string log = "WinFormationBox : jsonResult is null";
+                            _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                        }
+                    }
+                    else
+                    {
+                        string log = "WinFormationBox : jsonResult is null";
+                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
                     }
 
                     //Thread.Sleep(3000);

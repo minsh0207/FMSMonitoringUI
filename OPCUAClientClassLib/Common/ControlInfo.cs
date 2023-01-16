@@ -120,6 +120,7 @@ namespace OPCUAClientClassLib
             GroupNo = 0;
             BrowseName = string.Empty;
             EqpID = string.Empty;
+            ServerNo = 0;
             //ControlType = enEqpType.CNV;
         }
         /// <summary>
@@ -149,6 +150,10 @@ namespace OPCUAClientClassLib
         /// <summary>
         /// Control의 Type을 구분한다.(Conveyor=CNV, StackerCrane=STC)
         /// </summary>
+        /// /// <summary>
+        /// FMS Server No
+        /// </summary>
+        public int ServerNo { get; set; }
         public enEqpType ControlType { get; set; }
 
     }

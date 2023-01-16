@@ -1,4 +1,5 @@
 ﻿using MonitoringUI.Controlls;
+using Novasoft.Logger;
 using OPCUAClientClassLib;
 using Org.BouncyCastle.Ocsp;
 using RestClientLib;
@@ -6,6 +7,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
@@ -27,6 +29,8 @@ namespace FMSMonitoringUI.Monitoring
         private string _EqpType = string.Empty;
         private int _TrayCnt = 0;
 
+        private Logger _Logger;
+
         #region Working Thread
         private Thread _ProcessThread;
         private bool _TheadVisiable;
@@ -41,6 +45,9 @@ namespace FMSMonitoringUI.Monitoring
             _UnitID = unitid;
             _EqpType = eqpType;
             _TrayCnt = traycnt;
+
+            string logPath = ConfigurationManager.AppSettings["LOG_PATH"];
+            _Logger = new Logger(logPath, LogMode.Hour);
         }
 
         #region WinManageEqp Event
@@ -222,7 +229,20 @@ namespace FMSMonitoringUI.Monitoring
                     {
                         _jsonWinManageEqpResponse result = rest.ConvertWinManageEqp(jsonResult.Result);
 
-                        this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                        if (result != null)
+                        {
+                            this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                        }
+                        else
+                        {
+                            string log = "WinManageEqp : jsonResult is null";
+                            _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                        }
+                    }
+                    else
+                    {
+                        string log = "WinManageEqp : jsonResult is null";
+                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
                     }
 
                     //Thread.Sleep(3000);

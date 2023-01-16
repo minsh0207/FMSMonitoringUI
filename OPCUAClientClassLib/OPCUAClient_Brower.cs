@@ -142,7 +142,7 @@ namespace OPCUAClientClassLib
                         {
                             NodeId = NodeId.Parse(sNodeId), 
                             AttributeId = Attributes.Value,
-                            UserData = taglevel[taglevel.Length - 1]
+                            UserData = string.Format($"{taglevel[taglevel.Length - 2]}.{taglevel[taglevel.Length - 1]}")
                         });
 
                         if (taglevel[taglevel.Count() - 1] == "MagazineCommand")

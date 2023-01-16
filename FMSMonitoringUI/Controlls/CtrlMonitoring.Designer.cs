@@ -1708,7 +1708,7 @@
             // 
             this.ctrlSiteTrack50.CVPLCListDeviceID = 3;
             this.ctrlSiteTrack50.DisplayText = "";
-            this.ctrlSiteTrack50.FirstSiteNo = 6;
+            this.ctrlSiteTrack50.FirstSiteNo = 31;
             this.ctrlSiteTrack50.InterSitePadding = 2;
             this.ctrlSiteTrack50.IsControled = true;
             this.ctrlSiteTrack50.IsUpperStage = false;
@@ -1730,7 +1730,7 @@
             this.ctrlSiteTrack50.SiteNoIncStep = 1;
             this.ctrlSiteTrack50.SiteNoList = null;
             this.ctrlSiteTrack50.SiteTextDisp = new string[] {
-        "6=W"};
+        "31=W"};
             this.ctrlSiteTrack50.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack50.Size = new System.Drawing.Size(29, 35);
             this.ctrlSiteTrack50.TabIndex = 315;
@@ -1740,7 +1740,7 @@
             // 
             this.ctrlSiteTrack49.CVPLCListDeviceID = 2;
             this.ctrlSiteTrack49.DisplayText = "";
-            this.ctrlSiteTrack49.FirstSiteNo = 5;
+            this.ctrlSiteTrack49.FirstSiteNo = 22;
             this.ctrlSiteTrack49.InterSitePadding = 2;
             this.ctrlSiteTrack49.IsControled = true;
             this.ctrlSiteTrack49.IsUpperStage = false;
@@ -1762,7 +1762,7 @@
             this.ctrlSiteTrack49.SiteNoIncStep = 1;
             this.ctrlSiteTrack49.SiteNoList = null;
             this.ctrlSiteTrack49.SiteTextDisp = new string[] {
-        "5=W"};
+        "22=W"};
             this.ctrlSiteTrack49.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack49.Size = new System.Drawing.Size(29, 35);
             this.ctrlSiteTrack49.TabIndex = 314;
@@ -1772,7 +1772,7 @@
             // 
             this.ctrlSiteTrack48.CVPLCListDeviceID = 2;
             this.ctrlSiteTrack48.DisplayText = "";
-            this.ctrlSiteTrack48.FirstSiteNo = 4;
+            this.ctrlSiteTrack48.FirstSiteNo = 21;
             this.ctrlSiteTrack48.InterSitePadding = 2;
             this.ctrlSiteTrack48.IsControled = true;
             this.ctrlSiteTrack48.IsUpperStage = false;
@@ -1794,7 +1794,7 @@
             this.ctrlSiteTrack48.SiteNoIncStep = 1;
             this.ctrlSiteTrack48.SiteNoList = null;
             this.ctrlSiteTrack48.SiteTextDisp = new string[] {
-        "4=W"};
+        "21=W"};
             this.ctrlSiteTrack48.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack48.Size = new System.Drawing.Size(29, 35);
             this.ctrlSiteTrack48.TabIndex = 313;
@@ -1804,7 +1804,7 @@
             // 
             this.ctrlSiteTrack47.CVPLCListDeviceID = 2;
             this.ctrlSiteTrack47.DisplayText = "";
-            this.ctrlSiteTrack47.FirstSiteNo = 3;
+            this.ctrlSiteTrack47.FirstSiteNo = 12;
             this.ctrlSiteTrack47.InterSitePadding = 2;
             this.ctrlSiteTrack47.IsControled = true;
             this.ctrlSiteTrack47.IsUpperStage = false;
@@ -1826,7 +1826,7 @@
             this.ctrlSiteTrack47.SiteNoIncStep = 1;
             this.ctrlSiteTrack47.SiteNoList = null;
             this.ctrlSiteTrack47.SiteTextDisp = new string[] {
-        "3=W"};
+        "12=W"};
             this.ctrlSiteTrack47.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack47.Size = new System.Drawing.Size(29, 35);
             this.ctrlSiteTrack47.TabIndex = 312;
@@ -1836,7 +1836,7 @@
             // 
             this.ctrlSiteTrack46.CVPLCListDeviceID = 2;
             this.ctrlSiteTrack46.DisplayText = "";
-            this.ctrlSiteTrack46.FirstSiteNo = 2;
+            this.ctrlSiteTrack46.FirstSiteNo = 11;
             this.ctrlSiteTrack46.InterSitePadding = 2;
             this.ctrlSiteTrack46.IsControled = true;
             this.ctrlSiteTrack46.IsUpperStage = false;
@@ -1858,7 +1858,7 @@
             this.ctrlSiteTrack46.SiteNoIncStep = 1;
             this.ctrlSiteTrack46.SiteNoList = null;
             this.ctrlSiteTrack46.SiteTextDisp = new string[] {
-        "2=W"};
+        "11=W"};
             this.ctrlSiteTrack46.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack46.Size = new System.Drawing.Size(29, 35);
             this.ctrlSiteTrack46.TabIndex = 311;
@@ -1868,7 +1868,7 @@
             // 
             this.ctrlSiteTrack45.CVPLCListDeviceID = 1;
             this.ctrlSiteTrack45.DisplayText = "W";
-            this.ctrlSiteTrack45.FirstSiteNo = 1;
+            this.ctrlSiteTrack45.FirstSiteNo = 2;
             this.ctrlSiteTrack45.InterSitePadding = 2;
             this.ctrlSiteTrack45.IsControled = true;
             this.ctrlSiteTrack45.IsUpperStage = false;
@@ -1890,7 +1890,7 @@
             this.ctrlSiteTrack45.SiteNoIncStep = 1;
             this.ctrlSiteTrack45.SiteNoList = null;
             this.ctrlSiteTrack45.SiteTextDisp = new string[] {
-        "1=W"};
+        "2=W"};
             this.ctrlSiteTrack45.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack45.Size = new System.Drawing.Size(29, 35);
             this.ctrlSiteTrack45.TabIndex = 310;
@@ -1900,7 +1900,7 @@
             // 
             this.ctrlSiteTrack44.CVPLCListDeviceID = 1;
             this.ctrlSiteTrack44.DisplayText = "W";
-            this.ctrlSiteTrack44.FirstSiteNo = 0;
+            this.ctrlSiteTrack44.FirstSiteNo = 1;
             this.ctrlSiteTrack44.InterSitePadding = 2;
             this.ctrlSiteTrack44.IsControled = true;
             this.ctrlSiteTrack44.IsUpperStage = false;
@@ -1922,7 +1922,7 @@
             this.ctrlSiteTrack44.SiteNoIncStep = 1;
             this.ctrlSiteTrack44.SiteNoList = null;
             this.ctrlSiteTrack44.SiteTextDisp = new string[] {
-        "0=W"};
+        "1=W"};
             this.ctrlSiteTrack44.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack44.Size = new System.Drawing.Size(29, 35);
             this.ctrlSiteTrack44.TabIndex = 309;

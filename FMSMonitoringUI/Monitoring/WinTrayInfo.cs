@@ -1,11 +1,13 @@
 ﻿using MonitoringUI.Common;
 using MonitoringUI.Controlls;
 using MySqlX.XDevAPI.Common;
+using Novasoft.Logger;
 using Org.BouncyCastle.Ocsp;
 using RestClientLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -23,6 +25,8 @@ namespace FMSMonitoringUI.Monitoring
         private string _RackID = string.Empty;
         private string _TrayId = string.Empty;
 
+        private Logger _Logger;
+
         private List<_tray_process_flow> _TrayProcessInfo;
 
         #region Working Thread
@@ -37,6 +41,9 @@ namespace FMSMonitoringUI.Monitoring
             _EqpID = eqpid;
             _RackID = rackid;
             _TrayId = trayId;
+
+            string logPath = ConfigurationManager.AppSettings["LOG_PATH"];
+            _Logger = new Logger(logPath, LogMode.Hour);
 
             InitGridViewTray();
             InitGridViewProcessFlow(1);
@@ -223,7 +230,20 @@ namespace FMSMonitoringUI.Monitoring
                     {
                         _jsonWinTrayInfoResponse result = rest.ConvertWinTrayInfo(jsonResult.Result);
 
-                        this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                        if (result != null)
+                        {
+                            this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                        }
+                        else
+                        {
+                            string log = "WinTrayInfo : jsonResult is null";
+                            _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                        }
+                    }
+                    else
+                    {
+                        string log = "WinTrayInfo : jsonResult is null";
+                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
                     }
 
                     Thread.Sleep(100);
@@ -252,9 +272,21 @@ namespace FMSMonitoringUI.Monitoring
                     {
                         _jsonTrayProcessFlowResponse result = rest.ConvertTrayPorcessFlow(jsonResult.Result);
 
-                        this.BeginInvoke(new Action(() => SetData(result.DATA)));
-
+                        if (result != null)
+                        {
+                            this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                        }
+                        else
+                        {
+                            string log = "WinTrayInfo : jsonResult is null";
+                            _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                        }
                         _TrayProcessInfo = result.DATA;
+                    }
+                    else
+                    {
+                        string log = "WinTrayInfo : jsonResult is null";
+                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
                     }
 
                     //Thread.Sleep(3000);
