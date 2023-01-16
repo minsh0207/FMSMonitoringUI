@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace RestClientLib
 {
     /// <summary>
-    /// JSON Format Body : WinAgingRackSetting Request
+    /// JSON Format Body : AgingRackCount Request
     /// </summary>
     public class _jsonAgingRackCountRequest : __baseRequest
     {
@@ -17,7 +17,7 @@ namespace RestClientLib
 
 
     /// <summary>
-    /// JSON Format Body : WinAgingRackSetting Response
+    /// JSON Format Body : AgingRackCount Response
     /// </summary>
     public class _jsonAgingRackCountResponse : _baseResponse
     {

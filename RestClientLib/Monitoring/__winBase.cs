@@ -146,6 +146,24 @@ namespace RestClientLib
         public int TOTAL_TROUBLE { get; set; }
     }
     #endregion
+    #region AgingRackData
+    /// <summary>
+    /// JSON base format : WinAgingRackSetting
+    /// </summary>
+    public class _aging_rack_data
+    {
+        public string AGING_TYPE { get; set; }
+        public string LINE { get; set; }
+        public string LANE { get; set; }
+        public string RACK_ID { get; set; }
+        public string TRAY_ID { get; set; }
+        public string TRAY_ID_2 { get; set; }
+        public string STATUS { get; set; }
+        public int PROCESS_NO { get; set; }
+        public string FIRE_STATUS { get; set; }
+        public string USE_FLAG { get; set; }
+    }
+    #endregion
     #region WinFormationBox
     /// <summary>
     /// JSON base format : WinFormationBox

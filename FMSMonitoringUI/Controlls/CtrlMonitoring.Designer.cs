@@ -517,6 +517,7 @@
             this.ctrlTaggingName4.Location = new System.Drawing.Point(14, 823);
             this.ctrlTaggingName4.Name = "ctrlTaggingName4";
             this.ctrlTaggingName4.Size = new System.Drawing.Size(179, 30);
+            this.ctrlTaggingName4.StatusCode = "F2";
             this.ctrlTaggingName4.TabIndex = 106;
             this.ctrlTaggingName4.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ctrlTaggingName4.TagText = "Fire2";
@@ -545,6 +546,7 @@
             this.ctrlTaggingName3.Location = new System.Drawing.Point(14, 722);
             this.ctrlTaggingName3.Name = "ctrlTaggingName3";
             this.ctrlTaggingName3.Size = new System.Drawing.Size(179, 30);
+            this.ctrlTaggingName3.StatusCode = "S";
             this.ctrlTaggingName3.TabIndex = 104;
             this.ctrlTaggingName3.TagColor = System.Drawing.Color.Magenta;
             this.ctrlTaggingName3.TagText = "Stop";
@@ -560,6 +562,7 @@
             this.ctrlTaggingName2.Location = new System.Drawing.Point(14, 668);
             this.ctrlTaggingName2.Name = "ctrlTaggingName2";
             this.ctrlTaggingName2.Size = new System.Drawing.Size(179, 30);
+            this.ctrlTaggingName2.StatusCode = "T";
             this.ctrlTaggingName2.TabIndex = 103;
             this.ctrlTaggingName2.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ctrlTaggingName2.TagText = "Machine Trouble";
@@ -588,6 +591,7 @@
             this.ctrlTaggingName1.Location = new System.Drawing.Point(14, 537);
             this.ctrlTaggingName1.Name = "ctrlTaggingName1";
             this.ctrlTaggingName1.Size = new System.Drawing.Size(179, 30);
+            this.ctrlTaggingName1.StatusCode = "M";
             this.ctrlTaggingName1.TabIndex = 101;
             this.ctrlTaggingName1.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(135)))), ((int)(((byte)(21)))));
             this.ctrlTaggingName1.TagText = "Maintenance";
@@ -817,6 +821,7 @@
             this.ctrlTaggingName16.Location = new System.Drawing.Point(14, 776);
             this.ctrlTaggingName16.Name = "ctrlTaggingName16";
             this.ctrlTaggingName16.Size = new System.Drawing.Size(179, 30);
+            this.ctrlTaggingName16.StatusCode = "F";
             this.ctrlTaggingName16.TabIndex = 82;
             this.ctrlTaggingName16.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ctrlTaggingName16.TagText = "Fire";
@@ -832,6 +837,7 @@
             this.ctrlTaggingName17.Location = new System.Drawing.Point(14, 695);
             this.ctrlTaggingName17.Name = "ctrlTaggingName17";
             this.ctrlTaggingName17.Size = new System.Drawing.Size(179, 30);
+            this.ctrlTaggingName17.StatusCode = "P";
             this.ctrlTaggingName17.TabIndex = 81;
             this.ctrlTaggingName17.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
             this.ctrlTaggingName17.TagText = "Pause";
@@ -847,6 +853,7 @@
             this.ctrlTaggingName18.Location = new System.Drawing.Point(14, 614);
             this.ctrlTaggingName18.Name = "ctrlTaggingName18";
             this.ctrlTaggingName18.Size = new System.Drawing.Size(179, 30);
+            this.ctrlTaggingName18.StatusCode = "I";
             this.ctrlTaggingName18.TabIndex = 80;
             this.ctrlTaggingName18.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.ctrlTaggingName18.TagText = "Idle";
@@ -862,6 +869,7 @@
             this.ctrlTaggingName19.Location = new System.Drawing.Point(14, 641);
             this.ctrlTaggingName19.Name = "ctrlTaggingName19";
             this.ctrlTaggingName19.Size = new System.Drawing.Size(179, 30);
+            this.ctrlTaggingName19.StatusCode = "R";
             this.ctrlTaggingName19.TabIndex = 79;
             this.ctrlTaggingName19.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.ctrlTaggingName19.TagText = "Running";
@@ -877,6 +885,7 @@
             this.ctrlTaggingName20.Location = new System.Drawing.Point(14, 749);
             this.ctrlTaggingName20.Name = "ctrlTaggingName20";
             this.ctrlTaggingName20.Size = new System.Drawing.Size(179, 30);
+            this.ctrlTaggingName20.StatusCode = "L";
             this.ctrlTaggingName20.TabIndex = 78;
             this.ctrlTaggingName20.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ctrlTaggingName20.TagText = "Loading";
@@ -892,6 +901,7 @@
             this.ctrlTaggingName21.Location = new System.Drawing.Point(14, 510);
             this.ctrlTaggingName21.Name = "ctrlTaggingName21";
             this.ctrlTaggingName21.Size = new System.Drawing.Size(179, 30);
+            this.ctrlTaggingName21.StatusCode = "C";
             this.ctrlTaggingName21.TabIndex = 77;
             this.ctrlTaggingName21.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.ctrlTaggingName21.TagText = "Control";

@@ -357,6 +357,9 @@
   <data name="DEF_Process_Lead_Time" xml:space="preserve">
     <value>Process Lead Time</value>
   </data>
+  <data name="DEF_Rack_Status" xml:space="preserve">
+    <value>Rack Status</value>
+  </data>
   <data name="DEF_Real_BCR" xml:space="preserve">
     <value>Real BCR</value>
   </data>

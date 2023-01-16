@@ -26,6 +26,8 @@ using Org.BouncyCastle.Ocsp;
 using RestClientLib;
 using MonitoringUI.Controlls.CButton;
 using FMSMonitoringUI.Controlls.WindowsForms;
+using MonitoringUI.Controlls;
+using MySqlX.XDevAPI.Common;
 
 namespace MonitoringUI.Monitoring
 {
@@ -37,6 +39,11 @@ namespace MonitoringUI.Monitoring
 
         private string _AgingType = string.Empty;
         private string _AgingLine = string.Empty;
+
+        /// <summary>
+        /// string=Eqp Text, Color=Eqp Status Color
+        /// </summary>
+        private Dictionary<string, Color> _EqpStatus = new Dictionary<string, Color>();
         #endregion
 
         #region Working Thread
@@ -51,9 +58,10 @@ namespace MonitoringUI.Monitoring
             string logPath = ConfigurationManager.AppSettings["LOG_PATH"];
             _Logger = new Logger(logPath, LogMode.Hour);
 
-            InitTag();
+            //InitTag();
             InitAgingRack();
             InitGridView();
+            InitLanguage();
 
             // Timer 
             //m_timer.Tick += new EventHandler(OnTimer);
@@ -736,7 +744,29 @@ namespace MonitoringUI.Monitoring
 
         }
 
-        
+        #region InitLanguage
+        private void InitLanguage()
+        {
+            // CtrlTaggingName 언어 변환 호출
+            foreach (var ctl in panel1.Controls)
+            {
+                if (ctl.GetType() == typeof(CtrlTaggingName))
+                {
+                    CtrlTaggingName tagName = ctl as CtrlTaggingName;
+                    tagName.CallLocalLanguage();
+
+                    _EqpStatus.Add(tagName.StatusCode, tagName.TagColor);
+                }
+                else if (ctl.GetType() == typeof(CtrlLabel))
+                {
+                    CtrlLabel tagName = ctl as CtrlLabel;
+                    tagName.CallLocalLanguage();
+                }
+            }
+        }
+        #endregion
+
+
 
         private void CtrlButtonDataView_Click(object sender, EventArgs e)
         {
@@ -905,11 +935,65 @@ namespace MonitoringUI.Monitoring
         }
 
         #region SetData
-        private void SetData(List<_aging_rack_count> data)
+        private void SetData(List<_aging_rack_data> data)
         {
             if (data.Count == 0) return;
 
-            int col = 1;
+            Dictionary<string, List<_aging_rack_data>> rackData = new Dictionary<string, List<_aging_rack_data>>();
+
+            foreach (var item in data)
+            {
+                string rackId = string.Format($"{item.AGING_TYPE}T{item.LINE}{item.LANE}");
+                if (rackData.ContainsKey(rackId))
+                {
+                    rackData[rackId].Add(item);
+                }
+                else
+                {
+                    rackData[rackId] = new List<_aging_rack_data> { item };
+                }
+            }
+
+            int selectedIndex = AgingTab.SelectedIndex;
+
+            switch (selectedIndex)
+            {
+                case 0:
+                    //ht011.SetData(rackData["HT011"], _EqpStatus);
+                    //ht012.SetData(rackData["HT012"], _EqpStatus);
+                    //ht013.SetData(rackData["HT013"], _EqpStatus);
+                    //ht014.SetData(rackData["HT014"], _EqpStatus);
+                    this.BeginInvoke(new Action(() => ht011.SetData(rackData["HT011"], _EqpStatus)));
+                    this.BeginInvoke(new Action(() => ht012.SetData(rackData["HT012"], _EqpStatus)));
+                    this.BeginInvoke(new Action(() => ht013.SetData(rackData["HT013"], _EqpStatus)));
+                    this.BeginInvoke(new Action(() => ht014.SetData(rackData["HT014"], _EqpStatus)));
+                    break;
+                case 1:
+                    //lt011.SetData(rackData["LT011"], _EqpStatus);
+                    //lt012.SetData(rackData["LT012"], _EqpStatus);
+                    //lt013.SetData(rackData["LT013"], _EqpStatus);
+                    //lt014.SetData(rackData["LT014"], _EqpStatus);
+                    this.BeginInvoke(new Action(() => lt011.SetData(rackData["LT011"], _EqpStatus)));
+                    this.BeginInvoke(new Action(() => lt012.SetData(rackData["LT012"], _EqpStatus)));
+                    this.BeginInvoke(new Action(() => lt013.SetData(rackData["LT013"], _EqpStatus)));
+                    this.BeginInvoke(new Action(() => lt014.SetData(rackData["LT014"], _EqpStatus)));
+                    break;
+                case 2:
+                    //lt021.SetData(rackData["LT021"], _EqpStatus);
+                    //lt022.SetData(rackData["LT022"], _EqpStatus);
+                    //lt023.SetData(rackData["LT023"], _EqpStatus);
+                    //lt024.SetData(rackData["LT024"], _EqpStatus);
+                    this.BeginInvoke(new Action(() => lt021.SetData(rackData["LT021"], _EqpStatus)));
+                    this.BeginInvoke(new Action(() => lt022.SetData(rackData["LT022"], _EqpStatus)));
+                    this.BeginInvoke(new Action(() => lt023.SetData(rackData["LT023"], _EqpStatus)));
+                    this.BeginInvoke(new Action(() => lt024.SetData(rackData["LT024"], _EqpStatus)));
+                    break;
+            }
+        }
+
+        private void SetData(List<_aging_rack_count> data)
+        {
+            if (data.Count == 0) return;
 
             int selectedIndex = AgingTab.SelectedIndex;
             CtrlDataGridView gridRackCount = new CtrlDataGridView();
@@ -927,6 +1011,7 @@ namespace MonitoringUI.Monitoring
                     break;
             }
 
+            int col = 1;
             gridRackCount.SetValue(col, 0, data[0].TOTAL_RACK_CNT); col++;
             gridRackCount.SetValue(col, 0, data[0].IN_AGING); col++;
             gridRackCount.SetValue(col, 0, data[0].EMPTY_RACK); col++;
@@ -948,12 +1033,46 @@ namespace MonitoringUI.Monitoring
                 {
                     GC.Collect();
 
-                    Task task = LoadAgingRackData();
+                    //Task task = LoadAgingRackData();
 
                     RESTClient rest = new RESTClient();
                     // Set Query
                     StringBuilder strSQL = new StringBuilder();
 
+                    // Rack 정보
+                    strSQL.Append(" SELECT aging_type, line, lane, rack_id, tray_id, tray_id_2, status, process_no, fire_status, use_flag");
+                    strSQL.Append(" FROM fms_v.tb_mst_aging");
+                    //필수값
+                    strSQL.Append($" WHERE aging_type = '{_AgingType}' AND line = '{_AgingLine}'");
+
+                    var jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+
+                    if (jsonResult != null)
+                    {
+                        _jsonAgingRackDataResponse result = rest.ConvertAgingRackData(jsonResult.Result);
+
+                        if (result != null)
+                        {
+                            this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                        }
+                        else
+                        {
+                            string log = "AgingRackData : REST result is null";
+                            _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                        }
+                    }
+                    else
+                    {
+                        string log = "AgingRackData : jsonResult is null";
+                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                    }
+
+                    Thread.Sleep(100);
+
+                    rest = new RESTClient();
+                    // Set Query
+                    strSQL = new StringBuilder();
+                    // Tray Count 정보
                     strSQL.Append(" SELECT COUNT(aging_type) AS total_rack_cnt,");
                     strSQL.Append("        COUNT(if(status = 'F', tray_cnt, null)) AS in_aging,");
                     strSQL.Append("        COUNT(if(status = 'E', tray_cnt, null)) AS empty_rack,");
@@ -966,7 +1085,7 @@ namespace MonitoringUI.Monitoring
                     //필수값
                     strSQL.Append($" WHERE aging_type = '{_AgingType}' AND line = '{_AgingLine}'");
 
-                    var jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+                    jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
 
                     if (jsonResult != null)
                     {
@@ -978,13 +1097,13 @@ namespace MonitoringUI.Monitoring
                         }
                         else
                         {
-                            string log = "CtrlAging : REST result is null";
+                            string log = "AgingRackCount : REST result is null";
                             _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
                         }
                     }
                     else
                     {
-                        string log = "CtrlAging : jsonResult is null";
+                        string log = "AgingRackCount : jsonResult is null";
                         _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
                     }
 

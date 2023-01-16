@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI;
+using RestClientLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -153,6 +154,20 @@ namespace AgingControls
                     //rack.RackID
                     System.Diagnostics.Debug.Print(string.Format("### Rack property : {0} / {1}", rack.RackID, rack.StatusString));
                 }
+            }
+
+            Invalidate();
+        }
+        #endregion
+
+        #region SetData
+        public void SetData(List<_aging_rack_data> data, Dictionary<string, Color> rackColor)
+        {
+            foreach (var item in data)
+            {
+                AgingRack rack = this.AgingRacks.Find(x => x.RackID == item.RACK_ID);
+
+                rack.SetData(item, rackColor);
             }
 
             Invalidate();
@@ -1099,6 +1114,59 @@ namespace AgingControls
                     //DisplayString = trays[0];
                     DisplayString = string.Format($"{trays[0]}\n{trays[1]}");
                 }
+            }
+        }
+
+        public void SetData(_aging_rack_data data, Dictionary<string, Color> rackColor)
+        {
+            try
+            {
+                Color c;
+                Brush bg_color; // = new SolidBrush(color);
+                Brush fg_color = Brushes.Black;
+
+                string[] strTrayIds = { data.TRAY_ID, data.TRAY_ID_2 };
+                SetTrayIDs(strTrayIds);
+
+                if (data.USE_FLAG == "N")
+                {
+                    c = rackColor["NotUse"];
+                    bg_color = new SolidBrush(c);
+                    fg_color = Brushes.White;
+                    DisplayString = "NotUse";
+                }
+                else
+                {
+                    switch (data.STATUS)
+                    {
+                        case "F":
+                            if (data.PROCESS_NO > 0)
+                            {
+                                c = rackColor[data.PROCESS_NO + "Aging"];
+                                bg_color = new SolidBrush(c);
+                            }
+                            else
+                            {
+                                c = rackColor[data.STATUS];
+                                bg_color = new SolidBrush(c);
+                            }
+                            break;
+
+                        default:
+                            c = rackColor[data.STATUS];
+                            bg_color = new SolidBrush(c);
+                            break;
+                    }
+                }
+
+                bgBrush = bg_color;
+                fgBrush = fg_color;
+
+            }
+            catch (Exception ex)
+            {
+                // System Debug
+                System.Diagnostics.Debug.Print(string.Format("### Set Data Add Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
             }
         }
 

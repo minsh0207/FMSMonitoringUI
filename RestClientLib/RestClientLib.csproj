@@ -91,6 +91,7 @@
     <Compile Include="JSON\_jsonMstWindow.cs" />
     <Compile Include="JSON\_jsonMstWindowUser.cs" />
     <Compile Include="JSON\__baseBase.cs" />
+    <Compile Include="Monitoring\_jsonAgingRackData.cs" />
     <Compile Include="Monitoring\_jsonAgingRackCount.cs" />
     <Compile Include="Monitoring\_jsonCtrlFormationHPCTemp.cs" />
     <Compile Include="Monitoring\_jsonCtrlFormationHPC.cs" />

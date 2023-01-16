@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.m_timer = new System.Windows.Forms.Timer(this.components);
             this.AgingTab = new System.Windows.Forms.TabControl();
-            this.tpHTAging = new System.Windows.Forms.TabPage();
+            this.tpAging1 = new System.Windows.Forms.TabPage();
             this.AgingInfoView_HT = new FMSMonitoringUI.Controlls.CtrlDataGridView();
             this.label53 = new System.Windows.Forms.Label();
             this.label54 = new System.Windows.Forms.Label();
@@ -75,7 +75,7 @@
             this.ht011 = new AgingControls.AgingLineControl();
             this.ht012 = new AgingControls.AgingLineControl();
             this.ht013 = new AgingControls.AgingLineControl();
-            this.tpLTAging1 = new System.Windows.Forms.TabPage();
+            this.tpAging2 = new System.Windows.Forms.TabPage();
             this.AgingInfoView_LT1 = new FMSMonitoringUI.Controlls.CtrlDataGridView();
             this.label88 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -123,7 +123,7 @@
             this.lt011 = new AgingControls.AgingLineControl();
             this.lt012 = new AgingControls.AgingLineControl();
             this.lt013 = new AgingControls.AgingLineControl();
-            this.tpLTAging2 = new System.Windows.Forms.TabPage();
+            this.tpAging3 = new System.Windows.Forms.TabPage();
             this.AgingInfoView_LT2 = new FMSMonitoringUI.Controlls.CtrlDataGridView();
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
@@ -175,6 +175,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ctrlLabel1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.button1 = new System.Windows.Forms.Button();
             this.ctrlButtonDataView = new MonitoringUI.Controlls.CButton.CtrlButtonRoot();
             this.cbRTAutoChange = new System.Windows.Forms.CheckBox();
@@ -191,7 +192,6 @@
             this.ctrlTaggingName8 = new MonitoringUI.Controlls.CtrlTaggingName();
             this.ctrlTaggingName7 = new MonitoringUI.Controlls.CtrlTaggingName();
             this.ctrlTaggingName5 = new MonitoringUI.Controlls.CtrlTaggingName();
-            this.label123 = new System.Windows.Forms.Label();
             this.ctrlTaggingName6 = new MonitoringUI.Controlls.CtrlTaggingName();
             this.ctrlTaggingName3 = new MonitoringUI.Controlls.CtrlTaggingName();
             this.ctrlTaggingName4 = new MonitoringUI.Controlls.CtrlTaggingName();
@@ -201,17 +201,17 @@
             this.btnLTAging1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlButtonType2();
             this.btnLTAging2 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlButtonType2();
             this.AgingTab.SuspendLayout();
-            this.tpHTAging.SuspendLayout();
-            this.tpLTAging1.SuspendLayout();
-            this.tpLTAging2.SuspendLayout();
+            this.tpAging1.SuspendLayout();
+            this.tpAging2.SuspendLayout();
+            this.tpAging3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // AgingTab
             // 
-            this.AgingTab.Controls.Add(this.tpHTAging);
-            this.AgingTab.Controls.Add(this.tpLTAging1);
-            this.AgingTab.Controls.Add(this.tpLTAging2);
+            this.AgingTab.Controls.Add(this.tpAging1);
+            this.AgingTab.Controls.Add(this.tpAging2);
+            this.AgingTab.Controls.Add(this.tpAging3);
             this.AgingTab.ItemSize = new System.Drawing.Size(300, 19);
             this.AgingTab.Location = new System.Drawing.Point(319, 17);
             this.AgingTab.Name = "AgingTab";
@@ -220,69 +220,71 @@
             this.AgingTab.TabIndex = 24;
             this.AgingTab.SelectedIndexChanged += new System.EventHandler(this.AgingTab_SelectedIndexChanged);
             // 
-            // tpHTAging
+            // tpAging1
             // 
-            this.tpHTAging.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.tpHTAging.Controls.Add(this.AgingInfoView_HT);
-            this.tpHTAging.Controls.Add(this.label53);
-            this.tpHTAging.Controls.Add(this.label54);
-            this.tpHTAging.Controls.Add(this.label55);
-            this.tpHTAging.Controls.Add(this.label56);
-            this.tpHTAging.Controls.Add(this.label57);
-            this.tpHTAging.Controls.Add(this.label58);
-            this.tpHTAging.Controls.Add(this.label43);
-            this.tpHTAging.Controls.Add(this.label44);
-            this.tpHTAging.Controls.Add(this.label45);
-            this.tpHTAging.Controls.Add(this.label50);
-            this.tpHTAging.Controls.Add(this.label51);
-            this.tpHTAging.Controls.Add(this.label52);
-            this.tpHTAging.Controls.Add(this.label6);
-            this.tpHTAging.Controls.Add(this.label7);
-            this.tpHTAging.Controls.Add(this.label33);
-            this.tpHTAging.Controls.Add(this.label40);
-            this.tpHTAging.Controls.Add(this.label41);
-            this.tpHTAging.Controls.Add(this.label42);
-            this.tpHTAging.Controls.Add(this.label39);
-            this.tpHTAging.Controls.Add(this.label37);
-            this.tpHTAging.Controls.Add(this.label36);
-            this.tpHTAging.Controls.Add(this.label35);
-            this.tpHTAging.Controls.Add(this.label34);
-            this.tpHTAging.Controls.Add(this.label4);
-            this.tpHTAging.Controls.Add(this.label13);
-            this.tpHTAging.Controls.Add(this.label14);
-            this.tpHTAging.Controls.Add(this.label15);
-            this.tpHTAging.Controls.Add(this.ctrlLine5);
-            this.tpHTAging.Controls.Add(this.label2);
-            this.tpHTAging.Controls.Add(this.label3);
-            this.tpHTAging.Controls.Add(this.label12);
-            this.tpHTAging.Controls.Add(this.ctrlLine1);
-            this.tpHTAging.Controls.Add(this.label1);
-            this.tpHTAging.Controls.Add(this.label69);
-            this.tpHTAging.Controls.Add(this.label70);
-            this.tpHTAging.Controls.Add(this.ctrlLine4);
-            this.tpHTAging.Controls.Add(this.label71);
-            this.tpHTAging.Controls.Add(this.label60);
-            this.tpHTAging.Controls.Add(this.ht014);
-            this.tpHTAging.Controls.Add(this.ht011);
-            this.tpHTAging.Controls.Add(this.ht012);
-            this.tpHTAging.Controls.Add(this.ht013);
-            this.tpHTAging.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.tpHTAging.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.tpHTAging.Location = new System.Drawing.Point(4, 23);
-            this.tpHTAging.Name = "tpHTAging";
-            this.tpHTAging.Padding = new System.Windows.Forms.Padding(3);
-            this.tpHTAging.Size = new System.Drawing.Size(1568, 898);
-            this.tpHTAging.TabIndex = 0;
-            this.tpHTAging.Text = "HT Aging";
+            this.tpAging1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.tpAging1.Controls.Add(this.AgingInfoView_HT);
+            this.tpAging1.Controls.Add(this.label53);
+            this.tpAging1.Controls.Add(this.label54);
+            this.tpAging1.Controls.Add(this.label55);
+            this.tpAging1.Controls.Add(this.label56);
+            this.tpAging1.Controls.Add(this.label57);
+            this.tpAging1.Controls.Add(this.label58);
+            this.tpAging1.Controls.Add(this.label43);
+            this.tpAging1.Controls.Add(this.label44);
+            this.tpAging1.Controls.Add(this.label45);
+            this.tpAging1.Controls.Add(this.label50);
+            this.tpAging1.Controls.Add(this.label51);
+            this.tpAging1.Controls.Add(this.label52);
+            this.tpAging1.Controls.Add(this.label6);
+            this.tpAging1.Controls.Add(this.label7);
+            this.tpAging1.Controls.Add(this.label33);
+            this.tpAging1.Controls.Add(this.label40);
+            this.tpAging1.Controls.Add(this.label41);
+            this.tpAging1.Controls.Add(this.label42);
+            this.tpAging1.Controls.Add(this.label39);
+            this.tpAging1.Controls.Add(this.label37);
+            this.tpAging1.Controls.Add(this.label36);
+            this.tpAging1.Controls.Add(this.label35);
+            this.tpAging1.Controls.Add(this.label34);
+            this.tpAging1.Controls.Add(this.label4);
+            this.tpAging1.Controls.Add(this.label13);
+            this.tpAging1.Controls.Add(this.label14);
+            this.tpAging1.Controls.Add(this.label15);
+            this.tpAging1.Controls.Add(this.ctrlLine5);
+            this.tpAging1.Controls.Add(this.label2);
+            this.tpAging1.Controls.Add(this.label3);
+            this.tpAging1.Controls.Add(this.label12);
+            this.tpAging1.Controls.Add(this.ctrlLine1);
+            this.tpAging1.Controls.Add(this.label1);
+            this.tpAging1.Controls.Add(this.label69);
+            this.tpAging1.Controls.Add(this.label70);
+            this.tpAging1.Controls.Add(this.ctrlLine4);
+            this.tpAging1.Controls.Add(this.label71);
+            this.tpAging1.Controls.Add(this.label60);
+            this.tpAging1.Controls.Add(this.ht014);
+            this.tpAging1.Controls.Add(this.ht011);
+            this.tpAging1.Controls.Add(this.ht012);
+            this.tpAging1.Controls.Add(this.ht013);
+            this.tpAging1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.tpAging1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.tpAging1.Location = new System.Drawing.Point(4, 23);
+            this.tpAging1.Name = "tpAging1";
+            this.tpAging1.Padding = new System.Windows.Forms.Padding(3);
+            this.tpAging1.Size = new System.Drawing.Size(1568, 898);
+            this.tpAging1.TabIndex = 0;
+            this.tpAging1.Text = "HT Aging";
             // 
             // AgingInfoView_HT
             // 
+            this.AgingInfoView_HT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.AgingInfoView_HT.ColumnCount = -1;
             this.AgingInfoView_HT.Location = new System.Drawing.Point(65, 790);
             this.AgingInfoView_HT.Name = "AgingInfoView_HT";
             this.AgingInfoView_HT.RowCount = -1;
             this.AgingInfoView_HT.Size = new System.Drawing.Size(1483, 64);
             this.AgingInfoView_HT.TabIndex = 137;
+            this.AgingInfoView_HT.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             // 
             // label53
             // 
@@ -800,71 +802,73 @@
             this.ht013.Size = new System.Drawing.Size(966, 161);
             this.ht013.TabIndex = 22;
             // 
-            // tpLTAging1
+            // tpAging2
             // 
-            this.tpLTAging1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.tpLTAging1.Controls.Add(this.AgingInfoView_LT1);
-            this.tpLTAging1.Controls.Add(this.label88);
-            this.tpLTAging1.Controls.Add(this.label20);
-            this.tpLTAging1.Controls.Add(this.label23);
-            this.tpLTAging1.Controls.Add(this.label26);
-            this.tpLTAging1.Controls.Add(this.ctrlLine2);
-            this.tpLTAging1.Controls.Add(this.label75);
-            this.tpLTAging1.Controls.Add(this.label76);
-            this.tpLTAging1.Controls.Add(this.label77);
-            this.tpLTAging1.Controls.Add(this.label78);
-            this.tpLTAging1.Controls.Add(this.label79);
-            this.tpLTAging1.Controls.Add(this.label80);
-            this.tpLTAging1.Controls.Add(this.label81);
-            this.tpLTAging1.Controls.Add(this.label83);
-            this.tpLTAging1.Controls.Add(this.label84);
-            this.tpLTAging1.Controls.Add(this.label85);
-            this.tpLTAging1.Controls.Add(this.label86);
-            this.tpLTAging1.Controls.Add(this.label87);
-            this.tpLTAging1.Controls.Add(this.label66);
-            this.tpLTAging1.Controls.Add(this.label67);
-            this.tpLTAging1.Controls.Add(this.label68);
-            this.tpLTAging1.Controls.Add(this.label72);
-            this.tpLTAging1.Controls.Add(this.label73);
-            this.tpLTAging1.Controls.Add(this.label74);
-            this.tpLTAging1.Controls.Add(this.label59);
-            this.tpLTAging1.Controls.Add(this.label61);
-            this.tpLTAging1.Controls.Add(this.label62);
-            this.tpLTAging1.Controls.Add(this.label63);
-            this.tpLTAging1.Controls.Add(this.label64);
-            this.tpLTAging1.Controls.Add(this.label65);
-            this.tpLTAging1.Controls.Add(this.label24);
-            this.tpLTAging1.Controls.Add(this.label25);
-            this.tpLTAging1.Controls.Add(this.label21);
-            this.tpLTAging1.Controls.Add(this.label22);
-            this.tpLTAging1.Controls.Add(this.label18);
-            this.tpLTAging1.Controls.Add(this.label19);
-            this.tpLTAging1.Controls.Add(this.label17);
-            this.tpLTAging1.Controls.Add(this.label16);
-            this.tpLTAging1.Controls.Add(this.ctrlLine9);
-            this.tpLTAging1.Controls.Add(this.ctrlLine8);
-            this.tpLTAging1.Controls.Add(this.label82);
-            this.tpLTAging1.Controls.Add(this.label49);
-            this.tpLTAging1.Controls.Add(this.label5);
-            this.tpLTAging1.Controls.Add(this.lt014);
-            this.tpLTAging1.Controls.Add(this.lt011);
-            this.tpLTAging1.Controls.Add(this.lt012);
-            this.tpLTAging1.Controls.Add(this.lt013);
-            this.tpLTAging1.Location = new System.Drawing.Point(4, 23);
-            this.tpLTAging1.Name = "tpLTAging1";
-            this.tpLTAging1.Padding = new System.Windows.Forms.Padding(3);
-            this.tpLTAging1.Size = new System.Drawing.Size(1568, 898);
-            this.tpLTAging1.TabIndex = 1;
-            this.tpLTAging1.Text = "LT Aging#1";
+            this.tpAging2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.tpAging2.Controls.Add(this.AgingInfoView_LT1);
+            this.tpAging2.Controls.Add(this.label88);
+            this.tpAging2.Controls.Add(this.label20);
+            this.tpAging2.Controls.Add(this.label23);
+            this.tpAging2.Controls.Add(this.label26);
+            this.tpAging2.Controls.Add(this.ctrlLine2);
+            this.tpAging2.Controls.Add(this.label75);
+            this.tpAging2.Controls.Add(this.label76);
+            this.tpAging2.Controls.Add(this.label77);
+            this.tpAging2.Controls.Add(this.label78);
+            this.tpAging2.Controls.Add(this.label79);
+            this.tpAging2.Controls.Add(this.label80);
+            this.tpAging2.Controls.Add(this.label81);
+            this.tpAging2.Controls.Add(this.label83);
+            this.tpAging2.Controls.Add(this.label84);
+            this.tpAging2.Controls.Add(this.label85);
+            this.tpAging2.Controls.Add(this.label86);
+            this.tpAging2.Controls.Add(this.label87);
+            this.tpAging2.Controls.Add(this.label66);
+            this.tpAging2.Controls.Add(this.label67);
+            this.tpAging2.Controls.Add(this.label68);
+            this.tpAging2.Controls.Add(this.label72);
+            this.tpAging2.Controls.Add(this.label73);
+            this.tpAging2.Controls.Add(this.label74);
+            this.tpAging2.Controls.Add(this.label59);
+            this.tpAging2.Controls.Add(this.label61);
+            this.tpAging2.Controls.Add(this.label62);
+            this.tpAging2.Controls.Add(this.label63);
+            this.tpAging2.Controls.Add(this.label64);
+            this.tpAging2.Controls.Add(this.label65);
+            this.tpAging2.Controls.Add(this.label24);
+            this.tpAging2.Controls.Add(this.label25);
+            this.tpAging2.Controls.Add(this.label21);
+            this.tpAging2.Controls.Add(this.label22);
+            this.tpAging2.Controls.Add(this.label18);
+            this.tpAging2.Controls.Add(this.label19);
+            this.tpAging2.Controls.Add(this.label17);
+            this.tpAging2.Controls.Add(this.label16);
+            this.tpAging2.Controls.Add(this.ctrlLine9);
+            this.tpAging2.Controls.Add(this.ctrlLine8);
+            this.tpAging2.Controls.Add(this.label82);
+            this.tpAging2.Controls.Add(this.label49);
+            this.tpAging2.Controls.Add(this.label5);
+            this.tpAging2.Controls.Add(this.lt014);
+            this.tpAging2.Controls.Add(this.lt011);
+            this.tpAging2.Controls.Add(this.lt012);
+            this.tpAging2.Controls.Add(this.lt013);
+            this.tpAging2.Location = new System.Drawing.Point(4, 23);
+            this.tpAging2.Name = "tpAging2";
+            this.tpAging2.Padding = new System.Windows.Forms.Padding(3);
+            this.tpAging2.Size = new System.Drawing.Size(1568, 898);
+            this.tpAging2.TabIndex = 1;
+            this.tpAging2.Text = "LT Aging#1";
             // 
             // AgingInfoView_LT1
             // 
+            this.AgingInfoView_LT1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.AgingInfoView_LT1.ColumnCount = -1;
             this.AgingInfoView_LT1.Location = new System.Drawing.Point(65, 790);
             this.AgingInfoView_LT1.Name = "AgingInfoView_LT1";
             this.AgingInfoView_LT1.RowCount = -1;
             this.AgingInfoView_LT1.Size = new System.Drawing.Size(1483, 64);
             this.AgingInfoView_LT1.TabIndex = 154;
+            this.AgingInfoView_LT1.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             // 
             // label88
             // 
@@ -1430,75 +1434,77 @@
             this.lt013.Size = new System.Drawing.Size(1488, 161);
             this.lt013.TabIndex = 27;
             // 
-            // tpLTAging2
+            // tpAging3
             // 
-            this.tpLTAging2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.tpLTAging2.Controls.Add(this.AgingInfoView_LT2);
-            this.tpLTAging2.Controls.Add(this.label27);
-            this.tpLTAging2.Controls.Add(this.label28);
-            this.tpLTAging2.Controls.Add(this.label29);
-            this.tpLTAging2.Controls.Add(this.label30);
-            this.tpLTAging2.Controls.Add(this.ctrlLine3);
-            this.tpLTAging2.Controls.Add(this.label31);
-            this.tpLTAging2.Controls.Add(this.label32);
-            this.tpLTAging2.Controls.Add(this.label46);
-            this.tpLTAging2.Controls.Add(this.label47);
-            this.tpLTAging2.Controls.Add(this.label48);
-            this.tpLTAging2.Controls.Add(this.label89);
-            this.tpLTAging2.Controls.Add(this.label90);
-            this.tpLTAging2.Controls.Add(this.label91);
-            this.tpLTAging2.Controls.Add(this.label92);
-            this.tpLTAging2.Controls.Add(this.label94);
-            this.tpLTAging2.Controls.Add(this.label95);
-            this.tpLTAging2.Controls.Add(this.label96);
-            this.tpLTAging2.Controls.Add(this.label97);
-            this.tpLTAging2.Controls.Add(this.label98);
-            this.tpLTAging2.Controls.Add(this.label99);
-            this.tpLTAging2.Controls.Add(this.label100);
-            this.tpLTAging2.Controls.Add(this.label101);
-            this.tpLTAging2.Controls.Add(this.label102);
-            this.tpLTAging2.Controls.Add(this.label103);
-            this.tpLTAging2.Controls.Add(this.label104);
-            this.tpLTAging2.Controls.Add(this.label105);
-            this.tpLTAging2.Controls.Add(this.label106);
-            this.tpLTAging2.Controls.Add(this.label107);
-            this.tpLTAging2.Controls.Add(this.label108);
-            this.tpLTAging2.Controls.Add(this.label109);
-            this.tpLTAging2.Controls.Add(this.label110);
-            this.tpLTAging2.Controls.Add(this.label111);
-            this.tpLTAging2.Controls.Add(this.label112);
-            this.tpLTAging2.Controls.Add(this.label113);
-            this.tpLTAging2.Controls.Add(this.label114);
-            this.tpLTAging2.Controls.Add(this.label115);
-            this.tpLTAging2.Controls.Add(this.label116);
-            this.tpLTAging2.Controls.Add(this.ctrlLine6);
-            this.tpLTAging2.Controls.Add(this.ctrlLine7);
-            this.tpLTAging2.Controls.Add(this.lt024);
-            this.tpLTAging2.Controls.Add(this.lt021);
-            this.tpLTAging2.Controls.Add(this.lt022);
-            this.tpLTAging2.Controls.Add(this.lt023);
-            this.tpLTAging2.Controls.Add(this.label93);
-            this.tpLTAging2.Controls.Add(this.label38);
-            this.tpLTAging2.Controls.Add(this.label8);
-            this.tpLTAging2.Controls.Add(this.label9);
-            this.tpLTAging2.Controls.Add(this.label10);
-            this.tpLTAging2.Controls.Add(this.label11);
-            this.tpLTAging2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.tpLTAging2.Location = new System.Drawing.Point(4, 23);
-            this.tpLTAging2.Name = "tpLTAging2";
-            this.tpLTAging2.Padding = new System.Windows.Forms.Padding(3);
-            this.tpLTAging2.Size = new System.Drawing.Size(1568, 898);
-            this.tpLTAging2.TabIndex = 2;
-            this.tpLTAging2.Text = "LT Aging#2";
+            this.tpAging3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.tpAging3.Controls.Add(this.AgingInfoView_LT2);
+            this.tpAging3.Controls.Add(this.label27);
+            this.tpAging3.Controls.Add(this.label28);
+            this.tpAging3.Controls.Add(this.label29);
+            this.tpAging3.Controls.Add(this.label30);
+            this.tpAging3.Controls.Add(this.ctrlLine3);
+            this.tpAging3.Controls.Add(this.label31);
+            this.tpAging3.Controls.Add(this.label32);
+            this.tpAging3.Controls.Add(this.label46);
+            this.tpAging3.Controls.Add(this.label47);
+            this.tpAging3.Controls.Add(this.label48);
+            this.tpAging3.Controls.Add(this.label89);
+            this.tpAging3.Controls.Add(this.label90);
+            this.tpAging3.Controls.Add(this.label91);
+            this.tpAging3.Controls.Add(this.label92);
+            this.tpAging3.Controls.Add(this.label94);
+            this.tpAging3.Controls.Add(this.label95);
+            this.tpAging3.Controls.Add(this.label96);
+            this.tpAging3.Controls.Add(this.label97);
+            this.tpAging3.Controls.Add(this.label98);
+            this.tpAging3.Controls.Add(this.label99);
+            this.tpAging3.Controls.Add(this.label100);
+            this.tpAging3.Controls.Add(this.label101);
+            this.tpAging3.Controls.Add(this.label102);
+            this.tpAging3.Controls.Add(this.label103);
+            this.tpAging3.Controls.Add(this.label104);
+            this.tpAging3.Controls.Add(this.label105);
+            this.tpAging3.Controls.Add(this.label106);
+            this.tpAging3.Controls.Add(this.label107);
+            this.tpAging3.Controls.Add(this.label108);
+            this.tpAging3.Controls.Add(this.label109);
+            this.tpAging3.Controls.Add(this.label110);
+            this.tpAging3.Controls.Add(this.label111);
+            this.tpAging3.Controls.Add(this.label112);
+            this.tpAging3.Controls.Add(this.label113);
+            this.tpAging3.Controls.Add(this.label114);
+            this.tpAging3.Controls.Add(this.label115);
+            this.tpAging3.Controls.Add(this.label116);
+            this.tpAging3.Controls.Add(this.ctrlLine6);
+            this.tpAging3.Controls.Add(this.ctrlLine7);
+            this.tpAging3.Controls.Add(this.lt024);
+            this.tpAging3.Controls.Add(this.lt021);
+            this.tpAging3.Controls.Add(this.lt022);
+            this.tpAging3.Controls.Add(this.lt023);
+            this.tpAging3.Controls.Add(this.label93);
+            this.tpAging3.Controls.Add(this.label38);
+            this.tpAging3.Controls.Add(this.label8);
+            this.tpAging3.Controls.Add(this.label9);
+            this.tpAging3.Controls.Add(this.label10);
+            this.tpAging3.Controls.Add(this.label11);
+            this.tpAging3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.tpAging3.Location = new System.Drawing.Point(4, 23);
+            this.tpAging3.Name = "tpAging3";
+            this.tpAging3.Padding = new System.Windows.Forms.Padding(3);
+            this.tpAging3.Size = new System.Drawing.Size(1568, 898);
+            this.tpAging3.TabIndex = 2;
+            this.tpAging3.Text = "LT Aging#2";
             // 
             // AgingInfoView_LT2
             // 
+            this.AgingInfoView_LT2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.AgingInfoView_LT2.ColumnCount = -1;
             this.AgingInfoView_LT2.Location = new System.Drawing.Point(65, 790);
             this.AgingInfoView_LT2.Name = "AgingInfoView_LT2";
             this.AgingInfoView_LT2.RowCount = -1;
             this.AgingInfoView_LT2.Size = new System.Drawing.Size(1483, 64);
             this.AgingInfoView_LT2.TabIndex = 197;
+            this.AgingInfoView_LT2.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             // 
             // label27
             // 
@@ -2103,6 +2109,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.ctrlLabel1);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.ctrlButtonDataView);
             this.panel1.Controls.Add(this.cbRTAutoChange);
@@ -2119,7 +2126,6 @@
             this.panel1.Controls.Add(this.ctrlTaggingName8);
             this.panel1.Controls.Add(this.ctrlTaggingName7);
             this.panel1.Controls.Add(this.ctrlTaggingName5);
-            this.panel1.Controls.Add(this.label123);
             this.panel1.Controls.Add(this.ctrlTaggingName6);
             this.panel1.Controls.Add(this.ctrlTaggingName3);
             this.panel1.Controls.Add(this.ctrlTaggingName4);
@@ -2130,6 +2136,19 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(310, 945);
             this.panel1.TabIndex = 86;
+            // 
+            // ctrlLabel1
+            // 
+            this.ctrlLabel1.AutoSize = true;
+            this.ctrlLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.ctrlLabel1.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel1.LanguageID = "DEF_Rack_Status";
+            this.ctrlLabel1.Location = new System.Drawing.Point(11, 9);
+            this.ctrlLabel1.Name = "ctrlLabel1";
+            this.ctrlLabel1.Size = new System.Drawing.Size(81, 16);
+            this.ctrlLabel1.TabIndex = 93;
+            this.ctrlLabel1.Text = "Rack Status";
             // 
             // button1
             // 
@@ -2174,6 +2193,7 @@
             this.ctrlTaggingName11.Location = new System.Drawing.Point(14, 210);
             this.ctrlTaggingName11.Name = "ctrlTaggingName11";
             this.ctrlTaggingName11.Size = new System.Drawing.Size(217, 30);
+            this.ctrlTaggingName11.StatusCode = "4Aging";
             this.ctrlTaggingName11.TabIndex = 89;
             this.ctrlTaggingName11.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(95)))), ((int)(((byte)(255)))));
             this.ctrlTaggingName11.TagText = "4th Aging";
@@ -2189,6 +2209,7 @@
             this.ctrlTaggingName12.Location = new System.Drawing.Point(14, 300);
             this.ctrlTaggingName12.Name = "ctrlTaggingName12";
             this.ctrlTaggingName12.Size = new System.Drawing.Size(217, 30);
+            this.ctrlTaggingName12.StatusCode = "U";
             this.ctrlTaggingName12.TabIndex = 88;
             this.ctrlTaggingName12.TagColor = System.Drawing.Color.HotPink;
             this.ctrlTaggingName12.TagText = "Plan Unloading";
@@ -2204,6 +2225,7 @@
             this.ctrlTaggingName16.Location = new System.Drawing.Point(14, 270);
             this.ctrlTaggingName16.Name = "ctrlTaggingName16";
             this.ctrlTaggingName16.Size = new System.Drawing.Size(217, 30);
+            this.ctrlTaggingName16.StatusCode = "99Aging";
             this.ctrlTaggingName16.TabIndex = 87;
             this.ctrlTaggingName16.TagColor = System.Drawing.Color.DarkOliveGreen;
             this.ctrlTaggingName16.TagText = "Shipping Storage";
@@ -2219,6 +2241,7 @@
             this.ctrlTaggingName17.Location = new System.Drawing.Point(14, 240);
             this.ctrlTaggingName17.Name = "ctrlTaggingName17";
             this.ctrlTaggingName17.Size = new System.Drawing.Size(217, 30);
+            this.ctrlTaggingName17.StatusCode = "5Aging";
             this.ctrlTaggingName17.TabIndex = 86;
             this.ctrlTaggingName17.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(65)))), ((int)(((byte)(157)))));
             this.ctrlTaggingName17.TagText = "Etc Aging";
@@ -2234,6 +2257,7 @@
             this.ctrlTaggingName18.Location = new System.Drawing.Point(14, 121);
             this.ctrlTaggingName18.Name = "ctrlTaggingName18";
             this.ctrlTaggingName18.Size = new System.Drawing.Size(217, 30);
+            this.ctrlTaggingName18.StatusCode = "1Aging";
             this.ctrlTaggingName18.TabIndex = 85;
             this.ctrlTaggingName18.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(178)))), ((int)(((byte)(199)))));
             this.ctrlTaggingName18.TagText = "1st Aging";
@@ -2249,6 +2273,7 @@
             this.ctrlTaggingName19.Location = new System.Drawing.Point(14, 151);
             this.ctrlTaggingName19.Name = "ctrlTaggingName19";
             this.ctrlTaggingName19.Size = new System.Drawing.Size(217, 30);
+            this.ctrlTaggingName19.StatusCode = "2Aging";
             this.ctrlTaggingName19.TabIndex = 84;
             this.ctrlTaggingName19.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(234)))), ((int)(((byte)(233)))));
             this.ctrlTaggingName19.TagText = "2nd Aging";
@@ -2264,6 +2289,7 @@
             this.ctrlTaggingName15.Location = new System.Drawing.Point(14, 448);
             this.ctrlTaggingName15.Name = "ctrlTaggingName15";
             this.ctrlTaggingName15.Size = new System.Drawing.Size(217, 30);
+            this.ctrlTaggingName15.StatusCode = "T";
             this.ctrlTaggingName15.TabIndex = 83;
             this.ctrlTaggingName15.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ctrlTaggingName15.TagText = "Trouble";
@@ -2279,6 +2305,7 @@
             this.ctrlTaggingName13.Location = new System.Drawing.Point(14, 508);
             this.ctrlTaggingName13.Name = "ctrlTaggingName13";
             this.ctrlTaggingName13.Size = new System.Drawing.Size(217, 30);
+            this.ctrlTaggingName13.StatusCode = "D";
             this.ctrlTaggingName13.TabIndex = 81;
             this.ctrlTaggingName13.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ctrlTaggingName13.TagText = "Duplication";
@@ -2287,13 +2314,14 @@
             // ctrlTaggingName10
             // 
             this.ctrlTaggingName10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlTaggingName10.ColorText = "E";
+            this.ctrlTaggingName10.ColorText = "N";
             this.ctrlTaggingName10.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlTaggingName10.LanguageID = "DEF_Empty_Release";
             this.ctrlTaggingName10.Location = new System.Drawing.Point(14, 538);
             this.ctrlTaggingName10.Name = "ctrlTaggingName10";
             this.ctrlTaggingName10.Size = new System.Drawing.Size(217, 30);
+            this.ctrlTaggingName10.StatusCode = "";
             this.ctrlTaggingName10.TabIndex = 80;
             this.ctrlTaggingName10.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ctrlTaggingName10.TagText = "Empty Release";
@@ -2309,6 +2337,7 @@
             this.ctrlTaggingName9.Location = new System.Drawing.Point(14, 478);
             this.ctrlTaggingName9.Name = "ctrlTaggingName9";
             this.ctrlTaggingName9.Size = new System.Drawing.Size(217, 30);
+            this.ctrlTaggingName9.StatusCode = "F1";
             this.ctrlTaggingName9.TabIndex = 79;
             this.ctrlTaggingName9.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ctrlTaggingName9.TagText = "Fire";
@@ -2324,6 +2353,7 @@
             this.ctrlTaggingName8.Location = new System.Drawing.Point(14, 181);
             this.ctrlTaggingName8.Name = "ctrlTaggingName8";
             this.ctrlTaggingName8.Size = new System.Drawing.Size(217, 30);
+            this.ctrlTaggingName8.StatusCode = "3Aging";
             this.ctrlTaggingName8.TabIndex = 78;
             this.ctrlTaggingName8.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(139)))), ((int)(((byte)(141)))));
             this.ctrlTaggingName8.TagText = "3rd Aging";
@@ -2339,6 +2369,7 @@
             this.ctrlTaggingName7.Location = new System.Drawing.Point(14, 419);
             this.ctrlTaggingName7.Name = "ctrlTaggingName7";
             this.ctrlTaggingName7.Size = new System.Drawing.Size(217, 30);
+            this.ctrlTaggingName7.StatusCode = "2";
             this.ctrlTaggingName7.TabIndex = 77;
             this.ctrlTaggingName7.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(136)))), ((int)(((byte)(21)))));
             this.ctrlTaggingName7.TagText = "Unloading";
@@ -2354,20 +2385,11 @@
             this.ctrlTaggingName5.Location = new System.Drawing.Point(14, 389);
             this.ctrlTaggingName5.Name = "ctrlTaggingName5";
             this.ctrlTaggingName5.Size = new System.Drawing.Size(217, 30);
+            this.ctrlTaggingName5.StatusCode = "1";
             this.ctrlTaggingName5.TabIndex = 76;
             this.ctrlTaggingName5.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(101)))), ((int)(((byte)(58)))));
             this.ctrlTaggingName5.TagText = "Loading";
             this.ctrlTaggingName5.TextColor = System.Drawing.Color.Black;
-            // 
-            // label123
-            // 
-            this.label123.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label123.ForeColor = System.Drawing.Color.White;
-            this.label123.Location = new System.Drawing.Point(15, 9);
-            this.label123.Name = "label123";
-            this.label123.Size = new System.Drawing.Size(123, 18);
-            this.label123.TabIndex = 75;
-            this.label123.Text = "Rack Status";
             // 
             // ctrlTaggingName6
             // 
@@ -2379,6 +2401,7 @@
             this.ctrlTaggingName6.Location = new System.Drawing.Point(14, 92);
             this.ctrlTaggingName6.Name = "ctrlTaggingName6";
             this.ctrlTaggingName6.Size = new System.Drawing.Size(217, 30);
+            this.ctrlTaggingName6.StatusCode = "F";
             this.ctrlTaggingName6.TabIndex = 74;
             this.ctrlTaggingName6.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.ctrlTaggingName6.TagText = "Tray On";
@@ -2394,6 +2417,7 @@
             this.ctrlTaggingName3.Location = new System.Drawing.Point(14, 330);
             this.ctrlTaggingName3.Name = "ctrlTaggingName3";
             this.ctrlTaggingName3.Size = new System.Drawing.Size(217, 30);
+            this.ctrlTaggingName3.StatusCode = "X";
             this.ctrlTaggingName3.TabIndex = 73;
             this.ctrlTaggingName3.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(62)))), ((int)(((byte)(138)))));
             this.ctrlTaggingName3.TagText = "NoInput Rack";
@@ -2409,6 +2433,7 @@
             this.ctrlTaggingName4.Location = new System.Drawing.Point(14, 360);
             this.ctrlTaggingName4.Name = "ctrlTaggingName4";
             this.ctrlTaggingName4.Size = new System.Drawing.Size(217, 30);
+            this.ctrlTaggingName4.StatusCode = "O";
             this.ctrlTaggingName4.TabIndex = 72;
             this.ctrlTaggingName4.TagColor = System.Drawing.Color.Gray;
             this.ctrlTaggingName4.TagText = "NoOut Rack";
@@ -2424,6 +2449,7 @@
             this.ctrlTaggingName2.Location = new System.Drawing.Point(14, 62);
             this.ctrlTaggingName2.Name = "ctrlTaggingName2";
             this.ctrlTaggingName2.Size = new System.Drawing.Size(217, 30);
+            this.ctrlTaggingName2.StatusCode = "E";
             this.ctrlTaggingName2.TabIndex = 71;
             this.ctrlTaggingName2.TagColor = System.Drawing.Color.LightGray;
             this.ctrlTaggingName2.TagText = "Empty";
@@ -2439,6 +2465,7 @@
             this.ctrlTaggingName1.Location = new System.Drawing.Point(14, 32);
             this.ctrlTaggingName1.Name = "ctrlTaggingName1";
             this.ctrlTaggingName1.Size = new System.Drawing.Size(217, 30);
+            this.ctrlTaggingName1.StatusCode = "NotUse";
             this.ctrlTaggingName1.TabIndex = 70;
             this.ctrlTaggingName1.TagColor = System.Drawing.Color.Black;
             this.ctrlTaggingName1.TagText = "Not Use";
@@ -2448,7 +2475,8 @@
             // 
             this.btnHTAging.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHTAging.ForeColor = System.Drawing.Color.White;
-            this.btnHTAging.Location = new System.Drawing.Point(318, 10);
+            this.btnHTAging.LanguageID = "";
+            this.btnHTAging.Location = new System.Drawing.Point(318, 11);
             this.btnHTAging.Name = "btnHTAging";
             this.btnHTAging.Size = new System.Drawing.Size(147, 28);
             this.btnHTAging.TabIndex = 87;
@@ -2461,7 +2489,8 @@
             // 
             this.btnLTAging1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLTAging1.ForeColor = System.Drawing.Color.White;
-            this.btnLTAging1.Location = new System.Drawing.Point(464, 10);
+            this.btnLTAging1.LanguageID = "";
+            this.btnLTAging1.Location = new System.Drawing.Point(464, 11);
             this.btnLTAging1.Name = "btnLTAging1";
             this.btnLTAging1.Size = new System.Drawing.Size(147, 28);
             this.btnLTAging1.TabIndex = 88;
@@ -2474,7 +2503,8 @@
             // 
             this.btnLTAging2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLTAging2.ForeColor = System.Drawing.Color.White;
-            this.btnLTAging2.Location = new System.Drawing.Point(610, 10);
+            this.btnLTAging2.LanguageID = "";
+            this.btnLTAging2.Location = new System.Drawing.Point(610, 11);
             this.btnLTAging2.Name = "btnLTAging2";
             this.btnLTAging2.Size = new System.Drawing.Size(147, 28);
             this.btnLTAging2.TabIndex = 89;
@@ -2498,9 +2528,9 @@
             this.Size = new System.Drawing.Size(1920, 945);
             this.Load += new System.EventHandler(this.CtrlAging_Load);
             this.AgingTab.ResumeLayout(false);
-            this.tpHTAging.ResumeLayout(false);
-            this.tpLTAging1.ResumeLayout(false);
-            this.tpLTAging2.ResumeLayout(false);
+            this.tpAging1.ResumeLayout(false);
+            this.tpAging2.ResumeLayout(false);
+            this.tpAging3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -2514,9 +2544,9 @@
         private AgingControls.AgingLineControl ht013;
         private AgingControls.AgingLineControl ht014;
         private System.Windows.Forms.TabControl AgingTab;
-        private System.Windows.Forms.TabPage tpHTAging;
-        private System.Windows.Forms.TabPage tpLTAging1;
-        private System.Windows.Forms.TabPage tpLTAging2;
+        private System.Windows.Forms.TabPage tpAging1;
+        private System.Windows.Forms.TabPage tpAging2;
+        private System.Windows.Forms.TabPage tpAging3;
         private System.Windows.Forms.Label label5;
         private AgingControls.AgingLineControl lt014;
         private AgingControls.AgingLineControl lt011;
@@ -2670,7 +2700,6 @@
         private Controlls.CtrlTaggingName ctrlTaggingName8;
         private Controlls.CtrlTaggingName ctrlTaggingName7;
         private Controlls.CtrlTaggingName ctrlTaggingName5;
-        private System.Windows.Forms.Label label123;
         private Controlls.CtrlTaggingName ctrlTaggingName6;
         private Controlls.CtrlTaggingName ctrlTaggingName3;
         private Controlls.CtrlTaggingName ctrlTaggingName4;
@@ -2679,5 +2708,6 @@
         private FMSMonitoringUI.Controlls.WindowsForms.CtrlButtonType2 btnHTAging;
         private FMSMonitoringUI.Controlls.WindowsForms.CtrlButtonType2 btnLTAging1;
         private FMSMonitoringUI.Controlls.WindowsForms.CtrlButtonType2 btnLTAging2;
+        private FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel ctrlLabel1;
     }
 }

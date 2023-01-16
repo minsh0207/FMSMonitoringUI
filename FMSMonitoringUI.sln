@@ -15,6 +15,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMSMonitoringUI", "FMSMonit
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgingControls", "AgingControls\AgingControls.csproj", "{B44F55B2-1D76-4E82-AEC2-AC70BB225665}"
+	ProjectSection(ProjectDependencies) = postProject
+		{61D97D17-849F-4D97-84B1-A5B746B4E8FB} = {61D97D17-849F-4D97-84B1-A5B746B4E8FB}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OPCUAClientLib", "OPCUAClientClassLib\OPCUAClientLib.csproj", "{065D7112-F84A-4864-868E-9B8FC35696CA}"
 	ProjectSection(ProjectDependencies) = postProject

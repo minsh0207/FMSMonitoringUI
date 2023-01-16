@@ -73,6 +73,20 @@ namespace MonitoringUI.Controlls
             }
         }
 
+        string _statusCode = "";
+        [DisplayName("StatusCode"), Description("Status Code"), Category("Tag Setting")]
+        public string StatusCode
+        {
+            get
+            {
+                return _statusCode;
+            }
+            set
+            {
+                _statusCode = value;
+            }
+        }
+
         string _LanguageID = "";
         [DisplayName("LocalLanguage"), Description("Local Language"), Category("Language Setting")]
         public string LanguageID

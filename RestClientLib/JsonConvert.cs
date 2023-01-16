@@ -667,6 +667,25 @@ namespace RestClientLib
             }
         }
         #endregion
+        #region ConvertAgingRackData
+        /// <summary>
+        /// _jsonAgingRackDataResponse 형태의 Class로 변환한다.
+        /// </summary>
+        public _jsonAgingRackDataResponse ConvertAgingRackData(string jsonResult)
+        {
+            try
+            {
+                // Recv Body의 JSON string을 class 변수에 할당
+                _jsonAgingRackDataResponse recvBody = JsonConvert.DeserializeObject<_jsonAgingRackDataResponse>(jsonResult, _jsonSettings);
+                return recvBody;
+            }
+            catch (Exception ex)
+            {
+                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                return null;
+            }
+        }
+        #endregion
         #region ConvertWinFormationBox
         /// <summary>
         /// _jsonWinFormationBoxResponse 형태의 Class로 변환한다.
