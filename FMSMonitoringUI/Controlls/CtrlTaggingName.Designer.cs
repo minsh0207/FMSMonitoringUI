@@ -39,30 +39,31 @@
             this.lbTag.ForeColor = System.Drawing.Color.White;
             this.lbTag.Location = new System.Drawing.Point(60, 5);
             this.lbTag.Name = "lbTag";
-            this.lbTag.Size = new System.Drawing.Size(135, 20);
+            this.lbTag.Size = new System.Drawing.Size(135, 18);
             this.lbTag.TabIndex = 1;
             this.lbTag.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lbColor
             // 
             this.lbColor.BackColor = System.Drawing.Color.Red;
+            this.lbColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbColor.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbColor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(238)))), ((int)(((byte)(244)))));
             this.lbColor.Location = new System.Drawing.Point(5, 5);
             this.lbColor.Name = "lbColor";
-            this.lbColor.Size = new System.Drawing.Size(50, 20);
+            this.lbColor.Size = new System.Drawing.Size(50, 18);
             this.lbColor.TabIndex = 0;
             this.lbColor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // CtrlTaggingName
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.Controls.Add(this.lbTag);
             this.Controls.Add(this.lbColor);
             this.Name = "CtrlTaggingName";
-            this.Size = new System.Drawing.Size(200, 30);
+            this.Size = new System.Drawing.Size(200, 28);
             this.ResumeLayout(false);
 
         }

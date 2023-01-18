@@ -43,7 +43,7 @@ namespace MonitoringUI.Monitoring
         /// <summary>
         /// string=Eqp Text, Color=Eqp Status Color
         /// </summary>
-        private Dictionary<string, Color> _EqpStatus = new Dictionary<string, Color>();
+        private Dictionary<string, KeyValuePair<string, Color>> _RackStatus; // = new Dictionary<string, KeyValuePair<string, Color>>();
         #endregion
 
         #region Working Thread
@@ -58,10 +58,12 @@ namespace MonitoringUI.Monitoring
             string logPath = ConfigurationManager.AppSettings["LOG_PATH"];
             _Logger = new Logger(logPath, LogMode.Hour);
 
+            _RackStatus = new Dictionary<string, KeyValuePair<string, Color>>();
+
             //InitTag();
             InitAgingRack();
             InitGridView();
-            InitLanguage();
+            
 
             // Timer 
             //m_timer.Tick += new EventHandler(OnTimer);
@@ -83,6 +85,8 @@ namespace MonitoringUI.Monitoring
         {
             btnHTAging.BackColor = Color.LightYellow;
             btnHTAging.ForeColor = Color.Black;
+
+            InitLanguage();
 
             string log = $"Aging Monitoring";
             _Logger.Write(LogLevel.Info, log, LogFileName.AllLog);
@@ -122,12 +126,22 @@ namespace MonitoringUI.Monitoring
         {
             m_timer.Stop();
 
-            
+            if (_TheadVisiable && this._ProcessThread.IsAlive)
+                this._TheadVisiable = false;
+
+            if (_TheadVisiable)
+                this._ProcessThread.Abort();
         }
 
         private void CtrlRTAging_HandleDestroyed(object sender, EventArgs e)
         {
             m_timer.Stop();
+
+            if (_TheadVisiable && this._ProcessThread.IsAlive)
+                this._TheadVisiable = false;
+
+            if (_TheadVisiable)
+                this._ProcessThread.Abort();
         }
 
         private void OnTimer(object sender, EventArgs e)
@@ -169,18 +183,7 @@ namespace MonitoringUI.Monitoring
                 AgingTab.SelectTab(nIndex + 1);
         }
 
-        private async Task LoadAgingRackData()
-        {
-            try
-            {
-                Task task = AgingDataView();
-                await task;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(string.Format("[Exception:LoadAgingRackData] {0}", ex.ToString()));
-            }
-        }
+        
 
         //private async Task LoadAgingRackData(int nSelectedTabIndex=0)
         //{
@@ -678,7 +681,7 @@ namespace MonitoringUI.Monitoring
                         string msg = $"Rack ID : {strRackID}";
                         _Logger.Write(LogLevel.Info, msg, LogFileName.ButtonClick);
 
-                        WinAgingRackSetting winRack = new WinAgingRackSetting(agingBay.EqpID, strRackID);
+                        WinAgingRackSetting winRack = new WinAgingRackSetting(agingBay.EqpID, strRackID, _RackStatus);
                         winRack.Show();
                     }
 
@@ -755,7 +758,8 @@ namespace MonitoringUI.Monitoring
                     CtrlTaggingName tagName = ctl as CtrlTaggingName;
                     tagName.CallLocalLanguage();
 
-                    _EqpStatus.Add(tagName.StatusCode, tagName.TagColor);
+                    var tag = new KeyValuePair<string, Color>(tagName.TagText, tagName.TagColor);
+                    _RackStatus.Add(tagName.StatusCode, tag);
                 }
                 else if (ctl.GetType() == typeof(CtrlLabel))
                 {
@@ -765,8 +769,6 @@ namespace MonitoringUI.Monitoring
             }
         }
         #endregion
-
-
 
         private void CtrlButtonDataView_Click(object sender, EventArgs e)
         {
@@ -822,8 +824,9 @@ namespace MonitoringUI.Monitoring
                     AgingTab.TabPages[i].ForeColor = Color.Black;
                 }
             }
-            //LoadAgingRackData(selectedIndex).GetAwaiter().GetResult();
-            Task task = LoadAgingRackData();
+
+            LoadAgingRackData(selectedIndex).GetAwaiter().GetResult();
+            LoadAgingRackCount(selectedIndex).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -884,15 +887,15 @@ namespace MonitoringUI.Monitoring
                 {
                     for (int line = 1; line <= 4; line++)
                     {
-                        for (int bay = 1; bay <= 11; bay++)
+                        for (int bay = 1; bay <= 16; bay++)
                         {
                             for (int deck = 1; deck <= 5; deck++)
                             {
-                                //string trayid1 = string.Format($"F101EEFB101{{0:D5}}", idx);
-                                //string trayid2 = string.Format($"F101FFFB102{{0:D5}}", idx);
-                                //string updateQuery = string.Format($"UPDATE fms_v.tb_mst_aging " +
-                                //                                   $"SET tray_id = '{trayid1}', tray_id_2 = '{trayid2}' " +
-                                //                                   $"WHERE aging_type = 'H' AND line = '01' AND lane = '{line}' AND bay = '{{0:D2}}' AND deck = '{{1:D2}}'", bay, deck);
+                                string trayid1 = string.Format($"LTA21{{0:D4}}", idx);
+                                string trayid2 = string.Format($"LTA22{{0:D4}}", idx);
+                                string updateQuery = string.Format($"UPDATE fms_v.tb_mst_aging " +
+                                                                   $"SET tray_id = '{trayid1}', tray_id_2 = '{trayid2}' " +
+                                                                   $"WHERE aging_type = 'L' AND line = '02' AND lane = '{line}' AND bay = '{{0:D2}}' AND floor = '{{1:D2}}'", bay, deck);
 
 
                                 //string starttime = DateTime.Now.ToString("yyyy-MM-dd hh-mm-ss");
@@ -907,13 +910,13 @@ namespace MonitoringUI.Monitoring
 
 
 
-                                //MySqlCommand command = new MySqlCommand(updateQuery, conn);
+                                MySqlCommand command = new MySqlCommand(updateQuery, conn);
 
-                                //command.Connection.Open();
+                                command.Connection.Open();
 
-                                //command.ExecuteNonQuery();
+                                command.ExecuteNonQuery();
 
-                                //command.Connection.Close();
+                                command.Connection.Close();
 
                                 //if (command.ExecuteNonQuery() != 1)
                                 //    MessageBox.Show("Failed to delete data.");
@@ -934,16 +937,137 @@ namespace MonitoringUI.Monitoring
             }
         }
 
-        #region SetData
-        private void SetData(List<_aging_rack_data> data)
+        #region ProcessThreadCallback
+        private void ProcessThreadCallback()
         {
-            if (data.Count == 0) return;
+            try
+            {
+                while (this._TheadVisiable == true)
+                {
+                    GC.Collect();
+
+                    this.Invoke(new MethodInvoker(delegate ()
+                    {
+                        LoadAgingRackData(AgingTab.SelectedIndex).GetAwaiter().GetResult();
+                        LoadAgingRackCount(AgingTab.SelectedIndex).GetAwaiter().GetResult();
+                    }));
+
+                    Thread.Sleep(5000);
+                }
+            }
+            catch (Exception ex)
+            {
+                // System Debug
+                System.Diagnostics.Debug.Print(string.Format("### Aging ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+            }
+        }
+        #endregion
+
+        #region LoadAgingRackData
+        private async Task LoadAgingRackData(int selectedTabIndex = 0)
+        {
+            try
+            {
+                RESTClient rest = new RESTClient();
+                // Set Query
+                StringBuilder strSQL = new StringBuilder();
+
+                // Rack 정보
+                strSQL.Append(" SELECT aging_type, line, lane, rack_id, tray_id, tray_id_2, status, process_no, fire_status, use_flag");
+                strSQL.Append(" FROM fms_v.tb_mst_aging");
+                //필수값
+                strSQL.Append($" WHERE aging_type = '{_AgingType}' AND line = '{_AgingLine}'");
+
+                var jsonResult = await rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+
+                if (jsonResult != null)
+                {
+                    _jsonAgingRackDataResponse result = rest.ConvertAgingRackData(jsonResult);
+
+                    if (result != null)
+                    {
+                        SetData(result.DATA, selectedTabIndex);
+                    }
+                    else
+                    {
+                        string log = "AgingRackData : REST result is null";
+                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                    }
+                }
+                else
+                {
+                    string log = "AgingRackData : jsonResult is null";
+                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(string.Format("[Exception:LoadAgingRackData] {0}", ex.ToString()));
+            }
+        }
+        #endregion
+
+        #region LoadAgingRackCount
+        private async Task LoadAgingRackCount(int selectedTabIndex = 0)
+        {
+            try
+            {
+                RESTClient rest = new RESTClient();
+                // Set Query
+                StringBuilder strSQL = new StringBuilder();
+
+                //// Tray Count 정보
+                strSQL.Append(" SELECT COUNT(aging_type) AS total_rack_cnt,");
+                strSQL.Append("        COUNT(if(status = 'F', tray_cnt, null)) AS in_aging,");
+                strSQL.Append("        COUNT(if(status = 'E', tray_cnt, null)) AS empty_rack,");
+                strSQL.Append("        COUNT(if(status = 'U', status, null)) AS unloading_rack,");
+                strSQL.Append("        COUNT(if(status = 'X', status, null)) AS no_input_rack,");
+                strSQL.Append("        COUNT(if(status = 'O', status, null)) AS no_output_rack,");
+                strSQL.Append("        COUNT(if(status = 'B', status, null)) AS bad_rack,");
+                strSQL.Append("        COUNT(if(status = 'T', status, null)) AS total_trouble");
+                strSQL.Append(" FROM fms_v.tb_mst_aging");
+                //필수값
+                strSQL.Append($" WHERE aging_type = '{_AgingType}' AND line = '{_AgingLine}'");
+
+                var jsonResult = await rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+
+                if (jsonResult != null)
+                {
+                    _jsonAgingRackCountResponse result = rest.ConvertAgingRackCount(jsonResult);
+
+                    if (result != null)
+                    {
+                        SetData(result.DATA, selectedTabIndex);
+                    }
+                    else
+                    {
+                        string log = "AgingRackCount : REST result is null";
+                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                    }
+                }
+                else
+                {
+                    string log = "AgingRackCount : jsonResult is null";
+                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(string.Format("[Exception:LoadAgingRackCount(Aging)] {0}", ex.ToString()));
+            }
+        }
+        #endregion
+
+        #region SetData
+        private void SetData(List<_aging_rack_data> data, int selectedIndex)
+        {
+            if (data == null && data.Count == 0) return;
 
             Dictionary<string, List<_aging_rack_data>> rackData = new Dictionary<string, List<_aging_rack_data>>();
 
             foreach (var item in data)
             {
-                string rackId = string.Format($"{item.AGING_TYPE}T{item.LINE}{item.LANE}");
+                string rackId = string.Format($"{item.AGING_TYPE}{item.LINE}{item.LANE}");
                 if (rackData.ContainsKey(rackId))
                 {
                     rackData[rackId].Add(item);
@@ -954,48 +1078,33 @@ namespace MonitoringUI.Monitoring
                 }
             }
 
-            int selectedIndex = AgingTab.SelectedIndex;
-
             switch (selectedIndex)
             {
                 case 0:
-                    //ht011.SetData(rackData["HT011"], _EqpStatus);
-                    //ht012.SetData(rackData["HT012"], _EqpStatus);
-                    //ht013.SetData(rackData["HT013"], _EqpStatus);
-                    //ht014.SetData(rackData["HT014"], _EqpStatus);
-                    this.BeginInvoke(new Action(() => ht011.SetData(rackData["HT011"], _EqpStatus)));
-                    this.BeginInvoke(new Action(() => ht012.SetData(rackData["HT012"], _EqpStatus)));
-                    this.BeginInvoke(new Action(() => ht013.SetData(rackData["HT013"], _EqpStatus)));
-                    this.BeginInvoke(new Action(() => ht014.SetData(rackData["HT014"], _EqpStatus)));
+                    ht011.SetData(rackData[ht011.LinePrefix], _RackStatus);
+                    ht012.SetData(rackData[ht012.LinePrefix], _RackStatus);
+                    ht013.SetData(rackData[ht013.LinePrefix], _RackStatus);
+                    ht014.SetData(rackData[ht014.LinePrefix], _RackStatus);
                     break;
                 case 1:
-                    //lt011.SetData(rackData["LT011"], _EqpStatus);
-                    //lt012.SetData(rackData["LT012"], _EqpStatus);
-                    //lt013.SetData(rackData["LT013"], _EqpStatus);
-                    //lt014.SetData(rackData["LT014"], _EqpStatus);
-                    this.BeginInvoke(new Action(() => lt011.SetData(rackData["LT011"], _EqpStatus)));
-                    this.BeginInvoke(new Action(() => lt012.SetData(rackData["LT012"], _EqpStatus)));
-                    this.BeginInvoke(new Action(() => lt013.SetData(rackData["LT013"], _EqpStatus)));
-                    this.BeginInvoke(new Action(() => lt014.SetData(rackData["LT014"], _EqpStatus)));
+                    lt011.SetData(rackData[lt011.LinePrefix], _RackStatus);
+                    lt012.SetData(rackData[lt012.LinePrefix], _RackStatus);
+                    lt013.SetData(rackData[lt013.LinePrefix], _RackStatus);
+                    lt014.SetData(rackData[lt014.LinePrefix], _RackStatus);
                     break;
                 case 2:
-                    //lt021.SetData(rackData["LT021"], _EqpStatus);
-                    //lt022.SetData(rackData["LT022"], _EqpStatus);
-                    //lt023.SetData(rackData["LT023"], _EqpStatus);
-                    //lt024.SetData(rackData["LT024"], _EqpStatus);
-                    this.BeginInvoke(new Action(() => lt021.SetData(rackData["LT021"], _EqpStatus)));
-                    this.BeginInvoke(new Action(() => lt022.SetData(rackData["LT022"], _EqpStatus)));
-                    this.BeginInvoke(new Action(() => lt023.SetData(rackData["LT023"], _EqpStatus)));
-                    this.BeginInvoke(new Action(() => lt024.SetData(rackData["LT024"], _EqpStatus)));
+                    lt021.SetData(rackData[lt021.LinePrefix], _RackStatus);
+                    lt022.SetData(rackData[lt022.LinePrefix], _RackStatus);
+                    lt023.SetData(rackData[lt023.LinePrefix], _RackStatus);
+                    lt024.SetData(rackData[lt024.LinePrefix], _RackStatus);
                     break;
             }
         }
 
-        private void SetData(List<_aging_rack_count> data)
+        private void SetData(List<_aging_rack_count> data, int selectedIndex)
         {
-            if (data.Count == 0) return;
+            if (data == null && data.Count == 0) return;
 
-            int selectedIndex = AgingTab.SelectedIndex;
             CtrlDataGridView gridRackCount = new CtrlDataGridView();
 
             switch (selectedIndex)
@@ -1023,137 +1132,7 @@ namespace MonitoringUI.Monitoring
         }
         #endregion
 
-        #region ProcessThreadCallback
-        private void ProcessThreadCallback()
-        {
-            try
-            {
-
-                while (this._TheadVisiable == true)
-                {
-                    GC.Collect();
-
-                    //Task task = LoadAgingRackData();
-
-                    RESTClient rest = new RESTClient();
-                    // Set Query
-                    StringBuilder strSQL = new StringBuilder();
-
-                    // Rack 정보
-                    strSQL.Append(" SELECT aging_type, line, lane, rack_id, tray_id, tray_id_2, status, process_no, fire_status, use_flag");
-                    strSQL.Append(" FROM fms_v.tb_mst_aging");
-                    //필수값
-                    strSQL.Append($" WHERE aging_type = '{_AgingType}' AND line = '{_AgingLine}'");
-
-                    var jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
-
-                    if (jsonResult != null)
-                    {
-                        _jsonAgingRackDataResponse result = rest.ConvertAgingRackData(jsonResult.Result);
-
-                        if (result != null)
-                        {
-                            this.BeginInvoke(new Action(() => SetData(result.DATA)));
-                        }
-                        else
-                        {
-                            string log = "AgingRackData : REST result is null";
-                            _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
-                        }
-                    }
-                    else
-                    {
-                        string log = "AgingRackData : jsonResult is null";
-                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
-                    }
-
-                    Thread.Sleep(100);
-
-                    rest = new RESTClient();
-                    // Set Query
-                    strSQL = new StringBuilder();
-                    // Tray Count 정보
-                    strSQL.Append(" SELECT COUNT(aging_type) AS total_rack_cnt,");
-                    strSQL.Append("        COUNT(if(status = 'F', tray_cnt, null)) AS in_aging,");
-                    strSQL.Append("        COUNT(if(status = 'E', tray_cnt, null)) AS empty_rack,");
-                    strSQL.Append("        COUNT(if(status = 'U', status, null)) AS unloading_rack,");
-                    strSQL.Append("        COUNT(if(status = 'X', status, null)) AS no_input_rack,");
-                    strSQL.Append("        COUNT(if(status = 'O', status, null)) AS no_output_rack,");
-                    strSQL.Append("        COUNT(if(status = 'B', status, null)) AS bad_rack,");
-                    strSQL.Append("        COUNT(if(status = 'T', status, null)) AS total_trouble");
-                    strSQL.Append(" FROM fms_v.tb_mst_aging");
-                    //필수값
-                    strSQL.Append($" WHERE aging_type = '{_AgingType}' AND line = '{_AgingLine}'");
-
-                    jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
-
-                    if (jsonResult != null)
-                    {
-                        _jsonAgingRackCountResponse result = rest.ConvertAgingRackCount(jsonResult.Result);
-
-                        if (result != null)
-                        {
-                            this.BeginInvoke(new Action(() => SetData(result.DATA)));
-                        }
-                        else
-                        {
-                            string log = "AgingRackCount : REST result is null";
-                            _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
-                        }
-                    }
-                    else
-                    {
-                        string log = "AgingRackCount : jsonResult is null";
-                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
-                    }
-
-                    Thread.Sleep(3000);
-                }
-            }
-            catch (Exception ex)
-            {
-                // System Debug
-                System.Diagnostics.Debug.Print(string.Format("### Aging ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
-            }
-        }
-        #endregion
-
-        private void selectTable(string connectionAddress)
-        {
-            try
-            {
-                //using (MySqlConnection mysql = new MySqlConnection(connectionAddress))
-                //{
-                //    _mysql.Open();
-
-                //    string where = string.Format("unit_id LIKE '{0}%'", ht011.LinePrefix);
-                //    string orderby = "unit_id ASC";
-
-                //    //accounts_table의 전체 데이터를 조회합니다.            
-                //    string selectQuery = string.Format($"SELECT * FROM fms_v.tb_mst_aging WHERE {where} ORDER BY {orderby}");
-
-                //    MySqlCommand command = new MySqlCommand(selectQuery, _mysql);
-                //    MySqlDataReader table = command.ExecuteReader();
-
-                //    //while (table.Read())
-                //    //{
-                //    //    string unitid = table["unit_id"].ToString();
-                //    //    string trayid1 = table["tray_id_1"].ToString();
-                //    //    string trayid2 = table["tray_id_2"].ToString();
-                //    //}
-
-
-                //    //ht011.SetDataTable(ref table);
-
-                //    table.Close();
-                //}
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message);
-            }
-        }
-
+        #region AgingTab_Click
         private void AgingTab_Click(object sender, EventArgs e)
         {
             CtrlButtonType2 btn = (CtrlButtonType2)sender;
@@ -1190,8 +1169,16 @@ namespace MonitoringUI.Monitoring
                     _AgingLine = "02";
                     break;
                 default:
+                    _AgingType = "H";
+                    _AgingLine = "01";
                     break;
             }
+        }
+        #endregion
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //updateTable();
         }
     }
 }

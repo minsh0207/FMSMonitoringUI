@@ -46,6 +46,7 @@
             // lbColor
             // 
             this.lbColor.BackColor = System.Drawing.Color.Red;
+            this.lbColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbColor.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbColor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(238)))), ((int)(((byte)(244)))));
             this.lbColor.Location = new System.Drawing.Point(5, 5);

@@ -5,8 +5,10 @@ using MonitoringUI.Controlls;
 using MonitoringUI.Controlls.CButton;
 using MonitoringUI.Controlls.CComboBox;
 using MonitoringUI.Controlls.CDateTime;
+using Novasoft.Logger;
 using OPCUAClientClassLib;
 using Org.BouncyCastle.Asn1.Tsp;
+using RestClientLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -241,6 +243,20 @@ namespace FMSMonitoringUI.Monitoring
             {
                 // System Debug
                 System.Diagnostics.Debug.Print(string.Format("### WinConveyorInfo ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+            }
+        }
+        #endregion
+
+        #region LoadAgingRackSetting
+        private async Task LoadBCRConveyorData()
+        {
+            try
+            {
+                ;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(string.Format("[Exception:LoadBCRConveyorData] {0}", ex.ToString()));
             }
         }
         #endregion

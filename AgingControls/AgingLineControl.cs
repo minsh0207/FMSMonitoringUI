@@ -161,7 +161,7 @@ namespace AgingControls
         #endregion
 
         #region SetData
-        public void SetData(List<_aging_rack_data> data, Dictionary<string, Color> rackColor)
+        public void SetData(List<_aging_rack_data> data, Dictionary<string, KeyValuePair<string, Color>> rackColor)
         {
             foreach (var item in data)
             {
@@ -999,7 +999,7 @@ namespace AgingControls
 
         private void TextDisplay(Graphics gfx, Rectangle border, string str, Brush brFontBrush)
         {
-            using (Font font1 = new Font("Arial", 14, FontStyle.Bold, GraphicsUnit.Pixel))
+            using (Font font1 = new Font("Arial", 11, FontStyle.Bold, GraphicsUnit.Pixel))
             {
                 StringFormat sf = new StringFormat();
                 sf.Alignment = StringAlignment.Center;
@@ -1084,6 +1084,7 @@ namespace AgingControls
             foreach (string tray in trays)
             {
                 // if a trayid is empty or filled with just spaces, ignore it
+                if (tray == null) continue;
                 if (tray.Trim().Length <= 0) continue;
 
 
@@ -1097,7 +1098,7 @@ namespace AgingControls
             }
             //DisplayString = TrayIdCount.ToString();
             //20190409 KJY - TrayID 끝 5자리로 해보자.\
-            int lengthLimit = 5;
+            int lengthLimit = 9;
             if (TrayIdCount < 1)
                 DisplayString = "";
             else
@@ -1117,7 +1118,7 @@ namespace AgingControls
             }
         }
 
-        public void SetData(_aging_rack_data data, Dictionary<string, Color> rackColor)
+        public void SetData(_aging_rack_data data, Dictionary<string, KeyValuePair<string, Color>> rackColor)
         {
             try
             {
@@ -1130,7 +1131,7 @@ namespace AgingControls
 
                 if (data.USE_FLAG == "N")
                 {
-                    c = rackColor["NotUse"];
+                    c = rackColor["NotUse"].Value;
                     bg_color = new SolidBrush(c);
                     fg_color = Brushes.White;
                     DisplayString = "NotUse";
@@ -1142,18 +1143,18 @@ namespace AgingControls
                         case "F":
                             if (data.PROCESS_NO > 0)
                             {
-                                c = rackColor[data.PROCESS_NO + "Aging"];
+                                c = rackColor[data.PROCESS_NO + "A"].Value;
                                 bg_color = new SolidBrush(c);
                             }
                             else
                             {
-                                c = rackColor[data.STATUS];
+                                c = rackColor[data.STATUS].Value;
                                 bg_color = new SolidBrush(c);
                             }
                             break;
 
                         default:
-                            c = rackColor[data.STATUS];
+                            c = rackColor[data.STATUS].Value;
                             bg_color = new SolidBrush(c);
                             break;
                     }

@@ -94,7 +94,7 @@ namespace FMSMonitoringUI.Controlls
         #endregion
 
         #region setData
-        public void SetData(_ctrl_formation_hpc data)
+        public void SetData(_ctrl_formation_hpc data, Color eqpStatus, Color operationMode)
         {
             int nRow = 0;
             TrayInfoView.SetValue(1, nRow, data.TRAY_ID); nRow++;
@@ -102,14 +102,20 @@ namespace FMSMonitoringUI.Controlls
             TrayInfoView.SetValue(1, nRow, GetEqpStatus(data.EQP_STATUS)); nRow++;
             TrayInfoView.SetValue(1, nRow, GetOperationMode(data.OPERATION_MODE)); nRow++;
             TrayInfoView.SetValue(1, nRow, data.PROCESS_NAME); nRow++;
-            TrayInfoView.SetValue(1, nRow, data.START_TIME.ToString()); nRow++;
-            TrayInfoView.SetValue(1, nRow, data.PLAN_TIME.ToString()); nRow++;
-            TrayInfoView.SetValue(1, nRow, data.TEMP_AVG); nRow++;
+            TrayInfoView.SetValue(1, nRow, data.START_TIME.Year == 1 ? "" : data.START_TIME.ToString()); nRow++;
+            TrayInfoView.SetValue(1, nRow, data.PLAN_TIME.Year == 1 ? "" : data.PLAN_TIME.ToString()); nRow++;
+            TrayInfoView.SetValue(1, nRow, data.JIG_AVG); nRow++;
             TrayInfoView.SetValue(1, nRow, data.PRESSURE); nRow++;
             TrayInfoView.SetValue(1, nRow, data.TROUBLE_CODE); nRow++;
             TrayInfoView.SetValue(1, nRow, data.TROUBLE_NAME);
+
+            SetEqpStatus(data.EQP_STATUS, eqpStatus);
+
+            if (data.EQP_STATUS == "R")
+                SetOperationMode(data.OPERATION_MODE, operationMode);
+            else
+                SetOperationMode(data.EQP_STATUS, eqpStatus);
         }
-        #endregion
 
         public void SetEqpStatus(string eqp_status, Color color)
         {
@@ -117,12 +123,17 @@ namespace FMSMonitoringUI.Controlls
             lbEqpStatus.BackColor = color;
         }
 
-        public void SetOperationStatus(string op_status, Color color)
+        public void SetOperationMode(string eqp_status, Color color)
         {
-            lbOPStatus.Text = op_status;
+            lbOPStatus.Text = GetEqpStatus(eqp_status, false);
             lbOPStatus.BackColor = color;
         }
-
+        public void SetOperationMode(int op_status, Color color)
+        {
+            lbOPStatus.Text = GetOperationMode(op_status);
+            lbOPStatus.BackColor = color;
+        }
+        #endregion
 
         #region DataGridView Event
         private void TrayInfoView_MouseCellDoubleClick(int col, int row, object value)
@@ -170,7 +181,7 @@ namespace FMSMonitoringUI.Controlls
         #endregion
 
         #region GetEqpStatus
-        private string GetEqpStatus(string status)
+        private string GetEqpStatus(string status, bool fullString=true)
         {
             string statusName = string.Empty;
 
@@ -201,10 +212,16 @@ namespace FMSMonitoringUI.Controlls
                     statusName = "Loading";
                     break;
                 case "F":
-                    statusName = string.Format($"Fire\r\n(Temperature Alarm Only)");
+                    if (fullString)
+                        statusName = string.Format($"Fire\r\n(Temperature Alarm Only)");
+                    else
+                        statusName = "Fire";                    
                     break;
                 case "F2":
-                    statusName = $"Fire\n(Smoke Only or Both)";
+                    if (fullString)
+                        statusName = string.Format($"Fire\r\n(Smoke Only or Both)");
+                    else
+                        statusName = "Fire2";
                     break;
             }
 

@@ -98,6 +98,7 @@
     <Compile Include="Monitoring\_jsonCtrlFormationCHG.cs" />
     <Compile Include="Monitoring\_jsonEntireEqpList.cs" />
     <Compile Include="Monitoring\_jsonWinFormationHPC.cs" />
+    <Compile Include="Monitoring\_jsonLeadTimeCHG.cs" />
     <Compile Include="Monitoring\_jsonWinLeadTime.cs" />
     <Compile Include="Monitoring\_jsonCellProcessFlow.cs" />
     <Compile Include="Monitoring\_jsonProcessData.cs" />

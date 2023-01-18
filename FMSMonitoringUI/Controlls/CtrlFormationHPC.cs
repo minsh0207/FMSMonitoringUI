@@ -1,9 +1,11 @@
 ﻿using ControlGallery;
 using DBHandler;
 using FMSMonitoringUI.Controlls;
+using FMSMonitoringUI.Controlls.WindowsForms;
 using FormationMonCtrl;
 using MonitoringUI;
 using MonitoringUI.Common;
+using MonitoringUI.Controlls;
 using MySqlX.XDevAPI;
 using Novasoft.Logger;
 using OPCUAClientClassLib;
@@ -18,6 +20,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web.Http.Results;
 using System.Windows.Forms;
 using System.Windows.Forms.Integration;
 
@@ -29,6 +32,12 @@ namespace FMSMonitoringUI
         private Logger _Logger;
 
         private string _EqpID = string.Empty;
+
+        /// <summary>
+        /// string=Eqp Text, Color=Eqp Status Color
+        /// </summary>
+        private Dictionary<string, Color> _EqpStatus = new Dictionary<string, Color>();
+        private Dictionary<int, Color> _OpMode = new Dictionary<int, Color>();
         #endregion
 
         #region Working Thread
@@ -58,10 +67,54 @@ namespace FMSMonitoringUI
             //m_timer.Stop();
         }
 
-        //private void CtrlFormationBox_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        //{
+        #region CtrlFormationHPC Load
+        private void CtrlFormationHPC_Load(object sender, EventArgs e)
+        {
+            InitLanguage();
+        }
+        #endregion
 
-        //}
+        #region CtrlFormation HandleDestroyed
+        private void CtrlFormation_HandleDestroyed(object sender, EventArgs e)
+        {
+            //m_timer.Stop();
+
+            if (this._TheadVisiable && this._ProcessThread.IsAlive)
+                this._TheadVisiable = false;
+
+            if (this._TheadVisiable)
+                this._ProcessThread.Abort();
+        }
+        #endregion
+
+        #region InitLanguage
+        private void InitLanguage()
+        {
+            // CtrlTaggingName 언어 변환 호출
+            foreach (var ctl in this.panel1.Controls)
+            {
+                if (ctl.GetType() == typeof(CtrlTaggingName))
+                {
+                    CtrlTaggingName tagName = ctl as CtrlTaggingName;
+                    tagName.CallLocalLanguage();
+
+                    _EqpStatus.Add(tagName.StatusCode, tagName.TagColor);
+                }
+                else if (ctl.GetType() == typeof(CtrlTaggingNameLong))
+                {
+                    CtrlTaggingNameLong tagName = ctl as CtrlTaggingNameLong;
+                    tagName.CallLocalLanguage();
+
+                    _OpMode.Add(Convert.ToInt16(tagName.StatusCode), tagName.TagColor);
+                }
+                else if (ctl.GetType() == typeof(CtrlLabel))
+                {
+                    CtrlLabel tagName = ctl as CtrlLabel;
+                    tagName.CallLocalLanguage();
+                }
+            }
+        }
+        #endregion
 
         #region ProcessStart
         public void ProcessStart(bool start)
@@ -93,34 +146,7 @@ namespace FMSMonitoringUI
 
         private void InitFormationBox()
         {
-            //ctrlFormationBoxCHG1_01.Name = "F101";
-            //ctrlFormationBoxCHG1_02.Name = "F102";
-            //ctrlFormationBoxCHG1_03.Name = "F103";
-            //ctrlFormationBoxCHG1_04.Name = "F104";
-            //ctrlFormationBoxCHG2_01.Name = "F201";
-            //ctrlFormationBoxCHG2_02.Name = "F202";
-            //ctrlFormationBoxCHG2_03.Name = "F203";
-            //ctrlFormationBoxCHG2_04.Name = "F204";
-            //ctrlFormationBoxCHG3_01.Name = "F301";
-            //ctrlFormationBoxCHG3_02.Name = "F302";
-            //ctrlFormationBoxCHG3_03.Name = "F303";
-            //ctrlFormationBoxCHG3_04.Name = "F304";
-
-            //ctrlFormationBoxCHG1_01.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
-            //ctrlFormationBoxCHG1_02.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
-            //ctrlFormationBoxCHG1_03.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
-            //ctrlFormationBoxCHG1_04.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
-            //ctrlFormationBoxCHG2_01.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
-            //ctrlFormationBoxCHG2_02.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
-            //ctrlFormationBoxCHG2_03.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
-            //ctrlFormationBoxCHG2_04.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
-            //ctrlFormationBoxCHG3_01.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
-            //ctrlFormationBoxCHG3_02.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
-            //ctrlFormationBoxCHG3_03.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
-            //ctrlFormationBoxCHG3_04.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
-
             this.HandleDestroyed += CtrlFormation_HandleDestroyed;
-
         }
 
         private void InitControls()
@@ -136,6 +162,139 @@ namespace FMSMonitoringUI
             if (_EqpID == "") _EqpID = ctrlHPC2.EqpID;
         }
 
+        #region ProcessThreadCallback
+        private void ProcessThreadCallback()
+        {
+            try
+            {
+                while (this._TheadVisiable == true)
+                {
+                    GC.Collect();
+
+                    this.Invoke(new MethodInvoker(delegate ()
+                    {
+                        LoadFormationHPC(_EqpID).GetAwaiter().GetResult();
+                        LoadFormationHPCTemp(_EqpID).GetAwaiter().GetResult();
+                    }));
+
+                    Thread.Sleep(5000);
+                }
+            }
+            catch (Exception ex)
+            {
+                // System Debug
+                System.Diagnostics.Debug.Print(string.Format("### FormationCHG ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+            }
+        }
+        #endregion
+
+        #region LoadFormationHPC
+        private async Task LoadFormationHPC(string eqpid)
+        {
+            try
+            {
+                RESTClient rest = new RESTClient();
+                // Set Query
+                StringBuilder strSQL = new StringBuilder();
+
+                strSQL.Append(" SELECT A.unit_id, A.tray_id, A.eqp_mode, A.eqp_status, A.operation_mode, A.start_time, A.plan_time,");
+                //strSQL.Append($"       B.pressure, B.event_time, ROUND(SUM({GetJigNoString("B")})/{CDefine.DEF_MAX_CELL_COUNT}, 1) as temp_avg,");
+                strSQL.Append("       B.pressure, B.event_time, B.jig_avg,");
+                strSQL.Append("       C.trouble_code, C.trouble_name,");
+                strSQL.Append("       D.process_name");
+                strSQL.Append(" FROM fms_v.tb_mst_eqp   A");
+                strSQL.Append("        LEFT OUTER JOIN fms_v.tb_dat_temp_hpc    B");
+                strSQL.Append("             ON A.eqp_id = B.eqp_id AND B.unit_id = A.unit_id ");
+                strSQL.Append("                 AND B.event_time = (SELECT MAX(event_time) FROM tb_dat_temp_hpc WHERE eqp_id = A.eqp_id AND unit_id = B.unit_id)");
+                strSQL.Append("         LEFT OUTER JOIN fms_v.tb_mst_trouble   C");
+                strSQL.Append("             ON A.eqp_trouble_code = C.trouble_code AND A.eqp_type = C.eqp_type");
+                strSQL.Append("         LEFT OUTER JOIN fms_v.tb_mst_route_order    D");
+                strSQL.Append("             ON A.route_order_no = D.route_order_no");
+                //필수값
+                strSQL.Append($" WHERE A.eqp_id = '{eqpid}'");
+                strSQL.Append("    AND A.unit_id = B.unit_id");
+                strSQL.Append("    AND A.eqp_type = D.eqp_type");
+                strSQL.Append(" GROUP BY A.unit_id");
+
+                var jsonResult = await rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+
+                if (jsonResult != null)
+                {
+                    _jsonCtrlFormationHPCResponse result = rest.ConvertCtrlFormationHPC(jsonResult);
+
+                    if (result != null)
+                    {
+                        //this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                        SetData(result.DATA);
+                    }
+                    else
+                    {
+                        string log = "CtrlFormationHPC : jsonResult is null";
+                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                    }
+                }
+                else
+                {
+                    string log = "CtrlFormationHPC : jsonResult is null";
+                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(string.Format("[Exception:LoadFormationHPC] {0}", ex.ToString()));
+            }
+        }
+        private async Task LoadFormationHPCTemp(string eqpid)
+        {
+            try
+            {
+                RESTClient rest = new RESTClient();
+                // Set Query
+                StringBuilder strSQL = new StringBuilder();
+
+                strSQL.Append(" SELECT A.unit_id, A.tray_id,");
+                strSQL.Append("        B.event_time,");
+                strSQL.Append("        C.cell_no, C.cell_id,");
+                strSQL.Append($"             CASE {GetJigTempString()} END AS temp_jig");
+                strSQL.Append(" FROM fms_v.tb_mst_eqp   A");
+                strSQL.Append("        LEFT OUTER JOIN fms_v.tb_dat_temp_hpc    B");
+                strSQL.Append("             ON A.eqp_id = B.eqp_id AND B.unit_id = A.unit_id ");
+                strSQL.Append("                 AND B.event_time = (SELECT MAX(event_time) FROM tb_dat_temp_hpc WHERE eqp_id = A.eqp_id AND unit_id = B.unit_id)");
+                strSQL.Append("         LEFT OUTER JOIN fms_v.tb_dat_cell   C");
+                strSQL.Append("             ON A.tray_id = C.tray_id");
+                //필수값
+                strSQL.Append($" WHERE A.eqp_id = '{eqpid}'");
+
+                var jsonResult = await rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+
+                if (jsonResult != null)
+                {
+                    _jsonCtrlFormationHPCTempResponse result = rest.ConvertCtrlFormationHPCTemp(jsonResult);
+
+                    if (result != null)
+                    {
+                        //this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                        SetData(result.DATA);
+                    }
+                    else
+                    {
+                        string log = "CtrlFormationHPCTemp : jsonResult is null";
+                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                    }
+                }
+                else
+                {
+                    string log = "CtrlFormationHPCTemp : jsonResult is null";
+                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(string.Format("[Exception:LoadFormationHPCTemp] {0}", ex.ToString()));
+            }
+        }
+        #endregion
+
         #region SetData
         public void SetData(List<_ctrl_formation_hpc> data)
         {
@@ -146,7 +305,7 @@ namespace FMSMonitoringUI
                 if (_ListHPC.ContainsKey(data[i].UNIT_ID))
                 {
                     CtrlHPC hpc = _ListHPC[data[i].UNIT_ID];
-                    hpc.SetData(data[i]);
+                    hpc.SetData(data[i], _EqpStatus[data[i].EQP_STATUS], _OpMode[data[i].OPERATION_MODE]);
                 }
             }
         }
@@ -159,115 +318,12 @@ namespace FMSMonitoringUI
         }
         #endregion
 
-        #region ProcessThreadCallback
-        private void ProcessThreadCallback()
-        {
-            try
-            {
-                while (this._TheadVisiable == true)
-                {
-                    GC.Collect();
-
-                    RESTClient rest = new RESTClient();
-                    // Set Query
-                    StringBuilder strSQL = new StringBuilder();
-
-                    strSQL.Append(" SELECT A.unit_id, A.tray_id, A.eqp_mode, A.eqp_status, A.operation_mode, A.start_time, A.plan_time,");
-                    //strSQL.Append($"       B.pressure, B.event_time, ROUND(SUM({GetJigNoString("B")})/{CDefine.DEF_MAX_CELL_COUNT}, 1) as temp_avg,");
-                    strSQL.Append("       B.pressure, B.event_time,");
-                    strSQL.Append("       C.trouble_code, C.trouble_name,");
-                    strSQL.Append("       D.process_name");
-                    strSQL.Append(" FROM fms_v.tb_mst_eqp   A");
-                    strSQL.Append("        LEFT OUTER JOIN fms_v.tb_dat_temp_hpc    B");
-                    strSQL.Append("             ON A.eqp_id = B.eqp_id AND B.unit_id = A.unit_id ");
-                    strSQL.Append("                 AND B.event_time = (SELECT MAX(event_time) FROM tb_dat_temp_hpc WHERE eqp_id = A.eqp_id AND unit_id = B.unit_id)");
-                    strSQL.Append("         LEFT OUTER JOIN fms_v.tb_mst_trouble   C");
-                    strSQL.Append("             ON A.eqp_trouble_code = C.trouble_code AND A.eqp_type = C.eqp_type");
-                    strSQL.Append("         LEFT OUTER JOIN fms_v.tb_mst_route_order    D");
-                    strSQL.Append("             ON A.route_order_no = D.route_order_no");
-                    //필수값
-                    strSQL.Append($" WHERE A.eqp_id = '{_EqpID}'");
-                    strSQL.Append("    AND A.unit_id = B.unit_id");
-                    strSQL.Append("    AND A.eqp_type = D.eqp_type");
-                    strSQL.Append(" GROUP BY A.unit_id");
-
-                    var jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
-
-                    if (jsonResult != null)
-                    {
-                        _jsonCtrlFormationHPCResponse result = rest.ConvertCtrlFormationHPC(jsonResult.Result);
-
-                        if (result != null)
-                        {
-                            this.BeginInvoke(new Action(() => SetData(result.DATA)));
-                        }
-                        else
-                        {
-                            string log = "CtrlFormationHPC : jsonResult is null";
-                            _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
-                        }
-                    }
-                    else
-                    {
-                        string log = "CtrlFormationHPC : jsonResult is null";
-                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
-                    }
-
-                    Thread.Sleep(100);
-
-                    // Cell ID별 온도
-                    strSQL = new StringBuilder();
-
-                    strSQL.Append(" SELECT A.unit_id, A.tray_id,");
-                    strSQL.Append("        B.event_time,");
-                    strSQL.Append("        C.cell_no, C.cell_id,");
-                    strSQL.Append($"             CASE {GetJigTempString()} END AS temp_jig");
-                    strSQL.Append(" FROM fms_v.tb_mst_eqp   A");
-                    strSQL.Append("        LEFT OUTER JOIN fms_v.tb_dat_temp_hpc    B");
-                    strSQL.Append("             ON A.eqp_id = B.eqp_id AND B.unit_id = A.unit_id ");
-                    strSQL.Append("                 AND B.event_time = (SELECT MAX(event_time) FROM tb_dat_temp_hpc WHERE eqp_id = A.eqp_id AND unit_id = B.unit_id)");
-                    strSQL.Append("         LEFT OUTER JOIN fms_v.tb_dat_cell   C");
-                    strSQL.Append("             ON A.tray_id = C.tray_id");
-                    //필수값
-                    strSQL.Append($" WHERE A.eqp_id = '{_EqpID}'");
-
-                    jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
-
-                    if (jsonResult != null)
-                    {
-                        _jsonCtrlFormationHPCTempResponse result = rest.ConvertCtrlFormationHPCTemp(jsonResult.Result);
-
-                        if (result != null)
-                        {
-                            this.BeginInvoke(new Action(() => SetData(result.DATA)));
-                        }
-                        else
-                        {
-                            string log = "CtrlFormationHPCTemp : jsonResult is null";
-                            _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
-                        }
-                    }
-                    else
-                    {
-                        string log = "CtrlFormationHPCTemp : jsonResult is null";
-                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
-                    }
-
-                    Thread.Sleep(3000);
-                }
-            }
-            catch (Exception ex)
-            {
-                // System Debug
-                System.Diagnostics.Debug.Print(string.Format("### FormationCHG ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
-            }
-        }
-        #endregion
-
         private void Charger_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            
+            ;
         }
+
+
 
         //public static CtrlFormationBoxCHG FindByName(Control root, string strName)
         //{
@@ -428,10 +484,7 @@ namespace FMSMonitoringUI
         //    }
         //}
 
-        private void CtrlFormation_HandleDestroyed(object sender, EventArgs e)
-        {
-            //m_timer.Stop();
-        }
+        
 
         private async Task LoadChargerRackData()
         {
@@ -519,5 +572,7 @@ namespace FMSMonitoringUI
 
             return strJIGNo.ToString();
         }
+
+        
     }
 }

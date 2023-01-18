@@ -16,8 +16,8 @@ namespace RestClientLib
 {
     public partial class RESTClient : IDisposable
     {
-        private Logger _Logger;
-        
+        //private Logger _Logger;
+
         static HttpClient httpClient = null;
 
         public RESTClient()
@@ -26,15 +26,15 @@ namespace RestClientLib
 
             ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
 
-            //httpClient.BaseAddress = new Uri("https://210.91.148.176:30011/");
-            httpClient.BaseAddress = new Uri("http://localhost:30001/");
+            httpClient.BaseAddress = new Uri("https://210.91.148.176:30011/");
+            //httpClient.BaseAddress = new Uri("http://localhost:30001/");
 
 
             httpClient.DefaultRequestHeaders.Accept.Clear();
             httpClient.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
 
-            _Logger = new Logger(CRestModulePath.LOG_PATH, LogMode.Hour);
+            //_Logger = new Logger(CRestModulePath.LOG_PATH, LogMode.Hour);
         }
         public async Task<string> GetJson(enActionType actionID, object RequestBody)
         {

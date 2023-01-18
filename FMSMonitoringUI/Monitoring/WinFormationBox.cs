@@ -141,6 +141,84 @@ namespace FMSMonitoringUI.Monitoring
             gridTrayInfo.ColumnHeadersWidth(0, 140);
         }
 
+        #region ProcessThreadCallback
+        private void ProcessThreadCallback()
+        {
+            try
+            {
+                //while (this._TheadVisiable == true)
+                {
+                    GC.Collect();
+
+                    this.Invoke(new MethodInvoker(delegate ()
+                    {
+                        LoadFormationBox(_UnitID).GetAwaiter().GetResult();
+                    }));
+
+                    //Thread.Sleep(3000);
+                }
+            }
+            catch (Exception ex)
+            {
+                // System Debug
+                System.Diagnostics.Debug.Print(string.Format("### WinFormationBox ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+            }
+        }
+        #endregion
+
+        #region LoadFormationBox
+        private async Task LoadFormationBox(string unitid)
+        {
+            try
+            {
+                RESTClient rest = new RESTClient();
+                // Set Query
+                StringBuilder strSQL = new StringBuilder();
+
+                strSQL.Append(" SELECT A.unit_id, A.eqp_name, A.operation_mode, A.eqp_status, A.process_status, A.eqp_trouble_code,C.tray_id, IF(A.tray_id = C.tray_id, '1', '2') AS level,");
+                strSQL.Append("        B.trouble_name,");
+                strSQL.Append("        C.tray_input_time, C.tray_zone, C.model_id, C.route_id, C.recipe_id, C.start_time, C.plan_time, C.current_cell_cnt,");
+                strSQL.Append("        D.process_name");
+                strSQL.Append(" FROM fms_v.tb_mst_eqp   A");
+                strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_trouble    B");
+                strSQL.Append("         ON A.eqp_trouble_code = B.trouble_code AND A.eqp_type = B.eqp_type");
+                strSQL.Append("     LEFT OUTER JOIN fms_v.tb_dat_tray   C");
+                strSQL.Append("         ON C.tray_id IN (A.tray_id, A.tray_id_2)");
+                strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_route_order    D");
+                strSQL.Append("         ON A.route_order_no = D.route_order_no AND C.route_id = D.route_id");
+                //필수값
+                strSQL.Append($" WHERE A.unit_id = '{unitid}'");
+
+                var jsonResult = await rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+
+                if (jsonResult != null)
+                {
+                    _jsonWinFormationBoxResponse result = rest.ConvertWinFormationBox(jsonResult);
+
+                    if (result != null)
+                    {
+                        //this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                        SetData(result.DATA);
+                    }
+                    else
+                    {
+                        string log = "WinFormationBox : jsonResult is null";
+                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                    }
+                }
+                else
+                {
+                    string log = "WinFormationBox : jsonResult is null";
+                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(string.Format("[Exception:LoadFormationBox] {0}", ex.ToString()));
+            }
+        }
+        #endregion
+
         #region SetData
         public void SetData(List<_win_formation_box> data)
         {
@@ -171,68 +249,8 @@ namespace FMSMonitoringUI.Monitoring
                 gridTrayInfo.SetValue(i + 1, row, data[i].ROUTE_ID); row++;
                 gridTrayInfo.SetValue(i + 1, row, data[i].RECIPE_ID); row++;
                 gridTrayInfo.SetValue(i + 1, row, data[i].PROCESS_NAME); row++;
-                gridTrayInfo.SetValue(i + 1, row, data[i].START_TIME); row++;
+                gridTrayInfo.SetValue(i + 1, row, data[i].START_TIME.Year == 1 ? "" : data[i].START_TIME.ToString()); row++;
                 gridTrayInfo.SetValue(i + 1, row, data[i].PLAN_TIME); row++;
-            }
-        }
-        #endregion
-
-        #region ProcessThreadCallback
-        private void ProcessThreadCallback()
-        {
-            try
-            {
-                //while (this._TheadVisiable == true)
-                {
-                    GC.Collect();
-
-                    RESTClient rest = new RESTClient();
-                    // Set Query
-                    StringBuilder strSQL = new StringBuilder();
-
-                    strSQL.Append(" SELECT A.unit_id, A.eqp_name, A.operation_mode, A.eqp_status, A.process_status, A.eqp_trouble_code,C.tray_id, IF(A.tray_id = C.tray_id, '1', '2') AS level,");
-                    strSQL.Append("        B.trouble_name,");
-                    strSQL.Append("        C.tray_input_time, C.tray_zone, C.model_id, C.route_id, C.recipe_id, C.start_time, C.plan_time, C.current_cell_cnt,");
-                    strSQL.Append("        D.process_name");
-                    strSQL.Append(" FROM fms_v.tb_mst_eqp   A");
-                    strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_trouble    B");
-                    strSQL.Append("         ON A.eqp_trouble_code = B.trouble_code AND A.eqp_type = B.eqp_type");
-                    strSQL.Append("     LEFT OUTER JOIN fms_v.tb_dat_tray   C");
-                    strSQL.Append("         ON C.tray_id IN (A.tray_id, A.tray_id_2)");
-                    strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_route_order    D");
-                    strSQL.Append("         ON A.route_order_no = D.route_order_no AND C.route_id = D.route_id");
-                    //필수값
-                    strSQL.Append($" WHERE A.unit_id = '{_UnitID}'");
-
-                    var jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
-
-                    if (jsonResult != null)
-                    {
-                        _jsonWinFormationBoxResponse result = rest.ConvertWinFormationBox(jsonResult.Result);
-
-                        if (result != null)
-                        {
-                            this.BeginInvoke(new Action(() => SetData(result.DATA)));
-                        }
-                        else
-                        {
-                            string log = "WinFormationBox : jsonResult is null";
-                            _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
-                        }
-                    }
-                    else
-                    {
-                        string log = "WinFormationBox : jsonResult is null";
-                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
-                    }
-
-                    //Thread.Sleep(3000);
-                }
-            }
-            catch (Exception ex)
-            {
-                // System Debug
-                System.Diagnostics.Debug.Print(string.Format("### WinFormationBox ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
             }
         }
         #endregion

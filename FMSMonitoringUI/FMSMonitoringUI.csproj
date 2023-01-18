@@ -184,6 +184,12 @@
     <Compile Include="Controlls\CtrlHPCTemp.Designer.cs">
       <DependentUpon>CtrlHPCTemp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controlls\NormalDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controlls\NormalDataGridView.Designer.cs">
+      <DependentUpon>NormalDataGridView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controlls\WindowsForms\CtrlButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -616,18 +622,6 @@
     <Compile Include="Controlls\CtrlDataGridView.Designer.cs">
       <DependentUpon>CtrlDataGridView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controlls\KosiDataGridView.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controlls\KosiDataGridView.Designer.cs">
-      <DependentUpon>KosiDataGridView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\NormalDataGridView.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controlls\NormalDataGridView.Designer.cs">
-      <DependentUpon>NormalDataGridView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controlls\StatusAndData.cs" />
     <Compile Include="Controlls\CtrlTrayInfoView.cs">
       <SubType>UserControl</SubType>
@@ -737,12 +731,6 @@
     <Compile Include="Monitoring\WinCellInfo.Designer.cs">
       <DependentUpon>WinCellInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Monitoring\WinLeadTime_old.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Monitoring\WinLeadTime_old.Designer.cs">
-      <DependentUpon>WinLeadTime_old.cs</DependentUpon>
-    </Compile>
     <Compile Include="Monitoring\WinCraneInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -821,6 +809,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controlls\CtrlHPCTemp.resx">
       <DependentUpon>CtrlHPCTemp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controlls\NormalDataGridView.resx">
+      <DependentUpon>NormalDataGridView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controlls\WindowsForms\CtrlButton.resx">
       <DependentUpon>CtrlButton.cs</DependentUpon>
@@ -1029,12 +1020,6 @@
     <EmbeddedResource Include="Controlls\CtrlTitleSubBar.resx">
       <DependentUpon>CtrlTitleSubBar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\KosiDataGridView.resx">
-      <DependentUpon>KosiDataGridView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\NormalDataGridView.resx">
-      <DependentUpon>NormalDataGridView.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Controlls\UserControlEqp.resx">
       <DependentUpon>UserControlEqp.cs</DependentUpon>
     </EmbeddedResource>
@@ -1091,9 +1076,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Monitoring\WinCellInfo.resx">
       <DependentUpon>WinCellInfo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Monitoring\WinLeadTime_old.resx">
-      <DependentUpon>WinLeadTime_old.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Monitoring\WinCraneInfo.resx">
       <DependentUpon>WinCraneInfo.cs</DependentUpon>

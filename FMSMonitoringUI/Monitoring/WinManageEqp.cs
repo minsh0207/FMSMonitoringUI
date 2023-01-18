@@ -181,8 +181,8 @@ namespace FMSMonitoringUI.Monitoring
                 gridTrayInfo.SetValue(i + 1, row, data[i].ROUTE_ID); row++;
                 gridTrayInfo.SetValue(i + 1, row, data[i].LOT_ID); row++;
                 gridTrayInfo.SetValue(i + 1, row, data[i].PROCESS_NAME); row++;
-                gridTrayInfo.SetValue(i + 1, row, data[i].START_TIME); row++;
-                gridTrayInfo.SetValue(i + 1, row, data[i].PLAN_TIME); row++;
+                gridTrayInfo.SetValue(i + 1, row, data[i].START_TIME.Year == 1 ? "" : data[i].START_TIME.ToString()); row++;
+                gridTrayInfo.SetValue(i + 1, row, data[i].PLAN_TIME.Year == 1 ? "" : data[i].PLAN_TIME.ToString()); row++;
                 gridTrayInfo.SetValue(i + 1, row, data[i].CURRENT_CELL_CNT);
             }
         }
@@ -197,53 +197,10 @@ namespace FMSMonitoringUI.Monitoring
                 {
                     GC.Collect();
 
-                    RESTClient rest = new RESTClient();
-                    // Set Query
-                    StringBuilder strSQL = new StringBuilder();
-
-                    strSQL.Append(" SELECT A.eqp_id, A.eqp_name, A.eqp_mode, A.operation_mode, A.eqp_status, A.eqp_trouble_code,C.tray_id, IF(A.tray_id = C.tray_id, '1', '2') AS level,");
-                    strSQL.Append("        B.trouble_code, B.trouble_name,");
-                    strSQL.Append("        C.tray_input_time, C.tray_zone, C.model_id, C.route_id, C.lot_id, C.start_time, C.plan_time, C.current_cell_cnt,");
-                    strSQL.Append("        D.process_name");
-                    strSQL.Append(" FROM fms_v.tb_mst_eqp   A");
-                    strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_trouble    B");
-                    strSQL.Append("         ON A.eqp_trouble_code = B.trouble_code AND A.eqp_type = B.eqp_type");
-                    strSQL.Append("     LEFT OUTER JOIN fms_v.tb_dat_tray   C");
-                    strSQL.Append("         ON C.tray_id IN (A.tray_id, A.tray_id_2)");
-                    strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_route_order    D");
-                    strSQL.Append("         ON A.route_order_no = D.route_order_no AND C.route_id = D.route_id");
-                    //필수값
-                    if (_EqpType == "HPC")
+                    this.Invoke(new MethodInvoker(delegate ()
                     {
-                        strSQL.Append($" WHERE A.unit_id = '{_UnitID}'");
-                        strSQL.Append($"    AND (A.eqp_type = '{_EqpType}' AND A.unit_id IS NOT NULL)");
-                    }
-                    else
-                    {
-                        strSQL.Append($" WHERE A.eqp_id = '{_EqpID}'");
-                    }
-
-                    var jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
-
-                    if (jsonResult != null)
-                    {
-                        _jsonWinManageEqpResponse result = rest.ConvertWinManageEqp(jsonResult.Result);
-
-                        if (result != null)
-                        {
-                            this.BeginInvoke(new Action(() => SetData(result.DATA)));
-                        }
-                        else
-                        {
-                            string log = "WinManageEqp : jsonResult is null";
-                            _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
-                        }
-                    }
-                    else
-                    {
-                        string log = "WinManageEqp : jsonResult is null";
-                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
-                    }
+                        LoadWinManageEqp(_EqpID, _EqpType, _UnitID).GetAwaiter().GetResult();
+                    }));
 
                     //Thread.Sleep(3000);
                 }
@@ -252,6 +209,67 @@ namespace FMSMonitoringUI.Monitoring
             {
                 // System Debug
                 System.Diagnostics.Debug.Print(string.Format("### WInManageEqp ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+            }
+        }
+        #endregion
+
+        #region LoadEntireEqpList
+        private async Task LoadWinManageEqp(string eqpid, string eqptype, string unitid)
+        {
+            try
+            {
+                RESTClient rest = new RESTClient();
+                // Set Query
+                StringBuilder strSQL = new StringBuilder();
+
+                strSQL.Append(" SELECT A.eqp_id, A.eqp_name, A.eqp_mode, A.operation_mode, A.eqp_status, A.eqp_trouble_code,C.tray_id, IF(A.tray_id = C.tray_id, '1', '2') AS level,");
+                strSQL.Append("        B.trouble_code, B.trouble_name,");
+                strSQL.Append("        C.tray_input_time, C.tray_zone, C.model_id, C.route_id, C.lot_id, C.start_time, C.plan_time, C.current_cell_cnt,");
+                strSQL.Append("        D.process_name");
+                strSQL.Append(" FROM fms_v.tb_mst_eqp   A");
+                strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_trouble    B");
+                strSQL.Append("         ON A.eqp_trouble_code = B.trouble_code AND A.eqp_type = B.eqp_type");
+                strSQL.Append("     LEFT OUTER JOIN fms_v.tb_dat_tray   C");
+                strSQL.Append("         ON C.tray_id IN (A.tray_id, A.tray_id_2)");
+                strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_route_order    D");
+                strSQL.Append("         ON A.route_order_no = D.route_order_no AND C.route_id = D.route_id");
+                //필수값
+                if (eqptype == "HPC")
+                {
+                    strSQL.Append($" WHERE A.unit_id = '{unitid}'");
+                    strSQL.Append($"    AND (A.eqp_type = '{eqptype}' AND A.unit_id IS NOT NULL)");
+                }
+                else
+                {
+                    strSQL.Append($" WHERE A.eqp_id = '{eqpid}'");
+                }
+
+                var jsonResult = await rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+
+                if (jsonResult != null)
+                {
+                    _jsonWinManageEqpResponse result = rest.ConvertWinManageEqp(jsonResult);
+
+                    if (result != null)
+                    {
+                        //this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                        SetData(result.DATA);
+                    }
+                    else
+                    {
+                        string log = "WinManageEqp : jsonResult is null";
+                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                    }
+                }
+                else
+                {
+                    string log = "WinManageEqp : jsonResult is null";
+                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(string.Format("[Exception:LoadWinManageEqp] {0}", ex.ToString()));
             }
         }
         #endregion
@@ -364,7 +382,7 @@ namespace FMSMonitoringUI.Monitoring
                     statusName = string.Format($"Fire\r\n(Temperature Alarm Only)");
                     break;
                 case "F2":
-                    statusName = $"Fire\n(Smoke Only or Both)";
+                    statusName = string.Format($"Fire\r\n(Smoke Only or Both)");
                     break;
             }
 

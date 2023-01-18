@@ -183,11 +183,11 @@ namespace RestClientLib
         public string CELL_ID { get; set; }
         public string TRAY_ID { get; set; }
         public int CELL_NO { get; set; }
-        public string TRAY_INPUT_TIME { get; set; }
+        public DateTime TRAY_INPUT_TIME { get; set; }
         public string TRAY_INPUT_EQP_ID { get; set; }
         public string PREV_TRAY_ID { get; set; }
         public int PREV_CELL_NO { get; set; }
-        public string PREV_TRAY_INPUT_TIME { get; set; }
+        public DateTime PREV_TRAY_INPUT_TIME { get; set; }
         public string PREV_TRAY_INPUT_EQP_ID { get; set; }
         public string GRADE { get; set; }
         public string GRADE_CODE { get; set; }
@@ -209,25 +209,25 @@ namespace RestClientLib
         public string PROCESS_TYPE { get; set; }
         public int PROCESS_NO { get; set; }
         public int STEP_NO { get; set; }
-        public string START_TIME { get; set; }
-        public string END_TIME { get; set; }
+        public DateTime START_TIME { get; set; }
+        public DateTime END_TIME { get; set; }
         public string REWORK_FLAG { get; set; }
-        public string REWORK_TIME { get; set; }
+        public DateTime REWORK_TIME { get; set; }
         public string REWORK_EQP_ID { get; set; }
         public string REWORK_UNIT_ID { get; set; }
         public string FIRE_FLAG { get; set; }
-        public string FIRE_TIME { get; set; }
+        public DateTime FIRE_TIME { get; set; }
         public string FIRE_EQP_ID { get; set; }
         public string FIRE_UNIT_ID { get; set; }
         public string SCRAP_FLAG { get; set; }
         public string SCRAP_USER { get; set; }
-        public string SCRAP_TIME { get; set; }
+        public DateTime SCRAP_TIME { get; set; }
         public string RECIPE_ID { get; set; }
         public string JSON_RECIPE { get; set; }
         public string JSON_PROCESS_DATA { get; set; }
         public string UPDATE_USER { get; set; }
-        public string UPDATE_TIME { get; set; }
-        public string CREATE_TIME { get; set; }
+        public DateTime UPDATE_TIME { get; set; }
+        public DateTime CREATE_TIME { get; set; }
     }
     #endregion
     #region tb_dat_cell_proc
@@ -408,6 +408,7 @@ namespace RestClientLib
         public float JIG_28 { get; set; }
         public float JIG_29 { get; set; }
         public float JIG_30 { get; set; }
+        public float JIG_AVG { get; set; }
     }
     #endregion
     #region tb_dat_temp_unit

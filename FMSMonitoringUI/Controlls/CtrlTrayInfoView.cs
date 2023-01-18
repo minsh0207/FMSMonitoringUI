@@ -82,6 +82,9 @@ namespace FMSMonitoringUI.Controlls
                 // Column 열 조정 안됨
                 dataGridView1.Columns[nCol].Resizable = DataGridViewTriState.False;
                 dataGridView1.Columns[nCol].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                // 여러줄 입력
+                dataGridView1.Columns[nCol].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             }
                         
             dataGridView1.CurrentCell = null;

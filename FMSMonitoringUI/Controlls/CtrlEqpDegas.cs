@@ -71,11 +71,11 @@ namespace FMSMonitoringUI.Controlls
         #endregion
 
         #region setData
-        public override void SetData(List<_entire_eqp_list> data, Dictionary<string, Color> eqpStatus)
+        public override void SetData(List<_entire_eqp_list> data, Dictionary<string, KeyValuePair<string, Color>> eqpStatus)
         {
             for (int i = 0; i < data.Count; i++)
             {
-                if (i > 1) break;
+                if (i > 2) break;
 
                 int row = 1 - Convert.ToInt16(data[i].LEVEL);
                 TrayInfoView.SetValue(1, row, data[i].TRAY_ID);
@@ -85,16 +85,16 @@ namespace FMSMonitoringUI.Controlls
             SetEqpMode(data[0].EQP_MODE, eqpStatus[data[0].EQP_MODE]);
             SetEqpStatus(data[0].EQP_STATUS, eqpStatus[data[0].EQP_STATUS]);
         }
-        private void SetEqpMode(string eqp_mode, Color color)
+        private void SetEqpMode(string eqp_mode, KeyValuePair<string, Color> valuePair)
         {
             lbEqpMode.Text = eqp_mode;
-            lbEqpMode.BackColor = color;
+            lbEqpMode.BackColor = valuePair.Value;
         }
 
-        private void SetEqpStatus(string eqp_status, Color color)
+        private void SetEqpStatus(string eqp_status, KeyValuePair<string, Color> valuePair)
         {
-            lbEqpStatus.Text = GetEqpStatusText(eqp_status);
-            lbEqpStatus.BackColor = color;
+            lbEqpStatus.Text = valuePair.Key;   // GetEqpStatusText(eqp_status);
+            lbEqpStatus.BackColor = valuePair.Value;
         }
         #endregion
 
@@ -142,7 +142,6 @@ namespace FMSMonitoringUI.Controlls
         private void TrayInfoView_MouseCellDoubleClick(int col, int row, object value)
         {
             WinTrayInfo form = new WinTrayInfo(EqpID, "", value.ToString());
-            //form.SetData(value.ToString());
             form.ShowDialog();
         }
         #endregion

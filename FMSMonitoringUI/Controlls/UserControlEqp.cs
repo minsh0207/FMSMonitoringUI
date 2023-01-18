@@ -35,7 +35,7 @@ namespace MonitoringUI
             InitializeComponent();
         }
 
-        public virtual void SetData(List<_entire_eqp_list> data, Dictionary<string, Color> eqpStatus)
+        public virtual void SetData(List<_entire_eqp_list> data, Dictionary<string, KeyValuePair<string, Color>> eqpStatus)
         {
             ;
         }        

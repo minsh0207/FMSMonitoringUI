@@ -30,6 +30,7 @@ namespace FMSMonitoringUI.Monitoring
         private Logger _Logger;
 
         private List<_win_lead_time> _AgingTrayInfo = new List<_win_lead_time>();
+        private List<_lead_time_chg> _ChargerTrayInfo = new List<_lead_time_chg>();
 
         #region Working Thread
         private Thread _ProcessThread;
@@ -129,63 +130,6 @@ namespace FMSMonitoringUI.Monitoring
             gridTrayInfo.ColumnHeadersWidth(7, 120);
         }
 
-        #region SetData
-        private void SetData(List<_win_lead_time> data)
-        {
-            if (data.Count == 0) return;
-
-            gridTrayInfo.RowCount= data.Count;
-            int row = 0;
-
-            foreach (var item in data)
-            {
-                int col = 0;
-                string location = string.Format($"{item.LINE}Line-{item.LANE}Lane-{item.BAY}Bay-{item.FLOOR}F");
-                gridTrayInfo.SetValue(col, row, location); col++;
-                gridTrayInfo.SetValue(col, row, item.RACK_ID); col++;
-                gridTrayInfo.SetValue(col, row, item.TRAY_ID); col++;
-                gridTrayInfo.SetValue(col, row, item.TRAY_ID_2); col++;
-                gridTrayInfo.SetValue(col, row, item.START_TIME); col++;
-                gridTrayInfo.SetValue(col, row, item.PLAN_TIME); col++;
-                gridTrayInfo.SetValue(col, row, GetTimeSpan(item.START_TIME)); col++;
-                gridTrayInfo.SetValue(col, row, "0000");
-                row++;
-            }
-
-            gridTrayInfo.SetGridViewStyles();
-        }
-        private void SetData1(List<_win_lead_time> data)
-        {
-            DataTable dt = new DataTable();
-
-            dt.Columns.Add("Location");            
-            dt.Columns.Add("Rack ID");
-            dt.Columns.Add("Tray ID L1");
-            dt.Columns.Add("Tray ID L2");
-            dt.Columns.Add("Start Time");
-            dt.Columns.Add("Plan Time");
-            dt.Columns.Add("Process Time");
-            dt.Columns.Add("Specs (MES)");
-
-            foreach (var item in data)
-            {
-                DataRow rowEx1 = dt.NewRow();
-
-                rowEx1["Location"] = item.LANE;
-                rowEx1["Rack ID"] = item.RACK_ID;
-                rowEx1["Tray ID L1"] = item.TRAY_ID;
-                rowEx1["Tray ID L2"] = item.TRAY_ID_2;
-                rowEx1["Start Time"] = item.START_TIME;
-                rowEx1["Plan Time"] = item.PLAN_TIME;
-                rowEx1["Process Time"] = GetTimeSpan(item.START_TIME);
-                rowEx1["Specs (MES)"] = "0000";
-
-                dt.Rows.Add(rowEx1);
-            }
-
-            gridTrayInfo.DataSource(dt);
-        }
-        #endregion
         //#region GetCellIDList
         private void GetAgingTrayInfo(string eqpType, int level)
         {
@@ -221,41 +165,17 @@ namespace FMSMonitoringUI.Monitoring
                 {
                     GC.Collect();
 
-                    RESTClient rest = new RESTClient();
-                    //// Set Query
-                    StringBuilder strSQL = new StringBuilder();
-                    // Tray Information
-                    strSQL.Append(" SELECT line, lane, bay, floor, tray_id, tray_id_2, rack_id, start_time, plan_time");
-                    strSQL.Append(" FROM fms_v.tb_mst_aging");
-                    //필수값
-                    strSQL.Append($" WHERE aging_type = '{_EqpType.Substring(0, 1)}'");
-                    strSQL.Append($"    AND lane = {_Eqplevel * 2 - 1}");
-                    strSQL.Append($"    OR aging_type = '{_EqpType.Substring(0, 1)}'");
-                    strSQL.Append($"    AND lane = {_Eqplevel * 2}");
-
-                    var jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
-
-                    if (jsonResult != null)
+                    this.Invoke(new MethodInvoker(delegate ()
                     {
-                        _jsonWinLeadTimeResponse result = rest.ConvertWinLeadTime(jsonResult.Result);
-
-                        if (result != null)
+                        if (_Eqplevel > 0)
                         {
-                            this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                            LoadLeadTime(_EqpType, _Eqplevel).GetAwaiter().GetResult();
                         }
                         else
                         {
-                            string log = "WinFormationHPC : jsonResult is null";
-                            _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                            LoadLeadTimeCHG(_EqpType).GetAwaiter().GetResult();
                         }
-
-                        _AgingTrayInfo = result.DATA;
-                    }
-                    else
-                    {
-                        string log = "WinFormationHPC : jsonResult is null";
-                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
-                    }
+                    }));
 
                     //Thread.Sleep(3000);
                 }
@@ -265,6 +185,183 @@ namespace FMSMonitoringUI.Monitoring
                 // System Debug
                 System.Diagnostics.Debug.Print(string.Format("### WinLeadTime ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
             }
+        }
+        #endregion
+
+        #region LoadLeadTime
+        private async Task LoadLeadTime(string eqptype, int eqplevel)
+        {
+            try
+            {
+                RESTClient rest = new RESTClient();
+                //// Set Query
+                StringBuilder strSQL = new StringBuilder();
+                // Tray Information
+                strSQL.Append(" SELECT line, lane, bay, floor, tray_id, tray_id_2, rack_id, start_time, plan_time, aging_time");
+                strSQL.Append(" FROM fms_v.tb_mst_aging");
+                //필수값
+                strSQL.Append($" WHERE aging_type = '{eqptype.Substring(0, 1)}'");
+                strSQL.Append($"    AND lane = {eqplevel * 2 - 1}");
+                strSQL.Append($"    OR aging_type = '{eqptype.Substring(0, 1)}'");
+                strSQL.Append($"    AND lane = {eqplevel * 2}");
+
+                var jsonResult = await rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+
+                if (jsonResult != null)
+                {
+                    _jsonWinLeadTimeResponse result = rest.ConvertWinLeadTime(jsonResult);
+
+                    if (result != null)
+                    {
+                        //this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                        SetData(result.DATA);
+                    }
+                    else
+                    {
+                        string log = "WinLeadTime : jsonResult is null";
+                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                    }
+
+                    _AgingTrayInfo = result.DATA;
+                }
+                else
+                {
+                    string log = "WinLeadTime : jsonResult is null";
+                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(string.Format("[Exception:LoadLeadTime] {0}", ex.ToString()));
+            }
+        }
+        #endregion
+
+        #region LoadLeadTimeCHG
+        private async Task LoadLeadTimeCHG(string eqptype)
+        {
+            try
+            {
+                RESTClient rest = new RESTClient();
+                //// Set Query
+                StringBuilder strSQL = new StringBuilder();
+                // Tray Information
+                strSQL.Append(" SELECT eqp_name, tray_id, tray_id_2, unit_id, start_time, plan_time");
+                strSQL.Append(" FROM fms_v.tb_mst_eqp");
+                //필수값
+                strSQL.Append($" WHERE eqp_type = '{eqptype}'");
+                strSQL.Append($"     AND (eqp_type = '{eqptype}' AND unit_id IS NOT NULL)");
+
+                var jsonResult = await rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+
+                if (jsonResult != null)
+                {
+                    _jsonLeadTimeCHGResponse result = rest.ConvertLeadTimeCHG(jsonResult);
+
+                    if (result != null)
+                    {
+                        //this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                        SetData(result.DATA);
+                    }
+                    else
+                    {
+                        string log = "LeadTimeCHG : jsonResult is null";
+                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                    }
+
+                    _ChargerTrayInfo = result.DATA;
+                }
+                else
+                {
+                    string log = "LeadTimeCHG : jsonResult is null";
+                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(string.Format("[Exception:LoadLeadTimeCHG] {0}", ex.ToString()));
+            }
+        }
+        #endregion
+
+        #region SetData
+        private void SetData(List<_win_lead_time> data)
+        {
+            if (data.Count == 0) return;
+
+            gridTrayInfo.RowCount = data.Count;
+            int row = 0;
+
+            foreach (var item in data)
+            {
+                int col = 0;
+                string location = string.Format($"{item.LINE}Line-{item.LANE}Lane-{item.BAY}Bay-{item.FLOOR}F");
+                gridTrayInfo.SetValue(col, row, location); col++;
+                gridTrayInfo.SetValue(col, row, item.RACK_ID); col++;
+                gridTrayInfo.SetValue(col, row, item.TRAY_ID); col++;
+                gridTrayInfo.SetValue(col, row, item.TRAY_ID_2); col++;
+                gridTrayInfo.SetValue(col, row, item.START_TIME.Year == 1 ? "" : item.START_TIME.ToString()); col++;
+                gridTrayInfo.SetValue(col, row, item.PLAN_TIME.Year == 1 ? "" : item.PLAN_TIME.ToString()); col++;
+                gridTrayInfo.SetValue(col, row, GetTimeSpan(item.START_TIME)); col++;
+                gridTrayInfo.SetValue(col, row, string.Format($"{item.AGING_TIME} (min)"));
+                row++;
+            }
+
+            gridTrayInfo.SetGridViewStyles();
+        }
+        private void SetData(List<_lead_time_chg> data)
+        {
+            if (data.Count == 0) return;
+
+            gridTrayInfo.RowCount = data.Count;
+            int row = 0;
+
+            foreach (var item in data)
+            {
+                int col = 0;
+                gridTrayInfo.SetValue(col, row, item.EQP_NAME); col++;
+                gridTrayInfo.SetValue(col, row, item.UNIT_ID); col++;
+                gridTrayInfo.SetValue(col, row, item.TRAY_ID); col++;
+                gridTrayInfo.SetValue(col, row, item.TRAY_ID_2); col++;
+                gridTrayInfo.SetValue(col, row, item.START_TIME.Year == 1 ? "" : item.START_TIME.ToString()); col++;
+                gridTrayInfo.SetValue(col, row, item.PLAN_TIME.Year == 1 ? "" : item.PLAN_TIME.ToString()); col++;
+                gridTrayInfo.SetValue(col, row, GetTimeSpan(item.START_TIME)); col++;
+                gridTrayInfo.SetValue(col, row, string.Format($"0 (min)"));
+                row++;
+            }
+
+            gridTrayInfo.SetGridViewStyles();
+        }
+        private void SetData1(List<_win_lead_time> data)
+        {
+            DataTable dt = new DataTable();
+
+            dt.Columns.Add("Location");
+            dt.Columns.Add("Rack ID");
+            dt.Columns.Add("Tray ID L1");
+            dt.Columns.Add("Tray ID L2");
+            dt.Columns.Add("Start Time");
+            dt.Columns.Add("Plan Time");
+            dt.Columns.Add("Process Time");
+            dt.Columns.Add("Specs (MES)");
+
+            foreach (var item in data)
+            {
+                DataRow rowEx1 = dt.NewRow();
+
+                rowEx1["Location"] = item.LANE;
+                rowEx1["Rack ID"] = item.RACK_ID;
+                rowEx1["Tray ID L1"] = item.TRAY_ID;
+                rowEx1["Tray ID L2"] = item.TRAY_ID_2;
+                rowEx1["Start Time"] = item.START_TIME;
+                rowEx1["Plan Time"] = item.PLAN_TIME;
+                rowEx1["Process Time"] = GetTimeSpan(item.START_TIME);
+                rowEx1["Specs (MES)"] = "0000";
+
+                dt.Rows.Add(rowEx1);
+            }
+
+            gridTrayInfo.DataSource(dt);
         }
         #endregion
 
@@ -302,11 +399,19 @@ namespace FMSMonitoringUI.Monitoring
         {
             if (col == 2 && row > -1 || col == 3 && row > -1)
             {
-                //WinTrayInfo form = new WinTrayInfo();
-                //form.SetData(value.ToString());
-                //form.ShowDialog();
-                _win_lead_time data = _AgingTrayInfo[row];
-                WinTrayInfo form = new WinTrayInfo(_EqpId, data.RACK_ID, value.ToString());
+                WinTrayInfo form;
+
+                if (_Eqplevel > 0)
+                {
+                    _win_lead_time data = _AgingTrayInfo[row];
+                    form = new WinTrayInfo(_EqpId, data.RACK_ID, value.ToString());
+                }
+                else
+                {
+                    //_lead_time_chg data = _ChargerTrayInfo[row];
+                    form = new WinTrayInfo(_EqpId, "", value.ToString());
+                }
+                
                 form.ShowDialog();
             }
         }

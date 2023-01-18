@@ -3,11 +3,13 @@ using MonitoringUI.Common;
 using MonitoringUI.Controlls;
 using MySqlX.XDevAPI.Common;
 using Newtonsoft.Json.Linq;
+using Novasoft.Logger;
 using Org.BouncyCastle.Ocsp;
 using RestClientLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -24,6 +26,8 @@ namespace FMSMonitoringUI.Monitoring
         private Point point = new Point();
         private string _TrayId = string.Empty;
 
+        private Logger _Logger;
+
         private List<_dat_cell> _CellInfo;
         private List<_cell_process_flow> _CellProcessFlow;
 
@@ -35,6 +39,9 @@ namespace FMSMonitoringUI.Monitoring
         public WinCellDetailInfo(string trayId)
         {
             InitializeComponent();
+
+            string logPath = ConfigurationManager.AppSettings["LOG_PATH"];
+            _Logger = new Logger(logPath, LogMode.Hour);
 
             InitGridViewCellList();
             InitGridViewCell();
@@ -508,25 +515,10 @@ namespace FMSMonitoringUI.Monitoring
                 {
                     GC.Collect();
 
-                    RESTClient rest = new RESTClient();
-                    //// Set Query
-                    StringBuilder strSQL = new StringBuilder();
-                    // Tray Information
-                    strSQL.Append(" SELECT *");
-                    strSQL.Append(" FROM fms_v.tb_dat_cell");
-                    //필수값
-                    strSQL.Append($" WHERE tray_id = '{_TrayId}'");
-
-                    var jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
-
-                    if (jsonResult != null)
+                    this.Invoke(new MethodInvoker(delegate ()
                     {
-                        _jsonDatCellResponse result = rest.ConvertDatCell(jsonResult.Result);
-
-                        this.BeginInvoke(new Action(() => SetCellList(result.DATA)));
-
-                        _CellInfo = result.DATA;
-                    }
+                        LoadCellData(_TrayId).GetAwaiter().GetResult();
+                    }));
 
                     //Thread.Sleep(3000);
                 }
@@ -539,6 +531,52 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
-        
+        #region LoadCellData
+        private async Task LoadCellData(string trayid)
+        {
+            try
+            {
+                RESTClient rest = new RESTClient();
+                //// Set Query
+                StringBuilder strSQL = new StringBuilder();
+
+                strSQL.Append(" SELECT *");
+                strSQL.Append(" FROM fms_v.tb_dat_cell");
+                //필수값
+                strSQL.Append($" WHERE tray_id = '{trayid}'");
+
+                var jsonResult = await rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+
+                if (jsonResult != null)
+                {
+                    _jsonDatCellResponse result = rest.ConvertDatCell(jsonResult);
+
+                    if (result != null)
+                    {
+                        //this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                        SetCellList(result.DATA);
+
+                        _CellInfo = result.DATA;
+                    }
+                    else
+                    {
+                        string log = "LoadCellData : jsonResult is null";
+                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                    }
+                }
+                else
+                {
+                    string log = "LoadCellData : jsonResult is null";
+                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(string.Format("[Exception:LoadCellData] {0}", ex.ToString()));
+            }
+        }
+        #endregion
+
+
     }
 }

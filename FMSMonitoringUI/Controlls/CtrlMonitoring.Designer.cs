@@ -548,7 +548,7 @@
             this.ctrlTaggingName3.Size = new System.Drawing.Size(179, 30);
             this.ctrlTaggingName3.StatusCode = "S";
             this.ctrlTaggingName3.TabIndex = 104;
-            this.ctrlTaggingName3.TagColor = System.Drawing.Color.Magenta;
+            this.ctrlTaggingName3.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.ctrlTaggingName3.TagText = "Stop";
             this.ctrlTaggingName3.TextColor = System.Drawing.Color.Black;
             // 
@@ -887,7 +887,7 @@
             this.ctrlTaggingName20.Size = new System.Drawing.Size(179, 30);
             this.ctrlTaggingName20.StatusCode = "L";
             this.ctrlTaggingName20.TabIndex = 78;
-            this.ctrlTaggingName20.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.ctrlTaggingName20.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(101)))), ((int)(((byte)(58)))));
             this.ctrlTaggingName20.TagText = "Loading";
             this.ctrlTaggingName20.TextColor = System.Drawing.Color.Black;
             // 

@@ -14,10 +14,12 @@ namespace RestClientLib
 {
     public partial class RESTClient
     {
+        #region _jsonSettings
         private JsonSerializerSettings _jsonSettings = new JsonSerializerSettings
         {
             NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore
         };
+        #endregion
 
         #region ConvertDatCell
         /// <summary>
@@ -33,7 +35,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertDatCell, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -52,7 +54,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertDatCellProcess, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -71,7 +73,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertDatLot, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -90,7 +92,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertDatProcessData, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -109,7 +111,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertDatStatusEqp, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -128,7 +130,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertDatStatusUnit, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -147,7 +149,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertDatTempHpc, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -166,7 +168,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertDatTempUnit, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -185,7 +187,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertDatTray, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -204,7 +206,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertDatTrayProc, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -223,7 +225,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertDatTrouble, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -243,7 +245,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertMstAging, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -262,7 +264,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertMstEqp, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -281,7 +283,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertMstEqpType, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -300,7 +302,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertMstModel, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -319,7 +321,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertMstProcessType, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -338,7 +340,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertMstRoute, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -357,7 +359,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertMstRouteHist, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -376,7 +378,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertMstRouteOrder, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -395,7 +397,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertMstTrouble, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -414,7 +416,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertMstUnit, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -433,7 +435,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertMstUser, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -452,7 +454,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertMstUserClass, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -471,7 +473,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertMstWindow, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -490,7 +492,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertMstWindowUser, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -510,7 +512,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertRecipeInfo, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -529,7 +531,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertProcessData, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -548,7 +550,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertWinManageEqp, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -567,7 +569,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertWinTrayInfo, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -586,7 +588,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertTrayPorcessFlow, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -605,7 +607,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertCellPorcessFlow, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -624,7 +626,26 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertWinLeadTime, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                return null;
+            }
+        }
+        #endregion
+        #region ConvertLeadTimeCHG
+        /// <summary>
+        /// _jsonLeadTimeCHGResponse 형태의 Class로 변환한다.
+        /// </summary>
+        public _jsonLeadTimeCHGResponse ConvertLeadTimeCHG(string jsonResult)
+        {
+            try
+            {
+                // Recv Body의 JSON string을 class 변수에 할당
+                _jsonLeadTimeCHGResponse recvBody = JsonConvert.DeserializeObject<_jsonLeadTimeCHGResponse>(jsonResult, _jsonSettings);
+                return recvBody;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print(string.Format("### ConvertLeadTimeCHG, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -643,7 +664,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertWinAgingRackSetting, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -662,7 +683,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertAgingRackCount, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -681,7 +702,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertAgingRackData, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -700,7 +721,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertWinFormationBox, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -719,7 +740,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertWinFormationHPC, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -738,7 +759,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertCtrlFormationCHG, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -757,7 +778,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertCtrlFormationHPC, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -776,7 +797,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertCtrlFormationHPCTemp, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -795,7 +816,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                _Logger.Write(LogLevel.Error, ex.Message, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("### ConvertEntireEqpList, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }

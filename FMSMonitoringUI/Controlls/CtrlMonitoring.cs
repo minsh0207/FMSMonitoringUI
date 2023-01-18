@@ -36,6 +36,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
+using System.Web.Http.Results;
 using System.Windows.Forms;
 using System.Windows.Interop;
 using UnifiedAutomation.UaBase;
@@ -52,36 +53,36 @@ namespace FMSMonitoringUI.Controlls
         /// <summary>
         /// First=ConveyorNo, Second=Site(Track) Control
         /// </summary>
-        private Dictionary<int, CtrlSiteTrack> _ListConveyor = new Dictionary<int, CtrlSiteTrack>();
+        private Dictionary<int, CtrlSiteTrack> _ListConveyor;   // = new Dictionary<int, CtrlSiteTrack>();
         /// <summary>
         /// First=CraneNo, Second=Crane Control
         /// </summary>
-        private Dictionary<int, CtrlSCraneH> _ListSCrane = new Dictionary<int, CtrlSCraneH>();
+        private Dictionary<int, CtrlSCraneH> _ListSCrane;   // = new Dictionary<int, CtrlSCraneH>();
         /// <summary>
         /// First=SiteNo(TrackNo), Second=ItemInfo Class
         /// </summary>
-        private Dictionary<int, ItemInfo>[] _ListSite = new Dictionary<int, ItemInfo>[CDefine.DEF_PLC_SERVER_COUNT];
+        private Dictionary<int, ItemInfo>[] _ListSite;  // = new Dictionary<int, ItemInfo>[CDefine.DEF_PLC_SERVER_COUNT];
         /// <summary>
         /// First=BCRNo, Second=BCRMarker Control
         /// </summary>
-        private Dictionary<int, BCRMarker>[] _ListBCR = new Dictionary<int, BCRMarker>[CDefine.DEF_PLC_SERVER_COUNT];
+        private Dictionary<int, BCRMarker>[] _ListBCR;  // = new Dictionary<int, BCRMarker>[CDefine.DEF_PLC_SERVER_COUNT];
 
         /// <summary>
         /// First=Equipment ID, Second=Control Index
         /// </summary>
-        private Dictionary<string, ItemInfo> _ControlIdx = new Dictionary<string, ItemInfo>();
+        private Dictionary<string, ItemInfo> _ControlIdx;   // = new Dictionary<string, ItemInfo>();
 
         /// <summary>
         /// string=Eqp Text, Color=Eqp Status Color
         /// </summary>
-        private Dictionary<string, Color> _EqpStatus = new Dictionary<string, Color>();
+        private Dictionary<string, KeyValuePair<string, Color>> _EqpStatus;    // = new Dictionary<string, KeyValuePair<string, string>>();
 
         /// <summary>
         /// First=Equipment ID, Second=Eqp UserControl
         /// </summary>
-        private Dictionary<string, UserControlEqp> _EntireEqpList = new Dictionary<string, UserControlEqp>();
-                
-        private COPCGroupCtrl _OPCGroupList= new COPCGroupCtrl();
+        private Dictionary<string, UserControlEqp> _EntireEqpList;  // = new Dictionary<string, UserControlEqp>();
+
+        private COPCGroupCtrl _OPCGroupList;    //= new COPCGroupCtrl();
 
         private Logger _Logger;
 
@@ -113,6 +114,15 @@ namespace FMSMonitoringUI.Controlls
             // Timer 
             //m_timer.Tick += new EventHandler(OnTimer);
             //m_timer.Stop();
+
+            _ListConveyor = new Dictionary<int, CtrlSiteTrack>();
+            _ListSCrane = new Dictionary<int, CtrlSCraneH>();
+            _ListSite = new Dictionary<int, ItemInfo>[CDefine.DEF_PLC_SERVER_COUNT];
+            _ListBCR = new Dictionary<int, BCRMarker>[CDefine.DEF_PLC_SERVER_COUNT];
+            _ControlIdx = new Dictionary<string, ItemInfo>();
+            _EqpStatus = new Dictionary<string, KeyValuePair<string, Color>>();
+            _EntireEqpList = new Dictionary<string, UserControlEqp>();
+            _OPCGroupList = new COPCGroupCtrl();
 
             _mysql = new MySqlManager(ConfigurationManager.ConnectionStrings["DB_CONNECTION_STRING"].ConnectionString);
 
@@ -475,6 +485,9 @@ namespace FMSMonitoringUI.Controlls
             ctrlEqpLTAging2.Click_Evnet += CtrlEqpAging_Click;
             ctrlEqpLTAging3.Click_Evnet += CtrlEqpAging_Click;
             ctrlEqpLTAging4.Click_Evnet += CtrlEqpAging_Click;
+
+            ctrlEqpCharger1.Click_Evnet += CtrlEqpAging_Click;
+
             //ctrlEqpDGS.MouseClick += CtrlEqp_MouseClick_Evnet;
 
             //int idx = 0;
@@ -508,7 +521,8 @@ namespace FMSMonitoringUI.Controlls
                     CtrlTaggingName tagName = ctl as CtrlTaggingName;
                     tagName.CallLocalLanguage();
 
-                    _EqpStatus.Add(tagName.StatusCode, tagName.TagColor);
+                    var tag = new KeyValuePair<string, Color>(tagName.TagText, tagName.TagColor);
+                    _EqpStatus.Add(tagName.StatusCode, tag);
                 }
                 else if (ctl.GetType() == typeof(CtrlLabel))
                 {
@@ -534,7 +548,9 @@ namespace FMSMonitoringUI.Controlls
                 case "LTA2":
                     agingType = "LT Aging#2";
                     break;
-
+                case "CHG":
+                    agingType = "CHG";
+                    break;
                 default:
                     break;
             }
@@ -656,88 +672,123 @@ namespace FMSMonitoringUI.Controlls
                 {
                     GC.Collect();
 
-                    RESTClient rest = new RESTClient();
-                    //// Set Query
-                    StringBuilder strSQL = new StringBuilder();
-
-                    strSQL.Append(" SELECT A.eqp_type, A.eqp_id, A.unit_id, A.eqp_mode, A.eqp_status, A.tray_id,");
-                    strSQL.Append("        B.rework_flag, IF(B.tray_id = A.tray_id, '0', '1') AS Level");
-                    strSQL.Append("   FROM fms_v.tb_mst_eqp     A ");
-                    strSQL.Append("        LEFT OUTER JOIN fms_v.tb_dat_tray B");
-                    strSQL.Append("           ON B.tray_id IN (A.tray_id, A.tray_id_2)");
-                    //필수값
-                    strSQL.Append(" WHERE (A.eqp_type NOT IN ('SCH', 'SCF', 'SCL'))");
-                    strSQL.Append("    AND ((A.eqp_type = 'HPC' AND A.unit_id IS NOT NULL)");
-                    strSQL.Append("      OR (A.eqp_type = 'CHG' AND A.unit_id IS NOT NULL)");
-                    strSQL.Append("      OR (A.eqp_type NOT IN ('HPC', 'CHG')))");
-
-                    var jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
-
-                    if (jsonResult != null)
+                    this.Invoke(new MethodInvoker(delegate ()
                     {
-                        _jsonEntireEqpListResponse result = rest.ConvertEntireEqpList(jsonResult.Result);
+                        LoadEntireEqpList().GetAwaiter().GetResult();
+                        LoadAgingRackCount().GetAwaiter().GetResult();
+                    }));
 
-                        if (result != null)
-                        {
-                            this.BeginInvoke(new Action(() => SetData(result.DATA)));
-                        }
-                        else
-                        {
-                            string log = "EntireEqpList : jsonResult is null";
-                            _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
-                        }
-                    }
-                    else
-                    {
-                        string log = "EntireEqpList : jsonResult is null";
-                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
-                    }
-
-                    Thread.Sleep(100);
-
-                    rest = new RESTClient();
-                    // Set Query
-                    strSQL = new StringBuilder();
-
-                    strSQL.Append(" SELECT aging_type, line, lane,");
-                    strSQL.Append("        COUNT(aging_type) AS total_rack_cnt,");
-                    strSQL.Append("        COUNT(if(status = 'F', status, null)) AS in_aging");
-                    strSQL.Append(" FROM (SELECT line, (");
-                    strSQL.Append("           CASE WHEN lane = '1' OR lane = '2' THEN '1'  ELSE '2'END) AS lane,");
-                    strSQL.Append("                 aging_type, status FROM fms_v.tb_mst_aging) table1");
-                    //필수값
-                    strSQL.Append($" WHERE aging_type IN ('H', 'L') AND  line IN ('01', '02') AND  lane IN ('1', '2')");
-                    strSQL.Append($" GROUP BY aging_type, line, lane");
-
-                    jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
-
-                    if (jsonResult != null)
-                    {
-                        _jsonAgingRackCountResponse result = rest.ConvertAgingRackCount(jsonResult.Result);
-
-                        if (result != null)
-                        {
-                            this.BeginInvoke(new Action(() => SetData(result.DATA)));
-                        }
-                        else
-                        {
-                            string log = "AgingRackCount : jsonResult is null";
-                            _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
-                        }
-                    }
-                    else
-                    {
-                        string log = "AgingRackCount : jsonResult is null";
-                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
-                    }
-
-                    Thread.Sleep(3000);
+                    Thread.Sleep(300);
                 }
             }
             catch (Exception ex)
             {
                 // System Debug
                 System.Diagnostics.Debug.Print(string.Format("### FormationCHG ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+            }
+        }
+        #endregion
+
+        #region LoadEntireEqpList
+        private async Task LoadEntireEqpList()
+        {
+            try
+            {
+                RESTClient rest = new RESTClient();
+                //// Set Query
+                StringBuilder strSQL = new StringBuilder();
+
+                strSQL.Append(" SELECT A.eqp_type, A.eqp_id, A.unit_id, A.eqp_mode, A.eqp_status,");
+                strSQL.Append("        B.rework_flag, IF(B.tray_id = A.tray_id, '0', '1') AS Level,");
+                strSQL.Append("        CASE WHEN B.tray_id = null THEN A.tray_id ELSE B.tray_id END AS tray_id");
+                strSQL.Append("   FROM fms_v.tb_mst_eqp     A ");
+                strSQL.Append("        LEFT OUTER JOIN fms_v.tb_dat_tray B");
+                strSQL.Append("           ON B.tray_id IN (A.tray_id, A.tray_id_2)");
+                //필수값
+                strSQL.Append(" WHERE (A.eqp_type NOT IN ('SCH', 'SCF', 'SCL'))");
+                strSQL.Append("    AND ((A.eqp_type = 'HPC' AND A.unit_id IS NOT NULL)");
+                strSQL.Append("      OR (A.eqp_type = 'CHG' AND A.unit_id IS NOT NULL)");
+                strSQL.Append("      OR (A.eqp_type NOT IN ('HPC', 'CHG')))");
+
+                var jsonResult = await rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+
+                if (jsonResult != null)
+                {
+                    _jsonEntireEqpListResponse result = rest.ConvertEntireEqpList(jsonResult);
+
+                    if (result != null)
+                    {
+                        //this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                        SetData(result.DATA);
+                    }
+                    else
+                    {
+                        string log = "EntireEqpList : result is null";
+                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                    }
+                }
+                else
+                {
+                    string log = "EntireEqpList : jsonResult is null";
+                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                }
+
+                //rest = null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(string.Format("[Exception:LoadEntireEqpList] {0}", ex.ToString()));
+            }
+        }
+        #endregion
+
+        #region LoadAgingRackCount
+        private async Task LoadAgingRackCount()
+        {
+            try
+            {
+                RESTClient rest = new RESTClient();
+                //// Set Query
+                StringBuilder strSQL = new StringBuilder();
+
+                strSQL.Append(" SELECT aging_type, line, lane,");
+                strSQL.Append("        COUNT(aging_type) AS total_rack_cnt,");
+                strSQL.Append("        COUNT(if(status = 'F', status, null)) AS in_aging");
+                strSQL.Append(" FROM (SELECT line, (");
+                strSQL.Append("           CASE WHEN lane = '1' OR lane = '2' THEN '1'  ELSE '2'END) AS lane,");
+                strSQL.Append("                 aging_type, status FROM fms_v.tb_mst_aging) table1");
+                //필수값
+                strSQL.Append($" WHERE aging_type IN ('H', 'L') AND  line IN ('01', '02') AND  lane IN ('1', '2')");
+                strSQL.Append($" GROUP BY aging_type, line, lane");
+
+                var jsonResult = await rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+
+                if (jsonResult != null)
+                {
+                    _jsonAgingRackCountResponse result = rest.ConvertAgingRackCount(jsonResult);
+
+                    if (result != null)
+                    {
+                        //this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                        SetData(result.DATA);
+                    }
+                    else
+                    {
+                        string log = "AgingRackCount : jsonResult is null";
+                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                    }
+                }
+                else
+                {
+                    string log = "AgingRackCount : jsonResult is null";
+                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                }
+
+                //rest = null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(string.Format("[Exception:LoadAgingRackCount] {0}", ex.ToString()));
             }
         }
         #endregion

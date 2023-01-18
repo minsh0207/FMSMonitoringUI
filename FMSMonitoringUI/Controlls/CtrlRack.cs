@@ -3,6 +3,7 @@ using FormationMonCtrl;
 using MonitoringUI;
 using MySqlX.XDevAPI.Relational;
 using OPCUAClientClassLib;
+using RestClientLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -97,27 +98,40 @@ namespace FMSMonitoringUI.Controlls
         #endregion
 
         #region setData
-        public void SetData(string trayid, string trayid2, float temp, DateTime startTime, DateTime planTime)
+        public void SetData(_ctrl_formation_chg data, Color processStatus, Color operationMode)
         {
-            TrayInfoView.SetValue(1, 1, trayid);
-            TrayInfoView.SetValue(1, 2, trayid2);
-            TrayInfoView.SetValue(3, 0, temp.ToString());
-            TrayInfoView.SetValue(3, 1, startTime.ToString());
-            TrayInfoView.SetValue(3, 2, planTime.ToString());
-        }
-        #endregion
+            TrayInfoView.SetValue(1, 1, data.TRAY_ID);
+            TrayInfoView.SetValue(1, 2, data.TRAY_ID_2);
+            TrayInfoView.SetValue(3, 0, data.JIG_AVG);
 
-        public void SetEqpStatus(string eqp_status, Color color)
+            TrayInfoView.SetValue(3, 1, data.START_TIME.Year == 1 ? "" : data.START_TIME.ToString());
+            TrayInfoView.SetValue(3, 2, data.PLAN_TIME.Year == 1 ? "" : data.START_TIME.ToString());
+
+            SetProcessStatus(data.PROCESS_STATUS, processStatus);
+
+            if (data.PROCESS_STATUS == "R")
+                SetOperationMode(data.OPERATION_MODE, operationMode);
+            else
+                SetOperationMode(data.PROCESS_STATUS, processStatus);
+        }
+
+        public void SetProcessStatus(string eqp_status, Color color)
         {
             lbEqpStatus.Text = eqp_status;
             lbEqpStatus.BackColor = color;
         }
 
-        public void SetOperationStatus(string op_status, Color color)
+        public void SetOperationMode(string eqp_status, Color color)
         {
-            lbOPStatus.Text = op_status;
+            lbOPStatus.Text = GetProcessStatus(eqp_status);
             lbOPStatus.BackColor = color;
         }
+        public void SetOperationMode(int op_status, Color color)
+        {
+            lbOPStatus.Text = GetOperationMode(op_status);
+            lbOPStatus.BackColor = color;
+        }
+        #endregion
 
         #region DataGridView Event
         private void TrayInfoView_MouseCellDoubleClick(int col, int row, object value)
@@ -135,5 +149,88 @@ namespace FMSMonitoringUI.Controlls
             WinFormationBox form = new WinFormationBox(EqpID, UnitID);
             form.ShowDialog();
         }
+
+        #region GetOperationMode 
+        private string GetOperationMode(int mode)
+        {
+            string opModeName = string.Empty;
+
+            switch (mode)
+            {
+                case 0:
+                    opModeName = "Data Error";
+                    break;
+                case 1:
+                    opModeName = "OCV";
+                    break;
+                case 2:
+                    opModeName = "Charge (CC)";
+                    break;
+                case 4:
+                    opModeName = "Charge (CCCV)";
+                    break;
+                case 8:
+                    opModeName = "Discharge (CC)";
+                    break;
+                case 16:
+                    opModeName = "Discharge (CCCV)";
+                    break;
+                case 32:
+                    opModeName = "REST";
+                    break;
+            }
+
+            return opModeName;
+        }
+        #endregion
+
+        #region GetEqpStatus
+        private string GetProcessStatus(string status)
+        {
+            string statusName = string.Empty;
+
+            switch (status)
+            {
+                case "I":
+                    statusName = "Idle";
+                    break;
+                case "L":
+                    statusName = "Load Request";
+                    break;
+                case "1":
+                    statusName = "Loading";
+                    break;
+                case "A":
+                    statusName = "Tray Arrived";
+                    break;
+                case "R":
+                    statusName = "Running";
+                    break;
+                case "U":
+                    statusName = "Unload Request";
+                    break;
+                case "2":
+                    statusName = "Unloading";
+                    break;
+                case "P":
+                    statusName = "Pause";
+                    break;
+                case "S":
+                    statusName = "Stop";
+                    break;
+                case "T":
+                    statusName = "Trouble";
+                    break;
+                case "F":
+                    statusName = "Fire";
+                    break;
+                case "X":
+                    statusName = "Not Use";
+                    break;
+            }
+
+            return statusName;
+        }
+        #endregion
     }
 }

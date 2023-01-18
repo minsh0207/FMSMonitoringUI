@@ -95,6 +95,21 @@ namespace RestClientLib
         public string RACK_ID { get; set; }
         public string TRAY_ID { get; set; }
         public string TRAY_ID_2 { get; set; }
+        public int AGING_TIME { get; set; }
+        public DateTime START_TIME { get; set; }
+        public DateTime PLAN_TIME { get; set; }
+    }
+    #endregion
+    #region WinLeadTime
+    /// <summary>
+    /// JSON base format : WinLeadTime
+    /// </summary>
+    public class _lead_time_chg
+    {
+        public string EQP_NAME { get; set; }
+        public string UNIT_ID { get; set; }
+        public string TRAY_ID { get; set; }
+        public string TRAY_ID_2 { get; set; }
         public DateTime START_TIME { get; set; }
         public DateTime PLAN_TIME { get; set; }
     }
@@ -122,6 +137,7 @@ namespace RestClientLib
         public string MODEL_ID { get; set; }
         public string ROUTE_ID { get; set; }
         public string RECIPE_ID { get; set; }
+        public int PROCESS_NO { get; set; }
         public DateTime START_TIME { get; set; }
         public DateTime PLAN_TIME { get; set; }
         public string PROCESS_NAME { get; set; }
@@ -193,6 +209,8 @@ namespace RestClientLib
     {
         public string EQP_NAME { get; set; }
         public string EQP_NAME_LOCAL { get; set; }
+        public string PROCESS_STATUS { get; set; }
+        public int OPERATION_MODE { get; set; }
         public DateTime START_TIME { get; set; }
         public DateTime PLAN_TIME { get; set; }
     }
@@ -213,7 +231,6 @@ namespace RestClientLib
         public DateTime PLAN_TIME { get; set; }
         public string TROUBLE_CODE { get; set; }
         public string TROUBLE_NAME { get; set; }
-        public float TEMP_AVG { get; set; }
 
     }
     #endregion

@@ -18,6 +18,9 @@ namespace FMSMonitoringUI.Controlls
 {
     public partial class CtrlEqpCharger : UserControlEqp
     {
+        public delegate void EventHandler(string eqpId, string eqpType, int eqpLevel);
+        public event EventHandler Click_Evnet = null;
+
         #region Properties
         string _EqpType = "";
         [DisplayName("EQP TYPE"), Description("EQP TYPE"), Category("GroupBox Setting")]
@@ -43,6 +46,8 @@ namespace FMSMonitoringUI.Controlls
         public CtrlEqpCharger()
         {
             InitializeComponent();
+
+            ctrlButton1.Click += CtrlButton1_Click;
         }
 
         #region CtrlEqpControl_Load
@@ -110,7 +115,7 @@ namespace FMSMonitoringUI.Controlls
         #endregion
 
         #region setData
-        public override void SetData(List<_entire_eqp_list> data, Dictionary<string, Color> eqpStatus)
+        public override void SetData(List<_entire_eqp_list> data, Dictionary<string, KeyValuePair<string, Color>> eqpStatus)
         {
             for (int i = 0; i < data.Count; i++)
             {
@@ -120,20 +125,26 @@ namespace FMSMonitoringUI.Controlls
                 int row = uiTlbEqpStatus.RowCount - int.Parse(data[i].UNIT_ID.Substring(data[i].UNIT_ID.Length - 1, 1));
 
                 _chgEqpStatus[col, row].Text = string.Format($"  {data[i].EQP_STATUS}");
-                _chgEqpStatus[col, row].BackColor = eqpStatus[data[i].EQP_STATUS];
+                _chgEqpStatus[col, row].BackColor = eqpStatus[data[i].EQP_STATUS].Value;
 
                 _chgEqpMode[col, row].Text = string.Format($"  {data[i].EQP_MODE}");
-                _chgEqpMode[col, row].BackColor = eqpStatus[data[i].EQP_MODE];
+                _chgEqpMode[col, row].BackColor = eqpStatus[data[i].EQP_MODE].Value;
             }
         }
         #endregion
 
         private void lbEqpType_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            WinManageEqp form = new WinManageEqp(EqpID, "", EqpType, 1);
-            form.ShowDialog();
+            //WinManageEqp form = new WinManageEqp(EqpID, "", EqpType, 1);
+            //form.ShowDialog();
         }
 
-        
+        #region TitleBarLavel Click
+        private void CtrlButton1_Click(object sender, EventArgs e)
+        {
+            if (this.Click_Evnet != null)
+                Click_Evnet(EqpID, _EqpType, -1);
+        }
+        #endregion
     }
 }

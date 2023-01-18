@@ -135,6 +135,9 @@
   <data name="DEF_Aging_Rack_Setting" xml:space="preserve">
     <value>FR-Aging Rack Setting</value>
   </data>
+  <data name="DEF_Bad_Rack" xml:space="preserve">
+    <value>FR-Bad Rack</value>
+  </data>
   <data name="DEF_Carriage_Fire_Sensor" xml:space="preserve">
     <value>FR-Carriage Fire Sensor :</value>
   </data>
@@ -143,6 +146,9 @@
   </data>
   <data name="DEF_Cell_Information" xml:space="preserve">
     <value>FR-Cell Information</value>
+  </data>
+  <data name="DEF_Charge" xml:space="preserve">
+    <value>FR-Charge</value>
   </data>
   <data name="DEF_Clear_Information" xml:space="preserve">
     <value>FR-Clear Information</value>
@@ -186,6 +192,9 @@
   <data name="DEF_Data_Clear" xml:space="preserve">
     <value>FR-Data Clear</value>
   </data>
+  <data name="DEF_Data_Error" xml:space="preserve">
+    <value>FR-Data Error</value>
+  </data>
   <data name="DEF_Destination" xml:space="preserve">
     <value>FR-Destination </value>
   </data>
@@ -194,6 +203,9 @@
   </data>
   <data name="DEF_Disable_Tray_Unload" xml:space="preserve">
     <value>FR-Disable Tray Unload</value>
+  </data>
+  <data name="DEF_Discharge" xml:space="preserve">
+    <value>FR-Discharge</value>
   </data>
   <data name="DEF_Dispenser" xml:space="preserve">
     <value>FR-Dispenser</value>
@@ -333,6 +345,12 @@
   <data name="DEF_Not_Use" xml:space="preserve">
     <value>FR-Not Use</value>
   </data>
+  <data name="DEF_OCV" xml:space="preserve">
+    <value>FR-OCV</value>
+  </data>
+  <data name="DEF_Operation_Mode" xml:space="preserve">
+    <value>FR-Operation Mode</value>
+  </data>
   <data name="DEF_Parameter" xml:space="preserve">
     <value>FR-Parameter</value>
   </data>
@@ -357,6 +375,9 @@
   <data name="DEF_Process_Lead_Time" xml:space="preserve">
     <value>FR-Process Lead Time</value>
   </data>
+  <data name="DEF_Process_Status" xml:space="preserve">
+    <value>FR-Process Status</value>
+  </data>
   <data name="DEF_Rack_Status" xml:space="preserve">
     <value>FR-Rack Status</value>
   </data>
@@ -368,6 +389,9 @@
   </data>
   <data name="DEF_Reset_EmptyOut" xml:space="preserve">
     <value>FR-Reset EmptyOut :</value>
+  </data>
+  <data name="DEF_REST" xml:space="preserve">
+    <value>FR-REST</value>
   </data>
   <data name="DEF_Restart_Current_Process" xml:space="preserve">
     <value>FR-Restart Current Process</value>

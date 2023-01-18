@@ -1,9 +1,12 @@
 ﻿using ControlGallery;
 using DBHandler;
 using FMSMonitoringUI.Controlls;
+using FMSMonitoringUI.Controlls.WindowsForms;
 using FMSMonitoringUI.Monitoring;
 using FormationMonCtrl;
 using MonitoringUI;
+using MonitoringUI.Common;
+using MonitoringUI.Controlls;
 using MySqlX.XDevAPI;
 using Novasoft.Logger;
 using OPCUAClientClassLib;
@@ -30,6 +33,12 @@ namespace FMSMonitoringUI
         private Logger _Logger;
 
         private string _EqpID = string.Empty;
+
+        /// <summary>
+        /// string=Eqp Text, Color=Eqp Status Color
+        /// </summary>
+        private Dictionary<string, Color> _EqpStatus = new Dictionary<string, Color>();
+        private Dictionary<int, Color> _OpMode = new Dictionary<int, Color>();
         #endregion
 
         #region Working Thread
@@ -48,6 +57,9 @@ namespace FMSMonitoringUI
         {
             InitializeComponent();
 
+            string logPath = ConfigurationManager.AppSettings["LOG_PATH"];
+            _Logger = new Logger(logPath, LogMode.Hour);
+
             InitFormationBox();
 
             //_mysql = new MySqlManager(ConfigurationManager.ConnectionStrings["DB_CONNECTION_STRING"].ConnectionString);
@@ -59,10 +71,57 @@ namespace FMSMonitoringUI
             //m_timer.Stop();
         }
 
-        //private void CtrlFormationBox_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        //{
+        #region CtrlFormationCHG Load
+        private void CtrlFormationCHG_Load(object sender, EventArgs e)
+        {
+            InitLanguage();
 
-        //}
+            string log = $"FormationCHG Monitoring";
+            _Logger.Write(LogLevel.Info, log, LogFileName.AllLog);
+        }
+        #endregion
+
+        #region CtrlFormation HandleDestroyed
+        private void CtrlFormation_HandleDestroyed(object sender, EventArgs e)
+        {
+            //m_timer.Stop();
+
+            if (this._TheadVisiable && this._ProcessThread.IsAlive)
+                this._TheadVisiable = false;
+
+            if (this._TheadVisiable)
+                this._ProcessThread.Abort();
+        }
+        #endregion
+
+        #region InitLanguage
+        private void InitLanguage()
+        {
+            // CtrlTaggingName 언어 변환 호출
+            foreach (var ctl in this.panel1.Controls)
+            {
+                if (ctl.GetType() == typeof(CtrlTaggingName))
+                {
+                    CtrlTaggingName tagName = ctl as CtrlTaggingName;
+                    tagName.CallLocalLanguage();
+
+                    _EqpStatus.Add(tagName.StatusCode, tagName.TagColor);
+                }
+                else if (ctl.GetType() == typeof(CtrlTaggingNameLong))
+                {
+                    CtrlTaggingNameLong tagName = ctl as CtrlTaggingNameLong;
+                    tagName.CallLocalLanguage();
+
+                    _OpMode.Add(Convert.ToInt16(tagName.StatusCode), tagName.TagColor);
+                }
+                else if (ctl.GetType() == typeof(CtrlLabel))
+                {
+                    CtrlLabel tagName = ctl as CtrlLabel;
+                    tagName.CallLocalLanguage();
+                }
+            }
+        }
+        #endregion
 
         #region ProcessStart
         public void ProcessStart(bool start)
@@ -92,38 +151,14 @@ namespace FMSMonitoringUI
         }
         #endregion
 
+        #region InitFormationBox
         private void InitFormationBox()
         {
-            //ctrlFormationBoxCHG1_01.Name = "F101";
-            //ctrlFormationBoxCHG1_02.Name = "F102";
-            //ctrlFormationBoxCHG1_03.Name = "F103";
-            //ctrlFormationBoxCHG1_04.Name = "F104";
-            //ctrlFormationBoxCHG2_01.Name = "F201";
-            //ctrlFormationBoxCHG2_02.Name = "F202";
-            //ctrlFormationBoxCHG2_03.Name = "F203";
-            //ctrlFormationBoxCHG2_04.Name = "F204";
-            //ctrlFormationBoxCHG3_01.Name = "F301";
-            //ctrlFormationBoxCHG3_02.Name = "F302";
-            //ctrlFormationBoxCHG3_03.Name = "F303";
-            //ctrlFormationBoxCHG3_04.Name = "F304";
-
-            //ctrlFormationBoxCHG1_01.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
-            //ctrlFormationBoxCHG1_02.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
-            //ctrlFormationBoxCHG1_03.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
-            //ctrlFormationBoxCHG1_04.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
-            //ctrlFormationBoxCHG2_01.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
-            //ctrlFormationBoxCHG2_02.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
-            //ctrlFormationBoxCHG2_03.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
-            //ctrlFormationBoxCHG2_04.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
-            //ctrlFormationBoxCHG3_01.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
-            //ctrlFormationBoxCHG3_02.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
-            //ctrlFormationBoxCHG3_03.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
-            //ctrlFormationBoxCHG3_04.MouseDoubleClick += CtrlFormationBox1_MouseDoubleClick;
-
             this.HandleDestroyed += CtrlFormation_HandleDestroyed;
-
         }
+        #endregion
 
+        #region InitControls
         private void InitControls()
         {
             _ListCharger.Clear();
@@ -141,20 +176,6 @@ namespace FMSMonitoringUI
                 }
             }
         }
-
-        #region SetData
-        public void SetData(List<_ctrl_formation_chg> data)
-        {
-            if (data.Count == 0) return;
-
-            for (int i = 0; i < data.Count; i++)
-            {
-                CtrlRack chg = _ListCharger[data[i].UNIT_ID];
-                chg.SetData(data[i].TRAY_ID, data[i].TRAY_ID_2, data[i].JIG_AVG, data[i].START_TIME, data[i].PLAN_TIME);
-            }
-
-            ctrlRackTemp.SetData(data);
-        }
         #endregion
 
         #region ProcessThreadCallback
@@ -166,43 +187,13 @@ namespace FMSMonitoringUI
                 {
                     GC.Collect();
 
-                    RESTClient rest = new RESTClient();
-                    // Set Query
-                    StringBuilder strSQL = new StringBuilder();
-
-                    strSQL.Append(" SELECT A.unit_id, A.eqp_name, A.eqp_name_local, A.tray_id, A.tray_id_2, A.start_time, A.plan_time,");
-                    strSQL.Append("        B.*");
-                    strSQL.Append(" FROM fms_v.tb_mst_eqp   A, fms_v.tb_dat_temp_unit   B");
-                    //필수값
-                    strSQL.Append($" WHERE A.eqp_id = '{_EqpID}'");
-                    strSQL.Append($"    AND A.unit_id = B.unit_id");
-                    strSQL.Append($"    AND B.event_time = (SELECT MAX(event_time) FROM tb_dat_temp_unit)");
-                    strSQL.Append($" ORDER BY A.unit_id");
-
-                    var jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
-
-                    if (jsonResult != null)
+                    this.Invoke(new MethodInvoker(delegate ()
                     {
-                        _jsonCtrlFormationCHGResponse result = rest.ConvertCtrlFormationCHG(jsonResult.Result);
+                        LoadFormationCHG(_EqpID).GetAwaiter().GetResult();
+                    }));
 
-                        if (result != null)
-                        {
-                            this.BeginInvoke(new Action(() => SetData(result.DATA)));
-                        }
-                        else
-                        {
-                            string log = "CtrlFormationCHG : jsonResult is null";
-                            _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
-                        }
-                    }
-                    else
-                    {
-                        string log = "CtrlFormationCHG : jsonResult is null";
-                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
-                    }
-
-                    Thread.Sleep(3000);
-                }
+                    Thread.Sleep(5000);
+                }   
             }
             catch (Exception ex)
             {
@@ -212,30 +203,83 @@ namespace FMSMonitoringUI
         }
         #endregion
 
+        #region LoadFormationCHG
+        private async Task LoadFormationCHG(string eqpid)
+        {
+            try
+            {
+                RESTClient rest = new RESTClient();
+                // Set Query
+                StringBuilder strSQL = new StringBuilder();
+
+                strSQL.Append(" SELECT A.unit_id, A.eqp_name, A.eqp_name_local, A.tray_id, B.tray_id_2,");
+                strSQL.Append("        A.start_time, A.plan_time, A.process_status, A.operation_mode,");
+                strSQL.Append("        B.*");
+                strSQL.Append(" FROM fms_v.tb_mst_eqp   A");
+                strSQL.Append("     LEFT OUTER JOIN fms_v.tb_dat_temp_unit  B");
+                strSQL.Append("         ON A.unit_id = B.unit_id");
+                strSQL.Append("         AND (B.unit_id, B.event_time) in (");
+                strSQL.Append("         SELECT unit_id, max(event_time) as event_time FROM fms_v.tb_dat_temp_unit GROUP BY unit_id)");
+                //필수값
+                strSQL.Append($" WHERE A.eqp_id = '{_EqpID}'");
+                strSQL.Append("        AND (A.eqp_type = 'CHG' AND A.unit_id IS NOT NULL)");
+
+                var jsonResult = await rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+
+                if (jsonResult != null)
+                {
+                    _jsonCtrlFormationCHGResponse result = rest.ConvertCtrlFormationCHG(jsonResult);
+
+                    if (result != null)
+                    {
+                        //this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                        SetData(result.DATA);
+                    }
+                    else
+                    {
+                        string log = "CtrlFormationCHG : jsonResult is null";
+                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                    }
+                }
+                else
+                {
+                    string log = "CtrlFormationCHG : jsonResult is null";
+                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(string.Format("[Exception:LoadFormationCHG] {0}", ex.ToString()));
+            }
+        }
+        #endregion
+
+        #region SetData
+        public void SetData(List<_ctrl_formation_chg> data)
+        {
+            if (data == null && data.Count == 0) return;
+
+            for (int i = 0; i < data.Count; i++)
+            {
+                CtrlRack chg = _ListCharger[data[i].UNIT_ID];
+                if (data[i].PROCESS_STATUS == null)
+                {
+                    data[i].PROCESS_STATUS = "I";
+                }
+
+                chg.SetData(data[i], _EqpStatus[data[i].PROCESS_STATUS], _OpMode[data[i].OPERATION_MODE]);
+            }
+
+            ctrlRackTemp.SetData(data);
+        }
+        #endregion
+
         private void Charger_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             CtrlRack unit = sender as CtrlRack;
 
             WinFormationBox form = new WinFormationBox(unit.EqpID, unit.UnitID);
             form.ShowDialog();
-        }
-
-        public static CtrlFormationBoxCHG FindByName(Control root, string strName)
-        {
-            for (int i = 0; i < root.Controls.Count; i++)
-            {
-                if (root.Controls[i] is ElementHost)
-                {
-                    if (((ElementHost)root.Controls[i]).Child is CtrlFormationBoxCHG)
-                    {
-                        CtrlFormationBoxCHG eh = (CtrlFormationBoxCHG)((ElementHost)root.Controls[i]).Child;
-                        if (eh.Name == strName)
-                            return eh;
-                    }
-                }
-            }
-
-            return null;
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -379,63 +423,8 @@ namespace FMSMonitoringUI
         //    }
         //}
 
-        private void CtrlFormation_HandleDestroyed(object sender, EventArgs e)
-        {
-            m_timer.Stop();
-        }
+        
 
-        private async Task LoadChargerRackData()
-        {
-            try
-            {
-                Task task = ChargerDataView();
-                await task;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(string.Format("[Exception:LoadChargerRackData] {0}", ex.ToString()));
-            }
-        }
-
-        private async Task<bool> ChargerDataView()
-        {
-            try
-            {
-                //if (this.InvokeRequired)
-                {
-                    await Task.Run(() =>
-                    {
-                        this.Invoke(new MethodInvoker(delegate ()
-                        {
-                            UpdateCharger();
-                        }));
-
-                        //this.BeginInvoke(new Action(() => UpdateCharger()));
-                    });
-                }
-            }
-            catch (Exception ex)        // 예외처리
-            {
-                Console.WriteLine(string.Format("[Exception:ChargerDataView] {0}", ex.ToString()));
-                // Return
-                return false;
-            }
-
-            // Return
-            return true;
-        }
-
-        private void UpdateCharger()
-        {
-            //DataSet ds = _mysql.SelectChargerInfo();
-
-            //foreach (DataRow row in ds.Tables[0].Rows)
-            //{
-            //    string unit_id = row["unit_id"].ToString();
-
-            //    CtrlRack chg = _ListCharger[unit_id];
-            //    chg.SetData(row);
-            //}
-        }
+        
     }
 }

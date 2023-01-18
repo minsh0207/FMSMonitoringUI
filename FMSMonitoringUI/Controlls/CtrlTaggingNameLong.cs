@@ -107,5 +107,13 @@ namespace MonitoringUI.Controlls
         {
             InitializeComponent();
         }
+
+        public void CallLocalLanguage()
+        {
+            if (_LanguageID != "")
+            {
+                lbTag.Text = LocalLanguage.GetItemString(_LanguageID);
+            }
+        }
     }
 }

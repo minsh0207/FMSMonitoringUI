@@ -1,4 +1,5 @@
-﻿using MonitoringUI.Controlls;
+﻿using MonitoringUI.Common;
+using MonitoringUI.Controlls;
 using Novasoft.Logger;
 using Org.BouncyCastle.Ocsp;
 using RestClientLib;
@@ -24,17 +25,21 @@ namespace FMSMonitoringUI.Monitoring
 
         private Logger _Logger;
 
+        Dictionary<string, KeyValuePair<string, Color>> _RackStatus;
+
         #region Working Thread
         private Thread _ProcessThread;
         private bool _TheadVisiable;
         #endregion
 
-        public WinAgingRackSetting(string eqpid, string rackId)
+        public WinAgingRackSetting(string eqpid, string rackId, Dictionary<string, KeyValuePair<string, Color>> rackStatus)
         {
             InitializeComponent();
 
             _EQPID = eqpid;
             _RackID = rackId;
+
+            _RackStatus = rackStatus;
 
             string logPath = ConfigurationManager.AppSettings["LOG_PATH"];
             _Logger = new Logger(logPath, LogMode.Hour);
@@ -73,6 +78,7 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
+        #region InitGridView
         private void InitGridViewEqp()
         {
             List<string> lstTitle = new List<string>();
@@ -94,10 +100,8 @@ namespace FMSMonitoringUI.Monitoring
 
             List<int> lstColumn = new List<int>();
             lstColumn.Add(-1);      // DataGridView Header 병합
-            //lstColumn.Add(6);       // DataGridView 6번째 Column 병합
             lstTitle = new List<string>();
             lstTitle.Add("Rack Information");
-            //lstTitle.Add("Tray Information");
             gridEqpInfo.ColumnMergeList(lstColumn, lstTitle);
 
             gridEqpInfo.SetGridViewStyles();
@@ -130,45 +134,12 @@ namespace FMSMonitoringUI.Monitoring
 
             List<int> lstColumn = new List<int>();
             lstColumn.Add(-1);      // DataGridView Header 병합
-            //lstColumn.Add(6);       // DataGridView 6번째 Column 병합
             lstTitle = new List<string>();
-            //lstTitle.Add("Equipment Information");
             lstTitle.Add("Tray Information");
             gridTrayInfo.ColumnMergeList(lstColumn, lstTitle, 0, 3);
 
             gridTrayInfo.SetGridViewStyles();
             gridTrayInfo.ColumnHeadersWidth(0, 120);
-        }
-
-        #region SetData
-        public void SetData(List<_win_aging_rack> data)
-        {
-            if (data.Count == 0) return;
-
-            int row = 0;
-            gridEqpInfo.SetValue(1, row, data[0].RACK_ID); row++;
-            string rackName = string.Format($"{data[0].AGING_TYPE}T-{data[0].LINE}Line-{data[0].LANE}Lane-{data[0].BAY}Bay-{data[0].FLOOR}F");
-            gridEqpInfo.SetValue(1, row, rackName); row++;
-
-            gridEqpInfo.SetValue(1, row, data[0].STATUS); row++;
-            gridEqpInfo.SetValue(1, row, data[0].USE_FLAG); row++;
-            gridEqpInfo.SetValue(1, row, data[0].TROUBLE_CODE); row++;
-            gridEqpInfo.SetValue(1, row, data[0].TROUBLE_NAME);
-
-            for (int i = 0; i < data.Count; i++)
-            {
-                row = 0;
-                gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_ID); row++;
-                gridTrayInfo.SetValue(i + 1, row, data[i].LEVEL); row++;
-                gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_INPUT_TIME); row++;
-                gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_ZONE); row++;
-                gridTrayInfo.SetValue(i + 1, row, data[i].MODEL_ID); row++;
-                gridTrayInfo.SetValue(i + 1, row, data[i].ROUTE_ID); row++;
-                gridTrayInfo.SetValue(i + 1, row, data[i].RECIPE_ID); row++;
-                gridTrayInfo.SetValue(i + 1, row, data[i].PROCESS_NAME); row++;
-                gridTrayInfo.SetValue(i + 1, row, data[i].START_TIME); row++;
-                gridTrayInfo.SetValue(i + 1, row, data[i].PLAN_TIME); row++;
-            }
         }
         #endregion
 
@@ -181,45 +152,10 @@ namespace FMSMonitoringUI.Monitoring
                 {
                     GC.Collect();
 
-                    RESTClient rest = new RESTClient();
-                    // Set Query
-                    StringBuilder strSQL = new StringBuilder();
-
-                    strSQL.Append(" SELECT A.aging_type, A.rack_id, A.line, A.lane, A.bay, A.floor, A.status, A.use_flag, C.tray_id, IF(A.tray_id = C.tray_id, '1', '2') AS level,");
-                    strSQL.Append("        B.trouble_name,");
-                    strSQL.Append("        C.tray_zone, C.model_id, C.route_id, C.recipe_id, C.start_time, C.plan_time,");
-                    strSQL.Append("        D.process_name");
-                    strSQL.Append(" FROM fms_v.tb_mst_aging   A");
-                    strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_trouble    B");
-                    strSQL.Append("         ON A.trouble_code = B.trouble_code AND A.in_eqp_type = B.eqp_type");
-                    strSQL.Append("     LEFT OUTER JOIN fms_v.tb_dat_tray   C");
-                    strSQL.Append("         ON C.tray_id IN (A.tray_id, A.tray_id_2)");
-                    strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_route_order    D");
-                    strSQL.Append("         ON A.route_order_no = D.route_order_no AND C.route_id = D.route_id");
-                    //필수값
-                    strSQL.Append($" WHERE A.rack_id = '{_RackID}'");
-
-                    var jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
-
-                    if (jsonResult != null)
+                    this.Invoke(new MethodInvoker(delegate ()
                     {
-                        _jsonWinAgingRackSettingResponse result = rest.ConvertWinAgingRackSetting(jsonResult.Result);
-
-                        if (result != null)
-                        {
-                            this.BeginInvoke(new Action(() => SetData(result.DATA)));
-                        }
-                        else
-                        {
-                            string log = "WinAgingRackSetting : jsonResult is null";
-                            _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
-                        }
-                    }
-                    else
-                    {
-                        string log = "WinAgingRackSetting : jsonResult is null";
-                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
-                    }
+                        LoadAgingRackSetting(_RackID).GetAwaiter().GetResult();
+                    }));
 
                     //Thread.Sleep(3000);
                 }
@@ -228,6 +164,113 @@ namespace FMSMonitoringUI.Monitoring
             {
                 // System Debug
                 System.Diagnostics.Debug.Print(string.Format("### WinAgingRackSetting ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+            }
+        }
+        #endregion
+
+        #region LoadAgingRackSetting
+        private async Task LoadAgingRackSetting(string rackid)
+        {
+            try
+            {
+                RESTClient rest = new RESTClient();
+                // Set Query
+                StringBuilder strSQL = new StringBuilder();
+
+                strSQL.Append(" SELECT A.aging_type, A.rack_id, A.line, A.lane, A.bay, A.floor, A.status, A.use_flag, A.process_no,");
+                strSQL.Append("        C.tray_id, IF(A.tray_id = C.tray_id, '1', '2') AS level,");
+                strSQL.Append("        B.trouble_name,");
+                strSQL.Append("        C.tray_zone, C.model_id, C.route_id, C.recipe_id, C.start_time, C.plan_time,");
+                strSQL.Append("        D.process_name");
+                strSQL.Append(" FROM fms_v.tb_mst_aging   A");
+                strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_trouble    B");
+                strSQL.Append("         ON A.trouble_code = B.trouble_code AND A.in_eqp_type = B.eqp_type");
+                strSQL.Append("     LEFT OUTER JOIN fms_v.tb_dat_tray   C");
+                strSQL.Append("         ON C.tray_id IN (A.tray_id, A.tray_id_2)");
+                strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_route_order    D");
+                strSQL.Append("         ON A.route_order_no = D.route_order_no AND C.route_id = D.route_id");
+                //필수값
+                strSQL.Append($" WHERE A.rack_id = '{rackid}'");
+
+                var jsonResult = await rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+
+                if (jsonResult != null)
+                {
+                    _jsonWinAgingRackSettingResponse result = rest.ConvertWinAgingRackSetting(jsonResult);
+
+                    if (result != null)
+                    {
+                        //this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                        SetData(result.DATA);
+                    }
+                    else
+                    {
+                        string log = "WinAgingRackSetting : jsonResult is null";
+                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                    }
+                }
+                else
+                {
+                    string log = "WinAgingRackSetting : jsonResult is null";
+                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(string.Format("[Exception:LoadAgingRackSetting] {0}", ex.ToString()));
+            }
+        }
+        #endregion
+
+        #region SetData
+        public void SetData(List<_win_aging_rack> data)
+        {
+            if (data == null && data.Count == 0) return;
+
+            int row = 0;
+            gridEqpInfo.SetValue(1, row, data[0].RACK_ID); row++;
+            string rackName = string.Format($"{data[0].AGING_TYPE}T-{data[0].LINE}Line-{data[0].LANE}Lane-{data[0].BAY}Bay-{data[0].FLOOR}F");
+            gridEqpInfo.SetValue(1, row, rackName); row++;
+
+            string rackStatus = string.Empty;
+            switch (data[0].STATUS)
+            {
+                case "F":
+                    if (data[0].PROCESS_NO > 0)
+                    {
+                        rackStatus = _RackStatus[data[0].PROCESS_NO + "A"].Key;
+                    }
+                    else
+                    {
+                        rackStatus = _RackStatus[data[0].STATUS].Key;
+                    }
+                    break;
+
+                default:
+                    rackStatus = _RackStatus[data[0].STATUS].Key;
+                    break;
+            }
+
+            gridEqpInfo.SetValue(1, row, rackStatus); row++;
+            gridEqpInfo.SetValue(1, row, data[0].USE_FLAG == "Y" ? "Use" : "Not Use"); row++;
+            gridEqpInfo.SetValue(1, row, data[0].TROUBLE_CODE); row++;
+            gridEqpInfo.SetValue(1, row, data[0].TROUBLE_NAME);
+
+            if (data[0].STATUS == "E") return;
+
+            for (int i = 0; i < data.Count; i++)
+            {
+                row = 0;
+                gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_ID); row++;
+                gridTrayInfo.SetValue(i + 1, row, data[i].LEVEL); row++;
+                gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_INPUT_TIME); row++;
+                gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_ZONE); row++;
+                gridTrayInfo.SetValue(i + 1, row, data[i].MODEL_ID); row++;
+                gridTrayInfo.SetValue(i + 1, row, data[i].ROUTE_ID); row++;
+                gridTrayInfo.SetValue(i + 1, row, data[i].RECIPE_ID); row++;
+                gridTrayInfo.SetValue(i + 1, row, data[i].PROCESS_NAME); row++;
+                gridTrayInfo.SetValue(i + 1, row, data[i].START_TIME.Year == 1 ? "" : data[i].START_TIME.ToString()); row++;
+                gridTrayInfo.SetValue(i + 1, row, data[i].PLAN_TIME.Year == 1 ? "" : data[i].PLAN_TIME.ToString());
             }
         }
         #endregion
@@ -246,6 +289,7 @@ namespace FMSMonitoringUI.Monitoring
             }
         }
         #endregion
+
         #region DataGridView Event
         private void GridTrayInfo_MouseCellDoubleClick(int col, int row, object value)
         {
