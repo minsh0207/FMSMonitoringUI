@@ -1,4 +1,8 @@
-﻿using MonitoringUI.Controlls;
+﻿using MonitoringUI;
+using MonitoringUI.Common;
+using MonitoringUI.Controlls;
+using MonitoringUI.Controlls.CButton;
+using MonitoringUI.Popup;
 using Novasoft.Logger;
 using OPCUAClientClassLib;
 using Org.BouncyCastle.Ocsp;
@@ -15,13 +19,14 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 using UnifiedAutomation.UaBase;
 using static Org.BouncyCastle.Math.EC.ECCurve;
 
 namespace FMSMonitoringUI.Monitoring
 {
-    public partial class WinManageEqp : Form
+    public partial class WinManageEqp : WinFormRoot
     {
         private Point point = new Point();
         private string _EqpID = string.Empty;
@@ -33,9 +38,8 @@ namespace FMSMonitoringUI.Monitoring
 
         #region Working Thread
         private Thread _ProcessThread;
-        private bool _TheadVisiable;
+        private bool _TheadVisiable = false;
         #endregion
-
 
         public WinManageEqp(string eqpid, string unitid, string eqpType, int traycnt)
         {
@@ -53,28 +57,48 @@ namespace FMSMonitoringUI.Monitoring
         #region WinManageEqp Event
         private void WinManageEqp_Load(object sender, EventArgs e)
         {
+            if (CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, this.Text) == false)
+            {
+                Exit_Click(null, null);
+                return;
+            }
+
+            InitControl();
             InitGridViewEqp();
             InitGridViewTray();
 
             #region Title Mouse Event
-            ctrlTitleBar.MouseDown_Evnet += Title_MouseDownEvnet;
-            ctrlTitleBar.MouseMove_Evnet += Title_MouseMoveEvnet;
+            titBar.MouseDown_Evnet += Title_MouseDownEvnet;
+            titBar.MouseMove_Evnet += Title_MouseMoveEvnet;
             #endregion
 
             _TheadVisiable = true;
 
-            this.BeginInvoke(new MethodInvoker(delegate () 
-            { 
-                _ProcessThread = new Thread(() => ProcessThreadCallback()); 
-                _ProcessThread.IsBackground = true; _ProcessThread.Start(); 
+            this.BeginInvoke(new MethodInvoker(delegate ()
+            {
+                _ProcessThread = new Thread(() => ProcessThreadCallback());
+                _ProcessThread.IsBackground = true; _ProcessThread.Start();
             }));
+
+            this.WindowID = CAuthority.GetWindowsText(this.Text);
         }
         private void WinManageEqp_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (this._ProcessThread.IsAlive)
+            if (_TheadVisiable && this._ProcessThread.IsAlive)
                 this._TheadVisiable = false;
 
-            this._ProcessThread.Abort();
+            if (_TheadVisiable)
+                this._ProcessThread.Abort();
+
+            _Logger = null;
+        }
+        #endregion
+
+        #region InitControl
+        private void InitControl()
+        {
+            int btnPos = (this.Width - 130) / 2;   // Button Width Size 170            
+            this.Exit.Padding = new System.Windows.Forms.Padding(btnPos, 10, btnPos, 10);
         }
         #endregion
 
@@ -112,8 +136,8 @@ namespace FMSMonitoringUI.Monitoring
         }
         private void InitGridViewTray()
         {
-            if (_TrayCnt > 1) this.Size = new System.Drawing.Size(1080, 510);
-            else this.Size = new System.Drawing.Size(940, 510);
+            if (_TrayCnt > 1) this.Size = new System.Drawing.Size(1100, 531);
+            else this.Size = new System.Drawing.Size(960, 531);
 
             List<string> lstTitle = new List<string>();
             lstTitle.Add("Tray Information");
@@ -148,43 +172,6 @@ namespace FMSMonitoringUI.Monitoring
             gridTrayInfo.SetGridViewStyles();
             gridTrayInfo.ColumnHeadersWidth(0, 140);
 
-        }
-        #endregion
-
-        #region SetData
-        public void SetData(List<_win_manage_eqp> data)
-        {
-            if (data.Count == 0) return;
-
-            int row = 0;
-            gridEqpInfo.SetValue(1, row, data[0].EQP_ID); row++;
-            gridEqpInfo.SetValue(1, row, data[0].EQP_NAME); row++;
-
-            gridEqpInfo.SetValue(1, row, GetEqpStatus(data[0].EQP_MODE)); row++;
-            gridEqpInfo.SetValue(1, row, GetEqpStatus(data[0].EQP_STATUS)); row++;
-
-            if (data[0].OPERATION_MODE == 0) gridEqpInfo.RowsVisible(row, false);
-            else gridEqpInfo.RowsVisible(row, true);
-            gridEqpInfo.SetValue(1, row, GetOperationMode(data[0].OPERATION_MODE)); row++;
-
-            gridEqpInfo.SetValue(1, row, data[0].TROUBLE_CODE); row++;
-            gridEqpInfo.SetValue(1, row, data[0].TROUBLE_NAME);
-
-            for (int i = 0; i < data.Count; i++)
-            {
-                row = 0;
-                gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_ID); row++;
-                gridTrayInfo.SetValue(i + 1, row, data[i].LEVEL); row++;
-                gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_INPUT_TIME); row++;
-                gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_ZONE); row++;
-                gridTrayInfo.SetValue(i + 1, row, data[i].MODEL_ID); row++;
-                gridTrayInfo.SetValue(i + 1, row, data[i].ROUTE_ID); row++;
-                gridTrayInfo.SetValue(i + 1, row, data[i].LOT_ID); row++;
-                gridTrayInfo.SetValue(i + 1, row, data[i].PROCESS_NAME); row++;
-                gridTrayInfo.SetValue(i + 1, row, data[i].START_TIME.Year == 1 ? "" : data[i].START_TIME.ToString()); row++;
-                gridTrayInfo.SetValue(i + 1, row, data[i].PLAN_TIME.Year == 1 ? "" : data[i].PLAN_TIME.ToString()); row++;
-                gridTrayInfo.SetValue(i + 1, row, data[i].CURRENT_CELL_CNT);
-            }
         }
         #endregion
 
@@ -270,6 +257,43 @@ namespace FMSMonitoringUI.Monitoring
             catch (Exception ex)
             {
                 Console.WriteLine(string.Format("[Exception:LoadWinManageEqp] {0}", ex.ToString()));
+            }
+        }
+        #endregion
+
+        #region SetData
+        public void SetData(List<_win_manage_eqp> data)
+        {
+            if (data.Count == 0) return;
+
+            int row = 0;
+            gridEqpInfo.SetValue(1, row, data[0].EQP_ID); row++;
+            gridEqpInfo.SetValue(1, row, data[0].EQP_NAME); row++;
+
+            gridEqpInfo.SetValue(1, row, GetEqpStatus(data[0].EQP_MODE)); row++;
+            gridEqpInfo.SetValue(1, row, GetEqpStatus(data[0].EQP_STATUS)); row++;
+
+            if (data[0].OPERATION_MODE == 0) gridEqpInfo.RowsVisible(row, false);
+            else gridEqpInfo.RowsVisible(row, true);
+            gridEqpInfo.SetValue(1, row, GetOperationMode(data[0].OPERATION_MODE)); row++;
+
+            gridEqpInfo.SetValue(1, row, data[0].TROUBLE_CODE); row++;
+            gridEqpInfo.SetValue(1, row, data[0].TROUBLE_NAME);
+
+            for (int i = 0; i < data.Count; i++)
+            {
+                row = 0;
+                gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_ID); row++;
+                gridTrayInfo.SetValue(i + 1, row, data[i].LEVEL); row++;
+                gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_INPUT_TIME); row++;
+                gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_ZONE); row++;
+                gridTrayInfo.SetValue(i + 1, row, data[i].MODEL_ID); row++;
+                gridTrayInfo.SetValue(i + 1, row, data[i].ROUTE_ID); row++;
+                gridTrayInfo.SetValue(i + 1, row, data[i].LOT_ID); row++;
+                gridTrayInfo.SetValue(i + 1, row, data[i].PROCESS_NAME); row++;
+                gridTrayInfo.SetValue(i + 1, row, data[i].START_TIME.Year == 1 ? "" : data[i].START_TIME.ToString()); row++;
+                gridTrayInfo.SetValue(i + 1, row, data[i].PLAN_TIME.Year == 1 ? "" : data[i].PLAN_TIME.ToString()); row++;
+                gridTrayInfo.SetValue(i + 1, row, data[i].CURRENT_CELL_CNT);
             }
         }
         #endregion
@@ -379,10 +403,10 @@ namespace FMSMonitoringUI.Monitoring
                     statusName = "Loading";
                     break;
                 case "F":
-                    statusName = string.Format($"Fire\r\n(Temperature Alarm Only)");
+                    statusName = $"Fire\r\n(Temperature Alarm Only)";
                     break;
                 case "F2":
-                    statusName = string.Format($"Fire\r\n(Smoke Only or Both)");
+                    statusName = $"Fire\r\n(Smoke Only or Both)";
                     break;
             }
 
@@ -410,8 +434,31 @@ namespace FMSMonitoringUI.Monitoring
         {
             Close();
         }
-        #endregion
+        private void Save_Click(object sender, EventArgs e)
+        {
+            CtrlButton btn = sender as CtrlButton;
 
-        
+            WinSaveLogin saveLogin = new WinSaveLogin();
+            saveLogin.ShowDialog();
+
+            if (CDefine.m_strSaveLoginID == "") return;
+
+            if (CAuthority.CheckAuthority(enAuthority.Save, CDefine.m_strSaveLoginID, this.Text))
+            {
+                if (btn.Name == "EqpControlSave")
+                {
+                    CMessage.MsgInformation("EqpControlSave Save OK.");
+                }
+                else
+                {
+                    CMessage.MsgInformation("DataClearSave Save OK.");
+                }                
+            }
+            else
+            {
+                CMessage.MsgInformation("Save Fail.");
+            }
+        }        
+        #endregion
     }
 }

@@ -16,6 +16,9 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using MonitoringUI.Common;
+using FMSMonitoringUI.Controlls.WindowsForms;
+using MonitoringUI.Controlls.CButton;
+using MonitoringUI.Controlls.CComboBox;
 #endregion
 
 #region [NameSpace]
@@ -59,6 +62,7 @@ namespace MonitoringUI.Popup
                 this.StartPosition = FormStartPosition.CenterParent;
                 // Init
                 InitControl();
+                InitLanguage();
             }
             catch (Exception ex)
             {
@@ -122,6 +126,31 @@ namespace MonitoringUI.Popup
             }
         }
         #endregion
+
+        #region InitLanguage
+        private void InitLanguage()
+        {
+            // CtrlTaggingName 언어 변환 호출
+            foreach (var ctl in panel1.Controls)
+            {
+                if (ctl.GetType() == typeof(CtrlTextBox))
+                {
+                    CtrlTextBox tagName = ctl as CtrlTextBox;
+                    tagName.CallLocalLanguage();
+                }
+                else if (ctl.GetType() == typeof(CtrlButton))
+                {
+                    CtrlButton tagName = ctl as CtrlButton;
+                    tagName.CallLocalLanguage();
+                }
+                else if (ctl.GetType() == typeof(CtrlComboBox))
+                {
+                    CtrlComboBox tagName = ctl as CtrlComboBox;
+                    tagName.CallLocalLanguage();
+                }
+            }
+        }
+        #endregion
         #endregion
 
         #region [Button & Action Event]
@@ -154,8 +183,8 @@ namespace MonitoringUI.Popup
         {
             if (m_bHotKey)
             {
-                tbLginID.TextData = "DEVELOPER";
-                tbPassword.TextData = "DEVELOPER";
+                tbLoginID.TextData = "MSH";
+                tbPassword.TextData = "1";
 
                 // Login
                 btnLogin_Click(sender, e);
@@ -198,7 +227,7 @@ namespace MonitoringUI.Popup
                 //tbPassword.TextData
                 // Login ID Check
                 //if (txtLoginID.Text.Length < 1)
-                if (tbLginID.TextData.Length < 1)
+                if (tbLoginID.TextData.Length < 1)
                 {
                     // Msg
                     CMessage.MsgInformation("Please enter your Login ID.");
@@ -216,7 +245,7 @@ namespace MonitoringUI.Popup
 
                 // Login
                 //if (await m_user.UserSaveLogin(txtLoginID.Text, txtPassword.Text) != true)
-                if (await CUser.UserSaveLogin(tbLginID.TextData, tbPassword.TextData) != true)
+                if (await CUser.UserMainLogin(tbLoginID.TextData, tbPassword.TextData, true) != true)
                 {
                     CMessage.MsgError("Please login After checking the user ID and Password.");
                     return;

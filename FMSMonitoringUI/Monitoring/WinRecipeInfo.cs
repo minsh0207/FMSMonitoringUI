@@ -1,4 +1,5 @@
-﻿using MonitoringUI.Common;
+﻿using MonitoringUI;
+using MonitoringUI.Common;
 using MonitoringUI.Controlls;
 using RestClientLib;
 using System;
@@ -13,7 +14,7 @@ using System.Windows.Forms;
 
 namespace FMSMonitoringUI.Monitoring
 {
-    public partial class WinRecipeInfo : Form
+    public partial class WinRecipeInfo : WinFormRoot
     {
         private Point point = new Point();
 
@@ -21,11 +22,18 @@ namespace FMSMonitoringUI.Monitoring
         {
             InitializeComponent();
 
+            InitControl();
             //InitGridView();
         }
 
         private void WinRecipeInfo_Load(object sender, EventArgs e)
         {
+            if (CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, this.Text) == false)
+            {
+                Exit_Click(null, null);
+                return;
+            }
+
             #region Title Mouse Event
             ctrlTitleBar.MouseDown_Evnet += Title_MouseDownEvnet;
             ctrlTitleBar.MouseMove_Evnet += Title_MouseMoveEvnet;
@@ -34,8 +42,19 @@ namespace FMSMonitoringUI.Monitoring
             #region DataGridView Event
             gridRecipeInfo.MouseCellDoubleClick_Evnet += GridCellInfo_MouseCellDoubleClick;
             #endregion
+
+            this.WindowID = CAuthority.GetWindowsText(this.Text);
         }
 
+        #region InitControl
+        private void InitControl()
+        {
+            int btnPos = (this.Width - CDefine.DEF_EXIT_WIDTH) / 2;   // Button Width Size 170            
+            this.Exit.Padding = new System.Windows.Forms.Padding(btnPos, 10, btnPos, 10);
+        }
+        #endregion
+
+        #region InitGridView
         private void InitGridView(Dictionary<string, object> rcpItem)
         {
             List<string> lstTitle = new List<string>();
@@ -61,6 +80,7 @@ namespace FMSMonitoringUI.Monitoring
                 gridRecipeInfo.SetValue(1, i, rcpItem.Values.ToList()[i]);
             }
         }
+        #endregion
 
         #region SetData
         public void SetData(_tray_process_flow rcpItem, string recipeId)

@@ -1,4 +1,5 @@
 ﻿using FMSMonitoringUI.Controlls.WindowsForms;
+using MonitoringUI;
 using MonitoringUI.Common;
 using MonitoringUI.Controlls;
 using MonitoringUI.Controlls.CButton;
@@ -21,7 +22,7 @@ using UnifiedAutomation.UaBase;
 
 namespace FMSMonitoringUI.Monitoring
 {
-    public partial class WinCraneInfo : Form
+    public partial class WinCraneInfo : WinFormRoot
     {
         private Point point = new Point();
 
@@ -59,6 +60,12 @@ namespace FMSMonitoringUI.Monitoring
         #region WinCraneInfo
         private void WinCraneInfo_Load(object sender, EventArgs e)
         {
+            if (CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, this.Text) == false)
+            {
+                Exit_Click(null, null);
+                return;
+            }
+
             #region Title Mouse Event
             ctrlTitleBar.MouseDown_Evnet += Title_MouseDownEvnet;
             ctrlTitleBar.MouseMove_Evnet += Title_MouseMoveEvnet;
@@ -75,6 +82,8 @@ namespace FMSMonitoringUI.Monitoring
                 _ProcessThread = new Thread(() => ProcessThreadCallback());
                 _ProcessThread.IsBackground = true; _ProcessThread.Start();
             }));
+
+            this.WindowID = CAuthority.GetWindowsText(this.Text);
         }
         private void WinCraneInfo_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -145,6 +154,9 @@ namespace FMSMonitoringUI.Monitoring
                 uiTlbJogType2.Controls.Add(_LedJobType[idx], col, 0);
                 idx++;
             }
+
+            int btnPos = (this.Width - CDefine.DEF_EXIT_WIDTH) / 2;   // Button Width Size 170            
+            this.Exit.Padding = new System.Windows.Forms.Padding(btnPos, 10, btnPos, 10);
         }
         #endregion
 
@@ -261,6 +273,7 @@ namespace FMSMonitoringUI.Monitoring
                 if (control.GetType() == typeof(CtrlLED))
                 {
                     CtrlLED ctl = control as CtrlLED;
+                    ctl.TitleText= string.Empty;
 
                     onoff = GetTagValuetoBool(ctl.Tag);
                     ctl.LedOnOff(onoff);
@@ -295,6 +308,7 @@ namespace FMSMonitoringUI.Monitoring
                 if (control.GetType() == typeof(CtrlLED))
                 {
                     CtrlLED ctl = control as CtrlLED;
+                    ctl.TitleText = string.Empty;
 
                     onoff = GetTagValuetoBool(ctl.Tag);
                     ctl.LedOnOff(onoff);

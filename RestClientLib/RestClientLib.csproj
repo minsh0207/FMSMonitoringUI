@@ -106,6 +106,7 @@
     <Compile Include="Monitoring\_jsonRecipeInfo.cs" />
     <Compile Include="Monitoring\_jsonWinAgingRackSetting.cs" />
     <Compile Include="Monitoring\_jsonWinFormationBox.cs" />
+    <Compile Include="Monitoring\_jsonUserAuthority.cs" />
     <Compile Include="Monitoring\_jsonWinTrayInfo.cs" />
     <Compile Include="Monitoring\_jsonWinManageEqp.cs" />
     <Compile Include="Monitoring\__winBase.cs" />

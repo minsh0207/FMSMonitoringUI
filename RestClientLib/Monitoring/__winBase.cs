@@ -265,4 +265,20 @@ namespace RestClientLib
 
     }
     #endregion
+    #region UserAuthority
+    /// <summary>
+    /// JSON base format : UserAuthority
+    /// </summary>
+    public class _user_authority
+    {
+        public string USER_ID { get; set; }
+        public string WINDOW_ID { get; set; }
+        public string AUTH_VIEW { get; set; }
+        public string AUTH_SAVE { get; set; }
+        public string WINDOW_NAME { get; set; }
+        public string WINDOW_NAME_LOCAL { get; set; }
+        public string DEFAULT_CLASS_ID { get; set; }
+
+    }
+    #endregion
 }

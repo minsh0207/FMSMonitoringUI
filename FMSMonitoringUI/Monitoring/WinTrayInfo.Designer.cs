@@ -30,18 +30,18 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.ctrlTitleBar = new MonitoringUI.Controlls.CtrlTitleBar();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Exit = new MonitoringUI.Controlls.CButton.CtrlButton();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.ctrlLabel1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.CellInfo = new MonitoringUI.Controlls.CButton.CtrlButton();
-            this.label2 = new System.Windows.Forms.Label();
             this.gridTrayInfo = new FMSMonitoringUI.Controlls.CtrlDataGridView();
+            this.ctrlLabel2 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.gridProcessFlow = new FMSMonitoringUI.Controlls.CtrlDataGridView();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -53,10 +53,10 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.ctrlTitleBar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(30);
+            this.panel1.Location = new System.Drawing.Point(2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1500, 66);
+            this.panel1.Size = new System.Drawing.Size(1496, 65);
             this.panel1.TabIndex = 0;
             // 
             // ctrlTitleBar
@@ -66,69 +66,83 @@
             this.ctrlTitleBar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ctrlTitleBar.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTitleBar.ForeColor = System.Drawing.Color.White;
-            this.ctrlTitleBar.LanguageID = "";
+            this.ctrlTitleBar.LanguageID = "DEF_Tray_Information";
             this.ctrlTitleBar.Location = new System.Drawing.Point(0, 0);
             this.ctrlTitleBar.Margin = new System.Windows.Forms.Padding(4);
             this.ctrlTitleBar.Name = "ctrlTitleBar";
-            this.ctrlTitleBar.Size = new System.Drawing.Size(1498, 64);
+            this.ctrlTitleBar.Size = new System.Drawing.Size(1494, 63);
             this.ctrlTitleBar.TabIndex = 0;
             this.ctrlTitleBar.TitleText = "Tray Information";
+            // 
+            // panel3
+            // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.panel2);
+            this.panel3.Controls.Add(this.splitContainer1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(2, 67);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1496, 736);
+            this.panel3.TabIndex = 2;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.Exit);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 671);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 653);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1500, 65);
-            this.panel2.TabIndex = 1;
+            this.panel2.Size = new System.Drawing.Size(1494, 60);
+            this.panel2.TabIndex = 2;
             // 
             // Exit
             // 
             this.Exit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.Exit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Exit.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Exit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.Exit.LabelText = "Exit";
             this.Exit.LanguageID = "DEF_EXIT";
-            this.Exit.Location = new System.Drawing.Point(663, 11);
+            this.Exit.Location = new System.Drawing.Point(0, 0);
             this.Exit.Name = "Exit";
-            this.Exit.Size = new System.Drawing.Size(173, 42);
+            this.Exit.Size = new System.Drawing.Size(1492, 58);
             this.Exit.TabIndex = 3;
             this.Exit.Click += new System.EventHandler(this.Exit_Click);
-            // 
-            // panel3
-            // 
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.splitContainer1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 66);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1500, 605);
-            this.panel3.TabIndex = 2;
             // 
             // splitContainer1
             // 
             this.splitContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Top;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.ctrlLabel1);
             this.splitContainer1.Panel1.Controls.Add(this.CellInfo);
-            this.splitContainer1.Panel1.Controls.Add(this.label2);
             this.splitContainer1.Panel1.Controls.Add(this.gridTrayInfo);
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.ctrlLabel2);
             this.splitContainer1.Panel2.Controls.Add(this.gridProcessFlow);
-            this.splitContainer1.Panel2.Controls.Add(this.label1);
-            this.splitContainer1.Size = new System.Drawing.Size(1498, 603);
-            this.splitContainer1.SplitterDistance = 328;
+            this.splitContainer1.Size = new System.Drawing.Size(1494, 653);
+            this.splitContainer1.SplitterDistance = 327;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // ctrlLabel1
+            // 
+            this.ctrlLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel1.ForeColor = System.Drawing.Color.DarkGray;
+            this.ctrlLabel1.LanguageID = "DEF_Tray_Info";
+            this.ctrlLabel1.Location = new System.Drawing.Point(2, 1);
+            this.ctrlLabel1.Name = "ctrlLabel1";
+            this.ctrlLabel1.Size = new System.Drawing.Size(137, 48);
+            this.ctrlLabel1.TabIndex = 3;
+            this.ctrlLabel1.Text = "Tray Info";
+            this.ctrlLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // CellInfo
             // 
@@ -136,75 +150,76 @@
             this.CellInfo.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.CellInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.CellInfo.LabelText = "Cell Information";
-            this.CellInfo.LanguageID = "";
+            this.CellInfo.LanguageID = "DEF_Cell_Information";
             this.CellInfo.Location = new System.Drawing.Point(176, 5);
             this.CellInfo.Name = "CellInfo";
-            this.CellInfo.Size = new System.Drawing.Size(147, 33);
+            this.CellInfo.Size = new System.Drawing.Size(147, 36);
             this.CellInfo.TabIndex = 2;
             this.CellInfo.Click += new System.EventHandler(this.CellInfo_Click);
             // 
-            // label2
-            // 
-            this.label2.ForeColor = System.Drawing.Color.DarkGray;
-            this.label2.Location = new System.Drawing.Point(6, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(107, 26);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Tray Info";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // gridTrayInfo
             // 
+            this.gridTrayInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.gridTrayInfo.ColumnCount = -1;
             this.gridTrayInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gridTrayInfo.Location = new System.Drawing.Point(0, 44);
+            this.gridTrayInfo.Location = new System.Drawing.Point(0, 48);
             this.gridTrayInfo.Name = "gridTrayInfo";
             this.gridTrayInfo.RowCount = -1;
-            this.gridTrayInfo.Size = new System.Drawing.Size(326, 557);
+            this.gridTrayInfo.Size = new System.Drawing.Size(325, 603);
             this.gridTrayInfo.TabIndex = 0;
+            this.gridTrayInfo.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            // 
+            // ctrlLabel2
+            // 
+            this.ctrlLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel2.ForeColor = System.Drawing.Color.DarkGray;
+            this.ctrlLabel2.LanguageID = "DEF_Process_Flow";
+            this.ctrlLabel2.Location = new System.Drawing.Point(3, 0);
+            this.ctrlLabel2.Name = "ctrlLabel2";
+            this.ctrlLabel2.Size = new System.Drawing.Size(158, 48);
+            this.ctrlLabel2.TabIndex = 4;
+            this.ctrlLabel2.Text = "Process Flow";
+            this.ctrlLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // gridProcessFlow
             // 
+            this.gridProcessFlow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.gridProcessFlow.ColumnCount = -1;
             this.gridProcessFlow.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gridProcessFlow.Location = new System.Drawing.Point(0, 44);
+            this.gridProcessFlow.Location = new System.Drawing.Point(0, 48);
             this.gridProcessFlow.Name = "gridProcessFlow";
             this.gridProcessFlow.RowCount = -1;
-            this.gridProcessFlow.Size = new System.Drawing.Size(1164, 557);
+            this.gridProcessFlow.Size = new System.Drawing.Size(1161, 603);
             this.gridProcessFlow.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.ForeColor = System.Drawing.Color.DarkGray;
-            this.label1.Location = new System.Drawing.Point(6, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 26);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Process Flow";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gridProcessFlow.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             // 
             // WinTrayInfo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1500, 736);
+            this.BackColor = System.Drawing.Color.DimGray;
+            this.ClientSize = new System.Drawing.Size(1500, 805);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "WinTrayInfo";
+            this.Padding = new System.Windows.Forms.Padding(2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "WinTrayInfo";
             this.TopMost = true;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.WinTrayInfo_FormClosed);
             this.Load += new System.EventHandler(this.WinTrayInfo_Load);
+            this.Controls.SetChildIndex(this.panel1, 0);
+            this.Controls.SetChildIndex(this.panel3, 0);
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -212,14 +227,14 @@
 
         private System.Windows.Forms.Panel panel1;
         private MonitoringUI.Controlls.CtrlTitleBar ctrlTitleBar;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private Controlls.CtrlDataGridView gridTrayInfo;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private Controlls.CtrlDataGridView gridProcessFlow;
         private MonitoringUI.Controlls.CButton.CtrlButton CellInfo;
+        private System.Windows.Forms.Panel panel2;
         private MonitoringUI.Controlls.CButton.CtrlButton Exit;
+        private Controlls.WindowsForms.CtrlLabel ctrlLabel1;
+        private Controlls.WindowsForms.CtrlLabel ctrlLabel2;
     }
 }

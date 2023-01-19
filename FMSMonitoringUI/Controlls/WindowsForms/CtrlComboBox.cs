@@ -14,6 +14,8 @@ using System.Data;
 using System.ComponentModel;
 using MonitoringUI.Common;
 using System.Drawing;
+using System.Windows.Controls;
+using System.Windows.Forms;
 #endregion
 
 #region [NameSpace]
@@ -153,10 +155,10 @@ namespace MonitoringUI.Controlls.CComboBox
 
                 //Data Set
                 //cbItems.DataSource = GetListTable(enDBTable.MST_PROD_MODEL, bNull, strFilter);
-                cbItems.DataSource = GetListTable(enDBTable.MST_PROD_MODEL, bNull, strFilter, "ProdDefaultFlag DESC, ProdModel ASC");
+                //cbItems.DataSource = GetListTable(enDBTable.MST_PROD_MODEL, bNull, strFilter, "ProdDefaultFlag DESC, ProdModel ASC");
 
                 //Selected
-                if (cbItems.Items.Count > 0) cbItems.SelectedItem = 0;
+                //if (cbItems.Items.Count > 0) cbItems.SelectedItem = 0;
             }
             catch (Exception ex)
             {
@@ -197,7 +199,6 @@ namespace MonitoringUI.Controlls.CComboBox
         } 
         #endregion
 
-
         #region [ComboBox Selected Change Event]
         /// <summary>
         /// UserControl ComboBox Selected Index Change To This. EventHandler ADD(UserForm).
@@ -220,6 +221,23 @@ namespace MonitoringUI.Controlls.CComboBox
             ItemName = rowData.Row.ItemArray[1].ToString();
 
             OnCboItemChanged(ItemID, ItemName);
+        }
+        #endregion
+
+        #region DataSource
+        public void DataSource(DataTable dtData)
+        {
+            //Init
+            cbItems.DataSource = null;
+            cbItems.Items.Clear();
+            cbItems.DisplayMember = CDefine.DEF_GRIDVIEW_COMBOXNAME;
+            cbItems.ValueMember = CDefine.DEF_GRIDVIEW_COMBOXID;
+
+            //Data Set
+            cbItems.DataSource = dtData;
+
+            //Selected
+            if (cbItems.Items.Count > 0) cbItems.SelectedItem = 0;
         }
         #endregion
 

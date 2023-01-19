@@ -1,5 +1,8 @@
-﻿using MonitoringUI.Common;
+﻿using MonitoringUI;
+using MonitoringUI.Common;
 using MonitoringUI.Controlls;
+using MonitoringUI.Controlls.CButton;
+using MonitoringUI.Popup;
 using Novasoft.Logger;
 using OPCUAClientClassLib;
 using Org.BouncyCastle.Ocsp;
@@ -18,7 +21,7 @@ using System.Windows.Forms;
 
 namespace FMSMonitoringUI.Monitoring
 {
-    public partial class WinFormationBox : Form
+    public partial class WinFormationBox : WinFormRoot
     {
         private Point point = new Point();
         private string _EQPID = string.Empty;
@@ -45,6 +48,13 @@ namespace FMSMonitoringUI.Monitoring
         #region WinFormationBox
         private void WinFormationBox_Load(object sender, EventArgs e)
         {
+            if (CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, this.Text) == false)
+            {
+                Exit_Click(null, null);
+                return;
+            }
+
+            InitControl();
             InitGridViewEqp();
             InitGridViewTray();
 
@@ -61,6 +71,8 @@ namespace FMSMonitoringUI.Monitoring
                 _ProcessThread.IsBackground = true; _ProcessThread.Start();
             }));
 
+            this.WindowID = CAuthority.GetWindowsText(this.Text);
+
         }
         private void WinFormationBox_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -71,6 +83,15 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
+        #region InitControl
+        private void InitControl()
+        {
+            int btnPos = (this.Width - CDefine.DEF_EXIT_WIDTH) / 2;   // Button Width Size 170            
+            this.Exit.Padding = new System.Windows.Forms.Padding(btnPos, 10, btnPos, 10);
+        }
+        #endregion
+
+        #region InitGridView
         private void InitGridViewEqp()
         {
             List<string> lstTitle = new List<string>();
@@ -140,6 +161,7 @@ namespace FMSMonitoringUI.Monitoring
             gridTrayInfo.SetGridViewStyles();
             gridTrayInfo.ColumnHeadersWidth(0, 140);
         }
+        #endregion
 
         #region ProcessThreadCallback
         private void ProcessThreadCallback()
@@ -315,7 +337,7 @@ namespace FMSMonitoringUI.Monitoring
                     statusName = "Loading";
                     break;
                 case "F":
-                    statusName = string.Format($"Fire\r\n(Temperature Alarm Only)");
+                    statusName = $"Fire\r\n(Temperature Alarm Only)";
                     break;
                 case "F2":
                     statusName = $"Fire\n(Smoke Only or Both)";
@@ -346,8 +368,37 @@ namespace FMSMonitoringUI.Monitoring
         {
             Close();
         }
+        private void Save_Click(object sender, EventArgs e)
+        {
+            CtrlButton btn = sender as CtrlButton;
+
+            WinSaveLogin saveLogin = new WinSaveLogin();
+            saveLogin.ShowDialog();
+
+            if (CDefine.m_strSaveLoginID == "") return;
+
+            if (CAuthority.CheckAuthority(enAuthority.Save, CDefine.m_strSaveLoginID, this.Text))
+            {
+                if (btn.Name == "ConfigurationSave")
+                {
+                    CMessage.MsgInformation("ConfigurationSave Save OK.");
+                }
+                else if (btn.Name == "EqpControlSave")
+                {
+                    CMessage.MsgInformation("EqpControlSave Save OK.");
+                }
+                else
+                {
+                    CMessage.MsgInformation("DataClearSave Save OK.");
+                }
+            }
+            else
+            {
+                CMessage.MsgInformation("Save Fail.");
+            }
+        }
         #endregion
 
-        
+
     }
 }

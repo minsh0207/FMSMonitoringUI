@@ -194,9 +194,14 @@ namespace FMSMonitoringUI.Controlls.WindowsForms
         }
         #endregion
 
-        private void CtrlTextBox_Enter(object sender, EventArgs e)
+        #region CallLocalLanguage
+        public void CallLocalLanguage()
         {
-            //lbTitle.Text = LocalLanguage.GetItemString(_LanguageID);
+            if (_LanguageID != "")
+            {
+                lbTitle.Text = LocalLanguage.GetItemString(_LanguageID);
+            }
         }
+        #endregion
     }
 }

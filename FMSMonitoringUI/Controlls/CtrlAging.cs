@@ -93,8 +93,8 @@ namespace MonitoringUI.Monitoring
         }
         #endregion
 
-        #region AgingTimer
-        public void AgingTimer(bool onoff)
+        #region ProcessStart
+        public void ProcessStart(bool onoff)
         {
             // Timer
             if (onoff)
@@ -534,9 +534,9 @@ namespace MonitoringUI.Monitoring
             bool bView = false;
             bool bSave = false;
             // 화면ID 설정
-            Tag = CAuthority.WindowsNameToWindowID(this.ToString());
+            //Tag = CAuthority.WindowsNameToWindowID(this.ToString());
             //Get Authority
-            CAuthority.GetAuthority(CDefine.m_strLoginID, Tag.ToString(), ref bView, ref bSave);
+            //CAuthority.GetAuthority(this.ToString(), ref bView, ref bSave);
 
             ///
             ///

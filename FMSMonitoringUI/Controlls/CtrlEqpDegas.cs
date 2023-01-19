@@ -1,6 +1,7 @@
 ﻿using FMSMonitoringUI.Monitoring;
 using FormationMonCtrl;
 using MonitoringUI;
+using MonitoringUI.Common;
 using MySqlX.XDevAPI.Relational;
 using OPCUAClientClassLib;
 using RestClientLib;

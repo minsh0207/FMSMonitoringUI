@@ -1,5 +1,8 @@
-﻿using MonitoringUI.Common;
+﻿using MonitoringUI;
+using MonitoringUI.Common;
 using MonitoringUI.Controlls;
+using MonitoringUI.Controlls.CButton;
+using MonitoringUI.Popup;
 using Novasoft.Logger;
 using Org.BouncyCastle.Ocsp;
 using RestClientLib;
@@ -17,7 +20,7 @@ using System.Windows.Forms;
 
 namespace FMSMonitoringUI.Monitoring
 {
-    public partial class WinAgingRackSetting : Form
+    public partial class WinAgingRackSetting : WinFormRoot
     {
         private Point point = new Point();
         private string _EQPID = string.Empty;
@@ -44,6 +47,7 @@ namespace FMSMonitoringUI.Monitoring
             string logPath = ConfigurationManager.AppSettings["LOG_PATH"];
             _Logger = new Logger(logPath, LogMode.Hour);
 
+            InitControl();
             InitGridViewEqp();
             InitGridViewTray();
         }
@@ -51,9 +55,15 @@ namespace FMSMonitoringUI.Monitoring
         #region WinAgingRackSetting Event
         private void WinAgingRackSetting_Load(object sender, EventArgs e)
         {
+            if (CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, this.Text) == false)
+            {
+                Exit_Click(null, null);
+                return;
+            }
+
             #region Title Mouse Event
-            ctrlTitleBar.MouseDown_Evnet += Title_MouseDownEvnet;
-            ctrlTitleBar.MouseMove_Evnet += Title_MouseMoveEvnet;
+            titBar.MouseDown_Evnet += Title_MouseDownEvnet;
+            titBar.MouseMove_Evnet += Title_MouseMoveEvnet;
             #endregion
 
             #region DataGridView Event
@@ -68,13 +78,24 @@ namespace FMSMonitoringUI.Monitoring
                 _ProcessThread.IsBackground = true; _ProcessThread.Start();
             }));
 
+            this.WindowID = CAuthority.GetWindowsText(this.Text);
+
         }
         private void WinAgingRackSetting_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (this._ProcessThread.IsAlive)
+            if (_TheadVisiable && this._ProcessThread.IsAlive)
                 this._TheadVisiable = false;
 
-            this._ProcessThread.Abort();
+            if (_TheadVisiable)
+                this._ProcessThread.Abort();
+        }
+        #endregion
+
+        #region InitControl
+        private void InitControl()
+        {
+            int btnPos = (this.Width - CDefine.DEF_EXIT_WIDTH) / 2;   // Button Width Size 170            
+            this.Exit.Padding = new System.Windows.Forms.Padding(btnPos, 10, btnPos, 10);
         }
         #endregion
 
@@ -305,6 +326,35 @@ namespace FMSMonitoringUI.Monitoring
         private void Exit_Click(object sender, EventArgs e)
         {
             Close();
+        }
+        private void Save_Click(object sender, EventArgs e)
+        {
+            CtrlButton btn = sender as CtrlButton;
+
+            WinSaveLogin saveLogin = new WinSaveLogin();
+            saveLogin.ShowDialog();
+
+            if (CDefine.m_strSaveLoginID == "") return;
+
+            if (CAuthority.CheckAuthority(enAuthority.Save, CDefine.m_strSaveLoginID, this.Text))
+            {
+                if (btn.Name == "ConfigurationSave")
+                {
+                    CMessage.MsgInformation("ConfigurationSave Save OK.");
+                }
+                else if (btn.Name == "PlanTimeSave")
+                {
+                    CMessage.MsgInformation("PlanTimeSave Save OK.");
+                }
+                else
+                {
+                    CMessage.MsgInformation("DataClearSave Save OK.");
+                }
+            }
+            else
+            {
+                CMessage.MsgInformation("Save Fail.");
+            }
         }
         #endregion
 

@@ -1979,6 +1979,7 @@
             this.ctrlEqpLKC.Name = "ctrlEqpLKC";
             this.ctrlEqpLKC.Size = new System.Drawing.Size(202, 82);
             this.ctrlEqpLKC.TabIndex = 543;
+            this.ctrlEqpLKC.Tag = "MON-001";
             // 
             // ctrlEqpHPC1
             // 

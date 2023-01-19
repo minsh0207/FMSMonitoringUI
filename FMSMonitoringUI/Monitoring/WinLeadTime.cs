@@ -1,4 +1,5 @@
-﻿using MonitoringUI.Common;
+﻿using MonitoringUI;
+using MonitoringUI.Common;
 using MonitoringUI.Controlls;
 using MySqlX.XDevAPI.Common;
 using Novasoft.Logger;
@@ -20,7 +21,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace FMSMonitoringUI.Monitoring
 {
-    public partial class WinLeadTime : Form
+    public partial class WinLeadTime : WinFormRoot
     {
         private Point point = new Point();
         private string _EqpId = string.Empty;
@@ -48,17 +49,21 @@ namespace FMSMonitoringUI.Monitoring
             string logPath = ConfigurationManager.AppSettings["LOG_PATH"];
             _Logger = new Logger(logPath, LogMode.Hour);
 
+            InitControl();
             InitGridViewTray();
-
-            //GetAgingTrayInfo(eqpType, eqpLevel);
-
-            
+                        
             //InitChart();
         }
 
         #region WinLeadTime Event
         private void WinLeadTime_Load(object sender, EventArgs e)
         {
+            if (CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, this.Text) == false)
+            {
+                Exit_Click(null, null);
+                return;
+            }
+
             #region Title Mouse Event
             ctrlTitleBar.MouseDown_Evnet += Title_MouseDownEvnet;
             ctrlTitleBar.MouseMove_Evnet += Title_MouseMoveEvnet;
@@ -76,6 +81,7 @@ namespace FMSMonitoringUI.Monitoring
                 _ProcessThread.IsBackground = true; _ProcessThread.Start();
             }));
 
+            this.WindowID = CAuthority.GetWindowsText(this.Text);
         }
         private void WinLeadTime_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -98,6 +104,15 @@ namespace FMSMonitoringUI.Monitoring
         //    chart1.Series[0].Points.Add(80);
         //}
 
+        #region InitControl
+        private void InitControl()
+        {
+            int btnPos = (this.Width - CDefine.DEF_EXIT_WIDTH) / 2;   // Button Width Size 170            
+            this.Exit.Padding = new System.Windows.Forms.Padding(btnPos, 10, btnPos, 10);
+        }
+        #endregion
+
+        #region InitGridViewTray
         private void InitGridViewTray()
         {
             List<string> lstTitle = new List<string>();
@@ -129,32 +144,7 @@ namespace FMSMonitoringUI.Monitoring
             gridTrayInfo.ColumnHeadersWidth(1, 120);
             gridTrayInfo.ColumnHeadersWidth(7, 120);
         }
-
-        //#region GetCellIDList
-        private void GetAgingTrayInfo(string eqpType, int level)
-        {
-            RESTClient rest = new RESTClient();
-            //// Set Query
-            StringBuilder strSQL = new StringBuilder();
-            // Tray Information
-            strSQL.Append(" SELECT line, lane, bay, floor, tray_id, rack_id, rack_id_2, start_time, plan_time");
-            strSQL.Append(" FROM fms_v.tb_mst_aging");
-            //필수값
-            strSQL.Append($" WHERE aging_type = '{eqpType.Substring(0, 1)}'");
-            strSQL.Append($"    AND lane = {level * 2 - 1}");
-            strSQL.Append($"    OR aging_type = '{eqpType.Substring(0, 1)}'");
-            strSQL.Append($"    AND lane = {level * 2}");
-
-            var jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
-
-            if (jsonResult != null)
-            {
-                _jsonWinLeadTimeResponse result = rest.ConvertWinLeadTime(jsonResult.Result);
-
-                SetData(result.DATA);
-            }
-        }
-        //#endregion
+        #endregion
 
         #region ProcessThreadCallback
         private void ProcessThreadCallback()
@@ -418,7 +408,7 @@ namespace FMSMonitoringUI.Monitoring
         #endregion
 
         #region Button Click
-        private void ctrlButtonExit1_Click(object sender, EventArgs e)
+        private void Exit_Click(object sender, EventArgs e)
         {
             Close();
         }

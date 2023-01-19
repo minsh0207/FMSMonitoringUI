@@ -36,6 +36,7 @@
             // 
             // statusStrip
             // 
+            this.statusStrip.BackColor = System.Drawing.Color.DimGray;
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLabel});
             resources.ApplyResources(this.statusStrip, "statusStrip");
@@ -43,6 +44,8 @@
             // 
             // statusLabel
             // 
+            this.statusLabel.BackColor = System.Drawing.Color.DimGray;
+            this.statusLabel.ForeColor = System.Drawing.Color.White;
             this.statusLabel.Name = "statusLabel";
             resources.ApplyResources(this.statusLabel, "statusLabel");
             // 

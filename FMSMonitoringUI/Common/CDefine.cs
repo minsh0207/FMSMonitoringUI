@@ -16,6 +16,8 @@
 /////////////////////////////////////////////////////////////////////
 //	Namespace:  FormationSystem
 //===================================================================
+using System;
+
 namespace MonitoringUI.Common
 {
     #region [Class CDefine]
@@ -47,6 +49,10 @@ namespace MonitoringUI.Common
 		public static string m_strSaveLoginName = "";	// Save Login Name
 		public static string m_strSaveLoginClass = "";	// Save Login Class
         public static enLoginLanguage m_enLanguage;     // Login Language
+        public static int UserClassID 
+        {
+            get { return Convert.ToInt16(m_strLoginClass); }
+        }
 
         public static string m_strLineID = "001";       // 1공장: "001" / 2공장 "002"
         public static string m_strBizRestURI = @"http://192.168.110.5:9001/";       // 1공장: "001" / 2공장 "002"
@@ -79,6 +85,11 @@ namespace MonitoringUI.Common
 		public const string DEF_EXE_PATH = @"C:\FormationSystem\FormationSystem.exe";
 		public const string DEF_VERSION = "Formation System V1";
 		public const string DEF_LOG_FILENAME = "FormationUI";
+
+        /////////////////////////////////////////////////////////////////////
+        //	Exit Button Size
+        //===================================================================
+        public const int DEF_EXIT_WIDTH = 170;
 
 
         /////////////////////////////////////////////////////////////////////
@@ -323,102 +334,121 @@ namespace MonitoringUI.Common
         //MON-001 ~ (Monitoring)
         //RTP-001 ~ (Report)
         //MST-001 ~ (Master)
-        public const string DEF_WINDOW_MST_AGING_MARGINAL_SHARE = "MST-001";                    //CtrlAgingMarginalShare
-        public const string DEF_WINDOW_MST_TROUBLE = "MST-002";                                 //CtrlMstTrouble
-        public const string DEF_WINDOW_MST_PROD_MODEL = "MST-003";                              //CtrlProdcutionModel
-        public const string DEF_WINDOW_MST_ROUTE_INPUT = "MST-004";                             //CtrlRouteInput
-        public const string DEF_WINDOW_MST_TEMP_COMPENSATION = "MST-005";                       //CtrlTempCompensation
-        public const string DEF_WINDOW_MST_USER_MANAGEMENT = "MST-006";                         //CtrlUserManagement
-        public const string DEF_WINDOW_MST_WINDOWS = "MST-007";                                 //CtrlWindow
-        public const string DEF_WINDOW_MST_WIN_DEFAULT_ROUTE_INPUT = "MST-008";                 //WinDefaultRouteInput
-        public const string DEF_WINDOW_MST_RECIPE = "MST-009";                                  //CtrlRecipe
-        public const string DEF_WINDOW_MST_RECIPE_DATA = "MST-010";                             //CtrlRecipeData
-        public const string DEF_WINDOW_MST_RECIPE_TIME = "MST-011";                             //CtrlRecipeTime
-        public const string DEF_WINDOW_MST_USER_WINDOW_AUTH = "MST-012";                        //CtrlUserWindowAuth
-        public const string DEF_WINDOW_MST_EQUIPMENT = "MST-013";                               //CtrlEquipment
+        public const string DEF_MON_CTRL_MONITORING = "MON-001";                    //CtrlMonitoring
+        public const string DEF_MON_CTRL_AGING = "MON-002";                         //CtrlAging
+        public const string DEF_MON_CTRL_FORMATION_CHG = "MON-003";                 //CtrlFormationCHG
+        public const string DEF_MON_CTRL_FORMATION_HPC = "MON-004";                 //CtrlFormationHPC
+        public const string DEF_MON_WIN_MANAGE_EQP = "MON-005";                     //WinManageEqp
+        public const string DEF_MON_WIN_AGING_RACK_SETTING = "MON-006";             //WinAgingRackSetting
+        public const string DEF_MON_WIN_BCR_CONVEYOR_INFO = "MON-007";              //WinBCRConveyorInfo
+        public const string DEF_MON_WIN_CONVEYOR_INFO = "MON-008";                  //WinConveyorInfo
+        public const string DEF_MON_WIN_CELL_DETAILS = "MON-009";                   //WinCellDetailInfo
+        public const string DEF_MON_WIN_CRANE_INFO = "MON-010";                     //WinCraneInfo
+        public const string DEF_MON_WIN_FORMATION_BOX = "MON-011";                  //WinFormationBox
+        public const string DEF_MON_WIN_FORMATION_HPC = "MON-012";                  //WinFormationHPC
+        public const string DEF_MON_WIN_LEAD_TIME = "MON-013";                      //WinLeadTime
+        public const string DEF_MON_WIN_RECIPE_INFO = "MON-014";                    //WinRecipeInfo
+        public const string DEF_MON_WIN_TRAY_DETAILS = "MON-015";                   //WinTrayDetails
+        public const string DEF_MON_WIN_TRAY_INFO = "MON-016";                      //WinTrayInfo
+        public const string DEF_MON_WIN_WATER_TANK = "MON-017";                     //WinWaterTank
 
-        //20201230 KJY - copy RouteID
-        public const string DEF_WINDOW_MST_COPY_ROUTEID = "MST-014";                            //WinCopyRouteID
 
-        //20210204 KJY - for CellType Mgm
-        public const string DEF_WINDOW_MST_CELL_TYPE = "MST-015";                               //CtrlCellType
 
-        public const string DEF_WINDOW_MONI_FORMATION = "MON-001";                              //CtrlFormation
-        public const string DEF_WINDOW_MONI_FORMATION_HPC = "MON-002";                          //CtrlFormationHPC
-        public const string DEF_WINDOW_MONI_HP_AGING = "MON-003";                               //CtrlHTAging
-        public const string DEF_WINDOW_MONI_RT_AGING = "MON-004";                               //CtrlRTAging
-        public const string DEF_WINDOW_MONI_TOTAL_MONITORING = "MON-005";                       //CtrlTotalMonitoring
-        public const string DEF_WINDOW_MONI_WIN_AGING_INFO = "MON-006";                         //WinAgingInfo
-        public const string DEF_WINDOW_MONI_WIN_AGING_RACK_SETTING = "MON-007";                 //WinAgingRackSetting
-        public const string DEF_WINDOW_MONI_WIN_EQP_MANUAL_JOB = "MON-008";                     //WinEqpManualJob
-        // WinFormationManualJob 불필요 WinEqpManualJob에서 모두 처리
-        //public const string DEF_WINDOW_MONI_WIN_FORMATION_MANUAL_JOB = "MON-009";               //WinFormationManualJob
-        public const string DEF_WINDOW_MONI_WIN_HP_AGING_FOR_DUAL = "MON-010";                  //WinHTAgingForDual
-        public const string DEF_WINDOW_MONI_WIN_MODEL_CHANGE = "MON-011";                       //WinModelChange
-        public const string DEF_WINDOW_MONI_WIN_TROUBLE_INFO = "MON-012";                       //WinTroubleInfo
 
-        public const string DEF_WINDOW_MONI_WIN_GRADE_EDIT = "MON-013";                       //WinGradeNameEdit
-        public const string DEF_WINDOW_MONI_WIN_OUT_GRADE_SETTING = "MON-014";                 //WinGradeOutSlotSetting
 
-        public const string DEF_WINDOW_MON_MODIFY_MAIN_LOOP_TRAFFIC = "MON-015";                //WinMainLoopTraffic
-        //20200611 KJY for AgingRack내 Tray의 RouteID 변경
-        public const string DEF_WINDOW_MON_CHANGE_ROUTEID = "MON-016";                          //WinChangeTrayZone
-        //20201216 KJY for 조립설비로 가는 공트레이 제한
-        public const string DEF_WINDOW_MON_ASM_LIMIT = "MON-017";                          //WinChangeTrayZone
 
-        //20211111 KJY - 
-        public const string DEF_WINDOW_MONI_WIN_AGING_RACK_OUT_MANAGE = "MON-018";                 //WinAgingRackOutManage
+        //public const string DEF_WINDOW_MON_TEMP_COMPENSATION = "MST-005";                       //CtrlTempCompensation
+        //public const string DEF_WINDOW_MON_USER_MANAGEMENT = "MST-006";                         //CtrlUserManagement
+        //public const string DEF_WINDOW_MON_WINDOWS = "MST-007";                                 //CtrlWindow
+        //public const string DEF_WINDOW_MON_WIN_DEFAULT_ROUTE_INPUT = "MST-008";                 //WinDefaultRouteInput
+        //public const string DEF_WINDOW_MON_RECIPE = "MST-009";                                  //CtrlRecipe
+        //public const string DEF_WINDOW_MON_RECIPE_DATA = "MST-010";                             //CtrlRecipeData
+        //public const string DEF_WINDOW_MON_RECIPE_TIME = "MST-011";                             //CtrlRecipeTime
+        //public const string DEF_WINDOW_MON_USER_WINDOW_AUTH = "MST-012";                        //CtrlUserWindowAuth
+        //public const string DEF_WINDOW_MON_EQUIPMENT = "MST-013";                               //CtrlEquipment
 
-        public const string DEF_WINDOW_RTP_AGING_MARGINAL = "RTP-001";                          //CtrlAgingMarginal
-        public const string DEF_WINDOW_RTP_CELL_HISTORY_INFO = "RTP-002";                       //CtrlCellHistoryInfo
-        public const string DEF_WINDOW_RTP_DAILY_PROCESS_INFO = "RTP-003";                      //CtrlDailyProcessInfo
-        public const string DEF_WINDOW_RTP_EQP_REPAIR = "RTP-004";                              //CtrlEqpRepair
-        public const string DEF_WINDOW_RTP_EQP_STATUS_INFO = "RTP-005";                         //CtrlEqpStatusInfo
-        public const string DEF_WINDOW_RTP_EQP_STATUS_REPORT = "RTP-006";                       //CtrlEqpStatusReport
-        public const string DEF_WINDOW_RTP_FIRE_RECORD = "RTP-007";                             //CtrlFireRecord
-        public const string DEF_WINDOW_RTP_GRIPPER = "RTP-008";                                 //CtrlGripper
-        public const string DEF_WINDOW_RTP_JUDGE_REPORT= "RTP-009";                             //CtrlJudgeReport
-        public const string DEF_WINDOW_RTP_JUDGE_RESULT_DATA = "RTP-010";                       //CtrlJudgeResultData
-        public const string DEF_WINDOW_RTP_LOG_INFO = "RTP-011";                                //CtrlLogInfo
-        public const string DEF_WINDOW_RTP_LOT_MONITORING = "RTP-012";                          //CtrlLotMonitoring
-        public const string DEF_WINDOW_RTP_PROCESS_MONITORING = "RTP-013";                      //CtrlProcessMonitoring
-        public const string DEF_WINDOW_RTP_TEMPERATURE = "RTP-014";                             //CtrlTemperature
-        public const string DEF_WINDOW_RTP_TEMPERATURE_HPC = "RTP-015";                         //CtrlTemperatureHPC
-        public const string DEF_WINDOW_RTP_TRAY_CELL_HISTORY_INFO = "RTP-016";                  //CtrlTrayCellHistoryInfo
-        public const string DEF_WINDOW_RTP_TRAY_HISTORY_INFO = "RTP-017";                       //CtrlTrayHistoryInfo
-        public const string DEF_WINDOW_RTP_TRAY_PRO_STEP_HIST = "RTP-018";                      //CtrlTrayProStepHist
-        public const string DEF_WINDOW_RTP_TROUBLE_ANALYSIS = "RTP-019";                        //CtrlTroubleAnalysis
-        public const string DEF_WINDOW_RTP_TROUBLE_INFO = "RTP-020";                            //CtrlTroubleInfo
-        public const string DEF_WINDOW_RTP_WIN_CELL_MEASUREMENTS = "RTP-021";                   //WinCellMeasurements
-        public const string DEF_WINDOW_RTP_WIN_EQP_REPAIR = "RTP-022";                          //WinEqpRepair
-        public const string DEF_WINDOW_RTP_WIN_EQP_STATUS_HIS = "RTP-023";                      //WinEqpStatusHis
-        public const string DEF_WINDOW_RTP_WIN_GRADE_JUDGE = "RTP-024";                         //WinGradeJudge
-        public const string DEF_WINDOW_RTP_WIN_MANUAL_OUT_CELL = "RTP-025";                     //WinManualOutCell
-        public const string DEF_WINDOW_RTP_WIN_PROC_CHANGE = "RTP-026";                         //WinProcChange
-        public const string DEF_WINDOW_RTP_WIN_ROUTE_CHANGE = "RTP-027";                        //WinRouteChange
-        public const string DEF_WINDOW_RTP_WIN_TEMPERATURE_CHART = "RTP-028";                   //WinTemperatureChart
-        public const string DEF_WINDOW_RTP_WIN_TRAY_INFO = "RTP-029";                           //WinTrayInfo
-        public const string DEF_WINDOW_RTP_WIN_TRAY_MANUAL = "RTP-030";                         //WinTrayManual
-        public const string DEF_WINDOW_RTP_WIN_TRAY_MANUAL_INFO = "RTP-031";                    //WinTrayManualInfo
-        public const string DEF_WINDOW_RTP_WIN_TROUBLE_INPUT = "RTP-032";
-        public const string DEF_WINDOW_RTP_WIN_TRAY_STATUS_CHANGE = "RTP-033";
-        public const string DEF_WINDOW_RTP_RE_WORK = "RTP-034";
-        public const string DEF_WINDOW_RTP_RE_WORK_CREATE = "RTP-035";
-        public const string DEF_WINDOW_RTP_JUDGE_DAILY_REPORT = "RTP-037";                      //CtrlGradeMonitoring
-        public const string DEF_WINDOW_RTP_INSERT_CELL_DATA = "RTP-038";                        // Cell Data 수동입력
+        ////20201230 KJY - copy RouteID
+        //public const string DEF_WINDOW_MST_COPY_ROUTEID = "MST-014";                            //WinCopyRouteID
 
-        // Cell별 ProStep 조회
-        public const string DEF_WINDOW_RTP_CELL_INFO = "RTP-036";
+        ////20210204 KJY - for CellType Mgm
+        //public const string DEF_WINDOW_MST_CELL_TYPE = "MST-015";                               //CtrlCellType
 
-        // 20200414 KJY for 공트레이 TrayZone변경 Window
-        public const string DEF_WINDOW_RTP_CHANGE_TRAY_ZONE = "RTP-039";
-        
+        //public const string DEF_WINDOW_MONI_FORMATION = "MON-001";                              //CtrlFormation
+        //public const string DEF_WINDOW_MONI_FORMATION_HPC = "MON-002";                          //CtrlFormationHPC
+        //public const string DEF_WINDOW_MONI_HP_AGING = "MON-003";                               //CtrlHTAging
+        //public const string DEF_WINDOW_MONI_RT_AGING = "MON-004";                               //CtrlRTAging
+        //public const string DEF_WINDOW_MONI_TOTAL_MONITORING = "MON-005";                       //CtrlTotalMonitoring
+        //public const string DEF_WINDOW_MONI_WIN_AGING_INFO = "MON-006";                         //WinAgingInfo
+        //public const string DEF_WINDOW_MONI_WIN_AGING_RACK_SETTING = "MON-007";                 //WinAgingRackSetting
+        //public const string DEF_WINDOW_MONI_WIN_EQP_MANUAL_JOB = "MON-008";                     //WinEqpManualJob
+        //// WinFormationManualJob 불필요 WinEqpManualJob에서 모두 처리
+        ////public const string DEF_WINDOW_MONI_WIN_FORMATION_MANUAL_JOB = "MON-009";               //WinFormationManualJob
+        //public const string DEF_WINDOW_MONI_WIN_HP_AGING_FOR_DUAL = "MON-010";                  //WinHTAgingForDual
+        //public const string DEF_WINDOW_MONI_WIN_MODEL_CHANGE = "MON-011";                       //WinModelChange
+        //public const string DEF_WINDOW_MONI_WIN_TROUBLE_INFO = "MON-012";                       //WinTroubleInfo
 
-        /////////////////////////////////////////////////////////////////////////////
-        //	ETC Define
-        // ==========================================================================
-        // Test Route Code
-        public const string DEF_ROUTE_TEST_CODE = "T";
+        //public const string DEF_WINDOW_MONI_WIN_GRADE_EDIT = "MON-013";                       //WinGradeNameEdit
+        //public const string DEF_WINDOW_MONI_WIN_OUT_GRADE_SETTING = "MON-014";                 //WinGradeOutSlotSetting
+
+        //public const string DEF_WINDOW_MON_MODIFY_MAIN_LOOP_TRAFFIC = "MON-015";                //WinMainLoopTraffic
+        ////20200611 KJY for AgingRack내 Tray의 RouteID 변경
+        //public const string DEF_WINDOW_MON_CHANGE_ROUTEID = "MON-016";                          //WinChangeTrayZone
+        ////20201216 KJY for 조립설비로 가는 공트레이 제한
+        //public const string DEF_WINDOW_MON_ASM_LIMIT = "MON-017";                          //WinChangeTrayZone
+
+        ////20211111 KJY - 
+        //public const string DEF_WINDOW_MONI_WIN_AGING_RACK_OUT_MANAGE = "MON-018";                 //WinAgingRackOutManage
+
+        //public const string DEF_WINDOW_RTP_AGING_MARGINAL = "RTP-001";                          //CtrlAgingMarginal
+        //public const string DEF_WINDOW_RTP_CELL_HISTORY_INFO = "RTP-002";                       //CtrlCellHistoryInfo
+        //public const string DEF_WINDOW_RTP_DAILY_PROCESS_INFO = "RTP-003";                      //CtrlDailyProcessInfo
+        //public const string DEF_WINDOW_RTP_EQP_REPAIR = "RTP-004";                              //CtrlEqpRepair
+        //public const string DEF_WINDOW_RTP_EQP_STATUS_INFO = "RTP-005";                         //CtrlEqpStatusInfo
+        //public const string DEF_WINDOW_RTP_EQP_STATUS_REPORT = "RTP-006";                       //CtrlEqpStatusReport
+        //public const string DEF_WINDOW_RTP_FIRE_RECORD = "RTP-007";                             //CtrlFireRecord
+        //public const string DEF_WINDOW_RTP_GRIPPER = "RTP-008";                                 //CtrlGripper
+        //public const string DEF_WINDOW_RTP_JUDGE_REPORT= "RTP-009";                             //CtrlJudgeReport
+        //public const string DEF_WINDOW_RTP_JUDGE_RESULT_DATA = "RTP-010";                       //CtrlJudgeResultData
+        //public const string DEF_WINDOW_RTP_LOG_INFO = "RTP-011";                                //CtrlLogInfo
+        //public const string DEF_WINDOW_RTP_LOT_MONITORING = "RTP-012";                          //CtrlLotMonitoring
+        //public const string DEF_WINDOW_RTP_PROCESS_MONITORING = "RTP-013";                      //CtrlProcessMonitoring
+        //public const string DEF_WINDOW_RTP_TEMPERATURE = "RTP-014";                             //CtrlTemperature
+        //public const string DEF_WINDOW_RTP_TEMPERATURE_HPC = "RTP-015";                         //CtrlTemperatureHPC
+        //public const string DEF_WINDOW_RTP_TRAY_CELL_HISTORY_INFO = "RTP-016";                  //CtrlTrayCellHistoryInfo
+        //public const string DEF_WINDOW_RTP_TRAY_HISTORY_INFO = "RTP-017";                       //CtrlTrayHistoryInfo
+        //public const string DEF_WINDOW_RTP_TRAY_PRO_STEP_HIST = "RTP-018";                      //CtrlTrayProStepHist
+        //public const string DEF_WINDOW_RTP_TROUBLE_ANALYSIS = "RTP-019";                        //CtrlTroubleAnalysis
+        //public const string DEF_WINDOW_RTP_TROUBLE_INFO = "RTP-020";                            //CtrlTroubleInfo
+        //public const string DEF_WINDOW_RTP_WIN_CELL_MEASUREMENTS = "RTP-021";                   //WinCellMeasurements
+        //public const string DEF_WINDOW_RTP_WIN_EQP_REPAIR = "RTP-022";                          //WinEqpRepair
+        //public const string DEF_WINDOW_RTP_WIN_EQP_STATUS_HIS = "RTP-023";                      //WinEqpStatusHis
+        //public const string DEF_WINDOW_RTP_WIN_GRADE_JUDGE = "RTP-024";                         //WinGradeJudge
+        //public const string DEF_WINDOW_RTP_WIN_MANUAL_OUT_CELL = "RTP-025";                     //WinManualOutCell
+        //public const string DEF_WINDOW_RTP_WIN_PROC_CHANGE = "RTP-026";                         //WinProcChange
+        //public const string DEF_WINDOW_RTP_WIN_ROUTE_CHANGE = "RTP-027";                        //WinRouteChange
+        //public const string DEF_WINDOW_RTP_WIN_TEMPERATURE_CHART = "RTP-028";                   //WinTemperatureChart
+        //public const string DEF_WINDOW_RTP_WIN_TRAY_INFO = "RTP-029";                           //WinTrayInfo
+        //public const string DEF_WINDOW_RTP_WIN_TRAY_MANUAL = "RTP-030";                         //WinTrayManual
+        //public const string DEF_WINDOW_RTP_WIN_TRAY_MANUAL_INFO = "RTP-031";                    //WinTrayManualInfo
+        //public const string DEF_WINDOW_RTP_WIN_TROUBLE_INPUT = "RTP-032";
+        //public const string DEF_WINDOW_RTP_WIN_TRAY_STATUS_CHANGE = "RTP-033";
+        //public const string DEF_WINDOW_RTP_RE_WORK = "RTP-034";
+        //public const string DEF_WINDOW_RTP_RE_WORK_CREATE = "RTP-035";
+        //public const string DEF_WINDOW_RTP_JUDGE_DAILY_REPORT = "RTP-037";                      //CtrlGradeMonitoring
+        //public const string DEF_WINDOW_RTP_INSERT_CELL_DATA = "RTP-038";                        // Cell Data 수동입력
+
+        //// Cell별 ProStep 조회
+        //public const string DEF_WINDOW_RTP_CELL_INFO = "RTP-036";
+
+        //// 20200414 KJY for 공트레이 TrayZone변경 Window
+        //public const string DEF_WINDOW_RTP_CHANGE_TRAY_ZONE = "RTP-039";
+
+
+        ///////////////////////////////////////////////////////////////////////////////
+        ////	ETC Define
+        //// ==========================================================================
+        //// Test Route Code
+        //public const string DEF_ROUTE_TEST_CODE = "T";
 
     }
     #endregion

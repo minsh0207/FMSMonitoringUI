@@ -77,7 +77,7 @@ namespace MonitoringUI.Controlls.CComboBox
             try
             {
                 //DB Data Get
-                obj = CDatabaseRest.SelectData(enTable, strFilter, strOrder, strColumn);
+                //obj = CDatabaseRest.SelectData(enTable, strFilter, strOrder, strColumn);
 
                 //Data To DataTable 
                 switch (enTable)
@@ -142,7 +142,7 @@ namespace MonitoringUI.Controlls.CComboBox
             try
             {
                 //DB Data Get
-                obj = CDatabaseRest.SelectQueryList(enTable, lstVar);
+                //obj = CDatabaseRest.SelectQueryList(enTable, lstVar);
 
                 //Data To DataTable  
                 switch (enTable)
@@ -297,7 +297,7 @@ namespace MonitoringUI.Controlls.CComboBox
                             strFilter += m_cString.FilterStringADD("RouteID", lstVar[5], enTableWhere.AND, enTableWhereState.EQUALS);
                         }
 
-                        obj = CDatabaseRest.SelectGroupBy(newenTable, strCols, strGroupBy, strFilter, strGOrderBy);
+                        //obj = CDatabaseRest.SelectGroupBy(newenTable, strCols, strGroupBy, strFilter, strGOrderBy);
 
 
                         // 20191212 KJY - Cell 검색에서의 LotID 콤보박스는 tCellCurr에서 가져온다.
@@ -453,7 +453,7 @@ namespace MonitoringUI.Controlls.CComboBox
                         }
 
                         //obj = CDatabaseRest.SelectGroupBy(enTable, strCols, strGroupBy, strFilter, strGOrderBy);
-                        obj = CDatabaseRest.SelectGroupBy(newenTable, strCols, strGroupBy, strFilter, strGOrderBy);
+                       // obj = CDatabaseRest.SelectGroupBy(newenTable, strCols, strGroupBy, strFilter, strGOrderBy);
 
 
 

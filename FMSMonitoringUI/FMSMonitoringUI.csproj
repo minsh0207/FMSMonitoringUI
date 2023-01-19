@@ -139,7 +139,6 @@
     <Compile Include="Common\CConstants.cs" />
     <Compile Include="Common\CDataBaseDirect.cs" />
     <Compile Include="Common\CDataBaseQuery.cs" />
-    <Compile Include="Common\CDatabaseRest.cs" />
     <Compile Include="Common\CDataTable.cs" />
     <Compile Include="Common\CMessage.cs" />
     <Compile Include="Common\CMonitoringTask.cs" />
@@ -653,12 +652,6 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Monitoring\WinAgingRackOutManage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Monitoring\WinAgingRackOutManage.Designer.cs">
-      <DependentUpon>WinAgingRackOutManage.cs</DependentUpon>
-    </Compile>
     <Compile Include="Monitoring\WinRecipeInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -725,12 +718,6 @@
     <Compile Include="Monitoring\WinManageEqp.Designer.cs">
       <DependentUpon>WinManageEqp.cs</DependentUpon>
     </Compile>
-    <Compile Include="Monitoring\WinCellInfo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Monitoring\WinCellInfo.Designer.cs">
-      <DependentUpon>WinCellInfo.cs</DependentUpon>
-    </Compile>
     <Compile Include="Monitoring\WinCraneInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -742,18 +729,6 @@
     </Compile>
     <Compile Include="Monitoring\WinTrayInfo.Designer.cs">
       <DependentUpon>WinTrayInfo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Monitoring\WinReserveChangeRouteID.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Monitoring\WinReserveChangeRouteID.Designer.cs">
-      <DependentUpon>WinReserveChangeRouteID.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Monitoring\WinRackInfo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Monitoring\WinRackInfo.Designer.cs">
-      <DependentUpon>WinRackInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Monitoring\WinTroubleInfo.cs">
       <SubType>Form</SubType>
@@ -1032,9 +1007,6 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Monitoring\WinAgingRackOutManage.resx">
-      <DependentUpon>WinAgingRackOutManage.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Monitoring\WinRecipeInfo.resx">
       <DependentUpon>WinRecipeInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -1074,20 +1046,11 @@
     <EmbeddedResource Include="Monitoring\WinManageEqp.resx">
       <DependentUpon>WinManageEqp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Monitoring\WinCellInfo.resx">
-      <DependentUpon>WinCellInfo.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Monitoring\WinCraneInfo.resx">
       <DependentUpon>WinCraneInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Monitoring\WinTrayInfo.resx">
       <DependentUpon>WinTrayInfo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Monitoring\WinReserveChangeRouteID.resx">
-      <DependentUpon>WinReserveChangeRouteID.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Monitoring\WinRackInfo.resx">
-      <DependentUpon>WinRackInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Monitoring\WinTroubleInfo.resx">
       <DependentUpon>WinTroubleInfo.cs</DependentUpon>

@@ -46,7 +46,7 @@ namespace MonitoringUI.Monitoring
             // 화면ID 설정
             Tag = CAuthority.WindowsNameToWindowID(this.GetType().FullName.ToString());
             //Get Authority
-            CAuthority.GetAuthority(CDefine.m_strLoginID, Tag.ToString(), ref bView, ref bSave);
+            CAuthority.GetAuthority(Tag.ToString(), ref bView, ref bSave);
             this.WindowID = Tag.ToString();
             ///
             ///
@@ -138,7 +138,7 @@ namespace MonitoringUI.Monitoring
             bool bSave = false;
             //Get Authority
 
-            CAuthority.GetAuthority(strSaveUserID, Tag.ToString(), ref bView, ref bSave);
+            CAuthority.GetAuthority(Tag.ToString(), ref bView, ref bSave);
 
             if (bSave == false)
             {

@@ -70,11 +70,11 @@ namespace MonitoringUI.Monitoring
             if(isRT6Aging(m_strUnitID) ==true)
             {
                 //Get Authority
-                CAuthority.GetAuthority(CDefine.m_strLoginID, CDefine.DEF_WINDOW_MONI_WIN_AGING_RACK_SETTING, ref bView, ref bSave);
+                //CAuthority.GetAuthority(CDefine.m_strLoginID, CDefine.DEF_WINDOW_MONI_WIN_AGING_RACK_SETTING, ref bView, ref bSave);
             } else
             {
                 //Get Authority
-                CAuthority.GetAuthority(CDefine.m_strLoginID, Tag.ToString(), ref bView, ref bSave);
+                CAuthority.GetAuthority(Tag.ToString(), ref bView, ref bSave);
             }
             
             this.WindowID = Tag.ToString();
@@ -126,12 +126,12 @@ namespace MonitoringUI.Monitoring
             if (isRT6Aging(m_strUnitID) == true)
             {
                 //Get Authority
-                CAuthority.GetAuthority(CDefine.m_strLoginID, CDefine.DEF_WINDOW_MONI_WIN_AGING_RACK_SETTING, ref bView, ref bSave);
+                //CAuthority.GetAuthority(CDefine.m_strLoginID, CDefine.DEF_WINDOW_MONI_WIN_AGING_RACK_SETTING, ref bView, ref bSave);
             }
             else
             {
                 //Get Authority
-                CAuthority.GetAuthority(CDefine.m_strLoginID, Tag.ToString(), ref bView, ref bSave);
+                CAuthority.GetAuthority(Tag.ToString(), ref bView, ref bSave);
             }
             if (bSave == false)
             {
@@ -217,12 +217,12 @@ namespace MonitoringUI.Monitoring
             if (isRT6Aging(m_strUnitID) == true)
             {
                 //Get Authority
-                CAuthority.GetAuthority(strSaveUserID, CDefine.DEF_WINDOW_MONI_WIN_AGING_RACK_SETTING, ref bView, ref bSave);
+                //CAuthority.GetAuthority(strSaveUserID, CDefine.DEF_WINDOW_MONI_WIN_AGING_RACK_SETTING, ref bView, ref bSave);
             }
             else
             {
                 //Get Authority
-                CAuthority.GetAuthority(strSaveUserID, Tag.ToString(), ref bView, ref bSave);
+                CAuthority.GetAuthority(Tag.ToString(), ref bView, ref bSave);
             }
             if (bSave == false)
             {

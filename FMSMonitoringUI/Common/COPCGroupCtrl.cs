@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OPCUAClientClassLib;
 
-namespace FMSMonitoringUI.Controlls
+namespace MonitoringUI.Common
 {
     //public class CDeviceInfo
     //{

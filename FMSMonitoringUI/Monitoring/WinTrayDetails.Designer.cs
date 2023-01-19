@@ -30,14 +30,14 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.ctrlTitleBar = new MonitoringUI.Controlls.CtrlTitleBar();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.ctrlButtonExit1 = new MonitoringUI.Controlls.CButton.CtrlButtonExit();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.gridTrayInfo = new FMSMonitoringUI.Controlls.CtrlDataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.Exit = new MonitoringUI.Controlls.CButton.CtrlButton();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -45,10 +45,10 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.ctrlTitleBar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(30);
+            this.panel1.Location = new System.Drawing.Point(2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1500, 66);
+            this.panel1.Size = new System.Drawing.Size(1494, 65);
             this.panel1.TabIndex = 0;
             // 
             // ctrlTitleBar
@@ -58,35 +58,13 @@
             this.ctrlTitleBar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ctrlTitleBar.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTitleBar.ForeColor = System.Drawing.Color.White;
+            this.ctrlTitleBar.LanguageID = "";
             this.ctrlTitleBar.Location = new System.Drawing.Point(0, 0);
             this.ctrlTitleBar.Margin = new System.Windows.Forms.Padding(4);
             this.ctrlTitleBar.Name = "ctrlTitleBar";
-            this.ctrlTitleBar.Size = new System.Drawing.Size(1498, 64);
+            this.ctrlTitleBar.Size = new System.Drawing.Size(1492, 63);
             this.ctrlTitleBar.TabIndex = 0;
             this.ctrlTitleBar.TitleText = "Tray Details";
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.ctrlButtonExit1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 671);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1500, 65);
-            this.panel2.TabIndex = 1;
-            // 
-            // ctrlButtonExit1
-            // 
-            this.ctrlButtonExit1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(69)))), ((int)(((byte)(88)))));
-            this.ctrlButtonExit1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ctrlButtonExit1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlButtonExit1.LabelText = "Exit";
-            this.ctrlButtonExit1.Location = new System.Drawing.Point(663, 8);
-            this.ctrlButtonExit1.Name = "ctrlButtonExit1";
-            this.ctrlButtonExit1.Size = new System.Drawing.Size(161, 45);
-            this.ctrlButtonExit1.TabIndex = 0;
-            this.ctrlButtonExit1.Click += new System.EventHandler(this.ctrlButtonExit1_Click);
             // 
             // panel3
             // 
@@ -94,50 +72,85 @@
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.gridTrayInfo);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 66);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(2, 67);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1500, 605);
+            this.panel3.Size = new System.Drawing.Size(1494, 655);
             this.panel3.TabIndex = 2;
             // 
             // label2
             // 
+            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
             this.label2.ForeColor = System.Drawing.Color.DarkGray;
-            this.label2.Location = new System.Drawing.Point(6, 9);
+            this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(107, 26);
+            this.label2.Size = new System.Drawing.Size(1492, 48);
             this.label2.TabIndex = 2;
             this.label2.Text = "Tray Info";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // gridTrayInfo
             // 
+            this.gridTrayInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.gridTrayInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.gridTrayInfo.ColumnCount = -1;
-            this.gridTrayInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gridTrayInfo.Location = new System.Drawing.Point(0, 47);
+            this.gridTrayInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridTrayInfo.Location = new System.Drawing.Point(0, 0);
             this.gridTrayInfo.Name = "gridTrayInfo";
             this.gridTrayInfo.RowCount = -1;
-            this.gridTrayInfo.Size = new System.Drawing.Size(1498, 556);
+            this.gridTrayInfo.Size = new System.Drawing.Size(1492, 653);
             this.gridTrayInfo.TabIndex = 1;
+            this.gridTrayInfo.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.Exit);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(2, 722);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1494, 61);
+            this.panel2.TabIndex = 3;
+            // 
+            // Exit
+            // 
+            this.Exit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.Exit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Exit.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Exit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.Exit.LabelText = "Exit";
+            this.Exit.LanguageID = "DEF_Exit";
+            this.Exit.Location = new System.Drawing.Point(0, 0);
+            this.Exit.Name = "Exit";
+            this.Exit.Size = new System.Drawing.Size(1492, 59);
+            this.Exit.TabIndex = 0;
+            this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
             // WinTrayDetails
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1500, 736);
-            this.Controls.Add(this.panel3);
+            this.BackColor = System.Drawing.Color.DimGray;
+            this.ClientSize = new System.Drawing.Size(1498, 807);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "WinTrayDetails";
+            this.Padding = new System.Windows.Forms.Padding(2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "WinTrayDetails";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.WinTrayDetails_Load);
+            this.Controls.SetChildIndex(this.panel1, 0);
+            this.Controls.SetChildIndex(this.panel3, 0);
+            this.Controls.SetChildIndex(this.panel2, 0);
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -145,10 +158,10 @@
 
         private System.Windows.Forms.Panel panel1;
         private MonitoringUI.Controlls.CtrlTitleBar ctrlTitleBar;
-        private System.Windows.Forms.Panel panel2;
-        private MonitoringUI.Controlls.CButton.CtrlButtonExit ctrlButtonExit1;
         private System.Windows.Forms.Panel panel3;
         private Controlls.CtrlDataGridView gridTrayInfo;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel2;
+        private MonitoringUI.Controlls.CButton.CtrlButton Exit;
     }
 }

@@ -165,6 +165,9 @@
   <data name="DEF_Configuration" xml:space="preserve">
     <value>Configuration</value>
   </data>
+  <data name="DEF_Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
   <data name="DEF_Control" xml:space="preserve">
     <value>Control</value>
   </data>
@@ -302,6 +305,9 @@
   </data>
   <data name="DEF_Job_Type" xml:space="preserve">
     <value>Job Type :</value>
+  </data>
+  <data name="DEF_Language" xml:space="preserve">
+    <value>Language</value>
   </data>
   <data name="DEF_Loading" xml:space="preserve">
     <value>Loading</value>

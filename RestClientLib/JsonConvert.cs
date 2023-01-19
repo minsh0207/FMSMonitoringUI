@@ -821,7 +821,25 @@ namespace RestClientLib
             }
         }
         #endregion
-
+        #region ConvertUserAuthority
+        /// <summary>
+        /// _jsonUserAuthorityResponse 형태의 Class로 변환한다.
+        /// </summary>
+        public _jsonUserAuthorityResponse ConvertUserAuthority(string jsonResult)
+        {
+            try
+            {
+                // Recv Body의 JSON string을 class 변수에 할당
+                _jsonUserAuthorityResponse recvBody = JsonConvert.DeserializeObject<_jsonUserAuthorityResponse>(jsonResult, _jsonSettings);
+                return recvBody;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print(string.Format("### ConvertEntireEqpList, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                return null;
+            }
+        }
+        #endregion
 
     }
 

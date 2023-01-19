@@ -89,7 +89,6 @@
             this.Margin = new System.Windows.Forms.Padding(30);
             this.Name = "CtrlTextBox";
             this.Size = new System.Drawing.Size(282, 37);
-            this.Enter += new System.EventHandler(this.CtrlTextBox_Enter);
             this.tableLayoutPanel.ResumeLayout(false);
             this.tableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);

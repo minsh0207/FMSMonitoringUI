@@ -1,4 +1,5 @@
-﻿using MonitoringUI.Common;
+﻿using MonitoringUI;
+using MonitoringUI.Common;
 using MonitoringUI.Controlls;
 using MySqlX.XDevAPI.Common;
 using OPCUAClientClassLib;
@@ -20,7 +21,7 @@ using UnifiedAutomation.UaBase;
 
 namespace FMSMonitoringUI.Monitoring
 {
-    public partial class WinConveyorInfo : Form
+    public partial class WinConveyorInfo : WinFormRoot
     {
         private Point point = new Point();
         private string _cvTitle = null;
@@ -52,6 +53,13 @@ namespace FMSMonitoringUI.Monitoring
         #region WinCVTrayInfo Event
         private void WinCVTrayInfo_Load(object sender, EventArgs e)
         {
+            if (CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, this.Text) == false)
+            {
+                Exit_Click(null, null);
+                return;
+            }
+
+            InitControl();
             InitGridView();
 
             #region Title Mouse Event
@@ -70,6 +78,8 @@ namespace FMSMonitoringUI.Monitoring
                 _ProcessThread = new Thread(() => ProcessThreadCallback());
                 _ProcessThread.IsBackground = true; _ProcessThread.Start();
             }));
+
+            this.WindowID = CAuthority.GetWindowsText(this.Text);
         }
 
         private void WinCVTrayInfo_FormClosed(object sender, FormClosedEventArgs e)
@@ -93,6 +103,15 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
+        #region InitControl
+        private void InitControl()
+        {
+            int btnPos = (this.Width - CDefine.DEF_EXIT_WIDTH) / 2;   // Button Width Size 170            
+            this.Exit.Padding = new System.Windows.Forms.Padding(btnPos, 10, btnPos, 10);
+        }
+        #endregion
+
+        #region InitGridView
         private void InitGridView()
         {
             List<string> lstTitle = new List<string>();
@@ -126,6 +145,31 @@ namespace FMSMonitoringUI.Monitoring
             gridCVInfo.SetGridViewStyles();
             gridCVInfo.ColumnHeadersWidth(0, 200);            
         }
+        #endregion
+
+        #region ProcessThreadCallback
+        private void ProcessThreadCallback()
+        {
+            try
+            {
+                while (this._TheadVisiable == true)
+                {
+                    GC.Collect();
+
+                    List<ReadValueId> cvInfo = _OPCUAClient.ConveyorNodeID[_ConveyorNo];
+                    List<DataValue> data = _OPCUAClient.ReadNodeID(cvInfo);
+                    this.BeginInvoke(new Action(() => SetData(data)));
+
+                    Thread.Sleep(2000);
+                }
+            }
+            catch (Exception ex)
+            {
+                // System Debug
+                System.Diagnostics.Debug.Print(string.Format("### WinConveyorInfo ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+            }
+        }
+        #endregion
 
         #region SetData
         //public void SetData(SiteTagInfo siteInfo)
@@ -217,7 +261,7 @@ namespace FMSMonitoringUI.Monitoring
         #endregion
 
         #region Button Event
-        private void ctrlButtonExit1_Click(object sender, EventArgs e)
+        private void Exit_Click(object sender, EventArgs e)
         {
             Close();
         }
@@ -244,29 +288,7 @@ namespace FMSMonitoringUI.Monitoring
         //}
         #endregion
 
-        #region ProcessThreadCallback
-        private void ProcessThreadCallback()
-        {
-            try
-            {
-                while (this._TheadVisiable == true)
-                {
-                    GC.Collect();
-
-                    List<ReadValueId> cvInfo = _OPCUAClient.ConveyorNodeID[_ConveyorNo];
-                    List<DataValue> data = _OPCUAClient.ReadNodeID(cvInfo);
-                    this.BeginInvoke(new Action(() => SetData(data)));
-
-                    Thread.Sleep(2000);
-                }
-            }
-            catch (Exception ex)
-            {
-                // System Debug
-                System.Diagnostics.Debug.Print(string.Format("### WinConveyorInfo ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
-            }
-        }
-        #endregion
+        
 
         #region Tray Tag Value
         private string GetConveyorType(object idx)

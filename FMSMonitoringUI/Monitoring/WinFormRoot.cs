@@ -13,8 +13,6 @@ using MonitoringUI.Common;
 
 namespace MonitoringUI
 {
-    
-
     public partial class WinFormRoot : Form
     {
 

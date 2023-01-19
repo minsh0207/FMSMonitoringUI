@@ -769,8 +769,8 @@ namespace RestClientLib
         public string USER_PASSWORD { get; set; }
         public string CLASS_ID { get; set; }
         public string UPDATE_USER { get; set; }
-        public string UPDATE_TIME { get; set; }
-        public string CREATE_TIME { get; set; }
+        public DateTime UPDATE_TIME { get; set; }
+        public DateTime CREATE_TIME { get; set; }
     }
     #endregion
     #region tb_mst_user_class
@@ -783,8 +783,8 @@ namespace RestClientLib
         public string CLASS_NAME { get; set; }
         public string CLASS_NAME_LOCAL { get; set; }
         public string UPDATE_USER { get; set; }
-        public string UPDATE_TIME { get; set; }
-        public string CREATE_TIME { get; set; }
+        public DateTime UPDATE_TIME { get; set; }
+        public DateTime CREATE_TIME { get; set; }
     }
     #endregion
     #region tb_mst_window
@@ -798,8 +798,8 @@ namespace RestClientLib
         public string WINDOW_NAME_LOCAL { get; set; }
         public string DEFAULT_CLASS_ID { get; set; }
         public string UPDATE_USER { get; set; }
-        public string UPDATE_TIME { get; set; }
-        public string CREATE_TIME { get; set; }
+        public DateTime UPDATE_TIME { get; set; }
+        public DateTime CREATE_TIME { get; set; }
     }
     #endregion
     #region tb_mst_window_user
@@ -813,8 +813,8 @@ namespace RestClientLib
         public string AUTH_VIEW { get; set; }
         public string AUTH_SAVE { get; set; }
         public string UPDATE_USER { get; set; }
-        public string UPDATE_TIME { get; set; }
-        public string CREATE_TIME { get; set; }
+        public DateTime UPDATE_TIME { get; set; }
+        public DateTime CREATE_TIME { get; set; }
     }
     #endregion
 }

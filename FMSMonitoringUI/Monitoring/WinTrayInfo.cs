@@ -1,4 +1,5 @@
-﻿using MonitoringUI.Common;
+﻿using MonitoringUI;
+using MonitoringUI.Common;
 using MonitoringUI.Controlls;
 using MySqlX.XDevAPI.Common;
 using Novasoft.Logger;
@@ -19,7 +20,7 @@ using System.Windows.Forms;
 
 namespace FMSMonitoringUI.Monitoring
 {
-    public partial class WinTrayInfo : Form
+    public partial class WinTrayInfo : WinFormRoot
     {
         private Point point = new Point();
         private string _EqpID = string.Empty;
@@ -46,6 +47,7 @@ namespace FMSMonitoringUI.Monitoring
             string logPath = ConfigurationManager.AppSettings["LOG_PATH"];
             _Logger = new Logger(logPath, LogMode.Hour);
 
+            InitControl();
             InitGridViewTray();
             InitGridViewProcessFlow(1);
         }
@@ -53,6 +55,12 @@ namespace FMSMonitoringUI.Monitoring
         #region WinManageEqp Event
         private void WinTrayInfo_Load(object sender, EventArgs e)
         {
+            if (CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, this.Text) == false)
+            {
+                Exit_Click(null, null);
+                return;
+            }
+
             #region Title Mouse Event
             ctrlTitleBar.MouseDown_Evnet += Title_MouseDownEvnet;
             ctrlTitleBar.MouseMove_Evnet += Title_MouseMoveEvnet;
@@ -69,6 +77,8 @@ namespace FMSMonitoringUI.Monitoring
                 _ProcessThread = new Thread(() => ProcessThreadCallback());
                 _ProcessThread.IsBackground = true; _ProcessThread.Start();
             }));
+
+            this.WindowID = CAuthority.GetWindowsText(this.Text);
         }
         private void WinTrayInfo_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -76,6 +86,14 @@ namespace FMSMonitoringUI.Monitoring
                 this._TheadVisiable = false;
 
             this._ProcessThread.Abort();
+        }
+        #endregion
+
+        #region InitControl
+        private void InitControl()
+        {
+            int btnPos = (this.Width - CDefine.DEF_EXIT_WIDTH) / 2;   // Button Width Size 170            
+            this.Exit.Padding = new System.Windows.Forms.Padding(btnPos, 10, btnPos, 10);
         }
         #endregion
 

@@ -8,6 +8,8 @@
 /////////////////////////////////////////////////////////////////////////////
 
 #region [USing]
+using Novasoft.Logger;
+using RestClientLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,11 +21,125 @@ using System.Threading.Tasks;
 namespace MonitoringUI.Common
 {
     #region [Class]
-    public static class CAuthority
+    public class CWindowAuthority
     {
+        public bool View { get; set; }
+        public bool Save { get; set; }
+        public string WindowID { get; set; }
+        public string WindowName { get; set; }
+        public int DefaultClassID { get; set; }
+    }
+
+    public class CAuthority
+    {
+        private static Dictionary<string, CWindowAuthority> _WindowIDList = new Dictionary<string, CWindowAuthority>();
+
+        public static string GetWindowsText(string windowName)
+        {
+            string windowid = WindowsNameToWindowID(windowName);
+
+            return $"[{_WindowIDList[windowid].WindowID}] {_WindowIDList[windowid].WindowName}";
+        }
+        #region CheckAuthority
+        public static bool CheckAuthority(enAuthority auth, string loginID, string windowName)
+        {
+            LoadWindowUser(loginID).GetAwaiter().GetResult();
+
+            bool bView = false;
+            bool bSave = false;
+            bool bAuth = false;
+
+            GetAuthority(windowName, ref bView, ref bSave);
+
+            switch (auth)
+            {
+                case enAuthority.View:
+                    bAuth = bView;
+                    break;
+                case enAuthority.Save:
+                    bAuth = bSave;
+                    break;
+            }
+
+            if (!bAuth)
+            {
+                CMessage.MsgInformation("You do not have user permissions.");
+            }
+
+            return bAuth;
+        }
+        #endregion
+
+        #region LoadWindowUser
+        private static async Task LoadWindowUser(string strUserID)
+        {
+            try
+            {
+                RESTClient rest = new RESTClient();
+                //// Set Query
+                StringBuilder strSQL = new StringBuilder();
+
+                strSQL.Append(" SELECT A.user_id, A.window_id, A.auth_view, A.auth_save,");
+                strSQL.Append("        B.window_name, B.window_name_local, B.default_class_id");
+                strSQL.Append("   FROM fms_v.tb_mst_window_user A");
+                strSQL.Append("         LEFT OUTER JOIN fms_v.tb_mst_window B");
+                strSQL.Append("                 ON A.window_id = B.window_id");
+                //필수값
+                strSQL.Append($" WHERE A.user_id = '{strUserID}' AND A.window_id LIKE 'MON-%'");
+
+                var jsonResult = await rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+
+                if (jsonResult != null)
+                {
+                    _jsonUserAuthorityResponse result = rest.ConvertUserAuthority(jsonResult);
+
+                    if (result != null)
+                    {
+                        SetData(result.DATA);
+                    }
+                    else
+                    {
+                        string log = "UserAuthority : result is null";
+                        System.Diagnostics.Debug.Print(string.Format("### LoadWindowUser, {0}", log));
+                    }
+                }
+                else
+                {
+                    string log = "UserAuthority : jsonResult is null";
+                    System.Diagnostics.Debug.Print(string.Format("### LoadWindowUser, {0}", log));
+                }
+            }
+            catch (Exception ex)
+            {
+                // System Debug
+                System.Diagnostics.Debug.Print(string.Format("### LoadWindowUser,  Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+            }
+        }
+        #endregion
+
+        #region SetData
+        private static void SetData(List<_user_authority> data)
+        {
+            _WindowIDList.Clear();
+
+            foreach (var item in data)
+            {
+                CWindowAuthority auth = new CWindowAuthority
+                {
+                    View = (item.AUTH_VIEW == "Y"),
+                    Save = (item.AUTH_SAVE == "Y"),
+                    WindowID = item.WINDOW_ID,
+                    WindowName = (CDefine.m_enLanguage == enLoginLanguage.English ? item.WINDOW_NAME : item.WINDOW_NAME_LOCAL),
+                    DefaultClassID = Convert.ToInt16(item.DEFAULT_CLASS_ID)
+                };
+
+                _WindowIDList.Add(item.WINDOW_ID, auth);
+            }
+        }
+        #endregion
 
         #region [DB Load WindowID]
-        public static string WindowsNameToWindowID(string strWindowName)
+        private static string WindowsNameToWindowID(string strWindowName)
         {
             string strWindowID = "";
             string[] strData = strWindowName.Split('.');
@@ -32,230 +148,56 @@ namespace MonitoringUI.Common
             #region [Switch]
             switch (strName)
             {
-                case "CtrlAgingMarginalShare":
-                    strWindowID = CDefine.DEF_WINDOW_MST_AGING_MARGINAL_SHARE;
+                case "CtrlMonitoring":
+                    strWindowID = CDefine.DEF_MON_CTRL_MONITORING;
                     break;
-                case "CtrlMstTrouble":
-                    strWindowID = CDefine.DEF_WINDOW_MST_TROUBLE;
+                case "CtrlAging":
+                    strWindowID = CDefine.DEF_MON_CTRL_AGING;
                     break;
-                case "CtrlProdcutionModel":
-                    strWindowID = CDefine.DEF_WINDOW_MST_PROD_MODEL;
-                    break;
-                case "CtrlEquipment":
-                    strWindowID = CDefine.DEF_WINDOW_MST_EQUIPMENT;
-                    break;
-                case "CtrlRouteInput":
-                    strWindowID = CDefine.DEF_WINDOW_MST_ROUTE_INPUT;
-                    break;
-                case "CtrlTempCompensation":
-                    strWindowID = CDefine.DEF_WINDOW_MST_TEMP_COMPENSATION;
-                    break;
-                case "CtrlUserManagement":
-                    strWindowID = CDefine.DEF_WINDOW_MST_USER_MANAGEMENT;
-                    break;
-                case "CtrlWindow":
-                    strWindowID = CDefine.DEF_WINDOW_MST_WINDOWS;
-                    break;
-                case "WinDefaultRouteInput":
-                    strWindowID = CDefine.DEF_WINDOW_MST_WIN_DEFAULT_ROUTE_INPUT;
-                    break;
-                case "CtrlRecipe":
-                    strWindowID = CDefine.DEF_WINDOW_MST_RECIPE;
-                    break;
-                case "CtrlRecipeData":
-                    strWindowID = CDefine.DEF_WINDOW_MST_RECIPE_DATA;
-                    break;
-                case "CtrlRecipeTime":
-                    strWindowID = CDefine.DEF_WINDOW_MST_RECIPE_TIME;
-                    break;
-                case "CtrlUserWindowAuth":
-                    strWindowID = CDefine.DEF_WINDOW_MST_USER_WINDOW_AUTH;
-                    break;
-                case "CtrlFormation":
-                    strWindowID = CDefine.DEF_WINDOW_MONI_FORMATION;
+                case "CtrlFormationCHG":
+                    strWindowID = CDefine.DEF_MON_CTRL_FORMATION_CHG;
                     break;
                 case "CtrlFormationHPC":
-                    strWindowID = CDefine.DEF_WINDOW_MONI_FORMATION_HPC;
+                    strWindowID = CDefine.DEF_MON_CTRL_FORMATION_HPC;
                     break;
-                case "CtrlHTAging":
-                case "WinHTAgingForDual":
-                    strWindowID = CDefine.DEF_WINDOW_MONI_HP_AGING;
-                    break;
-                case "CtrlRTAging":
-                    strWindowID = CDefine.DEF_WINDOW_MONI_RT_AGING;
-                    break;
-                case "CtrlTotalMonitoring":
-                    strWindowID = CDefine.DEF_WINDOW_MONI_TOTAL_MONITORING;
-                    break;
-                case "WinAgingInfo":
-                    strWindowID = CDefine.DEF_WINDOW_MONI_WIN_AGING_INFO;
+                case "WinManageEqp":
+                    strWindowID = CDefine.DEF_MON_WIN_MANAGE_EQP;
                     break;
                 case "WinAgingRackSetting":
-                    strWindowID = CDefine.DEF_WINDOW_MONI_WIN_AGING_RACK_SETTING;
+                    strWindowID = CDefine.DEF_MON_WIN_AGING_RACK_SETTING;
                     break;
-                case "WinEqpManualJob":
-                    strWindowID = CDefine.DEF_WINDOW_MONI_WIN_EQP_MANUAL_JOB;
+                case "WinBCRConveyorInfo":
+                    strWindowID = CDefine.DEF_MON_WIN_BCR_CONVEYOR_INFO;
                     break;
-                //case "WinFormationManualJob":
-                //    strWindowID = CDefine.DEF_WINDOW_MONI_WIN_FORMATION_MANUAL_JOB;
-                //    break;
-                //case "WinHTAgingForDual":
-                //    strWindowID = CDefine.DEF_WINDOW_MONI_WIN_HP_AGING_FOR_DUAL;
-                    //break;
-
-                case "WinModelChange":
-                    strWindowID = CDefine.DEF_WINDOW_MONI_WIN_MODEL_CHANGE;
+                case "WinConveyorInfo":
+                    strWindowID = CDefine.DEF_MON_WIN_CONVEYOR_INFO;
                     break;
-                case "WinTroubleInfo":
-                    strWindowID = CDefine.DEF_WINDOW_MONI_WIN_TROUBLE_INFO;
+                case "WinCellDetailInfo":
+                    strWindowID = CDefine.DEF_MON_WIN_CELL_DETAILS;
                     break;
-                case "CtrlAgingMarginal":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_AGING_MARGINAL;
+                case "WinCraneInfo":
+                    strWindowID = CDefine.DEF_MON_WIN_CRANE_INFO;
                     break;
-                case "CtrlCellHistoryInfo":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_CELL_HISTORY_INFO;
+                case "WinFormationBox":
+                    strWindowID = CDefine.DEF_MON_WIN_FORMATION_BOX;
                     break;
-                case "CtrlDailyProcessInfo":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_DAILY_PROCESS_INFO;
+                case "WinFormationHPC":
+                    strWindowID = CDefine.DEF_MON_WIN_FORMATION_HPC;
                     break;
-                case "CtrlEqpRepair": 
-                    strWindowID = CDefine.DEF_WINDOW_RTP_EQP_REPAIR;
+                case "WinLeadTime":
+                    strWindowID = CDefine.DEF_MON_WIN_LEAD_TIME;
                     break;
-                case "CtrlEqpStatusInfo":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_EQP_STATUS_INFO;
+                case "WinRecipeInfo":
+                    strWindowID = CDefine.DEF_MON_WIN_RECIPE_INFO;
                     break;
-                case "CtrlEqpStatusReport":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_EQP_STATUS_REPORT;
-                    break;
-                case "CtrlFireRecord":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_FIRE_RECORD;
-                    break;
-                case "CtrlGripper":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_GRIPPER;
-                    break;
-                case "CtrlJudgeReport":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_JUDGE_REPORT;
-                    break;
-                case "CtrlJudgeResultData":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_JUDGE_RESULT_DATA;
-                    break;
-                case "CtrlLogInfo":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_LOG_INFO;
-                    break;
-                case "CtrlLotMonitoring":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_LOT_MONITORING;
-                    break;
-                case "CtrlProcessMonitoring":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_PROCESS_MONITORING;
-                    break;
-                case "CtrlTemperature":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_TEMPERATURE;
-                    break;
-                case "CtrlTemperatureHPC":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_TEMPERATURE_HPC;
-                    break;
-                case "CtrlTrayCellHistoryInfo":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_TRAY_CELL_HISTORY_INFO;
-                    break;
-                case "CtrlTrayHistoryInfo":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_TRAY_HISTORY_INFO;
-                    break;
-                case "CtrlTrayProStepHist":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_TRAY_PRO_STEP_HIST;
-                    break;
-                case "CtrlTroubleAnalysis":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_TROUBLE_ANALYSIS;
-                    break;
-                case "CtrlTroubleInfo":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_TROUBLE_INFO;
-                    break;
-                case "WinCellMeasurements":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_WIN_CELL_MEASUREMENTS;
-                    break;
-                case "WinEqpRepair":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_WIN_EQP_REPAIR;
-                    break;
-                case "WinEqpStatusHis":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_WIN_EQP_STATUS_HIS;
-                    break;
-                case "WinGradeJudge":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_WIN_GRADE_JUDGE;
-                    break;
-                case "WinManualOutCell":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_WIN_MANUAL_OUT_CELL;
-                    break;
-                case "WinProcChange":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_WIN_PROC_CHANGE;
-                    break;
-                case "WinRouteChange":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_WIN_ROUTE_CHANGE;
-                    break;
-                case "WinTemperatureChart":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_WIN_TEMPERATURE_CHART;
+                case "WinTrayDetails":
+                    strWindowID = CDefine.DEF_MON_WIN_TRAY_DETAILS;
                     break;
                 case "WinTrayInfo":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_WIN_TRAY_INFO;
+                    strWindowID = CDefine.DEF_MON_WIN_TRAY_INFO;
                     break;
-                case "WinTrayManual":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_WIN_TRAY_MANUAL;
-                    break;
-                case "WinTrayManualInfo":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_WIN_TRAY_MANUAL_INFO;
-                    break;
-                case "WinTroubleInput":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_WIN_TROUBLE_INPUT;
-                    break;
-                case "WinTrayStatus":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_WIN_TRAY_STATUS_CHANGE;
-                    break;
-                case "CtrlReWorkUI":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_RE_WORK;
-                    break;
-                case "WinTrayCreate":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_RE_WORK_CREATE;
-                    break;
-                case "WinCellInfo":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_CELL_INFO;
-                    break;
-                case "WinGradeOutSlotSetting":
-                    strWindowID = CDefine.DEF_WINDOW_MONI_WIN_OUT_GRADE_SETTING;
-                    break;
-                case "WinGradeNameEdit":
-                    strWindowID = CDefine.DEF_WINDOW_MONI_WIN_GRADE_EDIT;
-                    break;
-                case "CtrlGradeMonitoring":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_JUDGE_DAILY_REPORT;
-                    break;
-                case "WinCellProcDataInsert":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_INSERT_CELL_DATA;
-                    break;
-                case "WinMainLoopTraffic":
-                    strWindowID = CDefine.DEF_WINDOW_MON_MODIFY_MAIN_LOOP_TRAFFIC;
-                    break;
-                //20200414 KJY for 공트레이 TrayZone 변경
-                case "WinChangeTrayZone":
-                    strWindowID = CDefine.DEF_WINDOW_RTP_CHANGE_TRAY_ZONE;
-                    break;
-                //20200611 KJY for AgingRack 안의 Tray의 RouteID변경
-                case "WinReserveChangeRouteID":
-                    strWindowID = CDefine.DEF_WINDOW_MON_CHANGE_ROUTEID;
-                    break;
-                //20201215 KJY for 조립설비로 가는 공트레이 제한
-                case "WinModifyASMLimit":
-                    strWindowID = CDefine.DEF_WINDOW_MON_ASM_LIMIT;
-                    break;
-                //20201231 KJY for Route 복제 생성
-                case "WinCopyRouteID":
-                    strWindowID = CDefine.DEF_WINDOW_MST_COPY_ROUTEID;
-                    break;
-
-                case "CtrlCellType":
-                    strWindowID = CDefine.DEF_WINDOW_MST_CELL_TYPE;
-                    break;
-                //20211111 KJY - 에이징랙 출고 화면 분리 (계정관리)
-                //DEF_WINDOW_MONI_WIN_AGING_RACK_OUT_MANAGE 
-                case "WinAgingRackOutManage":
-                    strWindowID = CDefine.DEF_WINDOW_MONI_WIN_AGING_RACK_OUT_MANAGE;
+                case "WinWaterTank":
+                    strWindowID = CDefine.DEF_MON_WIN_WATER_TANK;
                     break;
                 default:
                     break;
@@ -265,27 +207,21 @@ namespace MonitoringUI.Common
             return strWindowID;
         }
         #endregion
-        
+
         #region [Authority]
-        public static void GetAuthority(string strUserID, string strWindowID, ref bool bAuth_View, ref bool bAuth_Save)
+        private static void GetAuthority(string strWindowName, ref bool bAuth_View, ref bool bAuth_Save)
         {
-            if (strUserID.Length < 0) return;
-            if (strWindowID.Length < 0) return;
-
-            string strFilter = "";
-
-            strFilter += "UserID   = " + "'" + strUserID + "'";
-            strFilter += "AND WindowID = " + "'" + strWindowID + "'";
+            if (strWindowName.Length < 0) return;
 
             try
             {
-                JsonMstWindowUserList jsonMstWindowUserList = CDatabaseRest.SelectData(Common.enDBTable.MST_WINDOW_USER, strFilter) as JsonMstWindowUserList;
+                string windowid = WindowsNameToWindowID(strWindowName);
 
-                if (jsonMstWindowUserList == null) return;
-                if (jsonMstWindowUserList.code != 0) return;
-
-                bAuth_View = jsonMstWindowUserList.MstWindowUserList[0].Auth_View == "Y" ? true : false;
-                bAuth_Save = jsonMstWindowUserList.MstWindowUserList[0].Auth_Save == "Y" ? true : false;
+                if (_WindowIDList[windowid].DefaultClassID >= CDefine.UserClassID)
+                {
+                    bAuth_View = _WindowIDList[windowid].View;
+                    bAuth_Save = _WindowIDList[windowid].Save;
+                }               
             }
             catch (Exception ex)
             {

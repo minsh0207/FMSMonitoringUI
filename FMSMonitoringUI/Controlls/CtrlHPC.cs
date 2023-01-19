@@ -213,13 +213,13 @@ namespace FMSMonitoringUI.Controlls
                     break;
                 case "F":
                     if (fullString)
-                        statusName = string.Format($"Fire\r\n(Temperature Alarm Only)");
+                        statusName = $"Fire\r\n(Temperature Alarm Only)";
                     else
                         statusName = "Fire";                    
                     break;
                 case "F2":
                     if (fullString)
-                        statusName = string.Format($"Fire\r\n(Smoke Only or Both)");
+                        statusName = $"Fire\r\n(Smoke Only or Both)";
                     else
                         statusName = "Fire2";
                     break;

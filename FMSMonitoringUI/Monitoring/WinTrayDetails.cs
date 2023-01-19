@@ -1,4 +1,5 @@
-﻿using MonitoringUI.Common;
+﻿using MonitoringUI;
+using MonitoringUI.Common;
 using MonitoringUI.Controlls;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ using System.Windows.Forms;
 
 namespace FMSMonitoringUI.Monitoring
 {
-    public partial class WinTrayDetails : Form
+    public partial class WinTrayDetails : WinFormRoot
     {
         private Point point = new Point();
 
@@ -25,8 +26,13 @@ namespace FMSMonitoringUI.Monitoring
 
         private void WinTrayDetails_Load(object sender, EventArgs e)
         {
-            
-            InitsplitContainer();
+            if (CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, this.Text) == false)
+            {
+                Exit_Click(null, null);
+                return;
+            }
+
+            InitControl();
 
             #region Title Mouse Event
             ctrlTitleBar.MouseDown_Evnet += Title_MouseDownEvnet;
@@ -36,19 +42,19 @@ namespace FMSMonitoringUI.Monitoring
             #region DataGridView Event
             gridTrayInfo.MouseCellDoubleClick_Evnet += GridCellInfo_MouseCellDoubleClick;
             #endregion
+
+            this.WindowID = CAuthority.GetWindowsText(this.Text);
         }
 
-        private void InitsplitContainer()
+        #region InitControl
+        private void InitControl()
         {
-            //splitContainer1.BackColor = Color.LightGray;            // Color.FromArgb(53, 53, 53);
-            //splitContainer1.BorderStyle = BorderStyle.FixedSingle;
-            //splitContainer2.Panel2.BackColor = Color.LightGray;     //Color.FromArgb(53, 53, 53);
-            //splitContainer2.BorderStyle = BorderStyle.FixedSingle;
-
-            //splitContainer3.BorderStyle = BorderStyle.FixedSingle;
-            //splitContainer3.Panel2.BackColor = Color.FromArgb(27, 27, 27);
+            int btnPos = (this.Width - CDefine.DEF_EXIT_WIDTH) / 2;   // Button Width Size 170            
+            this.Exit.Padding = new System.Windows.Forms.Padding(btnPos, 10, btnPos, 10);
         }
+        #endregion
 
+        #region InitGridView
         private void InitGridView()
         {
             string[] columnName = { "No", "Location", "Tray ID", "Cell ID", "Start Operation", "End Operation",
@@ -73,6 +79,7 @@ namespace FMSMonitoringUI.Monitoring
             gridTrayInfo.SetGridViewStyles();
             gridTrayInfo.ColumnHeadersWidth(0, 60);            
         }
+        #endregion
 
         #region SetData
         public void SetData(string trayid)
@@ -115,7 +122,7 @@ namespace FMSMonitoringUI.Monitoring
         #endregion
 
         #region Button Event
-        private void ctrlButtonExit1_Click(object sender, EventArgs e)
+        private void Exit_Click(object sender, EventArgs e)
         {
             Close();
         }

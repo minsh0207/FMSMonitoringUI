@@ -1,4 +1,5 @@
 ﻿using FMSMonitoringUI.Controlls.WindowsForms;
+using MonitoringUI;
 using MonitoringUI.Common;
 using MonitoringUI.Controlls;
 using MonitoringUI.Controlls.CButton;
@@ -18,7 +19,7 @@ using UnifiedAutomation.UaBase;
 
 namespace FMSMonitoringUI.Monitoring
 {
-    public partial class WinWaterTank : Form
+    public partial class WinWaterTank : WinFormRoot
     {
         private Point point = new Point();
 
@@ -54,6 +55,12 @@ namespace FMSMonitoringUI.Monitoring
         #region WinWaterTank Event
         private void WinWaterTank_Load(object sender, EventArgs e)
         {
+            if (CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, this.Text) == false)
+            {
+                Exit_Click(null, null);
+                return;
+            }
+
             #region Title Mouse Event
             ctrlTitleBar.MouseDown_Evnet += Title_MouseDownEvnet;
             ctrlTitleBar.MouseMove_Evnet += Title_MouseMoveEvnet;
@@ -70,6 +77,8 @@ namespace FMSMonitoringUI.Monitoring
                 _ProcessThread = new Thread(() => ProcessThreadCallback());
                 _ProcessThread.IsBackground = true; _ProcessThread.Start();
             }));
+
+            this.WindowID = CAuthority.GetWindowsText(this.Text);
         }
         private void WinWaterTank_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -94,6 +103,9 @@ namespace FMSMonitoringUI.Monitoring
                 _LedMode[i].Tag = "WaterTank.Mode";
                 uiTlbMode.Controls.Add(_LedMode[i], 0, i);
             }
+
+            int btnPos = (this.Width - CDefine.DEF_EXIT_WIDTH) / 2;   // Button Width Size 170            
+            this.Exit.Padding = new System.Windows.Forms.Padding(btnPos, 10, btnPos, 10);
         }
         #endregion
 
@@ -335,7 +347,7 @@ namespace FMSMonitoringUI.Monitoring
         #endregion   
 
         #region Button Event
-        private void ctrlButtonExit1_Click(object sender, EventArgs e)
+        private void Exit_Click(object sender, EventArgs e)
         {
             Close();
         }

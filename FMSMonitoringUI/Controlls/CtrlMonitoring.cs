@@ -38,6 +38,7 @@ using System.Threading.Tasks;
 using System.Timers;
 using System.Web.Http.Results;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using System.Windows.Interop;
 using UnifiedAutomation.UaBase;
 using UnifiedAutomation.UaClient;
@@ -142,26 +143,28 @@ namespace FMSMonitoringUI.Controlls
             InitMonitoring();
             InitLanguage();
 
+            SetWindowAuthority();
+
             string msg = $"Full Monitoring";
             _Logger.Write(LogLevel.Info, msg, LogFileName.AllLog);
         }
         #endregion
 
-        #region OnHandleDestroyed
-        /// <summary>
-        /// UserControl에서 종료시 호출
-        /// </summary>
-        protected override void OnHandleDestroyed(EventArgs e)
-        {
-            base.OnHandleDestroyed(e);
+        //#region OnHandleDestroyed
+        ///// <summary>
+        ///// UserControl에서 종료시 호출
+        ///// </summary>
+        //protected override void OnHandleDestroyed(EventArgs e)
+        //{
+        //    base.OnHandleDestroyed(e);
 
-            if (this._TheadVisiable && this._ProcessThread.IsAlive)
-                this._TheadVisiable = false;
+        //    if (this._TheadVisiable && this._ProcessThread.IsAlive)
+        //        this._TheadVisiable = false;
 
-            if (this._TheadVisiable)
-                this._ProcessThread.Abort();
-        }
-        #endregion
+        //    if (this._TheadVisiable)
+        //        this._ProcessThread.Abort();
+        //}
+        //#endregion
 
         #region ProcessStart
         public void ProcessStart(bool start)
@@ -456,6 +459,7 @@ namespace FMSMonitoringUI.Controlls
                          ctl.GetType() == typeof(CtrlEqpPacking))
                 {
                     UserControlEqp eqp = ctl as UserControlEqp;
+                    
                     if (_EntireEqpList.ContainsKey(eqp.EqpID) == false)
                     {
                         _EntireEqpList.Add(eqp.EqpID, eqp);
@@ -532,7 +536,30 @@ namespace FMSMonitoringUI.Controlls
             }
         }
         #endregion
-        
+
+        #region SetWindowAuthority
+        private void SetWindowAuthority()
+        {
+            bool bView = false;
+            bool bSave = false;
+
+            //string windowID = CAuthority.WindowsNameToWindowID(ctrlMonitoring.ToString());
+            //CAuthority.GetAuthority(windowID, ref bView, ref bSave);
+            //barMain.Enabled = bView;
+
+            //windowID = CAuthority.WindowsNameToWindowID(ctrlAging.ToString());
+            //CAuthority.GetAuthority(windowID, ref bView, ref bSave);
+            //barAging.Enabled = bView;
+
+            //windowID = CAuthority.WindowsNameToWindowID(ctrlFormationCHG.ToString());
+            //CAuthority.GetAuthority(windowID, ref bView, ref bSave);
+            //barFormationCHG.Enabled = bView;
+
+            //windowID = CAuthority.WindowsNameToWindowID(ctrlFormationHPC.ToString());
+            //CAuthority.GetAuthority(windowID, ref bView, ref bSave);
+            //barFormationHPC.Enabled = bView;
+        }
+        #endregion
 
         private void CtrlEqpAging_Click(string eqpId, string eqpType, int level)
         {
@@ -589,80 +616,7 @@ namespace FMSMonitoringUI.Controlls
             }
         }
         #endregion
-
-        #region SetData
-        public void SetData(List<_entire_eqp_list> data)
-        {
-            if (data.Count == 0) return;
-
-            Dictionary<string, List<_entire_eqp_list>> eqpData = new Dictionary<string, List<_entire_eqp_list>>();
-
-            foreach (var item in data)
-            {
-                if (eqpData.ContainsKey(item.EQP_ID))
-                {
-                    eqpData[item.EQP_ID].Add(item);
-                }
-                else
-                {
-                    eqpData[item.EQP_ID] = new List<_entire_eqp_list> { item };
-                }               
-            }
-
-            for (int i = 0; i < _EntireEqpList.Count; i++)
-            {
-                string eqpid = _EntireEqpList.Keys.ToList()[i];
-
-                if (eqpData.ContainsKey(eqpid))
-                {
-                    if (eqpid == "F1HPC01")
-                    {
-                        ctrlEqpHPC1.SetData(eqpData[eqpid], _EqpStatus);
-                        ctrlEqpHPC2.SetData(eqpData[eqpid], _EqpStatus);
-                    }
-                    else
-                    {
-                        UserControlEqp ctrlEqp = _EntireEqpList[eqpid];
-                        ctrlEqp.SetData(eqpData[eqpid], _EqpStatus);
-                    }
-                }
-            }
-        }
-        // Aging 
-        private void SetData(List<_aging_rack_count> data)
-        {
-            if (data.Count == 0) return;
-
-            foreach (var aging in data)
-            {
-                if (aging.AGING_TYPE == "H" && aging.LINE == "01" && aging.LANE == "1")
-                {
-                    ctrlEqpHTAging1.SetData(aging.TOTAL_RACK_CNT, aging.IN_AGING);
-                }
-                else if (aging.AGING_TYPE == "H" && aging.LINE == "01" && aging.LANE == "2")
-                {
-                    ctrlEqpHTAging2.SetData(aging.TOTAL_RACK_CNT, aging.IN_AGING);
-                }
-                else if (aging.AGING_TYPE == "L" && aging.LINE == "01" && aging.LANE == "1")
-                {
-                    ctrlEqpLTAging1.SetData(aging.TOTAL_RACK_CNT, aging.IN_AGING);
-                }
-                else if (aging.AGING_TYPE == "L" && aging.LINE == "01" && aging.LANE == "2")
-                {
-                    ctrlEqpLTAging2.SetData(aging.TOTAL_RACK_CNT, aging.IN_AGING);
-                }
-                else if (aging.AGING_TYPE == "L" && aging.LINE == "02" && aging.LANE == "1")
-                {
-                    ctrlEqpLTAging3.SetData(aging.TOTAL_RACK_CNT, aging.IN_AGING);
-                }
-                else if (aging.AGING_TYPE == "L" && aging.LINE == "02" && aging.LANE == "2")
-                {
-                    ctrlEqpLTAging4.SetData(aging.TOTAL_RACK_CNT, aging.IN_AGING);
-                }
-            }
-        }
-        #endregion
-
+                
         #region ProcessThreadCallback
         private void ProcessThreadCallback()
         {
@@ -789,6 +743,79 @@ namespace FMSMonitoringUI.Controlls
             catch (Exception ex)
             {
                 Console.WriteLine(string.Format("[Exception:LoadAgingRackCount] {0}", ex.ToString()));
+            }
+        }
+        #endregion
+
+        #region SetData
+        public void SetData(List<_entire_eqp_list> data)
+        {
+            if (data.Count == 0) return;
+
+            Dictionary<string, List<_entire_eqp_list>> eqpData = new Dictionary<string, List<_entire_eqp_list>>();
+
+            foreach (var item in data)
+            {
+                if (eqpData.ContainsKey(item.EQP_ID))
+                {
+                    eqpData[item.EQP_ID].Add(item);
+                }
+                else
+                {
+                    eqpData[item.EQP_ID] = new List<_entire_eqp_list> { item };
+                }
+            }
+
+            for (int i = 0; i < _EntireEqpList.Count; i++)
+            {
+                string eqpid = _EntireEqpList.Keys.ToList()[i];
+
+                if (eqpData.ContainsKey(eqpid))
+                {
+                    if (eqpid == "F1HPC01")
+                    {
+                        ctrlEqpHPC1.SetData(eqpData[eqpid], _EqpStatus);
+                        ctrlEqpHPC2.SetData(eqpData[eqpid], _EqpStatus);
+                    }
+                    else
+                    {
+                        UserControlEqp ctrlEqp = _EntireEqpList[eqpid];
+                        ctrlEqp.SetData(eqpData[eqpid], _EqpStatus);
+                    }
+                }
+            }
+        }
+        // Aging 
+        private void SetData(List<_aging_rack_count> data)
+        {
+            if (data.Count == 0) return;
+
+            foreach (var aging in data)
+            {
+                if (aging.AGING_TYPE == "H" && aging.LINE == "01" && aging.LANE == "1")
+                {
+                    ctrlEqpHTAging1.SetData(aging.TOTAL_RACK_CNT, aging.IN_AGING);
+                }
+                else if (aging.AGING_TYPE == "H" && aging.LINE == "01" && aging.LANE == "2")
+                {
+                    ctrlEqpHTAging2.SetData(aging.TOTAL_RACK_CNT, aging.IN_AGING);
+                }
+                else if (aging.AGING_TYPE == "L" && aging.LINE == "01" && aging.LANE == "1")
+                {
+                    ctrlEqpLTAging1.SetData(aging.TOTAL_RACK_CNT, aging.IN_AGING);
+                }
+                else if (aging.AGING_TYPE == "L" && aging.LINE == "01" && aging.LANE == "2")
+                {
+                    ctrlEqpLTAging2.SetData(aging.TOTAL_RACK_CNT, aging.IN_AGING);
+                }
+                else if (aging.AGING_TYPE == "L" && aging.LINE == "02" && aging.LANE == "1")
+                {
+                    ctrlEqpLTAging3.SetData(aging.TOTAL_RACK_CNT, aging.IN_AGING);
+                }
+                else if (aging.AGING_TYPE == "L" && aging.LINE == "02" && aging.LANE == "2")
+                {
+                    ctrlEqpLTAging4.SetData(aging.TOTAL_RACK_CNT, aging.IN_AGING);
+                }
             }
         }
         #endregion
@@ -1098,7 +1125,7 @@ namespace FMSMonitoringUI.Controlls
         }
 #endregion
 
-#region ReadSiteInfo
+        #region ReadSiteInfo
         /// <summary>
         /// Site 정보를 가져온다.
         /// </summary>
@@ -1117,9 +1144,9 @@ namespace FMSMonitoringUI.Controlls
 
             return tagInfo;
         }
-#endregion
+        #endregion
 
-#region EQPTrayInfo
+        #region EQPTrayInfo
         private void ReadEqpInfo()
         {
             DataSet ds = _mysql.SelectEqpInfo();
@@ -1135,9 +1162,9 @@ namespace FMSMonitoringUI.Controlls
                 }
             }
         }
-#endregion
+        #endregion
 
-#region MoveCraneAsync
+        #region MoveCraneAsync
         /// <summary>
         /// Crane 동작 처리
         /// </summary>
@@ -1199,9 +1226,9 @@ namespace FMSMonitoringUI.Controlls
                 });
             }
         }
-#endregion
+        #endregion
 
-#region StatusCraneAsync
+        #region StatusCraneAsync
         private async Task StatusCraneAsync(CtrlSCrane crane, bool trayExist, string craneName)
         {
             Task task = StatusCrane(crane, trayExist, craneName);
@@ -1210,26 +1237,26 @@ namespace FMSMonitoringUI.Controlls
         }
 
         private async Task StatusCrane(CtrlSCrane crane, bool trayExist, string craneName)
-        {
-            if (this.InvokeRequired)
-            {
-                await Task.Run(() =>
                 {
-                    this.Invoke(new MethodInvoker(delegate ()
+                    if (this.InvokeRequired)
                     {
-                        crane.UpdateUI(trayExist, craneName);
-                    }));
+                        await Task.Run(() =>
+                        {
+                            this.Invoke(new MethodInvoker(delegate ()
+                            {
+                                crane.UpdateUI(trayExist, craneName);
+                            }));
 
-                    //this.BeginInvoke(new Action(() =>
-                    //{
-                    //    crane.UpdateUI(trayExist, craneName);
-                    //}));
-                });
-            }
-        }
-#endregion
+                            //this.BeginInvoke(new Action(() =>
+                            //{
+                            //    crane.UpdateUI(trayExist, craneName);
+                            //}));
+                        });
+                    }
+                }
+        #endregion
 
-#region StatusConveyorAsync
+        #region StatusConveyorAsync
         private async Task StatusConveyorAsync(int groupno, int siteno, bool trayExist)
         {
             Task task = StatusConveyor(groupno, siteno, trayExist);
@@ -1269,9 +1296,9 @@ namespace FMSMonitoringUI.Controlls
 
 
         }
-#endregion
+        #endregion
 
-#region DisplayBCRAsync
+        #region DisplayBCRAsync
         /// <summary>
         /// BCRMarker Control에 TrayID를 표시한다.
         /// </summary>
@@ -1344,9 +1371,9 @@ namespace FMSMonitoringUI.Controlls
                 });
             }
         }
-#endregion
+        #endregion
 
-#region WinTrayInfo
+        #region WinTrayInfo
         /// <summary>
         /// Crane 동작 처리
         /// </summary>
@@ -1492,9 +1519,9 @@ namespace FMSMonitoringUI.Controlls
                 this.BeginInvoke(new Action(() => Refresh()));
             }            
         }
-#endregion
+        #endregion
 
-#region GetConveyorEqpID
+        #region GetConveyorEqpID
         private string GetConveyorEqpID(int eqpIdx)
         {
             string eqp = string.Empty;
@@ -1546,7 +1573,7 @@ namespace FMSMonitoringUI.Controlls
 
             return eqp;
         }
-#endregion
+        #endregion
 
         private void button1_Click(object sender, EventArgs e)
         {

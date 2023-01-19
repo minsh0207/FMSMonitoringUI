@@ -1,5 +1,6 @@
 ﻿using ExcelDataReader.Log;
 using FMSMonitoringUI.Controlls.WindowsForms;
+using MonitoringUI;
 using MonitoringUI.Common;
 using MonitoringUI.Controlls;
 using MonitoringUI.Controlls.CButton;
@@ -25,7 +26,7 @@ using UnifiedAutomation.UaBase;
 
 namespace FMSMonitoringUI.Monitoring
 {
-    public partial class WinBCRConveyorInfo : Form
+    public partial class WinBCRConveyorInfo : WinFormRoot
     {
         private Point _Point = new Point();
 
@@ -55,9 +56,15 @@ namespace FMSMonitoringUI.Monitoring
         #region WinBCRConveyorInfo Event
         private void WinBCRConveyorInfo_Load(object sender, EventArgs e)
         {
+            if (CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, this.Text) == false)
+            {
+                Exit_Click(null, null);
+                return;
+            }
+
             #region Title Mouse Event
-            ctrlTitleBar.MouseDown_Evnet += Title_MouseDownEvnet;
-            ctrlTitleBar.MouseMove_Evnet += Title_MouseMoveEvnet;
+            titBar.MouseDown_Evnet += Title_MouseDownEvnet;
+            titBar.MouseMove_Evnet += Title_MouseMoveEvnet;
             #endregion
 
             _TheadVisiable = true;
@@ -67,6 +74,8 @@ namespace FMSMonitoringUI.Monitoring
                 _ProcessThread = new Thread(() => ProcessThreadCallback());
                 _ProcessThread.IsBackground = true; _ProcessThread.Start();
             }));
+
+            this.WindowID = CAuthority.GetWindowsText(this.Text);
         }
 
         private void WinBCRConveyorInfo_FormClosed(object sender, FormClosedEventArgs e)
@@ -110,13 +119,16 @@ namespace FMSMonitoringUI.Monitoring
                 _LedStatus[i].Tag = "EquipmentStatus.Status";
                 uiTlbStatus.Controls.Add(_LedStatus[i], i, 0);
             }
+
+            int btnPos = (this.Width - CDefine.DEF_EXIT_WIDTH) / 2;   // Button Width Size 170            
+            this.Exit.Padding = new System.Windows.Forms.Padding(btnPos, 10, btnPos, 10);
         }
         #endregion
 
         #region InitLanguage
         private void InitLanguage()
         {
-            foreach (var ctl in panel1.Controls)
+            foreach (var ctl in this.Controls)
             {
                 if (ctl.GetType() == typeof(CtrlTitleBar))
                 {

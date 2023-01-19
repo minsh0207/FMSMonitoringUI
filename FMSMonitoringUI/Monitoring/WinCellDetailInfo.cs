@@ -1,4 +1,5 @@
 ﻿using Google.Protobuf.WellKnownTypes;
+using MonitoringUI;
 using MonitoringUI.Common;
 using MonitoringUI.Controlls;
 using MySqlX.XDevAPI.Common;
@@ -21,7 +22,7 @@ using System.Windows.Forms;
 
 namespace FMSMonitoringUI.Monitoring
 {
-    public partial class WinCellDetailInfo : Form
+    public partial class WinCellDetailInfo : WinFormRoot
     {
         private Point point = new Point();
         private string _TrayId = string.Empty;
@@ -43,6 +44,7 @@ namespace FMSMonitoringUI.Monitoring
             string logPath = ConfigurationManager.AppSettings["LOG_PATH"];
             _Logger = new Logger(logPath, LogMode.Hour);
 
+            InitControl();
             InitGridViewCellList();
             InitGridViewCell();
             InitGridViewProcessName(0);
@@ -56,9 +58,15 @@ namespace FMSMonitoringUI.Monitoring
         #region WinCellDetailInfo Event
         private void WinCellDetailInfo_Load(object sender, EventArgs e)
         {
+            if (CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, this.Text) == false)
+            {
+                Exit_Click(null, null);
+                return;
+            }
+
             #region Title Mouse Event
-            ctrlTitleBar.MouseDown_Evnet += Title_MouseDownEvnet;
-            ctrlTitleBar.MouseMove_Evnet += Title_MouseMoveEvnet;
+            titBar.MouseDown_Evnet += Title_MouseDownEvnet;
+            titBar.MouseMove_Evnet += Title_MouseMoveEvnet;
             #endregion
 
             #region DataGridView Event
@@ -75,6 +83,8 @@ namespace FMSMonitoringUI.Monitoring
                 _ProcessThread = new Thread(() => ProcessThreadCallback());
                 _ProcessThread.IsBackground = true; _ProcessThread.Start();
             }));
+
+            this.WindowID = CAuthority.GetWindowsText(this.Text);
         }
         private void WinCellDetailInfo_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -82,6 +92,14 @@ namespace FMSMonitoringUI.Monitoring
                 this._TheadVisiable = false;
 
             this._ProcessThread.Abort();
+        }
+        #endregion
+
+        #region InitControl
+        private void InitControl()
+        {
+            int btnPos = (this.Width - CDefine.DEF_EXIT_WIDTH) / 2;   // Button Width Size 170            
+            this.Exit.Padding = new System.Windows.Forms.Padding(btnPos, 10, btnPos, 10);
         }
         #endregion
 
@@ -500,7 +518,7 @@ namespace FMSMonitoringUI.Monitoring
         #endregion
 
         #region Button Event
-        private void ctrlButtonExit1_Click(object sender, EventArgs e)
+        private void Exit_Click(object sender, EventArgs e)
         {
             Close();
         }

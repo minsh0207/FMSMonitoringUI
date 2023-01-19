@@ -50,9 +50,9 @@ namespace MonitoringUI.Monitoring
             bool bView = false;
             bool bSave = false;
             // 화면ID 설정
-            Tag = CAuthority.WindowsNameToWindowID(this.GetType().FullName.ToString());
+            //Tag = CAuthority.WindowsNameToWindowID(this.GetType().FullName.ToString());
             //Get Authority
-            CAuthority.GetAuthority(CDefine.m_strLoginID, Tag.ToString(), ref bView, ref bSave);
+            //CAuthority.GetAuthority(Tag.ToString(), ref bView, ref bSave);
             this.WindowID = Tag.ToString();
             ///
             ///

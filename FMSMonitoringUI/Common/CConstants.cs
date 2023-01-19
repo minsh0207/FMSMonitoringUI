@@ -33,10 +33,16 @@ namespace MonitoringUI.Common
         public short Milliseconds;
     }
 
+    // Authority Type
+    public enum enAuthority
+    {
+        View,
+        Save
+    }
 
 
-	// File time
-	public enum enFileTimeMode
+    // File time
+    public enum enFileTimeMode
 	{
 		CreationTime,
 		LastWriteTime,
