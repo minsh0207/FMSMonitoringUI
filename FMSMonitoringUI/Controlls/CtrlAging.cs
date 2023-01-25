@@ -987,17 +987,22 @@ namespace MonitoringUI.Monitoring
                     if (result != null)
                     {
                         SetData(result.DATA, selectedTabIndex);
+                        RestServer.LedStatus(2);
                     }
                     else
                     {
                         string log = "AgingRackData : REST result is null";
                         _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+
+                        RestServer.LedStatus(4);
                     }
                 }
                 else
                 {
                     string log = "AgingRackData : jsonResult is null";
                     _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+
+                    RestServer.LedStatus(4);
                 }
             }
             catch (Exception ex)
@@ -1151,9 +1156,7 @@ namespace MonitoringUI.Monitoring
 
             btn.BackColor = Color.LightYellow;
             btn.ForeColor = Color.Black;
-
-            AgingTab.SelectedTab = AgingTab.TabPages[tabIdx];
-
+            
             switch (tabIdx)
             {
                 case 0:
@@ -1173,6 +1176,8 @@ namespace MonitoringUI.Monitoring
                     _AgingLine = "01";
                     break;
             }
+
+            AgingTab.SelectedTab = AgingTab.TabPages[tabIdx];
         }
         #endregion
 

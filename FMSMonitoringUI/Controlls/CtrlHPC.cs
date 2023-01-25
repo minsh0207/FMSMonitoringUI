@@ -10,9 +10,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace FMSMonitoringUI.Controlls
 {
@@ -46,6 +49,19 @@ namespace FMSMonitoringUI.Controlls
                 lbRackID.Text = string.Format(" {0}", _textBoxText);
             }
         }
+        string _LanguageID = "";
+        [DisplayName("LocalLanguage"), Description("Local Language"), Category("Language Setting")]
+        public string LanguageID
+        {
+            get
+            {
+                return _LanguageID;
+            }
+            set
+            {
+                _LanguageID = value;
+            }
+        }
         #endregion
 
         public CtrlHPC()
@@ -71,18 +87,20 @@ namespace FMSMonitoringUI.Controlls
             TrayInfoView.AddColumnHeaderList(lstTitle);
             TrayInfoView.ColumnHeadersVisible(false);
 
-            lstTitle = new List<string>();
-            lstTitle.Add("Tray ID");
-            lstTitle.Add("Control Mode");
-            lstTitle.Add("Status");
-            lstTitle.Add("Operation Mode");
-            lstTitle.Add("Current Process");
-            lstTitle.Add("Start Time");
-            lstTitle.Add("Plan Time");
-            lstTitle.Add("Avg Temp");
-            lstTitle.Add("Pressure");
-            lstTitle.Add("Trouble Code");
-            lstTitle.Add("Trouble Name");
+            lstTitle = new List<string>
+            {
+                LocalLanguage.GetItemString("DEF_Tray_ID"),
+                LocalLanguage.GetItemString("DEF_Control_Mode").Replace(" :", ""),
+                LocalLanguage.GetItemString("DEF_Status").Replace(" :", ""),
+                LocalLanguage.GetItemString("DEF_Operation_Mode"),
+                LocalLanguage.GetItemString("DEF_Current_Process"),
+                LocalLanguage.GetItemString("DEF_Start_Time"),
+                LocalLanguage.GetItemString("DEF_Plan_Time"),
+                LocalLanguage.GetItemString("DEF_Avg_Temp"),
+                LocalLanguage.GetItemString("DEF_Pressure"),
+                LocalLanguage.GetItemString("DEF_Trouble_Code"),
+                LocalLanguage.GetItemString("DEF_Trouble_Name")
+            };
             TrayInfoView.AddRowsHeaderList(lstTitle);
 
             TrayInfoView.ColumnHeadersHeight(30);
@@ -94,7 +112,7 @@ namespace FMSMonitoringUI.Controlls
         #endregion
 
         #region setData
-        public void SetData(_ctrl_formation_hpc data, Color eqpStatus, Color operationMode)
+        public void SetData(_ctrl_formation_hpc data, Color eqpStatusColor, Color opModeColor)
         {
             int nRow = 0;
             TrayInfoView.SetValue(1, nRow, data.TRAY_ID); nRow++;
@@ -109,12 +127,12 @@ namespace FMSMonitoringUI.Controlls
             TrayInfoView.SetValue(1, nRow, data.TROUBLE_CODE); nRow++;
             TrayInfoView.SetValue(1, nRow, data.TROUBLE_NAME);
 
-            SetEqpStatus(data.EQP_STATUS, eqpStatus);
+            SetEqpStatus(data.EQP_STATUS, eqpStatusColor);
 
             if (data.EQP_STATUS == "R")
-                SetOperationMode(data.OPERATION_MODE, operationMode);
+                SetOperationMode(data.OPERATION_MODE, opModeColor);
             else
-                SetOperationMode(data.EQP_STATUS, eqpStatus);
+                SetOperationMode(data.EQP_STATUS, eqpStatusColor);
         }
 
         public void SetEqpStatus(string eqp_status, Color color)
@@ -123,15 +141,21 @@ namespace FMSMonitoringUI.Controlls
             lbEqpStatus.BackColor = color;
         }
 
+        /// <summary>
+        /// 설비 상태가 Run이 아닌경우 장비 상태를 표시해준다.
+        /// </summary>
         public void SetOperationMode(string eqp_status, Color color)
         {
-            lbOPStatus.Text = GetEqpStatus(eqp_status, false);
-            lbOPStatus.BackColor = color;
+            lbOPMode.Text = GetEqpStatus(eqp_status, false);
+            lbOPMode.BackColor = color;
         }
-        public void SetOperationMode(int op_status, Color color)
+        /// <summary>
+        /// 설비 상태가 Run일 경우 Operation Mode 상태를 표시해준다.
+        /// </summary>
+        public void SetOperationMode(int op_mode, Color color)
         {
-            lbOPStatus.Text = GetOperationMode(op_status);
-            lbOPStatus.BackColor = color;
+            lbOPMode.Text = GetOperationMode(op_mode, false);
+            lbOPMode.BackColor = color;
         }
         #endregion
 
@@ -153,7 +177,7 @@ namespace FMSMonitoringUI.Controlls
         }
 
         #region GetOperationMode 
-        private string GetOperationMode(int mode)
+        private string GetOperationMode(int mode, bool fullString = true)
         {
             string opModeName = string.Empty;
 
@@ -163,16 +187,28 @@ namespace FMSMonitoringUI.Controlls
                     opModeName = "OCV";
                     break;
                 case 2:
-                    opModeName = "Charge (CC)";
+                    if (fullString)
+                        opModeName = "Charge (CC)";
+                    else
+                        opModeName = "Charge";
                     break;
                 case 4:
-                    opModeName = "Charge (CCCV)";
+                    if (fullString)
+                        opModeName = "Charge (CCCV)";
+                    else
+                        opModeName = "Charge";
                     break;
                 case 8:
-                    opModeName = "Discharge (CC)";
+                    if (fullString)
+                        opModeName = "Discharge (CC)";
+                    else
+                        opModeName = "Discharge";
                     break;
                 case 16:
-                    opModeName = "Discharge (CCCV)";
+                    if (fullString)
+                        opModeName = "Discharge (CCCV)";
+                    else
+                        opModeName = "Discharge";
                     break;
             }
 
@@ -226,6 +262,16 @@ namespace FMSMonitoringUI.Controlls
             }
 
             return statusName;
+        }
+        #endregion
+
+        #region CallLocalLanguage
+        public void CallLocalLanguage()
+        {
+            if (_LanguageID != "")
+            {
+                lbRackID.Text = LocalLanguage.GetItemString(_LanguageID);
+            }
         }
         #endregion
     }

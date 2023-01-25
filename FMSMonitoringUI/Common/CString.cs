@@ -628,7 +628,7 @@ namespace MonitoringUI.Common
         {
             if (strData.Length < 1) return "";
 
-            return strData.Substring(0, strData.Length - 1) + "." + strData.Substring(strData.Length - 1, 1); ;
+            return strData.Substring(0, strData.Length - 1) + "." + strData.Substring(strData.Length - 1, 1);
         }
         #endregion
 

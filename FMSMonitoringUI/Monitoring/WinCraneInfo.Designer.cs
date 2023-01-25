@@ -83,7 +83,7 @@
             this.uiTlbMode = new System.Windows.Forms.TableLayoutPanel();
             this.uiTlbForkPos = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.ctrlTitleBar = new MonitoringUI.Controlls.CtrlTitleBar();
+            this.titBar = new MonitoringUI.Controlls.CtrlTitleBar();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Exit = new MonitoringUI.Controlls.CButton.CtrlButton();
             this.panel3.SuspendLayout();
@@ -786,7 +786,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.ctrlTitleBar);
+            this.panel1.Controls.Add(this.titBar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(2, 2);
             this.panel1.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
@@ -794,20 +794,20 @@
             this.panel1.Size = new System.Drawing.Size(713, 60);
             this.panel1.TabIndex = 3;
             // 
-            // ctrlTitleBar
+            // titBar
             // 
-            this.ctrlTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlTitleBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ctrlTitleBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ctrlTitleBar.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ctrlTitleBar.ForeColor = System.Drawing.Color.White;
-            this.ctrlTitleBar.LanguageID = "";
-            this.ctrlTitleBar.Location = new System.Drawing.Point(0, 0);
-            this.ctrlTitleBar.Margin = new System.Windows.Forms.Padding(0);
-            this.ctrlTitleBar.Name = "ctrlTitleBar";
-            this.ctrlTitleBar.Size = new System.Drawing.Size(711, 58);
-            this.ctrlTitleBar.TabIndex = 0;
-            this.ctrlTitleBar.TitleText = "Crane Information";
+            this.titBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.titBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.titBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.titBar.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.titBar.ForeColor = System.Drawing.Color.White;
+            this.titBar.LanguageID = "";
+            this.titBar.Location = new System.Drawing.Point(0, 0);
+            this.titBar.Margin = new System.Windows.Forms.Padding(0);
+            this.titBar.Name = "titBar";
+            this.titBar.Size = new System.Drawing.Size(711, 58);
+            this.titBar.TabIndex = 0;
+            this.titBar.TitleText = "Crane Information";
             // 
             // panel2
             // 
@@ -920,7 +920,7 @@
         private System.Windows.Forms.TableLayoutPanel uiTlbJogType1;
         private System.Windows.Forms.TableLayoutPanel uiTlbJogType2;
         private System.Windows.Forms.Panel panel1;
-        private MonitoringUI.Controlls.CtrlTitleBar ctrlTitleBar;
+        private MonitoringUI.Controlls.CtrlTitleBar titBar;
         private System.Windows.Forms.Panel panel2;
         private MonitoringUI.Controlls.CButton.CtrlButton Exit;
     }

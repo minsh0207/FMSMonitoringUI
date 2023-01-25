@@ -14,6 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 using UnifiedAutomation.UaBase;
 
@@ -36,7 +37,7 @@ namespace FMSMonitoringUI.Monitoring
         OPCUAClient _OPCUAClient = null;
         int _CraneNo = 0;
 
-        public WinWaterTank(OPCUAClient opcua, int craneNo)
+        public WinWaterTank(OPCUAClient opcua, int craneNo, string barTitle)
         {
             InitializeComponent();
 
@@ -50,6 +51,8 @@ namespace FMSMonitoringUI.Monitoring
 
             Exit.Left = (this.panel2.Width - Exit.Width) / 2;
             Exit.Top = (this.panel2.Height - Exit.Height) / 2;
+
+            titBar.TitleText = string.Format("Water Tank ({0})", barTitle);
         }
 
         #region WinWaterTank Event
@@ -62,8 +65,8 @@ namespace FMSMonitoringUI.Monitoring
             }
 
             #region Title Mouse Event
-            ctrlTitleBar.MouseDown_Evnet += Title_MouseDownEvnet;
-            ctrlTitleBar.MouseMove_Evnet += Title_MouseMoveEvnet;
+            titBar.MouseDown_Evnet += Title_MouseDownEvnet;
+            titBar.MouseMove_Evnet += Title_MouseMoveEvnet;
             #endregion
 
             #region DataGridView Event

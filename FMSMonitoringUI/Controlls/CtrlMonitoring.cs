@@ -83,6 +83,11 @@ namespace FMSMonitoringUI.Controlls
         /// </summary>
         private Dictionary<string, UserControlEqp> _EntireEqpList;  // = new Dictionary<string, UserControlEqp>();
 
+        /// <summary>
+        /// First=Equipment ID, Second=Eqp Name
+        /// </summary>
+        public Dictionary<string, string> _EqpName;
+
         private COPCGroupCtrl _OPCGroupList;    //= new COPCGroupCtrl();
 
         private Logger _Logger;
@@ -124,6 +129,7 @@ namespace FMSMonitoringUI.Controlls
             _EqpStatus = new Dictionary<string, KeyValuePair<string, Color>>();
             _EntireEqpList = new Dictionary<string, UserControlEqp>();
             _OPCGroupList = new COPCGroupCtrl();
+            _EqpName = new Dictionary<string, string>();
 
             _mysql = new MySqlManager(ConfigurationManager.ConnectionStrings["DB_CONNECTION_STRING"].ConnectionString);
 
@@ -240,7 +246,8 @@ namespace FMSMonitoringUI.Controlls
                 //    _clientFMS[fmsIdx].Subscription.Create();
                 //}
 
-                _clientFMS[fmsIdx].SubscriptionEvent += CtrlMain_SubscriptionEvent;
+                _clientFMS[fmsIdx].SubscriptionEvent += CtrlMonitoring_SubscriptionEvent;
+                _clientFMS[fmsIdx].ConnectionStatusEvent += CtrlMonitoring_ConnectionStatusEvent;
 
                 await _clientFMS[fmsIdx].ConnectAsync(opcua.OPCServerURL, opcua.UserID, opcua.UserPW, opcua.FirstNodeID);
 
@@ -262,7 +269,26 @@ namespace FMSMonitoringUI.Controlls
             //}
         }
 
-        private void CtrlMain_SubscriptionEvent(int opcIdx, string url)
+        private void CtrlMonitoring_ConnectionStatusEvent(int opcIdx, ServerConnectionStatus status)
+        {
+            this.Invoke(new MethodInvoker(delegate ()
+            {
+                switch (status)
+                {
+                    case ServerConnectionStatus.Connected:
+                        controlStatus.SetPLCConnectionStatus(opcIdx, 2);
+                        break;
+                    case ServerConnectionStatus.Connecting:
+                        controlStatus.SetPLCConnectionStatus(opcIdx, 1);
+                        break;
+                    default:
+                        controlStatus.SetPLCConnectionStatus(opcIdx, 4);
+                        break;
+                }
+            }));
+        }
+
+        private void CtrlMonitoring_SubscriptionEvent(int opcIdx, string url)
         {
             //while (_clientFMS[opcIdx].StatusCode == false)
             //{
@@ -282,6 +308,8 @@ namespace FMSMonitoringUI.Controlls
             }
         }
         #endregion
+
+        
 
         #region InitControls
         /// <summary>
@@ -525,13 +553,28 @@ namespace FMSMonitoringUI.Controlls
                     CtrlTaggingName tagName = ctl as CtrlTaggingName;
                     tagName.CallLocalLanguage();
 
-                    var tag = new KeyValuePair<string, Color>(tagName.TagText, tagName.TagColor);
+                    KeyValuePair<string, Color> tag;
+
+                    if (tagName.StatusCode == "T")
+                    {
+                        tag = new KeyValuePair<string, Color>("Trouble", tagName.TagColor);
+                    }
+                    else
+                    {
+                        tag = new KeyValuePair<string, Color>(tagName.TagText, tagName.TagColor);
+                    }
+
                     _EqpStatus.Add(tagName.StatusCode, tag);
                 }
                 else if (ctl.GetType() == typeof(CtrlLabel))
                 {
                     CtrlLabel tagName = ctl as CtrlLabel;
                     tagName.CallLocalLanguage();
+                }
+                else if (ctl.GetType() == typeof(CtrlControlStatus))
+                {
+                    CtrlControlStatus controlStatus = ctl as CtrlControlStatus;
+                    controlStatus.CallLocalLanguage();
                 }
             }
         }
@@ -599,21 +642,21 @@ namespace FMSMonitoringUI.Controlls
         #region OnTimer
         private void OnTimer(object sender, EventArgs e)
         {
-            try
-            {
-                m_timer.Stop();
+            //try
+            //{
+            //    m_timer.Stop();
 
-                //ReadEqpInfo();
-                ProcessThreadCallback();
+            //    //ReadEqpInfo();
+            //    ProcessThreadCallback();
 
-                if (m_timer.Interval != 5000)
-                    m_timer.Interval = 5000;
-                m_timer.Start();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(string.Format("[Exception:OnTimer] {0}", ex.ToString()));
-            }
+            //    if (m_timer.Interval != 5000)
+            //        m_timer.Interval = 5000;
+            //    m_timer.Start();
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(string.Format("[Exception:OnTimer] {0}", ex.ToString()));
+            //}
         }
         #endregion
                 
@@ -654,7 +697,8 @@ namespace FMSMonitoringUI.Controlls
 
                 strSQL.Append(" SELECT A.eqp_type, A.eqp_id, A.unit_id, A.eqp_mode, A.eqp_status,");
                 strSQL.Append("        B.rework_flag, IF(B.tray_id = A.tray_id, '0', '1') AS Level,");
-                strSQL.Append("        CASE WHEN B.tray_id = null THEN A.tray_id ELSE B.tray_id END AS tray_id");
+                //strSQL.Append("        CASE WHEN B.tray_id = null THEN COALESCE(A.tray_id, '') ELSE COALESCE(B.tray_id, '') END AS tray_id ");
+                strSQL.Append("        CASE WHEN B.tray_id = null THEN A.tray_id ELSE B.tray_id END AS tray_id, A.tray_id_2 ");
                 strSQL.Append("   FROM fms_v.tb_mst_eqp     A ");
                 strSQL.Append("        LEFT OUTER JOIN fms_v.tb_dat_tray B");
                 strSQL.Append("           ON B.tray_id IN (A.tray_id, A.tray_id_2)");
@@ -674,17 +718,23 @@ namespace FMSMonitoringUI.Controlls
                     {
                         //this.BeginInvoke(new Action(() => SetData(result.DATA)));
                         SetData(result.DATA);
+
+                        controlStatus.SetRestConnectionStatus(2);
                     }
                     else
                     {
                         string log = "EntireEqpList : result is null";
                         _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+
+                        controlStatus.SetRestConnectionStatus(4);
                     }
                 }
                 else
                 {
                     string log = "EntireEqpList : jsonResult is null";
                     _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+
+                    controlStatus.SetRestConnectionStatus(4);
                 }
 
                 //rest = null;
@@ -871,7 +921,8 @@ namespace FMSMonitoringUI.Controlls
                 if (trackno > 0 && trackno < 40)      // Water Tank
                 {
                     int craneNo = trackno / 10;
-                    WinWaterTank winForm = new WinWaterTank(_clientFMS[groupno], craneNo);
+                    CtrlSiteTrack siteTrack = sender as CtrlSiteTrack;
+                    WinWaterTank winForm = new WinWaterTank(_clientFMS[groupno], craneNo, _EqpName[siteTrack.Tag.ToString()]);
                     winForm.Show();
                 }
                 else
@@ -953,7 +1004,7 @@ namespace FMSMonitoringUI.Controlls
                         string msg = $"Crane No : {crane.CraneID}";
                         _Logger.Write(LogLevel.Info, "", LogFileName.ButtonClick);
 
-                        WinCraneInfo winCrane = new WinCraneInfo(_clientFMS[crane.DeviceID], crane.CraneID);
+                        WinCraneInfo winCrane = new WinCraneInfo(_clientFMS[crane.DeviceID], crane.CraneID, _EqpName[crane.EqpID]);
                         winCrane.ShowForm();
 
                     }

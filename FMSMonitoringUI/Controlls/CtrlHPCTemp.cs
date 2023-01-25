@@ -62,15 +62,26 @@ namespace FMSMonitoringUI.Controlls
                 lbTitle.Text = _TitleName;
             }
         }
+        string _LanguageID = "";
+        [DisplayName("LocalLanguage"), Description("Local Language"), Category("Language Setting")]
+        public string LanguageID
+        {
+            get
+            {
+                return _LanguageID;
+            }
+            set
+            {
+                _LanguageID = value;
+            }
+        }
         #endregion
 
         private void InitGridView()
         {
-            string[] columnName = { "CH", "Cell ID", "Templature" };
-            //string[] rowName = { "JIG#1", "JIG#2", "JIG#3", "JIG#4", "JIG#5", "JIG#6", "JIG#7", "JIG#8",
-            //                      "JIG#9", "JIG#10", "JIG#11", "JIG#12", "JIG#13", "JIG#14", "JIG#15",
-            //                      "JIG#16", "JIG#17", "JIG#18", "JIG#19", "JIG#20", "JIG#21", "JIG#22", "JIG#23",
-            //                      "JIG#24", "JIG#25", "JIG#26", "JIG#27", "JIG#28", "JIG#29", "JIG#30"};
+            string[] columnName = { "CH", 
+                                    LocalLanguage.GetItemString("DEF_Cell_ID"),
+                                    LocalLanguage.GetItemString("DEF_Templature") };
 
             List<string> lstTitle = new List<string>();
             lstTitle = columnName.ToList();
@@ -129,5 +140,15 @@ namespace FMSMonitoringUI.Controlls
             //WinManageEqp form = new WinManageEqp();
             //form.Show();
         }
+
+        #region CallLocalLanguage
+        public void CallLocalLanguage()
+        {
+            if (_LanguageID != "")
+            {
+                lbTitle.Text = LocalLanguage.GetItemString(_LanguageID);
+            }
+        }
+        #endregion
     }
 }

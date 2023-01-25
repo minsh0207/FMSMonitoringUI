@@ -1,4 +1,5 @@
 ﻿using FMSMonitoringUI.Controlls;
+using FMSMonitoringUI.Controlls.WindowsForms;
 using FMSMonitoringUI.Monitoring;
 using MonitoringUI;
 using MonitoringUI.Common;
@@ -86,6 +87,8 @@ namespace FMSMonitoringUI
 
             CheckLogin();
 
+            LoadEqpName().GetAwaiter().GetResult();
+
             string msg = $"============== Start the FMS Monitoring System  ==============";
             _Logger.Write(LogLevel.Info, msg, LogFileName.AllLog);
         }
@@ -99,6 +102,8 @@ namespace FMSMonitoringUI
                 SetWindowAuthority();
 
                 Title_ClickEvnet("Main");
+
+                InitLanguage();
             }
         }
 
@@ -119,6 +124,21 @@ namespace FMSMonitoringUI
             tCurrentTime.IsBackground = true;
             tCurrentTime.Start();
             #endregion
+        }
+        #endregion
+
+        #region InitLanguage
+        private void InitLanguage()
+        {
+            // CtrlTaggingName 언어 변환 호출
+            foreach (var ctl in scMainPanel.Panel1.Controls)
+            {
+                if (ctl.GetType() == typeof(CtrlTitleBarLabel))
+                {
+                    CtrlTitleBarLabel tagName = ctl as CtrlTitleBarLabel;
+                    tagName.CallLocalLanguage();
+                }
+            }
         }
         #endregion
 
@@ -350,6 +370,72 @@ namespace FMSMonitoringUI
         }
         #endregion
 
-        
+        #region LoadEqpName
+        private async Task LoadEqpName()
+        {
+            try
+            {
+                RESTClient rest = new RESTClient();
+                //// Set Query
+                StringBuilder strSQL = new StringBuilder();
+
+                strSQL.Append(" SELECT eqp_id, eqp_name, eqp_name_local");
+                strSQL.Append(" FROM fms_v.tb_mst_eqp");
+                //필수값
+                strSQL.Append($" WHERE unit_id IS NULL");
+
+                var jsonResult = await rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+
+                if (jsonResult != null)
+                {
+                    _jsonMstEqpResponse result = rest.ConvertMstEqp(jsonResult);
+
+                    if (result != null)
+                    {
+                        SetData(result.DATA);
+                    }
+                    else
+                    {
+                        string log = "AgingRackCount : jsonResult is null";
+                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                    }
+                }
+                else
+                {
+                    string log = "AgingRackCount : jsonResult is null";
+                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                }
+
+                //rest = null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(string.Format("[Exception:LoadEqpName] {0}", ex.ToString()));
+            }
+        }
+        #endregion
+
+        #region SetData
+        public void SetData(List<_mst_eqp> data)
+        {
+            if (data.Count == 0) return;
+
+            Dictionary<string, string > dict = new Dictionary<string, string>();
+            foreach (var item in data)
+            {
+                if (CDefine.m_enLanguage == enLoginLanguage.English)
+                {
+                    dict.Add(item.EQP_ID, item.EQP_NAME);
+                }
+                else
+                {
+                    dict.Add(item.EQP_ID, item.EQP_NAME_LOCAL);
+                }
+            }
+
+            ctrlMonitoring._EqpName = dict;
+        }
+        #endregion
+
     }
 }

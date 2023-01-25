@@ -33,16 +33,16 @@
             this.gridTrayInfo = new FMSMonitoringUI.Controlls.CtrlDataGridView();
             this.ctrlGroupBox1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlGroupBox();
             this.EqpControlSave = new MonitoringUI.Controlls.CButton.CtrlButton();
-            this.ctrlRadioButton8 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
-            this.ctrlRadioButton7 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
-            this.ctrlRadioButton6 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
-            this.ctrlRadioButton5 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
-            this.ctrlRadioButton4 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
+            this.rbForceTrayUnload = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
+            this.rbResumePaused = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
+            this.rbPauseCurrent = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
+            this.rbRestartCurrent = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
+            this.rbStopCurrent = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
             this.ctrlLabel1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.DataClearSave = new MonitoringUI.Controlls.CButton.CtrlButton();
-            this.ctrlRadioButton2 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
-            this.ctrlRadioButton1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
+            this.rbClearTrouble = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
+            this.rbDataClear = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.gridEqpInfo = new FMSMonitoringUI.Controlls.CtrlDataGridView();
@@ -115,11 +115,11 @@
             // 
             this.ctrlGroupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlGroupBox1.Controls.Add(this.EqpControlSave);
-            this.ctrlGroupBox1.Controls.Add(this.ctrlRadioButton8);
-            this.ctrlGroupBox1.Controls.Add(this.ctrlRadioButton7);
-            this.ctrlGroupBox1.Controls.Add(this.ctrlRadioButton6);
-            this.ctrlGroupBox1.Controls.Add(this.ctrlRadioButton5);
-            this.ctrlGroupBox1.Controls.Add(this.ctrlRadioButton4);
+            this.ctrlGroupBox1.Controls.Add(this.rbForceTrayUnload);
+            this.ctrlGroupBox1.Controls.Add(this.rbResumePaused);
+            this.ctrlGroupBox1.Controls.Add(this.rbPauseCurrent);
+            this.ctrlGroupBox1.Controls.Add(this.rbRestartCurrent);
+            this.ctrlGroupBox1.Controls.Add(this.rbStopCurrent);
             this.ctrlGroupBox1.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold);
             this.ctrlGroupBox1.ForeColor = System.Drawing.Color.White;
             this.ctrlGroupBox1.LanguageID = "DEF_Equipment_Control";
@@ -144,75 +144,75 @@
             this.EqpControlSave.TabIndex = 60;
             this.EqpControlSave.Click += new System.EventHandler(this.Save_Click);
             // 
-            // ctrlRadioButton8
+            // rbForceTrayUnload
             // 
-            this.ctrlRadioButton8.AutoSize = true;
-            this.ctrlRadioButton8.Font = new System.Drawing.Font("굴림", 9F);
-            this.ctrlRadioButton8.ForeColor = System.Drawing.Color.White;
-            this.ctrlRadioButton8.LanguageID = "DEF_Force_Tray_Unload";
-            this.ctrlRadioButton8.Location = new System.Drawing.Point(13, 134);
-            this.ctrlRadioButton8.Name = "ctrlRadioButton8";
-            this.ctrlRadioButton8.Size = new System.Drawing.Size(128, 16);
-            this.ctrlRadioButton8.TabIndex = 59;
-            this.ctrlRadioButton8.TabStop = true;
-            this.ctrlRadioButton8.Text = "Force Tray Unload";
-            this.ctrlRadioButton8.UseVisualStyleBackColor = true;
+            this.rbForceTrayUnload.AutoSize = true;
+            this.rbForceTrayUnload.Font = new System.Drawing.Font("굴림", 9F);
+            this.rbForceTrayUnload.ForeColor = System.Drawing.Color.White;
+            this.rbForceTrayUnload.LanguageID = "DEF_Force_Tray_Unload";
+            this.rbForceTrayUnload.Location = new System.Drawing.Point(13, 134);
+            this.rbForceTrayUnload.Name = "rbForceTrayUnload";
+            this.rbForceTrayUnload.Size = new System.Drawing.Size(128, 16);
+            this.rbForceTrayUnload.TabIndex = 59;
+            this.rbForceTrayUnload.TabStop = true;
+            this.rbForceTrayUnload.Text = "Force Tray Unload";
+            this.rbForceTrayUnload.UseVisualStyleBackColor = true;
             // 
-            // ctrlRadioButton7
+            // rbResumePaused
             // 
-            this.ctrlRadioButton7.AutoSize = true;
-            this.ctrlRadioButton7.Font = new System.Drawing.Font("굴림", 9F);
-            this.ctrlRadioButton7.ForeColor = System.Drawing.Color.White;
-            this.ctrlRadioButton7.LanguageID = "DEF_Resume_Paused_Process";
-            this.ctrlRadioButton7.Location = new System.Drawing.Point(13, 107);
-            this.ctrlRadioButton7.Name = "ctrlRadioButton7";
-            this.ctrlRadioButton7.Size = new System.Drawing.Size(168, 16);
-            this.ctrlRadioButton7.TabIndex = 58;
-            this.ctrlRadioButton7.TabStop = true;
-            this.ctrlRadioButton7.Text = "Resume Paused Process";
-            this.ctrlRadioButton7.UseVisualStyleBackColor = true;
+            this.rbResumePaused.AutoSize = true;
+            this.rbResumePaused.Font = new System.Drawing.Font("굴림", 9F);
+            this.rbResumePaused.ForeColor = System.Drawing.Color.White;
+            this.rbResumePaused.LanguageID = "DEF_Resume_Paused_Process";
+            this.rbResumePaused.Location = new System.Drawing.Point(13, 107);
+            this.rbResumePaused.Name = "rbResumePaused";
+            this.rbResumePaused.Size = new System.Drawing.Size(168, 16);
+            this.rbResumePaused.TabIndex = 58;
+            this.rbResumePaused.TabStop = true;
+            this.rbResumePaused.Text = "Resume Paused Process";
+            this.rbResumePaused.UseVisualStyleBackColor = true;
             // 
-            // ctrlRadioButton6
+            // rbPauseCurrent
             // 
-            this.ctrlRadioButton6.AutoSize = true;
-            this.ctrlRadioButton6.Font = new System.Drawing.Font("굴림", 9F);
-            this.ctrlRadioButton6.ForeColor = System.Drawing.Color.White;
-            this.ctrlRadioButton6.LanguageID = "DEF_Pause_Current_Process";
-            this.ctrlRadioButton6.Location = new System.Drawing.Point(13, 80);
-            this.ctrlRadioButton6.Name = "ctrlRadioButton6";
-            this.ctrlRadioButton6.Size = new System.Drawing.Size(155, 16);
-            this.ctrlRadioButton6.TabIndex = 57;
-            this.ctrlRadioButton6.TabStop = true;
-            this.ctrlRadioButton6.Text = "Pause Current Process";
-            this.ctrlRadioButton6.UseVisualStyleBackColor = true;
+            this.rbPauseCurrent.AutoSize = true;
+            this.rbPauseCurrent.Font = new System.Drawing.Font("굴림", 9F);
+            this.rbPauseCurrent.ForeColor = System.Drawing.Color.White;
+            this.rbPauseCurrent.LanguageID = "DEF_Pause_Current_Process";
+            this.rbPauseCurrent.Location = new System.Drawing.Point(13, 80);
+            this.rbPauseCurrent.Name = "rbPauseCurrent";
+            this.rbPauseCurrent.Size = new System.Drawing.Size(155, 16);
+            this.rbPauseCurrent.TabIndex = 57;
+            this.rbPauseCurrent.TabStop = true;
+            this.rbPauseCurrent.Text = "Pause Current Process";
+            this.rbPauseCurrent.UseVisualStyleBackColor = true;
             // 
-            // ctrlRadioButton5
+            // rbRestartCurrent
             // 
-            this.ctrlRadioButton5.AutoSize = true;
-            this.ctrlRadioButton5.Font = new System.Drawing.Font("굴림", 9F);
-            this.ctrlRadioButton5.ForeColor = System.Drawing.Color.White;
-            this.ctrlRadioButton5.LanguageID = "DEF_Restart_Current_Process";
-            this.ctrlRadioButton5.Location = new System.Drawing.Point(13, 53);
-            this.ctrlRadioButton5.Name = "ctrlRadioButton5";
-            this.ctrlRadioButton5.Size = new System.Drawing.Size(158, 16);
-            this.ctrlRadioButton5.TabIndex = 56;
-            this.ctrlRadioButton5.TabStop = true;
-            this.ctrlRadioButton5.Text = "Restart Current Process";
-            this.ctrlRadioButton5.UseVisualStyleBackColor = true;
+            this.rbRestartCurrent.AutoSize = true;
+            this.rbRestartCurrent.Font = new System.Drawing.Font("굴림", 9F);
+            this.rbRestartCurrent.ForeColor = System.Drawing.Color.White;
+            this.rbRestartCurrent.LanguageID = "DEF_Restart_Current_Process";
+            this.rbRestartCurrent.Location = new System.Drawing.Point(13, 53);
+            this.rbRestartCurrent.Name = "rbRestartCurrent";
+            this.rbRestartCurrent.Size = new System.Drawing.Size(158, 16);
+            this.rbRestartCurrent.TabIndex = 56;
+            this.rbRestartCurrent.TabStop = true;
+            this.rbRestartCurrent.Text = "Restart Current Process";
+            this.rbRestartCurrent.UseVisualStyleBackColor = true;
             // 
-            // ctrlRadioButton4
+            // rbStopCurrent
             // 
-            this.ctrlRadioButton4.AutoSize = true;
-            this.ctrlRadioButton4.Font = new System.Drawing.Font("굴림", 9F);
-            this.ctrlRadioButton4.ForeColor = System.Drawing.Color.White;
-            this.ctrlRadioButton4.LanguageID = "DEF_Stop_Current_Process";
-            this.ctrlRadioButton4.Location = new System.Drawing.Point(13, 24);
-            this.ctrlRadioButton4.Name = "ctrlRadioButton4";
-            this.ctrlRadioButton4.Size = new System.Drawing.Size(144, 16);
-            this.ctrlRadioButton4.TabIndex = 55;
-            this.ctrlRadioButton4.TabStop = true;
-            this.ctrlRadioButton4.Text = "Stop Current Process";
-            this.ctrlRadioButton4.UseVisualStyleBackColor = true;
+            this.rbStopCurrent.AutoSize = true;
+            this.rbStopCurrent.Font = new System.Drawing.Font("굴림", 9F);
+            this.rbStopCurrent.ForeColor = System.Drawing.Color.White;
+            this.rbStopCurrent.LanguageID = "DEF_Stop_Current_Process";
+            this.rbStopCurrent.Location = new System.Drawing.Point(13, 24);
+            this.rbStopCurrent.Name = "rbStopCurrent";
+            this.rbStopCurrent.Size = new System.Drawing.Size(144, 16);
+            this.rbStopCurrent.TabIndex = 55;
+            this.rbStopCurrent.TabStop = true;
+            this.rbStopCurrent.Text = "Stop Current Process";
+            this.rbStopCurrent.UseVisualStyleBackColor = true;
             // 
             // ctrlLabel1
             // 
@@ -230,8 +230,8 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.DataClearSave);
-            this.groupBox1.Controls.Add(this.ctrlRadioButton2);
-            this.groupBox1.Controls.Add(this.ctrlRadioButton1);
+            this.groupBox1.Controls.Add(this.rbClearTrouble);
+            this.groupBox1.Controls.Add(this.rbDataClear);
             this.groupBox1.Location = new System.Drawing.Point(11, 220);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(313, 91);
@@ -251,31 +251,31 @@
             this.DataClearSave.TabIndex = 42;
             this.DataClearSave.Click += new System.EventHandler(this.Save_Click);
             // 
-            // ctrlRadioButton2
+            // rbClearTrouble
             // 
-            this.ctrlRadioButton2.AutoSize = true;
-            this.ctrlRadioButton2.ForeColor = System.Drawing.Color.White;
-            this.ctrlRadioButton2.LanguageID = "DEF_Clear_Trouble";
-            this.ctrlRadioButton2.Location = new System.Drawing.Point(13, 54);
-            this.ctrlRadioButton2.Name = "ctrlRadioButton2";
-            this.ctrlRadioButton2.Size = new System.Drawing.Size(101, 17);
-            this.ctrlRadioButton2.TabIndex = 25;
-            this.ctrlRadioButton2.TabStop = true;
-            this.ctrlRadioButton2.Text = "Clear Trouble";
-            this.ctrlRadioButton2.UseVisualStyleBackColor = true;
+            this.rbClearTrouble.AutoSize = true;
+            this.rbClearTrouble.ForeColor = System.Drawing.Color.White;
+            this.rbClearTrouble.LanguageID = "DEF_Clear_Trouble";
+            this.rbClearTrouble.Location = new System.Drawing.Point(13, 54);
+            this.rbClearTrouble.Name = "rbClearTrouble";
+            this.rbClearTrouble.Size = new System.Drawing.Size(101, 17);
+            this.rbClearTrouble.TabIndex = 25;
+            this.rbClearTrouble.TabStop = true;
+            this.rbClearTrouble.Text = "Clear Trouble";
+            this.rbClearTrouble.UseVisualStyleBackColor = true;
             // 
-            // ctrlRadioButton1
+            // rbDataClear
             // 
-            this.ctrlRadioButton1.AutoSize = true;
-            this.ctrlRadioButton1.ForeColor = System.Drawing.Color.White;
-            this.ctrlRadioButton1.LanguageID = "DEF_Clear_Information";
-            this.ctrlRadioButton1.Location = new System.Drawing.Point(13, 26);
-            this.ctrlRadioButton1.Name = "ctrlRadioButton1";
-            this.ctrlRadioButton1.Size = new System.Drawing.Size(119, 17);
-            this.ctrlRadioButton1.TabIndex = 24;
-            this.ctrlRadioButton1.TabStop = true;
-            this.ctrlRadioButton1.Text = "Clear Information";
-            this.ctrlRadioButton1.UseVisualStyleBackColor = true;
+            this.rbDataClear.AutoSize = true;
+            this.rbDataClear.ForeColor = System.Drawing.Color.White;
+            this.rbDataClear.LanguageID = "DEF_Clear_Information";
+            this.rbDataClear.Location = new System.Drawing.Point(13, 26);
+            this.rbDataClear.Name = "rbDataClear";
+            this.rbDataClear.Size = new System.Drawing.Size(119, 17);
+            this.rbDataClear.TabIndex = 24;
+            this.rbDataClear.TabStop = true;
+            this.rbDataClear.Text = "Clear Information";
+            this.rbDataClear.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -390,16 +390,16 @@
         private Controlls.CtrlDataGridView gridTrayInfo;
         private Controlls.WindowsForms.CtrlGroupBox ctrlGroupBox1;
         private MonitoringUI.Controlls.CButton.CtrlButton EqpControlSave;
-        private Controlls.WindowsForms.CtrlRadioButton ctrlRadioButton8;
-        private Controlls.WindowsForms.CtrlRadioButton ctrlRadioButton7;
-        private Controlls.WindowsForms.CtrlRadioButton ctrlRadioButton6;
-        private Controlls.WindowsForms.CtrlRadioButton ctrlRadioButton5;
-        private Controlls.WindowsForms.CtrlRadioButton ctrlRadioButton4;
+        private Controlls.WindowsForms.CtrlRadioButton rbForceTrayUnload;
+        private Controlls.WindowsForms.CtrlRadioButton rbResumePaused;
+        private Controlls.WindowsForms.CtrlRadioButton rbPauseCurrent;
+        private Controlls.WindowsForms.CtrlRadioButton rbRestartCurrent;
+        private Controlls.WindowsForms.CtrlRadioButton rbStopCurrent;
         private Controlls.WindowsForms.CtrlLabel ctrlLabel1;
         private System.Windows.Forms.GroupBox groupBox1;
         private MonitoringUI.Controlls.CButton.CtrlButton DataClearSave;
-        private Controlls.WindowsForms.CtrlRadioButton ctrlRadioButton2;
-        private Controlls.WindowsForms.CtrlRadioButton ctrlRadioButton1;
+        private Controlls.WindowsForms.CtrlRadioButton rbClearTrouble;
+        private Controlls.WindowsForms.CtrlRadioButton rbDataClear;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private Controlls.CtrlDataGridView gridEqpInfo;

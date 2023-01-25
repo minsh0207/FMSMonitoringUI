@@ -63,9 +63,10 @@ namespace FMSMonitoringUI.Monitoring
                 return;
             }
 
-            InitControl();
             InitGridViewEqp();
             InitGridViewTray();
+
+            InitControl();
 
             #region Title Mouse Event
             titBar.MouseDown_Evnet += Title_MouseDownEvnet;
@@ -97,7 +98,7 @@ namespace FMSMonitoringUI.Monitoring
         #region InitControl
         private void InitControl()
         {
-            int btnPos = (this.Width - 130) / 2;   // Button Width Size 170            
+            int btnPos = (this.Width - CDefine.DEF_EXIT_WIDTH) / 2;   // Button Width Size 170            
             this.Exit.Padding = new System.Windows.Forms.Padding(btnPos, 10, btnPos, 10);
         }
         #endregion
@@ -284,8 +285,8 @@ namespace FMSMonitoringUI.Monitoring
             {
                 row = 0;
                 gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_ID); row++;
-                gridTrayInfo.SetValue(i + 1, row, data[i].LEVEL); row++;
-                gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_INPUT_TIME); row++;
+                gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_ID == null ? "" : data[i].LEVEL); row++;
+                gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_INPUT_TIME.Year == 1 ? "" : data[i].TRAY_INPUT_TIME.ToString()); row++;
                 gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_ZONE); row++;
                 gridTrayInfo.SetValue(i + 1, row, data[i].MODEL_ID); row++;
                 gridTrayInfo.SetValue(i + 1, row, data[i].ROUTE_ID); row++;
@@ -439,18 +440,24 @@ namespace FMSMonitoringUI.Monitoring
             CtrlButton btn = sender as CtrlButton;
 
             WinSaveLogin saveLogin = new WinSaveLogin();
-            saveLogin.ShowDialog();
+            DialogResult result = saveLogin.ShowDialog();
 
-            if (CDefine.m_strSaveLoginID == "") return;
+            if (result != DialogResult.Yes) return;
 
             if (CAuthority.CheckAuthority(enAuthority.Save, CDefine.m_strSaveLoginID, this.Text))
             {
-                if (btn.Name == "EqpControlSave")
+                if (btn.Name == EqpControlSave.Name)
                 {
+                    
                     CMessage.MsgInformation("EqpControlSave Save OK.");
                 }
                 else
                 {
+                    if (rbDataClear.Checked)
+                        SetDataClear(_EqpID).GetAwaiter().GetResult();
+                    else if (rbClearTrouble.Checked)
+                        SetDataClear(_EqpID).GetAwaiter().GetResult();
+
                     CMessage.MsgInformation("DataClearSave Save OK.");
                 }                
             }
@@ -458,7 +465,51 @@ namespace FMSMonitoringUI.Monitoring
             {
                 CMessage.MsgInformation("Save Fail.");
             }
-        }        
+        }
+        #endregion
+
+        #region SetDataClear
+        private async Task SetDataClear(string eqpid)
+        {
+            try
+            {
+                RESTClient rest = new RESTClient();
+                // Set Query
+                StringBuilder strSQL = new StringBuilder();
+
+                strSQL.Append(" UPDATE fms_v.tb_mst_eqp");
+                strSQL.Append(" SET tray_cnt = null, tray_id = null, tray_id_2 = null");
+                //필수값
+                strSQL.Append($" WHERE eqp_id = '{eqpid}'");
+
+                var jsonResult = await rest.GetJson(enActionType.SQL_UPDATE, strSQL.ToString());
+
+                //if (jsonResult != null)
+                //{
+                //    _jsonWinManageEqpResponse result = rest.ConvertWinManageEqp(jsonResult);
+
+                //    if (result != null)
+                //    {
+                //        //this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                //        SetData(result.DATA);
+                //    }
+                //    else
+                //    {
+                //        string log = "WinManageEqp : jsonResult is null";
+                //        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                //    }
+                //}
+                //else
+                //{
+                //    string log = "WinManageEqp : jsonResult is null";
+                //    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                //}
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(string.Format("[Exception:LoadWinManageEqp] {0}", ex.ToString()));
+            }
+        }
         #endregion
     }
 }

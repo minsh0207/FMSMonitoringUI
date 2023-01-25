@@ -260,6 +260,7 @@ namespace RestClientLib
         public string EQP_MODE { get; set; }
         public string EQP_STATUS { get; set; }
         public string TRAY_ID { get; set; }
+        public string TRAY_ID_2 { get; set; }
         public string LEVEL { get; set; }
         public string REWORK_FLAG { get; set; }
 

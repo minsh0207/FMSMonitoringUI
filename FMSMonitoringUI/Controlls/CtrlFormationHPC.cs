@@ -36,8 +36,8 @@ namespace FMSMonitoringUI
         /// <summary>
         /// string=Eqp Text, Color=Eqp Status Color
         /// </summary>
-        private Dictionary<string, Color> _EqpStatus = new Dictionary<string, Color>();
-        private Dictionary<int, Color> _OpMode = new Dictionary<int, Color>();
+        private Dictionary<string, Color> _EqpStatus;
+        private Dictionary<int, Color> _OpMode;
         #endregion
 
         #region Working Thread
@@ -56,11 +56,12 @@ namespace FMSMonitoringUI
         {
             InitializeComponent();
 
+            _EqpStatus = new Dictionary<string, Color>();
+            _OpMode = new Dictionary<int, Color>();
+
             InitFormationBox();
 
             //_mysql = new MySqlManager(ConfigurationManager.ConnectionStrings["DB_CONNECTION_STRING"].ConnectionString);
-
-            InitControls();
 
             // Timer
             //m_timer.Tick += new EventHandler(OnTimer);
@@ -71,6 +72,7 @@ namespace FMSMonitoringUI
         private void CtrlFormationHPC_Load(object sender, EventArgs e)
         {
             InitLanguage();
+            InitControls();
         }
         #endregion
 
@@ -113,6 +115,11 @@ namespace FMSMonitoringUI
                     tagName.CallLocalLanguage();
                 }
             }
+
+            ctrlHPC1.CallLocalLanguage();
+            ctrlHPC2.CallLocalLanguage();
+            ctrlHPCTemp1.CallLocalLanguage();
+            ctrlHPCTemp2.CallLocalLanguage();
         }
         #endregion
 
@@ -213,7 +220,7 @@ namespace FMSMonitoringUI
                 //필수값
                 strSQL.Append($" WHERE A.eqp_id = '{eqpid}'");
                 strSQL.Append("    AND A.unit_id = B.unit_id");
-                strSQL.Append("    AND A.eqp_type = D.eqp_type");
+                //strSQL.Append("    AND A.eqp_type = D.eqp_type");
                 strSQL.Append(" GROUP BY A.unit_id");
 
                 var jsonResult = await rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
@@ -226,17 +233,23 @@ namespace FMSMonitoringUI
                     {
                         //this.BeginInvoke(new Action(() => SetData(result.DATA)));
                         SetData(result.DATA);
+
+                        RestServer.LedStatus(2);
                     }
                     else
                     {
                         string log = "CtrlFormationHPC : jsonResult is null";
                         _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+
+                        RestServer.LedStatus(4);
                     }
                 }
                 else
                 {
                     string log = "CtrlFormationHPC : jsonResult is null";
                     _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+
+                    RestServer.LedStatus(4);
                 }
             }
             catch (Exception ex)

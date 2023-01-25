@@ -135,6 +135,9 @@
   <data name="DEF_Aging_Rack_Setting" xml:space="preserve">
     <value>FR-Aging Rack Setting</value>
   </data>
+  <data name="DEF_Avg_Temp" xml:space="preserve">
+    <value>FR-Avg Temp</value>
+  </data>
   <data name="DEF_Bad_Rack" xml:space="preserve">
     <value>FR-Bad Rack</value>
   </data>
@@ -143,6 +146,9 @@
   </data>
   <data name="DEF_Carriage_Position" xml:space="preserve">
     <value>FR-Carriage Position </value>
+  </data>
+  <data name="DEF_Cell_ID" xml:space="preserve">
+    <value>FR-Cell ID</value>
   </data>
   <data name="DEF_Cell_Information" xml:space="preserve">
     <value>FR-Cell Information</value>
@@ -157,9 +163,6 @@
     <value>FR-Clear Trouble</value>
   </data>
   <data name="DEF_Command_Ready" xml:space="preserve">
-    <value>FR-Command Ready </value>
-  </data>
-  <data name="DEF_Command_Ready1" xml:space="preserve">
     <value>FR-Command Ready :</value>
   </data>
   <data name="DEF_Configuration" xml:space="preserve">
@@ -173,6 +176,9 @@
   </data>
   <data name="DEF_Control_Mode" xml:space="preserve">
     <value>FR-Control Mode :</value>
+  </data>
+  <data name="DEF_Control_Status" xml:space="preserve">
+    <value>FR-Control Status</value>
   </data>
   <data name="DEF_Conveyor" xml:space="preserve">
     <value>FR-Conveyor</value>
@@ -191,6 +197,9 @@
   </data>
   <data name="DEF_Conveyor_Type" xml:space="preserve">
     <value>FR-Conveyor Type</value>
+  </data>
+  <data name="DEF_Current_Process" xml:space="preserve">
+    <value>FR-Current Process</value>
   </data>
   <data name="DEF_Data_Clear" xml:space="preserve">
     <value>FR-Data Clear</value>
@@ -282,11 +291,23 @@
   <data name="DEF_HPC" xml:space="preserve">
     <value>FR-HPC</value>
   </data>
+  <data name="DEF_HPC_JIG#1" xml:space="preserve">
+    <value>FR-HPC JIG#1</value>
+  </data>
+  <data name="DEF_HPC_JIG#2" xml:space="preserve">
+    <value>FR-HPC JIG#2</value>
+  </data>
   <data name="DEF_Idle" xml:space="preserve">
     <value>FR-Idle</value>
   </data>
   <data name="DEF_Input_Enable" xml:space="preserve">
     <value>FR-Input Enable :</value>
+  </data>
+  <data name="DEF_JIG#1_Information" xml:space="preserve">
+    <value>FR-JIG#1 Information</value>
+  </data>
+  <data name="DEF_JIG#2_Information" xml:space="preserve">
+    <value>FR-JIG#2 Information</value>
   </data>
   <data name="DEF_Job_Cancel" xml:space="preserve">
     <value>FR-Job Cancel :</value>
@@ -375,8 +396,14 @@
   <data name="DEF_Plan_Unloading" xml:space="preserve">
     <value>FR-Plan Unloading</value>
   </data>
+  <data name="DEF_PLC_Server" xml:space="preserve">
+    <value>FR-PLC Server</value>
+  </data>
   <data name="DEF_Power" xml:space="preserve">
     <value>FR-Power :</value>
+  </data>
+  <data name="DEF_Pressure" xml:space="preserve">
+    <value>FR-Pressure</value>
   </data>
   <data name="DEF_Process_Lead_Time" xml:space="preserve">
     <value>FR-Process Lead Time</value>
@@ -405,6 +432,9 @@
   <data name="DEF_RestockButtonPressed" xml:space="preserve">
     <value>FR-RestockButtonPressed :</value>
   </data>
+  <data name="DEF_Rest_Server" xml:space="preserve">
+    <value>FR-Rest Server</value>
+  </data>
   <data name="DEF_Resume_Paused_Process" xml:space="preserve">
     <value>FR-Resume Paused Process</value>
   </data>
@@ -422,6 +452,9 @@
   </data>
   <data name="DEF_Smoke_Only_or_Both" xml:space="preserve">
     <value>(FR-Smoke Only or Both)</value>
+  </data>
+  <data name="DEF_Start_Time" xml:space="preserve">
+    <value>FR-Start Time</value>
   </data>
   <data name="DEF_Station_Sink" xml:space="preserve">
     <value>FR-Station Sink :</value>
@@ -441,6 +474,9 @@
   <data name="DEF_Temperature_Alarm_Only" xml:space="preserve">
     <value>(FR-Temperature Alarm Only)</value>
   </data>
+  <data name="DEF_Templature" xml:space="preserve">
+    <value>FR-Templature</value>
+  </data>
   <data name="DEF_Tray_Arrived" xml:space="preserve">
     <value>FR-Tray Arrived</value>
   </data>
@@ -448,10 +484,10 @@
     <value>FR-Tray Count </value>
   </data>
   <data name="DEF_Tray_Exist" xml:space="preserve">
-    <value>FR-Tray Exist </value>
-  </data>
-  <data name="DEF_Tray_Exist1" xml:space="preserve">
     <value>FR-Tray Exist :</value>
+  </data>
+  <data name="DEF_Tray_ID" xml:space="preserve">
+    <value>FR-Tray ID</value>
   </data>
   <data name="DEF_Tray_ID_1" xml:space="preserve">
     <value>FR-Tray ID 1 </value>
@@ -471,11 +507,17 @@
   <data name="DEF_Trouble" xml:space="preserve">
     <value>FR-Trouble</value>
   </data>
+  <data name="DEF_Trouble_Code" xml:space="preserve">
+    <value>FR-Trouble Code</value>
+  </data>
   <data name="DEF_Trouble_ErrorLevel" xml:space="preserve">
     <value>FR-Trouble ErrorLevel </value>
   </data>
   <data name="DEF_Trouble_ErrorNo" xml:space="preserve">
     <value>FR-Trouble ErrorNo </value>
+  </data>
+  <data name="DEF_Trouble_Name" xml:space="preserve">
+    <value>FR-Trouble Name</value>
   </data>
   <data name="DEF_Trouble_Status" xml:space="preserve">
     <value>FR-Trouble Status :</value>

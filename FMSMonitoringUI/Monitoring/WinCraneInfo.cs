@@ -18,6 +18,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using UnifiedAutomation.UaBase;
 
 namespace FMSMonitoringUI.Monitoring
@@ -42,7 +43,7 @@ namespace FMSMonitoringUI.Monitoring
         OPCUAClient _OPCUAClient = null;
         int _CraneNo = 0;
 
-        public WinCraneInfo(OPCUAClient opcua, int craneNo)
+        public WinCraneInfo(OPCUAClient opcua, int craneNo, string barTitle)
         {
             InitializeComponent();
 
@@ -52,9 +53,9 @@ namespace FMSMonitoringUI.Monitoring
             InitControl();
             InitLanguage();
             InitLedStatus();
-
             InitGridViewCraneCmd();
 
+            titBar.TitleText = string.Format("{0} Information", barTitle);
         }
 
         #region WinCraneInfo
@@ -67,8 +68,8 @@ namespace FMSMonitoringUI.Monitoring
             }
 
             #region Title Mouse Event
-            ctrlTitleBar.MouseDown_Evnet += Title_MouseDownEvnet;
-            ctrlTitleBar.MouseMove_Evnet += Title_MouseMoveEvnet;
+            titBar.MouseDown_Evnet += Title_MouseDownEvnet;
+            titBar.MouseMove_Evnet += Title_MouseMoveEvnet;
             #endregion
 
             #region DataGridView Event
@@ -367,7 +368,7 @@ namespace FMSMonitoringUI.Monitoring
 
         public void SetTitleName(string title)
         {
-            ctrlTitleBar.TitleText = title;
+            titBar.TitleText = title;
         }
 
         #region Titel Mouse Event

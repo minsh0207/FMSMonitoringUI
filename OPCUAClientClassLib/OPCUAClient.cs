@@ -18,6 +18,7 @@ using Novasoft.Logger;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 using System.IO;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace OPCUAClientClassLib
 {
@@ -41,6 +42,21 @@ namespace OPCUAClientClassLib
                 SubscriptionEvent(opcIdx, url);
             }
         }
+
+        /// <summary>
+        /// ServerConnectionStatus
+        /// </summary>
+        public delegate void ConnectionEventHandler(int opcIdx, ServerConnectionStatus status);
+        public event ConnectionEventHandler ConnectionStatusEvent = null;
+
+        public void OnConnectionStatusEvent(int opcIdx, ServerConnectionStatus status)
+        {
+            if (ConnectionStatusEvent != null)
+            {
+                ConnectionStatusEvent(opcIdx, status);
+            }
+        }
+
 
         private static int BROWSEPATH_MAXCOUNT = 999;
         private Logger _Logger;
@@ -491,6 +507,8 @@ namespace OPCUAClientClassLib
             lock (this)
             {
                 string msg = string.Empty;
+
+                OnConnectionStatusEvent(ServerNo, e.Status);
 
                 switch (e.Status)
                 {

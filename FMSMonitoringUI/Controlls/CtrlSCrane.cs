@@ -18,7 +18,19 @@ namespace ControlGallery
         }
 
         #region [Properties]
-
+        string _EqpID = "";
+        [DisplayName("EQP ID"), Description("Equipment ID"), Category("UBI Property")]
+        public string EqpID
+        {
+            get
+            {
+                return _EqpID;
+            }
+            set
+            {
+                _EqpID = value;
+            }
+        }
         int _DeviceID;
         [DisplayName("DeviceID"), Description("Crane OPCServer ID"), Category("UBI Property")]
         public int DeviceID

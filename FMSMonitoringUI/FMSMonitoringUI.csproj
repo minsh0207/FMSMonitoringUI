@@ -171,6 +171,12 @@
     <Compile Include="Controlls\CButton\CtrlButtonCancel.Designer.cs">
       <DependentUpon>CtrlButtonCancel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controlls\CtrlControlStatus.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controlls\CtrlControlStatus.Designer.cs">
+      <DependentUpon>CtrlControlStatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controlls\CtrlEqpHPC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -778,6 +784,9 @@
     </Compile>
     <EmbeddedResource Include="Controlls\CButton\CtrlButtonCancel.resx">
       <DependentUpon>CtrlButtonCancel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controlls\CtrlControlStatus.resx">
+      <DependentUpon>CtrlControlStatus.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controlls\CtrlEqpHPC.resx">
       <DependentUpon>CtrlEqpHPC.cs</DependentUpon>

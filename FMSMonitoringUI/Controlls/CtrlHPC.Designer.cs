@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lbOPStatus = new System.Windows.Forms.Label();
+            this.lbOPMode = new System.Windows.Forms.Label();
             this.lbEqpStatus = new System.Windows.Forms.Label();
             this.lbRackID = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -39,19 +39,19 @@
             this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lbOPStatus
+            // lbOPMode
             // 
-            this.lbOPStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.lbOPStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbOPStatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbOPStatus.ForeColor = System.Drawing.Color.Black;
-            this.lbOPStatus.Location = new System.Drawing.Point(185, 0);
-            this.lbOPStatus.Name = "lbOPStatus";
-            this.lbOPStatus.Size = new System.Drawing.Size(118, 30);
-            this.lbOPStatus.TabIndex = 3;
-            this.lbOPStatus.Text = "Charge";
-            this.lbOPStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbOPStatus.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseDoubleClick);
+            this.lbOPMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.lbOPMode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbOPMode.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbOPMode.ForeColor = System.Drawing.Color.Black;
+            this.lbOPMode.Location = new System.Drawing.Point(185, 0);
+            this.lbOPMode.Name = "lbOPMode";
+            this.lbOPMode.Size = new System.Drawing.Size(118, 30);
+            this.lbOPMode.TabIndex = 3;
+            this.lbOPMode.Text = "Discharge (CCCV)";
+            this.lbOPMode.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbOPMode.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseDoubleClick);
             // 
             // lbEqpStatus
             // 
@@ -90,7 +90,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.lbOPStatus);
+            this.splitContainer1.Panel1.Controls.Add(this.lbOPMode);
             this.splitContainer1.Panel1.Controls.Add(this.lbEqpStatus);
             this.splitContainer1.Panel1.Controls.Add(this.lbRackID);
             // 
@@ -127,7 +127,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label lbOPStatus;
+        private System.Windows.Forms.Label lbOPMode;
         private System.Windows.Forms.Label lbEqpStatus;
         private System.Windows.Forms.Label lbRackID;
         private System.Windows.Forms.SplitContainer splitContainer1;

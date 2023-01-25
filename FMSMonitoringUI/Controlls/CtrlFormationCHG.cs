@@ -234,17 +234,23 @@ namespace FMSMonitoringUI
                     {
                         //this.BeginInvoke(new Action(() => SetData(result.DATA)));
                         SetData(result.DATA);
+
+                        RestServer.LedStatus(2);
                     }
                     else
                     {
                         string log = "CtrlFormationCHG : jsonResult is null";
                         _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+
+                        RestServer.LedStatus(4);
                     }
                 }
                 else
                 {
                     string log = "CtrlFormationCHG : jsonResult is null";
                     _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+
+                    RestServer.LedStatus(4);
                 }
             }
             catch (Exception ex)

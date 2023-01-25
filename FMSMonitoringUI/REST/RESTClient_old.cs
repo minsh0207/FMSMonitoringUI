@@ -131,7 +131,7 @@ namespace MonitoringUI
             switch (RestType)
             {
                 case RestServerType.WORKING:
-                    restURIFromConfig = string.Format("{0}:{1}", ConfigurationManager.AppSettings["DBRestUri"], ConfigurationManager.AppSettings["DBRestPort"]); ;
+                    restURIFromConfig = string.Format("{0}:{1}", ConfigurationManager.AppSettings["DBRestUri"], ConfigurationManager.AppSettings["DBRestPort"]);
                     break;
                 case RestServerType.HISTORY:
                     restURIFromConfig = string.Format("{0}:{1}", ConfigurationManager.AppSettings["DBRestHistUri"], ConfigurationManager.AppSettings["DBRestPort"]);

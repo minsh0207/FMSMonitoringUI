@@ -48,6 +48,12 @@ namespace MonitoringUI
             resxLanguage = new ResourceManager("MonitoringUI.WinFormRoot", typeof(WinFormRoot).Assembly);
             //찾을수없다면 그대로 출력
             strNameTo = resxLanguage.GetString(strName) != null ? resxLanguage.GetString(strName) : strName;
+
+            if (strNameTo.Substring(0, 3) == "DEF")
+            {
+                strNameTo = strNameTo.Substring(4);  // "AAA";
+            }
+
             return strNameTo;
         }
 

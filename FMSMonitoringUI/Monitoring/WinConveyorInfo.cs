@@ -34,7 +34,7 @@ namespace FMSMonitoringUI.Monitoring
         private bool _TheadVisiable;
         #endregion
 
-        public WinConveyorInfo(string cvTitle, OPCUAClient opcua, int conveyorNo)
+        public WinConveyorInfo(string barTitle, OPCUAClient opcua, int conveyorNo)
         {
             InitializeComponent();
 
@@ -45,9 +45,9 @@ namespace FMSMonitoringUI.Monitoring
             //m_timer.Tick += new EventHandler(OnTimer);
             //m_timer.Stop();
 
-            _cvTitle = cvTitle;
+            _cvTitle = barTitle;
 
-            ctrlTitleBar.TitleText = string.Format("{0} Information", cvTitle);
+            titBar.TitleText = string.Format("{0} Information", barTitle);
         }
 
         #region WinCVTrayInfo Event
@@ -63,8 +63,8 @@ namespace FMSMonitoringUI.Monitoring
             InitGridView();
 
             #region Title Mouse Event
-            ctrlTitleBar.MouseDown_Evnet += Title_MouseDownEvnet;
-            ctrlTitleBar.MouseMove_Evnet += Title_MouseMoveEvnet;
+            titBar.MouseDown_Evnet += Title_MouseDownEvnet;
+            titBar.MouseMove_Evnet += Title_MouseMoveEvnet;
             #endregion
 
             #region DataGridView Event
@@ -225,7 +225,7 @@ namespace FMSMonitoringUI.Monitoring
         #region SetTitleName
         public void SetTitleName(string title)
         {
-            ctrlTitleBar.TitleText = title;
+            titBar.TitleText = title;
         }
         #endregion
 

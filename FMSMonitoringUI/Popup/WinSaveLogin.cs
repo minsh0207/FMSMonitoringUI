@@ -161,6 +161,8 @@ namespace MonitoringUI.Popup
         private void btnLogin_Click(object sender, EventArgs e)
         {
             LogIn().GetAwaiter().GetResult();
+
+            this.Close();
         }
         #endregion
 
@@ -170,6 +172,7 @@ namespace MonitoringUI.Popup
         //===================================================================
         private void btnExit_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.Cancel;
             // 윈도우 종료
             this.Close();
         }
@@ -229,6 +232,7 @@ namespace MonitoringUI.Popup
                 //if (txtLoginID.Text.Length < 1)
                 if (tbLoginID.TextData.Length < 1)
                 {
+                    this.DialogResult = DialogResult.No;
                     // Msg
                     CMessage.MsgInformation("Please enter your Login ID.");
                     return;
@@ -238,6 +242,7 @@ namespace MonitoringUI.Popup
                 //if (txtPassword.Text.Length < 1)
                 if (tbPassword.TextData.Length < 1)
                 {
+                    this.DialogResult = DialogResult.No;
                     // Msg
                     CMessage.MsgInformation("Please enter your Password.");
                     return;
@@ -247,12 +252,16 @@ namespace MonitoringUI.Popup
                 //if (await m_user.UserSaveLogin(txtLoginID.Text, txtPassword.Text) != true)
                 if (await CUser.UserMainLogin(tbLoginID.TextData, tbPassword.TextData, true) != true)
                 {
+                    this.DialogResult = DialogResult.No;
+
                     CMessage.MsgError("Please login After checking the user ID and Password.");
                     return;
                 }
-                                
+
+                this.DialogResult = DialogResult.Yes;
+
                 // 종료
-                btnExit_Click(null, null);
+                //btnExit_Click(null, null);
             }
             catch (Exception ex)
             {
