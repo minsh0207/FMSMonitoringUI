@@ -164,7 +164,7 @@ namespace FormationMonCtrl
             }
             catch (Exception e)
             {
-                Console.WriteLine(string.Format("[Exception:RaiseBoxClickedEvent] {0}", e.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("[Exception:RaiseBoxClickedEvent] {0}", e.ToString()));
                 return null;
             }
 		}
@@ -189,7 +189,7 @@ namespace FormationMonCtrl
             }
             catch (Exception e)
             {
-                Console.WriteLine(string.Format("[Exception:RaiseEvent] {0}", e.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("[Exception:RaiseEvent] {0}", e.ToString()));
             }
 		}
 		#endregion
@@ -219,7 +219,7 @@ namespace FormationMonCtrl
             }
             catch (Exception e)
             {
-                Console.WriteLine(string.Format("[Exception:AddHandler] {0}", e.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("[Exception:AddHandler] {0}", e.ToString()));
             }
 		}
 		#endregion
@@ -249,7 +249,7 @@ namespace FormationMonCtrl
             }
             catch (Exception e)
             {
-                Console.WriteLine(string.Format("[Exception:RemoveHandler] {0}", e.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("[Exception:RemoveHandler] {0}", e.ToString()));
             }
 		}
 		#endregion

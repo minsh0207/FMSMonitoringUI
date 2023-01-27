@@ -626,15 +626,18 @@ namespace MonitoringUI.Common
     //===================================================================
 	public class CTroubleEquipmentList
 	{
-		public string strEqpTypeID;
-		public string strUnitID;
+		public int nEqpTypeID;
+        public string strEqpID;
+        public string strUnitID;
 		public string strUnitName;
 		public string strContent;
 		public string strStatus;
         public string strTroubleCode;
+        public string strTroubleCodePrev;
         public bool bStatus;
 		public bool bStatusPrev;
         public int nAlarmCnt;
+
 		public CTroubleEquipmentList()
         {
             InitData();
@@ -642,12 +645,13 @@ namespace MonitoringUI.Common
 
         public void InitData()
         {
-			strEqpTypeID = "";
+            nEqpTypeID = 0;
 			strUnitID = "";
 			strUnitName = "";
 			strContent = "";
 			strStatus = "";
             strTroubleCode = "";
+            strTroubleCodePrev = "";
             bStatus = false;
 			bStatusPrev = false;
             nAlarmCnt = 0;

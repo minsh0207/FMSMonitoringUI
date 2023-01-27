@@ -835,7 +835,45 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.Print(string.Format("### ConvertEntireEqpList, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                System.Diagnostics.Debug.Print(string.Format("### ConvertUserAuthority, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                return null;
+            }
+        }
+        #endregion
+        #region ConvertTroubleEquiment
+        /// <summary>
+        /// _jsonTroubleEquipmentResponse 형태의 Class로 변환한다.
+        /// </summary>
+        public _jsonTroubleEquipmentResponse ConvertTroubleEquiment(string jsonResult)
+        {
+            try
+            {
+                // Recv Body의 JSON string을 class 변수에 할당
+                _jsonTroubleEquipmentResponse recvBody = JsonConvert.DeserializeObject<_jsonTroubleEquipmentResponse>(jsonResult, _jsonSettings);
+                return recvBody;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print(string.Format("### ConvertTroubleEquiment, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                return null;
+            }
+        }
+        #endregion
+        #region ConvertTroubleInfo
+        /// <summary>
+        /// _jsonWinTroubleInfoResponse 형태의 Class로 변환한다.
+        /// </summary>
+        public _jsonWinTroubleInfoResponse ConvertTroubleInfo(string jsonResult)
+        {
+            try
+            {
+                // Recv Body의 JSON string을 class 변수에 할당
+                _jsonWinTroubleInfoResponse recvBody = JsonConvert.DeserializeObject<_jsonWinTroubleInfoResponse>(jsonResult, _jsonSettings);
+                return recvBody;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print(string.Format("### ConvertTroubleEquiment, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }

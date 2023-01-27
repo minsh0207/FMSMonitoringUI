@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.Exit = new MonitoringUI.Controlls.CButton.CtrlButton();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.gridRecipeInfo = new FMSMonitoringUI.Controlls.CtrlDataGridView();
             this.ctrlLabel4 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
@@ -44,7 +45,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.gridCellIDLIst = new FMSMonitoringUI.Controlls.CtrlDataGridView();
             this.ctrlLabel1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
-            this.Exit = new MonitoringUI.Controlls.CButton.CtrlButton();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
@@ -68,6 +68,22 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1496, 60);
             this.panel2.TabIndex = 1;
+            // 
+            // Exit
+            // 
+            this.Exit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Exit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.Exit.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Exit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.Exit.LabelText = "Exit";
+            this.Exit.LanguageID = "DEF_Exit";
+            this.Exit.Location = new System.Drawing.Point(0, 0);
+            this.Exit.Name = "Exit";
+            this.Exit.Size = new System.Drawing.Size(170, 40);
+            this.Exit.TabIndex = 0;
+            this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
             // splitContainer2
             // 
@@ -272,20 +288,6 @@
             this.ctrlLabel1.TabIndex = 6;
             this.ctrlLabel1.Text = "Cell ID List";
             this.ctrlLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // Exit
-            // 
-            this.Exit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.Exit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Exit.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Exit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.Exit.LabelText = "Exit";
-            this.Exit.LanguageID = "DEF_Exit";
-            this.Exit.Location = new System.Drawing.Point(0, 0);
-            this.Exit.Name = "Exit";
-            this.Exit.Size = new System.Drawing.Size(1494, 58);
-            this.Exit.TabIndex = 0;
-            this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
             // WinCellDetailInfo
             // 

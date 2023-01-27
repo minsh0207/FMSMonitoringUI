@@ -47,7 +47,7 @@
             this.panel1.Location = new System.Drawing.Point(2, 2);
             this.panel1.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1256, 65);
+            this.panel1.Size = new System.Drawing.Size(1256, 60);
             this.panel1.TabIndex = 0;
             // 
             // ctrlTitleBar
@@ -61,7 +61,7 @@
             this.ctrlTitleBar.Location = new System.Drawing.Point(0, 0);
             this.ctrlTitleBar.Margin = new System.Windows.Forms.Padding(4);
             this.ctrlTitleBar.Name = "ctrlTitleBar";
-            this.ctrlTitleBar.Size = new System.Drawing.Size(1254, 63);
+            this.ctrlTitleBar.Size = new System.Drawing.Size(1254, 58);
             this.ctrlTitleBar.TabIndex = 0;
             this.ctrlTitleBar.TitleText = "Process Lead Time";
             // 
@@ -70,7 +70,7 @@
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.gridTrayInfo);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(2, 67);
+            this.panel3.Location = new System.Drawing.Point(2, 62);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1256, 655);
             this.panel3.TabIndex = 2;
@@ -93,22 +93,24 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.Exit);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(2, 722);
+            this.panel2.Location = new System.Drawing.Point(2, 717);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1256, 60);
             this.panel2.TabIndex = 3;
             // 
             // Exit
             // 
+            this.Exit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Exit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.Exit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Exit.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Exit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.Exit.LabelText = "Exit";
             this.Exit.LanguageID = "DEF_Exit";
             this.Exit.Location = new System.Drawing.Point(0, 0);
             this.Exit.Name = "Exit";
-            this.Exit.Size = new System.Drawing.Size(1254, 58);
+            this.Exit.Size = new System.Drawing.Size(170, 40);
             this.Exit.TabIndex = 0;
             this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 

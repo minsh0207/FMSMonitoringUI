@@ -98,8 +98,8 @@ namespace FMSMonitoringUI.Monitoring
         #region InitControl
         private void InitControl()
         {
-            int btnPos = (this.Width - CDefine.DEF_EXIT_WIDTH) / 2;   // Button Width Size 170            
-            this.Exit.Padding = new System.Windows.Forms.Padding(btnPos, 10, btnPos, 10);
+            Exit.Left = (this.panel2.Width - Exit.Width) / 2;             
+            Exit.Top = (this.panel2.Height - Exit.Height) / 2;
         }
         #endregion
 
@@ -306,7 +306,7 @@ namespace FMSMonitoringUI.Monitoring
         #region SetData
         private void SetCellList(List<_dat_cell> data)
         {
-            if (data.Count == 0) return;
+            if (data == null || data.Count == 0) return;
 
             for (int i = 0; i < CDefine.DEF_MAX_CELL_COUNT; i++)
             {
@@ -360,7 +360,7 @@ namespace FMSMonitoringUI.Monitoring
         {
             InitGridViewProcessName(data.Count);
 
-            if (data.Count == 0) return;
+            if (data == null || data.Count == 0) return;
 
             for (int i = 0; i < data.Count; i++)
             {
@@ -590,7 +590,7 @@ namespace FMSMonitoringUI.Monitoring
             }
             catch (Exception ex)
             {
-                Console.WriteLine(string.Format("[Exception:LoadCellData] {0}", ex.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("[Exception:LoadCellData] {0}", ex.ToString()));
             }
         }
         #endregion

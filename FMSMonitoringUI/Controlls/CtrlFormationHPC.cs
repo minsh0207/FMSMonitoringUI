@@ -254,7 +254,7 @@ namespace FMSMonitoringUI
             }
             catch (Exception ex)
             {
-                Console.WriteLine(string.Format("[Exception:LoadFormationHPC] {0}", ex.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("[Exception:LoadFormationHPC] {0}", ex.ToString()));
             }
         }
         private async Task LoadFormationHPCTemp(string eqpid)
@@ -303,7 +303,7 @@ namespace FMSMonitoringUI
             }
             catch (Exception ex)
             {
-                Console.WriteLine(string.Format("[Exception:LoadFormationHPCTemp] {0}", ex.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("[Exception:LoadFormationHPCTemp] {0}", ex.ToString()));
             }
         }
         #endregion
@@ -311,7 +311,7 @@ namespace FMSMonitoringUI
         #region SetData
         public void SetData(List<_ctrl_formation_hpc> data)
         {
-            if (data.Count == 0) return;
+            if (data == null || data.Count == 0) return;
 
             for (int i = 0; i < data.Count; i++)
             {
@@ -324,7 +324,7 @@ namespace FMSMonitoringUI
         }
         public void SetData(List<_ctrl_formation_hpc_temp> data)
         {
-            if (data.Count == 0) return;
+            if (data == null || data.Count == 0) return;
 
             ctrlHPCTemp1.SetData(data);
             ctrlHPCTemp2.SetData(data);
@@ -493,7 +493,7 @@ namespace FMSMonitoringUI
         //    }
         //    catch (Exception ex)
         //    {
-        //        Console.WriteLine(string.Format("[Exception:OnTimer] {0}", ex.ToString()));
+        //        System.Diagnostics.Debug.Print(string.Format("[Exception:OnTimer] {0}", ex.ToString()));
         //    }
         //}
 
@@ -508,7 +508,7 @@ namespace FMSMonitoringUI
             }
             catch (Exception ex)
             {
-                Console.WriteLine(string.Format("[Exception:LoadChargerRackData] {0}", ex.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("[Exception:LoadChargerRackData] {0}", ex.ToString()));
             }
         }
 
@@ -531,7 +531,7 @@ namespace FMSMonitoringUI
             }
             catch (Exception ex)        // 예외처리
             {
-                Console.WriteLine(string.Format("[Exception:ChargerDataView] {0}", ex.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("[Exception:ChargerDataView] {0}", ex.ToString()));
                 // Return
                 return false;
             }

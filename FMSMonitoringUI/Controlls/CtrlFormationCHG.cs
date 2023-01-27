@@ -255,7 +255,7 @@ namespace FMSMonitoringUI
             }
             catch (Exception ex)
             {
-                Console.WriteLine(string.Format("[Exception:LoadFormationCHG] {0}", ex.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("[Exception:LoadFormationCHG] {0}", ex.ToString()));
             }
         }
         #endregion
@@ -263,7 +263,7 @@ namespace FMSMonitoringUI
         #region SetData
         public void SetData(List<_ctrl_formation_chg> data)
         {
-            if (data == null && data.Count == 0) return;
+            if (data == null || data.Count == 0) return;
 
             for (int i = 0; i < data.Count; i++)
             {
@@ -425,7 +425,7 @@ namespace FMSMonitoringUI
         //    }
         //    catch (Exception ex)
         //    {
-        //        Console.WriteLine(string.Format("[Exception:OnTimer] {0}", ex.ToString()));
+        //        System.Diagnostics.Debug.Print(string.Format("[Exception:OnTimer] {0}", ex.ToString()));
         //    }
         //}
 

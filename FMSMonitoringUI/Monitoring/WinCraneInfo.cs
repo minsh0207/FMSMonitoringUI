@@ -156,8 +156,8 @@ namespace FMSMonitoringUI.Monitoring
                 idx++;
             }
 
-            int btnPos = (this.Width - CDefine.DEF_EXIT_WIDTH) / 2;   // Button Width Size 170            
-            this.Exit.Padding = new System.Windows.Forms.Padding(btnPos, 10, btnPos, 10);
+            Exit.Left = (this.panel2.Width - Exit.Width) / 2;             
+            Exit.Top = (this.panel2.Height - Exit.Height) / 2;
         }
         #endregion
 

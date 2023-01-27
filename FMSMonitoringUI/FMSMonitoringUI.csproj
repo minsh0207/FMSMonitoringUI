@@ -658,6 +658,12 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Monitoring\WinTroubleInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Monitoring\WinTroubleInfo.Designer.cs">
+      <DependentUpon>WinTroubleInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Monitoring\WinRecipeInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -736,11 +742,11 @@
     <Compile Include="Monitoring\WinTrayInfo.Designer.cs">
       <DependentUpon>WinTrayInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Monitoring\WinTroubleInfo.cs">
+    <Compile Include="Monitoring\WinTroubleInfo_old.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Monitoring\WinTroubleInfo.Designer.cs">
-      <DependentUpon>WinTroubleInfo.cs</DependentUpon>
+    <Compile Include="Monitoring\WinTroubleInfo_old.Designer.cs">
+      <DependentUpon>WinTroubleInfo_old.cs</DependentUpon>
     </Compile>
     <Compile Include="Popup\WinLogin.cs">
       <SubType>Form</SubType>
@@ -1016,6 +1022,9 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Monitoring\WinTroubleInfo.resx">
+      <DependentUpon>WinTroubleInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Monitoring\WinRecipeInfo.resx">
       <DependentUpon>WinRecipeInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -1061,8 +1070,8 @@
     <EmbeddedResource Include="Monitoring\WinTrayInfo.resx">
       <DependentUpon>WinTrayInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Monitoring\WinTroubleInfo.resx">
-      <DependentUpon>WinTroubleInfo.cs</DependentUpon>
+    <EmbeddedResource Include="Monitoring\WinTroubleInfo_old.resx">
+      <DependentUpon>WinTroubleInfo_old.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Popup\WinLogin.resx">
       <DependentUpon>WinLogin.cs</DependentUpon>

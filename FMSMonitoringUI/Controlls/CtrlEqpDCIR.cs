@@ -69,7 +69,7 @@ namespace FMSMonitoringUI.Controlls
         #region setData
         public override void SetData(List<_entire_eqp_list> data, Dictionary<string, KeyValuePair<string, Color>> eqpStatus)
         {
-            int row = Convert.ToInt16(data[0].LEVEL);
+            int row = 0;    // Convert.ToInt16(data[0].LEVEL);
             TrayInfoView.SetValue(0, row, data[0].TRAY_ID);
             TrayInfoView.SetReworkTray(0, row, data[0].REWORK_FLAG);
 

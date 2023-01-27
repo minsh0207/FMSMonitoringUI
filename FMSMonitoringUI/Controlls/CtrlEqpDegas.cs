@@ -82,11 +82,20 @@ namespace FMSMonitoringUI.Controlls
                 if (i > 2) break;
 
                 int row = 1 - Convert.ToInt16(data[i].LEVEL);                
-                TrayInfoView.SetReworkTray(1, row, data[i].REWORK_FLAG);
+                //TrayInfoView.SetReworkTray(1, row, data[i].REWORK_FLAG);
+            }
+
+            SetEqpMode(data[0].EQP_MODE, eqpStatus[data[0].EQP_MODE]);
+
+            if (data[0].REWORK_FLAG == "Y" && data[0].EQP_STATUS == "R")
+            {
+                SetEqpStatus("Re", eqpStatus["Re"]);
+            }
+            else
+            {                
+                SetEqpStatus(data[0].EQP_STATUS, eqpStatus[data[0].EQP_STATUS]);
             }
             
-            SetEqpMode(data[0].EQP_MODE, eqpStatus[data[0].EQP_MODE]);
-            SetEqpStatus(data[0].EQP_STATUS, eqpStatus[data[0].EQP_STATUS]);
         }
         private void SetEqpMode(string eqp_mode, KeyValuePair<string, Color> valuePair)
         {

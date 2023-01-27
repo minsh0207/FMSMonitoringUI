@@ -26,8 +26,8 @@ namespace RestClientLib
 
             ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
 
-            httpClient.BaseAddress = new Uri("https://210.91.148.176:30011/");
-            //httpClient.BaseAddress = new Uri("http://localhost:30001/");
+            //httpClient.BaseAddress = new Uri("https://210.91.148.176:30011/");
+            httpClient.BaseAddress = new Uri("http://localhost:30001/");
 
 
             httpClient.DefaultRequestHeaders.Accept.Clear();

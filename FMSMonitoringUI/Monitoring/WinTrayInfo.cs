@@ -92,8 +92,8 @@ namespace FMSMonitoringUI.Monitoring
         #region InitControl
         private void InitControl()
         {
-            int btnPos = (this.Width - CDefine.DEF_EXIT_WIDTH) / 2;   // Button Width Size 170            
-            this.Exit.Padding = new System.Windows.Forms.Padding(btnPos, 10, btnPos, 10);
+            Exit.Left = (this.panel2.Width - Exit.Width) / 2;             
+            Exit.Top = (this.panel2.Height - Exit.Height) / 2;
         }
         #endregion
 
@@ -250,7 +250,7 @@ namespace FMSMonitoringUI.Monitoring
             }
             catch (Exception ex)
             {
-                Console.WriteLine(string.Format("[Exception:LoadTrayData] {0}", ex.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("[Exception:LoadTrayData] {0}", ex.ToString()));
             }
         }
         #endregion
@@ -304,7 +304,7 @@ namespace FMSMonitoringUI.Monitoring
             }
             catch (Exception ex)
             {
-                Console.WriteLine(string.Format("[Exception:LoadTrayPorcessFlow] {0}", ex.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("[Exception:LoadTrayPorcessFlow] {0}", ex.ToString()));
             }
         }
         #endregion
@@ -312,7 +312,7 @@ namespace FMSMonitoringUI.Monitoring
         #region SetData
         public void SetData(List<_win_tray_info> data)
         {
-            if (data.Count == 0) return;
+            if (data == null || data.Count == 0) return;
 
             int row = 0;
             gridTrayInfo.SetValue(1, row, data[0].MODEL_ID); row++;
@@ -331,7 +331,7 @@ namespace FMSMonitoringUI.Monitoring
 
         public void SetData(List<_tray_process_flow> data)
         {
-            if (data.Count == 0) return;
+            if (data == null || data.Count == 0) return;
 
             InitGridViewProcessFlow(data.Count);
 

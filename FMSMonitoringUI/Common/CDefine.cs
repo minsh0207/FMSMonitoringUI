@@ -158,25 +158,39 @@ namespace MonitoringUI.Common
         /////////////////////////////////////////////////////////////////////
         //	EqpTypeID
         //=================================================================== 
-        public const string DEF_EQP_TYPE_ID_ASSEMBLY                = "A";
-        public const string	DEF_EQP_TYPE_ID_FORMATION				= "1";
-		public const string	DEF_EQP_TYPE_ID_FORMATION_STACKER		= "2";
-		public const string	DEF_EQP_TYPE_ID_AGING					= "3";
-		//public const string	DEF_EQP_TYPE_ID_AGING_STACKER			= "4";
-		public const string	DEF_EQP_TYPE_ID_OCV						= "5";
-		public const string	DEF_EQP_TYPE_ID_SELECTOR				= "6";
-		public const string	DEF_EQP_TYPE_ID_IROCV					= "7";
-		public const string	DEF_EQP_TYPE_ID_GRADER					= "8";
-		public const string	DEF_EQP_TYPE_ID_BARCODE					= "B";
-		public const string	DEF_EQP_TYPE_ID_SENSOR					= "S";
-		public const string	DEF_EQP_TYPE_ID_FIRE					= "W";
-        // 20190122추가 - KJY (DCIR추가, "4"를 DEGAS로 수정)
-        public const string DEF_EQP_TYPE_ID_DCIR                    = "R";
-        public const string DEF_EQP_TYPE_ID_DEGAS                   = "4";
+        //public const string DEF_EQP_TYPE_ID_ASSEMBLY                = "A";
+		public const int DEF_EQP_TYPE_ID_OCV					 = 1;
+        public const int DEF_EQP_TYPE_ID_DCIR                    = 2;
+        public const int DEF_EQP_TYPE_ID_MICRO_CURRENT           = 3;
+        public const int DEF_EQP_TYPE_ID_LEAK_CHECK              = 4;
+        public const int DEF_EQP_TYPE_ID_VISION_INSPECTION       = 5;
+        public const int DEF_EQP_TYPE_ID_DEGAS                   = 6;
+        public const int DEF_EQP_TYPE_ID_NG_SORTER               = 7;
+        public const int DEF_EQP_TYPE_ID_HPC                     = 8;
+        public const int DEF_EQP_TYPE_ID_FORMATION				 = 9;
+		public const int DEF_EQP_TYPE_ID_HT_AGING			     = 10;
+        public const int DEF_EQP_TYPE_ID_LT_AGING_01             = 11;
+        public const int DEF_EQP_TYPE_ID_LT_AGING_02             = 12;
+        public const int DEF_EQP_TYPE_ID_HT_AGING_STACKER        = 13;
+        public const int DEF_EQP_TYPE_ID_LT_AGING_01_STACKER     = 14;
+        public const int DEF_EQP_TYPE_ID_LT_AGING_02_STACKER     = 15;
+        public const int DEF_EQP_TYPE_ID_FORMATION_STACKER		 = 16;
+		public const int DEF_EQP_TYPE_ID_PACKING				 = 17;
+        public const int DEF_EQP_TYPE_ID_FORMATION_1B_1F         = 18;
+        public const int DEF_EQP_TYPE_ID_FORMATION_1B_2F         = 19;
+        public const int DEF_EQP_TYPE_ID_FORMATION_1B_3F         = 20;
+        public const int DEF_EQP_TYPE_ID_FORMATION_1B_4F         = 21;
+        public const int DEF_EQP_TYPE_ID_FORMATION_2B_1F         = 22;
+        public const int DEF_EQP_TYPE_ID_FORMATION_2B_2F         = 23;
+        public const int DEF_EQP_TYPE_ID_FORMATION_2B_3F         = 24;
+        public const int DEF_EQP_TYPE_ID_FORMATION_2B_4F         = 25;
+        public const int DEF_EQP_TYPE_ID_FORMATION_3B_1F         = 26;
+        public const int DEF_EQP_TYPE_ID_FORMATION_3B_2F         = 27;
+        public const int DEF_EQP_TYPE_ID_FORMATION_3B_3F         = 28;
+        public const int DEF_EQP_TYPE_ID_HPC_01                  = 29;
+        public const int DEF_EQP_TYPE_ID_HPC_02                  = 30;
 
-        public const string DEF_EQP_TYPE_ID_HPC                     = "H";
 
-        public const string DEF_EQP_TYPE_ID_STACKERCRANE            = "K";
 
         /////////////////////////////////////////////////////////////////////
         //	OperGroupID

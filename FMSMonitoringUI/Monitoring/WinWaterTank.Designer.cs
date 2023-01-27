@@ -368,15 +368,17 @@
             // 
             // Exit
             // 
+            this.Exit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Exit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
-            this.Exit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Exit.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Exit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.Exit.LabelText = "Exit";
             this.Exit.LanguageID = "DEF_Exit";
             this.Exit.Location = new System.Drawing.Point(2, 2);
             this.Exit.Name = "Exit";
-            this.Exit.Size = new System.Drawing.Size(647, 54);
+            this.Exit.Size = new System.Drawing.Size(170, 40);
             this.Exit.TabIndex = 0;
             this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 

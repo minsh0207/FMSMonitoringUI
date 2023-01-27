@@ -184,6 +184,7 @@
             this.Name = "MainForm";
             this.Padding = new System.Windows.Forms.Padding(2);
             this.Text = "MonitoringUI";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.scMainPanel.Panel1.ResumeLayout(false);
             this.scMainPanel.Panel1.PerformLayout();

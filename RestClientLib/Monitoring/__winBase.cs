@@ -282,4 +282,46 @@ namespace RestClientLib
 
     }
     #endregion
+    #region TroubleEquipmentList
+    /// <summary>
+    /// JSON base format : TroubleEquipmentList
+    /// </summary>
+    public class _trouble_equipment_list
+    {
+        public int ID { get; set; }
+        public string EQP_ID{ get; set; }
+        public string EQP_STATUS { get; set; }
+        public string EQP_NAME { get; set; }
+        public string EQP_NAME_LOCAL { get; set; }
+        public string EQP_TROUBLE_CODE { get; set; }
+        public string TROUBLE_NAME { get; set; }
+        public string TROUBLE_NAME_LOCAL { get; set; }
+    }
+    #endregion
+    #region TroubleAgingList
+    /// <summary>
+    /// JSON base format : TroubleAgingList
+    /// </summary>
+    public class _trouble_aging_list
+    {
+        public int ID { get; set; }
+        public string EQP_ID { get; set; }
+        public string EQP_STATUS { get; set; }
+        public string EQP_NAME { get; set; }
+        public string EQP_NAME_LOCAL { get; set; }
+        public string EQP_TROUBLE_CODE { get; set; }
+        public string TROUBLE_NAME { get; set; }
+        public string TROUBLE_NAME_LOCAL { get; set; }
+    }
+    #endregion
+    #region TroubleInfo
+    /// <summary>
+    /// JSON base format : TroubleAgingList
+    /// </summary>
+    public class _trouble_info : _dat_trouble
+    {
+        public string TROUBLE_NAME { get; set; }
+        public string TROUBLE_NAME_LOCAL { get; set; }
+    }
+    #endregion
 }

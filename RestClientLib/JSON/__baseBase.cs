@@ -502,16 +502,17 @@ namespace RestClientLib
     public class _dat_trouble
     {
         public string EQP_TYPE { get; set; }
+        public string TROUBLE_CATEGORY { get; set; }
         public string EQP_ID { get; set; }
         public string UNIT_ID { get; set; }
-        public string EVENT_TIME { get; set; }
+        public DateTime EVENT_TIME { get; set; }
         public string TROUBLE_CODE { get; set; }
-        public string UNIT_STATUS { get; set; }
+        public string TROUBLE_REMARK { get; set; }
         public string USER_ACTION { get; set; }
-        public string USER_ACTION_TIME { get; set; }
+        public DateTime USER_ACTION_TIME { get; set; }
         public string UPDATE_USER { get; set; }
-        public string UPDATE_TIME { get; set; }
-        public string CREATE_TIME { get; set; }
+        public DateTime UPDATE_TIME { get; set; }
+        public DateTime CREATE_TIME { get; set; }
     }
     #endregion
     #region tb_mst_Aging
@@ -707,15 +708,16 @@ namespace RestClientLib
     public class _mst_trouble
     {
         public string EQP_TYPE { get; set; }
+        public string TROUBLE_CATEGORY { get; set; }
         public string TROUBLE_CODE { get; set; }
         public string TROUBLE_LEVEL { get; set; }
         public string TROUBLE_NAME { get; set; }
         public string TROUBLE_NAME_LOCAL { get; set; }
         public string USER_ACTION { get; set; }
         public string USER_ACTION_LOCAL { get; set; }
-        public string UPDATE_USER { get; set; }
-        public string UPDATE_TIME { get; set; }
-        public string CREATE_TIME { get; set; }
+        public DateTime UPDATE_USER { get; set; }
+        public DateTime UPDATE_TIME { get; set; }
+        public DateTime CREATE_TIME { get; set; }
     }
     #endregion
     #region tb_mst_unit

@@ -82,7 +82,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(2, 67);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1496, 736);
+            this.panel3.Size = new System.Drawing.Size(1496, 714);
             this.panel3.TabIndex = 2;
             // 
             // panel2
@@ -98,15 +98,17 @@
             // 
             // Exit
             // 
+            this.Exit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Exit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.Exit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Exit.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Exit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.Exit.LabelText = "Exit";
             this.Exit.LanguageID = "DEF_EXIT";
             this.Exit.Location = new System.Drawing.Point(0, 0);
             this.Exit.Name = "Exit";
-            this.Exit.Size = new System.Drawing.Size(1492, 58);
+            this.Exit.Size = new System.Drawing.Size(170, 40);
             this.Exit.TabIndex = 3;
             this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 

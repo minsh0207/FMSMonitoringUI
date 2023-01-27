@@ -612,13 +612,13 @@ namespace MonitoringUI.Common
         {
             DataTable dt = new DataTable();
 
-            dt.Columns.Add(CDefine.DEF_GRIDVIEW_COMBOXID);
-            dt.Columns.Add(CDefine.DEF_GRIDVIEW_COMBOXNAME);
+            //dt.Columns.Add(CDefine.DEF_GRIDVIEW_COMBOXID);
+            //dt.Columns.Add(CDefine.DEF_GRIDVIEW_COMBOXNAME);
 
-            //dt.Rows.Add("", "");
-            dt.Rows.Add(CDefine.DEF_EQP_TYPE_ID_ASSEMBLY, "[A]ssembly");
-            dt.Rows.Add(CDefine.DEF_EQP_TYPE_ID_DEGAS, "[D]egas");
-            dt.Rows.Add(CDefine.DEF_EQP_TYPE_ID_GRADER, "[G]rader");
+            ////dt.Rows.Add("", "");
+            //dt.Rows.Add(CDefine.DEF_EQP_TYPE_ID_ASSEMBLY, "[A]ssembly");
+            //dt.Rows.Add(CDefine.DEF_EQP_TYPE_ID_DEGAS, "[D]egas");
+            //dt.Rows.Add(CDefine.DEF_EQP_TYPE_ID_GRADER, "[G]rader");
 
             return dt;
         }

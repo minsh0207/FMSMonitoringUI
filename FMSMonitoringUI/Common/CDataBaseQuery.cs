@@ -1158,57 +1158,57 @@ namespace MonitoringUI.Common
         private string QueryToUnitState(List<string> lstVar)
         {
             StringBuilder strSQL = new StringBuilder();
-            string strLineID = "";
-            string strTroubleFlag = "";
+            //string strLineID = "";
+            //string strTroubleFlag = "";
 
-            strLineID = lstVar[0];
-            strTroubleFlag = lstVar[1];
+            //strLineID = lstVar[0];
+            //strTroubleFlag = lstVar[1];
 
-            strSQL.Append(" SELECT A.EqpTypeID, A.UnitStatus, A.FireStatus, A.UnitID, A.UnitName, A.TroubleCode");
-            strSQL.Append("   FROM tMstEquipment  A WITH (NOLOCK)");
-            strSQL.Append($"  WHERE A.LineID = '{lstVar[0]}' ");
+            //strSQL.Append(" SELECT A.EqpTypeID, A.UnitStatus, A.FireStatus, A.UnitID, A.UnitName, A.TroubleCode");
+            //strSQL.Append("   FROM tMstEquipment  A WITH (NOLOCK)");
+            //strSQL.Append($"  WHERE A.LineID = '{lstVar[0]}' ");
 
-            //OR CHECK
-            strSQL.Append($"    AND (A.EqpTypeID = '{CDefine.DEF_EQP_TYPE_ID_FORMATION}' ");
-            strSQL.Append($"    OR A.EqpTypeID = '{CDefine.DEF_EQP_TYPE_ID_FORMATION_STACKER}' ");
-            strSQL.Append($"    OR A.EqpTypeID = '{CDefine.DEF_EQP_TYPE_ID_AGING}'");
-            strSQL.Append($"    OR A.EqpTypeID = '{CDefine.DEF_EQP_TYPE_ID_SELECTOR}'");
-            strSQL.Append($"    OR A.EqpTypeID = '{CDefine.DEF_EQP_TYPE_ID_IROCV}'");
-            strSQL.Append($"    OR A.EqpTypeID = '{CDefine.DEF_EQP_TYPE_ID_GRADER}'");
-            strSQL.Append($"    OR A.EqpTypeID = '{CDefine.DEF_EQP_TYPE_ID_DCIR}'");
-            strSQL.Append($"    OR A.EqpTypeID = '{CDefine.DEF_EQP_TYPE_ID_HPC}'");
-            strSQL.Append($"    OR A.EqpTypeID = '{CDefine.DEF_EQP_TYPE_ID_DEGAS}') ");
+            ////OR CHECK
+            //strSQL.Append($"    AND (A.EqpTypeID = '{CDefine.DEF_EQP_TYPE_ID_FORMATION}' ");
+            //strSQL.Append($"    OR A.EqpTypeID = '{CDefine.DEF_EQP_TYPE_ID_FORMATION_STACKER}' ");
+            //strSQL.Append($"    OR A.EqpTypeID = '{CDefine.DEF_EQP_TYPE_ID_AGING}'");
+            //strSQL.Append($"    OR A.EqpTypeID = '{CDefine.DEF_EQP_TYPE_ID_SELECTOR}'");
+            //strSQL.Append($"    OR A.EqpTypeID = '{CDefine.DEF_EQP_TYPE_ID_IROCV}'");
+            //strSQL.Append($"    OR A.EqpTypeID = '{CDefine.DEF_EQP_TYPE_ID_GRADER}'");
+            //strSQL.Append($"    OR A.EqpTypeID = '{CDefine.DEF_EQP_TYPE_ID_DCIR}'");
+            //strSQL.Append($"    OR A.EqpTypeID = '{CDefine.DEF_EQP_TYPE_ID_HPC}'");
+            //strSQL.Append($"    OR A.EqpTypeID = '{CDefine.DEF_EQP_TYPE_ID_DEGAS}') ");
 
-            if (strTroubleFlag == "Y")
-            {//OR CHECK
-                strSQL.Append($"    AND (A.UnitStatus = '{CDefine.DEF_STATUS_TROUBLE}' ");
-                strSQL.Append($"     OR A.FireStatus = '{CDefine.DEF_STATUS_FIRE}') ");
-            }
+            //if (strTroubleFlag == "Y")
+            //{//OR CHECK
+            //    strSQL.Append($"    AND (A.UnitStatus = '{CDefine.DEF_STATUS_TROUBLE}' ");
+            //    strSQL.Append($"     OR A.FireStatus = '{CDefine.DEF_STATUS_FIRE}') ");
+            //}
 
-            strSQL.Append(" UNION ALL");
-            strSQL.Append(" SELECT B.EqpTypeID, B.UnitStatus, NULL FireStatus, B.UnitID, B.UnitName, B.TroubleCode ");
-            strSQL.Append("   FROM tMstEquipmentBcr B WITH (NOLOCK)");
-            strSQL.Append($"  WHERE B.LineID = '{lstVar[0]}' ");
+            //strSQL.Append(" UNION ALL");
+            //strSQL.Append(" SELECT B.EqpTypeID, B.UnitStatus, NULL FireStatus, B.UnitID, B.UnitName, B.TroubleCode ");
+            //strSQL.Append("   FROM tMstEquipmentBcr B WITH (NOLOCK)");
+            //strSQL.Append($"  WHERE B.LineID = '{lstVar[0]}' ");
 
-            if (strTroubleFlag == "Y")
-            {
-                strSQL.Append($"    AND B.UnitStatus = '{CDefine.DEF_STATUS_TROUBLE}' ");
-            }
+            //if (strTroubleFlag == "Y")
+            //{
+            //    strSQL.Append($"    AND B.UnitStatus = '{CDefine.DEF_STATUS_TROUBLE}' ");
+            //}
 
-            strSQL.Append(" UNION ALL");
-            strSQL.Append(" SELECT '3' EqpTypeID, C.Status UnitStatus, C.FireStatus, C.RackID UnitID");
-            strSQL.Append("      , SUBSTRING(C.RackID, 1, 1) + CONVERT(VARCHAR, CONVERT(int, SUBSTRING(C.RackID, 2, 2))) + '-' + SUBSTRING(C.RackID, 4, 1) + 'Line-' + SUBSTRING(C.RackID, 5, 2) + 'Bay-' + SUBSTRING(C.RackID, 7, 2) + 'Rack' AS UnitName");
-            strSQL.Append("      , '' TroubleCode");
-            strSQL.Append("   FROM tMstAgingRack C WITH (NOLOCK)");
-            strSQL.Append($"  WHERE C.LineID = '{lstVar[0]}' ");
-            strSQL.Append($"    AND SUBSTRING(C.RackID, 4, 1) != '{CDefine.DEF_STATUS_WATER}'");
+            //strSQL.Append(" UNION ALL");
+            //strSQL.Append(" SELECT '3' EqpTypeID, C.Status UnitStatus, C.FireStatus, C.RackID UnitID");
+            //strSQL.Append("      , SUBSTRING(C.RackID, 1, 1) + CONVERT(VARCHAR, CONVERT(int, SUBSTRING(C.RackID, 2, 2))) + '-' + SUBSTRING(C.RackID, 4, 1) + 'Line-' + SUBSTRING(C.RackID, 5, 2) + 'Bay-' + SUBSTRING(C.RackID, 7, 2) + 'Rack' AS UnitName");
+            //strSQL.Append("      , '' TroubleCode");
+            //strSQL.Append("   FROM tMstAgingRack C WITH (NOLOCK)");
+            //strSQL.Append($"  WHERE C.LineID = '{lstVar[0]}' ");
+            //strSQL.Append($"    AND SUBSTRING(C.RackID, 4, 1) != '{CDefine.DEF_STATUS_WATER}'");
 
-            if (strTroubleFlag == "Y")
-            {
-                //OR
-                strSQL.Append($"    AND ( C.FireStatus = '{CDefine.DEF_STATUS_FIRE}'");
-                strSQL.Append($"     OR  C.FireStatus = '{CDefine.DEF_STATUS_WATER}' ) ");
-            }
+            //if (strTroubleFlag == "Y")
+            //{
+            //    //OR
+            //    strSQL.Append($"    AND ( C.FireStatus = '{CDefine.DEF_STATUS_FIRE}'");
+            //    strSQL.Append($"     OR  C.FireStatus = '{CDefine.DEF_STATUS_WATER}' ) ");
+            //}
 
             return strSQL.ToString();
         }

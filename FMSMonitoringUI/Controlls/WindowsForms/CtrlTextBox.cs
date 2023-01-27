@@ -36,9 +36,11 @@ namespace FMSMonitoringUI.Controlls.WindowsForms
             set
             {
                 _TitleWidth = value;
+
+                Single panelWidth = (Single)(this.Size.Width - (int)_TitleWidth);
                 tableLayoutPanel.ColumnStyles.Clear();
                 tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-                tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, _TitleWidth));
+                tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, panelWidth));
                 Invalidate();
             }
         }

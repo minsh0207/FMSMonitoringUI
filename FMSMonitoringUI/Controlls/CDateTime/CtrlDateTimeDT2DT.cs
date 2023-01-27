@@ -84,10 +84,20 @@ namespace MonitoringUI.Controlls.CDateTime
             InitializeComponent();
         }
 
-        //private void CtrlDateTimeDT2DT_Load(object sender, EventArgs e)
-        //{
-        //    lbTitle.Text = LocalLanguage.GetItemString("strDateRange");
-        //}
+        public void InitControl(int height)
+        {
+            lbTitle.Top = (height - lbTitle.Height) / 2;
+            dtpFrom.Top = (height - dtpFrom.Height) / 2;
+            lbWave.Top = (height - lbWave.Height) / 2;
+            dtpEnd.Top = (height - dtpEnd.Height) / 2;
+
+            Invalidate();
+        }
+
+        private void CtrlDateTimeDT2DT_Load(object sender, EventArgs e)
+        {
+            
+        }
 
         private void dtpFrom_ValueChanged(object sender, EventArgs e)
         {

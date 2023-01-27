@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.dtpEnd = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbWave = new System.Windows.Forms.Label();
             this.dtpFrom = new System.Windows.Forms.DateTimePicker();
             this.lbTitle = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -46,16 +46,16 @@
             this.dtpEnd.TabIndex = 4;
             this.dtpEnd.ValueChanged += new System.EventHandler(this.dtpEnd_ValueChanged);
             // 
-            // label1
+            // lbWave
             // 
-            this.label1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.label1.Location = new System.Drawing.Point(250, 2);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(18, 25);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "~";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbWave.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lbWave.ForeColor = System.Drawing.Color.White;
+            this.lbWave.Location = new System.Drawing.Point(250, 2);
+            this.lbWave.Name = "lbWave";
+            this.lbWave.Size = new System.Drawing.Size(18, 25);
+            this.lbWave.TabIndex = 3;
+            this.lbWave.Text = "~";
+            this.lbWave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // dtpFrom
             // 
@@ -86,7 +86,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.Controls.Add(this.dtpEnd);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbWave);
             this.Controls.Add(this.dtpFrom);
             this.Controls.Add(this.lbTitle);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
@@ -101,7 +101,7 @@
 
         private System.Windows.Forms.Label lbTitle;
         private System.Windows.Forms.DateTimePicker dtpFrom;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbWave;
         private System.Windows.Forms.DateTimePicker dtpEnd;
     }
 }

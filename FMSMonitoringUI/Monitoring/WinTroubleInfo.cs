@@ -1,264 +1,320 @@
-﻿using MonitoringUI.Common;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using MonitoringUI;
+using MonitoringUI.Common;
+using MonitoringUI.Controlls;
+using MySqlX.XDevAPI.Common;
+using Novasoft.Logger;
+using Org.BouncyCastle.Ocsp;
+using RestClientLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
-namespace MonitoringUI.Monitoring
+namespace FMSMonitoringUI.Monitoring
 {
     public partial class WinTroubleInfo : WinFormRoot
     {
-        #region Variables
-        string m_strEqpTypeID;
-        string m_strUnitID;
+        private Point point = new Point();
+        private string _EqpName = string.Empty;
+        private string _EqpType = string.Empty;
+        private string _UnitID = string.Empty;
+
+        private Logger _Logger;
+
+        #region Working Thread
+        private Thread _ProcessThread;
+        private bool _TheadVisiable;
         #endregion
 
-        #region Constructor
-        public WinTroubleInfo()
+        public WinTroubleInfo(string eqpName, string eqpType, string unitID)
         {
             InitializeComponent();
-        }
-        public WinTroubleInfo(string strEqpTypeID, string strUnitID)
-        {
-            InitializeComponent();
+
+            _EqpName = eqpName;
+            _EqpType = eqpType;
+            _UnitID = unitID;
+
+            string logPath = ConfigurationManager.AppSettings["LOG_PATH"];
+            _Logger = new Logger(logPath, LogMode.Hour);
 
             InitControl();
+            InitGridViewTray();
+                        
+            //InitChart();
+        }
 
-            // Get Data
-            m_strEqpTypeID = strEqpTypeID;
-            m_strUnitID = strUnitID;
+        #region WinTroubleInfo Event
+        private void WinTroubleInfo_Load(object sender, EventArgs e)
+        {
+            if (CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, this.Text) == false)
+            {
+                Exit_Click(null, null);
+                return;
+            }
+
+            #region Title Mouse Event
+            ctrlTitleBar.MouseDown_Evnet += Title_MouseDownEvnet;
+            ctrlTitleBar.MouseMove_Evnet += Title_MouseMoveEvnet;
+            #endregion
+
+            //#region DataGridView Event
+            //gridTrayInfo.MouseCellDoubleClick_Evnet += GridTrayInfo_MouseCellDoubleClick;
+            //#endregion
+
+            _TheadVisiable = true;
+
+            this.BeginInvoke(new MethodInvoker(delegate ()
+            {
+                _ProcessThread = new Thread(() => ProcessThreadCallback());
+                _ProcessThread.IsBackground = true; _ProcessThread.Start();
+            }));
+
+            this.WindowID = CAuthority.GetWindowsText(this.Text);
+        }
+        private void WinTroubleInfo_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (this._ProcessThread.IsAlive)
+                this._TheadVisiable = false;
+
+            this._ProcessThread.Abort();
         }
         #endregion
+
+        //private void InitChart()
+        //{
+        //    chart1.Series[0].Points.Add(80);
+        //    chart1.Series[0].Points.Add(50);
+        //    chart1.Series[0].Points.Add(90);
+        //    chart1.Series[0].Points.Add(40);
+        //    chart1.Series[0].Points.Add(70);
+        //    chart1.Series[0].Points.Add(60);
+        //    chart1.Series[0].Points.Add(70);
+        //    chart1.Series[0].Points.Add(80);
+        //}
 
         #region InitControl
         private void InitControl()
         {
+            Exit.Left = (this.panel2.Width - Exit.Width) / 2;             
+            Exit.Top = (this.panel2.Height - Exit.Height) / 2;
+
+            ctrlDateTimeDT2DT1.InitControl(ctrlDateTimeDT2DT1.Height);
+
             ctrlDateTimeDT2DT1.StartDate = DateTime.Now.AddDays(-5);
             ctrlDateTimeDT2DT1.EndDate = DateTime.Now.AddDays(1);
 
-
-            /// 
-            /// 화면권한 관련
-            /// 
-            bool bView = false;
-            bool bSave = false;
-            // 화면ID 설정
-            //Tag = CAuthority.WindowsNameToWindowID(this.GetType().FullName.ToString());
-            //Get Authority
-            //CAuthority.GetAuthority(Tag.ToString(), ref bView, ref bSave);
-            this.WindowID = Tag.ToString();
-            ///
-            ///
-            ///
-
-
-        }
-
-        #endregion
-        #region WinTroubleInfo_Load
-        private void WinTroubleInfo_Load(object sender, EventArgs e)
-        {
-            titBar.TitleText = LocalLanguage.GetItemString("titleTroubleInfo");
-
-            //ctrlButtonSearch_MouseClick(sender, e);
-            ctrlButtonSearch1_Click(sender, e);
-
-
-        } 
-        #endregion
-
-        #region ctrlButtonSearch_MouseClick
-        //private void ctrlButtonSearch_MouseClick(object sender, MouseEventArgs e)
-        private void ctrlButtonSearch_MouseClick(object sender, EventArgs e)
-        {
-            InitGridView();
-
-            //Set UnitName
-            string strUnitName = GetUnitName().GetAwaiter().GetResult();
-            ctrlTextBoxEqpName1.TextBoxText = strUnitName;
-
-            //Set GridView
-            GetTroubleData().GetAwaiter().GetResult();
-
-            //Grid채우기
+            string rackName = $"{_UnitID.Substring(1,2)}Line-{_UnitID.Substring(3, 1)}Lane-{_UnitID.Substring(4, 2)}Bay-{_UnitID.Substring(6, 2)}F";
+            lbRackID.TextData = rackName;
 
         }
         #endregion
 
-        #region InitGridView
-        private void InitGridView()
+        #region InitGridViewTray
+        private void InitGridViewTray()
         {
-            gridView.Init(ScrollBars.Both, DataGridViewSelectionMode.CellSelect, true);
+            List<string> lstTitle = new List<string>();
+            lstTitle.Add(LocalLanguage.GetItemString("DEF_Equipment_Name"));
+            lstTitle.Add(LocalLanguage.GetItemString("DEF_Unit_ID"));
+            lstTitle.Add(LocalLanguage.GetItemString("DEF_Trouble_Category"));
+            lstTitle.Add(LocalLanguage.GetItemString("DEF_Trouble_Code"));
+            lstTitle.Add(LocalLanguage.GetItemString("DEF_Trouble_Name"));
+            lstTitle.Add(LocalLanguage.GetItemString("DEF_Event_Time"));
+            gridTrayInfo.AddColumnHeaderList(lstTitle);
 
-            gridView.ColumnType(enSpreadColumnType.Text, DataGridViewContentAlignment.MiddleCenter, 100, LocalLanguage.GetItemString("DEF_CONTROL_152"), true, true, 10); //설비명
-            gridView.ColumnType(enSpreadColumnType.Text, DataGridViewContentAlignment.MiddleCenter, 200, LocalLanguage.GetItemString("DEF_CONTROL_045"), true, true, 10); // Unit
-            gridView.ColumnType(enSpreadColumnType.Text, DataGridViewContentAlignment.MiddleCenter, 100, LocalLanguage.GetItemString("strTroubleCode"), true, true, 10); // Trouble Code
-            gridView.ColumnType(enSpreadColumnType.Text, DataGridViewContentAlignment.MiddleCenter, 300, LocalLanguage.GetItemString("strTroubleName"), true, true, 10);
-            gridView.ColumnType(enSpreadColumnType.Text, DataGridViewContentAlignment.MiddleCenter, 150, LocalLanguage.GetItemString("DEF_SPREAD_110"), true, true, 10); //발생일시
+            lstTitle = new List<string>();
+            lstTitle.Add("");
+            gridTrayInfo.AddRowsHeaderList(lstTitle);
 
+            gridTrayInfo.ColumnHeadersHeight(30);
+            gridTrayInfo.RowsHeight(26);
 
+            //List<int> lstColumn = new List<int>();
+            //lstColumn.Add(-1);      // DataGridView Header 병합
+            //lstTitle = new List<string>();
+            //lstTitle.Add("Tray Information");
+            //TrayInfoView.ColumnMergeList(lstColumn, lstTitle);
+
+            gridTrayInfo.SetGridViewStyles();
+            gridTrayInfo.ColumnHeadersWidth(0, 120);
+            gridTrayInfo.ColumnHeadersWidth(1, 120);
+            gridTrayInfo.ColumnHeadersWidth(2, 120);
+            gridTrayInfo.ColumnHeadersWidth(3, 120);
+            gridTrayInfo.ColumnHeadersWidth(5, 220);
         }
         #endregion
 
-        #region GetEQPData
-        //private async Task<DataTable> GetTroubleData()
-        private async Task GetTroubleData()
+        #region ProcessThreadCallback
+        private void ProcessThreadCallback()
         {
-            string[] strData = new string[5];
             try
             {
-                RESTClient_old restClinet = new RESTClient_old();
-                JObject loadEQPQuery = new JObject();
-                string strSql = "";
-                strSql += " SELECT C.EqpTypeName,D.UnitName,         E.UnitName BcrUnitName"
-                       + "       , (CASE ISNULL(A.EventTime, '') WHEN '' THEN A.EventTime ELSE CONVERT(VARCHAR(19), CONVERT(DATETIME,stuff(stuff(stuff(A.EventTime, 9, 0, ' '), 12, 0, ':'), 15, 0, ':')), 120) END) AS EventTime"
-                       + "       , A.UserAction,A.TroubleCode,C.EqpTypeID"
-                       + "       , B.TroubleName_kr,B.TroubleName_cn,B.TroubleName_en"
-                       + "       , SUBSTRING(F.RackID, 1, 1) + CONVERT(VARCHAR, CONVERT(int, SUBSTRING(F.RackID, 2, 2))) + '-' + SUBSTRING(F.RackID, 4, 1) + 'Line-' + SUBSTRING(F.RackID, 5, 2) + 'Bay-' + SUBSTRING(F.RackID, 7, 2) + 'Rack' AS AgingUnitName"
-                       + "   FROM tTroubleEventTm A WITH (NOLOCK)"
-                       + "        LEFT OUTER JOIN tMstTrouble B WITH (NOLOCK)"
-                       + "          ON B.EqpTypeID= A.EqpTypeID"
-                       + "         AND B.TroubleCode= A.TroubleCode"
-                       + "        LEFT OUTER JOIN tMstEqpGroup C WITH (NOLOCK)"
-                       + "          ON C.EqpTypeID= A.EqpTypeID"
-                       + "        LEFT OUTER JOIN tMstEquipment D WITH (NOLOCK)"
-                       + "          ON D.EqpTypeID= A.EqpTypeID"
-                       + "         AND D.UnitID   = A.UnitID"
-                       + "        LEFT OUTER JOIN tMstEquipmentBcr E WITH (NOLOCK)"
-                       + "          ON E.EqpTypeID= A.EqpTypeID"
-                       + "         AND E.UnitID   = A.UnitID"
-                       + "        LEFT OUTER JOIN tMstAgingRack F WITH (NOLOCK)"
-                       + "          ON F.RackID= A.UnitID"
-                       + " WHERE A.EqpTypeID= '" + m_strEqpTypeID + "'"
-                       + "   AND A.UnitID= '" + m_strUnitID + "'"
-                       + "   AND A.EventTime     BETWEEN '" + ctrlDateTimeDT2DT1.StartDate.ToString("yyyyMMdd") + ctrlDateTimeDT2DT1.StartDate.ToString("HHmmss") + "'"
-                       + "                           AND '" + ctrlDateTimeDT2DT1.EndDate.ToString("yyyyMMdd") + ctrlDateTimeDT2DT1.EndDate.ToString("HHmmss") + "'"
-                       + "   ORDER BY A.EventTime DESC ";
-
-
-                loadEQPQuery["query"] = strSql;
-                var JsonResult = await restClinet.GetJson(JsonApiType.Table, JsonCRUD.SELECT, "query.php", loadEQPQuery);
-
-                JsonTroubleEventTm Troubles = JsonConvert.DeserializeObject<JsonTroubleEventTm>(JsonResult);
-
-                if(Troubles.count>0)
+                //while (this._TheadVisiable == true)
                 {
-                    for(int i =0; i< Troubles.count; i++)
+                    GC.Collect();
+
+                    this.Invoke(new MethodInvoker(delegate ()
                     {
-                        strData[0] = Troubles.troubleEventTmList[i].EqpTypeName;
-                        strData[1] = Troubles.troubleEventTmList[i].UnitName;
-                        strData[2] = Troubles.troubleEventTmList[i].TroubleCode;
-                        // language에 따라 간다.
-                        if (CDefine.m_enLanguage == enLoginLanguage.Korean)
-                            strData[3] = Troubles.troubleEventTmList[i].TroubleName_kr;
-                        else if (CDefine.m_enLanguage == enLoginLanguage.France)
-                            strData[3] = Troubles.troubleEventTmList[i].TroubleName_fr;
-                        else if (CDefine.m_enLanguage == enLoginLanguage.English)
-                            strData[3] = Troubles.troubleEventTmList[i].TroubleName_en;
-                        else
-                            strData[3] = "Check Language Setting";
+                        LoadTroubleInfo(_EqpType, _UnitID).GetAwaiter().GetResult();
+                    }));
 
-                        strData[4] = Troubles.troubleEventTmList[i].EventTime;
-
-                        gridView.CustRowADDHeaderNumber(strData);
-                    }
-
+                    //Thread.Sleep(3000);
                 }
-
-
             }
             catch (Exception ex)
             {
-                Console.WriteLine(string.Format("[Exception:LoadAgingRackData] {0}", ex.ToString()));
-                //return null;
+                // System Debug
+                System.Diagnostics.Debug.Print(string.Format("### WinTroubleInfo ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
             }
         }
         #endregion
-        #region GetUnitName
-        private async Task<string> GetUnitName()
+
+        #region LoadTroubleInfo
+        private async Task LoadTroubleInfo(string eqpType, string unitID)
         {
             try
             {
-                RESTClient_old restClinet = new RESTClient_old();
-                JObject loadEQPQuery = new JObject();
-                string strSql = "";
-                if (m_strEqpTypeID == "3")
-                {
-                    //strSql += " SELECT A.RackID UnitID"
-                    strSql += " SELECT A.RackID RetString1"
-                       //+ "      , SUBSTRING(A.RackID, 1, 1) + CONVERT(VARCHAR, CONVERT(int, SUBSTRING(A.RackID, 2, 2))) + '-' + SUBSTRING(A.RackID, 4, 1) + 'Line-' + SUBSTRING(A.RackID, 5, 2) + 'Bay-' + SUBSTRING(A.RackID, 7, 2) + 'Rack' AS UnitName"
-                       + "      , SUBSTRING(A.RackID, 1, 1) + CONVERT(VARCHAR, CONVERT(int, SUBSTRING(A.RackID, 2, 2))) + '-' + SUBSTRING(A.RackID, 4, 1) + 'Line-' + SUBSTRING(A.RackID, 5, 2) + 'Bay-' + SUBSTRING(A.RackID, 7, 2) + 'Rack' AS RetString2"
-                       + "   FROM tMstAgingRack  A WITH (NOLOCK)"
-                       + "  WHERE A.RackID= '" + m_strUnitID.ToString() + "'"
-                       + "  ORDER BY A.RackID";
-                }
-                else
-                {
-                    //strSql += " SELECT A.UnitName"
-                    strSql += " SELECT A.UnitName as RetString1 "
-                       + "    FROM tMstEquipment     A WITH (NOLOCK)"
-                       + "   WHERE A.EqpTypeID= '" + m_strEqpTypeID + "'"
-                       + "     AND A.UnitID= '" + m_strUnitID + "'"
-                       + "   ORDER BY EqpTypeID ASC";
-                }
+                unitID = "HPC0110101";
+                eqpType = "HPC";
 
+                RESTClient rest = new RESTClient();
+                //// Set Query
+                StringBuilder strSQL = new StringBuilder();
+                // Tray Information
+                strSQL.Append(" SELECT A.*");
+                strSQL.Append(" FROM fms_v.tb_dat_trouble   A");
+                strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_trouble    B");
+                strSQL.Append("           ON A.trouble_code = B.trouble_code");
+                //필수값
+                strSQL.Append($" WHERE eqp_type = '{eqpType}'");
+                strSQL.Append($"    AND unit_id = '{unitID}'");
+                strSQL.Append($"    AND event_time     BETWEEN '{ ctrlDateTimeDT2DT1.StartDate.ToString("yyyyMMdd") + ctrlDateTimeDT2DT1.StartDate.ToString("HHmmss")}'");
+                strSQL.Append($"    AND '{ ctrlDateTimeDT2DT1.EndDate.ToString("yyyyMMdd") + ctrlDateTimeDT2DT1.EndDate.ToString("HHmmss")}'");
+                strSQL.Append("  ORDER BY event_time DESC");
 
-                loadEQPQuery["query"] = strSql;
-                var JsonResult = await restClinet.GetJson(JsonApiType.Table, JsonCRUD.SELECT, "query.php", loadEQPQuery);
-                JsonNReturnString GetUniNameJson = JsonConvert.DeserializeObject<JsonNReturnString>(JsonResult);
+                var jsonResult = await rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
 
-                if (GetUniNameJson.code == 0)
+                if (jsonResult != null)
                 {
-                    if (m_strEqpTypeID == "3")
+                    _jsonDatTroubleResponse result = rest.ConvertDatTrouble(jsonResult);
+
+                    if (result != null)
                     {
-                        return GetUniNameJson.returnStringList[0].RetString2;
+                        SetData(result.DATA);
                     }
                     else
                     {
-                        return GetUniNameJson.returnStringList[0].RetString1;
+                        string log = "DatTrouble : jsonResult is null";
+                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
                     }
                 }
-
-                return null;
-
-
+                else
+                {
+                    string log = "DatTrouble : jsonResult is null";
+                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(string.Format("[Exception:LoadAgingRackData] {0}", ex.ToString()));
-                return null;
+                System.Diagnostics.Debug.Print(string.Format("[Exception:LoadTroubleInfo] {0}", ex.ToString()));
             }
         }
         #endregion
 
-        private void ctrlButtonExit_Click(object sender, EventArgs e)
+        #region SetData
+        private void SetData(List<_dat_trouble> data)
         {
-            this.Close();
+            if (data == null || data.Count == 0) return;
+
+            gridTrayInfo.RowCount = data.Count;
+            int row = 0;
+
+            foreach (var item in data)
+            {
+                int col = 0;
+                
+                gridTrayInfo.SetValue(col, row, _EqpName); col++;
+                gridTrayInfo.SetValue(col, row, item.UNIT_ID); col++;
+                gridTrayInfo.SetValue(col, row, item.TROUBLE_CATEGORY); col++;
+                gridTrayInfo.SetValue(col, row, item.TROUBLE_CODE); col++;
+                gridTrayInfo.SetValue(col, row, item.TROUBLE_CODE); col++;
+                gridTrayInfo.SetValue(col, row, item.EVENT_TIME.Year == 1 ? "" : item.EVENT_TIME.ToString());
+                row++;
+            }
+
+            gridTrayInfo.SetGridViewStyles();
+        }
+        #endregion
+
+        private string GetTimeSpan(DateTime StartDate)
+        {
+            DateTime CurrentTime = DateTime.Now;
+            TimeSpan dateDiff = CurrentTime - StartDate;
+
+            int diffDay = dateDiff.Days;
+            int diffHour = dateDiff.Hours;
+            int diffMinute = dateDiff.Minutes;
+            int diffSecond = dateDiff.Seconds;
+
+            string timeSpan = string.Format("{0:D2}day {1:D2}:{2:D2}:{3:D2}", diffDay, diffHour, diffMinute, diffSecond);
+            return timeSpan;
         }
 
-        private void btnSaveExcel_Click(object sender, EventArgs e)
+        #region Titel Mouse Event
+        private void Title_MouseDownEvnet(object sender, MouseEventArgs e)
         {
-            gridView.GridViewToExportExcel(titBar.TitleText);
+            point = new Point(e.X, e.Y);
         }
 
-        private void ctrlButtonSearch1_Click(object sender, EventArgs e)
+        private void Title_MouseMoveEvnet(object sender, MouseEventArgs e)
         {
-            InitGridView();
-
-            //Set UnitName
-            string strUnitName = GetUnitName().GetAwaiter().GetResult();
-            ctrlTextBoxEqpName1.TextBoxText = strUnitName;
-
-            //Set GridView
-            GetTroubleData().GetAwaiter().GetResult();
+            if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
+            {
+                this.Location = new Point(this.Left - (point.X - e.X), this.Top - (point.Y - e.Y));
+            }
         }
+        #endregion
+
+        #region DataGridView Event
+        //private void GridTrayInfo_MouseCellDoubleClick(int col, int row, object value)
+        //{
+        //    if (col == 2 && row > -1 || col == 3 && row > -1)
+        //    {
+        //        WinTrayInfo form;
+
+        //        if (_Eqplevel > 0)
+        //        {
+        //            _win_lead_time data = _AgingTrayInfo[row];
+        //            form = new WinTrayInfo(_EqpId, data.RACK_ID, value.ToString());
+        //        }
+        //        else
+        //        {
+        //            //_lead_time_chg data = _ChargerTrayInfo[row];
+        //            form = new WinTrayInfo(_EqpId, "", value.ToString());
+        //        }
+                
+        //        form.ShowDialog();
+        //    }
+        //}
+        #endregion
+
+        #region Button Click
+        private void Exit_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+        private void Search_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
     }
 }
-

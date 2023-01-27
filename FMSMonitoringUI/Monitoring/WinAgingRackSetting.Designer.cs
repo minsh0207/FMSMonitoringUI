@@ -44,11 +44,11 @@
             this.PlanTimeSave = new MonitoringUI.Controlls.CButton.CtrlButton();
             this.ctrlDateTimeDT1 = new MonitoringUI.Controlls.CDateTime.CtrlDateTimeDT();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.ConfigurationSave = new MonitoringUI.Controlls.CButton.CtrlButton();
-            this.rbNoOut = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
-            this.rbYesOut = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
             this.rbNoIn = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
             this.rbYesIn = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
+            this.rbYesOut = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
+            this.ConfigurationSave = new MonitoringUI.Controlls.CButton.CtrlButton();
+            this.rbNoOut = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.DataClearSave = new MonitoringUI.Controlls.CButton.CtrlButton();
             this.ctrlRadioButton2 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
@@ -96,15 +96,17 @@
             // 
             // Exit
             // 
+            this.Exit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Exit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.Exit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Exit.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Exit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.Exit.LabelText = "Exit";
             this.Exit.LanguageID = "DEF_Exit";
             this.Exit.Location = new System.Drawing.Point(0, 0);
             this.Exit.Name = "Exit";
-            this.Exit.Size = new System.Drawing.Size(1124, 58);
+            this.Exit.Size = new System.Drawing.Size(170, 40);
             this.Exit.TabIndex = 1;
             this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
@@ -286,16 +288,55 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.ConfigurationSave);
-            this.groupBox2.Controls.Add(this.rbNoOut);
-            this.groupBox2.Controls.Add(this.rbYesOut);
             this.groupBox2.Controls.Add(this.rbNoIn);
             this.groupBox2.Controls.Add(this.rbYesIn);
+            this.groupBox2.Controls.Add(this.rbYesOut);
+            this.groupBox2.Controls.Add(this.ConfigurationSave);
+            this.groupBox2.Controls.Add(this.rbNoOut);
             this.groupBox2.Location = new System.Drawing.Point(12, 39);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(338, 87);
             this.groupBox2.TabIndex = 25;
             this.groupBox2.TabStop = false;
+            // 
+            // rbNoIn
+            // 
+            this.rbNoIn.AutoSize = true;
+            this.rbNoIn.ForeColor = System.Drawing.Color.White;
+            this.rbNoIn.LanguageID = "DEF_Disable_Tray_Load";
+            this.rbNoIn.Location = new System.Drawing.Point(14, 56);
+            this.rbNoIn.Name = "rbNoIn";
+            this.rbNoIn.Size = new System.Drawing.Size(127, 17);
+            this.rbNoIn.TabIndex = 33;
+            this.rbNoIn.TabStop = true;
+            this.rbNoIn.Text = "Disable Tray Load";
+            this.rbNoIn.UseVisualStyleBackColor = true;
+            // 
+            // rbYesIn
+            // 
+            this.rbYesIn.AutoSize = true;
+            this.rbYesIn.ForeColor = System.Drawing.Color.White;
+            this.rbYesIn.LanguageID = "DEF_Enable_Tray_Load";
+            this.rbYesIn.Location = new System.Drawing.Point(14, 26);
+            this.rbYesIn.Name = "rbYesIn";
+            this.rbYesIn.Size = new System.Drawing.Size(124, 17);
+            this.rbYesIn.TabIndex = 32;
+            this.rbYesIn.TabStop = true;
+            this.rbYesIn.Text = "Enable Tray Load";
+            this.rbYesIn.UseVisualStyleBackColor = true;
+            // 
+            // rbYesOut
+            // 
+            this.rbYesOut.AutoSize = true;
+            this.rbYesOut.ForeColor = System.Drawing.Color.White;
+            this.rbYesOut.LanguageID = "DEF_Enable_Tray_Unload";
+            this.rbYesOut.Location = new System.Drawing.Point(14, 26);
+            this.rbYesOut.Name = "rbYesOut";
+            this.rbYesOut.Size = new System.Drawing.Size(135, 17);
+            this.rbYesOut.TabIndex = 34;
+            this.rbYesOut.TabStop = true;
+            this.rbYesOut.Text = "Enable Tray Unload";
+            this.rbYesOut.UseVisualStyleBackColor = true;
             // 
             // ConfigurationSave
             // 
@@ -322,49 +363,6 @@
             this.rbNoOut.TabStop = true;
             this.rbNoOut.Text = "Disable Tray Unload";
             this.rbNoOut.UseVisualStyleBackColor = true;
-            // 
-            // rbYesOut
-            // 
-            this.rbYesOut.AutoSize = true;
-            this.rbYesOut.ForeColor = System.Drawing.Color.White;
-            this.rbYesOut.LanguageID = "DEF_Enable_Tray_Unload";
-            this.rbYesOut.Location = new System.Drawing.Point(14, 26);
-            this.rbYesOut.Name = "rbYesOut";
-            this.rbYesOut.Size = new System.Drawing.Size(135, 17);
-            this.rbYesOut.TabIndex = 34;
-            this.rbYesOut.TabStop = true;
-            this.rbYesOut.Text = "Enable Tray Unload";
-            this.rbYesOut.UseVisualStyleBackColor = true;
-            // 
-            // rbNoIn
-            // 
-            this.rbNoIn.AutoSize = true;
-            this.rbNoIn.Enabled = false;
-            this.rbNoIn.ForeColor = System.Drawing.Color.White;
-            this.rbNoIn.LanguageID = "DEF_Disable_Tray_Load";
-            this.rbNoIn.Location = new System.Drawing.Point(14, 56);
-            this.rbNoIn.Name = "rbNoIn";
-            this.rbNoIn.Size = new System.Drawing.Size(127, 17);
-            this.rbNoIn.TabIndex = 33;
-            this.rbNoIn.TabStop = true;
-            this.rbNoIn.Text = "Disable Tray Load";
-            this.rbNoIn.UseVisualStyleBackColor = true;
-            this.rbNoIn.Visible = false;
-            // 
-            // rbYesIn
-            // 
-            this.rbYesIn.AutoSize = true;
-            this.rbYesIn.Enabled = false;
-            this.rbYesIn.ForeColor = System.Drawing.Color.White;
-            this.rbYesIn.LanguageID = "DEF_Enable_Tray_Load";
-            this.rbYesIn.Location = new System.Drawing.Point(14, 26);
-            this.rbYesIn.Name = "rbYesIn";
-            this.rbYesIn.Size = new System.Drawing.Size(124, 17);
-            this.rbYesIn.TabIndex = 32;
-            this.rbYesIn.TabStop = true;
-            this.rbYesIn.Text = "Enable Tray Load";
-            this.rbYesIn.UseVisualStyleBackColor = true;
-            this.rbYesIn.Visible = false;
             // 
             // groupBox1
             // 

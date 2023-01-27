@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CtrlMonitoring));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ctrlTaggingName5 = new MonitoringUI.Controlls.CtrlTaggingName();
             this.controlStatus = new FMSMonitoringUI.Controlls.CtrlControlStatus();
             this.ctrlLabel16 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.ctrlLabel15 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
@@ -453,6 +454,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.ctrlTaggingName5);
             this.panel1.Controls.Add(this.controlStatus);
             this.panel1.Controls.Add(this.ctrlLabel16);
             this.panel1.Controls.Add(this.ctrlLabel15);
@@ -493,6 +495,22 @@
             this.panel1.Size = new System.Drawing.Size(204, 995);
             this.panel1.TabIndex = 331;
             // 
+            // ctrlTaggingName5
+            // 
+            this.ctrlTaggingName5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlTaggingName5.ColorText = "Re";
+            this.ctrlTaggingName5.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlTaggingName5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.ctrlTaggingName5.LanguageID = "DEF_Rework";
+            this.ctrlTaggingName5.Location = new System.Drawing.Point(13, 891);
+            this.ctrlTaggingName5.Name = "ctrlTaggingName5";
+            this.ctrlTaggingName5.Size = new System.Drawing.Size(179, 23);
+            this.ctrlTaggingName5.StatusCode = "Re";
+            this.ctrlTaggingName5.TabIndex = 110;
+            this.ctrlTaggingName5.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.ctrlTaggingName5.TagText = "Rework";
+            this.ctrlTaggingName5.TextColor = System.Drawing.Color.Black;
+            // 
             // controlStatus
             // 
             this.controlStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
@@ -523,7 +541,7 @@
             this.ctrlLabel15.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.ctrlLabel15.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel15.LanguageID = "DEF_Smoke_Only_or_Both";
-            this.ctrlLabel15.Location = new System.Drawing.Point(18, 902);
+            this.ctrlLabel15.Location = new System.Drawing.Point(18, 871);
             this.ctrlLabel15.Name = "ctrlLabel15";
             this.ctrlLabel15.Size = new System.Drawing.Size(142, 16);
             this.ctrlLabel15.TabIndex = 107;
@@ -536,7 +554,7 @@
             this.ctrlTaggingName4.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlTaggingName4.LanguageID = "DEF_Fire2";
-            this.ctrlTaggingName4.Location = new System.Drawing.Point(11, 876);
+            this.ctrlTaggingName4.Location = new System.Drawing.Point(11, 845);
             this.ctrlTaggingName4.Name = "ctrlTaggingName4";
             this.ctrlTaggingName4.Size = new System.Drawing.Size(179, 23);
             this.ctrlTaggingName4.StatusCode = "F2";
@@ -552,7 +570,7 @@
             this.ctrlLabel14.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.ctrlLabel14.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel14.LanguageID = "DEF_Temperature_Alarm_Only";
-            this.ctrlLabel14.Location = new System.Drawing.Point(18, 858);
+            this.ctrlLabel14.Location = new System.Drawing.Point(18, 827);
             this.ctrlLabel14.Name = "ctrlLabel14";
             this.ctrlLabel14.Size = new System.Drawing.Size(171, 16);
             this.ctrlLabel14.TabIndex = 105;
@@ -565,7 +583,7 @@
             this.ctrlTaggingName2.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlTaggingName2.LanguageID = "DEF_Machine_Trouble";
-            this.ctrlTaggingName2.Location = new System.Drawing.Point(11, 734);
+            this.ctrlTaggingName2.Location = new System.Drawing.Point(11, 703);
             this.ctrlTaggingName2.Name = "ctrlTaggingName2";
             this.ctrlTaggingName2.Size = new System.Drawing.Size(179, 23);
             this.ctrlTaggingName2.StatusCode = "T";
@@ -581,7 +599,7 @@
             this.ctrlLabel13.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.ctrlLabel13.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel13.LanguageID = "DEF_Eqp_Status";
-            this.ctrlLabel13.Location = new System.Drawing.Point(10, 667);
+            this.ctrlLabel13.Location = new System.Drawing.Point(10, 636);
             this.ctrlLabel13.Name = "ctrlLabel13";
             this.ctrlLabel13.Size = new System.Drawing.Size(74, 16);
             this.ctrlLabel13.TabIndex = 102;
@@ -594,7 +612,7 @@
             this.ctrlTaggingName1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlTaggingName1.LanguageID = "DEF_Maintenance";
-            this.ctrlTaggingName1.Location = new System.Drawing.Point(11, 613);
+            this.ctrlTaggingName1.Location = new System.Drawing.Point(11, 591);
             this.ctrlTaggingName1.Name = "ctrlTaggingName1";
             this.ctrlTaggingName1.Size = new System.Drawing.Size(179, 23);
             this.ctrlTaggingName1.StatusCode = "M";
@@ -610,7 +628,7 @@
             this.ctrlLabel12.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.ctrlLabel12.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel12.LanguageID = "DEF_Eqp_Mode";
-            this.ctrlLabel12.Location = new System.Drawing.Point(10, 570);
+            this.ctrlLabel12.Location = new System.Drawing.Point(10, 548);
             this.ctrlLabel12.Name = "ctrlLabel12";
             this.ctrlLabel12.Size = new System.Drawing.Size(70, 16);
             this.ctrlLabel12.TabIndex = 100;
@@ -623,7 +641,7 @@
             this.ctrlLabel11.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.ctrlLabel11.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel11.LanguageID = "DEF_Conveyor_Trye";
-            this.ctrlLabel11.Location = new System.Drawing.Point(10, 336);
+            this.ctrlLabel11.Location = new System.Drawing.Point(10, 327);
             this.ctrlLabel11.Name = "ctrlLabel11";
             this.ctrlLabel11.Size = new System.Drawing.Size(101, 16);
             this.ctrlLabel11.TabIndex = 99;
@@ -649,7 +667,7 @@
             this.ctrlLabel9.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlLabel9.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel9.LanguageID = "DEF_Trouble";
-            this.ctrlLabel9.Location = new System.Drawing.Point(51, 284);
+            this.ctrlLabel9.Location = new System.Drawing.Point(51, 279);
             this.ctrlLabel9.Name = "ctrlLabel9";
             this.ctrlLabel9.Size = new System.Drawing.Size(56, 13);
             this.ctrlLabel9.TabIndex = 97;
@@ -662,7 +680,7 @@
             this.ctrlLabel8.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlLabel8.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel8.LanguageID = "DEF_Tray_On";
-            this.ctrlLabel8.Location = new System.Drawing.Point(51, 250);
+            this.ctrlLabel8.Location = new System.Drawing.Point(51, 246);
             this.ctrlLabel8.Name = "ctrlLabel8";
             this.ctrlLabel8.Size = new System.Drawing.Size(58, 13);
             this.ctrlLabel8.TabIndex = 96;
@@ -684,7 +702,7 @@
             // pictureBox44
             // 
             this.pictureBox44.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox44.Image")));
-            this.pictureBox44.Location = new System.Drawing.Point(17, 274);
+            this.pictureBox44.Location = new System.Drawing.Point(17, 269);
             this.pictureBox44.Name = "pictureBox44";
             this.pictureBox44.Size = new System.Drawing.Size(31, 31);
             this.pictureBox44.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -694,7 +712,7 @@
             // pictureBox43
             // 
             this.pictureBox43.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox43.Image")));
-            this.pictureBox43.Location = new System.Drawing.Point(17, 238);
+            this.pictureBox43.Location = new System.Drawing.Point(17, 235);
             this.pictureBox43.Name = "pictureBox43";
             this.pictureBox43.Size = new System.Drawing.Size(31, 31);
             this.pictureBox43.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -718,7 +736,7 @@
             this.ctrlLabel5.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlLabel5.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel5.LanguageID = "DEF_Real_BCR";
-            this.ctrlLabel5.Location = new System.Drawing.Point(51, 408);
+            this.ctrlLabel5.Location = new System.Drawing.Point(51, 397);
             this.ctrlLabel5.Name = "ctrlLabel5";
             this.ctrlLabel5.Size = new System.Drawing.Size(69, 13);
             this.ctrlLabel5.TabIndex = 89;
@@ -731,7 +749,7 @@
             this.ctrlLabel4.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlLabel4.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel4.LanguageID = "DEF_Virtual_BCR";
-            this.ctrlLabel4.Location = new System.Drawing.Point(51, 372);
+            this.ctrlLabel4.Location = new System.Drawing.Point(51, 363);
             this.ctrlLabel4.Name = "ctrlLabel4";
             this.ctrlLabel4.Size = new System.Drawing.Size(82, 13);
             this.ctrlLabel4.TabIndex = 88;
@@ -744,7 +762,7 @@
             this.ctrlLabel3.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlLabel3.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel3.LanguageID = "DEF_Dispenser";
-            this.ctrlLabel3.Location = new System.Drawing.Point(51, 519);
+            this.ctrlLabel3.Location = new System.Drawing.Point(51, 501);
             this.ctrlLabel3.Name = "ctrlLabel3";
             this.ctrlLabel3.Size = new System.Drawing.Size(73, 13);
             this.ctrlLabel3.TabIndex = 87;
@@ -757,7 +775,7 @@
             this.ctrlLabel2.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlLabel2.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel2.LanguageID = "DEF_Magazine";
-            this.ctrlLabel2.Location = new System.Drawing.Point(51, 482);
+            this.ctrlLabel2.Location = new System.Drawing.Point(51, 467);
             this.ctrlLabel2.Name = "ctrlLabel2";
             this.ctrlLabel2.Size = new System.Drawing.Size(71, 13);
             this.ctrlLabel2.TabIndex = 86;
@@ -770,7 +788,7 @@
             this.ctrlLabel1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlLabel1.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel1.LanguageID = "DEF_MZ/DP";
-            this.ctrlLabel1.Location = new System.Drawing.Point(51, 443);
+            this.ctrlLabel1.Location = new System.Drawing.Point(51, 430);
             this.ctrlLabel1.Name = "ctrlLabel1";
             this.ctrlLabel1.Size = new System.Drawing.Size(53, 13);
             this.ctrlLabel1.TabIndex = 85;
@@ -779,7 +797,7 @@
             // pictureBox34
             // 
             this.pictureBox34.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox34.Image")));
-            this.pictureBox34.Location = new System.Drawing.Point(17, 397);
+            this.pictureBox34.Location = new System.Drawing.Point(17, 386);
             this.pictureBox34.Name = "pictureBox34";
             this.pictureBox34.Size = new System.Drawing.Size(31, 31);
             this.pictureBox34.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -789,7 +807,7 @@
             // pictureBox33
             // 
             this.pictureBox33.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox33.Image")));
-            this.pictureBox33.Location = new System.Drawing.Point(17, 361);
+            this.pictureBox33.Location = new System.Drawing.Point(17, 352);
             this.pictureBox33.Name = "pictureBox33";
             this.pictureBox33.Size = new System.Drawing.Size(31, 31);
             this.pictureBox33.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -803,7 +821,7 @@
             this.ctrlTaggingName16.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlTaggingName16.LanguageID = "DEF_Fire";
-            this.ctrlTaggingName16.Location = new System.Drawing.Point(11, 832);
+            this.ctrlTaggingName16.Location = new System.Drawing.Point(11, 801);
             this.ctrlTaggingName16.Name = "ctrlTaggingName16";
             this.ctrlTaggingName16.Size = new System.Drawing.Size(179, 23);
             this.ctrlTaggingName16.StatusCode = "F";
@@ -819,7 +837,7 @@
             this.ctrlTaggingName17.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlTaggingName17.LanguageID = "DEF_Pause";
-            this.ctrlTaggingName17.Location = new System.Drawing.Point(11, 759);
+            this.ctrlTaggingName17.Location = new System.Drawing.Point(11, 728);
             this.ctrlTaggingName17.Name = "ctrlTaggingName17";
             this.ctrlTaggingName17.Size = new System.Drawing.Size(179, 23);
             this.ctrlTaggingName17.StatusCode = "P";
@@ -835,7 +853,7 @@
             this.ctrlTaggingName18.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlTaggingName18.LanguageID = "DEF_Idle";
-            this.ctrlTaggingName18.Location = new System.Drawing.Point(11, 685);
+            this.ctrlTaggingName18.Location = new System.Drawing.Point(11, 654);
             this.ctrlTaggingName18.Name = "ctrlTaggingName18";
             this.ctrlTaggingName18.Size = new System.Drawing.Size(179, 23);
             this.ctrlTaggingName18.StatusCode = "I";
@@ -851,7 +869,7 @@
             this.ctrlTaggingName19.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlTaggingName19.LanguageID = "DEF_Running";
-            this.ctrlTaggingName19.Location = new System.Drawing.Point(11, 710);
+            this.ctrlTaggingName19.Location = new System.Drawing.Point(11, 679);
             this.ctrlTaggingName19.Name = "ctrlTaggingName19";
             this.ctrlTaggingName19.Size = new System.Drawing.Size(179, 23);
             this.ctrlTaggingName19.StatusCode = "R";
@@ -867,7 +885,7 @@
             this.ctrlTaggingName21.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlTaggingName21.LanguageID = "DEF_Control";
-            this.ctrlTaggingName21.Location = new System.Drawing.Point(11, 588);
+            this.ctrlTaggingName21.Location = new System.Drawing.Point(11, 566);
             this.ctrlTaggingName21.Name = "ctrlTaggingName21";
             this.ctrlTaggingName21.Size = new System.Drawing.Size(179, 23);
             this.ctrlTaggingName21.StatusCode = "C";
@@ -879,7 +897,7 @@
             // pictureBox30
             // 
             this.pictureBox30.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox30.Image")));
-            this.pictureBox30.Location = new System.Drawing.Point(15, 508);
+            this.pictureBox30.Location = new System.Drawing.Point(16, 491);
             this.pictureBox30.Name = "pictureBox30";
             this.pictureBox30.Size = new System.Drawing.Size(31, 31);
             this.pictureBox30.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -889,7 +907,7 @@
             // pictureBox26
             // 
             this.pictureBox26.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox26.Image")));
-            this.pictureBox26.Location = new System.Drawing.Point(16, 472);
+            this.pictureBox26.Location = new System.Drawing.Point(16, 456);
             this.pictureBox26.Name = "pictureBox26";
             this.pictureBox26.Size = new System.Drawing.Size(31, 31);
             this.pictureBox26.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -899,7 +917,7 @@
             // pictureBox25
             // 
             this.pictureBox25.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox25.Image")));
-            this.pictureBox25.Location = new System.Drawing.Point(16, 434);
+            this.pictureBox25.Location = new System.Drawing.Point(16, 421);
             this.pictureBox25.Name = "pictureBox25";
             this.pictureBox25.Size = new System.Drawing.Size(31, 31);
             this.pictureBox25.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -913,7 +931,7 @@
             this.ctrlTaggingName20.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlTaggingName20.LanguageID = "DEF_Loading";
-            this.ctrlTaggingName20.Location = new System.Drawing.Point(11, 807);
+            this.ctrlTaggingName20.Location = new System.Drawing.Point(11, 776);
             this.ctrlTaggingName20.Name = "ctrlTaggingName20";
             this.ctrlTaggingName20.Size = new System.Drawing.Size(179, 23);
             this.ctrlTaggingName20.StatusCode = "L";
@@ -929,7 +947,7 @@
             this.ctrlTaggingName3.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlTaggingName3.LanguageID = "DEF_Stop";
-            this.ctrlTaggingName3.Location = new System.Drawing.Point(11, 783);
+            this.ctrlTaggingName3.Location = new System.Drawing.Point(11, 752);
             this.ctrlTaggingName3.Name = "ctrlTaggingName3";
             this.ctrlTaggingName3.Size = new System.Drawing.Size(179, 23);
             this.ctrlTaggingName3.StatusCode = "S";
@@ -1206,7 +1224,7 @@
             this.ctrlEqpHPC2.Size = new System.Drawing.Size(86, 116);
             this.ctrlEqpHPC2.TabIndex = 585;
             this.ctrlEqpHPC2.TitleText = "HPC JIG#2";
-            this.ctrlEqpHPC2.UnitID = "HPC0100002";
+            this.ctrlEqpHPC2.UnitID = "HPC0110102";
             // 
             // ctrlEqpCharger1
             // 
@@ -2008,7 +2026,7 @@
             this.ctrlEqpHPC1.Size = new System.Drawing.Size(86, 116);
             this.ctrlEqpHPC1.TabIndex = 542;
             this.ctrlEqpHPC1.TitleText = "HPC JIG#1";
-            this.ctrlEqpHPC1.UnitID = "HPC0100001";
+            this.ctrlEqpHPC1.UnitID = "HPC0110101";
             // 
             // ctrlEqpPAC
             // 
@@ -2391,12 +2409,14 @@
             // 
             // button2
             // 
+            this.button2.Enabled = false;
             this.button2.Location = new System.Drawing.Point(266, 851);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(191, 63);
             this.button2.TabIndex = 529;
             this.button2.Text = "TEST2";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Visible = false;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // button1
@@ -5866,5 +5886,6 @@
         private WindowsForms.CtrlLabel ctrlLabel14;
         private WindowsForms.CtrlLabel ctrlLabel16;
         private CtrlControlStatus controlStatus;
+        private MonitoringUI.Controlls.CtrlTaggingName ctrlTaggingName5;
     }
 }

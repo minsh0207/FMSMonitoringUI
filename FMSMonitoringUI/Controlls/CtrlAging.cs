@@ -43,7 +43,11 @@ namespace MonitoringUI.Monitoring
         /// <summary>
         /// string=Eqp Text, Color=Eqp Status Color
         /// </summary>
-        private Dictionary<string, KeyValuePair<string, Color>> _RackStatus; // = new Dictionary<string, KeyValuePair<string, Color>>();
+        private Dictionary<string, KeyValuePair<string, Color>> _RackStatus;
+        /// <summary>
+        /// First=Equipment ID, Second=Eqp Name
+        /// </summary>
+        public Dictionary<string, string> _EqpName;
         #endregion
 
         #region Working Thread
@@ -59,6 +63,7 @@ namespace MonitoringUI.Monitoring
             _Logger = new Logger(logPath, LogMode.Hour);
 
             _RackStatus = new Dictionary<string, KeyValuePair<string, Color>>();
+            _EqpName = new Dictionary<string, string>();
 
             //InitTag();
             InitAgingRack();
@@ -170,7 +175,7 @@ namespace MonitoringUI.Monitoring
             }
             catch(Exception ex)
             {
-                Console.WriteLine(string.Format("[Exception:OnTimer] {0}", ex.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("[Exception:OnTimer] {0}", ex.ToString()));
             }
         }
 
@@ -313,7 +318,7 @@ namespace MonitoringUI.Monitoring
         //    }
         //    catch(Exception ex)
         //    {
-        //        Console.WriteLine(string.Format("[Exception:LoadAgingRackData] {0}", ex.ToString()));
+        //        System.Diagnostics.Debug.Print(string.Format("[Exception:LoadAgingRackData] {0}", ex.ToString()));
         //    }
         //}
 
@@ -405,7 +410,7 @@ namespace MonitoringUI.Monitoring
             }
             catch (Exception ex)        // 예외처리
             {
-                Console.WriteLine(string.Format("[Exception:AgingDataView] {0}", ex.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("[Exception:AgingDataView] {0}", ex.ToString()));
                 // Return
                 return false;
             }
@@ -491,7 +496,7 @@ namespace MonitoringUI.Monitoring
             // 예외처리
             catch (Exception ex)
             {
-                Console.WriteLine(string.Format("[Exception:AgingDataView] {0}", ex.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("[Exception:AgingDataView] {0}", ex.ToString()));
                 // Return
                 return false;
             }
@@ -613,10 +618,6 @@ namespace MonitoringUI.Monitoring
         {
             if (((MouseEventArgs)e).Button == MouseButtons.Right)
             {
-                // MessageBox.Show("show box");
-                // Variable
-                string strUnitID = null;
-
                 try
                 {
                     //timer Stop
@@ -628,13 +629,18 @@ namespace MonitoringUI.Monitoring
 
                     if (rack != null)
                     {
-                        strUnitID = rack.RackID; // +"0";
+                        string strUnitID = rack.RackID; // +"0";
+                        string strEqpType = agingBay.EqpID.Substring(2, 3);
+                        string strEqpName = _EqpName[agingBay.EqpID];
 
                         // Data Check
                         if (strUnitID.Length < 1) return;
 
                         // Trouble Window
-                        WinTroubleInfo winTroubleInfo = new WinTroubleInfo(CDefine.DEF_EQP_TYPE_ID_AGING, strUnitID);
+                        //WinTroubleInfo_old winTroubleInfo = new WinTroubleInfo_old("", "");
+                        //winTroubleInfo.ShowDialog();
+
+                        WinTroubleInfo winTroubleInfo = new WinTroubleInfo(strEqpName, strEqpType, strUnitID);
                         winTroubleInfo.ShowDialog();
                     }
 
@@ -1007,7 +1013,7 @@ namespace MonitoringUI.Monitoring
             }
             catch (Exception ex)
             {
-                Console.WriteLine(string.Format("[Exception:LoadAgingRackData] {0}", ex.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("[Exception:LoadAgingRackData] {0}", ex.ToString()));
             }
         }
         #endregion
@@ -1058,7 +1064,7 @@ namespace MonitoringUI.Monitoring
             }
             catch (Exception ex)
             {
-                Console.WriteLine(string.Format("[Exception:LoadAgingRackCount(Aging)] {0}", ex.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("[Exception:LoadAgingRackCount(Aging)] {0}", ex.ToString()));
             }
         }
         #endregion
@@ -1066,7 +1072,7 @@ namespace MonitoringUI.Monitoring
         #region SetData
         private void SetData(List<_aging_rack_data> data, int selectedIndex)
         {
-            if (data == null && data.Count == 0) return;
+            if (data == null || data.Count == 0) return;
 
             Dictionary<string, List<_aging_rack_data>> rackData = new Dictionary<string, List<_aging_rack_data>>();
 
@@ -1108,7 +1114,7 @@ namespace MonitoringUI.Monitoring
 
         private void SetData(List<_aging_rack_count> data, int selectedIndex)
         {
-            if (data == null && data.Count == 0) return;
+            if (data == null || data.Count == 0) return;
 
             CtrlDataGridView gridRackCount = new CtrlDataGridView();
 

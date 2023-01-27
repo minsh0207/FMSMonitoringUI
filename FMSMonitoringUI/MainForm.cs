@@ -17,6 +17,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Reflection.Emit;
 using System.Resources;
 using System.Runtime.InteropServices;
@@ -47,13 +48,22 @@ namespace FMSMonitoringUI
 
         private Logger _Logger; // { get; set; }
 
-        CtrlMonitoring ctrlMonitoring = null;
-        CtrlAging ctrlAging = null;
-        CtrlFormationCHG ctrlFormationCHG = null;
-        CtrlFormationHPC ctrlFormationHPC = null;
+        CtrlMonitoring _CtrlMonitoring = null;
+        CtrlAging _CtrlAging = null;
+        CtrlFormationCHG _CtrlFormationCHG = null;
+        CtrlFormationHPC _CtrlFormationHPC = null;
 
         delegate void SetCurrentTimeCallback(string strCurrentTime);
 
+        // Trouble Equipment List Dictionary
+        // 사용자가 Trouble PopUP 창을 닫을 경우에 대해 정보를 가지고 있으면서 체크를 해준다.
+        private Dictionary<int, CTroubleEquipmentList> _TroubleEquipmentList;
+
+        #endregion
+
+        #region Working Thread
+        private Thread _ProcessThread;
+        private bool _TheadVisiable;
         #endregion
 
         public MainForm(ApplicationInstance applicationInstance)
@@ -76,11 +86,13 @@ namespace FMSMonitoringUI
             #endregion
 
             #region FMS MonitoringUI
-            ctrlMonitoring = new CtrlMonitoring(_Application);
-            ctrlAging = new CtrlAging();
-            ctrlFormationCHG = new CtrlFormationCHG();
-            ctrlFormationHPC = new CtrlFormationHPC();
+            _CtrlMonitoring = new CtrlMonitoring(_Application);
+            _CtrlAging = new CtrlAging();
+            _CtrlFormationCHG = new CtrlFormationCHG();
+            _CtrlFormationHPC = new CtrlFormationHPC();
             #endregion
+
+            _TroubleEquipmentList = new Dictionary<int, CTroubleEquipmentList>();
 
             FormBorderStyle = FormBorderStyle.Sizable;
             WindowState = FormWindowState.Maximized;
@@ -107,7 +119,7 @@ namespace FMSMonitoringUI
             }
         }
 
-        #region MainForm_Load
+        #region MainForm Event
         private void MainForm_Load(object sender, EventArgs e)
         {
             if (CDefine.m_strLoginID == "")
@@ -124,6 +136,22 @@ namespace FMSMonitoringUI
             tCurrentTime.IsBackground = true;
             tCurrentTime.Start();
             #endregion
+
+            _TheadVisiable = true;
+
+            this.BeginInvoke(new MethodInvoker(delegate ()
+            {
+                _ProcessThread = new Thread(() => ProcessThreadCallback());
+                _ProcessThread.IsBackground = true; _ProcessThread.Start();
+            }));
+        }
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (this._TheadVisiable && this._ProcessThread.IsAlive)
+                this._TheadVisiable = false;
+
+            if (this._TheadVisiable)
+                this._ProcessThread.Abort();
         }
         #endregion
 
@@ -203,16 +231,16 @@ namespace FMSMonitoringUI
         {
             bool bView;
 
-            bView = CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, ctrlMonitoring.ToString());
+            bView = CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, _CtrlMonitoring.ToString());
             barMain.Enabled = bView;
 
-            bView = CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, ctrlAging.ToString());
+            bView = CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, _CtrlAging.ToString());
             barAging.Enabled = bView;
 
-            bView = CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, ctrlFormationCHG.ToString());
+            bView = CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, _CtrlFormationCHG.ToString());
             barFormationCHG.Enabled = bView;
 
-            bView = CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, ctrlFormationHPC.ToString());
+            bView = CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, _CtrlFormationHPC.ToString());
             barFormationHPC.Enabled = bView;
         }
         #endregion
@@ -225,43 +253,43 @@ namespace FMSMonitoringUI
         {
             if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
 
-            ctrlMonitoring.ProcessStart(false);
-            ctrlAging.ProcessStart(false);
-            ctrlFormationCHG.ProcessStart(false);
-            ctrlFormationHPC.ProcessStart(false);
+            _CtrlMonitoring.ProcessStart(false);
+            _CtrlAging.ProcessStart(false);
+            _CtrlFormationCHG.ProcessStart(false);
+            _CtrlFormationHPC.ProcessStart(false);
 
             switch (title)
             {
                 case "Main":
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls[0].Dispose();
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
-                    scMainPanel.Panel2.Controls.Add(ctrlMonitoring);
-                    ctrlMonitoring.ProcessStart(true);
-                    this.Text = CAuthority.GetWindowsText(ctrlMonitoring.ToString());
+                    scMainPanel.Panel2.Controls.Add(_CtrlMonitoring);
+                    _CtrlMonitoring.ProcessStart(true);
+                    this.Text = CAuthority.GetWindowsText(_CtrlMonitoring.ToString());
                     break;
 
                 case "Aging":
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls[0].Dispose();
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
-                    scMainPanel.Panel2.Controls.Add(ctrlAging);
-                    ctrlAging.ProcessStart(true);
-                    this.Text = CAuthority.GetWindowsText(ctrlAging.ToString());
+                    scMainPanel.Panel2.Controls.Add(_CtrlAging);
+                    _CtrlAging.ProcessStart(true);
+                    this.Text = CAuthority.GetWindowsText(_CtrlAging.ToString());
                     break;
 
                 case "Formation(CHG)":
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls[0].Dispose();
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
-                    scMainPanel.Panel2.Controls.Add(ctrlFormationCHG);
-                    ctrlFormationCHG.ProcessStart(true);
-                    this.Text = CAuthority.GetWindowsText(ctrlFormationCHG.ToString());
+                    scMainPanel.Panel2.Controls.Add(_CtrlFormationCHG);
+                    _CtrlFormationCHG.ProcessStart(true);
+                    this.Text = CAuthority.GetWindowsText(_CtrlFormationCHG.ToString());
                     break;
 
                 case "Formation(HPC)":
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls[0].Dispose();
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
-                    scMainPanel.Panel2.Controls.Add(ctrlFormationHPC);
-                    ctrlFormationHPC.ProcessStart(true);
-                    this.Text = CAuthority.GetWindowsText(ctrlFormationHPC.ToString());
+                    scMainPanel.Panel2.Controls.Add(_CtrlFormationHPC);
+                    _CtrlFormationHPC.ProcessStart(true);
+                    this.Text = CAuthority.GetWindowsText(_CtrlFormationHPC.ToString());
                     break;
             }
 
@@ -370,6 +398,215 @@ namespace FMSMonitoringUI
         }
         #endregion
 
+        #region ProcessThreadCallback
+        private void ProcessThreadCallback()
+        {
+            try
+            {
+                while (this._TheadVisiable == true)
+                {
+                    GC.Collect();
+
+                    this.Invoke(new MethodInvoker(delegate ()
+                    {
+                        LoadTroubleEqpAlarm().GetAwaiter().GetResult();
+                    }));
+
+                    Thread.Sleep(5000);
+                }
+            }
+            catch (Exception ex)
+            {
+                // System Debug
+                System.Diagnostics.Debug.Print(string.Format("### FormationCHG ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+            }
+        }
+        #endregion
+
+        #region LoadTroubleAlarm
+        private async Task LoadTroubleEqpAlarm()
+        {
+            try
+            {
+                RESTClient rest = new RESTClient();
+                //// Set Query
+                StringBuilder strSQL = new StringBuilder();
+
+                strSQL.Append(" SELECT A.id, A.eqp_id, A.eqp_status, A.eqp_name, A.eqp_name_local, A.eqp_trouble_code,");
+                strSQL.Append("        B.trouble_name, B.trouble_name_local");
+                strSQL.Append(" FROM fms_v.tb_mst_eqp   A");
+                strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_trouble    B");
+                strSQL.Append("         ON A.eqp_type = B.eqp_type AND A.eqp_trouble_code = B.trouble_code");
+                //필수값
+                strSQL.Append(" WHERE (A.eqp_type NOT IN ('SCH', 'SCF', 'SCL'))");
+                strSQL.Append("    AND ((A.eqp_type = 'HPC' AND A.unit_id IS NOT NULL)");
+                strSQL.Append("      OR (A.eqp_type = 'CHG' AND A.unit_id IS NOT NULL)");
+                strSQL.Append("      OR (A.eqp_type NOT IN ('HPC', 'CHG')))");
+                strSQL.Append("    AND (A.eqp_status = 'T' OR A.eqp_status = 'F' OR A.eqp_status = 'F2')");
+
+                var jsonResult = await rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+
+                if (jsonResult != null)
+                {
+                    _jsonTroubleEquipmentResponse result = rest.ConvertTroubleEquiment(jsonResult);
+
+                    if (result != null)
+                    {
+                        SetData(result.DATA);
+
+                        foreach (var trouble in _TroubleEquipmentList)
+                        {
+                            if (trouble.Value.bStatus != trouble.Value.bStatusPrev ||
+                                trouble.Value.strTroubleCode != trouble.Value.strTroubleCodePrev)
+                            {
+                                trouble.Value.bStatusPrev = trouble.Value.bStatus;
+                                trouble.Value.strTroubleCodePrev = trouble.Value.strTroubleCode;
+
+                                if (trouble.Value.bStatus == true)
+                                {
+                                    //if (cbUsePopUp.Checked)
+                                    TroubleWindowShow(trouble.Value.nEqpTypeID, trouble.Value.strUnitName, trouble.Value.strContent);
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        string log = "MstTrouble : result is null";
+                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                    }
+                }
+                else
+                {
+                    string log = "MstTrouble : jsonResult is null";
+                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                }
+
+                //rest = null;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print(string.Format("[Exception:LoadTroubleAlarm] {0}", ex.ToString()));
+            }
+        }
+        #endregion
+        #region SetData
+        public void SetData(List<_trouble_equipment_list> data)
+        {
+            if (data == null || data.Count == 0)
+            {
+                _TroubleEquipmentList.Clear();
+                return;
+            }
+
+            bool bStatus = true;
+            bool bStatusPrev = false;
+
+            // 설비에서 Alarm 해지 시 _TroubleEquipmentList에서도 제거해 준다.
+            for (int i = 0; i < _TroubleEquipmentList.Count; i++)
+            {
+                int nEqpTypeID = _TroubleEquipmentList.Keys.ToList()[i];
+
+                var varTemp = data.FirstOrDefault(t => t.ID == nEqpTypeID);
+
+                if (varTemp == null)
+                {
+                    _TroubleEquipmentList.Remove(nEqpTypeID);
+                }
+            }
+
+            foreach (var item in data)
+            {
+                bStatus = true;         //
+                bStatusPrev = false;
+
+                if (_TroubleEquipmentList.ContainsKey(item.ID) == false)
+                {
+                    TroubleEquipmentListAdd(item, bStatus, bStatusPrev);
+                }
+                else
+                {
+                    var varTemp = _TroubleEquipmentList[item.ID];
+
+                    varTemp.bStatusPrev = varTemp.bStatus;
+                    varTemp.bStatus = bStatus;
+                    varTemp.strStatus = item.EQP_STATUS == "T" ? "TROUBLE" : "FIRE";
+                    varTemp.strContent = CDefine.m_enLanguage == enLoginLanguage.English ? item.TROUBLE_NAME : item.TROUBLE_NAME_LOCAL;
+                    varTemp.strTroubleCode = item.EQP_TROUBLE_CODE;
+                    varTemp.nAlarmCnt++;
+                }
+            }
+        }
+        #endregion
+
+        #region Trouble Equipment List Add
+        /////////////////////////////////////////////////////////////////////
+        //	Trouble Equipment List Add
+        //===================================================================
+        private void TroubleEquipmentListAdd(_trouble_equipment_list troubleData, bool bStatus, bool bStatusPrev)
+        {
+            try
+            {
+                // Add Data
+                CTroubleEquipmentList troubleEquipmentList = new CTroubleEquipmentList
+                {
+                    nEqpTypeID = troubleData.ID,
+                    strUnitName = CDefine.m_enLanguage == enLoginLanguage.English ? troubleData.EQP_NAME : troubleData.EQP_NAME_LOCAL,
+                    bStatus = bStatus,
+                    bStatusPrev = bStatusPrev,
+                    strStatus = troubleData.EQP_STATUS == "T" ? "TROUBLE" : "FIRE",
+                    strContent = CDefine.m_enLanguage == enLoginLanguage.English ? troubleData.TROUBLE_NAME : troubleData.TROUBLE_NAME_LOCAL,
+                    strTroubleCode = troubleData.EQP_TROUBLE_CODE,
+                    nAlarmCnt = 1
+                };
+
+                _TroubleEquipmentList.Add(troubleData.ID, troubleEquipmentList);
+            }
+            catch (Exception ex)
+            {
+                // System Debug
+                System.Diagnostics.Debug.Print(string.Format("### Trouble Equipment List Add Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+            }
+        }
+        #endregion
+
+        #region [Trouble WIndow Show]
+        /////////////////////////////////////////////////////////////////////
+        //	Trouble WIndow Show
+        //===================================================================
+        private void TroubleWindowShow(int nEqpTypeID, string strTitle, string strContent)
+        {
+            try
+            {
+                WinTroubleAlarm troubleAlarm = new WinTroubleAlarm();
+                troubleAlarm.Show();
+                
+                troubleAlarm.lblTroubleName.Text = strContent;
+                troubleAlarm.lblTroubleUnitName.Text = strTitle;
+
+                //switch (nEqpTypeID)
+                //{
+                //    case "CHG":     // CDefine.DEF_EQP_TYPE_ID_FORMATION:
+                //    case "HPC":
+                //        troubleAlarm.lblTroubleUnitName.Text = "Formation " + strTitle;
+                //        break;
+                //    case "HTA":     //CDefine.DEF_EQP_TYPE_ID_AGING:
+                //    case "LTA":
+                //        troubleAlarm.lblTroubleUnitName.Text = "Aging " + strTitle; ;
+                //        break;
+                //    default:
+                //        troubleAlarm.lblTroubleUnitName.Text = strTitle;
+                //        break;
+                //}
+            }
+            catch (Exception ex)
+            {
+                // System Debug
+                System.Diagnostics.Debug.Print(string.Format("### Trouble State Setting Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+            }
+        }
+        #endregion
+
         #region LoadEqpName
         private async Task LoadEqpName()
         {
@@ -396,13 +633,13 @@ namespace FMSMonitoringUI
                     }
                     else
                     {
-                        string log = "AgingRackCount : jsonResult is null";
+                        string log = "MstEqp : jsonResult is null";
                         _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
                     }
                 }
                 else
                 {
-                    string log = "AgingRackCount : jsonResult is null";
+                    string log = "MstEqp : jsonResult is null";
                     _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
                 }
 
@@ -410,7 +647,7 @@ namespace FMSMonitoringUI
             }
             catch (Exception ex)
             {
-                Console.WriteLine(string.Format("[Exception:LoadEqpName] {0}", ex.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("[Exception:LoadEqpName] {0}", ex.ToString()));
             }
         }
         #endregion
@@ -418,7 +655,7 @@ namespace FMSMonitoringUI
         #region SetData
         public void SetData(List<_mst_eqp> data)
         {
-            if (data.Count == 0) return;
+            if (data == null || data.Count == 0) return;
 
             Dictionary<string, string > dict = new Dictionary<string, string>();
             foreach (var item in data)
@@ -433,9 +670,11 @@ namespace FMSMonitoringUI
                 }
             }
 
-            ctrlMonitoring._EqpName = dict;
+            _CtrlMonitoring._EqpName = dict;
+            _CtrlAging._EqpName = dict;
         }
         #endregion
 
+        
     }
 }

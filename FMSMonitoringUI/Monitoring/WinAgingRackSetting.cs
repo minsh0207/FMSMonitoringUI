@@ -94,8 +94,8 @@ namespace FMSMonitoringUI.Monitoring
         #region InitControl
         private void InitControl()
         {
-            int btnPos = (this.Width - CDefine.DEF_EXIT_WIDTH) / 2;   // Button Width Size 170            
-            this.Exit.Padding = new System.Windows.Forms.Padding(btnPos, 10, btnPos, 10);
+            Exit.Left = (this.panel3.Width - Exit.Width) / 2;             
+            Exit.Top = (this.panel3.Height - Exit.Height) / 2;
         }
         #endregion
 
@@ -238,7 +238,7 @@ namespace FMSMonitoringUI.Monitoring
             }
             catch (Exception ex)
             {
-                Console.WriteLine(string.Format("[Exception:LoadAgingRackSetting] {0}", ex.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("[Exception:LoadAgingRackSetting] {0}", ex.ToString()));
             }
         }
         #endregion
@@ -246,7 +246,7 @@ namespace FMSMonitoringUI.Monitoring
         #region SetData
         public void SetData(List<_win_aging_rack> data)
         {
-            if (data == null && data.Count == 0) return;
+            if (data == null || data.Count == 0) return;
 
             int row = 0;
             gridEqpInfo.SetValue(1, row, data[0].RACK_ID); row++;
@@ -277,14 +277,16 @@ namespace FMSMonitoringUI.Monitoring
             gridEqpInfo.SetValue(1, row, data[0].TROUBLE_CODE); row++;
             gridEqpInfo.SetValue(1, row, data[0].TROUBLE_NAME);
 
+            SetConfiguration(data[0].STATUS);
+
             if (data[0].STATUS == "E") return;
 
             for (int i = 0; i < data.Count; i++)
             {
                 row = 0;
                 gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_ID); row++;
-                gridTrayInfo.SetValue(i + 1, row, data[i].LEVEL); row++;
-                gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_INPUT_TIME); row++;
+                gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_ID == "" ? "" : data[i].LEVEL); row++;
+                gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_INPUT_TIME.Year == 1 ? "" : data[i].TRAY_INPUT_TIME.ToString()); row++;
                 gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_ZONE); row++;
                 gridTrayInfo.SetValue(i + 1, row, data[i].MODEL_ID); row++;
                 gridTrayInfo.SetValue(i + 1, row, data[i].ROUTE_ID); row++;
@@ -321,6 +323,24 @@ namespace FMSMonitoringUI.Monitoring
             }
         }
         #endregion
+
+        private void SetConfiguration(string trayStatus)
+        {
+            if (trayStatus == "F")
+            {
+                rbYesIn.Visible = false;
+                rbNoIn.Visible = false;
+                rbYesOut.Visible= true;
+                rbNoOut.Visible= true;
+            }
+            else
+            {
+                rbYesOut.Visible = false;
+                rbNoOut.Visible = false;
+                rbYesIn.Visible = true;
+                rbNoIn.Visible = true;
+            }
+        }
 
         #region Button Event
         private void Exit_Click(object sender, EventArgs e)

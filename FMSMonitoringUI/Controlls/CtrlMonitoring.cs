@@ -10,6 +10,7 @@ using MonitoringUI;
 using MonitoringUI.Common;
 using MonitoringUI.Controlls;
 using MonitoringUI.Monitoring;
+using MonitoringUI.Popup;
 using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI;
 using MySqlX.XDevAPI.Relational;
@@ -655,7 +656,7 @@ namespace FMSMonitoringUI.Controlls
             //}
             //catch (Exception ex)
             //{
-            //    Console.WriteLine(string.Format("[Exception:OnTimer] {0}", ex.ToString()));
+            //    System.Diagnostics.Debug.Print(string.Format("[Exception:OnTimer] {0}", ex.ToString()));
             //}
         }
         #endregion
@@ -741,7 +742,7 @@ namespace FMSMonitoringUI.Controlls
             }
             catch (Exception ex)
             {
-                Console.WriteLine(string.Format("[Exception:LoadEntireEqpList] {0}", ex.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("[Exception:LoadEntireEqpList] {0}", ex.ToString()));
             }
         }
         #endregion
@@ -792,7 +793,7 @@ namespace FMSMonitoringUI.Controlls
             }
             catch (Exception ex)
             {
-                Console.WriteLine(string.Format("[Exception:LoadAgingRackCount] {0}", ex.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("[Exception:LoadAgingRackCount] {0}", ex.ToString()));
             }
         }
         #endregion
@@ -800,7 +801,7 @@ namespace FMSMonitoringUI.Controlls
         #region SetData
         public void SetData(List<_entire_eqp_list> data)
         {
-            if (data.Count == 0) return;
+            if (data == null || data.Count == 0) return;
 
             Dictionary<string, List<_entire_eqp_list>> eqpData = new Dictionary<string, List<_entire_eqp_list>>();
 
@@ -838,7 +839,7 @@ namespace FMSMonitoringUI.Controlls
         // Aging 
         private void SetData(List<_aging_rack_count> data)
         {
-            if (data.Count == 0) return;
+            if (data == null || data.Count == 0) return;
 
             foreach (var aging in data)
             {
@@ -1629,7 +1630,7 @@ namespace FMSMonitoringUI.Controlls
         private void button1_Click(object sender, EventArgs e)
         {
 
-            WinTroubleInfo form = new WinTroubleInfo();
+            WinTroubleInfo_old form = new WinTroubleInfo_old();
             form.ShowDialog();
 
             //string node = "ns=2;i=1000";
@@ -1703,6 +1704,9 @@ namespace FMSMonitoringUI.Controlls
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            WinTroubleAlarm form = new WinTroubleAlarm();
+            form.ShowDialog();
+
             //WinAgingRackSetting form = new WinAgingRackSetting();
             //form.SetData();
             //form.ShowDialog();

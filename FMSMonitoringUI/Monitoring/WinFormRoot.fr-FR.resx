@@ -252,8 +252,14 @@
   <data name="DEF_Equipment_Control" xml:space="preserve">
     <value>FR-Equipment Control</value>
   </data>
+  <data name="DEF_Equipment_Name" xml:space="preserve">
+    <value>FR-Equipment Name</value>
+  </data>
   <data name="DEF_Etc_Aging" xml:space="preserve">
     <value>FR-Etc Aging</value>
+  </data>
+  <data name="DEF_Event_Time" xml:space="preserve">
+    <value>FR-Event Time</value>
   </data>
   <data name="DEF_Exit" xml:space="preserve">
     <value>FR-Exit</value>
@@ -438,6 +444,9 @@
   <data name="DEF_Resume_Paused_Process" xml:space="preserve">
     <value>FR-Resume Paused Process</value>
   </data>
+  <data name="DEF_Rework" xml:space="preserve">
+    <value>Rework</value>
+  </data>
   <data name="DEF_Running" xml:space="preserve">
     <value>FR-Running</value>
   </data>
@@ -521,6 +530,9 @@
   </data>
   <data name="DEF_Trouble_Status" xml:space="preserve">
     <value>FR-Trouble Status :</value>
+  </data>
+  <data name="DEF_Unit_ID" xml:space="preserve">
+    <value>FR-Unit ID</value>
   </data>
   <data name="DEF_Unloading" xml:space="preserve">
     <value>FR-Unloading</value>
