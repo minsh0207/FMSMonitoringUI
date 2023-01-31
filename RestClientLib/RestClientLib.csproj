@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Common\CConstants.cs" />
     <Compile Include="Common\CRestDefine.cs" />
+    <Compile Include="JSON\_jsonUpdateBase.cs" />
     <Compile Include="JSON\_jsonDatCell.cs" />
     <Compile Include="JSON\_jsonDatCellProc.cs" />
     <Compile Include="JSON\_jsonDatLot.cs" />
@@ -96,6 +97,8 @@
     <Compile Include="Monitoring\_jsonCtrlFormationHPCTemp.cs" />
     <Compile Include="Monitoring\_jsonCtrlFormationHPC.cs" />
     <Compile Include="Monitoring\_jsonCtrlFormationCHG.cs" />
+    <Compile Include="Monitoring\_jsonManualCommand.cs" />
+    <Compile Include="Monitoring\_jsonTroubleAging.cs" />
     <Compile Include="Monitoring\_jsonTroubleEquipment.cs" />
     <Compile Include="Monitoring\_jsonEntireEqpList.cs" />
     <Compile Include="Monitoring\_jsonWinFormationHPC.cs" />

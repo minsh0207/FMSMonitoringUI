@@ -30,7 +30,7 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lbTitle = new System.Windows.Forms.Label();
-            this.ctrlButton1 = new MonitoringUI.Controlls.CButton.CtrlButton();
+            this.btnLeadTime = new MonitoringUI.Controlls.CButton.CtrlButton();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -64,7 +64,7 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.ctrlButton1);
+            this.splitContainer1.Panel2.Controls.Add(this.btnLeadTime);
             this.splitContainer1.Size = new System.Drawing.Size(163, 27);
             this.splitContainer1.SplitterDistance = 62;
             this.splitContainer1.TabIndex = 57;
@@ -82,18 +82,18 @@
             this.lbTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lbTitle.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseDoubleClick);
             // 
-            // ctrlButton1
+            // btnLeadTime
             // 
-            this.ctrlButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlButton1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ctrlButton1.Font = new System.Drawing.Font("돋움", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ctrlButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlButton1.LabelText = "Lead Time";
-            this.ctrlButton1.LanguageID = "";
-            this.ctrlButton1.Location = new System.Drawing.Point(0, 0);
-            this.ctrlButton1.Name = "ctrlButton1";
-            this.ctrlButton1.Size = new System.Drawing.Size(95, 25);
-            this.ctrlButton1.TabIndex = 0;
+            this.btnLeadTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.btnLeadTime.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnLeadTime.Font = new System.Drawing.Font("돋움", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnLeadTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.btnLeadTime.LabelText = "Lead Time";
+            this.btnLeadTime.LanguageID = "DEF_Lead_Time";
+            this.btnLeadTime.Location = new System.Drawing.Point(0, 0);
+            this.btnLeadTime.Name = "btnLeadTime";
+            this.btnLeadTime.Size = new System.Drawing.Size(95, 25);
+            this.btnLeadTime.TabIndex = 0;
             // 
             // label12
             // 
@@ -270,7 +270,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Name = "CtrlEqpCharger";
             this.Size = new System.Drawing.Size(163, 134);
-            this.Load += new System.EventHandler(this.CtrlEqpControl_Load);
+            this.Load += new System.EventHandler(this.CtrlEqpCharger_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -283,7 +283,7 @@
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label lbTitle;
-        private MonitoringUI.Controlls.CButton.CtrlButton ctrlButton1;
+        private MonitoringUI.Controlls.CButton.CtrlButton btnLeadTime;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;

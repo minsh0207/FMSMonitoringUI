@@ -164,25 +164,9 @@ namespace FMSMonitoringUI.Monitoring
         #region InitLanguage
         private void InitLanguage()
         {
-            foreach (var ctl in panel1.Controls)
-            {
-                if (ctl.GetType() == typeof(CtrlTitleBar))
-                {
-                    CtrlTitleBar control = ctl as CtrlTitleBar;
-                    control.CallLocalLanguage();
-                }
-            }
+            //titBar.CallLocalLanguage();
 
-            foreach (var ctl in panel2.Controls)
-            {
-                if (ctl.GetType() == typeof(CtrlButton))
-                {
-                    CtrlButton control = ctl as CtrlButton;
-                    control.CallLocalLanguage();
-                }
-            }
-
-            foreach (var ctl in panel3.Controls)
+            foreach (var ctl in gbSCrane.Controls)
             {
                 if (ctl.GetType() == typeof(CtrlGroupBox))
                 {
@@ -200,6 +184,27 @@ namespace FMSMonitoringUI.Monitoring
                     control.CallLocalLanguage();
                 }
             }
+
+            foreach (var ctl in gbFMS.Controls)
+            {
+                if (ctl.GetType() == typeof(CtrlGroupBox))
+                {
+                    CtrlGroupBox control = ctl as CtrlGroupBox;
+                    control.CallLocalLanguage();
+                }
+                else if (ctl.GetType() == typeof(CtrlLabelBox))
+                {
+                    CtrlLabelBox control = ctl as CtrlLabelBox;
+                    control.CallLocalLanguage();
+                }
+                else if (ctl.GetType() == typeof(CtrlLabel))
+                {
+                    CtrlLabel control = ctl as CtrlLabel;
+                    control.CallLocalLanguage();
+                }
+            }
+
+            Exit.CallLocalLanguage();
         }
         #endregion
 
@@ -234,20 +239,25 @@ namespace FMSMonitoringUI.Monitoring
 
         private void InitGridViewCraneCmd()
         {
-            List<string> lstTitle = new List<string>();
-            lstTitle.Add("");
-            lstTitle.Add("From Location");   
-            lstTitle.Add("To Location");
+            List<string> lstTitle = new List<string>
+            {
+                "",
+                LocalLanguage.GetItemString("DEF_From_Location"),
+                LocalLanguage.GetItemString("DEF_To_Location")
+            };
+
             gridCraneCmd.AddColumnHeaderList(lstTitle);
             gridCraneCmd.ColumnHeadersVisible(true);
 
-            lstTitle = new List<string>();
-            lstTitle.Add("Line");
-            lstTitle.Add("Bay");
-            lstTitle.Add("Floor");
-            lstTitle.Add("Deep");
-            lstTitle.Add("Station");
-            lstTitle.Add("Forking Enable");
+            lstTitle = new List<string>
+            {
+                LocalLanguage.GetItemString("DEF_Line"),
+                LocalLanguage.GetItemString("DEF_Bay"),
+                LocalLanguage.GetItemString("DEF_Floor"),
+                LocalLanguage.GetItemString("DEF_Deep"),
+                LocalLanguage.GetItemString("DEF_Station"),
+                LocalLanguage.GetItemString("DEF_Forking_Enable")
+            };
             gridCraneCmd.AddRowsHeaderList(lstTitle);
 
             gridCraneCmd.ColumnHeadersHeight(24);

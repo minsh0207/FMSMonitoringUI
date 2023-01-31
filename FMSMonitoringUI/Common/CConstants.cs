@@ -40,6 +40,14 @@ namespace MonitoringUI.Common
         Save
     }
 
+    #region Manual Command Type
+    public enum enCommnadType
+    {
+        ConfigurationSave,
+        PlanTimeSave,
+        DataClearSave
+    }
+    #endregion    
 
     // File time
     public enum enFileTimeMode

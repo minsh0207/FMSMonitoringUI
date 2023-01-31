@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.lbTitle = new System.Windows.Forms.Label();
             this.dtpFrom = new System.Windows.Forms.DateTimePicker();
+            this.lbTitle = new System.Windows.Forms.Label();
             this.tableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,17 +49,6 @@
             this.tableLayoutPanel.Size = new System.Drawing.Size(241, 29);
             this.tableLayoutPanel.TabIndex = 0;
             // 
-            // lbTitle
-            // 
-            this.lbTitle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbTitle.ForeColor = System.Drawing.Color.White;
-            this.lbTitle.Location = new System.Drawing.Point(3, 0);
-            this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(95, 29);
-            this.lbTitle.TabIndex = 0;
-            this.lbTitle.Text = "Title";
-            this.lbTitle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // dtpFrom
             // 
             this.dtpFrom.CalendarFont = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
@@ -71,6 +60,18 @@
             this.dtpFrom.Name = "dtpFrom";
             this.dtpFrom.Size = new System.Drawing.Size(134, 22);
             this.dtpFrom.TabIndex = 3;
+            this.dtpFrom.ValueChanged += new System.EventHandler(this.dtpFrom_ValueChanged);
+            // 
+            // lbTitle
+            // 
+            this.lbTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbTitle.ForeColor = System.Drawing.Color.White;
+            this.lbTitle.Location = new System.Drawing.Point(3, 0);
+            this.lbTitle.Name = "lbTitle";
+            this.lbTitle.Size = new System.Drawing.Size(95, 29);
+            this.lbTitle.TabIndex = 0;
+            this.lbTitle.Text = "Title";
+            this.lbTitle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // CtrlDateTimeDT
             // 

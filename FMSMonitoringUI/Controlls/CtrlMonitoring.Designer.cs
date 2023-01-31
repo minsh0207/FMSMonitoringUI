@@ -268,12 +268,10 @@
             this.bcrMarker2 = new ControlGallery.BCRMarker();
             this.bcrMarker1 = new ControlGallery.BCRMarker();
             this.ctrlSiteTrack34 = new ControlGallery.CtrlSiteTrack();
-            this.label20 = new System.Windows.Forms.Label();
             this.ctrlSiteTrack31 = new ControlGallery.CtrlSiteTrack();
             this.ctrlSiteTrack30 = new ControlGallery.CtrlSiteTrack();
             this.ctrlSiteTrack29 = new ControlGallery.CtrlSiteTrack();
             this.craneCarriageSmall4 = new ControlGallery.CraneCarriageSmall(this.components);
-            this.label21 = new System.Windows.Forms.Label();
             this.ctrlSiteTrack1 = new ControlGallery.CtrlSiteTrack();
             this.ctrlSiteTrack2 = new ControlGallery.CtrlSiteTrack();
             this.ctrlSiteTrack28 = new ControlGallery.CtrlSiteTrack();
@@ -319,6 +317,8 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.m_timer = new System.Windows.Forms.Timer(this.components);
+            this.ctrlLabel6 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
+            this.ctrlLabel17 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox44)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).BeginInit();
@@ -499,6 +499,7 @@
             // 
             this.ctrlTaggingName5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlTaggingName5.ColorText = "Re";
+            this.ctrlTaggingName5.Enabled = false;
             this.ctrlTaggingName5.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlTaggingName5.LanguageID = "DEF_Rework";
@@ -510,6 +511,7 @@
             this.ctrlTaggingName5.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ctrlTaggingName5.TagText = "Rework";
             this.ctrlTaggingName5.TextColor = System.Drawing.Color.Black;
+            this.ctrlTaggingName5.Visible = false;
             // 
             // controlStatus
             // 
@@ -959,6 +961,8 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.ctrlLabel17);
+            this.panel2.Controls.Add(this.ctrlLabel6);
             this.panel2.Controls.Add(this.ctrlEqpHPC2);
             this.panel2.Controls.Add(this.ctrlEqpCharger1);
             this.panel2.Controls.Add(this.ctrlEqpLTAging4);
@@ -1157,12 +1161,10 @@
             this.panel2.Controls.Add(this.bcrMarker2);
             this.panel2.Controls.Add(this.bcrMarker1);
             this.panel2.Controls.Add(this.ctrlSiteTrack34);
-            this.panel2.Controls.Add(this.label20);
             this.panel2.Controls.Add(this.ctrlSiteTrack31);
             this.panel2.Controls.Add(this.ctrlSiteTrack30);
             this.panel2.Controls.Add(this.ctrlSiteTrack29);
             this.panel2.Controls.Add(this.craneCarriageSmall4);
-            this.panel2.Controls.Add(this.label21);
             this.panel2.Controls.Add(this.ctrlSiteTrack1);
             this.panel2.Controls.Add(this.ctrlSiteTrack2);
             this.panel2.Controls.Add(this.ctrlSiteTrack28);
@@ -2421,12 +2423,14 @@
             // 
             // button1
             // 
+            this.button1.Enabled = false;
             this.button1.Location = new System.Drawing.Point(37, 851);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(191, 63);
             this.button1.TabIndex = 528;
             this.button1.Text = "TEST";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // pictureBox38
@@ -4080,20 +4084,6 @@
             this.ctrlSiteTrack34.TabIndex = 382;
             this.ctrlSiteTrack34.TextRotateAngle = 0;
             // 
-            // label20
-            // 
-            this.label20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
-            this.label20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label20.CausesValidation = false;
-            this.label20.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
-            this.label20.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label20.Location = new System.Drawing.Point(1089, 32);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(72, 29);
-            this.label20.TabIndex = 380;
-            this.label20.Text = "OUTPUT";
-            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // ctrlSiteTrack31
             // 
             this.ctrlSiteTrack31.CVPLCListDeviceID = 0;
@@ -4204,20 +4194,6 @@
             this.craneCarriageSmall4.TabIndex = 335;
             this.craneCarriageSmall4.Text = "C";
             this.craneCarriageSmall4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label21
-            // 
-            this.label21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
-            this.label21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label21.CausesValidation = false;
-            this.label21.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
-            this.label21.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label21.Location = new System.Drawing.Point(1164, 32);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(72, 29);
-            this.label21.TabIndex = 381;
-            this.label21.Text = "INPUT";
-            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ctrlSiteTrack1
             // 
@@ -5451,6 +5427,30 @@
             this.label29.Size = new System.Drawing.Size(269, 162);
             this.label29.TabIndex = 577;
             // 
+            // ctrlLabel6
+            // 
+            this.ctrlLabel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
+            this.ctrlLabel6.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel6.LanguageID = "DEF_OUTPUT";
+            this.ctrlLabel6.Location = new System.Drawing.Point(1088, 32);
+            this.ctrlLabel6.Name = "ctrlLabel6";
+            this.ctrlLabel6.Size = new System.Drawing.Size(72, 29);
+            this.ctrlLabel6.TabIndex = 586;
+            this.ctrlLabel6.Text = "OUTPUT";
+            this.ctrlLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ctrlLabel17
+            // 
+            this.ctrlLabel17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
+            this.ctrlLabel17.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel17.LanguageID = "DEF_INPUT";
+            this.ctrlLabel17.Location = new System.Drawing.Point(1162, 32);
+            this.ctrlLabel17.Name = "ctrlLabel17";
+            this.ctrlLabel17.Size = new System.Drawing.Size(72, 29);
+            this.ctrlLabel17.TabIndex = 587;
+            this.ctrlLabel17.Text = "INPUT";
+            this.ctrlLabel17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // CtrlMonitoring
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -5789,12 +5789,10 @@
         private ControlGallery.BCRMarker bcrMarker2;
         private ControlGallery.BCRMarker bcrMarker1;
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack34;
-        private System.Windows.Forms.Label label20;
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack31;
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack30;
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack29;
         private ControlGallery.CraneCarriageSmall craneCarriageSmall4;
-        private System.Windows.Forms.Label label21;
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack1;
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack2;
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack28;
@@ -5887,5 +5885,7 @@
         private WindowsForms.CtrlLabel ctrlLabel16;
         private CtrlControlStatus controlStatus;
         private MonitoringUI.Controlls.CtrlTaggingName ctrlTaggingName5;
+        private WindowsForms.CtrlLabel ctrlLabel17;
+        private WindowsForms.CtrlLabel ctrlLabel6;
     }
 }

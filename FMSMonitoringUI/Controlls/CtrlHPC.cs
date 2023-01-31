@@ -22,6 +22,19 @@ namespace FMSMonitoringUI.Controlls
     public partial class CtrlHPC : UserControlEqp
     {
         #region Properties
+        string _EqpType = "";
+        [DisplayName("EQP TYPE"), Description("EQP TYPE"), Category("GroupBox Setting")]
+        public string EqpType
+        {
+            get
+            {
+                return _EqpType;
+            }
+            set
+            {
+                _EqpType = value;
+            }
+        }
         string _unitD = "";
         [DisplayName("Unit ID"), Description("Unit ID"), Category("GroupBox Setting")]
         public string UnitID
@@ -170,11 +183,13 @@ namespace FMSMonitoringUI.Controlls
         }
         #endregion
 
+        #region lbEqpType_MouseDoubleClick
         private void lbEqpType_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            WinFormationHPC form = new WinFormationHPC(lbRackID.Text, UnitID);            
+            WinFormationHPC form = new WinFormationHPC(lbRackID.Text, EqpID, EqpType, UnitID);            
             form.Show();
         }
+        #endregion
 
         #region GetOperationMode 
         private string GetOperationMode(int mode, bool fullString = true)
@@ -184,31 +199,31 @@ namespace FMSMonitoringUI.Controlls
             switch (mode)
             {
                 case 1:
-                    opModeName = "OCV";
+                    opModeName = LocalLanguage.GetItemString("DEF_OCV");
                     break;
                 case 2:
                     if (fullString)
-                        opModeName = "Charge (CC)";
+                        opModeName = LocalLanguage.GetItemString("DEF_Charge") + " (CC)";
                     else
-                        opModeName = "Charge";
+                        opModeName = LocalLanguage.GetItemString("DEF_Charge");
                     break;
                 case 4:
                     if (fullString)
-                        opModeName = "Charge (CCCV)";
+                        opModeName = LocalLanguage.GetItemString("DEF_Charge") + " (CCCV)";
                     else
-                        opModeName = "Charge";
+                        opModeName = LocalLanguage.GetItemString("DEF_Charge");
                     break;
                 case 8:
                     if (fullString)
-                        opModeName = "Discharge (CC)";
+                        opModeName = LocalLanguage.GetItemString("DEF_Discharge") + " (CC)";
                     else
-                        opModeName = "Discharge";
+                        opModeName = LocalLanguage.GetItemString("DEF_Discharge");
                     break;
                 case 16:
                     if (fullString)
-                        opModeName = "Discharge (CCCV)";
+                        opModeName = LocalLanguage.GetItemString("DEF_Discharge") + " (CCCV)";
                     else
-                        opModeName = "Discharge";
+                        opModeName = LocalLanguage.GetItemString("DEF_Discharge");
                     break;
             }
 
@@ -224,40 +239,40 @@ namespace FMSMonitoringUI.Controlls
             switch (status)
             {
                 case "C":
-                    statusName = "Control Mode";
+                    statusName = LocalLanguage.GetItemString("DEF_Control_Mode").Replace(" :", "");
                     break;
                 case "M":
-                    statusName = "Maintenance Mode";
+                    statusName = LocalLanguage.GetItemString("DEF_Maintenance_Mode");
                     break;
                 case "I":
-                    statusName = "Idle";
+                    statusName = LocalLanguage.GetItemString("DEF_Idle");
                     break;
                 case "R":
-                    statusName = "Running";
+                    statusName = LocalLanguage.GetItemString("DEF_Running");
                     break;
                 case "T":
-                    statusName = "Machine Trouble";
+                    statusName = LocalLanguage.GetItemString("DEF_Machine_Trouble");
                     break;
                 case "P":
-                    statusName = "Pause";
+                    statusName = LocalLanguage.GetItemString("DEF_Pause");
                     break;
                 case "S":
-                    statusName = "Stop";
+                    statusName = LocalLanguage.GetItemString("DEF_Stop");
                     break;
                 case "L":
-                    statusName = "Loading";
+                    statusName = LocalLanguage.GetItemString("DEF_Loading");
                     break;
                 case "F":
                     if (fullString)
-                        statusName = $"Fire\r\n(Temperature Alarm Only)";
+                        statusName = $"{LocalLanguage.GetItemString("DEF_Fire")}\r\n{LocalLanguage.GetItemString("DEF_Temperature_Alarm_Only")}";
                     else
-                        statusName = "Fire";                    
+                        statusName = LocalLanguage.GetItemString("DEF_Fire");
                     break;
                 case "F2":
                     if (fullString)
-                        statusName = $"Fire\r\n(Smoke Only or Both)";
+                        statusName = $"{LocalLanguage.GetItemString("DEF_Fire")}\r\n{LocalLanguage.GetItemString("DEF_Smoke_Only_or_Both")}";
                     else
-                        statusName = "Fire2";
+                        statusName = LocalLanguage.GetItemString("DEF_Fire2");
                     break;
             }
 

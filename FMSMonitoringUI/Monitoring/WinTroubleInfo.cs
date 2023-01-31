@@ -16,6 +16,7 @@ using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -48,7 +49,7 @@ namespace FMSMonitoringUI.Monitoring
 
             InitControl();
             InitGridViewTray();
-                        
+            InitLanguage();
             //InitChart();
         }
 
@@ -62,8 +63,8 @@ namespace FMSMonitoringUI.Monitoring
             }
 
             #region Title Mouse Event
-            ctrlTitleBar.MouseDown_Evnet += Title_MouseDownEvnet;
-            ctrlTitleBar.MouseMove_Evnet += Title_MouseMoveEvnet;
+            titBar.MouseDown_Evnet += Title_MouseDownEvnet;
+            titBar.MouseMove_Evnet += Title_MouseMoveEvnet;
             #endregion
 
             //#region DataGridView Event
@@ -107,14 +108,25 @@ namespace FMSMonitoringUI.Monitoring
             Exit.Left = (this.panel2.Width - Exit.Width) / 2;             
             Exit.Top = (this.panel2.Height - Exit.Height) / 2;
 
-            ctrlDateTimeDT2DT1.InitControl(ctrlDateTimeDT2DT1.Height);
+            dtSearchPriod.InitControl(dtSearchPriod.Height);
 
-            ctrlDateTimeDT2DT1.StartDate = DateTime.Now.AddDays(-5);
-            ctrlDateTimeDT2DT1.EndDate = DateTime.Now.AddDays(1);
+            dtSearchPriod.StartDate = DateTime.Now.AddDays(-5);
+            dtSearchPriod.EndDate = DateTime.Now.AddDays(1);
 
             string rackName = $"{_UnitID.Substring(1,2)}Line-{_UnitID.Substring(3, 1)}Lane-{_UnitID.Substring(4, 2)}Bay-{_UnitID.Substring(6, 2)}F";
             lbRackID.TextData = rackName;
 
+        }
+        #endregion
+
+        #region InitLanguage
+        private void InitLanguage()
+        {
+            titBar.CallLocalLanguage();
+            lbRackID.CallLocalLanguage();
+            Search.CallLocalLanguage();
+            dtSearchPriod.CallLocalLanguage();
+            Exit.CallLocalLanguage();
         }
         #endregion
 
@@ -182,29 +194,33 @@ namespace FMSMonitoringUI.Monitoring
         {
             try
             {
+#if DEBUG
                 unitID = "HPC0110101";
                 eqpType = "HPC";
-
+#endif
                 RESTClient rest = new RESTClient();
                 //// Set Query
                 StringBuilder strSQL = new StringBuilder();
                 // Tray Information
-                strSQL.Append(" SELECT A.*");
+                strSQL.Append(" SELECT A.*,");
+                strSQL.Append("        B.trouble_name, B.trouble_name_local");
                 strSQL.Append(" FROM fms_v.tb_dat_trouble   A");
                 strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_trouble    B");
                 strSQL.Append("           ON A.trouble_code = B.trouble_code");
                 //필수값
-                strSQL.Append($" WHERE eqp_type = '{eqpType}'");
-                strSQL.Append($"    AND unit_id = '{unitID}'");
-                strSQL.Append($"    AND event_time     BETWEEN '{ ctrlDateTimeDT2DT1.StartDate.ToString("yyyyMMdd") + ctrlDateTimeDT2DT1.StartDate.ToString("HHmmss")}'");
-                strSQL.Append($"    AND '{ ctrlDateTimeDT2DT1.EndDate.ToString("yyyyMMdd") + ctrlDateTimeDT2DT1.EndDate.ToString("HHmmss")}'");
-                strSQL.Append("  ORDER BY event_time DESC");
+                strSQL.Append($" WHERE A.eqp_type = '{eqpType}'");
+                strSQL.Append($"    AND A.unit_id = '{unitID}'");
+                //strSQL.Append($"    AND A.event_time     BETWEEN concat({ ctrlDateTimeDT2DT1.StartDate:yyyyMMdd}, {ctrlDateTimeDT2DT1.StartDate:HHmmss})");
+                //strSQL.Append($"    AND concat({ ctrlDateTimeDT2DT1.EndDate:yyyyMMdd}, {ctrlDateTimeDT2DT1.EndDate:HHmmss})");
+                strSQL.Append($"    AND A.event_time     BETWEEN '{dtSearchPriod.StartDate:yyyyMMddHHmmss}'");
+                strSQL.Append($"    AND '{dtSearchPriod.EndDate:yyyyMMddHHmmss}'");
+                strSQL.Append("  ORDER BY A.event_time DESC");
 
                 var jsonResult = await rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
 
                 if (jsonResult != null)
                 {
-                    _jsonDatTroubleResponse result = rest.ConvertDatTrouble(jsonResult);
+                    _jsonWinTroubleInfoResponse result = rest.ConvertTroubleInfo(jsonResult);
 
                     if (result != null)
                     {
@@ -230,7 +246,7 @@ namespace FMSMonitoringUI.Monitoring
         #endregion
 
         #region SetData
-        private void SetData(List<_dat_trouble> data)
+        private void SetData(List<_trouble_info> data)
         {
             if (data == null || data.Count == 0) return;
 
@@ -313,7 +329,7 @@ namespace FMSMonitoringUI.Monitoring
         }
         private void Search_Click(object sender, EventArgs e)
         {
-
+            LoadTroubleInfo(_EqpType, _UnitID).GetAwaiter().GetResult();
         }
         #endregion
     }

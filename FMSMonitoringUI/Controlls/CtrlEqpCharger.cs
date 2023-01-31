@@ -47,13 +47,14 @@ namespace FMSMonitoringUI.Controlls
         {
             InitializeComponent();
 
-            ctrlButton1.Click += CtrlButton1_Click;
+            btnLeadTime.Click += CtrlButton1_Click;
         }
 
-        #region CtrlEqpControl_Load
-        private void CtrlEqpControl_Load(object sender, EventArgs e)
+        #region CtrlEqpCharger_Load
+        private void CtrlEqpCharger_Load(object sender, EventArgs e)
         {
             InitControl();
+            InitLanguage();
         }
         #endregion
 
@@ -111,6 +112,13 @@ namespace FMSMonitoringUI.Controlls
                 uiTlbEqpMode2.Controls.Add(_chgEqpMode[1, row], 0, row);
                 uiTlbEqpMode3.Controls.Add(_chgEqpMode[2, row], 0, row);
             }
+        }
+        #endregion
+
+        #region InitLanguage
+        private void InitLanguage()
+        {
+            btnLeadTime.CallLocalLanguage();
         }
         #endregion
 

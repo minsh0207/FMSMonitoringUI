@@ -1,8 +1,11 @@
-﻿using MonitoringUI;
+﻿using FMSMonitoringUI.Controlls.WindowsForms;
+using Google.Protobuf.WellKnownTypes;
+using MonitoringUI;
 using MonitoringUI.Common;
 using MonitoringUI.Controlls;
 using MonitoringUI.Controlls.CButton;
 using MonitoringUI.Popup;
+using Newtonsoft.Json.Linq;
 using Novasoft.Logger;
 using OPCUAClientClassLib;
 using Org.BouncyCastle.Ocsp;
@@ -67,6 +70,7 @@ namespace FMSMonitoringUI.Monitoring
             InitGridViewTray();
 
             InitControl();
+            InitLanguage();
 
             #region Title Mouse Event
             titBar.MouseDown_Evnet += Title_MouseDownEvnet;
@@ -98,27 +102,69 @@ namespace FMSMonitoringUI.Monitoring
         #region InitControl
         private void InitControl()
         {
-            Exit.Left = (this.panel3.Width - Exit.Width) / 2;             
+            Exit.Left = (this.panel3.Width - CDefine.DEF_EXIT_WIDTH) / 2;             
             Exit.Top = (this.panel3.Height - Exit.Height) / 2;
+            Exit.Width = CDefine.DEF_EXIT_WIDTH;
+        }
+        #endregion
+
+        #region InitLanguage
+        private void InitLanguage()
+        {
+            titBar.CallLocalLanguage();
+
+            foreach (var ctl in splitContainer2.Panel2.Controls)
+            {
+                if (ctl.GetType() == typeof(CtrlGroupBox))
+                {
+                    CtrlGroupBox grBox = ctl as CtrlGroupBox;
+                    grBox.CallLocalLanguage();
+
+                    foreach (var ctl2 in grBox.Controls)
+                    {
+                        if (ctl2.GetType() == typeof(CtrlRadioButton))
+                        {
+                            CtrlRadioButton tagName = ctl2 as CtrlRadioButton;
+                            tagName.CallLocalLanguage();
+                        }
+                        else if (ctl2.GetType() == typeof(CtrlButton))
+                        {
+                            CtrlButton tagName = ctl2 as CtrlButton;
+                            tagName.CallLocalLanguage();
+                        }
+                    }
+                }
+                else if (ctl.GetType() == typeof(CtrlLabel))
+                {
+                    CtrlLabel tagName = ctl as CtrlLabel;
+                    tagName.CallLocalLanguage();
+                }
+            }
+
+            Exit.CallLocalLanguage();
         }
         #endregion
 
         #region InitGridView
         private void InitGridViewEqp()
         {
-            List<string> lstTitle = new List<string>();
-            lstTitle.Add("Equipment Information");
-            lstTitle.Add("");
+            List<string> lstTitle = new List<string>
+            {
+                LocalLanguage.GetItemString("DEF_Equipment_Information"),
+                ""
+            };
             gridEqpInfo.AddColumnHeaderList(lstTitle);
 
-            lstTitle = new List<string>();
-            lstTitle.Add("Equipment ID");
-            lstTitle.Add("Equipment Name");
-            lstTitle.Add("Control Mode");       // Eqp Mode
-            lstTitle.Add("Status");
-            lstTitle.Add("Operation Mode");       // Operation Mode
-            lstTitle.Add("Trouble Code");
-            lstTitle.Add("Trouble Name");
+            lstTitle = new List<string>
+            {
+                LocalLanguage.GetItemString("DEF_Equipment_ID"),
+                LocalLanguage.GetItemString("DEF_Equipment_Name"),
+                LocalLanguage.GetItemString("DEF_Control_Mode").Replace(" :", ""),
+                LocalLanguage.GetItemString("DEF_Status").Replace(" :", ""),
+                LocalLanguage.GetItemString("DEF_Operation_Mode"),
+                LocalLanguage.GetItemString("DEF_Trouble_Code"),
+                LocalLanguage.GetItemString("DEF_Trouble_Name")
+            };
             gridEqpInfo.AddRowsHeaderList(lstTitle);
 
             gridEqpInfo.ColumnHeadersHeight(30);
@@ -126,10 +172,10 @@ namespace FMSMonitoringUI.Monitoring
 
             List<int> lstColumn = new List<int>();
             lstColumn.Add(-1);          // DataGridView Header 병합
-            //lstColumn.Add(6);         // DataGridView 6번째 Column 병합
-            lstTitle = new List<string>();
-            lstTitle.Add("Equipment Information");
-            //lstTitle.Add("Tray Information");
+            lstTitle = new List<string>
+            {
+                LocalLanguage.GetItemString("DEF_Equipment_Information")
+            };
             gridEqpInfo.ColumnMergeList(lstColumn, lstTitle);
 
             gridEqpInfo.SetGridViewStyles();
@@ -141,24 +187,26 @@ namespace FMSMonitoringUI.Monitoring
             else this.Size = new System.Drawing.Size(960, 531);
 
             List<string> lstTitle = new List<string>();
-            lstTitle.Add("Tray Information");
+            lstTitle.Add(LocalLanguage.GetItemString("DEF_Tray_Information"));
             lstTitle.Add("");
             if (_TrayCnt > 1) lstTitle.Add("");
 
             gridTrayInfo.AddColumnHeaderList(lstTitle);
 
-            lstTitle = new List<string>();
-            lstTitle.Add("Tray ID");
-            lstTitle.Add("Level");
-            lstTitle.Add("Binding Time");           // tray_input_time      
-            lstTitle.Add("Tray Type");              // tray_zone
-            lstTitle.Add("Model");
-            lstTitle.Add("Route");
-            lstTitle.Add("Lot ID");
-            lstTitle.Add("Current Process");        // Porcess_Name
-            lstTitle.Add("Start Time");
-            lstTitle.Add("Plan Time");
-            lstTitle.Add("Cell Count");
+            lstTitle = new List<string>
+            {
+                LocalLanguage.GetItemString("DEF_Tray_ID"),
+                LocalLanguage.GetItemString("DEF_Level"),
+                LocalLanguage.GetItemString("DEF_Binding_Time"),           // tray_input_time      
+                LocalLanguage.GetItemString("DEF_Tray_Type"),
+                LocalLanguage.GetItemString("DEF_Model_ID"),
+                LocalLanguage.GetItemString("DEF_Route_ID"),
+                LocalLanguage.GetItemString("DEF_Lot_ID"),
+                LocalLanguage.GetItemString("DEF_Cerrent_Process"),
+                LocalLanguage.GetItemString("DEF_Start_Time"),
+                LocalLanguage.GetItemString("DEF_Plan_Time"),
+                LocalLanguage.GetItemString("DEF_Cell_Count")
+            };
             gridTrayInfo.AddRowsHeaderList(lstTitle);
 
             gridTrayInfo.ColumnHeadersHeight(30);
@@ -166,8 +214,10 @@ namespace FMSMonitoringUI.Monitoring
 
             List<int> lstColumn = new List<int>();
             lstColumn.Add(-1);      // DataGridView Header 병합
-            lstTitle = new List<string>();
-            lstTitle.Add("Tray Information");
+            lstTitle = new List<string>
+            {
+                LocalLanguage.GetItemString("DEF_Tray_Information")
+            };
             gridTrayInfo.ColumnMergeList(lstColumn, lstTitle, 0, _TrayCnt+1);
 
             gridTrayInfo.SetGridViewStyles();
@@ -258,6 +308,109 @@ namespace FMSMonitoringUI.Monitoring
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.Print(string.Format("[Exception:LoadWinManageEqp] {0}", ex.ToString()));
+            }
+        }
+        #endregion
+
+        #region SendEquipmentControl
+        private async Task<bool> SendEquipmentControl(string eqpID, string eqpType, string command)
+        {
+            RESTClient rest = new RESTClient(eqpType);
+
+            //Request 세팅
+            JObject reqBody = new JObject();
+            reqBody["ACTION_ID"] = enActionType.SEND_MANUAL_COMMAND.ToString();
+            reqBody["ACTION_USER"] = CDefine.m_strSaveLoginID;
+            reqBody["REQUEST_TIME"] = DateTime.Now.ToString();
+            reqBody["EQP_TYPE"] = eqpType;
+            reqBody["EQP_ID"] = eqpID;
+            reqBody["UNIT_ID"] = "";
+            reqBody["COMMAND"] = command;
+
+            var jsonResult = await rest.SetJson(CRestModulePath.POST_MANUAL_COMMAND, reqBody);
+
+            if (jsonResult != null)
+            {
+                _jsonManualCommandResponse result = rest.ConvertManualCommand(jsonResult);
+
+                if (result != null)
+                {
+                    if (result.RESPONSE_CODE == "200")
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    string log = "ManualCommand : jsonResult is null";
+                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+
+                    return false;
+                }
+            }
+            else
+            {
+                string log = "ManualCommand : jsonResult is null";
+                _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+
+                return false;
+            }
+        }
+        #endregion
+
+        #region UpdateManualCommand
+        private async Task<bool> UpdateManualCommand(enCommnadType saveType, string eqpid, object value)
+        {
+            RESTClient rest = new RESTClient();
+            // Set Query
+            StringBuilder strSQL = new StringBuilder();
+
+            strSQL.Append(" UPDATE fms_v.tb_mst_eqp");
+            switch (saveType)
+            {
+                case enCommnadType.DataClearSave:
+                    strSQL.Append($" SET {value}");
+                    break;
+            }
+
+            //필수값
+            strSQL.Append($" WHERE eqp_id = '{eqpid}'");
+
+            var jsonResult = await rest.GetJson(enActionType.SQL_UPDATE, strSQL.ToString());
+
+            if (jsonResult != null)
+            {
+                _jsonUpdateBaseResponse result = rest.ConvertUpdateBase(jsonResult);
+
+                if (result != null)
+                {
+                    if (result.RESPONSE_CODE == "200")
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    string log = "UpdateBase : jsonResult is null";
+                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+
+                    return false;
+                }
+            }
+            else
+            {
+                string log = "UpdateBase : jsonResult is null";
+                _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+
+                return false;
             }
         }
         #endregion
@@ -444,71 +597,70 @@ namespace FMSMonitoringUI.Monitoring
 
             if (result != DialogResult.Yes) return;
 
+            bool update = false;
+            string value;
+
             if (CAuthority.CheckAuthority(enAuthority.Save, CDefine.m_strSaveLoginID, this.Text))
             {
                 if (btn.Name == EqpControlSave.Name)
                 {
-                    
-                    CMessage.MsgInformation("EqpControlSave Save OK.");
+                    value = GetEqpControlSave();
+                    update = SendEquipmentControl(_EqpID, _EqpType, value).GetAwaiter().GetResult();
                 }
-                else
+                else if (btn.Name == DataClearSave.Name)
                 {
-                    if (rbDataClear.Checked)
-                        SetDataClear(_EqpID).GetAwaiter().GetResult();
-                    else if (rbClearTrouble.Checked)
-                        SetDataClear(_EqpID).GetAwaiter().GetResult();
+                    value = GetDataClear();
+                    update = UpdateManualCommand(enCommnadType.DataClearSave, _EqpID, value).GetAwaiter().GetResult();
+                }
 
-                    CMessage.MsgInformation("DataClearSave Save OK.");
-                }                
+                if (update)
+                    CMessage.MsgInformation($"{btn.Name} OK.");
+                else
+                    CMessage.MsgInformation($"{btn.Name} Fail.");
             }
             else
             {
-                CMessage.MsgInformation("Save Fail.");
+                CMessage.MsgInformation($"{btn.Name} Fail.");
             }
         }
         #endregion
 
-        #region SetDataClear
-        private async Task SetDataClear(string eqpid)
+        #region GetEqpControlSave
+        private string GetEqpControlSave()
         {
-            try
+            string commandID = string.Empty;
+
+            if (rbStop.Checked)
+                commandID = "1";
+            else if (rbRestart.Checked)
+                commandID = "2";
+            else if (rbPause.Checked)
+                commandID = "4";
+            else if (rbResume.Checked)
+                commandID = "8";
+            else if (rbForceUnload.Checked)
+                commandID = "16";
+
+            return commandID;
+        }
+        #endregion
+
+        #region GetDataClear
+        private string GetDataClear()
+        {
+            string sql = string.Empty;
+
+            // status는 현장가서 확인 해 볼것.
+            if (rbClearInfo.Checked)
             {
-                RESTClient rest = new RESTClient();
-                // Set Query
-                StringBuilder strSQL = new StringBuilder();
-
-                strSQL.Append(" UPDATE fms_v.tb_mst_eqp");
-                strSQL.Append(" SET tray_cnt = null, tray_id = null, tray_id_2 = null");
-                //필수값
-                strSQL.Append($" WHERE eqp_id = '{eqpid}'");
-
-                var jsonResult = await rest.GetJson(enActionType.SQL_UPDATE, strSQL.ToString());
-
-                //if (jsonResult != null)
-                //{
-                //    _jsonWinManageEqpResponse result = rest.ConvertWinManageEqp(jsonResult);
-
-                //    if (result != null)
-                //    {
-                //        //this.BeginInvoke(new Action(() => SetData(result.DATA)));
-                //        SetData(result.DATA);
-                //    }
-                //    else
-                //    {
-                //        string log = "WinManageEqp : jsonResult is null";
-                //        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
-                //    }
-                //}
-                //else
-                //{
-                //    string log = "WinManageEqp : jsonResult is null";
-                //    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
-                //}
+                sql = "tray_cnt = null, tray_id = null, tray_id_2 = null, start_time = null, end_time = null";
             }
-            catch (Exception ex)
+            else if (rbClearTrouble.Checked)
             {
-                System.Diagnostics.Debug.Print(string.Format("[Exception:LoadWinManageEqp] {0}", ex.ToString()));
+                sql = "eqp_trouble_code = null";
             }
+
+            return sql;
         }
         #endregion
     }

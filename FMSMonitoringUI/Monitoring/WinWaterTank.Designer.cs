@@ -66,7 +66,7 @@
             this.panel1.Location = new System.Drawing.Point(2, 2);
             this.panel1.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(653, 65);
+            this.panel1.Size = new System.Drawing.Size(653, 60);
             this.panel1.TabIndex = 0;
             // 
             // titBar
@@ -80,7 +80,7 @@
             this.titBar.Location = new System.Drawing.Point(0, 0);
             this.titBar.Margin = new System.Windows.Forms.Padding(4);
             this.titBar.Name = "titBar";
-            this.titBar.Size = new System.Drawing.Size(653, 65);
+            this.titBar.Size = new System.Drawing.Size(653, 60);
             this.titBar.TabIndex = 0;
             this.titBar.TitleText = "WaterTank Information";
             // 
@@ -91,7 +91,7 @@
             this.panel3.Controls.Add(this.gbFMS);
             this.panel3.Controls.Add(this.gbWaterTank);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(2, 67);
+            this.panel3.Location = new System.Drawing.Point(2, 62);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(653, 358);
             this.panel3.TabIndex = 2;
@@ -360,7 +360,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.Exit);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(2, 425);
+            this.panel2.Location = new System.Drawing.Point(2, 420);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(2);
             this.panel2.Size = new System.Drawing.Size(653, 60);

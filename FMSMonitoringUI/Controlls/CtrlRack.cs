@@ -19,6 +19,19 @@ namespace FMSMonitoringUI.Controlls
     public partial class CtrlRack : UserControlEqp
     {
         #region Properties
+        string _EqpType = "";
+        [DisplayName("EQP TYPE"), Description("EQP TYPE"), Category("GroupBox Setting")]
+        public string EqpType
+        {
+            get
+            {
+                return _EqpType;
+            }
+            set
+            {
+                _EqpType = value;
+            }
+        }
         string _unitD = "";
         [DisplayName("Unit ID"), Description("Unit ID"), Category("GroupBox Setting")]
         public string UnitID
@@ -65,18 +78,23 @@ namespace FMSMonitoringUI.Controlls
         #region InitGridView
         private void InitGridView()
         {
-            List<string> lstTitle = new List<string>();
-            lstTitle.Add("Level");
-            lstTitle.Add("Tray ID");
-            lstTitle.Add("Lot ID");
-            lstTitle.Add("");
+            List<string> lstTitle = new List<string>
+            {
+                LocalLanguage.GetItemString("DEF_Level"),
+                LocalLanguage.GetItemString("DEF_Tray_ID"),
+                LocalLanguage.GetItemString("DEF_Lot_ID"),
+                ""
+            };
+
             TrayInfoView.AddColumnHeaderList(lstTitle);
             TrayInfoView.ColumnHeadersVisible(false);
 
-            lstTitle = new List<string>();
-            lstTitle.Add("Level");
-            lstTitle.Add("1");
-            lstTitle.Add("2");
+            lstTitle = new List<string>
+            {
+                LocalLanguage.GetItemString("DEF_Level"),
+                "1",
+                "2"
+            };
             TrayInfoView.AddRowsHeaderList(lstTitle);
 
             TrayInfoView.ColumnHeadersHeight(25);
@@ -87,10 +105,10 @@ namespace FMSMonitoringUI.Controlls
             TrayInfoView.ColumnWidth(1, 120);
             TrayInfoView.ColumnWidth(2, 100);
 
-            TrayInfoView.SetTitle(1, 0, "Tray ID");
-            TrayInfoView.SetTitle(2, 0, "Templature");
-            TrayInfoView.SetTitle(2, 1, "Start Time");
-            TrayInfoView.SetTitle(2, 2, "Plan Time");
+            TrayInfoView.SetTitle(1, 0, LocalLanguage.GetItemString("DEF_Tray_ID"));
+            TrayInfoView.SetTitle(2, 0, LocalLanguage.GetItemString("DEF_Templature"));
+            TrayInfoView.SetTitle(2, 1, LocalLanguage.GetItemString("DEF_Start_Time"));
+            TrayInfoView.SetTitle(2, 2, LocalLanguage.GetItemString("DEF_Plan_Time"));
 
             //TrayInfoView.SetTitle(0, 0, "1");
             //TrayInfoView.SetTitle(0, 1, "2");
@@ -146,7 +164,7 @@ namespace FMSMonitoringUI.Controlls
 
         private void lbEqpType_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            WinFormationBox form = new WinFormationBox(EqpID, UnitID);
+            WinFormationBox form = new WinFormationBox(EqpID, EqpType, UnitID);
             form.ShowDialog();
         }
 
@@ -158,25 +176,22 @@ namespace FMSMonitoringUI.Controlls
             switch (mode)
             {
                 case 0:
-                    opModeName = "Data Error";
+                    opModeName = LocalLanguage.GetItemString("DEF_Data_Error");
                     break;
                 case 1:
-                    opModeName = "OCV";
+                    opModeName = LocalLanguage.GetItemString("DEF_OCV");
                     break;
                 case 2:
-                    opModeName = "Charge (CC)";
+                    opModeName = LocalLanguage.GetItemString("DEF_Charge") + " (CC)";
                     break;
                 case 4:
-                    opModeName = "Charge (CCCV)";
+                    opModeName = LocalLanguage.GetItemString("DEF_Charge") + " (CCCV)";
                     break;
                 case 8:
-                    opModeName = "Discharge (CC)";
+                    opModeName = LocalLanguage.GetItemString("DEF_Discharge") + " (CC)";
                     break;
                 case 16:
-                    opModeName = "Discharge (CCCV)";
-                    break;
-                case 32:
-                    opModeName = "REST";
+                    opModeName = LocalLanguage.GetItemString("DEF_Discharge") + " (CCCV)";
                     break;
             }
 
@@ -192,40 +207,40 @@ namespace FMSMonitoringUI.Controlls
             switch (status)
             {
                 case "I":
-                    statusName = "Idle";
+                    statusName = LocalLanguage.GetItemString("DEF_Idle");
                     break;
                 case "L":
-                    statusName = "Load Request";
+                    statusName = LocalLanguage.GetItemString("DEF_Load_Request");
                     break;
                 case "1":
-                    statusName = "Loading";
+                    statusName = LocalLanguage.GetItemString("DEF_Loading");
                     break;
                 case "A":
-                    statusName = "Tray Arrived";
+                    statusName = LocalLanguage.GetItemString("DEF_Tray_Arrived");
                     break;
                 case "R":
-                    statusName = "Running";
+                    statusName = LocalLanguage.GetItemString("DEF_Running");
                     break;
                 case "U":
-                    statusName = "Unload Request";
+                    statusName = LocalLanguage.GetItemString("DEF_Unload_Request");
                     break;
                 case "2":
-                    statusName = "Unloading";
+                    statusName = LocalLanguage.GetItemString("DEF_Unloading");
                     break;
                 case "P":
-                    statusName = "Pause";
+                    statusName = LocalLanguage.GetItemString("DEF_Pause");
                     break;
                 case "S":
-                    statusName = "Stop";
+                    statusName = LocalLanguage.GetItemString("DEF_Stop");
                     break;
                 case "T":
-                    statusName = "Trouble";
+                    statusName = LocalLanguage.GetItemString("DEF_Trouble");
                     break;
                 case "F":
-                    statusName = "Fire";
+                    statusName = LocalLanguage.GetItemString("DEF_Fire");
                     break;
                 case "X":
-                    statusName = "Not Use";
+                    statusName = LocalLanguage.GetItemString("DEF_Not_Use");
                     break;
             }
 

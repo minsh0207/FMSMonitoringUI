@@ -32,19 +32,19 @@
             this.Exit = new MonitoringUI.Controlls.CButton.CtrlButton();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.gridRecipeInfo = new FMSMonitoringUI.Controlls.CtrlDataGridView();
-            this.ctrlLabel4 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
+            this.lbRecipeInfo = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.gridProcessData = new FMSMonitoringUI.Controlls.CtrlDataGridView();
-            this.ctrlLabel5 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
+            this.lbProcessData = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.titBar = new MonitoringUI.Controlls.CtrlTitleBar();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.gridCellInfo = new FMSMonitoringUI.Controlls.CtrlDataGridView();
-            this.ctrlLabel2 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
+            this.lbCellInfo = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.gridProcessName = new FMSMonitoringUI.Controlls.CtrlDataGridView();
-            this.ctrlLabel3 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
+            this.lbProcessName = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.gridCellIDLIst = new FMSMonitoringUI.Controlls.CtrlDataGridView();
-            this.ctrlLabel1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
+            this.lbCellIDList = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
@@ -87,7 +87,7 @@
             // 
             // splitContainer2
             // 
-            this.splitContainer2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.splitContainer2.BackColor = System.Drawing.Color.DimGray;
             this.splitContainer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Right;
             this.splitContainer2.Location = new System.Drawing.Point(919, 62);
@@ -96,12 +96,12 @@
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.Controls.Add(this.gridRecipeInfo);
-            this.splitContainer2.Panel1.Controls.Add(this.ctrlLabel4);
+            this.splitContainer2.Panel1.Controls.Add(this.lbRecipeInfo);
             // 
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.gridProcessData);
-            this.splitContainer2.Panel2.Controls.Add(this.ctrlLabel5);
+            this.splitContainer2.Panel2.Controls.Add(this.lbProcessData);
             this.splitContainer2.Size = new System.Drawing.Size(579, 659);
             this.splitContainer2.SplitterDistance = 296;
             this.splitContainer2.TabIndex = 4;
@@ -118,18 +118,18 @@
             this.gridRecipeInfo.TabIndex = 7;
             this.gridRecipeInfo.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             // 
-            // ctrlLabel4
+            // lbRecipeInfo
             // 
-            this.ctrlLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlLabel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ctrlLabel4.ForeColor = System.Drawing.Color.DarkGray;
-            this.ctrlLabel4.LanguageID = "DEF_Recipe_Info";
-            this.ctrlLabel4.Location = new System.Drawing.Point(0, 0);
-            this.ctrlLabel4.Name = "ctrlLabel4";
-            this.ctrlLabel4.Size = new System.Drawing.Size(294, 44);
-            this.ctrlLabel4.TabIndex = 9;
-            this.ctrlLabel4.Text = "Recipe Info";
-            this.ctrlLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbRecipeInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.lbRecipeInfo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbRecipeInfo.ForeColor = System.Drawing.Color.DarkGray;
+            this.lbRecipeInfo.LanguageID = "DEF_Recipe_Info";
+            this.lbRecipeInfo.Location = new System.Drawing.Point(0, 0);
+            this.lbRecipeInfo.Name = "lbRecipeInfo";
+            this.lbRecipeInfo.Size = new System.Drawing.Size(294, 44);
+            this.lbRecipeInfo.TabIndex = 9;
+            this.lbRecipeInfo.Text = "Recipe Info";
+            this.lbRecipeInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // gridProcessData
             // 
@@ -143,18 +143,18 @@
             this.gridProcessData.TabIndex = 8;
             this.gridProcessData.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             // 
-            // ctrlLabel5
+            // lbProcessData
             // 
-            this.ctrlLabel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlLabel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ctrlLabel5.ForeColor = System.Drawing.Color.DarkGray;
-            this.ctrlLabel5.LanguageID = "DEF_Process_Data";
-            this.ctrlLabel5.Location = new System.Drawing.Point(0, 0);
-            this.ctrlLabel5.Name = "ctrlLabel5";
-            this.ctrlLabel5.Size = new System.Drawing.Size(277, 44);
-            this.ctrlLabel5.TabIndex = 10;
-            this.ctrlLabel5.Text = "Process Data";
-            this.ctrlLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbProcessData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.lbProcessData.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbProcessData.ForeColor = System.Drawing.Color.DarkGray;
+            this.lbProcessData.LanguageID = "DEF_Process_Data";
+            this.lbProcessData.Location = new System.Drawing.Point(0, 0);
+            this.lbProcessData.Name = "lbProcessData";
+            this.lbProcessData.Size = new System.Drawing.Size(277, 44);
+            this.lbProcessData.TabIndex = 10;
+            this.lbProcessData.Text = "Process Data";
+            this.lbProcessData.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel1
             // 
@@ -184,7 +184,7 @@
             // 
             // splitContainer1
             // 
-            this.splitContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.splitContainer1.BackColor = System.Drawing.Color.DimGray;
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitContainer1.Location = new System.Drawing.Point(284, 60);
             this.splitContainer1.Name = "splitContainer1";
@@ -192,14 +192,14 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.gridCellInfo);
-            this.splitContainer1.Panel1.Controls.Add(this.ctrlLabel2);
+            this.splitContainer1.Panel1.Controls.Add(this.lbCellInfo);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.gridProcessName);
-            this.splitContainer1.Panel2.Controls.Add(this.ctrlLabel3);
-            this.splitContainer1.Size = new System.Drawing.Size(632, 663);
-            this.splitContainer1.SplitterDistance = 380;
+            this.splitContainer1.Panel2.Controls.Add(this.lbProcessName);
+            this.splitContainer1.Size = new System.Drawing.Size(631, 663);
+            this.splitContainer1.SplitterDistance = 379;
             this.splitContainer1.TabIndex = 7;
             // 
             // gridCellInfo
@@ -210,22 +210,22 @@
             this.gridCellInfo.Location = new System.Drawing.Point(0, 44);
             this.gridCellInfo.Name = "gridCellInfo";
             this.gridCellInfo.RowCount = -1;
-            this.gridCellInfo.Size = new System.Drawing.Size(378, 617);
+            this.gridCellInfo.Size = new System.Drawing.Size(377, 617);
             this.gridCellInfo.TabIndex = 3;
             this.gridCellInfo.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             // 
-            // ctrlLabel2
+            // lbCellInfo
             // 
-            this.ctrlLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlLabel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ctrlLabel2.ForeColor = System.Drawing.Color.DarkGray;
-            this.ctrlLabel2.LanguageID = "DEF_Cell_Info";
-            this.ctrlLabel2.Location = new System.Drawing.Point(0, 0);
-            this.ctrlLabel2.Name = "ctrlLabel2";
-            this.ctrlLabel2.Size = new System.Drawing.Size(378, 44);
-            this.ctrlLabel2.TabIndex = 7;
-            this.ctrlLabel2.Text = "Cell Info";
-            this.ctrlLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbCellInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.lbCellInfo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbCellInfo.ForeColor = System.Drawing.Color.DarkGray;
+            this.lbCellInfo.LanguageID = "DEF_Cell_Info";
+            this.lbCellInfo.Location = new System.Drawing.Point(0, 0);
+            this.lbCellInfo.Name = "lbCellInfo";
+            this.lbCellInfo.Size = new System.Drawing.Size(377, 44);
+            this.lbCellInfo.TabIndex = 7;
+            this.lbCellInfo.Text = "Cell Info";
+            this.lbCellInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // gridProcessName
             // 
@@ -239,29 +239,29 @@
             this.gridProcessName.TabIndex = 0;
             this.gridProcessName.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             // 
-            // ctrlLabel3
+            // lbProcessName
             // 
-            this.ctrlLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlLabel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ctrlLabel3.ForeColor = System.Drawing.Color.DarkGray;
-            this.ctrlLabel3.LanguageID = "DEF_Process_Name";
-            this.ctrlLabel3.Location = new System.Drawing.Point(0, 0);
-            this.ctrlLabel3.Name = "ctrlLabel3";
-            this.ctrlLabel3.Size = new System.Drawing.Size(246, 44);
-            this.ctrlLabel3.TabIndex = 8;
-            this.ctrlLabel3.Text = "Process Name";
-            this.ctrlLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbProcessName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.lbProcessName.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbProcessName.ForeColor = System.Drawing.Color.DarkGray;
+            this.lbProcessName.LanguageID = "DEF_Process_Name";
+            this.lbProcessName.Location = new System.Drawing.Point(0, 0);
+            this.lbProcessName.Name = "lbProcessName";
+            this.lbProcessName.Size = new System.Drawing.Size(246, 44);
+            this.lbProcessName.TabIndex = 8;
+            this.lbProcessName.Text = "Process Name";
+            this.lbProcessName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.gridCellIDLIst);
-            this.panel3.Controls.Add(this.ctrlLabel1);
+            this.panel3.Controls.Add(this.lbCellIDList);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(2, 62);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(281, 659);
+            this.panel3.Size = new System.Drawing.Size(278, 659);
             this.panel3.TabIndex = 8;
             // 
             // gridCellIDLIst
@@ -272,22 +272,22 @@
             this.gridCellIDLIst.Location = new System.Drawing.Point(0, 44);
             this.gridCellIDLIst.Name = "gridCellIDLIst";
             this.gridCellIDLIst.RowCount = -1;
-            this.gridCellIDLIst.Size = new System.Drawing.Size(279, 613);
+            this.gridCellIDLIst.Size = new System.Drawing.Size(276, 613);
             this.gridCellIDLIst.TabIndex = 5;
             this.gridCellIDLIst.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             // 
-            // ctrlLabel1
+            // lbCellIDList
             // 
-            this.ctrlLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlLabel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ctrlLabel1.ForeColor = System.Drawing.Color.DarkGray;
-            this.ctrlLabel1.LanguageID = "DEF_Cell_ID_List";
-            this.ctrlLabel1.Location = new System.Drawing.Point(0, 0);
-            this.ctrlLabel1.Name = "ctrlLabel1";
-            this.ctrlLabel1.Size = new System.Drawing.Size(279, 44);
-            this.ctrlLabel1.TabIndex = 6;
-            this.ctrlLabel1.Text = "Cell ID List";
-            this.ctrlLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbCellIDList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.lbCellIDList.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbCellIDList.ForeColor = System.Drawing.Color.DarkGray;
+            this.lbCellIDList.LanguageID = "DEF_Cell_ID_List";
+            this.lbCellIDList.Location = new System.Drawing.Point(0, 0);
+            this.lbCellIDList.Name = "lbCellIDList";
+            this.lbCellIDList.Size = new System.Drawing.Size(276, 44);
+            this.lbCellIDList.TabIndex = 6;
+            this.lbCellIDList.Text = "Cell ID List";
+            this.lbCellIDList.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // WinCellDetailInfo
             // 
@@ -341,11 +341,11 @@
         private Controlls.CtrlDataGridView gridProcessName;
         private System.Windows.Forms.Panel panel3;
         private Controlls.CtrlDataGridView gridCellIDLIst;
-        private Controlls.WindowsForms.CtrlLabel ctrlLabel1;
-        private Controlls.WindowsForms.CtrlLabel ctrlLabel2;
-        private Controlls.WindowsForms.CtrlLabel ctrlLabel4;
-        private Controlls.WindowsForms.CtrlLabel ctrlLabel3;
-        private Controlls.WindowsForms.CtrlLabel ctrlLabel5;
+        private Controlls.WindowsForms.CtrlLabel lbCellIDList;
+        private Controlls.WindowsForms.CtrlLabel lbCellInfo;
+        private Controlls.WindowsForms.CtrlLabel lbRecipeInfo;
+        private Controlls.WindowsForms.CtrlLabel lbProcessName;
+        private Controlls.WindowsForms.CtrlLabel lbProcessData;
         private MonitoringUI.Controlls.CButton.CtrlButton Exit;
     }
 }

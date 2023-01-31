@@ -1,4 +1,5 @@
-﻿using MonitoringUI;
+﻿using FMSMonitoringUI.Controlls.WindowsForms;
+using MonitoringUI;
 using MonitoringUI.Common;
 using MonitoringUI.Controlls;
 using MonitoringUI.Controlls.CButton;
@@ -13,6 +14,7 @@ using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -23,7 +25,7 @@ namespace FMSMonitoringUI.Monitoring
     public partial class WinAgingRackSetting : WinFormRoot
     {
         private Point point = new Point();
-        private string _EQPID = string.Empty;
+        private string _EqpID = string.Empty;
         private string _RackID = string.Empty;
 
         private Logger _Logger;
@@ -39,7 +41,7 @@ namespace FMSMonitoringUI.Monitoring
         {
             InitializeComponent();
 
-            _EQPID = eqpid;
+            _EqpID = eqpid;
             _RackID = rackId;
 
             _RackStatus = rackStatus;
@@ -50,6 +52,7 @@ namespace FMSMonitoringUI.Monitoring
             InitControl();
             InitGridViewEqp();
             InitGridViewTray();
+            InitLanguage();
         }
 
         #region WinAgingRackSetting Event
@@ -96,24 +99,68 @@ namespace FMSMonitoringUI.Monitoring
         {
             Exit.Left = (this.panel3.Width - Exit.Width) / 2;             
             Exit.Top = (this.panel3.Height - Exit.Height) / 2;
+
+            dtPlanTime.StartTime = DateTime.Now;
+            dtPlanTime.OnValueChanged += OnDateTimeChanged;
+        }
+        #endregion
+
+        #region InitLanguage
+        private void InitLanguage()
+        {
+            titBar.CallLocalLanguage();
+
+            foreach (var ctl in splitContainer2.Panel2.Controls)
+            {
+                if (ctl.GetType() == typeof(CtrlGroupBox))
+                {
+                    CtrlGroupBox grBox = ctl as CtrlGroupBox;
+                    grBox.CallLocalLanguage();
+
+                    foreach (var ctl2 in grBox.Controls)
+                    {
+                        if (ctl2.GetType() == typeof(CtrlRadioButton))
+                        {
+                            CtrlRadioButton tagName = ctl2 as CtrlRadioButton;
+                            tagName.CallLocalLanguage();
+                        }
+                        else if (ctl2.GetType() == typeof(CtrlButton))
+                        {
+                            CtrlButton tagName = ctl2 as CtrlButton;
+                            tagName.CallLocalLanguage();
+                        }
+                    }
+                }
+                else if (ctl.GetType() == typeof(CtrlLabel))
+                {
+                    CtrlLabel tagName = ctl as CtrlLabel;
+                    tagName.CallLocalLanguage();
+                }
+            }
+
+            Exit.CallLocalLanguage();
         }
         #endregion
 
         #region InitGridView
         private void InitGridViewEqp()
         {
-            List<string> lstTitle = new List<string>();
-            lstTitle.Add("Rack Information");
-            lstTitle.Add("");
+            List<string> lstTitle = new List<string>
+            {
+                LocalLanguage.GetItemString("DEF_Rack_Information"),
+                ""
+            };
             gridEqpInfo.AddColumnHeaderList(lstTitle);
 
-            lstTitle = new List<string>();
-            lstTitle.Add("Rack ID");
-            lstTitle.Add("Rack Name");
-            lstTitle.Add("Rack Status");
-            lstTitle.Add("Use Flag");
-            lstTitle.Add("Trouble Code");
-            lstTitle.Add("Trouble Name");
+            lstTitle = new List<string>
+            {
+                LocalLanguage.GetItemString("DEF_Rack_ID"),
+                LocalLanguage.GetItemString("DEF_Rack_Name"),
+                LocalLanguage.GetItemString("DEF_Rack_Status"),
+                LocalLanguage.GetItemString("DEF_Use_Flag"),
+                LocalLanguage.GetItemString("DEF_Trouble_Code"),
+                LocalLanguage.GetItemString("DEF_Trouble_Name")
+            };
             gridEqpInfo.AddRowsHeaderList(lstTitle);
 
             gridEqpInfo.ColumnHeadersHeight(31);
@@ -121,8 +168,10 @@ namespace FMSMonitoringUI.Monitoring
 
             List<int> lstColumn = new List<int>();
             lstColumn.Add(-1);      // DataGridView Header 병합
-            lstTitle = new List<string>();
-            lstTitle.Add("Rack Information");
+            lstTitle = new List<string>
+            {
+                LocalLanguage.GetItemString("DEF_Rack_Information")
+            };
             gridEqpInfo.ColumnMergeList(lstColumn, lstTitle);
 
             gridEqpInfo.SetGridViewStyles();
@@ -131,23 +180,27 @@ namespace FMSMonitoringUI.Monitoring
 
         private void InitGridViewTray()
         {
-            List<string> lstTitle = new List<string>();
-            lstTitle.Add("Tray Information");
-            lstTitle.Add("");
-            lstTitle.Add("");
+            List<string> lstTitle = new List<string>
+            {
+                LocalLanguage.GetItemString("DEF_Tray_Information"),
+                "",
+                ""
+            };
             gridTrayInfo.AddColumnHeaderList(lstTitle);
 
-            lstTitle = new List<string>();
-            lstTitle.Add("Tray ID");
-            lstTitle.Add("Level");
-            lstTitle.Add("Binding Time");           // tray_input_time      
-            lstTitle.Add("Tray Type");
-            lstTitle.Add("Model");
-            lstTitle.Add("Route");
-            lstTitle.Add("Recipe ID");
-            lstTitle.Add("Cerrent Process");
-            lstTitle.Add("Start Time");
-            lstTitle.Add("Plan Time");
+            lstTitle = new List<string>
+            {
+                LocalLanguage.GetItemString("DEF_Tray_ID"),
+                LocalLanguage.GetItemString("DEF_Level"),
+                LocalLanguage.GetItemString("DEF_Binding_Time"),           // tray_input_time      
+                LocalLanguage.GetItemString("DEF_Tray_Type"),
+                LocalLanguage.GetItemString("DEF_Model_ID"),
+                LocalLanguage.GetItemString("DEF_Route_ID"),
+                LocalLanguage.GetItemString("DEF_Recipe_ID"),
+                LocalLanguage.GetItemString("DEF_Cerrent_Process"),
+                LocalLanguage.GetItemString("DEF_Start_Time"),
+                LocalLanguage.GetItemString("DEF_Plan_Time")
+            };
             gridTrayInfo.AddRowsHeaderList(lstTitle);
 
             gridTrayInfo.ColumnHeadersHeight(31);
@@ -155,12 +208,25 @@ namespace FMSMonitoringUI.Monitoring
 
             List<int> lstColumn = new List<int>();
             lstColumn.Add(-1);      // DataGridView Header 병합
-            lstTitle = new List<string>();
-            lstTitle.Add("Tray Information");
+            lstTitle = new List<string>
+            {
+                LocalLanguage.GetItemString("DEF_Tray_Information")
+            };
             gridTrayInfo.ColumnMergeList(lstColumn, lstTitle, 0, 3);
 
             gridTrayInfo.SetGridViewStyles();
             gridTrayInfo.ColumnHeadersWidth(0, 120);
+        }
+        #endregion
+
+        #region OnDateTimeChanged
+        /// <summary>
+        /// Plan Time변경 Event
+        /// </summary>
+        private void OnDateTimeChanged()
+        {
+            rbForceUnload.Checked = false;
+            rbPlanTime.Checked = true;
         }
         #endregion
 
@@ -198,8 +264,8 @@ namespace FMSMonitoringUI.Monitoring
                 // Set Query
                 StringBuilder strSQL = new StringBuilder();
 
-                strSQL.Append(" SELECT A.aging_type, A.rack_id, A.line, A.lane, A.bay, A.floor, A.status, A.use_flag, A.process_no,");
-                strSQL.Append("        C.tray_id, IF(A.tray_id = C.tray_id, '1', '2') AS level,");
+                strSQL.Append(" SELECT A.aging_type, A.line, A.lane, A.bay, A.floor, A.rack_id, A.use_flag, A.status, A.tray_cnt, A.process_no,");
+                strSQL.Append("        C.tray_id AS sel_tray_id, IF(A.tray_id = C.tray_id, '1', '2') AS level,");
                 strSQL.Append("        B.trouble_name,");
                 strSQL.Append("        C.tray_zone, C.model_id, C.route_id, C.recipe_id, C.start_time, C.plan_time,");
                 strSQL.Append("        D.process_name");
@@ -243,6 +309,65 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
+        #region UpdateManualCommand
+        private async Task<bool> UpdateManualCommand(enCommnadType saveType, string rackid, object value)
+        {
+            RESTClient rest = new RESTClient();
+            // Set Query
+            StringBuilder strSQL = new StringBuilder();
+
+            strSQL.Append(" UPDATE fms_v.tb_mst_aging");
+            switch (saveType)
+            {
+                case enCommnadType.ConfigurationSave:
+                    strSQL.Append($" SET status = '{value}'");
+                    break;
+                case enCommnadType.PlanTimeSave:
+                    strSQL.Append($" SET end_time = '{value}'");
+                    break;
+                case enCommnadType.DataClearSave:
+                    strSQL.Append($" SET {value}");
+                    break;
+            }
+
+            //필수값
+            strSQL.Append($" WHERE rack_id = '{rackid}'");
+
+            var jsonResult = await rest.GetJson(enActionType.SQL_UPDATE, strSQL.ToString());
+
+            if (jsonResult != null)
+            {
+                _jsonUpdateBaseResponse result = rest.ConvertUpdateBase(jsonResult);
+
+                if (result != null)
+                {
+                    if (result.RESPONSE_CODE == "200")
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    string log = "UpdateBase : jsonResult is null";
+                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+
+                    return false;
+                }
+            }
+            else
+            {                
+                string log = "UpdateBase : jsonResult is null";
+                _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+
+                return false;
+            }
+        }
+        #endregion
+
         #region SetData
         public void SetData(List<_win_aging_rack> data)
         {
@@ -277,15 +402,15 @@ namespace FMSMonitoringUI.Monitoring
             gridEqpInfo.SetValue(1, row, data[0].TROUBLE_CODE); row++;
             gridEqpInfo.SetValue(1, row, data[0].TROUBLE_NAME);
 
-            SetConfiguration(data[0].STATUS);
+            SetConfiguration(data[0]);
 
             if (data[0].STATUS == "E") return;
 
             for (int i = 0; i < data.Count; i++)
             {
                 row = 0;
-                gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_ID); row++;
-                gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_ID == "" ? "" : data[i].LEVEL); row++;
+                gridTrayInfo.SetValue(i + 1, row, data[i].SEL_TRAY_ID); row++;
+                gridTrayInfo.SetValue(i + 1, row, data[i].SEL_TRAY_ID == null ? "" : data[i].LEVEL); row++;
                 gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_INPUT_TIME.Year == 1 ? "" : data[i].TRAY_INPUT_TIME.ToString()); row++;
                 gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_ZONE); row++;
                 gridTrayInfo.SetValue(i + 1, row, data[i].MODEL_ID); row++;
@@ -318,29 +443,31 @@ namespace FMSMonitoringUI.Monitoring
         {
             if (col > 0 && row == 0)
             {
-                WinTrayInfo form = new WinTrayInfo(_EQPID, _RackID, value.ToString());
+                WinTrayInfo form = new WinTrayInfo(_EqpID, _RackID, value.ToString());
                 form.ShowDialog();
             }
         }
         #endregion
 
-        private void SetConfiguration(string trayStatus)
+        #region SetConfiguration
+        private void SetConfiguration(_win_aging_rack trayStatus)
         {
-            if (trayStatus == "F")
-            {
-                rbYesIn.Visible = false;
-                rbNoIn.Visible = false;
-                rbYesOut.Visible= true;
-                rbNoOut.Visible= true;
-            }
-            else
+            if (trayStatus.TRAY_CNT == 0 && trayStatus.TRAY_ID == null && trayStatus.TRAY_ID_2 == null)
             {
                 rbYesOut.Visible = false;
                 rbNoOut.Visible = false;
                 rbYesIn.Visible = true;
                 rbNoIn.Visible = true;
             }
+            else
+            {
+                rbYesIn.Visible = false;
+                rbNoIn.Visible = false;
+                rbYesOut.Visible = true;
+                rbNoOut.Visible = true;
+            }
         }
+        #endregion
 
         #region Button Event
         private void Exit_Click(object sender, EventArgs e)
@@ -354,29 +481,103 @@ namespace FMSMonitoringUI.Monitoring
             WinSaveLogin saveLogin = new WinSaveLogin();
             saveLogin.ShowDialog();
 
+            bool update = false;
+            string updateValue;
+
             if (CDefine.m_strSaveLoginID == "") return;
 
             if (CAuthority.CheckAuthority(enAuthority.Save, CDefine.m_strSaveLoginID, this.Text))
             {
-                if (btn.Name == "ConfigurationSave")
+                if (btn.Name == ConfigurationSave.Name)
                 {
-                    CMessage.MsgInformation("ConfigurationSave Save OK.");
+                    updateValue = GetConfiguration();
+                    update = UpdateManualCommand(enCommnadType.ConfigurationSave, _RackID, updateValue).GetAwaiter().GetResult();
                 }
-                else if (btn.Name == "PlanTimeSave")
+                else if (btn.Name == PlanTimeSave.Name)
                 {
-                    CMessage.MsgInformation("PlanTimeSave Save OK.");
+                    updateValue = GetPlanTime();
+                    update = UpdateManualCommand(enCommnadType.PlanTimeSave, _RackID, updateValue).GetAwaiter().GetResult();
                 }
+                else if (btn.Name == DataClearSave.Name)
+                {
+                    updateValue = GetDataClear();
+                    update = UpdateManualCommand(enCommnadType.DataClearSave, _RackID, updateValue).GetAwaiter().GetResult();
+                }
+
+                if (update)
+                    CMessage.MsgInformation($"{btn.Name} OK.");
                 else
-                {
-                    CMessage.MsgInformation("DataClearSave Save OK.");
-                }
+                    CMessage.MsgInformation($"{btn.Name} Fail.");
             }
             else
             {
-                CMessage.MsgInformation("Save Fail.");
+                CMessage.MsgInformation($"{btn.Name} Fail.");
             }
         }
         #endregion
 
+        #region GetConfiguration
+        private string GetConfiguration()
+        {
+            string status = string.Empty;
+
+            if (rbYesIn.Checked)        // 입고 가능
+            {
+                status = "E";
+            }
+            else if (rbNoIn.Checked)    // 입고 불가
+            {
+                status = "X";
+            }
+
+            if (rbYesOut.Checked)       // 출고 가능
+            {
+                status = "F";
+            }
+            else if (rbNoOut.Checked)   // 출고 불가
+            {
+                status = "O";
+            }
+
+            return status;
+        }
+        #endregion
+
+        #region GetPlanTime
+        private string GetPlanTime()
+        {
+            string now = string.Empty;
+
+            if (rbForceUnload.Checked)
+            {
+                now = DateTime.Now.ToString();
+            }
+            else if (rbPlanTime.Checked)
+            {
+                now = dtPlanTime.StartTime.ToString("yyyyMMddHHmmss");
+            }
+
+            return now;
+        }
+        #endregion
+
+        #region GetDataClear
+        private string GetDataClear()
+        {
+            string sql = string.Empty;
+
+            // status는 현장가서 확인 해 볼것.
+            if (rbClearInfo.Checked)
+            {
+                sql = "status = 'E', tray_cnt = null, tray_id = null, tray_id_2 = null, start_time = null, end_time = null";
+            }
+            else if (rbClearTrouble.Checked)
+            {
+                sql = "status = 'E', trouble_code = null";
+            }
+
+            return sql;
+        }
+        #endregion
     }
 }

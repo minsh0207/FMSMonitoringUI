@@ -1,4 +1,5 @@
-﻿using FMSMonitoringUI.Monitoring;
+﻿using FMSMonitoringUI.Controlls.WindowsForms;
+using FMSMonitoringUI.Monitoring;
 using FormationMonCtrl;
 using MonitoringUI;
 using MySqlX.XDevAPI.Relational;
@@ -12,17 +13,13 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 
 namespace FMSMonitoringUI.Controlls
 {
     public partial class CtrlRackTemp : UserControlEqp
     {
-        public CtrlRackTemp()
-        {
-            InitializeComponent();
-        }
-
         #region Properties
         //string _TitleName = "";
         //[DisplayName("Title Name"), Description("Title Name"), Category("GroupBox Setting")]
@@ -38,6 +35,28 @@ namespace FMSMonitoringUI.Controlls
         //        lbRackID.Text = _TitleName;                
         //    }
         //}
+        #endregion
+
+        public CtrlRackTemp()
+        {
+            InitializeComponent();
+        }        
+
+        #region CtrlRackTemp Event
+        private void CtrlRackTemp_Load(object sender, EventArgs e)
+        {
+            InitGridView();
+
+            InitLanguage();
+        }
+        #endregion
+
+        #region InitLanguage
+        private void InitLanguage()
+        {
+            lbLower.CallLocalLanguage();
+            lbUpper.CallLocalLanguage();
+        }
         #endregion
 
         #region InitGridView
@@ -115,13 +134,6 @@ namespace FMSMonitoringUI.Controlls
                 TrayInfoView.SetValue(col, row, jig.JIG_27); col++;
                 TrayInfoView.SetValue(col, row, jig.JIG_28);
             }
-        }
-        #endregion
-
-        #region CtrlRackTemp
-        private void CtrlRackTemp_Load(object sender, EventArgs e)
-        {
-            InitGridView();
         }
         #endregion
     }

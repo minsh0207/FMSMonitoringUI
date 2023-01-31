@@ -175,6 +175,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ctrlLabel3 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.RestServer = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
             this.ctrlLabel2 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.ctrlTaggingName14 = new MonitoringUI.Controlls.CtrlTaggingName();
@@ -203,7 +204,6 @@
             this.btnHTAging = new FMSMonitoringUI.Controlls.WindowsForms.CtrlButtonType2();
             this.btnLTAging1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlButtonType2();
             this.btnLTAging2 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlButtonType2();
-            this.ctrlLabel3 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.AgingTab.SuspendLayout();
             this.tpAging1.SuspendLayout();
             this.tpAging2.SuspendLayout();
@@ -2145,6 +2145,19 @@
             this.panel1.Size = new System.Drawing.Size(310, 945);
             this.panel1.TabIndex = 86;
             // 
+            // ctrlLabel3
+            // 
+            this.ctrlLabel3.AutoSize = true;
+            this.ctrlLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel3.Font = new System.Drawing.Font("돋움", 9.75F);
+            this.ctrlLabel3.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel3.LanguageID = "DEF_Rest_Server";
+            this.ctrlLabel3.Location = new System.Drawing.Point(38, 39);
+            this.ctrlLabel3.Name = "ctrlLabel3";
+            this.ctrlLabel3.Size = new System.Drawing.Size(72, 13);
+            this.ctrlLabel3.TabIndex = 97;
+            this.ctrlLabel3.Text = "Rest Server";
+            // 
             // RestServer
             // 
             this.RestServer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
@@ -2198,12 +2211,14 @@
             // 
             // button1
             // 
+            this.button1.Enabled = false;
             this.button1.Location = new System.Drawing.Point(35, 845);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(209, 54);
             this.button1.TabIndex = 90;
             this.button1.Text = "TEST";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // ctrlButtonDataView
@@ -2521,7 +2536,7 @@
             // 
             this.btnHTAging.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHTAging.ForeColor = System.Drawing.Color.White;
-            this.btnHTAging.LanguageID = "";
+            this.btnHTAging.LanguageID = "DEF_HT_Aging";
             this.btnHTAging.Location = new System.Drawing.Point(318, 11);
             this.btnHTAging.Name = "btnHTAging";
             this.btnHTAging.Size = new System.Drawing.Size(147, 28);
@@ -2535,7 +2550,7 @@
             // 
             this.btnLTAging1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLTAging1.ForeColor = System.Drawing.Color.White;
-            this.btnLTAging1.LanguageID = "";
+            this.btnLTAging1.LanguageID = "DEF_LT_Aging_1";
             this.btnLTAging1.Location = new System.Drawing.Point(464, 11);
             this.btnLTAging1.Name = "btnLTAging1";
             this.btnLTAging1.Size = new System.Drawing.Size(147, 28);
@@ -2549,7 +2564,7 @@
             // 
             this.btnLTAging2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLTAging2.ForeColor = System.Drawing.Color.White;
-            this.btnLTAging2.LanguageID = "";
+            this.btnLTAging2.LanguageID = "DEF_LT_Aging_2";
             this.btnLTAging2.Location = new System.Drawing.Point(610, 11);
             this.btnLTAging2.Name = "btnLTAging2";
             this.btnLTAging2.Size = new System.Drawing.Size(147, 28);
@@ -2558,19 +2573,6 @@
             this.btnLTAging2.Text = "LT Aging #2";
             this.btnLTAging2.UseVisualStyleBackColor = true;
             this.btnLTAging2.Click += new System.EventHandler(this.AgingTab_Click);
-            // 
-            // ctrlLabel3
-            // 
-            this.ctrlLabel3.AutoSize = true;
-            this.ctrlLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlLabel3.Font = new System.Drawing.Font("돋움", 9.75F);
-            this.ctrlLabel3.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel3.LanguageID = "DEF_Rest_Server";
-            this.ctrlLabel3.Location = new System.Drawing.Point(38, 39);
-            this.ctrlLabel3.Name = "ctrlLabel3";
-            this.ctrlLabel3.Size = new System.Drawing.Size(72, 13);
-            this.ctrlLabel3.TabIndex = 97;
-            this.ctrlLabel3.Text = "Rest Server";
             // 
             // CtrlAging
             // 

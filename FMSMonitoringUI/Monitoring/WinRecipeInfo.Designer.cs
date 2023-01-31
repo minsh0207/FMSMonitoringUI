@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.ctrlTitleBar = new MonitoringUI.Controlls.CtrlTitleBar();
+            this.titBar = new MonitoringUI.Controlls.CtrlTitleBar();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.ctrlLabel1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
+            this.lbParameter = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.gridRecipeInfo = new FMSMonitoringUI.Controlls.CtrlDataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Exit = new MonitoringUI.Controlls.CButton.CtrlButton();
@@ -43,7 +43,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.ctrlTitleBar);
+            this.panel1.Controls.Add(this.titBar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(2, 2);
             this.panel1.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
@@ -51,26 +51,26 @@
             this.panel1.Size = new System.Drawing.Size(390, 71);
             this.panel1.TabIndex = 0;
             // 
-            // ctrlTitleBar
+            // titBar
             // 
-            this.ctrlTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlTitleBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ctrlTitleBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ctrlTitleBar.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ctrlTitleBar.ForeColor = System.Drawing.Color.White;
-            this.ctrlTitleBar.LanguageID = "DEF_Recipe_Information";
-            this.ctrlTitleBar.Location = new System.Drawing.Point(0, 0);
-            this.ctrlTitleBar.Margin = new System.Windows.Forms.Padding(4);
-            this.ctrlTitleBar.Name = "ctrlTitleBar";
-            this.ctrlTitleBar.Size = new System.Drawing.Size(388, 69);
-            this.ctrlTitleBar.TabIndex = 0;
-            this.ctrlTitleBar.TitleText = "Recipe Information";
+            this.titBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.titBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.titBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.titBar.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.titBar.ForeColor = System.Drawing.Color.White;
+            this.titBar.LanguageID = "DEF_Recipe_Information";
+            this.titBar.Location = new System.Drawing.Point(0, 0);
+            this.titBar.Margin = new System.Windows.Forms.Padding(4);
+            this.titBar.Name = "titBar";
+            this.titBar.Size = new System.Drawing.Size(388, 69);
+            this.titBar.TabIndex = 0;
+            this.titBar.TitleText = "Recipe Information";
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.ctrlLabel1);
+            this.panel3.Controls.Add(this.lbParameter);
             this.panel3.Controls.Add(this.gridRecipeInfo);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(2, 73);
@@ -78,19 +78,19 @@
             this.panel3.Size = new System.Drawing.Size(390, 655);
             this.panel3.TabIndex = 2;
             // 
-            // ctrlLabel1
+            // lbParameter
             // 
-            this.ctrlLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlLabel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ctrlLabel1.ForeColor = System.Drawing.Color.DarkGray;
-            this.ctrlLabel1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ctrlLabel1.LanguageID = "DEF_Parameter";
-            this.ctrlLabel1.Location = new System.Drawing.Point(0, 0);
-            this.ctrlLabel1.Name = "ctrlLabel1";
-            this.ctrlLabel1.Size = new System.Drawing.Size(388, 44);
-            this.ctrlLabel1.TabIndex = 2;
-            this.ctrlLabel1.Text = "Parameter";
-            this.ctrlLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbParameter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.lbParameter.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbParameter.ForeColor = System.Drawing.Color.DarkGray;
+            this.lbParameter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbParameter.LanguageID = "DEF_Parameter";
+            this.lbParameter.Location = new System.Drawing.Point(0, 0);
+            this.lbParameter.Name = "lbParameter";
+            this.lbParameter.Size = new System.Drawing.Size(388, 44);
+            this.lbParameter.TabIndex = 2;
+            this.lbParameter.Text = "Parameter";
+            this.lbParameter.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // gridRecipeInfo
             // 
@@ -162,10 +162,10 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private MonitoringUI.Controlls.CtrlTitleBar ctrlTitleBar;
+        private MonitoringUI.Controlls.CtrlTitleBar titBar;
         private System.Windows.Forms.Panel panel3;
         private Controlls.CtrlDataGridView gridRecipeInfo;
-        private Controlls.WindowsForms.CtrlLabel ctrlLabel1;
+        private Controlls.WindowsForms.CtrlLabel lbParameter;
         private System.Windows.Forms.Panel panel2;
         private MonitoringUI.Controlls.CButton.CtrlButton Exit;
     }

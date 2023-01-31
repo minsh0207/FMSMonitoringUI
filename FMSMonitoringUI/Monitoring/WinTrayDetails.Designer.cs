@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.ctrlTitleBar = new MonitoringUI.Controlls.CtrlTitleBar();
+            this.titBar = new MonitoringUI.Controlls.CtrlTitleBar();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
             this.gridTrayInfo = new FMSMonitoringUI.Controlls.CtrlDataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Exit = new MonitoringUI.Controlls.CButton.CtrlButton();
+            this.lbTrayInfo = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -43,7 +43,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.ctrlTitleBar);
+            this.panel1.Controls.Add(this.titBar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(2, 2);
             this.panel1.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
@@ -51,43 +51,32 @@
             this.panel1.Size = new System.Drawing.Size(1494, 65);
             this.panel1.TabIndex = 0;
             // 
-            // ctrlTitleBar
+            // titBar
             // 
-            this.ctrlTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlTitleBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ctrlTitleBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ctrlTitleBar.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ctrlTitleBar.ForeColor = System.Drawing.Color.White;
-            this.ctrlTitleBar.LanguageID = "";
-            this.ctrlTitleBar.Location = new System.Drawing.Point(0, 0);
-            this.ctrlTitleBar.Margin = new System.Windows.Forms.Padding(4);
-            this.ctrlTitleBar.Name = "ctrlTitleBar";
-            this.ctrlTitleBar.Size = new System.Drawing.Size(1492, 63);
-            this.ctrlTitleBar.TabIndex = 0;
-            this.ctrlTitleBar.TitleText = "Tray Details";
+            this.titBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.titBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.titBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.titBar.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.titBar.ForeColor = System.Drawing.Color.White;
+            this.titBar.LanguageID = "DEF_Tray_Details";
+            this.titBar.Location = new System.Drawing.Point(0, 0);
+            this.titBar.Margin = new System.Windows.Forms.Padding(4);
+            this.titBar.Name = "titBar";
+            this.titBar.Size = new System.Drawing.Size(1492, 63);
+            this.titBar.TabIndex = 0;
+            this.titBar.TitleText = "Tray Details";
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.label2);
+            this.panel3.Controls.Add(this.lbTrayInfo);
             this.panel3.Controls.Add(this.gridTrayInfo);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(2, 67);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1494, 655);
             this.panel3.TabIndex = 2;
-            // 
-            // label2
-            // 
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.ForeColor = System.Drawing.Color.DarkGray;
-            this.label2.Location = new System.Drawing.Point(0, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(1492, 48);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Tray Info";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // gridTrayInfo
             // 
@@ -129,6 +118,20 @@
             this.Exit.TabIndex = 0;
             this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
+            // lbTrayInfo
+            // 
+            this.lbTrayInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.lbTrayInfo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbTrayInfo.ForeColor = System.Drawing.Color.DarkGray;
+            this.lbTrayInfo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbTrayInfo.LanguageID = "DEF_Tray_Info";
+            this.lbTrayInfo.Location = new System.Drawing.Point(0, 0);
+            this.lbTrayInfo.Name = "lbTrayInfo";
+            this.lbTrayInfo.Size = new System.Drawing.Size(1492, 44);
+            this.lbTrayInfo.TabIndex = 3;
+            this.lbTrayInfo.Text = "Tray Info";
+            this.lbTrayInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // WinTrayDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -159,11 +162,11 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private MonitoringUI.Controlls.CtrlTitleBar ctrlTitleBar;
+        private MonitoringUI.Controlls.CtrlTitleBar titBar;
         private System.Windows.Forms.Panel panel3;
         private Controlls.CtrlDataGridView gridTrayInfo;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel2;
         private MonitoringUI.Controlls.CButton.CtrlButton Exit;
+        private Controlls.WindowsForms.CtrlLabel lbTrayInfo;
     }
 }

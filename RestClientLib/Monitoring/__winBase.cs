@@ -128,7 +128,10 @@ namespace RestClientLib
         public string FLOOR { get; set; }
         public string STATUS { get; set; }
         public string USE_FLAG { get; set; }
+        public int TRAY_CNT { get; set; }
         public string TRAY_ID { get; set; }
+        public string TRAY_ID_2 { get; set; }
+        public string SEL_TRAY_ID { get; set; }
         public string LEVEL { get; set; }
         public string TROUBLE_CODE { get; set; }
         public string TROUBLE_NAME { get; set; }
@@ -245,7 +248,7 @@ namespace RestClientLib
         public string CELL_NO { get; set; }
         public string CELL_ID { get; set; }
         public DateTime EVENT_TIME { get; set; }
-        public float TEMP_JIG { get; set; }
+        public float JIG_AVG { get; set; }
 
     }
     #endregion
@@ -294,6 +297,7 @@ namespace RestClientLib
         public string EQP_NAME { get; set; }
         public string EQP_NAME_LOCAL { get; set; }
         public string EQP_TROUBLE_CODE { get; set; }
+        public string TROUBLE_CATEGORY { get; set; }
         public string TROUBLE_NAME { get; set; }
         public string TROUBLE_NAME_LOCAL { get; set; }
     }
@@ -304,12 +308,15 @@ namespace RestClientLib
     /// </summary>
     public class _trouble_aging_list
     {
-        public int ID { get; set; }
-        public string EQP_ID { get; set; }
-        public string EQP_STATUS { get; set; }
-        public string EQP_NAME { get; set; }
-        public string EQP_NAME_LOCAL { get; set; }
-        public string EQP_TROUBLE_CODE { get; set; }
+        public string AGING_TYPE { get; set; }
+        public string LINE { get; set; }
+        public string LANE { get; set; }
+        public string BAY { get; set; }
+        public string FLOOR { get; set; }
+        public string RACK_ID { get; set; }
+        public string STATUS { get; set; }
+        public string TROUBLE_CODE { get; set; }
+        public string TROUBLE_CATEGORY { get; set; }
         public string TROUBLE_NAME { get; set; }
         public string TROUBLE_NAME_LOCAL { get; set; }
     }

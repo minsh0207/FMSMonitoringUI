@@ -365,6 +365,7 @@ namespace MonitoringUI.Common
         public const string DEF_MON_WIN_TRAY_DETAILS = "MON-015";                   //WinTrayDetails
         public const string DEF_MON_WIN_TRAY_INFO = "MON-016";                      //WinTrayInfo
         public const string DEF_MON_WIN_WATER_TANK = "MON-017";                     //WinWaterTank
+        public const string DEF_MON_WIN_TROUBLE_INFO = "MON-018";                   //WinTroubleInfo
 
 
 

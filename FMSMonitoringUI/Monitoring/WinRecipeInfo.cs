@@ -1,6 +1,8 @@
-﻿using MonitoringUI;
+﻿using FMSMonitoringUI.Controlls.WindowsForms;
+using MonitoringUI;
 using MonitoringUI.Common;
 using MonitoringUI.Controlls;
+using MonitoringUI.Controlls.CButton;
 using RestClientLib;
 using System;
 using System.Collections.Generic;
@@ -10,6 +12,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 
 namespace FMSMonitoringUI.Monitoring
@@ -23,6 +26,7 @@ namespace FMSMonitoringUI.Monitoring
             InitializeComponent();
 
             InitControl();
+            InitLanguage();
             //InitGridView();
         }
 
@@ -35,8 +39,8 @@ namespace FMSMonitoringUI.Monitoring
             }
 
             #region Title Mouse Event
-            ctrlTitleBar.MouseDown_Evnet += Title_MouseDownEvnet;
-            ctrlTitleBar.MouseMove_Evnet += Title_MouseMoveEvnet;
+            titBar.MouseDown_Evnet += Title_MouseDownEvnet;
+            titBar.MouseMove_Evnet += Title_MouseMoveEvnet;
             #endregion
 
             #region DataGridView Event
@@ -54,12 +58,23 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
+        #region InitLanguage
+        private void InitLanguage()
+        {
+            titBar.CallLocalLanguage();
+            lbParameter.CallLocalLanguage();
+            Exit.CallLocalLanguage();
+        }
+        #endregion
+
         #region InitGridView
         private void InitGridView(Dictionary<string, object> rcpItem)
         {
-            List<string> lstTitle = new List<string>();
-            lstTitle.Add("Recipe Item");
-            lstTitle.Add("Value");
+            List<string> lstTitle = new List<string>
+            {
+                LocalLanguage.GetItemString("DEF_Recipe_Item"),
+                LocalLanguage.GetItemString("DEF_Value")
+            };
             gridRecipeInfo.AddColumnHeaderList(lstTitle);
 
             lstTitle = new List<string>();

@@ -20,15 +20,17 @@ namespace RestClientLib
 
         static HttpClient httpClient = null;
 
-        public RESTClient()
+        public RESTClient(string eqpType = "BASE", string unitID = "NULL")
         {
             httpClient = new HttpClient();
 
             ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
 
-            //httpClient.BaseAddress = new Uri("https://210.91.148.176:30011/");
-            httpClient.BaseAddress = new Uri("http://localhost:30001/");
+            enRestEqpType restEqpType = (enRestEqpType)Enum.Parse(typeof(enRestEqpType), eqpType);
+            enRestUnitID restUnitID = (enRestUnitID)Enum.Parse(typeof(enRestUnitID), unitID);
 
+            string baseAddress = GetRestServerURI(restEqpType, restUnitID);
+            httpClient.BaseAddress = new Uri(baseAddress);
 
             httpClient.DefaultRequestHeaders.Accept.Clear();
             httpClient.DefaultRequestHeaders.Accept.Add(
@@ -59,6 +61,50 @@ namespace RestClientLib
                 System.Diagnostics.Debug.Print(string.Format("### GetJson, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
+        }
+
+        public async Task<string> SetJson(string RequestUri, object RequestBody)
+        {
+            try
+            {
+                HttpResponseMessage response = httpClient.PostAsJsonAsync(RequestUri, RequestBody).Result;
+
+                var responseString = await response.Content.ReadAsStringAsync();
+
+                return responseString;
+            }
+            catch (Exception ex)
+            {
+                // System Debug
+                System.Diagnostics.Debug.Print(string.Format("### SetJsonManualCommnad, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                return null;
+            }
+        }
+
+        private string GetRestServerURI(enRestEqpType serverType, enRestUnitID unitID)
+        {
+            string baseAddress = @"https://210.91.148.176";
+            //string baseAddress = @"http://localhost:30001/";
+
+            string ecsAddress = @"https://210.91.148.176";
+
+            string address;
+
+            switch (serverType)
+            {
+                case enRestEqpType.BASE:
+                    address = $"{baseAddress}:{(int)serverType}/";
+                    break;
+                case enRestEqpType.HPC:
+                case enRestEqpType.CHG:
+                    address = $"{ecsAddress}:{(int)unitID}/";
+                    break;
+                default:
+                    address = $"{ecsAddress}:{(int)serverType}/";
+                    break;
+            }
+
+            return address;
         }
 
         /// <summary>

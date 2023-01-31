@@ -64,7 +64,7 @@ namespace FMSMonitoringUI.Controlls
         {
             InitializeComponent();
 
-            TrayInfoView.MouseCellDoubleClick_Evnet += TrayInfoView_MouseCellDoubleClick;
+            //TrayInfoView.MouseCellDoubleClick_Evnet += TrayInfoView_MouseCellDoubleClick;
         }
 
         #region CtrlEqpControl_Load
@@ -180,18 +180,18 @@ namespace FMSMonitoringUI.Controlls
         }
         #endregion
 
-        #region DataGridView Event
-        private void TrayInfoView_MouseCellDoubleClick(int col, int row, object value)
-        {
-            WinTrayInfo form = new WinTrayInfo(EqpID, "", value.ToString());
-            form.ShowDialog();
-        }
-        #endregion
+        //#region DataGridView Event
+        //private void TrayInfoView_MouseCellDoubleClick(int col, int row, object value)
+        //{
+        //    WinTrayInfo form = new WinTrayInfo(EqpID, "", value.ToString());
+        //    form.ShowDialog();
+        //}
+        //#endregion
 
         private void lbEqpType_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            WinManageEqp form = new WinManageEqp(EqpID, UnitID, EqpType, 1);
-            form.ShowDialog();
+            WinFormationHPC form = new WinFormationHPC(lbEqpType.Text, EqpID, EqpType, UnitID);
+            form.Show();
         }
     }
 }

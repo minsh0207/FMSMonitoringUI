@@ -120,6 +120,7 @@
             this.ctrlRack12.BackColor = System.Drawing.Color.DimGray;
             this.ctrlRack12.Enabled = false;
             this.ctrlRack12.EqpID = "F1CHG01";
+            this.ctrlRack12.EqpType = "CHG";
             this.ctrlRack12.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlRack12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlRack12.Location = new System.Drawing.Point(1087, 17);
@@ -134,6 +135,7 @@
             // 
             this.ctrlRack9.BackColor = System.Drawing.Color.DimGray;
             this.ctrlRack9.EqpID = "F1CHG01";
+            this.ctrlRack9.EqpType = "CHG";
             this.ctrlRack9.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlRack9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlRack9.Location = new System.Drawing.Point(1087, 402);
@@ -147,6 +149,7 @@
             // 
             this.ctrlRack10.BackColor = System.Drawing.Color.DimGray;
             this.ctrlRack10.EqpID = "F1CHG01";
+            this.ctrlRack10.EqpType = "CHG";
             this.ctrlRack10.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlRack10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlRack10.Location = new System.Drawing.Point(1087, 273);
@@ -160,6 +163,7 @@
             // 
             this.ctrlRack11.BackColor = System.Drawing.Color.DimGray;
             this.ctrlRack11.EqpID = "F1CHG01";
+            this.ctrlRack11.EqpType = "CHG";
             this.ctrlRack11.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlRack11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlRack11.Location = new System.Drawing.Point(1087, 145);
@@ -173,6 +177,7 @@
             // 
             this.ctrlRack5.BackColor = System.Drawing.Color.DimGray;
             this.ctrlRack5.EqpID = "F1CHG01";
+            this.ctrlRack5.EqpType = "CHG";
             this.ctrlRack5.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlRack5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlRack5.Location = new System.Drawing.Point(593, 403);
@@ -186,6 +191,7 @@
             // 
             this.ctrlRack6.BackColor = System.Drawing.Color.DimGray;
             this.ctrlRack6.EqpID = "F1CHG01";
+            this.ctrlRack6.EqpType = "CHG";
             this.ctrlRack6.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlRack6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlRack6.Location = new System.Drawing.Point(593, 274);
@@ -199,6 +205,7 @@
             // 
             this.ctrlRack7.BackColor = System.Drawing.Color.DimGray;
             this.ctrlRack7.EqpID = "F1CHG01";
+            this.ctrlRack7.EqpType = "CHG";
             this.ctrlRack7.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlRack7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlRack7.Location = new System.Drawing.Point(593, 146);
@@ -212,6 +219,7 @@
             // 
             this.ctrlRack8.BackColor = System.Drawing.Color.DimGray;
             this.ctrlRack8.EqpID = "F1CHG01";
+            this.ctrlRack8.EqpType = "CHG";
             this.ctrlRack8.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlRack8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlRack8.Location = new System.Drawing.Point(593, 17);
@@ -225,6 +233,7 @@
             // 
             this.ctrlRack4.BackColor = System.Drawing.Color.DimGray;
             this.ctrlRack4.EqpID = "F1CHG01";
+            this.ctrlRack4.EqpType = "CHG";
             this.ctrlRack4.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlRack4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlRack4.Location = new System.Drawing.Point(97, 403);
@@ -238,6 +247,7 @@
             // 
             this.ctrlRack3.BackColor = System.Drawing.Color.DimGray;
             this.ctrlRack3.EqpID = "F1CHG01";
+            this.ctrlRack3.EqpType = "CHG";
             this.ctrlRack3.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlRack3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlRack3.Location = new System.Drawing.Point(97, 274);
@@ -251,6 +261,7 @@
             // 
             this.ctrlRack2.BackColor = System.Drawing.Color.DimGray;
             this.ctrlRack2.EqpID = "F1CHG01";
+            this.ctrlRack2.EqpType = "CHG";
             this.ctrlRack2.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlRack2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlRack2.Location = new System.Drawing.Point(97, 146);
@@ -264,6 +275,7 @@
             // 
             this.ctrlRack1.BackColor = System.Drawing.Color.DimGray;
             this.ctrlRack1.EqpID = "F1CHG01";
+            this.ctrlRack1.EqpType = "CHG";
             this.ctrlRack1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlRack1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlRack1.Location = new System.Drawing.Point(97, 17);
@@ -663,7 +675,7 @@
             this.ctrlTaggingNameLong8.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingNameLong8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlTaggingNameLong8.LanguageID = "DEF_Data_Error";
-            this.ctrlTaggingNameLong8.Location = new System.Drawing.Point(14, 631);
+            this.ctrlTaggingNameLong8.Location = new System.Drawing.Point(14, 604);
             this.ctrlTaggingNameLong8.Name = "ctrlTaggingNameLong8";
             this.ctrlTaggingNameLong8.Size = new System.Drawing.Size(232, 30);
             this.ctrlTaggingNameLong8.StatusCode = "0";
@@ -676,10 +688,11 @@
             // 
             this.ctrlTaggingNameLong5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlTaggingNameLong5.ColorText = "RES";
+            this.ctrlTaggingNameLong5.Enabled = false;
             this.ctrlTaggingNameLong5.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingNameLong5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlTaggingNameLong5.LanguageID = "DEF_REST";
-            this.ctrlTaggingNameLong5.Location = new System.Drawing.Point(14, 604);
+            this.ctrlTaggingNameLong5.Location = new System.Drawing.Point(14, 677);
             this.ctrlTaggingNameLong5.Name = "ctrlTaggingNameLong5";
             this.ctrlTaggingNameLong5.Size = new System.Drawing.Size(232, 30);
             this.ctrlTaggingNameLong5.StatusCode = "32";
@@ -687,6 +700,7 @@
             this.ctrlTaggingNameLong5.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ctrlTaggingNameLong5.TagText = "REST";
             this.ctrlTaggingNameLong5.TextColor = System.Drawing.Color.Black;
+            this.ctrlTaggingNameLong5.Visible = false;
             // 
             // ctrlTaggingNameLong4
             // 

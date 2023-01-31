@@ -12,6 +12,9 @@ namespace MonitoringUI.Controlls.CDateTime
 {
     public partial class CtrlDateTimeDT : UserControlRoot
     {
+        public delegate void OnValueChangeEvent();
+        public OnValueChangeEvent OnValueChanged = null;
+
         #region Properties
         System.DateTime _dateTimeStart = System.DateTime.Now;
         [DisplayName("StartTime"), Description("Start Time"), Category("StartTime Setting")]
@@ -95,6 +98,12 @@ namespace MonitoringUI.Controlls.CDateTime
         //    //lbTitle.Text = LocalLanguage.GetItemString("strDateRange");
         //    lbTitle.Text = LocalLanguage.GetItemString(strTitleName);
         //}
+
+        private void dtpFrom_ValueChanged(object sender, EventArgs e)
+        {
+            if (OnValueChanged == null) return;
+            OnValueChanged();
+        }
 
         public void CallLocalLanguage()
         {

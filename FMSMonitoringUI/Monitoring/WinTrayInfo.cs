@@ -1,6 +1,8 @@
-﻿using MonitoringUI;
+﻿using FMSMonitoringUI.Controlls.WindowsForms;
+using MonitoringUI;
 using MonitoringUI.Common;
 using MonitoringUI.Controlls;
+using MonitoringUI.Controlls.CButton;
 using MySqlX.XDevAPI.Common;
 using Novasoft.Logger;
 using Org.BouncyCastle.Ocsp;
@@ -16,6 +18,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http.Results;
+using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 
 namespace FMSMonitoringUI.Monitoring
@@ -50,6 +53,7 @@ namespace FMSMonitoringUI.Monitoring
             InitControl();
             InitGridViewTray();
             InitGridViewProcessFlow(1);
+            InitLanguage();
         }
 
         #region WinManageEqp Event
@@ -62,8 +66,8 @@ namespace FMSMonitoringUI.Monitoring
             }
 
             #region Title Mouse Event
-            ctrlTitleBar.MouseDown_Evnet += Title_MouseDownEvnet;
-            ctrlTitleBar.MouseMove_Evnet += Title_MouseMoveEvnet;
+            titBar.MouseDown_Evnet += Title_MouseDownEvnet;
+            titBar.MouseMove_Evnet += Title_MouseMoveEvnet;
             #endregion
 
             #region DataGridView Event
@@ -97,6 +101,38 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
+        #region InitLanguage
+        private void InitLanguage()
+        {
+            titBar.CallLocalLanguage();
+
+            foreach (var ctl in splitContainer1.Panel1.Controls)
+            {
+                if (ctl.GetType() == typeof(CtrlLabel))
+                {
+                    CtrlLabel tagName = ctl as CtrlLabel;
+                    tagName.CallLocalLanguage();
+                }
+                else if (ctl.GetType() == typeof(CtrlButton))
+                {
+                    CtrlButton tagName = ctl as CtrlButton;
+                    tagName.CallLocalLanguage();
+                }
+            }
+
+            foreach (var ctl in splitContainer1.Panel2.Controls)
+            {
+                if (ctl.GetType() == typeof(CtrlLabel))
+                {
+                    CtrlLabel tagName = ctl as CtrlLabel;
+                    tagName.CallLocalLanguage();
+                }
+            }
+
+            Exit.CallLocalLanguage();
+        }
+        #endregion
+
         #region InitGridView
         private void InitGridViewTray()
         {
@@ -107,19 +143,20 @@ namespace FMSMonitoringUI.Monitoring
 
             gridTrayInfo.ColumnHeadersVisible(false);
 
-            lstTitle = new List<string>();
-            lstTitle.Add("Model");
-            lstTitle.Add("Tray ID");
-            lstTitle.Add("Binding Time");
-            lstTitle.Add("Tray Type");
-            lstTitle.Add("Route");
-            lstTitle.Add("Lot ID");
-            lstTitle.Add("Current Process");
-            lstTitle.Add("Current Equipment");
-            lstTitle.Add("Start Time");
-            lstTitle.Add("Plan Time");
-            lstTitle.Add("Cell Count");
-            
+            lstTitle = new List<string>
+            {
+                LocalLanguage.GetItemString("DEF_Model_ID"),
+                LocalLanguage.GetItemString("DEF_Tray_ID"),
+                LocalLanguage.GetItemString("DEF_Binding_Time"),
+                LocalLanguage.GetItemString("DEF_Tray_Type"),
+                LocalLanguage.GetItemString("DEF_Route_ID"),
+                LocalLanguage.GetItemString("DEF_Lot_ID"),
+                LocalLanguage.GetItemString("DEF_Current_Process"),
+                LocalLanguage.GetItemString("DEF_Current_Equipment"),
+                LocalLanguage.GetItemString("DEF_Start_Time"),
+                LocalLanguage.GetItemString("DEF_Plan_Time"),
+                LocalLanguage.GetItemString("DEF_Cell_Count")
+            };
 
             gridTrayInfo.AddRowsHeaderList(lstTitle);
 
@@ -136,12 +173,20 @@ namespace FMSMonitoringUI.Monitoring
             gridTrayInfo.ColumnHeadersWidth(0, 140);
         }
         private void InitGridViewProcessFlow(int rowCount)
-        {
-            string[] columnName = { "No", "Process Name", "Equipment Name",
-                                    "Start Time", "End Time", "Cell Count", "Recipe" };
-            List<string> lstTitle = new List<string>();
-            lstTitle = columnName.ToList();
+        {   
+            List<string> lstTitle = new List<string>
+            {
+                LocalLanguage.GetItemString("DEF_No"),
+                LocalLanguage.GetItemString("DEF_Process_Name"),
+                LocalLanguage.GetItemString("DEF_Equipment_Name"),
+                LocalLanguage.GetItemString("DEF_Start_Time"),
+                LocalLanguage.GetItemString("DEF_End_Time"),
+                LocalLanguage.GetItemString("DEF_Cell_Count"),
+                LocalLanguage.GetItemString("DEF_Recipe_ID")
+            };
+
             gridProcessFlow.AddColumnHeaderList(lstTitle);
+            int nColCount = lstTitle.Count;
 
             lstTitle = new List<string>();
             for (int i = 0; i < rowCount; i++)
@@ -156,7 +201,7 @@ namespace FMSMonitoringUI.Monitoring
 
             gridProcessFlow.SetGridViewStyles();
             gridProcessFlow.ColumnHeadersWidth(0, 50);
-            gridProcessFlow.ColumnHeadersWidth(columnName.Length - 2, 120);
+            gridProcessFlow.ColumnHeadersWidth(nColCount - 2, 120);
         }
         #endregion
 

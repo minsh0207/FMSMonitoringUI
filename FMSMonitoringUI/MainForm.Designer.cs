@@ -30,19 +30,19 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.scMainPanel = new System.Windows.Forms.SplitContainer();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.lbCurrentTime = new System.Windows.Forms.Label();
             this.lbUserName = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.barFormationHPC = new MonitoringUI.Controlls.CtrlTitleBarLabel();
-            this.lbCurrentTime = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.barMain = new MonitoringUI.Controlls.CtrlTitleBarLabel();
             this.barAging = new MonitoringUI.Controlls.CtrlTitleBarLabel();
             this.barFormationCHG = new MonitoringUI.Controlls.CtrlTitleBarLabel();
             ((System.ComponentModel.ISupportInitialize)(this.scMainPanel)).BeginInit();
             this.scMainPanel.Panel1.SuspendLayout();
             this.scMainPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // scMainPanel
@@ -58,11 +58,11 @@
             // scMainPanel.Panel1
             // 
             this.scMainPanel.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.scMainPanel.Panel1.Controls.Add(this.pictureBox1);
             this.scMainPanel.Panel1.Controls.Add(this.pictureBox2);
             this.scMainPanel.Panel1.Controls.Add(this.lbUserName);
             this.scMainPanel.Panel1.Controls.Add(this.barFormationHPC);
             this.scMainPanel.Panel1.Controls.Add(this.lbCurrentTime);
-            this.scMainPanel.Panel1.Controls.Add(this.pictureBox1);
             this.scMainPanel.Panel1.Controls.Add(this.barMain);
             this.scMainPanel.Panel1.Controls.Add(this.barAging);
             this.scMainPanel.Panel1.Controls.Add(this.barFormationCHG);
@@ -74,6 +74,16 @@
             this.scMainPanel.SplitterDistance = 62;
             this.scMainPanel.TabIndex = 0;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::FMSMonitoringUI.Properties.Resources.VerkorIcon;
+            this.pictureBox1.Location = new System.Drawing.Point(20, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(136, 54);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
@@ -82,6 +92,17 @@
             this.pictureBox2.Size = new System.Drawing.Size(22, 24);
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;
+            // 
+            // lbCurrentTime
+            // 
+            this.lbCurrentTime.AutoSize = true;
+            this.lbCurrentTime.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCurrentTime.ForeColor = System.Drawing.Color.White;
+            this.lbCurrentTime.Location = new System.Drawing.Point(1569, 28);
+            this.lbCurrentTime.Name = "lbCurrentTime";
+            this.lbCurrentTime.Size = new System.Drawing.Size(125, 16);
+            this.lbCurrentTime.TabIndex = 4;
+            this.lbCurrentTime.Text = "2022-12-20 09:12:30";
             // 
             // lbUserName
             // 
@@ -106,30 +127,9 @@
             this.barFormationHPC.Location = new System.Drawing.Point(641, 10);
             this.barFormationHPC.Margin = new System.Windows.Forms.Padding(4);
             this.barFormationHPC.Name = "barFormationHPC";
-            this.barFormationHPC.Size = new System.Drawing.Size(141, 50);
+            this.barFormationHPC.Size = new System.Drawing.Size(172, 50);
             this.barFormationHPC.TabIndex = 5;
             this.barFormationHPC.TitleText = "Formation(HPC)";
-            // 
-            // lbCurrentTime
-            // 
-            this.lbCurrentTime.AutoSize = true;
-            this.lbCurrentTime.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCurrentTime.ForeColor = System.Drawing.Color.White;
-            this.lbCurrentTime.Location = new System.Drawing.Point(1569, 28);
-            this.lbCurrentTime.Name = "lbCurrentTime";
-            this.lbCurrentTime.Size = new System.Drawing.Size(125, 16);
-            this.lbCurrentTime.TabIndex = 4;
-            this.lbCurrentTime.Text = "2022-12-20 09:12:30";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::FMSMonitoringUI.Properties.Resources.VerkorIcon;
-            this.pictureBox1.Location = new System.Drawing.Point(37, 10);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(136, 54);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // barMain
             // 
@@ -170,7 +170,7 @@
             this.barFormationCHG.Location = new System.Drawing.Point(457, 10);
             this.barFormationCHG.Margin = new System.Windows.Forms.Padding(4);
             this.barFormationCHG.Name = "barFormationCHG";
-            this.barFormationCHG.Size = new System.Drawing.Size(154, 50);
+            this.barFormationCHG.Size = new System.Drawing.Size(172, 50);
             this.barFormationCHG.TabIndex = 3;
             this.barFormationCHG.TitleText = "Formation(CHG)";
             // 
@@ -190,8 +190,8 @@
             this.scMainPanel.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scMainPanel)).EndInit();
             this.scMainPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -199,7 +199,6 @@
         #endregion
 
         private System.Windows.Forms.SplitContainer scMainPanel;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private MonitoringUI.Controlls.CtrlTitleBarLabel barFormationCHG;
         private MonitoringUI.Controlls.CtrlTitleBarLabel barAging;
         public MonitoringUI.Controlls.CtrlTitleBarLabel barMain;
@@ -207,6 +206,7 @@
         private MonitoringUI.Controlls.CtrlTitleBarLabel barFormationHPC;
         private Controlls.WindowsForms.CtrlLabel lbUserName;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

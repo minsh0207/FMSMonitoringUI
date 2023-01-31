@@ -29,26 +29,25 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
-            this.ctrlTitleBar = new MonitoringUI.Controlls.CtrlTitleBar();
+            this.titBar = new MonitoringUI.Controlls.CtrlTitleBar();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.gridEqpInfo = new FMSMonitoringUI.Controlls.CtrlDataGridView();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.gridTrayInfo = new FMSMonitoringUI.Controlls.CtrlDataGridView();
             this.ctrlGroupBox1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlGroupBox();
             this.EqpControlSave = new MonitoringUI.Controlls.CButton.CtrlButton();
-            this.ctrlRadioButton8 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
-            this.ctrlRadioButton7 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
-            this.ctrlRadioButton6 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
-            this.ctrlRadioButton5 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
-            this.ctrlRadioButton4 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
-            this.ctrlLabel1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.DataClearSave = new MonitoringUI.Controlls.CButton.CtrlButton();
-            this.ctrlRadioButton2 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
-            this.ctrlRadioButton1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
-            this.label1 = new System.Windows.Forms.Label();
+            this.rbForceUnload = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
+            this.rbResume = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
+            this.rbPause = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
+            this.rbRestart = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
+            this.rbStop = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.Exit = new MonitoringUI.Controlls.CButton.CtrlButton();
+            this.ctrlGroupBox3 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlGroupBox();
+            this.DataClearSave = new MonitoringUI.Controlls.CButton.CtrlButton();
+            this.rbClearTrouble = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
+            this.rbClearInfo = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
+            this.ctrlLabel4 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -59,34 +58,34 @@
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.ctrlGroupBox1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.ctrlGroupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.ctrlTitleBar);
+            this.panel2.Controls.Add(this.titBar);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(2, 2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(936, 60);
             this.panel2.TabIndex = 1;
             // 
-            // ctrlTitleBar
+            // titBar
             // 
-            this.ctrlTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlTitleBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ctrlTitleBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ctrlTitleBar.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ctrlTitleBar.ForeColor = System.Drawing.Color.White;
-            this.ctrlTitleBar.LanguageID = "DEF_HPC";
-            this.ctrlTitleBar.Location = new System.Drawing.Point(0, 0);
-            this.ctrlTitleBar.Margin = new System.Windows.Forms.Padding(4);
-            this.ctrlTitleBar.Name = "ctrlTitleBar";
-            this.ctrlTitleBar.Size = new System.Drawing.Size(934, 58);
-            this.ctrlTitleBar.TabIndex = 0;
-            this.ctrlTitleBar.TitleText = "HPC";
+            this.titBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.titBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.titBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.titBar.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.titBar.ForeColor = System.Drawing.Color.White;
+            this.titBar.LanguageID = "DEF_HPC";
+            this.titBar.Location = new System.Drawing.Point(0, 0);
+            this.titBar.Margin = new System.Windows.Forms.Padding(4);
+            this.titBar.Name = "titBar";
+            this.titBar.Size = new System.Drawing.Size(934, 58);
+            this.titBar.TabIndex = 0;
+            this.titBar.TitleText = "HPC";
             // 
             // splitContainer1
             // 
@@ -134,10 +133,9 @@
             // 
             // splitContainer2.Panel2
             // 
+            this.splitContainer2.Panel2.Controls.Add(this.ctrlLabel4);
+            this.splitContainer2.Panel2.Controls.Add(this.ctrlGroupBox3);
             this.splitContainer2.Panel2.Controls.Add(this.ctrlGroupBox1);
-            this.splitContainer2.Panel2.Controls.Add(this.ctrlLabel1);
-            this.splitContainer2.Panel2.Controls.Add(this.groupBox1);
-            this.splitContainer2.Panel2.Controls.Add(this.label1);
             this.splitContainer2.Size = new System.Drawing.Size(630, 413);
             this.splitContainer2.SplitterDistance = 297;
             this.splitContainer2.TabIndex = 0;
@@ -158,12 +156,12 @@
             // 
             this.ctrlGroupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlGroupBox1.Controls.Add(this.EqpControlSave);
-            this.ctrlGroupBox1.Controls.Add(this.ctrlRadioButton8);
-            this.ctrlGroupBox1.Controls.Add(this.ctrlRadioButton7);
-            this.ctrlGroupBox1.Controls.Add(this.ctrlRadioButton6);
-            this.ctrlGroupBox1.Controls.Add(this.ctrlRadioButton5);
-            this.ctrlGroupBox1.Controls.Add(this.ctrlRadioButton4);
-            this.ctrlGroupBox1.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold);
+            this.ctrlGroupBox1.Controls.Add(this.rbForceUnload);
+            this.ctrlGroupBox1.Controls.Add(this.rbResume);
+            this.ctrlGroupBox1.Controls.Add(this.rbPause);
+            this.ctrlGroupBox1.Controls.Add(this.rbRestart);
+            this.ctrlGroupBox1.Controls.Add(this.rbStop);
+            this.ctrlGroupBox1.Font = new System.Drawing.Font("돋움", 9.75F);
             this.ctrlGroupBox1.ForeColor = System.Drawing.Color.White;
             this.ctrlGroupBox1.LanguageID = "DEF_Equipment_Control";
             this.ctrlGroupBox1.Location = new System.Drawing.Point(12, 40);
@@ -187,148 +185,75 @@
             this.EqpControlSave.TabIndex = 60;
             this.EqpControlSave.Click += new System.EventHandler(this.Save_Click);
             // 
-            // ctrlRadioButton8
+            // rbForceUnload
             // 
-            this.ctrlRadioButton8.AutoSize = true;
-            this.ctrlRadioButton8.Font = new System.Drawing.Font("굴림", 9F);
-            this.ctrlRadioButton8.ForeColor = System.Drawing.Color.White;
-            this.ctrlRadioButton8.LanguageID = "DEF_Force_Tray_Unload";
-            this.ctrlRadioButton8.Location = new System.Drawing.Point(14, 135);
-            this.ctrlRadioButton8.Name = "ctrlRadioButton8";
-            this.ctrlRadioButton8.Size = new System.Drawing.Size(128, 16);
-            this.ctrlRadioButton8.TabIndex = 59;
-            this.ctrlRadioButton8.TabStop = true;
-            this.ctrlRadioButton8.Text = "Force Tray Unload";
-            this.ctrlRadioButton8.UseVisualStyleBackColor = true;
+            this.rbForceUnload.AutoSize = true;
+            this.rbForceUnload.Font = new System.Drawing.Font("굴림", 9F);
+            this.rbForceUnload.ForeColor = System.Drawing.Color.White;
+            this.rbForceUnload.LanguageID = "DEF_Force_Tray_Unload";
+            this.rbForceUnload.Location = new System.Drawing.Point(14, 135);
+            this.rbForceUnload.Name = "rbForceUnload";
+            this.rbForceUnload.Size = new System.Drawing.Size(128, 16);
+            this.rbForceUnload.TabIndex = 59;
+            this.rbForceUnload.TabStop = true;
+            this.rbForceUnload.Text = "Force Tray Unload";
+            this.rbForceUnload.UseVisualStyleBackColor = true;
             // 
-            // ctrlRadioButton7
+            // rbResume
             // 
-            this.ctrlRadioButton7.AutoSize = true;
-            this.ctrlRadioButton7.Font = new System.Drawing.Font("굴림", 9F);
-            this.ctrlRadioButton7.ForeColor = System.Drawing.Color.White;
-            this.ctrlRadioButton7.LanguageID = "DEF_Resume_Paused_Process";
-            this.ctrlRadioButton7.Location = new System.Drawing.Point(14, 108);
-            this.ctrlRadioButton7.Name = "ctrlRadioButton7";
-            this.ctrlRadioButton7.Size = new System.Drawing.Size(168, 16);
-            this.ctrlRadioButton7.TabIndex = 58;
-            this.ctrlRadioButton7.TabStop = true;
-            this.ctrlRadioButton7.Text = "Resume Paused Process";
-            this.ctrlRadioButton7.UseVisualStyleBackColor = true;
+            this.rbResume.AutoSize = true;
+            this.rbResume.Font = new System.Drawing.Font("굴림", 9F);
+            this.rbResume.ForeColor = System.Drawing.Color.White;
+            this.rbResume.LanguageID = "DEF_Resume_Paused_Process";
+            this.rbResume.Location = new System.Drawing.Point(14, 108);
+            this.rbResume.Name = "rbResume";
+            this.rbResume.Size = new System.Drawing.Size(168, 16);
+            this.rbResume.TabIndex = 58;
+            this.rbResume.TabStop = true;
+            this.rbResume.Text = "Resume Paused Process";
+            this.rbResume.UseVisualStyleBackColor = true;
             // 
-            // ctrlRadioButton6
+            // rbPause
             // 
-            this.ctrlRadioButton6.AutoSize = true;
-            this.ctrlRadioButton6.Font = new System.Drawing.Font("굴림", 9F);
-            this.ctrlRadioButton6.ForeColor = System.Drawing.Color.White;
-            this.ctrlRadioButton6.LanguageID = "DEF_Pause_Current_Process";
-            this.ctrlRadioButton6.Location = new System.Drawing.Point(14, 81);
-            this.ctrlRadioButton6.Name = "ctrlRadioButton6";
-            this.ctrlRadioButton6.Size = new System.Drawing.Size(155, 16);
-            this.ctrlRadioButton6.TabIndex = 57;
-            this.ctrlRadioButton6.TabStop = true;
-            this.ctrlRadioButton6.Text = "Pause Current Process";
-            this.ctrlRadioButton6.UseVisualStyleBackColor = true;
+            this.rbPause.AutoSize = true;
+            this.rbPause.Font = new System.Drawing.Font("굴림", 9F);
+            this.rbPause.ForeColor = System.Drawing.Color.White;
+            this.rbPause.LanguageID = "DEF_Pause_Current_Process";
+            this.rbPause.Location = new System.Drawing.Point(14, 81);
+            this.rbPause.Name = "rbPause";
+            this.rbPause.Size = new System.Drawing.Size(155, 16);
+            this.rbPause.TabIndex = 57;
+            this.rbPause.TabStop = true;
+            this.rbPause.Text = "Pause Current Process";
+            this.rbPause.UseVisualStyleBackColor = true;
             // 
-            // ctrlRadioButton5
+            // rbRestart
             // 
-            this.ctrlRadioButton5.AutoSize = true;
-            this.ctrlRadioButton5.Font = new System.Drawing.Font("굴림", 9F);
-            this.ctrlRadioButton5.ForeColor = System.Drawing.Color.White;
-            this.ctrlRadioButton5.LanguageID = "DEF_Restart_Current_Process";
-            this.ctrlRadioButton5.Location = new System.Drawing.Point(14, 54);
-            this.ctrlRadioButton5.Name = "ctrlRadioButton5";
-            this.ctrlRadioButton5.Size = new System.Drawing.Size(158, 16);
-            this.ctrlRadioButton5.TabIndex = 56;
-            this.ctrlRadioButton5.TabStop = true;
-            this.ctrlRadioButton5.Text = "Restart Current Process";
-            this.ctrlRadioButton5.UseVisualStyleBackColor = true;
+            this.rbRestart.AutoSize = true;
+            this.rbRestart.Font = new System.Drawing.Font("굴림", 9F);
+            this.rbRestart.ForeColor = System.Drawing.Color.White;
+            this.rbRestart.LanguageID = "DEF_Restart_Current_Process";
+            this.rbRestart.Location = new System.Drawing.Point(14, 54);
+            this.rbRestart.Name = "rbRestart";
+            this.rbRestart.Size = new System.Drawing.Size(158, 16);
+            this.rbRestart.TabIndex = 56;
+            this.rbRestart.TabStop = true;
+            this.rbRestart.Text = "Restart Current Process";
+            this.rbRestart.UseVisualStyleBackColor = true;
             // 
-            // ctrlRadioButton4
+            // rbStop
             // 
-            this.ctrlRadioButton4.AutoSize = true;
-            this.ctrlRadioButton4.Font = new System.Drawing.Font("굴림", 9F);
-            this.ctrlRadioButton4.ForeColor = System.Drawing.Color.White;
-            this.ctrlRadioButton4.LanguageID = "DEF_Stop_Current_Process";
-            this.ctrlRadioButton4.Location = new System.Drawing.Point(14, 25);
-            this.ctrlRadioButton4.Name = "ctrlRadioButton4";
-            this.ctrlRadioButton4.Size = new System.Drawing.Size(144, 16);
-            this.ctrlRadioButton4.TabIndex = 55;
-            this.ctrlRadioButton4.TabStop = true;
-            this.ctrlRadioButton4.Text = "Stop Current Process";
-            this.ctrlRadioButton4.UseVisualStyleBackColor = true;
-            // 
-            // ctrlLabel1
-            // 
-            this.ctrlLabel1.AutoSize = true;
-            this.ctrlLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlLabel1.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ctrlLabel1.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel1.LanguageID = "DEF_Data_Clear";
-            this.ctrlLabel1.Location = new System.Drawing.Point(18, 222);
-            this.ctrlLabel1.Name = "ctrlLabel1";
-            this.ctrlLabel1.Size = new System.Drawing.Size(82, 13);
-            this.ctrlLabel1.TabIndex = 25;
-            this.ctrlLabel1.Text = "Data Clear";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.DataClearSave);
-            this.groupBox1.Controls.Add(this.ctrlRadioButton2);
-            this.groupBox1.Controls.Add(this.ctrlRadioButton1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 224);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(303, 91);
-            this.groupBox1.TabIndex = 24;
-            this.groupBox1.TabStop = false;
-            // 
-            // DataClearSave
-            // 
-            this.DataClearSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.DataClearSave.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.DataClearSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.DataClearSave.LabelText = "Save";
-            this.DataClearSave.LanguageID = "DEF_Save";
-            this.DataClearSave.Location = new System.Drawing.Point(202, 20);
-            this.DataClearSave.Name = "DataClearSave";
-            this.DataClearSave.Size = new System.Drawing.Size(89, 55);
-            this.DataClearSave.TabIndex = 42;
-            this.DataClearSave.Click += new System.EventHandler(this.Save_Click);
-            // 
-            // ctrlRadioButton2
-            // 
-            this.ctrlRadioButton2.AutoSize = true;
-            this.ctrlRadioButton2.ForeColor = System.Drawing.Color.White;
-            this.ctrlRadioButton2.LanguageID = "DEF_Clear_Trouble";
-            this.ctrlRadioButton2.Location = new System.Drawing.Point(14, 55);
-            this.ctrlRadioButton2.Name = "ctrlRadioButton2";
-            this.ctrlRadioButton2.Size = new System.Drawing.Size(101, 17);
-            this.ctrlRadioButton2.TabIndex = 25;
-            this.ctrlRadioButton2.TabStop = true;
-            this.ctrlRadioButton2.Text = "Clear Trouble";
-            this.ctrlRadioButton2.UseVisualStyleBackColor = true;
-            // 
-            // ctrlRadioButton1
-            // 
-            this.ctrlRadioButton1.AutoSize = true;
-            this.ctrlRadioButton1.ForeColor = System.Drawing.Color.White;
-            this.ctrlRadioButton1.LanguageID = "DEF_Clear_Information";
-            this.ctrlRadioButton1.Location = new System.Drawing.Point(14, 27);
-            this.ctrlRadioButton1.Name = "ctrlRadioButton1";
-            this.ctrlRadioButton1.Size = new System.Drawing.Size(119, 17);
-            this.ctrlRadioButton1.TabIndex = 24;
-            this.ctrlRadioButton1.TabStop = true;
-            this.ctrlRadioButton1.Text = "Clear Information";
-            this.ctrlRadioButton1.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("굴림", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(9, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(158, 18);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Manual Command";
+            this.rbStop.AutoSize = true;
+            this.rbStop.Font = new System.Drawing.Font("굴림", 9F);
+            this.rbStop.ForeColor = System.Drawing.Color.White;
+            this.rbStop.LanguageID = "DEF_Stop_Current_Process";
+            this.rbStop.Location = new System.Drawing.Point(14, 25);
+            this.rbStop.Name = "rbStop";
+            this.rbStop.Size = new System.Drawing.Size(144, 16);
+            this.rbStop.TabIndex = 55;
+            this.rbStop.TabStop = true;
+            this.rbStop.Text = "Stop Current Process";
+            this.rbStop.UseVisualStyleBackColor = true;
             // 
             // panel3
             // 
@@ -356,6 +281,73 @@
             this.Exit.Size = new System.Drawing.Size(170, 40);
             this.Exit.TabIndex = 1;
             this.Exit.Click += new System.EventHandler(this.Exit_Click);
+            // 
+            // ctrlGroupBox3
+            // 
+            this.ctrlGroupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlGroupBox3.Controls.Add(this.DataClearSave);
+            this.ctrlGroupBox3.Controls.Add(this.rbClearTrouble);
+            this.ctrlGroupBox3.Controls.Add(this.rbClearInfo);
+            this.ctrlGroupBox3.ForeColor = System.Drawing.Color.White;
+            this.ctrlGroupBox3.LanguageID = "DEF_Data_Clear";
+            this.ctrlGroupBox3.Location = new System.Drawing.Point(12, 229);
+            this.ctrlGroupBox3.Name = "ctrlGroupBox3";
+            this.ctrlGroupBox3.Size = new System.Drawing.Size(303, 90);
+            this.ctrlGroupBox3.TabIndex = 70;
+            this.ctrlGroupBox3.TabStop = false;
+            this.ctrlGroupBox3.Text = "Data Clear";
+            this.ctrlGroupBox3.TitleText = "Data Clear";
+            // 
+            // DataClearSave
+            // 
+            this.DataClearSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.DataClearSave.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.DataClearSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.DataClearSave.LabelText = "Save";
+            this.DataClearSave.LanguageID = "DEF_Save";
+            this.DataClearSave.Location = new System.Drawing.Point(202, 21);
+            this.DataClearSave.Name = "DataClearSave";
+            this.DataClearSave.Size = new System.Drawing.Size(89, 52);
+            this.DataClearSave.TabIndex = 45;
+            // 
+            // rbClearTrouble
+            // 
+            this.rbClearTrouble.AutoSize = true;
+            this.rbClearTrouble.ForeColor = System.Drawing.Color.White;
+            this.rbClearTrouble.LanguageID = "DEF_Clear_Trouble";
+            this.rbClearTrouble.Location = new System.Drawing.Point(13, 55);
+            this.rbClearTrouble.Name = "rbClearTrouble";
+            this.rbClearTrouble.Size = new System.Drawing.Size(101, 17);
+            this.rbClearTrouble.TabIndex = 44;
+            this.rbClearTrouble.TabStop = true;
+            this.rbClearTrouble.Text = "Clear Trouble";
+            this.rbClearTrouble.UseVisualStyleBackColor = true;
+            // 
+            // rbClearInfo
+            // 
+            this.rbClearInfo.AutoSize = true;
+            this.rbClearInfo.ForeColor = System.Drawing.Color.White;
+            this.rbClearInfo.LanguageID = "DEF_Clear_Information";
+            this.rbClearInfo.Location = new System.Drawing.Point(13, 27);
+            this.rbClearInfo.Name = "rbClearInfo";
+            this.rbClearInfo.Size = new System.Drawing.Size(119, 17);
+            this.rbClearInfo.TabIndex = 43;
+            this.rbClearInfo.TabStop = true;
+            this.rbClearInfo.Text = "Clear Information";
+            this.rbClearInfo.UseVisualStyleBackColor = true;
+            // 
+            // ctrlLabel4
+            // 
+            this.ctrlLabel4.AutoSize = true;
+            this.ctrlLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel4.Font = new System.Drawing.Font("굴림", 11.25F, System.Drawing.FontStyle.Bold);
+            this.ctrlLabel4.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel4.LanguageID = "DEF_Manual_Command";
+            this.ctrlLabel4.Location = new System.Drawing.Point(9, 11);
+            this.ctrlLabel4.Name = "ctrlLabel4";
+            this.ctrlLabel4.Size = new System.Drawing.Size(138, 15);
+            this.ctrlLabel4.TabIndex = 71;
+            this.ctrlLabel4.Text = "Manual Command";
             // 
             // WinFormationHPC
             // 
@@ -389,9 +381,9 @@
             this.splitContainer2.ResumeLayout(false);
             this.ctrlGroupBox1.ResumeLayout(false);
             this.ctrlGroupBox1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.panel3.ResumeLayout(false);
+            this.ctrlGroupBox3.ResumeLayout(false);
+            this.ctrlGroupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -399,25 +391,24 @@
 
         #endregion
         private System.Windows.Forms.Panel panel2;
-        private MonitoringUI.Controlls.CtrlTitleBar ctrlTitleBar;
+        private MonitoringUI.Controlls.CtrlTitleBar titBar;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private Controlls.CtrlDataGridView gridEqpInfo;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private Controlls.CtrlDataGridView gridTrayInfo;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private Controlls.WindowsForms.CtrlLabel ctrlLabel1;
-        private Controlls.WindowsForms.CtrlRadioButton ctrlRadioButton2;
-        private Controlls.WindowsForms.CtrlRadioButton ctrlRadioButton1;
-        private MonitoringUI.Controlls.CButton.CtrlButton DataClearSave;
         private Controlls.WindowsForms.CtrlGroupBox ctrlGroupBox1;
         private MonitoringUI.Controlls.CButton.CtrlButton EqpControlSave;
-        private Controlls.WindowsForms.CtrlRadioButton ctrlRadioButton8;
-        private Controlls.WindowsForms.CtrlRadioButton ctrlRadioButton7;
-        private Controlls.WindowsForms.CtrlRadioButton ctrlRadioButton6;
-        private Controlls.WindowsForms.CtrlRadioButton ctrlRadioButton5;
-        private Controlls.WindowsForms.CtrlRadioButton ctrlRadioButton4;
+        private Controlls.WindowsForms.CtrlRadioButton rbForceUnload;
+        private Controlls.WindowsForms.CtrlRadioButton rbResume;
+        private Controlls.WindowsForms.CtrlRadioButton rbPause;
+        private Controlls.WindowsForms.CtrlRadioButton rbRestart;
+        private Controlls.WindowsForms.CtrlRadioButton rbStop;
         private System.Windows.Forms.Panel panel3;
         private MonitoringUI.Controlls.CButton.CtrlButton Exit;
+        private Controlls.WindowsForms.CtrlGroupBox ctrlGroupBox3;
+        private MonitoringUI.Controlls.CButton.CtrlButton DataClearSave;
+        private Controlls.WindowsForms.CtrlRadioButton rbClearTrouble;
+        private Controlls.WindowsForms.CtrlRadioButton rbClearInfo;
+        private Controlls.WindowsForms.CtrlLabel ctrlLabel4;
     }
 }

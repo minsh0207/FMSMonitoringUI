@@ -58,6 +58,7 @@ namespace FMSMonitoringUI
         // Trouble Equipment List Dictionary
         // 사용자가 Trouble PopUP 창을 닫을 경우에 대해 정보를 가지고 있으면서 체크를 해준다.
         private Dictionary<int, CTroubleEquipmentList> _TroubleEquipmentList;
+        private Dictionary<string, CTroubleEquipmentList> _TroubleAgingList;
 
         #endregion
 
@@ -93,6 +94,7 @@ namespace FMSMonitoringUI
             #endregion
 
             _TroubleEquipmentList = new Dictionary<int, CTroubleEquipmentList>();
+            _TroubleAgingList = new Dictionary<string, CTroubleEquipmentList>();
 
             FormBorderStyle = FormBorderStyle.Sizable;
             WindowState = FormWindowState.Maximized;
@@ -410,6 +412,7 @@ namespace FMSMonitoringUI
                     this.Invoke(new MethodInvoker(delegate ()
                     {
                         LoadTroubleEqpAlarm().GetAwaiter().GetResult();
+                        LoadTroubleAgingAlarm().GetAwaiter().GetResult();
                     }));
 
                     Thread.Sleep(5000);
@@ -423,7 +426,7 @@ namespace FMSMonitoringUI
         }
         #endregion
 
-        #region LoadTroubleAlarm
+        #region LoadTroubleEqpAlarm
         private async Task LoadTroubleEqpAlarm()
         {
             try
@@ -433,7 +436,7 @@ namespace FMSMonitoringUI
                 StringBuilder strSQL = new StringBuilder();
 
                 strSQL.Append(" SELECT A.id, A.eqp_id, A.eqp_status, A.eqp_name, A.eqp_name_local, A.eqp_trouble_code,");
-                strSQL.Append("        B.trouble_name, B.trouble_name_local");
+                strSQL.Append("        B.trouble_category, B.trouble_name, B.trouble_name_local");
                 strSQL.Append(" FROM fms_v.tb_mst_eqp   A");
                 strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_trouble    B");
                 strSQL.Append("         ON A.eqp_type = B.eqp_type AND A.eqp_trouble_code = B.trouble_code");
@@ -454,21 +457,8 @@ namespace FMSMonitoringUI
                     {
                         SetData(result.DATA);
 
-                        foreach (var trouble in _TroubleEquipmentList)
-                        {
-                            if (trouble.Value.bStatus != trouble.Value.bStatusPrev ||
-                                trouble.Value.strTroubleCode != trouble.Value.strTroubleCodePrev)
-                            {
-                                trouble.Value.bStatusPrev = trouble.Value.bStatus;
-                                trouble.Value.strTroubleCodePrev = trouble.Value.strTroubleCode;
-
-                                if (trouble.Value.bStatus == true)
-                                {
-                                    //if (cbUsePopUp.Checked)
-                                    TroubleWindowShow(trouble.Value.nEqpTypeID, trouble.Value.strUnitName, trouble.Value.strContent);
-                                }
-                            }
-                        }
+                        //if (cbUsePopUp.Checked)
+                        TroubleWindowShow();
                     }
                     else
                     {
@@ -490,6 +480,60 @@ namespace FMSMonitoringUI
             }
         }
         #endregion
+
+        #region LoadTroubleAgingAlarm
+        private async Task LoadTroubleAgingAlarm()
+        {
+            try
+            {
+                RESTClient rest = new RESTClient();
+                //// Set Query
+                StringBuilder strSQL = new StringBuilder();
+                string type = string.Format("aging_type LIKE '{0}%'", "H");
+
+                strSQL.Append(" SELECT A.aging_type, A.line, A.lane, A.bay, A.floor, A.rack_id, A.status, A.trouble_code,");
+                strSQL.Append("        B.trouble_name, B.trouble_name_local");
+                strSQL.Append(" FROM fms_v.tb_mst_aging   A");
+                strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_trouble    B");
+                strSQL.Append("         ON concat(A.aging_type, 'TA') = B.eqp_type AND A.trouble_code = B.trouble_code");
+                //필수값
+                strSQL.Append(" WHERE (A.status = 'T' AND concat(A.aging_type,'TA') = B.eqp_type)");
+                strSQL.Append("    OR (A.fire_status = 'Y' AND concat(A.aging_type,'TA') = B.eqp_type)");
+
+                var jsonResult = await rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+
+                if (jsonResult != null)
+                {
+                    _jsonTroubleAgingResponse result = rest.ConvertTroubleAging(jsonResult);
+
+                    if (result != null)
+                    {
+                        SetData(result.DATA);
+
+                        //if (cbUsePopUp.Checked)
+                        TroubleWindowShow();
+                    }
+                    else
+                    {
+                        string log = "MstTrouble : result is null";
+                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                    }
+                }
+                else
+                {
+                    string log = "MstTrouble : jsonResult is null";
+                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                }
+
+                //rest = null;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print(string.Format("[Exception:LoadTroubleAlarm] {0}", ex.ToString()));
+            }
+        }
+        #endregion
+
         #region SetData
         public void SetData(List<_trouble_equipment_list> data)
         {
@@ -537,6 +581,53 @@ namespace FMSMonitoringUI
                 }
             }
         }
+
+        public void SetData(List<_trouble_aging_list> data)
+        {
+            if (data == null || data.Count == 0)
+            {
+                _TroubleAgingList.Clear();
+                return;
+            }
+
+            bool bStatus = true;
+            bool bStatusPrev = false;
+
+            // 설비에서 Alarm 해지 시 _TroubleAgingList 제거해 준다.
+            for (int i = 0; i < _TroubleAgingList.Count; i++)
+            {
+                string strUnitID = _TroubleAgingList.Keys.ToList()[i];
+
+                var varTemp = data.FirstOrDefault(t => t.RACK_ID == strUnitID);
+
+                if (varTemp == null)
+                {
+                    _TroubleAgingList.Remove(strUnitID);
+                }
+            }
+
+            foreach (var item in data)
+            {
+                bStatus = true;         //
+                bStatusPrev = false;
+
+                if (_TroubleAgingList.ContainsKey(item.RACK_ID) == false)
+                {
+                    TroubleAgingListAdd(item, bStatus, bStatusPrev);
+                }
+                else
+                {
+                    var varTemp = _TroubleAgingList[item.RACK_ID];
+
+                    varTemp.bStatusPrev = varTemp.bStatus;
+                    varTemp.bStatus = bStatus;
+                    varTemp.strStatus = item.STATUS == "T" ? "TROUBLE" : "";
+                    varTemp.strContent = CDefine.m_enLanguage == enLoginLanguage.English ? item.TROUBLE_NAME : item.TROUBLE_NAME_LOCAL;
+                    varTemp.strTroubleCode = item.TROUBLE_CODE;
+                    varTemp.nAlarmCnt++;
+                }
+            }
+        }
         #endregion
 
         #region Trouble Equipment List Add
@@ -570,19 +661,84 @@ namespace FMSMonitoringUI
         }
         #endregion
 
+        #region Trouble Aging List Add
+        /////////////////////////////////////////////////////////////////////
+        //	Trouble Equipment List Add
+        //===================================================================
+        private void TroubleAgingListAdd(_trouble_aging_list troubleData, bool bStatus, bool bStatusPrev)
+        {
+            try
+            {
+                string rackName = string.Format($"{troubleData.AGING_TYPE}T-{troubleData.LINE}Line-{troubleData.LANE}Lane-{troubleData.BAY}Bay-{troubleData.FLOOR}F");
+                // Add Data
+                CTroubleEquipmentList troubleEquipmentList = new CTroubleEquipmentList
+                {
+                    strUnitID = troubleData.RACK_ID,
+                    strUnitName = rackName,
+                    bStatus = bStatus,
+                    bStatusPrev = bStatusPrev,
+                    strStatus = troubleData.STATUS == "T" ? "TROUBLE" : "",
+                    strContent = CDefine.m_enLanguage == enLoginLanguage.English ? troubleData.TROUBLE_NAME : troubleData.TROUBLE_NAME_LOCAL,
+                    strTroubleCode = troubleData.TROUBLE_CODE,
+                    nAlarmCnt = 1
+                };
+
+                _TroubleAgingList.Add(troubleData.RACK_ID, troubleEquipmentList);
+            }
+            catch (Exception ex)
+            {
+                // System Debug
+                System.Diagnostics.Debug.Print(string.Format("### TroubleAgingListAdd Add Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+            }
+        }
+        #endregion
+
         #region [Trouble WIndow Show]
         /////////////////////////////////////////////////////////////////////
         //	Trouble WIndow Show
         //===================================================================
-        private void TroubleWindowShow(int nEqpTypeID, string strTitle, string strContent)
+        private void TroubleWindowShow()
         {
             try
             {
-                WinTroubleAlarm troubleAlarm = new WinTroubleAlarm();
-                troubleAlarm.Show();
-                
-                troubleAlarm.lblTroubleName.Text = strContent;
-                troubleAlarm.lblTroubleUnitName.Text = strTitle;
+                foreach (var trouble in _TroubleEquipmentList)
+                {
+                    if (trouble.Value.bStatus != trouble.Value.bStatusPrev ||
+                        trouble.Value.strTroubleCode != trouble.Value.strTroubleCodePrev)
+                    {
+                        trouble.Value.bStatusPrev = trouble.Value.bStatus;
+                        trouble.Value.strTroubleCodePrev = trouble.Value.strTroubleCode;
+
+                        if (trouble.Value.bStatus == true)
+                        {
+                            WinTroubleAlarm troubleAlarm = new WinTroubleAlarm();
+                            troubleAlarm.Show();
+
+                            troubleAlarm.lblTroubleName.Text = trouble.Value.strContent;
+                            troubleAlarm.lblTroubleUnitName.Text = trouble.Value.strUnitName;
+                        }
+                    }
+                }
+
+                foreach (var trouble in _TroubleAgingList)
+                {
+                    if (trouble.Value.bStatus != trouble.Value.bStatusPrev ||
+                        trouble.Value.strTroubleCode != trouble.Value.strTroubleCodePrev)
+                    {
+                        trouble.Value.bStatusPrev = trouble.Value.bStatus;
+                        trouble.Value.strTroubleCodePrev = trouble.Value.strTroubleCode;
+
+                        if (trouble.Value.bStatus == true)
+                        {
+                            WinTroubleAlarm troubleAlarm = new WinTroubleAlarm();
+                            troubleAlarm.Show();
+
+                            troubleAlarm.lblTroubleName.Text = trouble.Value.strContent;
+                            troubleAlarm.lblTroubleUnitName.Text = trouble.Value.strUnitName;
+                        }
+                    }
+                }
+
 
                 //switch (nEqpTypeID)
                 //{
@@ -602,7 +758,7 @@ namespace FMSMonitoringUI
             catch (Exception ex)
             {
                 // System Debug
-                System.Diagnostics.Debug.Print(string.Format("### Trouble State Setting Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                System.Diagnostics.Debug.Print(string.Format("### TroubleWindowShow Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
             }
         }
         #endregion

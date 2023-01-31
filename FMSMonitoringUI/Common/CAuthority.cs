@@ -199,6 +199,9 @@ namespace MonitoringUI.Common
                 case "WinWaterTank":
                     strWindowID = CDefine.DEF_MON_WIN_WATER_TANK;
                     break;
+                case "WinTroubleInfo":
+                    strWindowID = CDefine.DEF_MON_WIN_WATER_TANK;
+                    break;
                 default:
                     break;
             }

@@ -94,6 +94,26 @@ namespace FMSMonitoringUI
         }
         #endregion
 
+        #region InitControls
+        private void InitControls()
+        {
+            _ListCharger.Clear();
+
+            foreach (var ctl in splitContainer1.Panel1.Controls)
+            {
+                if (ctl.GetType() == typeof(CtrlRack))
+                {
+                    CtrlRack charger = ctl as CtrlRack;
+
+                    charger.MouseDoubleClick += Charger_MouseDoubleClick;
+                    _ListCharger.Add(charger.UnitID, charger);
+
+                    if (_EqpID == "") _EqpID = charger.EqpID;
+                }
+            }
+        }
+        #endregion
+
         #region InitLanguage
         private void InitLanguage()
         {
@@ -155,26 +175,6 @@ namespace FMSMonitoringUI
         private void InitFormationBox()
         {
             this.HandleDestroyed += CtrlFormation_HandleDestroyed;
-        }
-        #endregion
-
-        #region InitControls
-        private void InitControls()
-        {
-            _ListCharger.Clear();
-
-            foreach (var ctl in splitContainer1.Panel1.Controls)
-            {   
-                if (ctl.GetType() == typeof(CtrlRack))
-                {
-                    CtrlRack charger = ctl as CtrlRack;
-
-                    charger.MouseDoubleClick += Charger_MouseDoubleClick;
-                    _ListCharger.Add(charger.UnitID, charger);
-
-                    if (_EqpID == "") _EqpID = charger.EqpID;
-                }
-            }
         }
         #endregion
 
@@ -284,7 +284,7 @@ namespace FMSMonitoringUI
         {
             CtrlRack unit = sender as CtrlRack;
 
-            WinFormationBox form = new WinFormationBox(unit.EqpID, unit.UnitID);
+            WinFormationBox form = new WinFormationBox(unit.EqpID, unit.EqpType, unit.UnitID);
             form.ShowDialog();
         }
 

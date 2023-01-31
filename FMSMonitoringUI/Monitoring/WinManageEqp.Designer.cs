@@ -31,34 +31,33 @@
             this.titBar = new MonitoringUI.Controlls.CtrlTitleBar();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.gridTrayInfo = new FMSMonitoringUI.Controlls.CtrlDataGridView();
+            this.ctrlLabel4 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.ctrlGroupBox1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlGroupBox();
             this.EqpControlSave = new MonitoringUI.Controlls.CButton.CtrlButton();
-            this.rbForceTrayUnload = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
-            this.rbResumePaused = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
-            this.rbPauseCurrent = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
-            this.rbRestartCurrent = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
-            this.rbStopCurrent = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
-            this.ctrlLabel1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.DataClearSave = new MonitoringUI.Controlls.CButton.CtrlButton();
-            this.rbClearTrouble = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
-            this.rbDataClear = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
-            this.label1 = new System.Windows.Forms.Label();
+            this.rbForceUnload = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
+            this.rbResume = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
+            this.rbPause = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
+            this.rbRestart = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
+            this.rbStop = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.gridEqpInfo = new FMSMonitoringUI.Controlls.CtrlDataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.Exit = new MonitoringUI.Controlls.CButton.CtrlButton();
+            this.ctrlGroupBox3 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlGroupBox();
+            this.DataClearSave = new MonitoringUI.Controlls.CButton.CtrlButton();
+            this.rbClearTrouble = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
+            this.rbClearInfo = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.ctrlGroupBox1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.ctrlGroupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // titBar
@@ -68,7 +67,7 @@
             this.titBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.titBar.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.titBar.ForeColor = System.Drawing.Color.White;
-            this.titBar.LanguageID = "";
+            this.titBar.LanguageID = "DEF_Manage_EQP";
             this.titBar.Location = new System.Drawing.Point(2, 2);
             this.titBar.Margin = new System.Windows.Forms.Padding(4);
             this.titBar.Name = "titBar";
@@ -91,10 +90,9 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.splitContainer2.Panel2.Controls.Add(this.ctrlGroupBox3);
+            this.splitContainer2.Panel2.Controls.Add(this.ctrlLabel4);
             this.splitContainer2.Panel2.Controls.Add(this.ctrlGroupBox1);
-            this.splitContainer2.Panel2.Controls.Add(this.ctrlLabel1);
-            this.splitContainer2.Panel2.Controls.Add(this.groupBox1);
-            this.splitContainer2.Panel2.Controls.Add(this.label1);
             this.splitContainer2.Size = new System.Drawing.Size(745, 387);
             this.splitContainer2.SplitterDistance = 406;
             this.splitContainer2.TabIndex = 0;
@@ -111,19 +109,32 @@
             this.gridTrayInfo.TabIndex = 1;
             this.gridTrayInfo.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             // 
+            // ctrlLabel4
+            // 
+            this.ctrlLabel4.AutoSize = true;
+            this.ctrlLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel4.Font = new System.Drawing.Font("굴림", 11.25F, System.Drawing.FontStyle.Bold);
+            this.ctrlLabel4.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel4.LanguageID = "DEF_Manual_Command";
+            this.ctrlLabel4.Location = new System.Drawing.Point(8, 12);
+            this.ctrlLabel4.Name = "ctrlLabel4";
+            this.ctrlLabel4.Size = new System.Drawing.Size(138, 15);
+            this.ctrlLabel4.TabIndex = 69;
+            this.ctrlLabel4.Text = "Manual Command";
+            // 
             // ctrlGroupBox1
             // 
             this.ctrlGroupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlGroupBox1.Controls.Add(this.EqpControlSave);
-            this.ctrlGroupBox1.Controls.Add(this.rbForceTrayUnload);
-            this.ctrlGroupBox1.Controls.Add(this.rbResumePaused);
-            this.ctrlGroupBox1.Controls.Add(this.rbPauseCurrent);
-            this.ctrlGroupBox1.Controls.Add(this.rbRestartCurrent);
-            this.ctrlGroupBox1.Controls.Add(this.rbStopCurrent);
-            this.ctrlGroupBox1.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold);
+            this.ctrlGroupBox1.Controls.Add(this.rbForceUnload);
+            this.ctrlGroupBox1.Controls.Add(this.rbResume);
+            this.ctrlGroupBox1.Controls.Add(this.rbPause);
+            this.ctrlGroupBox1.Controls.Add(this.rbRestart);
+            this.ctrlGroupBox1.Controls.Add(this.rbStop);
+            this.ctrlGroupBox1.Font = new System.Drawing.Font("돋움", 9.75F);
             this.ctrlGroupBox1.ForeColor = System.Drawing.Color.White;
             this.ctrlGroupBox1.LanguageID = "DEF_Equipment_Control";
-            this.ctrlGroupBox1.Location = new System.Drawing.Point(11, 35);
+            this.ctrlGroupBox1.Location = new System.Drawing.Point(11, 41);
             this.ctrlGroupBox1.Name = "ctrlGroupBox1";
             this.ctrlGroupBox1.Size = new System.Drawing.Size(313, 168);
             this.ctrlGroupBox1.TabIndex = 55;
@@ -144,148 +155,75 @@
             this.EqpControlSave.TabIndex = 60;
             this.EqpControlSave.Click += new System.EventHandler(this.Save_Click);
             // 
-            // rbForceTrayUnload
+            // rbForceUnload
             // 
-            this.rbForceTrayUnload.AutoSize = true;
-            this.rbForceTrayUnload.Font = new System.Drawing.Font("굴림", 9F);
-            this.rbForceTrayUnload.ForeColor = System.Drawing.Color.White;
-            this.rbForceTrayUnload.LanguageID = "DEF_Force_Tray_Unload";
-            this.rbForceTrayUnload.Location = new System.Drawing.Point(13, 134);
-            this.rbForceTrayUnload.Name = "rbForceTrayUnload";
-            this.rbForceTrayUnload.Size = new System.Drawing.Size(128, 16);
-            this.rbForceTrayUnload.TabIndex = 59;
-            this.rbForceTrayUnload.TabStop = true;
-            this.rbForceTrayUnload.Text = "Force Tray Unload";
-            this.rbForceTrayUnload.UseVisualStyleBackColor = true;
+            this.rbForceUnload.AutoSize = true;
+            this.rbForceUnload.Font = new System.Drawing.Font("굴림", 9F);
+            this.rbForceUnload.ForeColor = System.Drawing.Color.White;
+            this.rbForceUnload.LanguageID = "DEF_Force_Tray_Unload";
+            this.rbForceUnload.Location = new System.Drawing.Point(13, 134);
+            this.rbForceUnload.Name = "rbForceUnload";
+            this.rbForceUnload.Size = new System.Drawing.Size(128, 16);
+            this.rbForceUnload.TabIndex = 59;
+            this.rbForceUnload.TabStop = true;
+            this.rbForceUnload.Text = "Force Tray Unload";
+            this.rbForceUnload.UseVisualStyleBackColor = true;
             // 
-            // rbResumePaused
+            // rbResume
             // 
-            this.rbResumePaused.AutoSize = true;
-            this.rbResumePaused.Font = new System.Drawing.Font("굴림", 9F);
-            this.rbResumePaused.ForeColor = System.Drawing.Color.White;
-            this.rbResumePaused.LanguageID = "DEF_Resume_Paused_Process";
-            this.rbResumePaused.Location = new System.Drawing.Point(13, 107);
-            this.rbResumePaused.Name = "rbResumePaused";
-            this.rbResumePaused.Size = new System.Drawing.Size(168, 16);
-            this.rbResumePaused.TabIndex = 58;
-            this.rbResumePaused.TabStop = true;
-            this.rbResumePaused.Text = "Resume Paused Process";
-            this.rbResumePaused.UseVisualStyleBackColor = true;
+            this.rbResume.AutoSize = true;
+            this.rbResume.Font = new System.Drawing.Font("굴림", 9F);
+            this.rbResume.ForeColor = System.Drawing.Color.White;
+            this.rbResume.LanguageID = "DEF_Resume_Paused_Process";
+            this.rbResume.Location = new System.Drawing.Point(13, 107);
+            this.rbResume.Name = "rbResume";
+            this.rbResume.Size = new System.Drawing.Size(168, 16);
+            this.rbResume.TabIndex = 58;
+            this.rbResume.TabStop = true;
+            this.rbResume.Text = "Resume Paused Process";
+            this.rbResume.UseVisualStyleBackColor = true;
             // 
-            // rbPauseCurrent
+            // rbPause
             // 
-            this.rbPauseCurrent.AutoSize = true;
-            this.rbPauseCurrent.Font = new System.Drawing.Font("굴림", 9F);
-            this.rbPauseCurrent.ForeColor = System.Drawing.Color.White;
-            this.rbPauseCurrent.LanguageID = "DEF_Pause_Current_Process";
-            this.rbPauseCurrent.Location = new System.Drawing.Point(13, 80);
-            this.rbPauseCurrent.Name = "rbPauseCurrent";
-            this.rbPauseCurrent.Size = new System.Drawing.Size(155, 16);
-            this.rbPauseCurrent.TabIndex = 57;
-            this.rbPauseCurrent.TabStop = true;
-            this.rbPauseCurrent.Text = "Pause Current Process";
-            this.rbPauseCurrent.UseVisualStyleBackColor = true;
+            this.rbPause.AutoSize = true;
+            this.rbPause.Font = new System.Drawing.Font("굴림", 9F);
+            this.rbPause.ForeColor = System.Drawing.Color.White;
+            this.rbPause.LanguageID = "DEF_Pause_Current_Process";
+            this.rbPause.Location = new System.Drawing.Point(13, 80);
+            this.rbPause.Name = "rbPause";
+            this.rbPause.Size = new System.Drawing.Size(155, 16);
+            this.rbPause.TabIndex = 57;
+            this.rbPause.TabStop = true;
+            this.rbPause.Text = "Pause Current Process";
+            this.rbPause.UseVisualStyleBackColor = true;
             // 
-            // rbRestartCurrent
+            // rbRestart
             // 
-            this.rbRestartCurrent.AutoSize = true;
-            this.rbRestartCurrent.Font = new System.Drawing.Font("굴림", 9F);
-            this.rbRestartCurrent.ForeColor = System.Drawing.Color.White;
-            this.rbRestartCurrent.LanguageID = "DEF_Restart_Current_Process";
-            this.rbRestartCurrent.Location = new System.Drawing.Point(13, 53);
-            this.rbRestartCurrent.Name = "rbRestartCurrent";
-            this.rbRestartCurrent.Size = new System.Drawing.Size(158, 16);
-            this.rbRestartCurrent.TabIndex = 56;
-            this.rbRestartCurrent.TabStop = true;
-            this.rbRestartCurrent.Text = "Restart Current Process";
-            this.rbRestartCurrent.UseVisualStyleBackColor = true;
+            this.rbRestart.AutoSize = true;
+            this.rbRestart.Font = new System.Drawing.Font("굴림", 9F);
+            this.rbRestart.ForeColor = System.Drawing.Color.White;
+            this.rbRestart.LanguageID = "DEF_Restart_Current_Process";
+            this.rbRestart.Location = new System.Drawing.Point(13, 53);
+            this.rbRestart.Name = "rbRestart";
+            this.rbRestart.Size = new System.Drawing.Size(158, 16);
+            this.rbRestart.TabIndex = 56;
+            this.rbRestart.TabStop = true;
+            this.rbRestart.Text = "Restart Current Process";
+            this.rbRestart.UseVisualStyleBackColor = true;
             // 
-            // rbStopCurrent
+            // rbStop
             // 
-            this.rbStopCurrent.AutoSize = true;
-            this.rbStopCurrent.Font = new System.Drawing.Font("굴림", 9F);
-            this.rbStopCurrent.ForeColor = System.Drawing.Color.White;
-            this.rbStopCurrent.LanguageID = "DEF_Stop_Current_Process";
-            this.rbStopCurrent.Location = new System.Drawing.Point(13, 24);
-            this.rbStopCurrent.Name = "rbStopCurrent";
-            this.rbStopCurrent.Size = new System.Drawing.Size(144, 16);
-            this.rbStopCurrent.TabIndex = 55;
-            this.rbStopCurrent.TabStop = true;
-            this.rbStopCurrent.Text = "Stop Current Process";
-            this.rbStopCurrent.UseVisualStyleBackColor = true;
-            // 
-            // ctrlLabel1
-            // 
-            this.ctrlLabel1.AutoSize = true;
-            this.ctrlLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlLabel1.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ctrlLabel1.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel1.LanguageID = "DEF_Data_Clear";
-            this.ctrlLabel1.Location = new System.Drawing.Point(17, 218);
-            this.ctrlLabel1.Name = "ctrlLabel1";
-            this.ctrlLabel1.Size = new System.Drawing.Size(82, 13);
-            this.ctrlLabel1.TabIndex = 27;
-            this.ctrlLabel1.Text = "Data Clear";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.DataClearSave);
-            this.groupBox1.Controls.Add(this.rbClearTrouble);
-            this.groupBox1.Controls.Add(this.rbDataClear);
-            this.groupBox1.Location = new System.Drawing.Point(11, 220);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(313, 91);
-            this.groupBox1.TabIndex = 26;
-            this.groupBox1.TabStop = false;
-            // 
-            // DataClearSave
-            // 
-            this.DataClearSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.DataClearSave.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.DataClearSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.DataClearSave.LabelText = "Save";
-            this.DataClearSave.LanguageID = "DEF_Save";
-            this.DataClearSave.Location = new System.Drawing.Point(211, 24);
-            this.DataClearSave.Name = "DataClearSave";
-            this.DataClearSave.Size = new System.Drawing.Size(89, 52);
-            this.DataClearSave.TabIndex = 42;
-            this.DataClearSave.Click += new System.EventHandler(this.Save_Click);
-            // 
-            // rbClearTrouble
-            // 
-            this.rbClearTrouble.AutoSize = true;
-            this.rbClearTrouble.ForeColor = System.Drawing.Color.White;
-            this.rbClearTrouble.LanguageID = "DEF_Clear_Trouble";
-            this.rbClearTrouble.Location = new System.Drawing.Point(13, 54);
-            this.rbClearTrouble.Name = "rbClearTrouble";
-            this.rbClearTrouble.Size = new System.Drawing.Size(101, 17);
-            this.rbClearTrouble.TabIndex = 25;
-            this.rbClearTrouble.TabStop = true;
-            this.rbClearTrouble.Text = "Clear Trouble";
-            this.rbClearTrouble.UseVisualStyleBackColor = true;
-            // 
-            // rbDataClear
-            // 
-            this.rbDataClear.AutoSize = true;
-            this.rbDataClear.ForeColor = System.Drawing.Color.White;
-            this.rbDataClear.LanguageID = "DEF_Clear_Information";
-            this.rbDataClear.Location = new System.Drawing.Point(13, 26);
-            this.rbDataClear.Name = "rbDataClear";
-            this.rbDataClear.Size = new System.Drawing.Size(119, 17);
-            this.rbDataClear.TabIndex = 24;
-            this.rbDataClear.TabStop = true;
-            this.rbDataClear.Text = "Clear Information";
-            this.rbDataClear.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("굴림", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(8, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(158, 25);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Manual Command";
+            this.rbStop.AutoSize = true;
+            this.rbStop.Font = new System.Drawing.Font("굴림", 9F);
+            this.rbStop.ForeColor = System.Drawing.Color.White;
+            this.rbStop.LanguageID = "DEF_Stop_Current_Process";
+            this.rbStop.Location = new System.Drawing.Point(13, 24);
+            this.rbStop.Name = "rbStop";
+            this.rbStop.Size = new System.Drawing.Size(144, 16);
+            this.rbStop.TabIndex = 55;
+            this.rbStop.TabStop = true;
+            this.rbStop.Text = "Stop Current Process";
+            this.rbStop.UseVisualStyleBackColor = true;
             // 
             // splitContainer1
             // 
@@ -346,6 +284,61 @@
             this.Exit.TabIndex = 2;
             this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
+            // ctrlGroupBox3
+            // 
+            this.ctrlGroupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlGroupBox3.Controls.Add(this.DataClearSave);
+            this.ctrlGroupBox3.Controls.Add(this.rbClearTrouble);
+            this.ctrlGroupBox3.Controls.Add(this.rbClearInfo);
+            this.ctrlGroupBox3.ForeColor = System.Drawing.Color.White;
+            this.ctrlGroupBox3.LanguageID = "DEF_Data_Clear";
+            this.ctrlGroupBox3.Location = new System.Drawing.Point(11, 230);
+            this.ctrlGroupBox3.Name = "ctrlGroupBox3";
+            this.ctrlGroupBox3.Size = new System.Drawing.Size(313, 90);
+            this.ctrlGroupBox3.TabIndex = 70;
+            this.ctrlGroupBox3.TabStop = false;
+            this.ctrlGroupBox3.Text = "Data Clear";
+            this.ctrlGroupBox3.TitleText = "Data Clear";
+            // 
+            // DataClearSave
+            // 
+            this.DataClearSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.DataClearSave.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.DataClearSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.DataClearSave.LabelText = "Save";
+            this.DataClearSave.LanguageID = "DEF_Save";
+            this.DataClearSave.Location = new System.Drawing.Point(211, 21);
+            this.DataClearSave.Name = "DataClearSave";
+            this.DataClearSave.Size = new System.Drawing.Size(89, 52);
+            this.DataClearSave.TabIndex = 45;
+            this.DataClearSave.Click += new System.EventHandler(this.Save_Click);
+            // 
+            // rbClearTrouble
+            // 
+            this.rbClearTrouble.AutoSize = true;
+            this.rbClearTrouble.ForeColor = System.Drawing.Color.White;
+            this.rbClearTrouble.LanguageID = "DEF_Clear_Trouble";
+            this.rbClearTrouble.Location = new System.Drawing.Point(13, 55);
+            this.rbClearTrouble.Name = "rbClearTrouble";
+            this.rbClearTrouble.Size = new System.Drawing.Size(101, 17);
+            this.rbClearTrouble.TabIndex = 44;
+            this.rbClearTrouble.TabStop = true;
+            this.rbClearTrouble.Text = "Clear Trouble";
+            this.rbClearTrouble.UseVisualStyleBackColor = true;
+            // 
+            // rbClearInfo
+            // 
+            this.rbClearInfo.AutoSize = true;
+            this.rbClearInfo.ForeColor = System.Drawing.Color.White;
+            this.rbClearInfo.LanguageID = "DEF_Clear_Information";
+            this.rbClearInfo.Location = new System.Drawing.Point(13, 27);
+            this.rbClearInfo.Name = "rbClearInfo";
+            this.rbClearInfo.Size = new System.Drawing.Size(119, 17);
+            this.rbClearInfo.TabIndex = 43;
+            this.rbClearInfo.TabStop = true;
+            this.rbClearInfo.Text = "Clear Information";
+            this.rbClearInfo.UseVisualStyleBackColor = true;
+            // 
             // WinManageEqp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -373,13 +366,13 @@
             this.splitContainer2.ResumeLayout(false);
             this.ctrlGroupBox1.ResumeLayout(false);
             this.ctrlGroupBox1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.ctrlGroupBox3.ResumeLayout(false);
+            this.ctrlGroupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -392,20 +385,19 @@
         private Controlls.CtrlDataGridView gridTrayInfo;
         private Controlls.WindowsForms.CtrlGroupBox ctrlGroupBox1;
         private MonitoringUI.Controlls.CButton.CtrlButton EqpControlSave;
-        private Controlls.WindowsForms.CtrlRadioButton rbForceTrayUnload;
-        private Controlls.WindowsForms.CtrlRadioButton rbResumePaused;
-        private Controlls.WindowsForms.CtrlRadioButton rbPauseCurrent;
-        private Controlls.WindowsForms.CtrlRadioButton rbRestartCurrent;
-        private Controlls.WindowsForms.CtrlRadioButton rbStopCurrent;
-        private Controlls.WindowsForms.CtrlLabel ctrlLabel1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private MonitoringUI.Controlls.CButton.CtrlButton DataClearSave;
-        private Controlls.WindowsForms.CtrlRadioButton rbClearTrouble;
-        private Controlls.WindowsForms.CtrlRadioButton rbDataClear;
-        private System.Windows.Forms.Label label1;
+        private Controlls.WindowsForms.CtrlRadioButton rbForceUnload;
+        private Controlls.WindowsForms.CtrlRadioButton rbResume;
+        private Controlls.WindowsForms.CtrlRadioButton rbPause;
+        private Controlls.WindowsForms.CtrlRadioButton rbRestart;
+        private Controlls.WindowsForms.CtrlRadioButton rbStop;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private Controlls.CtrlDataGridView gridEqpInfo;
         private System.Windows.Forms.Panel panel3;
         private MonitoringUI.Controlls.CButton.CtrlButton Exit;
+        private Controlls.WindowsForms.CtrlLabel ctrlLabel4;
+        private Controlls.WindowsForms.CtrlGroupBox ctrlGroupBox3;
+        private MonitoringUI.Controlls.CButton.CtrlButton DataClearSave;
+        private Controlls.WindowsForms.CtrlRadioButton rbClearTrouble;
+        private Controlls.WindowsForms.CtrlRadioButton rbClearInfo;
     }
 }

@@ -115,43 +115,32 @@ namespace FMSMonitoringUI.Monitoring
         #region InitLanguage
         private void InitLanguage()
         {
-            foreach (var ctl in panel1.Controls)
-            {
-                if (ctl.GetType() == typeof(CtrlTitleBar))
-                {
-                    CtrlTitleBar control = ctl as CtrlTitleBar;
-                    control.CallLocalLanguage();
-                }
-            }
+            titBar.CallLocalLanguage();
 
-            foreach (var ctl in panel2.Controls)
-            {
-                if (ctl.GetType() == typeof(CtrlButton))
-                {
-                    CtrlButton control = ctl as CtrlButton;
-                    control.CallLocalLanguage();
-                }
-            }
-
-            foreach (var ctl in gbFMS.Controls)
+            foreach (var ctl in panel3.Controls)
             {
                 if (ctl.GetType() == typeof(CtrlGroupBox))
                 {
-                    CtrlGroupBox control = ctl as CtrlGroupBox;
-                    control.CallLocalLanguage();
+                    CtrlGroupBox grBox = ctl as CtrlGroupBox;
+                    grBox.CallLocalLanguage();
+
+                    foreach (var ctl2 in grBox.Controls)
+                    {
+                        if (ctl2.GetType() == typeof(CtrlLabelBox))
+                        {
+                            CtrlLabelBox control = ctl2 as CtrlLabelBox;
+                            control.CallLocalLanguage();
+                        }
+                        else if (ctl2.GetType() == typeof(CtrlLabel))
+                        {
+                            CtrlLabel tagName = ctl2 as CtrlLabel;
+                            tagName.CallLocalLanguage();
+                        }
+                    }
                 }
-                else if (ctl.GetType() == typeof(CtrlLabelBox))
-                {
-                    CtrlLabelBox control = ctl as CtrlLabelBox;
-                    control.CallLocalLanguage();
-                    //control.BackColor = Color.FromArgb(27, 27, 27);
-                }
-                //else if (ctl.GetType() == typeof(CtrlLabel))
-                //{
-                //    CtrlLabel control = ctl as CtrlLabel;
-                //    control.CallLocalLanguage();
-                //}
             }
+
+            Exit.CallLocalLanguage();
         }
         #endregion
 
@@ -169,17 +158,21 @@ namespace FMSMonitoringUI.Monitoring
 
         private void InitGridView()
         {
-            List<string> lstTitle = new List<string>();
-            lstTitle.Add("Previous Position");
-            lstTitle.Add("");
+            List<string> lstTitle = new List<string>
+            {
+                LocalLanguage.GetItemString("DEF_Previous_Position"),
+                ""
+            };
             gridWaterTank.AddColumnHeaderList(lstTitle);
 
-            lstTitle = new List<string>();
-            lstTitle.Add("Line");
-            lstTitle.Add("Bay");
-            lstTitle.Add("Floor");
-            lstTitle.Add("Deep");
-            lstTitle.Add("Station");
+            lstTitle = new List<string>
+            {
+                LocalLanguage.GetItemString("DEF_Line"),
+                LocalLanguage.GetItemString("DEF_Bay"),
+                LocalLanguage.GetItemString("DEF_Floor"),
+                LocalLanguage.GetItemString("DEF_Deep"),
+                LocalLanguage.GetItemString("DEF_Station")
+            };
             gridWaterTank.AddRowsHeaderList(lstTitle);
 
             gridWaterTank.ColumnHeadersHeight(28);
@@ -187,8 +180,10 @@ namespace FMSMonitoringUI.Monitoring
 
             List<int> lstColumn = new List<int>();
             lstColumn.Add(-1);      // DataGridView Header 병합
-            lstTitle = new List<string>();
-            lstTitle.Add("Previous Position");
+            lstTitle = new List<string>
+            {
+                LocalLanguage.GetItemString("DEF_Previous_Position")
+            };
             gridWaterTank.ColumnMergeList(lstColumn, lstTitle);
 
             gridWaterTank.SetGridViewStyles();

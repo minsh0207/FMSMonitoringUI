@@ -552,8 +552,16 @@ namespace MonitoringUI.Monitoring
 
         private void InitGridView()
         {
-            string[] columnName = { "Status Name", "Total Rack Count", "In Aging", "Empty Rack", 
-                                    "Unloading Rack", "No Input Rack", "No Output Rack", "Bad Rack", "Tatal Trouble" };
+            string[] columnName = {
+                LocalLanguage.GetItemString("DEF_Status Name"), 
+                LocalLanguage.GetItemString("DEF_Total_Rack_Count"), 
+                LocalLanguage.GetItemString("DEF_In_Aging"), 
+                LocalLanguage.GetItemString("DEF_Empty_Rack"),                 
+                LocalLanguage.GetItemString("DEF_Unloading_Rack"), 
+                LocalLanguage.GetItemString("DEF_No_Input_Rack"), 
+                LocalLanguage.GetItemString("DEF_No_Output_Rack"), 
+                LocalLanguage.GetItemString("DEF_Bad_Rack"),
+                LocalLanguage.GetItemString("DEF_Tatal_Trouble") };
 
             List<string> lstTitle = new List<string>();
 
@@ -757,6 +765,11 @@ namespace MonitoringUI.Monitoring
         private void InitLanguage()
         {
             // CtrlTaggingName 언어 변환 호출
+
+            btnHTAging.CallLocalLanguage();
+            btnLTAging1.CallLocalLanguage();
+            btnLTAging2.CallLocalLanguage();
+
             foreach (var ctl in panel1.Controls)
             {
                 if (ctl.GetType() == typeof(CtrlTaggingName))

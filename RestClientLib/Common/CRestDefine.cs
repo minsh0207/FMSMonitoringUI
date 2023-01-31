@@ -20,9 +20,10 @@ namespace RestClientLib
     {
 
         public const string POST_SQL = "ecs/SQL";
+        public const string POST_MANUAL_COMMAND = "ecs/sendManualCommand";
 
         //public const string BaseUrl = "http://localhost:30001";
-        public const string BaseUrl = "https://210.91.148.176:30011";
+        //public const string BaseUrl = "https://210.91.148.176:30011";
         public const string LOG_PATH = @"D:\Logs\FMSSystem";
 
         //public const string status_eqp = "STATUS_EQP";

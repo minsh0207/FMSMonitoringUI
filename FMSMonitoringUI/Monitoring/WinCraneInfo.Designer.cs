@@ -801,7 +801,7 @@
             this.titBar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.titBar.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.titBar.ForeColor = System.Drawing.Color.White;
-            this.titBar.LanguageID = "";
+            this.titBar.LanguageID = "DEF_Crane_Information";
             this.titBar.Location = new System.Drawing.Point(0, 0);
             this.titBar.Margin = new System.Windows.Forms.Padding(0);
             this.titBar.Name = "titBar";

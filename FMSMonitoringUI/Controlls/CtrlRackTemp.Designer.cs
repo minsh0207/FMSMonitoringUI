@@ -30,9 +30,9 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.TrayInfoView = new FMSMonitoringUI.Controlls.CtrlTrayInfoView();
+            this.lbLower = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
+            this.lbUpper = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -71,36 +71,15 @@
             // 
             // splitContainer2.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.label1);
+            this.splitContainer2.Panel1.Controls.Add(this.lbLower);
+            this.splitContainer2.Panel1.ForeColor = System.Drawing.Color.White;
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.label2);
+            this.splitContainer2.Panel2.Controls.Add(this.lbUpper);
             this.splitContainer2.Size = new System.Drawing.Size(1437, 25);
             this.splitContainer2.SplitterDistance = 765;
             this.splitContainer2.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(763, 23);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "LOWER";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label2
-            // 
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(0, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(666, 23);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "UPPER";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TrayInfoView
             // 
@@ -109,6 +88,31 @@
             this.TrayInfoView.Name = "TrayInfoView";
             this.TrayInfoView.Size = new System.Drawing.Size(1435, 316);
             this.TrayInfoView.TabIndex = 0;
+            // 
+            // lbLower
+            // 
+            this.lbLower.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.lbLower.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbLower.LanguageID = "DEF_LOWER";
+            this.lbLower.Location = new System.Drawing.Point(0, 0);
+            this.lbLower.Name = "lbLower";
+            this.lbLower.Size = new System.Drawing.Size(763, 23);
+            this.lbLower.TabIndex = 1;
+            this.lbLower.Text = "LOWER";
+            this.lbLower.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbUpper
+            // 
+            this.lbUpper.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.lbUpper.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbUpper.ForeColor = System.Drawing.Color.White;
+            this.lbUpper.LanguageID = "DEF_UPPER";
+            this.lbUpper.Location = new System.Drawing.Point(0, 0);
+            this.lbUpper.Name = "lbUpper";
+            this.lbUpper.Size = new System.Drawing.Size(666, 23);
+            this.lbUpper.TabIndex = 2;
+            this.lbUpper.Text = "UPPER";
+            this.lbUpper.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // CtrlRackTemp
             // 
@@ -135,7 +139,7 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private CtrlTrayInfoView TrayInfoView;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private WindowsForms.CtrlLabel lbLower;
+        private WindowsForms.CtrlLabel lbUpper;
     }
 }

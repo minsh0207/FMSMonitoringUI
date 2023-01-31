@@ -16,6 +16,7 @@ using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -51,7 +52,8 @@ namespace FMSMonitoringUI.Monitoring
 
             InitControl();
             InitGridViewTray();
-                        
+            InitLanguage();
+
             //InitChart();
         }
 
@@ -65,8 +67,8 @@ namespace FMSMonitoringUI.Monitoring
             }
 
             #region Title Mouse Event
-            ctrlTitleBar.MouseDown_Evnet += Title_MouseDownEvnet;
-            ctrlTitleBar.MouseMove_Evnet += Title_MouseMoveEvnet;
+            titBar.MouseDown_Evnet += Title_MouseDownEvnet;
+            titBar.MouseMove_Evnet += Title_MouseMoveEvnet;
             #endregion
 
             #region DataGridView Event
@@ -112,18 +114,29 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
+        #region InitLanguage
+        private void InitLanguage()
+        {
+            titBar.CallLocalLanguage();
+
+            Exit.CallLocalLanguage();
+        }
+        #endregion
+
         #region InitGridViewTray
         private void InitGridViewTray()
         {
-            List<string> lstTitle = new List<string>();
-            lstTitle.Add("Location");
-            lstTitle.Add("Rack ID");            
-            lstTitle.Add("Tray ID L1");
-            lstTitle.Add("Tray ID L2");
-            lstTitle.Add("Start Time");
-            lstTitle.Add("Plan Time");
-            lstTitle.Add("Process Time");
-            lstTitle.Add("Specs (MES)");
+            List<string> lstTitle = new List<string>
+            {
+                LocalLanguage.GetItemString("DEF_Location"),
+                LocalLanguage.GetItemString("DEF_Rack_ID"),
+                LocalLanguage.GetItemString("DEF_Tray_ID_1"),
+                LocalLanguage.GetItemString("DEF_Tray_ID_2"),
+                LocalLanguage.GetItemString("DEF_Start_Time"),
+                LocalLanguage.GetItemString("DEF_Plan_Time"),
+                LocalLanguage.GetItemString("DEF_Process_Time"),
+                LocalLanguage.GetItemString("DEF_Specs_(MES)")
+            };
             gridTrayInfo.AddColumnHeaderList(lstTitle);
 
             lstTitle = new List<string>();

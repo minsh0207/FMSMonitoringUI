@@ -61,6 +61,7 @@ namespace FMSMonitoringUI.Monitoring
 
             InitControl();
             InitGridView();
+            InitLanguage();
 
             #region Title Mouse Event
             titBar.MouseDown_Evnet += Title_MouseDownEvnet;
@@ -111,6 +112,15 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
+        #region InitLanguage
+        private void InitLanguage()
+        {
+            titBar.CallLocalLanguage();
+
+            Exit.CallLocalLanguage();
+        }
+        #endregion
+
         #region InitGridView
         private void InitGridView()
         {
@@ -120,17 +130,20 @@ namespace FMSMonitoringUI.Monitoring
             gridCVInfo.AddColumnHeaderList(lstTitle);
             gridCVInfo.ColumnHeadersVisible(false);
 
-            lstTitle = new List<string>();
-            lstTitle.Add("Conveyor No");
-            lstTitle.Add("Conveyor Type");
-            lstTitle.Add("Station Status");
-            lstTitle.Add("Tray Exist");
-            lstTitle.Add("Tray Type");
-            lstTitle.Add("Tray Count");
-            lstTitle.Add("Tray ID 1");
-            lstTitle.Add("Tray ID 2");
-            lstTitle.Add("Carriage Pos");
-            lstTitle.Add("Destination");
+            lstTitle = new List<string>
+            {
+                LocalLanguage.GetItemString("DEF_Conveyor_No"),
+                LocalLanguage.GetItemString("DEF_Conveyor_Trye"),
+                LocalLanguage.GetItemString("DEF_Station_Status"),
+                LocalLanguage.GetItemString("DEF_Tray_Exist").Replace(" :", ""),
+                LocalLanguage.GetItemString("DEF_Tray_Type"),
+                LocalLanguage.GetItemString("DEF_Tray_Count"),
+                LocalLanguage.GetItemString("DEF_Tray_ID_1"),
+                LocalLanguage.GetItemString("DEF_Tray_ID_2"),
+                LocalLanguage.GetItemString("DEF_Carriage_Position"),
+                LocalLanguage.GetItemString("DEF_Destination")
+            };
+
             gridCVInfo.AddRowsHeaderList(lstTitle);
 
             gridCVInfo.ColumnHeadersHeight(30);
@@ -172,28 +185,6 @@ namespace FMSMonitoringUI.Monitoring
         #endregion
 
         #region SetData
-        //public void SetData(SiteTagInfo siteInfo)
-        //{
-        //    int row = 0;
-        //    gridCVInfo.SetValue(1, row, siteInfo.ConveyorNo); row++;
-
-        //    if (CheckConveyorType(siteInfo.ConveyorType)) gridCVInfo.RowsVisible(row, true);
-        //    else gridCVInfo.RowsVisible(row, false);
-
-        //    gridCVInfo.SetValue(1, row, GetConveyorType(siteInfo.ConveyorType)); row++;
-        //    gridCVInfo.SetValue(1, row, GetStationStatus(siteInfo.StationStatus)); row++;
-        //    gridCVInfo.SetValue(1, row, (siteInfo.TrayExist == true ? "Exist" : "Not Exist")); row++;
-        //    gridCVInfo.SetValue(1, row, GetTrayType(siteInfo.TrayType)); row++;
-        //    gridCVInfo.SetValue(1, row, siteInfo.TrayCount); row++;
-        //    gridCVInfo.SetValue(1, row, siteInfo.TrayIdL1); row++;
-        //    gridCVInfo.SetValue(1, row, siteInfo.TrayIdL2); row++;
-
-        //    if (_cvTitle == "RTV") gridCVInfo.RowsVisible(row, true);
-        //    else gridCVInfo.RowsVisible(row, false);
-
-        //    gridCVInfo.SetValue(1, row, siteInfo.CarriagePos); row++;
-        //    gridCVInfo.SetValue(1, row, siteInfo.Destination);
-        //}
         public void SetData(List<DataValue> data)
         {
             if (data == null || data.Count == 0) return;
@@ -204,7 +195,9 @@ namespace FMSMonitoringUI.Monitoring
 
             if (CheckStationStatus(data[(int)enCVTagList.ConveyorType].Value)) 
                 gridCVInfo.RowsVisible(row, true);
-            else gridCVInfo.RowsVisible(row, false);
+            else 
+                gridCVInfo.RowsVisible(row, false);
+
             gridCVInfo.SetValue(1, row, GetStationStatus(data[(int)enCVTagList.StationStatus].Value)); row++;
 
             bool trayExist = Convert.ToBoolean(data[(int)enCVTagList.TrayExist].Value);

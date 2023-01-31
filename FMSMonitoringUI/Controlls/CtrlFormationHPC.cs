@@ -160,10 +160,10 @@ namespace FMSMonitoringUI
         {
             _ListHPC.Clear();
 
-            ctrlHPC1.MouseDoubleClick += Charger_MouseDoubleClick;
+            ctrlHPC1.MouseDoubleClick += HPC_MouseDoubleClick;
             _ListHPC.Add(ctrlHPC1.UnitID, ctrlHPC1);
 
-            ctrlHPC2.MouseDoubleClick += Charger_MouseDoubleClick;
+            ctrlHPC2.MouseDoubleClick += HPC_MouseDoubleClick;
             _ListHPC.Add(ctrlHPC2.UnitID, ctrlHPC2);
 
             if (_EqpID == "") _EqpID = ctrlHPC2.EqpID;
@@ -266,9 +266,9 @@ namespace FMSMonitoringUI
                 StringBuilder strSQL = new StringBuilder();
 
                 strSQL.Append(" SELECT A.unit_id, A.tray_id,");
-                strSQL.Append("        B.event_time,");
+                strSQL.Append("        B.event_time, B.jig_avg");
                 strSQL.Append("        C.cell_no, C.cell_id,");
-                strSQL.Append($"             CASE {GetJigTempString()} END AS temp_jig");
+                //strSQL.Append($"             CASE {GetJigTempString()} END AS temp_jig");
                 strSQL.Append(" FROM fms_v.tb_mst_eqp   A");
                 strSQL.Append("        LEFT OUTER JOIN fms_v.tb_dat_temp_hpc    B");
                 strSQL.Append("             ON A.eqp_id = B.eqp_id AND B.unit_id = A.unit_id ");
@@ -331,7 +331,7 @@ namespace FMSMonitoringUI
         }
         #endregion
 
-        private void Charger_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void HPC_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             ;
         }

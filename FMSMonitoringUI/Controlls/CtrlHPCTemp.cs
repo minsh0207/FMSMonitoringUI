@@ -125,7 +125,7 @@ namespace FMSMonitoringUI.Controlls
 
                 gridRackTemp.SetValue(0, row, hpc.CELL_NO);
                 gridRackTemp.SetValue(1, row, hpc.CELL_ID);
-                gridRackTemp.SetValue(2, row, hpc.TEMP_JIG);
+                gridRackTemp.SetValue(2, row, hpc.JIG_AVG);
             }
         }
         #endregion

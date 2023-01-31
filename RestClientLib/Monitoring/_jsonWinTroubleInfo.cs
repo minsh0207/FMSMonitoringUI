@@ -24,7 +24,7 @@ namespace RestClientLib
         public _jsonWinTroubleInfoResponse() { }
         ~_jsonWinTroubleInfoResponse() { }
 
-        public List<_win_tray_info> DATA;
+        public List<_trouble_info> DATA;
     }
 
 }

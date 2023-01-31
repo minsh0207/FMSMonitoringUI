@@ -21,6 +21,26 @@ namespace RestClientLib
         };
         #endregion
 
+        #region ConvertUpdateBase
+        /// <summary>
+        /// _jsonUpdateBaseResponse 형태의 Class로 변환한다.
+        /// </summary>
+        public _jsonUpdateBaseResponse ConvertUpdateBase(string jsonResult)
+        {
+            try
+            {
+                // Recv Body의 JSON string을 class 변수에 할당
+                _jsonUpdateBaseResponse recvBody = JsonConvert.DeserializeObject<_jsonUpdateBaseResponse>(jsonResult, _jsonSettings);
+                return recvBody;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print(string.Format("### ConvertDatCell, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                return null;
+            }
+        }
+        #endregion
+
         #region ConvertDatCell
         /// <summary>
         /// _jsonDatCellResponse 형태의 Class로 변환한다.
@@ -859,6 +879,25 @@ namespace RestClientLib
             }
         }
         #endregion
+        #region ConvertTroubleAging
+        /// <summary>
+        /// _jsonTroubleAgingResponse 형태의 Class로 변환한다.
+        /// </summary>
+        public _jsonTroubleAgingResponse ConvertTroubleAging(string jsonResult)
+        {
+            try
+            {
+                // Recv Body의 JSON string을 class 변수에 할당
+                _jsonTroubleAgingResponse recvBody = JsonConvert.DeserializeObject<_jsonTroubleAgingResponse>(jsonResult, _jsonSettings);
+                return recvBody;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print(string.Format("### ConvertTroubleEquiment, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                return null;
+            }
+        }
+        #endregion
         #region ConvertTroubleInfo
         /// <summary>
         /// _jsonWinTroubleInfoResponse 형태의 Class로 변환한다.
@@ -869,6 +908,26 @@ namespace RestClientLib
             {
                 // Recv Body의 JSON string을 class 변수에 할당
                 _jsonWinTroubleInfoResponse recvBody = JsonConvert.DeserializeObject<_jsonWinTroubleInfoResponse>(jsonResult, _jsonSettings);
+                return recvBody;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print(string.Format("### ConvertTroubleEquiment, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                return null;
+            }
+        }
+        #endregion
+
+        #region ConvertManualCommand
+        /// <summary>
+        /// _jsonWinTroubleInfoResponse 형태의 Class로 변환한다.
+        /// </summary>
+        public _jsonManualCommandResponse ConvertManualCommand(string jsonResult)
+        {
+            try
+            {
+                // Recv Body의 JSON string을 class 변수에 할당
+                _jsonManualCommandResponse recvBody = JsonConvert.DeserializeObject<_jsonManualCommandResponse>(jsonResult, _jsonSettings);
                 return recvBody;
             }
             catch (Exception ex)

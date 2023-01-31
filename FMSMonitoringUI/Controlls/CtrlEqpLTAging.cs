@@ -1,4 +1,6 @@
-﻿using FormationMonCtrl;
+﻿using FMSMonitoringUI.Controlls.WindowsForms;
+using FMSMonitoringUI.Monitoring;
+using FormationMonCtrl;
 using MonitoringUI;
 using System;
 using System.Collections.Generic;
@@ -14,16 +16,6 @@ namespace FMSMonitoringUI.Controlls
 {
     public partial class CtrlEqpLTAging : UserControlEqp
     {
-        public delegate void EventHandler(string eqpId, string eqpType, int eqpLevel);
-        public event EventHandler Click_Evnet = null;
-
-        public CtrlEqpLTAging()
-        {
-            InitializeComponent();
-
-            ctrlButton1.Click += CtrlButton1_Click;
-        }
-
         #region Properties
         string _EqpType = "";
         [DisplayName("EQP TYPE"), Description("EQP TYPE"), Category("GroupBox Setting")]
@@ -54,6 +46,39 @@ namespace FMSMonitoringUI.Controlls
         }
         #endregion
 
+        public delegate void EventHandler(string eqpId, string eqpType, int eqpLevel);
+        public event EventHandler Click_Evnet = null;
+
+        public CtrlEqpLTAging()
+        {
+            InitializeComponent();
+
+            btnLeadTime.Click += CtrlButton1_Click;
+        }
+
+        #region CtrlEqpLTAging_Load
+        private void CtrlEqpLTAging_Load(object sender, EventArgs e)
+        {
+            InitLanguage();
+        }
+        #endregion
+
+        #region InitLanguage
+        private void InitLanguage()
+        {
+            btnLeadTime.CallLocalLanguage();
+
+            foreach (var ctl in this.Controls)
+            {
+                if (ctl.GetType() == typeof(CtrlLabel))
+                {
+                    CtrlLabel control = ctl as CtrlLabel;
+                    control.CallLocalLanguage();
+                }
+            }
+        }
+        #endregion
+
         #region setData
         public void SetData(double totalRackCnt, double inAgingCnt)
         {
@@ -72,5 +97,7 @@ namespace FMSMonitoringUI.Controlls
                 Click_Evnet(EqpID, _EqpType, _EqpLevel);
         }
         #endregion
+
+        
     }
 }

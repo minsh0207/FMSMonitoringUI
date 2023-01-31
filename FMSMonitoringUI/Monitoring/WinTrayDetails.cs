@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 
 namespace FMSMonitoringUI.Monitoring
@@ -35,8 +36,8 @@ namespace FMSMonitoringUI.Monitoring
             InitControl();
 
             #region Title Mouse Event
-            ctrlTitleBar.MouseDown_Evnet += Title_MouseDownEvnet;
-            ctrlTitleBar.MouseMove_Evnet += Title_MouseMoveEvnet;
+            titBar.MouseDown_Evnet += Title_MouseDownEvnet;
+            titBar.MouseMove_Evnet += Title_MouseMoveEvnet;
             #endregion
 
             #region DataGridView Event
@@ -51,6 +52,15 @@ namespace FMSMonitoringUI.Monitoring
         {
             Exit.Left = (this.panel2.Width - Exit.Width) / 2;             
             Exit.Top = (this.panel2.Height - Exit.Height) / 2;
+        }
+        #endregion
+
+        #region InitLanguage
+        private void InitLanguage()
+        {
+            titBar.CallLocalLanguage();
+            lbTrayInfo.CallLocalLanguage();
+            Exit.CallLocalLanguage();
         }
         #endregion
 

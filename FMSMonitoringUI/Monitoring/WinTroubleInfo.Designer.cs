@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.ctrlTitleBar = new MonitoringUI.Controlls.CtrlTitleBar();
+            this.titBar = new MonitoringUI.Controlls.CtrlTitleBar();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.Search = new MonitoringUI.Controlls.CButton.CtrlButton();
-            this.ctrlDateTimeDT2DT1 = new MonitoringUI.Controlls.CDateTime.CtrlDateTimeDT2DT();
+            this.dtSearchPriod = new MonitoringUI.Controlls.CDateTime.CtrlDateTimeDT2DT();
             this.lbRackID = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
             this.gridTrayInfo = new FMSMonitoringUI.Controlls.CtrlDataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -47,7 +47,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.ctrlTitleBar);
+            this.panel1.Controls.Add(this.titBar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(2, 2);
             this.panel1.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
@@ -55,20 +55,20 @@
             this.panel1.Size = new System.Drawing.Size(1197, 60);
             this.panel1.TabIndex = 0;
             // 
-            // ctrlTitleBar
+            // titBar
             // 
-            this.ctrlTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlTitleBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ctrlTitleBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ctrlTitleBar.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ctrlTitleBar.ForeColor = System.Drawing.Color.White;
-            this.ctrlTitleBar.LanguageID = "DEF_Trouble_Information";
-            this.ctrlTitleBar.Location = new System.Drawing.Point(0, 0);
-            this.ctrlTitleBar.Margin = new System.Windows.Forms.Padding(4);
-            this.ctrlTitleBar.Name = "ctrlTitleBar";
-            this.ctrlTitleBar.Size = new System.Drawing.Size(1195, 58);
-            this.ctrlTitleBar.TabIndex = 0;
-            this.ctrlTitleBar.TitleText = "Trouble Information";
+            this.titBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.titBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.titBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.titBar.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.titBar.ForeColor = System.Drawing.Color.White;
+            this.titBar.LanguageID = "DEF_Trouble_Information";
+            this.titBar.Location = new System.Drawing.Point(0, 0);
+            this.titBar.Margin = new System.Windows.Forms.Padding(4);
+            this.titBar.Name = "titBar";
+            this.titBar.Size = new System.Drawing.Size(1195, 58);
+            this.titBar.TabIndex = 0;
+            this.titBar.TitleText = "Trouble Information";
             // 
             // panel3
             // 
@@ -86,7 +86,7 @@
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.Search);
-            this.panel4.Controls.Add(this.ctrlDateTimeDT2DT1);
+            this.panel4.Controls.Add(this.dtSearchPriod);
             this.panel4.Controls.Add(this.lbRackID);
             this.panel4.Location = new System.Drawing.Point(0, -1);
             this.panel4.Name = "panel4";
@@ -106,19 +106,19 @@
             this.Search.TabIndex = 0;
             this.Search.Click += new System.EventHandler(this.Search_Click);
             // 
-            // ctrlDateTimeDT2DT1
+            // dtSearchPriod
             // 
-            this.ctrlDateTimeDT2DT1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlDateTimeDT2DT1.EndDate = new System.DateTime(2023, 1, 27, 14, 44, 55, 475);
-            this.ctrlDateTimeDT2DT1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.ctrlDateTimeDT2DT1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.ctrlDateTimeDT2DT1.LanguageID = "DEF_Date_Time";
-            this.ctrlDateTimeDT2DT1.Location = new System.Drawing.Point(604, 9);
-            this.ctrlDateTimeDT2DT1.Name = "ctrlDateTimeDT2DT1";
-            this.ctrlDateTimeDT2DT1.Size = new System.Drawing.Size(407, 27);
-            this.ctrlDateTimeDT2DT1.StartDate = new System.DateTime(2023, 1, 27, 14, 44, 55, 479);
-            this.ctrlDateTimeDT2DT1.TabIndex = 5;
-            this.ctrlDateTimeDT2DT1.TitleText = "Date Time :";
+            this.dtSearchPriod.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.dtSearchPriod.EndDate = new System.DateTime(2023, 1, 27, 14, 44, 55, 475);
+            this.dtSearchPriod.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.dtSearchPriod.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
+            this.dtSearchPriod.LanguageID = "DEF_Search_Period";
+            this.dtSearchPriod.Location = new System.Drawing.Point(604, 9);
+            this.dtSearchPriod.Name = "dtSearchPriod";
+            this.dtSearchPriod.Size = new System.Drawing.Size(407, 27);
+            this.dtSearchPriod.StartDate = new System.DateTime(2023, 1, 27, 14, 44, 55, 479);
+            this.dtSearchPriod.TabIndex = 5;
+            this.dtSearchPriod.TitleText = "Search Period :";
             // 
             // lbRackID
             // 
@@ -205,13 +205,13 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private MonitoringUI.Controlls.CtrlTitleBar ctrlTitleBar;
+        private MonitoringUI.Controlls.CtrlTitleBar titBar;
         private System.Windows.Forms.Panel panel3;
         private Controlls.CtrlDataGridView gridTrayInfo;
         private System.Windows.Forms.Panel panel2;
         private MonitoringUI.Controlls.CButton.CtrlButton Exit;
         private System.Windows.Forms.Panel panel4;
-        private MonitoringUI.Controlls.CDateTime.CtrlDateTimeDT2DT ctrlDateTimeDT2DT1;
+        private MonitoringUI.Controlls.CDateTime.CtrlDateTimeDT2DT dtSearchPriod;
         private Controlls.WindowsForms.CtrlLabelBox lbRackID;
         private MonitoringUI.Controlls.CButton.CtrlButton Search;
     }

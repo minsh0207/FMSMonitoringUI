@@ -1,7 +1,9 @@
-﻿using Google.Protobuf.WellKnownTypes;
+﻿using FMSMonitoringUI.Controlls.WindowsForms;
+using Google.Protobuf.WellKnownTypes;
 using MonitoringUI;
 using MonitoringUI.Common;
 using MonitoringUI.Controlls;
+using MonitoringUI.Controlls.CButton;
 using MySqlX.XDevAPI.Common;
 using Newtonsoft.Json.Linq;
 using Novasoft.Logger;
@@ -51,6 +53,7 @@ namespace FMSMonitoringUI.Monitoring
             Dictionary<string, object> data = new Dictionary<string, object>();
             InitGridViewRecipeInfo(data);
             InitGridViewProcessData(data);
+            InitLanguage();
 
             _TrayId = trayId;
         }
@@ -103,12 +106,30 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
+        #region InitLanguage
+        private void InitLanguage()
+        {
+            titBar.CallLocalLanguage();
+
+            lbCellIDList.CallLocalLanguage();
+            lbCellInfo.CallLocalLanguage();
+            lbProcessName.CallLocalLanguage();
+            lbRecipeInfo.CallLocalLanguage();
+            lbProcessData.CallLocalLanguage();
+
+            Exit.CallLocalLanguage();
+        }
+        #endregion
+
         #region InitGridView
         private void InitGridViewCellList()
         {
-            List<string> lstTitle = new List<string>();
-            lstTitle.Add("No");      // -1
-            lstTitle.Add("Cell ID");
+            List<string> lstTitle = new List<string>
+            {
+                LocalLanguage.GetItemString("DEF_No"),
+                LocalLanguage.GetItemString("DEF_Cell_ID")
+            };
+
             gridCellIDLIst.AddColumnHeaderList(lstTitle);
 
             lstTitle = new List<string>();
@@ -134,107 +155,118 @@ namespace FMSMonitoringUI.Monitoring
             gridCellInfo.AddColumnHeaderList(lstTitle);
             gridCellInfo.ColumnHeadersVisible(false);
 
-            lstTitle = new List<string>();
-            lstTitle.Add("Cell ID");
+            lstTitle = new List<string>
+            {
+                LocalLanguage.GetItemString("DEF_Cell_ID"),
+                // 현재 Tray 정보
+                LocalLanguage.GetItemString("DEF_Tray_ID"),
+                LocalLanguage.GetItemString("DEF_Cell_No"),
+                LocalLanguage.GetItemString("DEF_Tray_InputTime"),
+                LocalLanguage.GetItemString("DEF_Tray_InputEqpID"),
+                // 등급 판정 관련
+                LocalLanguage.GetItemString("DEF_Grade"),
+                LocalLanguage.GetItemString("DEF_Grade_Code"),
+                LocalLanguage.GetItemString("DEF_Grade_NG_Type"),
+                LocalLanguage.GetItemString("DEF_Grade_Defect_Type"),
+                LocalLanguage.GetItemString("DEF_Grade_EQP_Type"),
+                LocalLanguage.GetItemString("DEF_Grade_Process_Type"),
+                LocalLanguage.GetItemString("DEF_Grade_Process_No"),
+                LocalLanguage.GetItemString("DEF_Grade_EQP_ID"),
+                // Cell 정보
+                LocalLanguage.GetItemString("DEF_Model_ID"),
+                LocalLanguage.GetItemString("DEF_Route_ID"),
+                LocalLanguage.GetItemString("DEF_Lot_ID"),
+                // Cell의 현재 설비 정보
+                LocalLanguage.GetItemString("DEF_EQP_ID"),
+                LocalLanguage.GetItemString("DEF_Unit_ID"),
+                LocalLanguage.GetItemString("DEF_UnitID_Level"),
+                // Cell의 현재 설비 정보
+                LocalLanguage.GetItemString("DEF_Recipe_ID"),
+                LocalLanguage.GetItemString("DEF_Route_OrderNo"),
+                LocalLanguage.GetItemString("DEF_EQP_Type"),
+                LocalLanguage.GetItemString("DEF_Process_Type"),
+                LocalLanguage.GetItemString("DEF_Process_No"),
+                LocalLanguage.GetItemString("DEF_Start_Time"),
+                LocalLanguage.GetItemString("DEF_End_Time"),
+                // Rework 관련 정보
+                LocalLanguage.GetItemString("DEF_Rework_Flag"),
+                LocalLanguage.GetItemString("DEF_Rework_Time"),
+                LocalLanguage.GetItemString("DEF_Rework_EQPID"),
+                LocalLanguage.GetItemString("DEF_Rework_UnitID"),
+                // 화재 관련
+                LocalLanguage.GetItemString("DEF_Fire_Flag"),
+                LocalLanguage.GetItemString("DEF_Fire_Time"),
+                LocalLanguage.GetItemString("DEF_Fire_EQPID"),
+                LocalLanguage.GetItemString("DEF_Fire_UnitID"),
+                // Scrap 관련
+                LocalLanguage.GetItemString("DEF_Scrap_Flag"),
+                LocalLanguage.GetItemString("DEF_Scrap_User"),
+                LocalLanguage.GetItemString("DEF_Scrap_Time"),
+                ""
+            };
 
-            // 현재 Tray 정보
-            //lstTitle.Add("Cerrent Tray Info");          // 1
-            lstTitle.Add("Tray ID");
-            lstTitle.Add("Cell No");
-            lstTitle.Add("Tray InputTime");
-            lstTitle.Add("Tray InputEqpID");
-
-            // 등급 판정 관련
-            //lstTitle.Add("Cerrent Grade");              // 6
-            lstTitle.Add("Grade");
-            lstTitle.Add("Grade Code");
-            lstTitle.Add("Grade NG Type");
-            lstTitle.Add("Grade Defect Type");
-            lstTitle.Add("Grade EQP Type");
-            lstTitle.Add("Grade Process Type");
-            lstTitle.Add("Grade Process No");
-            lstTitle.Add("Grade EQP ID");
-
-            // Cell 정보
-            //lstTitle.Add("Cerrent Cell Info");          // 14
-            lstTitle.Add("Model ID");
-            lstTitle.Add("Route");
-            lstTitle.Add("Lot ID");
-
-            // Cell의 현재 설비 정보
-            //lstTitle.Add("Current EQP Info");       // 18
-            lstTitle.Add("EQP ID");
-            lstTitle.Add("UNIT ID");
-            lstTitle.Add("UNITID LEVEL");
-
-            // Cell의 현재 process 정보
-            //lstTitle.Add("Current Process Info");   // 22
-            lstTitle.Add("Recipe ID");
-            lstTitle.Add("Route OrderNo");
-            lstTitle.Add("EQP Type");
-            lstTitle.Add("Process Type");
-            lstTitle.Add("Process No");
-            lstTitle.Add("Start Time");
-            lstTitle.Add("End Time");
-
-            // Rework 관련 정보
-            //lstTitle.Add("Rework Info");            // 30
-            lstTitle.Add("Rework Flag");
-            lstTitle.Add("Rework Time");
-            lstTitle.Add("Rework EQPID");
-            lstTitle.Add("Rework UnitID");
-
-            // 화재 관련
-            //lstTitle.Add("Fire Info");              // 35
-            lstTitle.Add("Fire Flag");
-            lstTitle.Add("Fire Time");
-            lstTitle.Add("Fire EQPID");
-            lstTitle.Add("Fire UnitID");
-
-            // Scrap 관련
-            //lstTitle.Add("Scrap Info");             // 40
-            lstTitle.Add("Scrap Flag");
-            lstTitle.Add("Scrap User");
-            lstTitle.Add("Scrap Time");
-            lstTitle.Add("");
+            //lstTitle = new List<string>();
+            //lstTitle.Add("Cell ID");
+            //// 현재 Tray 정보
+            //lstTitle.Add("Tray ID");
+            //lstTitle.Add("Cell No");
+            //lstTitle.Add("Tray InputTime");
+            //lstTitle.Add("Tray InputEqpID");
+            //// 등급 판정 관련
+            //lstTitle.Add("Grade");
+            //lstTitle.Add("Grade Code");
+            //lstTitle.Add("Grade NG Type");
+            //lstTitle.Add("Grade Defect Type");
+            //lstTitle.Add("Grade EQP Type");
+            //lstTitle.Add("Grade Process Type");
+            //lstTitle.Add("Grade Process No");
+            //lstTitle.Add("Grade EQP ID");
+            //// Cell 정보
+            //lstTitle.Add("Model ID");
+            //lstTitle.Add("Route ID");
+            //lstTitle.Add("Lot ID");
+            //// Cell의 현재 설비 정보
+            //lstTitle.Add("EQP ID");
+            //lstTitle.Add("UNIT ID");
+            //lstTitle.Add("UNITID LEVEL");
+            //// Cell의 현재 process 정보
+            //lstTitle.Add("Recipe ID");
+            //lstTitle.Add("Route OrderNo");
+            //lstTitle.Add("EQP Type");
+            //lstTitle.Add("Process Type");
+            //lstTitle.Add("Process No");
+            //lstTitle.Add("Start Time");
+            //lstTitle.Add("End Time");
+            //// Rework 관련 정보
+            //lstTitle.Add("Rework Flag");
+            //lstTitle.Add("Rework Time");
+            //lstTitle.Add("Rework EQPID");
+            //lstTitle.Add("Rework UnitID");
+            //// 화재 관련
+            //lstTitle.Add("Fire Flag");
+            //lstTitle.Add("Fire Time");
+            //lstTitle.Add("Fire EQPID");
+            //lstTitle.Add("Fire UnitID");
+            //// Scrap 관련
+            //lstTitle.Add("Scrap Flag");
+            //lstTitle.Add("Scrap User");
+            //lstTitle.Add("Scrap Time");
+            //lstTitle.Add("");
             gridCellInfo.AddRowsHeaderList(lstTitle);
 
             gridCellInfo.RowsHeight(26);
 
-            //List<int> lstColumn = new List<int>();
-            //lstColumn.Clear();
-            //lstColumn.Add(-1);      // DataGridView Header 병합
-            //lstColumn.Add(1);
-            //lstColumn.Add(6);
-            //lstColumn.Add(14);
-            //lstColumn.Add(18);
-            //lstColumn.Add(22);
-            //lstColumn.Add(30);
-            //lstColumn.Add(35);
-            //lstColumn.Add(40);
-            //lstTitle = new List<string>();
-            //lstTitle.Clear();
-            //lstTitle.Add("Select Cell ID");
-            //lstTitle.Add("Cerrent Tray Info");
-            //lstTitle.Add("Cerrent Grade Info");
-            //lstTitle.Add("Cerrent Cell Info");
-            //lstTitle.Add("Current EQP Info");
-            //lstTitle.Add("Current Process Info");
-            //lstTitle.Add("Rework Info");
-            //lstTitle.Add("Fire Info");
-            //lstTitle.Add("Scrap Info");
-            //gridCellInfo.ColumnMergeList(lstColumn, lstTitle);
-
             gridCellInfo.SetGridViewStyles();
-            gridCellInfo.ColumnHeadersWidth(0, 160);
-
-            
+            gridCellInfo.ColumnHeadersWidth(0, 160);            
         }
         private void InitGridViewProcessName(int rowCount)
         {
-            List<string> lstTitle = new List<string>();
-            lstTitle.Add("No");      // -1
-            lstTitle.Add("Process Name");
+            List<string> lstTitle = new List<string>
+            {
+                LocalLanguage.GetItemString("DEF_No"),
+                LocalLanguage.GetItemString("DEF_Process_Name")
+            };
+
             gridProcessName.AddColumnHeaderList(lstTitle);
 
             lstTitle = new List<string>();
@@ -253,9 +285,11 @@ namespace FMSMonitoringUI.Monitoring
         }
         private void InitGridViewRecipeInfo(Dictionary<string, object> rcpItem)
         {
-            List<string> lstTitle = new List<string>();
-            lstTitle.Add("Name");      // -1
-            lstTitle.Add("Value");
+            List<string> lstTitle = new List<string>
+            {
+                LocalLanguage.GetItemString("DEF_Name"),
+                LocalLanguage.GetItemString("DEF_Value")
+            };
             gridRecipeInfo.AddColumnHeaderList(lstTitle);
 
             lstTitle = new List<string>();
