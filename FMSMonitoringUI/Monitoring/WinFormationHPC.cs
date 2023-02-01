@@ -416,14 +416,14 @@ namespace FMSMonitoringUI.Monitoring
             {
                 row = 0;
                 gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_ID); row++;
-                gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_INPUT_TIME); row++;
+                gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_INPUT_TIME.Year == 1 ? "" : data[i].TRAY_INPUT_TIME.ToString()); row++;
                 gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_ZONE); row++;
                 gridTrayInfo.SetValue(i + 1, row, data[i].MODEL_ID); row++;
                 gridTrayInfo.SetValue(i + 1, row, data[i].ROUTE_ID); row++;
                 gridTrayInfo.SetValue(i + 1, row, data[i].LOT_ID); row++;
                 gridTrayInfo.SetValue(i + 1, row, data[i].PROCESS_NAME); row++;
-                gridTrayInfo.SetValue(i + 1, row, data[i].START_TIME); row++;
-                gridTrayInfo.SetValue(i + 1, row, data[i].PLAN_TIME);
+                gridTrayInfo.SetValue(i + 1, row, data[i].START_TIME.Year == 1 ? "" : data[i].TRAY_INPUT_TIME.ToString()); row++;
+                gridTrayInfo.SetValue(i + 1, row, data[i].PLAN_TIME.Year == 1 ? "" : data[i].PLAN_TIME.ToString());
             }
         }
         #endregion

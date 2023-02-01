@@ -434,6 +434,8 @@ namespace FMSMonitoringUI.Monitoring
             gridEqpInfo.SetValue(1, row, data[0].TROUBLE_CODE); row++;
             gridEqpInfo.SetValue(1, row, data[0].TROUBLE_NAME);
 
+            if (data[0].TRAY_ID == null) return;
+
             for (int i = 0; i < data.Count; i++)
             {
                 row = 0;

@@ -48,6 +48,7 @@ namespace FMSMonitoringUI.Monitoring
             _cvTitle = barTitle;
 
             titBar.TitleText = string.Format("{0} Information", barTitle);
+            Invalidate();
         }
 
         #region WinCVTrayInfo Event
@@ -115,7 +116,7 @@ namespace FMSMonitoringUI.Monitoring
         #region InitLanguage
         private void InitLanguage()
         {
-            titBar.CallLocalLanguage();
+            //titBar.CallLocalLanguage();
 
             Exit.CallLocalLanguage();
         }

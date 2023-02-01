@@ -101,6 +101,7 @@
     <Compile Include="Monitoring\_jsonTroubleAging.cs" />
     <Compile Include="Monitoring\_jsonTroubleEquipment.cs" />
     <Compile Include="Monitoring\_jsonEntireEqpList.cs" />
+    <Compile Include="Monitoring\_jsonReworkTray.cs" />
     <Compile Include="Monitoring\_jsonWinFormationHPC.cs" />
     <Compile Include="Monitoring\_jsonLeadTimeCHG.cs" />
     <Compile Include="Monitoring\_jsonWinLeadTime.cs" />

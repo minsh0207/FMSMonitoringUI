@@ -67,6 +67,8 @@
             this.ctrlTaggingName20 = new MonitoringUI.Controlls.CtrlTaggingName();
             this.ctrlTaggingName3 = new MonitoringUI.Controlls.CtrlTaggingName();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.ctrlLabel17 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
+            this.ctrlLabel6 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.ctrlEqpHPC2 = new FMSMonitoringUI.Controlls.CtrlEqpHPC();
             this.ctrlEqpCharger1 = new FMSMonitoringUI.Controlls.CtrlEqpCharger();
             this.ctrlEqpLTAging4 = new FMSMonitoringUI.Controlls.CtrlEqpLTAging();
@@ -317,8 +319,6 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.m_timer = new System.Windows.Forms.Timer(this.components);
-            this.ctrlLabel6 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
-            this.ctrlLabel17 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox44)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).BeginInit();
@@ -1214,6 +1214,30 @@
             this.panel2.Size = new System.Drawing.Size(1707, 995);
             this.panel2.TabIndex = 332;
             // 
+            // ctrlLabel17
+            // 
+            this.ctrlLabel17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
+            this.ctrlLabel17.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel17.LanguageID = "DEF_INPUT";
+            this.ctrlLabel17.Location = new System.Drawing.Point(1162, 32);
+            this.ctrlLabel17.Name = "ctrlLabel17";
+            this.ctrlLabel17.Size = new System.Drawing.Size(72, 29);
+            this.ctrlLabel17.TabIndex = 587;
+            this.ctrlLabel17.Text = "INPUT";
+            this.ctrlLabel17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ctrlLabel6
+            // 
+            this.ctrlLabel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
+            this.ctrlLabel6.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel6.LanguageID = "DEF_OUTPUT";
+            this.ctrlLabel6.Location = new System.Drawing.Point(1088, 32);
+            this.ctrlLabel6.Name = "ctrlLabel6";
+            this.ctrlLabel6.Size = new System.Drawing.Size(72, 29);
+            this.ctrlLabel6.TabIndex = 586;
+            this.ctrlLabel6.Text = "OUTPUT";
+            this.ctrlLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // ctrlEqpHPC2
             // 
             this.ctrlEqpHPC2.BackColor = System.Drawing.Color.DimGray;
@@ -1440,7 +1464,7 @@
             this.bcrMarker35.CVPLCListDeviceID = 0;
             this.bcrMarker35.DisplayText = "";
             this.bcrMarker35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker35.Location = new System.Drawing.Point(150, 395);
+            this.bcrMarker35.Location = new System.Drawing.Point(151, 395);
             this.bcrMarker35.Name = "bcrMarker35";
             this.bcrMarker35.PLCNo = 136;
             this.bcrMarker35.ShowSiteNo = false;
@@ -1475,7 +1499,7 @@
             // 
             this.bcrMarker33.BCRLevel = 1;
             this.bcrMarker33.BCRMarkColor = System.Drawing.Color.Plum;
-            this.bcrMarker33.BCRMarkPosition = ControlGallery.BCRMarkPosition.Top;
+            this.bcrMarker33.BCRMarkPosition = ControlGallery.BCRMarkPosition.Bottom;
             this.bcrMarker33.BCRMarkThickness = 4;
             this.bcrMarker33.BCRUseYN = true;
             this.bcrMarker33.BubbleText = "";
@@ -1496,7 +1520,7 @@
             // 
             this.bcrMarker32.BCRLevel = 1;
             this.bcrMarker32.BCRMarkColor = System.Drawing.Color.Plum;
-            this.bcrMarker32.BCRMarkPosition = ControlGallery.BCRMarkPosition.Top;
+            this.bcrMarker32.BCRMarkPosition = ControlGallery.BCRMarkPosition.Bottom;
             this.bcrMarker32.BCRMarkThickness = 4;
             this.bcrMarker32.BCRUseYN = true;
             this.bcrMarker32.BubbleText = "";
@@ -1517,7 +1541,7 @@
             // 
             this.bcrMarker31.BCRLevel = 1;
             this.bcrMarker31.BCRMarkColor = System.Drawing.Color.Plum;
-            this.bcrMarker31.BCRMarkPosition = ControlGallery.BCRMarkPosition.Top;
+            this.bcrMarker31.BCRMarkPosition = ControlGallery.BCRMarkPosition.Bottom;
             this.bcrMarker31.BCRMarkThickness = 4;
             this.bcrMarker31.BCRUseYN = true;
             this.bcrMarker31.BubbleText = "";
@@ -1538,7 +1562,7 @@
             // 
             this.bcrMarker30.BCRLevel = 1;
             this.bcrMarker30.BCRMarkColor = System.Drawing.Color.Plum;
-            this.bcrMarker30.BCRMarkPosition = ControlGallery.BCRMarkPosition.Top;
+            this.bcrMarker30.BCRMarkPosition = ControlGallery.BCRMarkPosition.Bottom;
             this.bcrMarker30.BCRMarkThickness = 4;
             this.bcrMarker30.BCRUseYN = true;
             this.bcrMarker30.BubbleText = "";
@@ -1559,7 +1583,7 @@
             // 
             this.bcrMarker29.BCRLevel = 1;
             this.bcrMarker29.BCRMarkColor = System.Drawing.Color.Plum;
-            this.bcrMarker29.BCRMarkPosition = ControlGallery.BCRMarkPosition.Top;
+            this.bcrMarker29.BCRMarkPosition = ControlGallery.BCRMarkPosition.Bottom;
             this.bcrMarker29.BCRMarkThickness = 4;
             this.bcrMarker29.BCRUseYN = true;
             this.bcrMarker29.BubbleText = "";
@@ -1587,7 +1611,7 @@
             this.bcrMarker28.CVPLCListDeviceID = 0;
             this.bcrMarker28.DisplayText = "";
             this.bcrMarker28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker28.Location = new System.Drawing.Point(719, 435);
+            this.bcrMarker28.Location = new System.Drawing.Point(720, 435);
             this.bcrMarker28.Name = "bcrMarker28";
             this.bcrMarker28.PLCNo = 108;
             this.bcrMarker28.ShowSiteNo = false;
@@ -3791,7 +3815,7 @@
             this.bcrMarker13.BubbleText = "";
             this.bcrMarker13.CVPLCListDeviceID = 0;
             this.bcrMarker13.DisplayText = "";
-            this.bcrMarker13.Location = new System.Drawing.Point(263, 435);
+            this.bcrMarker13.Location = new System.Drawing.Point(264, 435);
             this.bcrMarker13.Name = "bcrMarker13";
             this.bcrMarker13.PLCNo = 126;
             this.bcrMarker13.ShowSiteNo = false;
@@ -3811,7 +3835,7 @@
             this.bcrMarker12.BubbleText = "";
             this.bcrMarker12.CVPLCListDeviceID = 0;
             this.bcrMarker12.DisplayText = "";
-            this.bcrMarker12.Location = new System.Drawing.Point(491, 435);
+            this.bcrMarker12.Location = new System.Drawing.Point(492, 435);
             this.bcrMarker12.Name = "bcrMarker12";
             this.bcrMarker12.PLCNo = 116;
             this.bcrMarker12.ShowSiteNo = false;
@@ -3831,7 +3855,7 @@
             this.bcrMarker11.BubbleText = "";
             this.bcrMarker11.CVPLCListDeviceID = 0;
             this.bcrMarker11.DisplayText = "";
-            this.bcrMarker11.Location = new System.Drawing.Point(870, 435);
+            this.bcrMarker11.Location = new System.Drawing.Point(871, 435);
             this.bcrMarker11.Name = "bcrMarker11";
             this.bcrMarker11.PLCNo = 103;
             this.bcrMarker11.ShowSiteNo = false;
@@ -5426,30 +5450,6 @@
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(269, 162);
             this.label29.TabIndex = 577;
-            // 
-            // ctrlLabel6
-            // 
-            this.ctrlLabel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
-            this.ctrlLabel6.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel6.LanguageID = "DEF_OUTPUT";
-            this.ctrlLabel6.Location = new System.Drawing.Point(1088, 32);
-            this.ctrlLabel6.Name = "ctrlLabel6";
-            this.ctrlLabel6.Size = new System.Drawing.Size(72, 29);
-            this.ctrlLabel6.TabIndex = 586;
-            this.ctrlLabel6.Text = "OUTPUT";
-            this.ctrlLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ctrlLabel17
-            // 
-            this.ctrlLabel17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
-            this.ctrlLabel17.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel17.LanguageID = "DEF_INPUT";
-            this.ctrlLabel17.Location = new System.Drawing.Point(1162, 32);
-            this.ctrlLabel17.Name = "ctrlLabel17";
-            this.ctrlLabel17.Size = new System.Drawing.Size(72, 29);
-            this.ctrlLabel17.TabIndex = 587;
-            this.ctrlLabel17.Text = "INPUT";
-            this.ctrlLabel17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // CtrlMonitoring
             // 

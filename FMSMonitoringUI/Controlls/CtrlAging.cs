@@ -67,8 +67,6 @@ namespace MonitoringUI.Monitoring
 
             //InitTag();
             InitAgingRack();
-            InitGridView();
-            
 
             // Timer 
             //m_timer.Tick += new EventHandler(OnTimer);
@@ -91,6 +89,7 @@ namespace MonitoringUI.Monitoring
             btnHTAging.BackColor = Color.LightYellow;
             btnHTAging.ForeColor = Color.Black;
 
+            InitGridView();
             InitLanguage();
 
             string log = $"Aging Monitoring";
@@ -368,139 +367,139 @@ namespace MonitoringUI.Monitoring
         /////////////////////////////////////////////////////////////////////////////
         //  Aging Data View
         //===========================================================================  
-        private async Task<bool> AgingDataView()
-        {
-            try
-            {
-                //if (this.InvokeRequired)
-                {
-                    await Task.Run(() =>
-                    {
-                        //this.BeginInvoke(new Action(() =>
-                        this.Invoke(new MethodInvoker(delegate ()
-                        {
-                            //선택된 Tab의 데이터만 Load하자.
-                            int nSelectedIndex = AgingTab.SelectedIndex;
+        //private async Task<bool> AgingDataView()
+        //{
+        //    try
+        //    {
+        //        //if (this.InvokeRequired)
+        //        {
+        //            await Task.Run(() =>
+        //            {
+        //                //this.BeginInvoke(new Action(() =>
+        //                this.Invoke(new MethodInvoker(delegate ()
+        //                {
+        //                    //선택된 Tab의 데이터만 Load하자.
+        //                    int nSelectedIndex = AgingTab.SelectedIndex;
 
-                            // Set RT Aging
-                            switch (nSelectedIndex)
-                            {
-                                case 0:
-                                    ht011.SetDataTable(_mysql.SelectAgingInfo(ht011.LinePrefix));
-                                    ht012.SetDataTable(_mysql.SelectAgingInfo(ht012.LinePrefix));
-                                    ht013.SetDataTable(_mysql.SelectAgingInfo(ht013.LinePrefix));
-                                    ht014.SetDataTable(_mysql.SelectAgingInfo(ht014.LinePrefix));
-                                    break;
-                                case 1:
-                                    lt011.SetDataTable(_mysql.SelectAgingInfo(lt011.LinePrefix));
-                                    lt012.SetDataTable(_mysql.SelectAgingInfo(lt012.LinePrefix));
-                                    lt013.SetDataTable(_mysql.SelectAgingInfo(lt013.LinePrefix));
-                                    lt014.SetDataTable(_mysql.SelectAgingInfo(lt014.LinePrefix));
-                                    break;
-                                case 2:
-                                    lt021.SetDataTable(_mysql.SelectAgingInfo(lt021.LinePrefix));
-                                    lt022.SetDataTable(_mysql.SelectAgingInfo(lt022.LinePrefix));
-                                    lt023.SetDataTable(_mysql.SelectAgingInfo(lt023.LinePrefix));
-                                    lt024.SetDataTable(_mysql.SelectAgingInfo(lt024.LinePrefix));
-                                    break;
-                            }
-                        }));
-                    });
-                }
-            }
-            catch (Exception ex)        // 예외처리
-            {
-                System.Diagnostics.Debug.Print(string.Format("[Exception:AgingDataView] {0}", ex.ToString()));
-                // Return
-                return false;
-            }
+        //                    // Set RT Aging
+        //                    switch (nSelectedIndex)
+        //                    {
+        //                        case 0:
+        //                            ht011.SetDataTable(_mysql.SelectAgingInfo(ht011.LinePrefix));
+        //                            ht012.SetDataTable(_mysql.SelectAgingInfo(ht012.LinePrefix));
+        //                            ht013.SetDataTable(_mysql.SelectAgingInfo(ht013.LinePrefix));
+        //                            ht014.SetDataTable(_mysql.SelectAgingInfo(ht014.LinePrefix));
+        //                            break;
+        //                        case 1:
+        //                            lt011.SetDataTable(_mysql.SelectAgingInfo(lt011.LinePrefix));
+        //                            lt012.SetDataTable(_mysql.SelectAgingInfo(lt012.LinePrefix));
+        //                            lt013.SetDataTable(_mysql.SelectAgingInfo(lt013.LinePrefix));
+        //                            lt014.SetDataTable(_mysql.SelectAgingInfo(lt014.LinePrefix));
+        //                            break;
+        //                        case 2:
+        //                            lt021.SetDataTable(_mysql.SelectAgingInfo(lt021.LinePrefix));
+        //                            lt022.SetDataTable(_mysql.SelectAgingInfo(lt022.LinePrefix));
+        //                            lt023.SetDataTable(_mysql.SelectAgingInfo(lt023.LinePrefix));
+        //                            lt024.SetDataTable(_mysql.SelectAgingInfo(lt024.LinePrefix));
+        //                            break;
+        //                    }
+        //                }));
+        //            });
+        //        }
+        //    }
+        //    catch (Exception ex)        // 예외처리
+        //    {
+        //        System.Diagnostics.Debug.Print(string.Format("[Exception:AgingDataView] {0}", ex.ToString()));
+        //        // Return
+        //        return false;
+        //    }
 
-            // Return
-            return true;
-        }
-        private bool AgingDataView(DataTable dt)
-        {
-            // Variable
-            DateTime dtPlanTime;
-            DateTime dtDataBaseTime;
-            bool bPlanUnLoad = false;
+        //    // Return
+        //    return true;
+        //}
+        //private bool AgingDataView(DataTable dt)
+        //{
+        //    // Variable
+        //    DateTime dtPlanTime;
+        //    DateTime dtDataBaseTime;
+        //    bool bPlanUnLoad = false;
 
-            // dt 조작 : dt record count 만큼 돌면서 PlanTIme 값으로 bPlanUnLoad 값을 계산하여 dt 에 추가
-            // for dt > dt.add("bPlanUnLoad")
+        //    // dt 조작 : dt record count 만큼 돌면서 PlanTIme 값으로 bPlanUnLoad 값을 계산하여 dt 에 추가
+        //    // for dt > dt.add("bPlanUnLoad")
 
-            // Get DataBaseTime - 일단 현재시간
-            dtDataBaseTime = DateTime.Now;
-
-
-            // Add columns to Datatable
-            dt.Columns.Add("bPlanUnLoad", typeof(bool));
-
-            //foreach (DataRow row in dt.Select(where, orderby))
-            foreach (DataRow row in dt.Rows)
-            {
-                try
-                {
-                    if (row["PlanTime"].ToString() == "99999999999999" || row["PlanTime"].ToString() == "99991231235959" || row["PlanTime"].ToString() == "99991231125959" || row["PlanTime"].ToString() == "999912311235959")
-                        dtPlanTime = DateTime.ParseExact("99981230235959", "yyyyMMddHHmmss", System.Globalization.CultureInfo.InvariantCulture);
-                    else
-                        dtPlanTime = DateTime.ParseExact(row["PlanTime"].ToString(), "yyyyMMddHHmmss", System.Globalization.CultureInfo.InvariantCulture);
-                    if (dtPlanTime < dtDataBaseTime && row["Status"].ToString() != "O")
-                        bPlanUnLoad = true;
-                    else bPlanUnLoad = false;
-
-                    //Console.WriteLine("["+bPlanUnLoad+"]");
-                    row["bPlanUnLoad"] = bPlanUnLoad.ToString().ToLower(); 
-
-                }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.Print(string.Format("### Aging Data View : PlanTime Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
-                    throw;
-                }
-            }
-
-            try
-            {
-                //선택된 Tab의 데이터만 Load하자.
-                int nSelectedIndex = AgingTab.SelectedIndex;
+        //    // Get DataBaseTime - 일단 현재시간
+        //    dtDataBaseTime = DateTime.Now;
 
 
-                // Set RT Aging
-                switch(nSelectedIndex)
-                {
-                    case 0:
-                        ht011.SetDataTable(ref dt);
-                        ht012.SetDataTable(ref dt);
-                        ht013.SetDataTable(ref dt);
-                        ht014.SetDataTable(ref dt);
-                        break;
-                    case 1:
-                        lt011.SetDataTable(ref dt);
-                        lt012.SetDataTable(ref dt);
-                        lt013.SetDataTable(ref dt);
-                        lt014.SetDataTable(ref dt);
-                        break;
-                    case 2:
-                        lt021.SetDataTable(ref dt);
-                        lt022.SetDataTable(ref dt);
-                        lt022.SetDataTable(ref dt);
-                        lt024.SetDataTable(ref dt);
-                        break;
-                }
+        //    // Add columns to Datatable
+        //    dt.Columns.Add("bPlanUnLoad", typeof(bool));
+
+        //    //foreach (DataRow row in dt.Select(where, orderby))
+        //    foreach (DataRow row in dt.Rows)
+        //    {
+        //        try
+        //        {
+        //            if (row["PlanTime"].ToString() == "99999999999999" || row["PlanTime"].ToString() == "99991231235959" || row["PlanTime"].ToString() == "99991231125959" || row["PlanTime"].ToString() == "999912311235959")
+        //                dtPlanTime = DateTime.ParseExact("99981230235959", "yyyyMMddHHmmss", System.Globalization.CultureInfo.InvariantCulture);
+        //            else
+        //                dtPlanTime = DateTime.ParseExact(row["PlanTime"].ToString(), "yyyyMMddHHmmss", System.Globalization.CultureInfo.InvariantCulture);
+        //            if (dtPlanTime < dtDataBaseTime && row["Status"].ToString() != "O")
+        //                bPlanUnLoad = true;
+        //            else bPlanUnLoad = false;
+
+        //            //Console.WriteLine("["+bPlanUnLoad+"]");
+        //            row["bPlanUnLoad"] = bPlanUnLoad.ToString().ToLower(); 
+
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            System.Diagnostics.Debug.Print(string.Format("### Aging Data View : PlanTime Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+        //            throw;
+        //        }
+        //    }
+
+        //    try
+        //    {
+        //        //선택된 Tab의 데이터만 Load하자.
+        //        int nSelectedIndex = AgingTab.SelectedIndex;
 
 
-                // Return
-                return true;
-            }
+        //        // Set RT Aging
+        //        switch(nSelectedIndex)
+        //        {
+        //            case 0:
+        //                ht011.SetDataTable(ref dt);
+        //                ht012.SetDataTable(ref dt);
+        //                ht013.SetDataTable(ref dt);
+        //                ht014.SetDataTable(ref dt);
+        //                break;
+        //            case 1:
+        //                lt011.SetDataTable(ref dt);
+        //                lt012.SetDataTable(ref dt);
+        //                lt013.SetDataTable(ref dt);
+        //                lt014.SetDataTable(ref dt);
+        //                break;
+        //            case 2:
+        //                lt021.SetDataTable(ref dt);
+        //                lt022.SetDataTable(ref dt);
+        //                lt022.SetDataTable(ref dt);
+        //                lt024.SetDataTable(ref dt);
+        //                break;
+        //        }
 
-            // 예외처리
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.Print(string.Format("[Exception:AgingDataView] {0}", ex.ToString()));
-                // Return
-                return false;
-            }
-        }
+
+        //        // Return
+        //        return true;
+        //    }
+
+        //    // 예외처리
+        //    catch (Exception ex)
+        //    {
+        //        System.Diagnostics.Debug.Print(string.Format("[Exception:AgingDataView] {0}", ex.ToString()));
+        //        // Return
+        //        return false;
+        //    }
+        //}
         #endregion
 
         private void InitAgingRack()
@@ -553,7 +552,7 @@ namespace MonitoringUI.Monitoring
         private void InitGridView()
         {
             string[] columnName = {
-                LocalLanguage.GetItemString("DEF_Status Name"), 
+                LocalLanguage.GetItemString("DEF_Status_Name"), 
                 LocalLanguage.GetItemString("DEF_Total_Rack_Count"), 
                 LocalLanguage.GetItemString("DEF_In_Aging"), 
                 LocalLanguage.GetItemString("DEF_Empty_Rack"),                 

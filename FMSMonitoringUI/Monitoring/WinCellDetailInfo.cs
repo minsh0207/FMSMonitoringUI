@@ -353,7 +353,7 @@ namespace FMSMonitoringUI.Monitoring
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].CELL_ID); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].TRAY_ID); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].CELL_NO); row++;
-            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].TRAY_INPUT_TIME); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].TRAY_INPUT_TIME.Year == 1 ? "" : _CellInfo[cellNo].TRAY_INPUT_TIME.ToString()); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].TRAY_INPUT_EQP_ID); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].GRADE); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].GRADE_CODE); row++;
@@ -375,19 +375,19 @@ namespace FMSMonitoringUI.Monitoring
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].EQP_TYPE); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].PROCESS_TYPE); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].PROCESS_NO); row++;
-            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].START_TIME); row++;
-            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].END_TIME); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].START_TIME.Year == 1 ? "" : _CellInfo[cellNo].START_TIME.ToString()); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].END_TIME.Year == 1 ? "" : _CellInfo[cellNo].END_TIME.ToString()); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].REWORK_FLAG); row++;
-            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].REWORK_TIME); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].REWORK_TIME.Year == 1 ? "" : _CellInfo[cellNo].REWORK_TIME.ToString()); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].REWORK_EQP_ID); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].REWORK_UNIT_ID); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].FIRE_FLAG); row++;
-            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].FIRE_TIME); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].FIRE_TIME.Year == 1 ? "" : _CellInfo[cellNo].FIRE_TIME.ToString()); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].FIRE_EQP_ID); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].FIRE_UNIT_ID); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].SCRAP_FLAG); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].SCRAP_USER); row++;
-            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].SCRAP_TIME); row++;
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].SCRAP_TIME.Year == 1 ? "" : _CellInfo[cellNo].SCRAP_TIME.ToString()); row++;
 
         }
         private void SetProcessName(List<_cell_process_flow> data)

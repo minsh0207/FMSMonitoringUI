@@ -204,6 +204,14 @@
             this.btnHTAging = new FMSMonitoringUI.Controlls.WindowsForms.CtrlButtonType2();
             this.btnLTAging1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlButtonType2();
             this.btnLTAging2 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlButtonType2();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
             this.AgingTab.SuspendLayout();
             this.tpAging1.SuspendLayout();
             this.tpAging2.SuspendLayout();
@@ -809,6 +817,10 @@
             // tpAging2
             // 
             this.tpAging2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.tpAging2.Controls.Add(this.panel5);
+            this.tpAging2.Controls.Add(this.panel4);
+            this.tpAging2.Controls.Add(this.panel3);
+            this.tpAging2.Controls.Add(this.panel2);
             this.tpAging2.Controls.Add(this.AgingInfoView_LT1);
             this.tpAging2.Controls.Add(this.label88);
             this.tpAging2.Controls.Add(this.label20);
@@ -1441,6 +1453,10 @@
             // tpAging3
             // 
             this.tpAging3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.tpAging3.Controls.Add(this.panel6);
+            this.tpAging3.Controls.Add(this.panel7);
+            this.tpAging3.Controls.Add(this.panel8);
+            this.tpAging3.Controls.Add(this.panel9);
             this.tpAging3.Controls.Add(this.AgingInfoView_LT2);
             this.tpAging3.Controls.Add(this.label27);
             this.tpAging3.Controls.Add(this.label28);
@@ -2537,7 +2553,7 @@
             this.btnHTAging.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHTAging.ForeColor = System.Drawing.Color.White;
             this.btnHTAging.LanguageID = "DEF_HT_Aging";
-            this.btnHTAging.Location = new System.Drawing.Point(318, 11);
+            this.btnHTAging.Location = new System.Drawing.Point(319, 11);
             this.btnHTAging.Name = "btnHTAging";
             this.btnHTAging.Size = new System.Drawing.Size(147, 28);
             this.btnHTAging.TabIndex = 87;
@@ -2551,7 +2567,7 @@
             this.btnLTAging1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLTAging1.ForeColor = System.Drawing.Color.White;
             this.btnLTAging1.LanguageID = "DEF_LT_Aging_1";
-            this.btnLTAging1.Location = new System.Drawing.Point(464, 11);
+            this.btnLTAging1.Location = new System.Drawing.Point(465, 11);
             this.btnLTAging1.Name = "btnLTAging1";
             this.btnLTAging1.Size = new System.Drawing.Size(147, 28);
             this.btnLTAging1.TabIndex = 88;
@@ -2565,7 +2581,7 @@
             this.btnLTAging2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLTAging2.ForeColor = System.Drawing.Color.White;
             this.btnLTAging2.LanguageID = "DEF_LT_Aging_2";
-            this.btnLTAging2.Location = new System.Drawing.Point(610, 11);
+            this.btnLTAging2.Location = new System.Drawing.Point(611, 11);
             this.btnLTAging2.Name = "btnLTAging2";
             this.btnLTAging2.Size = new System.Drawing.Size(147, 28);
             this.btnLTAging2.TabIndex = 89;
@@ -2573,6 +2589,70 @@
             this.btnLTAging2.Text = "LT Aging #2";
             this.btnLTAging2.UseVisualStyleBackColor = true;
             this.btnLTAging2.Click += new System.EventHandler(this.AgingTab_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Location = new System.Drawing.Point(1463, 97);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(84, 91);
+            this.panel2.TabIndex = 155;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Location = new System.Drawing.Point(1463, 264);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(84, 91);
+            this.panel3.TabIndex = 156;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Location = new System.Drawing.Point(1463, 479);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(84, 91);
+            this.panel4.TabIndex = 157;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.Location = new System.Drawing.Point(1463, 646);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(84, 91);
+            this.panel5.TabIndex = 158;
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.White;
+            this.panel6.Location = new System.Drawing.Point(1464, 97);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(84, 91);
+            this.panel6.TabIndex = 198;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.White;
+            this.panel7.Location = new System.Drawing.Point(1463, 264);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(84, 91);
+            this.panel7.TabIndex = 199;
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.White;
+            this.panel8.Location = new System.Drawing.Point(1464, 479);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(84, 91);
+            this.panel8.TabIndex = 200;
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.White;
+            this.panel9.Location = new System.Drawing.Point(1463, 646);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(84, 91);
+            this.panel9.TabIndex = 201;
             // 
             // CtrlAging
             // 
@@ -2774,5 +2854,13 @@
         private FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel ctrlLabel2;
         private FMSMonitoringUI.Controlls.WindowsForms.CtrlLED RestServer;
         private FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel ctrlLabel3;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel panel9;
     }
 }

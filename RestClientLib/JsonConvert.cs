@@ -893,7 +893,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.Print(string.Format("### ConvertTroubleEquiment, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                System.Diagnostics.Debug.Print(string.Format("### ConvertTroubleAging, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -912,7 +912,7 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.Print(string.Format("### ConvertTroubleEquiment, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                System.Diagnostics.Debug.Print(string.Format("### ConvertTroubleInfo, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }
@@ -932,7 +932,26 @@ namespace RestClientLib
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.Print(string.Format("### ConvertTroubleEquiment, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                System.Diagnostics.Debug.Print(string.Format("### ConvertManualCommand, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                return null;
+            }
+        }
+        #endregion
+        #region ConvertReworkTray
+        /// <summary>
+        /// _jsonReworkTrayResponse 형태의 Class로 변환한다.
+        /// </summary>
+        public _jsonReworkTrayResponse ConvertReworkTray(string jsonResult)
+        {
+            try
+            {
+                // Recv Body의 JSON string을 class 변수에 할당
+                _jsonReworkTrayResponse recvBody = JsonConvert.DeserializeObject<_jsonReworkTrayResponse>(jsonResult, _jsonSettings);
+                return recvBody;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print(string.Format("### ConvertReworkTray, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
                 return null;
             }
         }

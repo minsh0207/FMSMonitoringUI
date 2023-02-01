@@ -48,7 +48,7 @@
             this.lbRatio.AutoSize = true;
             this.lbRatio.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbRatio.ForeColor = System.Drawing.Color.White;
-            this.lbRatio.Location = new System.Drawing.Point(87, 65);
+            this.lbRatio.Location = new System.Drawing.Point(88, 65);
             this.lbRatio.Name = "lbRatio";
             this.lbRatio.Size = new System.Drawing.Size(39, 15);
             this.lbRatio.TabIndex = 48;
@@ -59,7 +59,7 @@
             this.lbInAging.AutoSize = true;
             this.lbInAging.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbInAging.ForeColor = System.Drawing.Color.White;
-            this.lbInAging.Location = new System.Drawing.Point(89, 48);
+            this.lbInAging.Location = new System.Drawing.Point(88, 48);
             this.lbInAging.Name = "lbInAging";
             this.lbInAging.Size = new System.Drawing.Size(28, 15);
             this.lbInAging.TabIndex = 47;
@@ -70,7 +70,7 @@
             this.lbTotalRack.AutoSize = true;
             this.lbTotalRack.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTotalRack.ForeColor = System.Drawing.Color.White;
-            this.lbTotalRack.Location = new System.Drawing.Point(90, 31);
+            this.lbTotalRack.Location = new System.Drawing.Point(88, 31);
             this.lbTotalRack.Name = "lbTotalRack";
             this.lbTotalRack.Size = new System.Drawing.Size(27, 15);
             this.lbTotalRack.TabIndex = 46;
@@ -121,42 +121,42 @@
             // 
             // ctrlLabel1
             // 
-            this.ctrlLabel1.AutoSize = true;
             this.ctrlLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel1.Font = new System.Drawing.Font("Arial", 9F);
             this.ctrlLabel1.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel1.LanguageID = "DEF_Total_Rack";
-            this.ctrlLabel1.Location = new System.Drawing.Point(19, 31);
+            this.ctrlLabel1.Location = new System.Drawing.Point(4, 31);
             this.ctrlLabel1.Name = "ctrlLabel1";
-            this.ctrlLabel1.Size = new System.Drawing.Size(70, 15);
+            this.ctrlLabel1.Size = new System.Drawing.Size(85, 15);
             this.ctrlLabel1.TabIndex = 55;
             this.ctrlLabel1.Text = "Total Rack :";
+            this.ctrlLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // ctrlLabel2
             // 
-            this.ctrlLabel2.AutoSize = true;
             this.ctrlLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel2.Font = new System.Drawing.Font("Arial", 9F);
             this.ctrlLabel2.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel2.LanguageID = "DEF_In_Aging";
-            this.ctrlLabel2.Location = new System.Drawing.Point(33, 48);
+            this.ctrlLabel2.Location = new System.Drawing.Point(4, 48);
             this.ctrlLabel2.Name = "ctrlLabel2";
-            this.ctrlLabel2.Size = new System.Drawing.Size(56, 15);
+            this.ctrlLabel2.Size = new System.Drawing.Size(85, 15);
             this.ctrlLabel2.TabIndex = 56;
             this.ctrlLabel2.Text = "In Aging :";
+            this.ctrlLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // ctrlLabel3
             // 
-            this.ctrlLabel3.AutoSize = true;
             this.ctrlLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel3.Font = new System.Drawing.Font("Arial", 9F);
             this.ctrlLabel3.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel3.LanguageID = "DEF_Ratio";
-            this.ctrlLabel3.Location = new System.Drawing.Point(32, 65);
+            this.ctrlLabel3.Location = new System.Drawing.Point(4, 65);
             this.ctrlLabel3.Name = "ctrlLabel3";
-            this.ctrlLabel3.Size = new System.Drawing.Size(42, 15);
+            this.ctrlLabel3.Size = new System.Drawing.Size(85, 15);
             this.ctrlLabel3.TabIndex = 57;
             this.ctrlLabel3.Text = "Ratio :";
+            this.ctrlLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // CtrlEqpHTAging
             // 
