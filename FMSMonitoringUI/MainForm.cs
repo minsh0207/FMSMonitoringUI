@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -65,6 +66,9 @@ namespace FMSMonitoringUI
         #region Working Thread
         private Thread _ProcessThread;
         private bool _TheadVisiable;
+
+        private Thread _LogOutThread;
+        private int _LogOutCount;
         #endregion
 
         public MainForm(ApplicationInstance applicationInstance)
@@ -145,6 +149,13 @@ namespace FMSMonitoringUI
             {
                 _ProcessThread = new Thread(() => ProcessThreadCallback());
                 _ProcessThread.IsBackground = true; _ProcessThread.Start();
+            }));
+
+            // 현장가서 활성화 시킴.
+            this.BeginInvoke(new MethodInvoker(delegate ()
+            {
+                _LogOutThread = new Thread(() => LogOutThreadCallback());
+                _LogOutThread.IsBackground = true; _LogOutThread.Start();
             }));
         }
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -421,7 +432,7 @@ namespace FMSMonitoringUI
             catch (Exception ex)
             {
                 // System Debug
-                System.Diagnostics.Debug.Print(string.Format("### FormationCHG ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                System.Diagnostics.Debug.Print(string.Format("### MainForm ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
             }
         }
         #endregion
@@ -831,6 +842,86 @@ namespace FMSMonitoringUI
         }
         #endregion
 
-        
+        #region LogOutThreadCallback
+        private void LogOutThreadCallback()
+        {
+            try
+            {
+                while (true)
+                {
+                    GC.Collect();
+
+                    this.Invoke(new MethodInvoker(delegate ()
+                    {
+                        LogOut();
+                    }));
+
+                    Thread.Sleep(60000);
+                }
+            }
+            catch (Exception ex)
+            {
+                // System Debug
+                System.Diagnostics.Debug.Print(string.Format("### LogOutThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+            }
+        }
+        #endregion
+
+        #region LogOut
+        public void LogOut()
+        {
+            try
+            {
+
+                if (_LogOutCount > (48 * 60))  // 2day
+                {
+                    CDefine.m_strLoginID = "";
+                    lbUserName.Text = "LogOut";
+                    ProgramRestart();
+                }
+                else
+                {
+                    _LogOutCount++;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print(string.Format("[Exception:LogOut] {0}", ex.ToString()));
+            }
+        }
+        #endregion
+
+        #region 윈도우 프로시저 처리하기 - WndProc(message)
+        /// <summary>
+        /// 윈도우 프로시저 처리하기
+        /// </summary>
+        /// <param name="message">메시지</param>
+        protected override void WndProc(ref Message message)
+        {
+            const uint WM_MOUSEACTIVATE = 0x0021;
+            const uint WM_MOUSEMOVE = 0x0200;
+
+            if (message.Msg == WM_MOUSEACTIVATE || message.Msg == WM_MOUSEMOVE)
+            {
+                _LogOutCount = 0;
+            }
+
+            base.WndProc(ref message);
+        }
+        #endregion
+
+        private void ProgramRestart()
+        {
+            try
+            {
+                Application.EnableVisualStyles();
+
+                Application.Restart();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print(string.Format("[Exception:ProgramRestart] {0}", ex.ToString()));
+            }
+        }
     }
 }
