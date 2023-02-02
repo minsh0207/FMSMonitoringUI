@@ -1,4 +1,5 @@
-﻿using FMSMonitoringUI.Controlls.WindowsForms;
+﻿using ExcelDataReader.Log;
+using FMSMonitoringUI.Controlls.WindowsForms;
 using Google.Protobuf.WellKnownTypes;
 using MonitoringUI;
 using MonitoringUI.Common;
@@ -6,7 +7,6 @@ using MonitoringUI.Controlls;
 using MonitoringUI.Controlls.CButton;
 using MySqlX.XDevAPI.Common;
 using Newtonsoft.Json.Linq;
-using Novasoft.Logger;
 using Org.BouncyCastle.Ocsp;
 using RestClientLib;
 using System;
@@ -29,8 +29,6 @@ namespace FMSMonitoringUI.Monitoring
         private Point point = new Point();
         private string _TrayId = string.Empty;
 
-        private Logger _Logger;
-
         private List<_dat_cell> _CellInfo;
         private List<_cell_process_flow> _CellProcessFlow;
 
@@ -42,9 +40,6 @@ namespace FMSMonitoringUI.Monitoring
         public WinCellDetailInfo(string trayId)
         {
             InitializeComponent();
-
-            string logPath = ConfigurationManager.AppSettings["LOG_PATH"];
-            _Logger = new Logger(logPath, LogMode.Hour);
 
             InitControl();
             InitGridViewCellList();
@@ -88,6 +83,8 @@ namespace FMSMonitoringUI.Monitoring
             }));
 
             this.WindowID = CAuthority.GetWindowsText(this.Text);
+
+            CLogger.WriteLog(enLogLevel.Info, this.WindowID, "Window Load");
         }
         private void WinCellDetailInfo_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -144,7 +141,6 @@ namespace FMSMonitoringUI.Monitoring
 
             gridCellIDLIst.SetGridViewStyles();
             gridCellIDLIst.ColumnHeadersWidth(0, 60);
-
 
         }
         private void InitGridViewCell()
@@ -204,54 +200,6 @@ namespace FMSMonitoringUI.Monitoring
                 LocalLanguage.GetItemString("DEF_Scrap_Time"),
                 ""
             };
-
-            //lstTitle = new List<string>();
-            //lstTitle.Add("Cell ID");
-            //// 현재 Tray 정보
-            //lstTitle.Add("Tray ID");
-            //lstTitle.Add("Cell No");
-            //lstTitle.Add("Tray InputTime");
-            //lstTitle.Add("Tray InputEqpID");
-            //// 등급 판정 관련
-            //lstTitle.Add("Grade");
-            //lstTitle.Add("Grade Code");
-            //lstTitle.Add("Grade NG Type");
-            //lstTitle.Add("Grade Defect Type");
-            //lstTitle.Add("Grade EQP Type");
-            //lstTitle.Add("Grade Process Type");
-            //lstTitle.Add("Grade Process No");
-            //lstTitle.Add("Grade EQP ID");
-            //// Cell 정보
-            //lstTitle.Add("Model ID");
-            //lstTitle.Add("Route ID");
-            //lstTitle.Add("Lot ID");
-            //// Cell의 현재 설비 정보
-            //lstTitle.Add("EQP ID");
-            //lstTitle.Add("UNIT ID");
-            //lstTitle.Add("UNITID LEVEL");
-            //// Cell의 현재 process 정보
-            //lstTitle.Add("Recipe ID");
-            //lstTitle.Add("Route OrderNo");
-            //lstTitle.Add("EQP Type");
-            //lstTitle.Add("Process Type");
-            //lstTitle.Add("Process No");
-            //lstTitle.Add("Start Time");
-            //lstTitle.Add("End Time");
-            //// Rework 관련 정보
-            //lstTitle.Add("Rework Flag");
-            //lstTitle.Add("Rework Time");
-            //lstTitle.Add("Rework EQPID");
-            //lstTitle.Add("Rework UnitID");
-            //// 화재 관련
-            //lstTitle.Add("Fire Flag");
-            //lstTitle.Add("Fire Time");
-            //lstTitle.Add("Fire EQPID");
-            //lstTitle.Add("Fire UnitID");
-            //// Scrap 관련
-            //lstTitle.Add("Scrap Flag");
-            //lstTitle.Add("Scrap User");
-            //lstTitle.Add("Scrap Time");
-            //lstTitle.Add("");
             gridCellInfo.AddRowsHeaderList(lstTitle);
 
             gridCellInfo.RowsHeight(26);
@@ -280,8 +228,6 @@ namespace FMSMonitoringUI.Monitoring
 
             gridProcessName.SetGridViewStyles();
             gridProcessName.ColumnHeadersWidth(0, 60);
-
-
         }
         private void InitGridViewRecipeInfo(Dictionary<string, object> rcpItem)
         {
@@ -333,6 +279,83 @@ namespace FMSMonitoringUI.Monitoring
             for (int i = 0; i < dataItem.Count; i++)
             {
                 gridProcessData.SetValue(1, i, dataItem.Values.ToList()[i]);
+            }
+        }
+        #endregion
+
+        #region ProcessThreadCallback
+        private void ProcessThreadCallback()
+        {
+            try
+            {
+                //while (this._TheadVisiable == true)
+                {
+                    GC.Collect();
+
+                    this.Invoke(new MethodInvoker(delegate ()
+                    {
+                        LoadCellData(_TrayId).GetAwaiter().GetResult();
+                    }));
+
+                    //Thread.Sleep(3000);
+                }
+            }
+            catch (Exception ex)
+            {
+                // System Debug
+                System.Diagnostics.Debug.Print(string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
+            }
+        }
+        #endregion
+
+        #region LoadCellData
+        private async Task LoadCellData(string trayid)
+        {
+            try
+            {
+                RESTClient rest = new RESTClient();
+                //// Set Query
+                StringBuilder strSQL = new StringBuilder();
+
+                strSQL.Append(" SELECT *");
+                strSQL.Append(" FROM fms_v.tb_dat_cell");
+                //필수값
+                strSQL.Append($" WHERE tray_id = '{trayid}'");
+
+                var jsonResult = await rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+
+                if (jsonResult != null)
+                {
+                    _jsonDatCellResponse result = rest.ConvertDatCell(jsonResult);
+
+                    if (result != null)
+                    {
+                        SetCellList(result.DATA);
+
+                        _CellInfo = result.DATA;
+                    }
+                    else
+                    {
+                        string log = "ConvertDatCell : result is null";
+                        CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
+                    }
+                }
+                else
+                {
+                    string log = "ConvertDatCell : jsonResult is null";
+                    CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
+                }
+            }
+            catch (Exception ex)
+            {
+                // System Debug
+                System.Diagnostics.Debug.Print(string.Format("LoadCellData Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("LoadCellData Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
             }
         }
         #endregion
@@ -401,96 +424,186 @@ namespace FMSMonitoringUI.Monitoring
                 gridProcessName.SetValue(1, i, data[i].PROCESS_NAME);
             }            
         }
+
+        #region SetRecipeInfo
         private void SetRecipeInfo(int idx)
         {
-            RESTClient rest = new RESTClient();
-
-            string jsonResult = _CellProcessFlow[idx].JSON_RECIPE;
-            _jsonRecipeInfoResponse result = rest.ConvertRecipeInfo(jsonResult);
-
-            if (result != null)
+            try
             {
-                InitGridViewRecipeInfo(result.RECIPE_ITEM);
+                RESTClient rest = new RESTClient();
+
+                string jsonResult = _CellProcessFlow[idx].JSON_RECIPE;
+
+                if (jsonResult != null)
+                {
+                    _jsonRecipeInfoResponse result = rest.ConvertRecipeInfo(jsonResult);
+
+                    if (result != null)
+                    {
+                        InitGridViewRecipeInfo(result.RECIPE_ITEM);
+                    }
+                    else
+                    {
+                        Dictionary<string, object> data = new Dictionary<string, object>();
+                        InitGridViewRecipeInfo(data);
+                    }
+                }
+                else
+                {
+                    string log = "JSON_RECIPE : jsonResult is null";
+                    CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
+                }                
             }
-            else
+            catch (Exception ex)
             {
-                Dictionary<string, object> data = new Dictionary<string, object>();
-                InitGridViewRecipeInfo(data);
+                System.Diagnostics.Debug.Print(string.Format("SetRecipeInfo Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("SetRecipeInfo Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
             }
         }
+        #endregion
+
         private void SetProcessData(int idx)
         {
-            RESTClient rest = new RESTClient();
-
-            string jsonResult = _CellProcessFlow[idx].json_process_data;
-            _jsonProcessDataResponse result = rest.ConvertProcessData(jsonResult);
-
-            if (result != null)
+            try
             {
-                InitGridViewProcessData(result.RESULT_DATA);
+                RESTClient rest = new RESTClient();
+
+                string jsonResult = _CellProcessFlow[idx].json_process_data;
+                if (jsonResult != null)
+                {
+                    _jsonProcessDataResponse result = rest.ConvertProcessData(jsonResult);
+
+                    if (result != null)
+                    {
+                        InitGridViewProcessData(result.RESULT_DATA);
+                    }
+                    else
+                    {
+                        Dictionary<string, object> data = new Dictionary<string, object>();
+                        InitGridViewProcessData(data);
+                    }
+                }
+                else
+                {
+                    string log = "json_process_data : jsonResult is null";
+                    CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
+                }                    
             }
-            else
+            catch (Exception ex)
             {
-                Dictionary<string, object> data = new Dictionary<string, object>();
-                InitGridViewProcessData(data);
+                System.Diagnostics.Debug.Print(string.Format("SetProcessData Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("SetProcessData Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
             }
+
         }
         #endregion
 
         #region GetCellIDList
         private void GetCellIDList(string trayId)
         {
-            RESTClient rest = new RESTClient();
-            //// Set Query
-            StringBuilder strSQL = new StringBuilder();
-            // Tray Information
-            strSQL.Append(" SELECT *");
-            strSQL.Append(" FROM fms_v.tb_dat_cell");
-            //필수값
-            strSQL.Append($" WHERE tray_id = '{trayId}'");
-
-            var jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
-
-            if (jsonResult != null)
+            try
             {
-                _jsonDatCellResponse result = rest.ConvertDatCell(jsonResult.Result);
+                RESTClient rest = new RESTClient();
+                //// Set Query
+                StringBuilder strSQL = new StringBuilder();
+                // Tray Information
+                strSQL.Append(" SELECT *");
+                strSQL.Append(" FROM fms_v.tb_dat_cell");
+                //필수값
+                strSQL.Append($" WHERE tray_id = '{trayId}'");
 
-                this.BeginInvoke(new Action(() => SetCellList(result.DATA)));
+                var jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
 
-                _CellInfo = result.DATA;
+                if (jsonResult != null)
+                {
+                    _jsonDatCellResponse result = rest.ConvertDatCell(jsonResult.Result);
+
+                    if (result != null)
+                    {
+                        this.BeginInvoke(new Action(() => SetCellList(result.DATA)));
+
+                        _CellInfo = result.DATA;
+                    }
+                    else
+                    {
+                        string log = "ConvertDatCell : result is null";
+                        CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
+                    }
+                }
+                else
+                {
+                    string log = "ConvertDatCell : jsonResult is null";
+                    CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
+                }
             }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print(string.Format("GetCellIDList Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("GetCellIDList Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
+            }
+            
         }
         #endregion
 
         #region GetCellProcessName
         private void GetCellProcessName(string cellId)
         {
-            RESTClient rest = new RESTClient();
-            //// Set Query
-            StringBuilder strSQL = new StringBuilder();
-            // Tray Information
-            strSQL.Append(" SELECT B.process_name,");
-            strSQL.Append("        A.json_recipe, A.json_process_data");
-            strSQL.Append(" FROM tb_dat_cell_proc A, tb_mst_route_order B");
-            //필수값
-            strSQL.Append($" WHERE A.cell_id = '{cellId}'");
-            strSQL.Append("    AND A.proc_work_index = 0");
-            strSQL.Append("    AND B.route_id = A.route_id");
-            strSQL.Append("    AND B.eqp_type = A.eqp_type");
-            strSQL.Append("    AND B.process_type = A.process_type");
-            strSQL.Append("    AND B.process_no = A.process_no");
-            strSQL.Append(" ORDER BY A.start_time");
-
-            var jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
-
-            if (jsonResult != null)
+            try
             {
-                _jsonCellProcessFlowResponse result = rest.ConvertCellPorcessFlow(jsonResult.Result);
+                RESTClient rest = new RESTClient();
+                //// Set Query
+                StringBuilder strSQL = new StringBuilder();
+                // Tray Information
+                strSQL.Append(" SELECT B.process_name,");
+                strSQL.Append("        A.json_recipe, A.json_process_data");
+                strSQL.Append(" FROM tb_dat_cell_proc A, tb_mst_route_order B");
+                //필수값
+                strSQL.Append($" WHERE A.cell_id = '{cellId}'");
+                strSQL.Append("    AND A.proc_work_index = 0");
+                strSQL.Append("    AND B.route_id = A.route_id");
+                strSQL.Append("    AND B.eqp_type = A.eqp_type");
+                strSQL.Append("    AND B.process_type = A.process_type");
+                strSQL.Append("    AND B.process_no = A.process_no");
+                strSQL.Append(" ORDER BY A.start_time");
 
-                this.BeginInvoke(new Action(() => SetProcessName(result.DATA)));
+                var jsonResult = rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
 
-                _CellProcessFlow = result.DATA;
+                if (jsonResult != null)
+                {
+                    _jsonCellProcessFlowResponse result = rest.ConvertCellPorcessFlow(jsonResult.Result);
+
+                    if (result != null) 
+                    {
+                        this.BeginInvoke(new Action(() => SetProcessName(result.DATA)));
+
+                        _CellProcessFlow = result.DATA;
+                    }
+                    else
+                    {
+                        string log = "ConvertCellPorcessFlow : result is null";
+                        CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
+                    }
+                }
+                else
+                {
+                    string log = "ConvertCellPorcessFlow : jsonResult is null";
+                    CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
+                }
             }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print(string.Format("GetCellProcessName Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("GetCellProcessName Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
+            }
+
         }
         #endregion
 
@@ -558,76 +671,7 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
-        #region ProcessThreadCallback
-        private void ProcessThreadCallback()
-        {
-            try
-            {
-                //while (this._TheadVisiable == true)
-                {
-                    GC.Collect();
-
-                    this.Invoke(new MethodInvoker(delegate ()
-                    {
-                        LoadCellData(_TrayId).GetAwaiter().GetResult();
-                    }));
-
-                    //Thread.Sleep(3000);
-                }
-            }
-            catch (Exception ex)
-            {
-                // System Debug
-                System.Diagnostics.Debug.Print(string.Format("### WinCellDetailInfo ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
-            }
-        }
-        #endregion
-
-        #region LoadCellData
-        private async Task LoadCellData(string trayid)
-        {
-            try
-            {
-                RESTClient rest = new RESTClient();
-                //// Set Query
-                StringBuilder strSQL = new StringBuilder();
-
-                strSQL.Append(" SELECT *");
-                strSQL.Append(" FROM fms_v.tb_dat_cell");
-                //필수값
-                strSQL.Append($" WHERE tray_id = '{trayid}'");
-
-                var jsonResult = await rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
-
-                if (jsonResult != null)
-                {
-                    _jsonDatCellResponse result = rest.ConvertDatCell(jsonResult);
-
-                    if (result != null)
-                    {
-                        //this.BeginInvoke(new Action(() => SetData(result.DATA)));
-                        SetCellList(result.DATA);
-
-                        _CellInfo = result.DATA;
-                    }
-                    else
-                    {
-                        string log = "LoadCellData : jsonResult is null";
-                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
-                    }
-                }
-                else
-                {
-                    string log = "LoadCellData : jsonResult is null";
-                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.Print(string.Format("[Exception:LoadCellData] {0}", ex.ToString()));
-            }
-        }
-        #endregion
+        
 
 
     }

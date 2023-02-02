@@ -46,14 +46,14 @@ namespace OPCUAClientClassLib
         /// <summary>
         /// ServerConnectionStatus
         /// </summary>
-        public delegate void ConnectionEventHandler(int opcIdx, ServerConnectionStatus status);
+        public delegate void ConnectionEventHandler(int opcIdx, string url, ServerConnectionStatus status);
         public event ConnectionEventHandler ConnectionStatusEvent = null;
 
-        public void OnConnectionStatusEvent(int opcIdx, ServerConnectionStatus status)
+        public void OnConnectionStatusEvent(int opcIdx, string url, ServerConnectionStatus status)
         {
             if (ConnectionStatusEvent != null)
             {
-                ConnectionStatusEvent(opcIdx, status);
+                ConnectionStatusEvent(opcIdx, url, status);
             }
         }
 
@@ -507,8 +507,13 @@ namespace OPCUAClientClassLib
             lock (this)
             {
                 string msg = string.Empty;
+                string endpointUri = string.Empty;
 
-                OnConnectionStatusEvent(ServerNo, e.Status);
+                if (_session.EndpointDescription != null)
+                {
+                    endpointUri = _session.EndpointDescription.EndpointUrl;
+                }
+                OnConnectionStatusEvent(ServerNo, endpointUri, e.Status);
 
                 switch (e.Status)
                 {
@@ -517,7 +522,7 @@ namespace OPCUAClientClassLib
                         UpdateAfterDisconnect();                                               
                         break;
                     case ServerConnectionStatus.Connected:
-                        _LOG_(LogLevel.OPCUA, $"333-Connected to [{_session.EndpointDescription.EndpointUrl}]");
+                        _LOG_(LogLevel.OPCUA, $"Connected to [{_session.EndpointDescription.EndpointUrl}]");
 
                         if (Connected == false)
                         {

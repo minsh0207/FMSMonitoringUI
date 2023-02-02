@@ -6,7 +6,6 @@ using MonitoringUI.Controlls;
 using MonitoringUI.Controlls.CButton;
 using MonitoringUI.Controlls.CComboBox;
 using MonitoringUI.Controlls.CDateTime;
-using Novasoft.Logger;
 using OPCUAClientClassLib;
 using Org.BouncyCastle.Asn1.Tsp;
 using RestClientLib;
@@ -29,6 +28,9 @@ namespace FMSMonitoringUI.Monitoring
     public partial class WinBCRConveyorInfo : WinFormRoot
     {
         private Point _Point = new Point();
+
+        private string _trayID1 = string.Empty;
+        private string _trayID2 = string.Empty;
 
         #region Working Thread
         private Thread _ProcessThread;
@@ -76,6 +78,8 @@ namespace FMSMonitoringUI.Monitoring
             }));
 
             this.WindowID = CAuthority.GetWindowsText(this.Text);
+
+            CLogger.WriteLog(enLogLevel.Info, this.WindowID, "Window Load");
         }
 
         private void WinBCRConveyorInfo_FormClosed(object sender, FormClosedEventArgs e)
@@ -218,6 +222,9 @@ namespace FMSMonitoringUI.Monitoring
             TrayID1.TextData = data[(int)enCVTagList.TrayIdL1].Value.ToString();
             TrayID2.TextData = data[(int)enCVTagList.TrayIdL2].Value.ToString();
 
+            _trayID1 = data[(int)enCVTagList.TrayIdL1].Value.ToString();
+            _trayID2 = data[(int)enCVTagList.TrayIdL2].Value.ToString();
+
             if (CheckStationStatus(data[(int)enCVTagList.ConveyorType].Value))
                 StationStatus.Visible = true;
             else
@@ -232,6 +239,14 @@ namespace FMSMonitoringUI.Monitoring
                 MagazineCommand.Visible = true;
             else
                 MagazineCommand.Visible = false;
+        }
+        #endregion
+
+        #region GetTrayID
+        public void GetTrayID(ref string trayID1, ref string trayID2)
+        {
+            trayID1 = _trayID1;
+            trayID2 = _trayID2;
         }
         #endregion
 
@@ -254,21 +269,10 @@ namespace FMSMonitoringUI.Monitoring
             catch (Exception ex)
             {
                 // System Debug
-                System.Diagnostics.Debug.Print(string.Format("### WinConveyorInfo ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
-            }
-        }
-        #endregion
+                System.Diagnostics.Debug.Print(string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
 
-        #region LoadAgingRackSetting
-        private async Task LoadBCRConveyorData()
-        {
-            try
-            {
-                ;
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.Print(string.Format("[Exception:LoadBCRConveyorData] {0}", ex.ToString()));
+                string log = string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
             }
         }
         #endregion
@@ -293,9 +297,7 @@ namespace FMSMonitoringUI.Monitoring
         {
             Close();
         }
-        #endregion
-
-        
+        #endregion        
 
         #region Tray Tag Value
         private string GetConveyorType(object idx)
@@ -441,6 +443,7 @@ namespace FMSMonitoringUI.Monitoring
             return false;
         }
         #endregion
+
         #region CheckMagazineCommand
         /// <summary>
         /// Conveyor Type이 64,128,256 일때만 StationStatus Tag을 Enable

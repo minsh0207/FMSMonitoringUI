@@ -318,7 +318,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
-            this.m_timer = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox44)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).BeginInit();
@@ -5461,7 +5460,7 @@
             this.Name = "CtrlMonitoring";
             this.Size = new System.Drawing.Size(1917, 995);
             this.Tag = "LCK";
-            this.Load += new System.EventHandler(this.CtrlMain_Load);
+            this.Load += new System.EventHandler(this.CtrlMonitoring_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox44)).EndInit();
@@ -5834,7 +5833,6 @@
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack25;
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack27;
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack3;
-        private System.Windows.Forms.Timer m_timer;
         private ControlGallery.CtrlSCraneH ctrlSCraneH2;
         private ControlGallery.CraneCarriageSmall cranebox;
         private ControlGallery.CtrlSCraneH ctrlSCraneH1;

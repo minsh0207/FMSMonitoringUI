@@ -1,6 +1,7 @@
 ﻿using ControlGallery;
 using CSVMgr;
 using DBHandler;
+using ExcelDataReader.Log;
 using FMSMonitoringUI.Common;
 using FMSMonitoringUI.Controlls.WindowsForms;
 using FMSMonitoringUI.Monitoring;
@@ -15,7 +16,6 @@ using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI;
 using MySqlX.XDevAPI.Relational;
 using Newtonsoft.Json.Linq;
-using Novasoft.Logger;
 using OPCUAClientClassLib;
 using Org.BouncyCastle.Asn1.Cmp;
 using Org.BouncyCastle.Asn1.Tsp;
@@ -49,6 +49,10 @@ namespace FMSMonitoringUI.Controlls
 {
     public partial class CtrlMonitoring : UserControlRoot
     {
+        #region Properties
+        public override string Text { get; set; }
+        #endregion
+
         #region [Variable]
         private OPCUAClient[] _clientFMS;
 
@@ -91,8 +95,6 @@ namespace FMSMonitoringUI.Controlls
 
         private COPCGroupCtrl _OPCGroupList;    //= new COPCGroupCtrl();
 
-        private Logger _Logger;
-
         private ApplicationInstance _OPCApplication = null;
         //public ApplicationInstance OPCApplication
         //{
@@ -111,10 +113,16 @@ namespace FMSMonitoringUI.Controlls
         private bool _TheadVisiable;
         #endregion
 
+
+        //private Logger _Logger;
+
         #region CtrlMain
         public CtrlMonitoring(ApplicationInstance applicationInstance)
         {
             InitializeComponent();
+
+            //string logPath = ConfigurationManager.AppSettings["LOG_PATH"];
+            //_Logger = new Logger(logPath, LogMode.Hour);
 
             _OPCApplication = applicationInstance;
 
@@ -133,27 +141,21 @@ namespace FMSMonitoringUI.Controlls
             _EqpName = new Dictionary<string, string>();
 
             _mysql = new MySqlManager(ConfigurationManager.ConnectionStrings["DB_CONNECTION_STRING"].ConnectionString);
-
-            string logPath = ConfigurationManager.AppSettings["LOG_PATH"];
-            _Logger = new Logger(logPath, LogMode.Hour);
         }
         #endregion
 
-        #region CtrlMain_Load
+        #region CtrlMonitoring_Load
         /// <summary>
         /// Total MonitoringUI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CtrlMain_Load(object sender, EventArgs e)
+        private void CtrlMonitoring_Load(object sender, EventArgs e)
         {
             InitMonitoring();
             InitLanguage();
 
-            SetWindowAuthority();
-
-            string msg = $"Full Monitoring";
-            _Logger.Write(LogLevel.Info, msg, LogFileName.AllLog);
+            CLogger.WriteLog(enLogLevel.Info, this.Text, "Window Load");
         }
         #endregion
 
@@ -194,22 +196,52 @@ namespace FMSMonitoringUI.Controlls
                 if (this._TheadVisiable)
                     this._ProcessThread.Abort();
             }
-
-            // Timer
-            //if (onoff) m_timer.Start();
-            //else m_timer.Stop();
         }
         #endregion
 
-        #region MonitoringTimer
-        public void MonitoringTimer(bool onoff)
+        #region CtrlMonitoring_ConnectionStatusEvent
+        private void CtrlMonitoring_ConnectionStatusEvent(int opcIdx, string url, ServerConnectionStatus status)
         {
-            // Timer
-            //if (onoff)
-            //{
-            //    m_timer.Start();
-            //}
-            //else m_timer.Stop();
+            this.Invoke(new MethodInvoker(delegate ()
+            {
+                switch (status)
+                {
+                    case ServerConnectionStatus.Connected:
+                        controlStatus.SetPLCConnectionStatus(opcIdx, 2);
+                        CLogger.WriteLog(enLogLevel.Info, this.Text, $"Connected to the PLC server. [{url}]");
+                        break;
+
+                    case ServerConnectionStatus.Connecting:
+                        controlStatus.SetPLCConnectionStatus(opcIdx, 1);
+                        //CLogger.WriteLog(enLogLevel.Error, this.Text, $"Connecting to the PLC server. [{url}]");
+                        break;
+
+                    case ServerConnectionStatus.Disconnected:
+                        controlStatus.SetPLCConnectionStatus(opcIdx, 4);
+                        CLogger.WriteLog(enLogLevel.Error, this.Text, $"Disconnected to the PLC server. [{url}]");
+                        break;
+
+                    default:
+                        controlStatus.SetPLCConnectionStatus(opcIdx, 4);
+                        break;
+                }
+            }));
+        }
+        #endregion
+
+        #region CtrlMonitoring_SubscriptionEvent
+        private void CtrlMonitoring_SubscriptionEvent(int opcIdx, string url)
+        {
+            _clientFMS[opcIdx].Subscription.DataChanged += new DataChangedEventHandler(Subscription_DataChanged);
+
+            if (_clientFMS[opcIdx].StatusCode == true)
+            {
+                CLogger.WriteLog(enLogLevel.Info, this.Text, $"Success in Subscription_StatusChanged callback [{url}]");
+            }
+            else
+            {
+                CLogger.WriteLog(enLogLevel.Error, this.Text, $"Error in Subscription_StatusChanged callback [{url}]");
+            }
         }
         #endregion
 
@@ -231,86 +263,15 @@ namespace FMSMonitoringUI.Controlls
                 _clientFMS[fmsIdx] = new OPCUAClient(DataList, _OPCGroupList.GroupList[opcIdx], _OPCApplication, _ControlIdx, _ListSite[opcIdx]);
                 _clientFMS[fmsIdx].ServerNo = fmsIdx;
 
-                string msg = ($"Connecting to [{opcua.OPCServerURL}] ");
-                _Logger.Write(LogLevel.Info, msg, LogFileName.AllLog);
-
-                //if (_clientFMS[fmsIdx].Subscription == null)
-                //{
-                //    _clientFMS[fmsIdx].Subscription = new Subscription(_clientFMS[fmsIdx].Session);
-                //    _clientFMS[fmsIdx].Subscription.PublishingEnabled = _clientFMS[fmsIdx].PublishingEnabled;
-                //    _clientFMS[fmsIdx].Subscription.PublishingInterval = _clientFMS[fmsIdx].PublishingInterval;
-                //    _clientFMS[fmsIdx].Subscription.DataChanged += new DataChangedEventHandler(Subscription_DataChanged);
-                //    //_Subscription.StatusChanged += new SubscriptionStatusChangedEventHandler(Subscription_StatusChanged);
-
-                //    //_clientFMS[fmsIdx].SubscriptionEvent += CtrlMain_SubscriptionEvent;
-
-                //    _clientFMS[fmsIdx].Subscription.Create();
-                //}
-
                 _clientFMS[fmsIdx].SubscriptionEvent += CtrlMonitoring_SubscriptionEvent;
                 _clientFMS[fmsIdx].ConnectionStatusEvent += CtrlMonitoring_ConnectionStatusEvent;
 
                 await _clientFMS[fmsIdx].ConnectAsync(opcua.OPCServerURL, opcua.UserID, opcua.UserPW, opcua.FirstNodeID);
 
-                fmsIdx++;
-            }
-
-            //for (int i = 0; i < opcList.Count; i++)
-            //{
-            //    _clientFMS[i] = new OPCUAClient(DataList, _OPCGroupList.GroupList[i], _OPCApplication, _ControlIdx, _ListSite[i]);
-            //    _clientFMS[i].ServerNo = i;
-
-            //    string msg = ($"Connecting to [{opcList[i].OPCServerURL}] ");
-            //    _Logger.Write(LogLevel.Info, msg, LogFileName.AllLog);
-
-            //    _clientFMS[i].SubscriptionEvent += CtrlMain_SubscriptionEvent;
-
-            //    await _clientFMS[i].ConnectAsync(opcList[i].OPCServerURL, opcList[i].UserID, opcList[i].UserPW, opcList[i].FirstNodeID);              
-
-            //}
-        }
-
-        private void CtrlMonitoring_ConnectionStatusEvent(int opcIdx, ServerConnectionStatus status)
-        {
-            this.Invoke(new MethodInvoker(delegate ()
-            {
-                switch (status)
-                {
-                    case ServerConnectionStatus.Connected:
-                        controlStatus.SetPLCConnectionStatus(opcIdx, 2);
-                        break;
-                    case ServerConnectionStatus.Connecting:
-                        controlStatus.SetPLCConnectionStatus(opcIdx, 1);
-                        break;
-                    default:
-                        controlStatus.SetPLCConnectionStatus(opcIdx, 4);
-                        break;
-                }
-            }));
-        }
-
-        private void CtrlMonitoring_SubscriptionEvent(int opcIdx, string url)
-        {
-            //while (_clientFMS[opcIdx].StatusCode == false)
-            //{
-            //    Thread.Sleep(10);
-            //    Application.DoEvents();
-            //}
-
-            _clientFMS[opcIdx].Subscription.DataChanged += new DataChangedEventHandler(Subscription_DataChanged);
-
-            string msg = ($"Subscription Event to [{url}] ");
-            _Logger.Write(LogLevel.Info, msg, LogFileName.AllLog);
-
-            if (_clientFMS[opcIdx].StatusCode == false)
-            {
-                msg = ("Subscription Event to [StatusCode is false] ");
-                _Logger.Write(LogLevel.Error, msg, LogFileName.ErrorLog);
+                fmsIdx++;                
             }
         }
         #endregion
-
-        
 
         #region InitControls
         /// <summary>
@@ -521,7 +482,6 @@ namespace FMSMonitoringUI.Controlls
 
             ctrlEqpCharger1.Click_Evnet += CtrlEqpAging_Click;
 
-            //ctrlEqpDGS.MouseClick += CtrlEqp_MouseClick_Evnet;
 
             //int idx = 0;
             //int groupCnt = groupCtrl.Count();
@@ -537,7 +497,7 @@ namespace FMSMonitoringUI.Controlls
             //    groupCtrl[i] = new List<ItemInfo> { itemInfo };
             //}
 
-            _Logger.Write(LogLevel.Info, "Initialize the Controls", LogFileName.AllLog);
+            CLogger.WriteLog(enLogLevel.Info, this.Text, "Initialize the Controls");
 
             return groupCtrl;
         }
@@ -581,30 +541,6 @@ namespace FMSMonitoringUI.Controlls
         }
         #endregion
 
-        #region SetWindowAuthority
-        private void SetWindowAuthority()
-        {
-            bool bView = false;
-            bool bSave = false;
-
-            //string windowID = CAuthority.WindowsNameToWindowID(ctrlMonitoring.ToString());
-            //CAuthority.GetAuthority(windowID, ref bView, ref bSave);
-            //barMain.Enabled = bView;
-
-            //windowID = CAuthority.WindowsNameToWindowID(ctrlAging.ToString());
-            //CAuthority.GetAuthority(windowID, ref bView, ref bSave);
-            //barAging.Enabled = bView;
-
-            //windowID = CAuthority.WindowsNameToWindowID(ctrlFormationCHG.ToString());
-            //CAuthority.GetAuthority(windowID, ref bView, ref bSave);
-            //barFormationCHG.Enabled = bView;
-
-            //windowID = CAuthority.WindowsNameToWindowID(ctrlFormationHPC.ToString());
-            //CAuthority.GetAuthority(windowID, ref bView, ref bSave);
-            //barFormationHPC.Enabled = bView;
-        }
-        #endregion
-
         private void CtrlEqpAging_Click(string eqpId, string eqpType, int level)
         {
             string agingType = string.Empty;
@@ -625,41 +561,10 @@ namespace FMSMonitoringUI.Controlls
                 default:
                     break;
             }
+
             WinLeadTime form = new WinLeadTime(eqpId, agingType, level);
             form.ShowDialog();
         }
-
-        private void CtrlEqp_MouseClick_Evnet(object sender, MouseEventArgs e)
-        {
-            //CtrlEqpDegas gv = (CtrlEqpDegas)sender;
-
-            //gv.TrayInfoView.CurrentCell = null;
-            //gv.TrayInfoView.ClearSelection();
-            //gv.Refresh();
-
-            //ctrlEqpDGS.Refresh();
-        }        
-
-        #region OnTimer
-        private void OnTimer(object sender, EventArgs e)
-        {
-            //try
-            //{
-            //    m_timer.Stop();
-
-            //    //ReadEqpInfo();
-            //    ProcessThreadCallback();
-
-            //    if (m_timer.Interval != 5000)
-            //        m_timer.Interval = 5000;
-            //    m_timer.Start();
-            //}
-            //catch (Exception ex)
-            //{
-            //    System.Diagnostics.Debug.Print(string.Format("[Exception:OnTimer] {0}", ex.ToString()));
-            //}
-        }
-        #endregion
                 
         #region ProcessThreadCallback
         private void ProcessThreadCallback()
@@ -682,7 +587,10 @@ namespace FMSMonitoringUI.Controlls
             catch (Exception ex)
             {
                 // System Debug
-                System.Diagnostics.Debug.Print(string.Format("### FormationCHG ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                System.Diagnostics.Debug.Print(string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.Text, log);
             }
         }
         #endregion
@@ -724,25 +632,26 @@ namespace FMSMonitoringUI.Controlls
                     }
                     else
                     {
-                        string log = "EntireEqpList : result is null";
-                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                        string log = "ConvertEntireEqpList : result is null";
+                        CLogger.WriteLog(enLogLevel.Error, this.Text, log);
 
                         controlStatus.SetRestConnectionStatus(4);
                     }
                 }
                 else
                 {
-                    string log = "EntireEqpList : jsonResult is null";
-                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                    string log = "ConvertEntireEqpList : jsonResult is null";
+                    CLogger.WriteLog(enLogLevel.Error, this.Text, log);
 
                     controlStatus.SetRestConnectionStatus(4);
                 }
-
-                //rest = null;
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.Print(string.Format("[Exception:LoadEntireEqpList] {0}", ex.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("LoadEntireEqpList Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("LoadEntireEqpList Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.Text, log);
             }
         }
         #endregion
@@ -774,26 +683,26 @@ namespace FMSMonitoringUI.Controlls
 
                     if (result != null)
                     {
-                        //this.BeginInvoke(new Action(() => SetData(result.DATA)));
                         SetData(result.DATA);
                     }
                     else
                     {
-                        string log = "AgingRackCount : jsonResult is null";
-                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                        string log = "ConvertAgingRackCount : jsonResult is null";
+                        CLogger.WriteLog(enLogLevel.Error, this.Text, log);
                     }
                 }
                 else
                 {
-                    string log = "AgingRackCount : jsonResult is null";
-                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                    string log = "ConvertAgingRackCount : jsonResult is null";
+                    CLogger.WriteLog(enLogLevel.Error, this.Text, log);
                 }
-
-                //rest = null;
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.Print(string.Format("[Exception:LoadAgingRackCount] {0}", ex.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("LoadAgingRackCount Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("LoadAgingRackCount Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.Text, log);
             }
         }
         #endregion
@@ -882,7 +791,7 @@ namespace FMSMonitoringUI.Controlls
 
             FMSTagConfigReader reader = new FMSTagConfigReader($"{di}{CDefine.CONFIG_FILENAME_TAG}");
 
-            _Logger.Write(LogLevel.Info, $"{di}{CDefine.CONFIG_FILENAME_TAG}", LogFileName.AllLog);
+            CLogger.WriteLog(enLogLevel.Info, this.Text, $"Read TagList : {di}{CDefine.CONFIG_FILENAME_TAG}");
 
             return reader.Read();
         }
@@ -894,7 +803,7 @@ namespace FMSMonitoringUI.Controlls
         {
             CSVLoader csv_opc = new CSVLoader(CDefine.CONFIG_FILENAME_OPCUA);
 
-            _Logger.Write(LogLevel.Info, CDefine.CONFIG_FILENAME_OPCUA, LogFileName.AllLog);
+            CLogger.WriteLog(enLogLevel.Info, this.Text, $"Read OPC Config : {CDefine.CONFIG_FILENAME_OPCUA}");
 
             return csv_opc.Load<COPCUAConfig>();
         }
@@ -909,6 +818,9 @@ namespace FMSMonitoringUI.Controlls
         {
             try
             {
+                string trayid1 = string.Empty;
+                string trayid2 = string.Empty;
+
                 int groupno = arg.DeviceInfo.CVPLCListDeviceID;
                 int trackno = arg.DeviceInfo.SiteNo;
 
@@ -923,8 +835,12 @@ namespace FMSMonitoringUI.Controlls
                 {
                     int craneNo = trackno / 10;
                     CtrlSiteTrack siteTrack = sender as CtrlSiteTrack;
+
                     WinWaterTank winForm = new WinWaterTank(_clientFMS[groupno], craneNo, _EqpName[siteTrack.Tag.ToString()]);
                     winForm.Show();
+
+                    winForm.GetTrayID(ref trayid1, ref trayid2);
+                    CLogger.WriteLog(enLogLevel.ButtonClick, this.Text, $"WaterTank = {_EqpName[siteTrack.Tag.ToString()]}, TrayID L1 = {trayid1}, TrayID L2 = {trayid2}");
                 }
                 else
                 {
@@ -944,27 +860,36 @@ namespace FMSMonitoringUI.Controlls
                     //    Destination = int.Parse(data[(int)enCVTagList.Destination].Value.ToString())
                     //};
 
-                    //string msg = $"Track No : {trackno}, TrayIdL1 : {siteInfo.TrayIdL1}, TrayIdL2 : {siteInfo.TrayIdL2}";
-                    string msg = $"Track No : {trackno}";
-                    _Logger.Write(LogLevel.Info, msg, LogFileName.ButtonClick);
-
+                    //string log =   $"Track No : {trackno}, TrayIdL1 : {siteInfo.TrayIdL1}, TrayIdL2 : {siteInfo.TrayIdL2}";
+                                        
                     if (trackno > 0 && _ListBCR[groupno].ContainsKey(trackno) == false)
                     {
                         WinConveyorInfo winForm = new WinConveyorInfo("Conveyor", _clientFMS[groupno], trackno);
-                        winForm.ShowForm();
+                        winForm.Show();
+
+                        winForm.GetTrayID(ref trayid1, ref trayid2);
+                        CLogger.WriteLog(enLogLevel.ButtonClick, this.Text, $"Track No = {trackno}, TrayID L1 = {trayid1}, TrayID L2 = {trayid2}");
+
                     }
                     else
                     {
                         WinBCRConveyorInfo winForm = new WinBCRConveyorInfo(_clientFMS[groupno], trackno);
-                        winForm.ShowForm();
+                        winForm.Show();
+
+                        winForm.GetTrayID(ref trayid1, ref trayid2);
+                        CLogger.WriteLog(enLogLevel.ButtonClick, this.Text, $"Track No = {trackno}, TrayID L1 = {trayid1}, TrayID L2 = {trayid2}");
                     }
+
+                    CLogger.WriteLog(enLogLevel.ButtonClick, this.Text, $"Track No : {trackno}");
                 }
 
             }
             catch (Exception ex)
             {
-                string info = string.Format($"Error={ex}");
-                MessageBox.Show(info);
+                System.Diagnostics.Debug.Print(string.Format("OnConveyor_MouseDoubleClick Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("OnConveyor_MouseDoubleClick Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.Text, log);
             }
         }
 
@@ -972,14 +897,15 @@ namespace FMSMonitoringUI.Controlls
         {
             CtrlSCrane crane = sender as CtrlSCrane;
 
+            string trayid1 = string.Empty;
+            string trayid2 = string.Empty;
+
             if (_clientFMS[crane.DeviceID] == null || 
                 _clientFMS[crane.DeviceID].Connected == false)
             {
-                string msg = ($"Connection error to S/Crane OPC Server [{crane.Tag}] ");
-                _Logger.Write(LogLevel.Error, msg, LogFileName.ErrorLog);
+                CMessage.MsgInformation($"Connection error to S/Crane PLC Server [{crane.Tag}]");
 
-                MessageBox.Show(msg, "ERROR");
-
+                CLogger.WriteLog(enLogLevel.Error, this.Text, $"Connection error to S/Crane PLC Server [{crane.Tag}]");
                 return;
             }
 
@@ -1001,13 +927,11 @@ namespace FMSMonitoringUI.Controlls
                         //    JobType = int.Parse(data[(int)enCraneTagList.JobType].Value.ToString())
                         //};
 
-                        //string msg = $"Crane No : {crane.CraneID}, TrayIdL1 : {item.TrayIdL1}, TrayIdL2 : {item.TrayIdL2}";
-                        string msg = $"Crane No : {crane.CraneID}";
-                        _Logger.Write(LogLevel.Info, "", LogFileName.ButtonClick);
+                        WinCraneInfo winForm = new WinCraneInfo(_clientFMS[crane.DeviceID], crane.CraneID, _EqpName[crane.EqpID]);
+                        winForm.Show();
 
-                        WinCraneInfo winCrane = new WinCraneInfo(_clientFMS[crane.DeviceID], crane.CraneID, _EqpName[crane.EqpID]);
-                        winCrane.ShowForm();
-
+                        winForm.GetTrayID(ref trayid1, ref trayid2);
+                        CLogger.WriteLog(enLogLevel.ButtonClick, this.Text, $"Crane No = {crane.CraneID}, TrayID L1 = {trayid1}, TrayID L2 = {trayid2}");
                     }
                 }
                 else
@@ -1032,13 +956,18 @@ namespace FMSMonitoringUI.Controlls
                     //};
 
                     WinConveyorInfo winForm = new WinConveyorInfo("RTV", _clientFMS[groupno], conveyorNo);
-                    winForm.ShowForm();
+                    winForm.Show();
+
+                    winForm.GetTrayID(ref trayid1, ref trayid2);
+                    CLogger.WriteLog(enLogLevel.ButtonClick, this.Text, $"RTV No = {conveyorNo}, TrayID L1 = {trayid1}, TrayID L2 = {trayid2}");
                 }
             }
             catch (Exception ex)
             {
-                string info = string.Format($"Error={ex}");
-                MessageBox.Show(info);
+                System.Diagnostics.Debug.Print(string.Format("OnCrane_MouseDoubleClick Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("OnCrane_MouseDoubleClick Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.Text, log);
             }
         }
         #endregion
@@ -1054,7 +983,7 @@ namespace FMSMonitoringUI.Controlls
             if (e.DataChanges.Count > 0)        // 프로그램 기동시 모든 구독목록이 들어온다.
             {
                 //return;
-                _Logger.Write(LogLevel.Receive, $"Item Count = {e.DataChanges.Count}", LogFileName.AllLog);
+                CLogger.WriteLog(enLogLevel.Receive, this.Text, $"Subscription Item Count = {e.DataChanges.Count}");
             }
 
             Task task = SubscriptionAsync(e);
@@ -1067,7 +996,7 @@ namespace FMSMonitoringUI.Controlls
             //{
             //    ItemInfo item = change.MonitoredItem.UserData as ItemInfo;
 
-            //    string msg = string.Empty;
+            //    string log =   string.Empty;
 
             //    if (item.ControlType == enEqpType.CNV)
             //    {
@@ -1450,7 +1379,7 @@ namespace FMSMonitoringUI.Controlls
                     {
                         ItemInfo item = change.MonitoredItem.UserData as ItemInfo;
 
-                        string msg = string.Empty;
+                        string log =   string.Empty;
 
                         if (item.ControlType == enEqpType.CNV)
                         {
@@ -1465,7 +1394,7 @@ namespace FMSMonitoringUI.Controlls
 
                             task = StatusConveyorAsync(item.GroupNo, item.SiteNo, trayExist);
 
-                            msg = string.Format("[{0}-CNV{1:D4}] {2} = {3}",
+                            log = string.Format("[{0}-CNV{1:D4}] {2} = {3}",
                                 item.ControlType, item.SiteNo, item.BrowseName, change.Value);
                         }
                         else if (item.ControlType == enEqpType.STC)
@@ -1524,7 +1453,7 @@ namespace FMSMonitoringUI.Controlls
                                 }
                             }
 
-                            msg = string.Format("[{0}-CraneNo{1:D2}] {2} = {3}",
+                            log = string.Format("[{0}-CraneNo{1:D2}] {2} = {3}",
                                 item.ControlType, item.CraneNo + 1, item.BrowseName, change.Value);
                         }
                         else if (item.ControlType == enEqpType.RTV)
@@ -1547,11 +1476,11 @@ namespace FMSMonitoringUI.Controlls
                                 //task = StatusConveyorAsync(item.SiteNo, trayExist);
                             }
 
-                            msg = string.Format("[{0}-{1:D2}] {2} = {3}",
+                            log = string.Format("[{0}-{1:D2}] {2} = {3}",
                                 item.ControlType, 1, item.BrowseName, change.Value);
                         }
 
-                        _Logger.Write(LogLevel.Receive, msg, LogFileName.AllLog);
+                        CLogger.WriteLog(enLogLevel.Receive, this.Text, log);
                     }
 
                     //this.Invoke(new MethodInvoker(delegate ()
@@ -1593,7 +1522,7 @@ namespace FMSMonitoringUI.Controlls
                     eqp = "F01CNV10040";
                     break;
                 default:
-                    _Logger.Write(LogLevel.Error, "GetConveyorEqpID is Empty", LogFileName.ErrorLog);
+                    CLogger.WriteLog(enLogLevel.Error, this.Text, "GetConveyorEqpID is Empty");
                     break;
             }
 
@@ -1619,7 +1548,7 @@ namespace FMSMonitoringUI.Controlls
                     eqp = "F01STCF0010";
                     break;
                 default:
-                    _Logger.Write(LogLevel.Error, "GetCraneEqpID is Empty", LogFileName.ErrorLog);
+                    CLogger.WriteLog(enLogLevel.Error, this.Text, "GetCraneEqpID is Empty");
                     break;
             }
 
@@ -1629,9 +1558,6 @@ namespace FMSMonitoringUI.Controlls
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            WinTroubleInfo_old form = new WinTroubleInfo_old();
-            form.ShowDialog();
 
             //string node = "ns=2;i=1000";
             //_clientFMS[0].GetNodeID(node);

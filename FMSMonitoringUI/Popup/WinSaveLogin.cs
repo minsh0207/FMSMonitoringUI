@@ -68,7 +68,7 @@ namespace MonitoringUI.Popup
             {
                 // System Debug
                 System.Diagnostics.Debug.Print(string.Format("### Window Loaded Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
-                CLogger.WriteLog(enLogLevel.ERROR, DateTime.Now, this.ToString(), CDefine.m_strLoginID, "Window_Loaded Error Exception : " + ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, DateTime.Now, this.ToString(), CDefine.m_strLoginID, "Window_Loaded Error Exception : " + ex.Message);
             }
         }
         #endregion

@@ -24,6 +24,9 @@ namespace FMSMonitoringUI.Monitoring
     {
         private Point point = new Point();
 
+        private string _trayID1 = string.Empty;
+        private string _trayID2 = string.Empty;
+
         #region Working Thread
         private Thread _ProcessThread;
         private bool _TheadVisiable;
@@ -69,9 +72,9 @@ namespace FMSMonitoringUI.Monitoring
             titBar.MouseMove_Evnet += Title_MouseMoveEvnet;
             #endregion
 
-            #region DataGridView Event
-            gridWaterTank.MouseCellDoubleClick_Evnet += GridCellInfo_MouseCellDoubleClick;
-            #endregion
+            //#region DataGridView Event
+            //gridWaterTank.MouseCellDoubleClick_Evnet += GridCellInfo_MouseCellDoubleClick;
+            //#endregion
 
             _TheadVisiable = true;
 
@@ -82,6 +85,8 @@ namespace FMSMonitoringUI.Monitoring
             }));
 
             this.WindowID = CAuthority.GetWindowsText(this.Text);
+
+            CLogger.WriteLog(enLogLevel.Info, this.WindowID, "Window Load");
         }
         private void WinWaterTank_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -190,6 +195,37 @@ namespace FMSMonitoringUI.Monitoring
             gridWaterTank.ColumnHeadersWidth(0, 110);            
         }
 
+        #region ProcessThreadCallback
+        private void ProcessThreadCallback()
+        {
+            try
+            {
+                while (this._TheadVisiable == true)
+                {
+                    GC.Collect();
+
+                    _CraneInfo = _OPCUAClient.CraneNodeID[_CraneNo];
+                    _CraneData = _OPCUAClient.ReadNodeID(_CraneInfo);
+
+                    if (_CraneData.Count > 0)
+                    {
+                        this.BeginInvoke(new Action(() => SetData()));
+                    }
+
+                    Thread.Sleep(2000);
+                }
+            }
+            catch (Exception ex)
+            {
+                // System Debug
+                System.Diagnostics.Debug.Print(string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
+            }
+        }
+        #endregion
+
         #region SetData
         public void SetData()
         {
@@ -220,6 +256,11 @@ namespace FMSMonitoringUI.Monitoring
                     CtrlLabelBox ctl = control as CtrlLabelBox;
 
                     ctl.TextData = GetTagValuetoString(ctl.Tag);
+
+                    if (ctl.Tag.ToString() == "WaterTank.TrayIdL1")
+                        _trayID1 = ctl.TextData;
+                    else if (ctl.Tag.ToString() == "WaterTank.TrayIdL2")
+                        _trayID2 = ctl.TextData;
                 }
             }
 
@@ -237,31 +278,11 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
-        #region ProcessThreadCallback
-        private void ProcessThreadCallback()
+        #region GetTrayID
+        public void GetTrayID(ref string trayID1, ref string trayID2)
         {
-            try
-            {
-                while (this._TheadVisiable == true)
-                {
-                    GC.Collect();
-
-                    _CraneInfo = _OPCUAClient.CraneNodeID[_CraneNo];
-                    _CraneData = _OPCUAClient.ReadNodeID(_CraneInfo);
-
-                    if (_CraneData.Count > 0)
-                    {
-                        this.BeginInvoke(new Action(() => SetData()));
-                    }
-
-                    Thread.Sleep(2000);
-                }
-            }
-            catch (Exception ex)
-            {
-                // System Debug
-                System.Diagnostics.Debug.Print(string.Format("### WinConveyorInfo ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
-            }
+            trayID1 = _trayID1;
+            trayID2 = _trayID2;
         }
         #endregion
 
@@ -281,19 +302,19 @@ namespace FMSMonitoringUI.Monitoring
         #endregion
 
         #region DataGridView Event
-        private void GridCellInfo_MouseCellDoubleClick(int col, int row, object value)
-        {
-            if (col == 1 && row > -1)
-            {
-                //MessageBox.Show($"TrayInfoView DoubleClick CellID = {value}");
+        //private void GridCellInfo_MouseCellDoubleClick(int col, int row, object value)
+        //{
+        //    if (col == 1 && row > -1)
+        //    {
+        //        //MessageBox.Show($"TrayInfoView DoubleClick CellID = {value}");
 
-                //WinCellDetailInfo form = new WinCellDetailInfo();
-                //form.SetData();
-                //form.ShowDialog();
+        //        //WinCellDetailInfo form = new WinCellDetailInfo();
+        //        //form.SetData();
+        //        //form.ShowDialog();
 
-                //Refresh();
-            }
-        }
+        //        //Refresh();
+        //    }
+        //}
         #endregion
 
         #region GetTagValue

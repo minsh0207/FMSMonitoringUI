@@ -8,7 +8,6 @@
 /////////////////////////////////////////////////////////////////////////////
 
 #region [using]
-using Novasoft.Logger;
 using RestClientLib;
 using System;
 using System.Text;

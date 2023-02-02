@@ -7,7 +7,6 @@ using MonitoringUI;
 using MonitoringUI.Common;
 using MonitoringUI.Controlls;
 using MySqlX.XDevAPI;
-using Novasoft.Logger;
 using OPCUAClientClassLib;
 using RestClientLib;
 using System;
@@ -28,9 +27,11 @@ namespace FMSMonitoringUI
 {
     public partial class CtrlFormationHPC : UserControlRoot
     {
-        #region [Variable]
-        private Logger _Logger;
+        #region Properties
+        public override string Text { get; set; }
+        #endregion
 
+        #region [Variable]
         private string _EqpID = string.Empty;
 
         /// <summary>
@@ -60,32 +61,48 @@ namespace FMSMonitoringUI
             _OpMode = new Dictionary<int, Color>();
 
             InitFormationBox();
-
-            //_mysql = new MySqlManager(ConfigurationManager.ConnectionStrings["DB_CONNECTION_STRING"].ConnectionString);
-
-            // Timer
-            //m_timer.Tick += new EventHandler(OnTimer);
-            //m_timer.Stop();
+            InitControls();
         }
 
         #region CtrlFormationHPC Load
         private void CtrlFormationHPC_Load(object sender, EventArgs e)
-        {
-            InitLanguage();
-            InitControls();
+        {            
+            InitLanguage();            
+
+            CLogger.WriteLog(enLogLevel.Info, this.Text, "Window Load");
         }
         #endregion
 
         #region CtrlFormation HandleDestroyed
         private void CtrlFormation_HandleDestroyed(object sender, EventArgs e)
         {
-            //m_timer.Stop();
-
             if (this._TheadVisiable && this._ProcessThread.IsAlive)
                 this._TheadVisiable = false;
 
             if (this._TheadVisiable)
                 this._ProcessThread.Abort();
+        }
+        #endregion
+
+        #region InitFormationBox
+        private void InitFormationBox()
+        {
+            this.HandleDestroyed += CtrlFormation_HandleDestroyed;
+        }
+        #endregion
+
+        #region InitControls
+        private void InitControls()
+        {
+            _ListHPC.Clear();
+
+            //ctrlHPC1.MouseDoubleClick += HPC_MouseDoubleClick;
+            _ListHPC.Add(ctrlHPC1.UnitID, ctrlHPC1);
+
+            //ctrlHPC2.MouseDoubleClick += HPC_MouseDoubleClick;
+            _ListHPC.Add(ctrlHPC2.UnitID, ctrlHPC2);
+
+            if (_EqpID == "") _EqpID = ctrlHPC2.EqpID;
         }
         #endregion
 
@@ -144,30 +161,8 @@ namespace FMSMonitoringUI
                 if (this._TheadVisiable)
                     this._ProcessThread.Abort();
             }
-
-            // Timer
-            //if (onoff) m_timer.Start();
-            //else m_timer.Stop();
         }
-        #endregion
-
-        private void InitFormationBox()
-        {
-            this.HandleDestroyed += CtrlFormation_HandleDestroyed;
-        }
-
-        private void InitControls()
-        {
-            _ListHPC.Clear();
-
-            ctrlHPC1.MouseDoubleClick += HPC_MouseDoubleClick;
-            _ListHPC.Add(ctrlHPC1.UnitID, ctrlHPC1);
-
-            ctrlHPC2.MouseDoubleClick += HPC_MouseDoubleClick;
-            _ListHPC.Add(ctrlHPC2.UnitID, ctrlHPC2);
-
-            if (_EqpID == "") _EqpID = ctrlHPC2.EqpID;
-        }
+        #endregion        
 
         #region ProcessThreadCallback
         private void ProcessThreadCallback()
@@ -190,7 +185,10 @@ namespace FMSMonitoringUI
             catch (Exception ex)
             {
                 // System Debug
-                System.Diagnostics.Debug.Print(string.Format("### FormationCHG ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                System.Diagnostics.Debug.Print(string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.Text, log);
             }
         }
         #endregion
@@ -231,30 +229,32 @@ namespace FMSMonitoringUI
 
                     if (result != null)
                     {
-                        //this.BeginInvoke(new Action(() => SetData(result.DATA)));
                         SetData(result.DATA);
 
                         RestServer.LedStatus(2);
                     }
                     else
                     {
-                        string log = "CtrlFormationHPC : jsonResult is null";
-                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                        string log = "ConvertCtrlFormationHPC : result is null";
+                        CLogger.WriteLog(enLogLevel.Error, this.Text, log);
 
                         RestServer.LedStatus(4);
                     }
                 }
                 else
                 {
-                    string log = "CtrlFormationHPC : jsonResult is null";
-                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                    string log = "ConvertCtrlFormationHPC : jsonResult is null";
+                    CLogger.WriteLog(enLogLevel.Error, this.Text, log);
 
                     RestServer.LedStatus(4);
                 }
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.Print(string.Format("[Exception:LoadFormationHPC] {0}", ex.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("LoadFormationHPC Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("LoadFormationHPC Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.Text, log);
             }
         }
         private async Task LoadFormationHPCTemp(string eqpid)
@@ -286,24 +286,26 @@ namespace FMSMonitoringUI
 
                     if (result != null)
                     {
-                        //this.BeginInvoke(new Action(() => SetData(result.DATA)));
                         SetData(result.DATA);
                     }
                     else
                     {
-                        string log = "CtrlFormationHPCTemp : jsonResult is null";
-                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                        string log = "ConvertCtrlFormationHPCTemp : result is null";
+                        CLogger.WriteLog(enLogLevel.Error, this.Text, log);
                     }
                 }
                 else
                 {
-                    string log = "CtrlFormationHPCTemp : jsonResult is null";
-                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                    string log = "ConvertCtrlFormationHPCTemp : jsonResult is null";
+                    CLogger.WriteLog(enLogLevel.Error, this.Text, log);
                 }
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.Print(string.Format("[Exception:LoadFormationHPCTemp] {0}", ex.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("LoadFormationHPCTemp Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("LoadFormationHPCTemp Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.Text, log);
             }
         }
         #endregion
@@ -331,10 +333,10 @@ namespace FMSMonitoringUI
         }
         #endregion
 
-        private void HPC_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            ;
-        }
+        //private void HPC_MouseDoubleClick(object sender, MouseEventArgs e)
+        //{
+        //    ;
+        //}
 
 
 

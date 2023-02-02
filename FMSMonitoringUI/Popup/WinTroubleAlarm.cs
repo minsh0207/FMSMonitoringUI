@@ -76,7 +76,7 @@ namespace MonitoringUI.Popup
             {
                 // System Debug
                 System.Diagnostics.Debug.Print(string.Format("### Window Init Control Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
-                CLogger.WriteLog(enLogLevel.ERROR, DateTime.Now, this.ToString(), CDefine.m_strLoginID, "InitControl Error Exception : " + ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, DateTime.Now, this.ToString(), CDefine.m_strLoginID, "InitControl Error Exception : " + ex.Message);
             }
         }
         #endregion
@@ -135,7 +135,7 @@ namespace MonitoringUI.Popup
             {
                 // System Debug
                 System.Diagnostics.Debug.Print(string.Format("### DB Load Data Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
-                CLogger.WriteLog(enLogLevel.ERROR, DateTime.Now, this.ToString(), CDefine.m_strLoginID, "OnTimer Error Exception : " + ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, DateTime.Now, this.ToString(), CDefine.m_strLoginID, "OnTimer Error Exception : " + ex.Message);
 
                 //if (CDataBase.m_dbCon.State.ToString() != "Closed")
                 //{

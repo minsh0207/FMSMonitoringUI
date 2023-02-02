@@ -270,7 +270,7 @@ namespace FMSMonitoringUI.Controlls
                     break;
                 case "F2":
                     if (fullString)
-                        statusName = $"{LocalLanguage.GetItemString("DEF_Fire")}\r\n{LocalLanguage.GetItemString("DEF_Smoke_Only_or_Both")}";
+                        statusName = $"{LocalLanguage.GetItemString("DEF_Fire2")}\r\n{LocalLanguage.GetItemString("DEF_Smoke_Only_or_Both")}";
                     else
                         statusName = LocalLanguage.GetItemString("DEF_Fire2");
                     break;

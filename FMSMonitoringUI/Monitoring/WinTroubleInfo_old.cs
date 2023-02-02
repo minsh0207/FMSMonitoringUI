@@ -37,31 +37,6 @@ namespace MonitoringUI.Monitoring
         }
         #endregion
 
-        #region InitControl
-        private void InitControl()
-        {
-            ctrlDateTimeDT2DT1.StartDate = DateTime.Now.AddDays(-5);
-            ctrlDateTimeDT2DT1.EndDate = DateTime.Now.AddDays(1);
-
-
-            /// 
-            /// 화면권한 관련
-            /// 
-            bool bView = false;
-            bool bSave = false;
-            // 화면ID 설정
-            //Tag = CAuthority.WindowsNameToWindowID(this.GetType().FullName.ToString());
-            //Get Authority
-            //CAuthority.GetAuthority(Tag.ToString(), ref bView, ref bSave);
-            //this.WindowID = Tag.ToString();
-            ///
-            ///
-            ///
-
-
-        }
-
-        #endregion
         #region WinTroubleInfo_Load
         private void WinTroubleInfo_Load(object sender, EventArgs e)
         {
@@ -71,8 +46,18 @@ namespace MonitoringUI.Monitoring
             ctrlButtonSearch1_Click(sender, e);
 
 
-        } 
+        }
         #endregion
+
+        #region InitControl
+        private void InitControl()
+        {
+            ctrlDateTimeDT2DT1.StartDate = DateTime.Now.AddDays(-5);
+            ctrlDateTimeDT2DT1.EndDate = DateTime.Now.AddDays(1);
+        }
+        #endregion
+
+        
 
         #region ctrlButtonSearch_MouseClick
         //private void ctrlButtonSearch_MouseClick(object sender, MouseEventArgs e)

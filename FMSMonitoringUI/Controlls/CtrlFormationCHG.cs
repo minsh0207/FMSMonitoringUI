@@ -8,7 +8,6 @@ using MonitoringUI;
 using MonitoringUI.Common;
 using MonitoringUI.Controlls;
 using MySqlX.XDevAPI;
-using Novasoft.Logger;
 using OPCUAClientClassLib;
 using Org.BouncyCastle.Ocsp;
 using RestClientLib;
@@ -29,9 +28,11 @@ namespace FMSMonitoringUI
 {
     public partial class CtrlFormationCHG : UserControlRoot
     {
-        #region [Variable]
-        private Logger _Logger;
+        #region Properties
+        public override string Text { get; set; }
+        #endregion
 
+        #region [Variable]
         private string _EqpID = string.Empty;
 
         /// <summary>
@@ -57,18 +58,8 @@ namespace FMSMonitoringUI
         {
             InitializeComponent();
 
-            string logPath = ConfigurationManager.AppSettings["LOG_PATH"];
-            _Logger = new Logger(logPath, LogMode.Hour);
-
             InitFormationBox();
-
-            //_mysql = new MySqlManager(ConfigurationManager.ConnectionStrings["DB_CONNECTION_STRING"].ConnectionString);
-
             InitControls();
-
-            // Timer
-            //m_timer.Tick += new EventHandler(OnTimer);
-            //m_timer.Stop();
         }
 
         #region CtrlFormationCHG Load
@@ -76,16 +67,13 @@ namespace FMSMonitoringUI
         {
             InitLanguage();
 
-            string log = $"FormationCHG Monitoring";
-            _Logger.Write(LogLevel.Info, log, LogFileName.AllLog);
+            CLogger.WriteLog(enLogLevel.Info, this.Text, "Window Load");
         }
         #endregion
 
         #region CtrlFormation HandleDestroyed
         private void CtrlFormation_HandleDestroyed(object sender, EventArgs e)
         {
-            //m_timer.Stop();
-
             if (this._TheadVisiable && this._ProcessThread.IsAlive)
                 this._TheadVisiable = false;
 
@@ -105,7 +93,7 @@ namespace FMSMonitoringUI
                 {
                     CtrlRack charger = ctl as CtrlRack;
 
-                    charger.MouseDoubleClick += Charger_MouseDoubleClick;
+                    //charger.MouseDoubleClick += Charger_MouseDoubleClick;
                     _ListCharger.Add(charger.UnitID, charger);
 
                     if (_EqpID == "") _EqpID = charger.EqpID;
@@ -163,11 +151,7 @@ namespace FMSMonitoringUI
 
                 if (this._TheadVisiable)
                     this._ProcessThread.Abort();
-            }            
-
-            // Timer
-            //if (onoff) m_timer.Start();
-            //else m_timer.Stop();
+            }
         }
         #endregion
 
@@ -198,7 +182,10 @@ namespace FMSMonitoringUI
             catch (Exception ex)
             {
                 // System Debug
-                System.Diagnostics.Debug.Print(string.Format("### FormationCHG ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                System.Diagnostics.Debug.Print(string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.Text, log);
             }
         }
         #endregion
@@ -232,30 +219,32 @@ namespace FMSMonitoringUI
 
                     if (result != null)
                     {
-                        //this.BeginInvoke(new Action(() => SetData(result.DATA)));
                         SetData(result.DATA);
 
                         RestServer.LedStatus(2);
                     }
                     else
                     {
-                        string log = "CtrlFormationCHG : jsonResult is null";
-                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                        string log = "ConvertCtrlFormationCHG : result is null";
+                        CLogger.WriteLog(enLogLevel.Error, this.Text, log);
 
                         RestServer.LedStatus(4);
                     }
                 }
                 else
                 {
-                    string log = "CtrlFormationCHG : jsonResult is null";
-                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                    string log = "ConvertCtrlFormationCHG : jsonResult is null";
+                    CLogger.WriteLog(enLogLevel.Error, this.Text, log);
 
                     RestServer.LedStatus(4);
                 }
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.Print(string.Format("[Exception:LoadFormationCHG] {0}", ex.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("LoadFormationCHG Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("LoadFormationCHG Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.Text, log);
             }
         }
         #endregion
@@ -280,13 +269,15 @@ namespace FMSMonitoringUI
         }
         #endregion
 
-        private void Charger_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            CtrlRack unit = sender as CtrlRack;
+        //private void Charger_MouseDoubleClick(object sender, MouseEventArgs e)
+        //{
+        //    CtrlRack unit = sender as CtrlRack;
 
-            WinFormationBox form = new WinFormationBox(unit.EqpID, unit.EqpType, unit.UnitID);
-            form.ShowDialog();
-        }
+        //    CLogger.WriteLog(enLogLevel.ButtonClick, this.Text, $"Charger : Eqp ID = {unit.EqpID}, Unit ID = {unit.UnitID}");
+
+        //    WinFormationBox form = new WinFormationBox(unit.EqpID, unit.EqpType, unit.UnitID);
+        //    form.ShowDialog();
+        //}
 
         private void button1_Click_1(object sender, EventArgs e)
         {

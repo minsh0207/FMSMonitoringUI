@@ -6,7 +6,6 @@ using MonitoringUI.Controlls;
 using MonitoringUI.Controlls.CButton;
 using MonitoringUI.Popup;
 using Newtonsoft.Json.Linq;
-using Novasoft.Logger;
 using OPCUAClientClassLib;
 using Org.BouncyCastle.Ocsp;
 using RestClientLib;
@@ -37,8 +36,6 @@ namespace FMSMonitoringUI.Monitoring
         private string _EqpType = string.Empty;
         private int _TrayCnt = 0;
 
-        private Logger _Logger;
-
         #region Working Thread
         private Thread _ProcessThread;
         private bool _TheadVisiable = false;
@@ -52,9 +49,6 @@ namespace FMSMonitoringUI.Monitoring
             _UnitID = unitid;
             _EqpType = eqpType;
             _TrayCnt = traycnt;
-
-            string logPath = ConfigurationManager.AppSettings["LOG_PATH"];
-            _Logger = new Logger(logPath, LogMode.Hour);
         }
 
         #region WinManageEqp Event
@@ -86,6 +80,8 @@ namespace FMSMonitoringUI.Monitoring
             }));
 
             this.WindowID = CAuthority.GetWindowsText(this.Text);
+
+            CLogger.WriteLog(enLogLevel.Info, this.WindowID, "Window Load");
         }
         private void WinManageEqp_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -94,8 +90,6 @@ namespace FMSMonitoringUI.Monitoring
 
             if (_TheadVisiable)
                 this._ProcessThread.Abort();
-
-            _Logger = null;
         }
         #endregion
 
@@ -246,7 +240,10 @@ namespace FMSMonitoringUI.Monitoring
             catch (Exception ex)
             {
                 // System Debug
-                System.Diagnostics.Debug.Print(string.Format("### WInManageEqp ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                System.Diagnostics.Debug.Print(string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
             }
         }
         #endregion
@@ -290,24 +287,26 @@ namespace FMSMonitoringUI.Monitoring
 
                     if (result != null)
                     {
-                        //this.BeginInvoke(new Action(() => SetData(result.DATA)));
                         SetData(result.DATA);
                     }
                     else
                     {
-                        string log = "WinManageEqp : jsonResult is null";
-                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                        string log = "ConvertWinManageEqp : result is null";
+                        CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
                     }
                 }
                 else
                 {
-                    string log = "WinManageEqp : jsonResult is null";
-                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                    string log = "ConvertWinManageEqp : jsonResult is null";
+                    CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
                 }
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.Print(string.Format("[Exception:LoadWinManageEqp] {0}", ex.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("LoadWinManageEqp Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("LoadWinManageEqp Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
             }
         }
         #endregion
@@ -315,47 +314,59 @@ namespace FMSMonitoringUI.Monitoring
         #region SendEquipmentControl
         private async Task<bool> SendEquipmentControl(string eqpID, string eqpType, string command)
         {
-            RESTClient rest = new RESTClient(eqpType);
-
-            //Request 세팅
-            JObject reqBody = new JObject();
-            reqBody["ACTION_ID"] = enActionType.SEND_MANUAL_COMMAND.ToString();
-            reqBody["ACTION_USER"] = CDefine.m_strSaveLoginID;
-            reqBody["REQUEST_TIME"] = DateTime.Now.ToString();
-            reqBody["EQP_TYPE"] = eqpType;
-            reqBody["EQP_ID"] = eqpID;
-            reqBody["UNIT_ID"] = "";
-            reqBody["COMMAND"] = command;
-
-            var jsonResult = await rest.SetJson(CRestModulePath.POST_MANUAL_COMMAND, reqBody);
-
-            if (jsonResult != null)
+            try
             {
-                _jsonManualCommandResponse result = rest.ConvertManualCommand(jsonResult);
+                RESTClient rest = new RESTClient(eqpType);
 
-                if (result != null)
+                //Request 세팅
+                JObject reqBody = new JObject();
+                reqBody["ACTION_ID"] = enActionType.SEND_MANUAL_COMMAND.ToString();
+                reqBody["ACTION_USER"] = CDefine.m_strSaveLoginID;
+                reqBody["REQUEST_TIME"] = DateTime.Now.ToString();
+                reqBody["EQP_TYPE"] = eqpType;
+                reqBody["EQP_ID"] = eqpID;
+                reqBody["UNIT_ID"] = "";
+                reqBody["COMMAND"] = command;
+
+                var jsonResult = await rest.SetJson(CRestModulePath.POST_MANUAL_COMMAND, reqBody);
+
+                if (jsonResult != null)
                 {
-                    if (result.RESPONSE_CODE == "200")
+                    _jsonManualCommandResponse result = rest.ConvertManualCommand(jsonResult);
+
+                    if (result != null)
                     {
-                        return true;
+                        if (result.RESPONSE_CODE == "200")
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
                     }
                     else
                     {
+                        string log = "ConvertManualCommand : result is null";
+                        CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
+
                         return false;
                     }
                 }
                 else
                 {
-                    string log = "ManualCommand : jsonResult is null";
-                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                    string log = "ConvertManualCommand : jsonResult is null";
+                    CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
 
                     return false;
                 }
             }
-            else
+            catch (Exception ex)
             {
-                string log = "ManualCommand : jsonResult is null";
-                _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("LoadWinManageEqp Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("LoadWinManageEqp Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
 
                 return false;
             }
@@ -365,50 +376,62 @@ namespace FMSMonitoringUI.Monitoring
         #region UpdateManualCommand
         private async Task<bool> UpdateManualCommand(enCommnadType saveType, string eqpid, object value)
         {
-            RESTClient rest = new RESTClient();
-            // Set Query
-            StringBuilder strSQL = new StringBuilder();
-
-            strSQL.Append(" UPDATE fms_v.tb_mst_eqp");
-            switch (saveType)
+            try
             {
-                case enCommnadType.DataClearSave:
-                    strSQL.Append($" SET {value}");
-                    break;
-            }
+                RESTClient rest = new RESTClient();
+                // Set Query
+                StringBuilder strSQL = new StringBuilder();
 
-            //필수값
-            strSQL.Append($" WHERE eqp_id = '{eqpid}'");
-
-            var jsonResult = await rest.GetJson(enActionType.SQL_UPDATE, strSQL.ToString());
-
-            if (jsonResult != null)
-            {
-                _jsonUpdateBaseResponse result = rest.ConvertUpdateBase(jsonResult);
-
-                if (result != null)
+                strSQL.Append(" UPDATE fms_v.tb_mst_eqp");
+                switch (saveType)
                 {
-                    if (result.RESPONSE_CODE == "200")
+                    case enCommnadType.DataClearSave:
+                        strSQL.Append($" SET {value}");
+                        break;
+                }
+
+                //필수값
+                strSQL.Append($" WHERE eqp_id = '{eqpid}'");
+
+                var jsonResult = await rest.GetJson(enActionType.SQL_UPDATE, strSQL.ToString());
+
+                if (jsonResult != null)
+                {
+                    _jsonUpdateBaseResponse result = rest.ConvertUpdateBase(jsonResult);
+
+                    if (result != null)
                     {
-                        return true;
+                        if (result.RESPONSE_CODE == "200")
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
                     }
                     else
                     {
+                        string log = "ConvertUpdateBase : result is null";
+                        CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
+
                         return false;
                     }
                 }
                 else
                 {
-                    string log = "UpdateBase : jsonResult is null";
-                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                    string log = "ConvertUpdateBase : jsonResult is null";
+                    CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
 
                     return false;
                 }
             }
-            else
+            catch (Exception ex)
             {
-                string log = "UpdateBase : jsonResult is null";
-                _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                System.Diagnostics.Debug.Print(string.Format("UpdateManualCommand Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("UpdateManualCommand Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
 
                 return false;
             }
@@ -459,28 +482,7 @@ namespace FMSMonitoringUI.Monitoring
         {
             string opModeName = string.Empty;
 
-            if (_EqpType == "CHG")
-            {
-                switch (mode)
-                {
-                    case 1:
-                        opModeName = "OCV";
-                        break;
-                    case 2:
-                        opModeName = "Charge (CC)";
-                        break;
-                    case 4:
-                        opModeName = "Charge (CCCV)";
-                        break;
-                    case 8:
-                        opModeName = "Discharge (CC)";
-                        break;
-                    case 16:
-                        opModeName = "Discharge (CCCV)";
-                        break;
-                }
-            }
-            else if (_EqpType == "DCR")
+            if (_EqpType == "DCR")
             {
                 switch (mode)
                 {
@@ -535,34 +537,34 @@ namespace FMSMonitoringUI.Monitoring
             switch (status)
             {
                 case "C":
-                    statusName = "Control Mode";
+                    statusName = LocalLanguage.GetItemString("DEF_Control_Mode").Replace(" :", "");
                     break;
                 case "M":
-                    statusName = "Maintenance Mode";
+                    statusName = LocalLanguage.GetItemString("DEF_Maintenance_Mode");
                     break;
                 case "I":
-                    statusName = "Idle";
+                    statusName = LocalLanguage.GetItemString("DEF_Idle");
                     break;
                 case "R":
-                    statusName = "Running";
+                    statusName = LocalLanguage.GetItemString("DEF_Running");
                     break;
                 case "T":
-                    statusName = "Machine Trouble";
+                    statusName = LocalLanguage.GetItemString("DEF_Machine_Trouble");
                     break;
                 case "P":
-                    statusName = "Pause";
+                    statusName = LocalLanguage.GetItemString("DEF_Pause");
                     break;
                 case "S":
-                    statusName = "Stop";
+                    statusName = LocalLanguage.GetItemString("DEF_Stop");
                     break;
                 case "L":
-                    statusName = "Loading";
+                    statusName = LocalLanguage.GetItemString("DEF_Loading");
                     break;
                 case "F":
-                    statusName = $"Fire\r\n(Temperature Alarm Only)";
+                    statusName = $"{LocalLanguage.GetItemString("DEF_Fire")}\r\n{LocalLanguage.GetItemString("DEF_Temperature_Alarm_Only")}";
                     break;
                 case "F2":
-                    statusName = $"Fire\r\n(Smoke Only or Both)";
+                    statusName = $"{LocalLanguage.GetItemString("DEF_Fire2")}\r\n{LocalLanguage.GetItemString("DEF_Smoke_Only_or_Both")}";
                     break;
             }
 
@@ -600,20 +602,24 @@ namespace FMSMonitoringUI.Monitoring
             if (result != DialogResult.Yes) return;
 
             bool update = false;
-            string value;
+            string updateValue = string.Empty;
 
             if (CAuthority.CheckAuthority(enAuthority.Save, CDefine.m_strSaveLoginID, this.Text))
             {
+                CLogger.WriteLog(enLogLevel.ButtonClick, this.WindowID, $"Save UserID : {CDefine.m_strSaveLoginID}, Save UserName : {CDefine.m_strSaveLoginName}");
+
                 if (btn.Name == EqpControlSave.Name)
                 {
-                    value = GetEqpControlSave();
-                    update = SendEquipmentControl(_EqpID, _EqpType, value).GetAwaiter().GetResult();
+                    updateValue = GetEqpControlSave();
+                    update = SendEquipmentControl(_EqpID, _EqpType, updateValue).GetAwaiter().GetResult();
                 }
                 else if (btn.Name == DataClearSave.Name)
                 {
-                    value = GetDataClear();
-                    update = UpdateManualCommand(enCommnadType.DataClearSave, _EqpID, value).GetAwaiter().GetResult();
+                    updateValue = GetDataClear();
+                    update = UpdateManualCommand(enCommnadType.DataClearSave, _EqpID, updateValue).GetAwaiter().GetResult();
                 }
+
+                CLogger.WriteLog(enLogLevel.Info, this.WindowID, $"{btn.Name} : Eqp ID = {_EqpID}, Update Value = {updateValue}, Return Code = {(update ? "OK" : "Fail")}");
 
                 if (update)
                     CMessage.MsgInformation($"{btn.Name} OK.");

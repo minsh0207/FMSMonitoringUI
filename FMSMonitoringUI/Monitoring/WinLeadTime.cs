@@ -2,7 +2,6 @@
 using MonitoringUI.Common;
 using MonitoringUI.Controlls;
 using MySqlX.XDevAPI.Common;
-using Novasoft.Logger;
 using Org.BouncyCastle.Ocsp;
 using RestClientLib;
 using System;
@@ -29,8 +28,6 @@ namespace FMSMonitoringUI.Monitoring
         private string _EqpType = string.Empty;
         private int _Eqplevel = 0;
 
-        private Logger _Logger;
-
         private List<_win_lead_time> _AgingTrayInfo = new List<_win_lead_time>();
         private List<_lead_time_chg> _ChargerTrayInfo = new List<_lead_time_chg>();
 
@@ -46,9 +43,6 @@ namespace FMSMonitoringUI.Monitoring
             _EqpId = eqpId;
             _EqpType = eqpType;
             _Eqplevel = eqpLevel;
-
-            string logPath = ConfigurationManager.AppSettings["LOG_PATH"];
-            _Logger = new Logger(logPath, LogMode.Hour);
 
             InitControl();
             InitGridViewTray();
@@ -84,6 +78,8 @@ namespace FMSMonitoringUI.Monitoring
             }));
 
             this.WindowID = CAuthority.GetWindowsText(this.Text);
+
+            CLogger.WriteLog(enLogLevel.Info, this.WindowID, "Window Load");
         }
         private void WinLeadTime_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -186,7 +182,10 @@ namespace FMSMonitoringUI.Monitoring
             catch (Exception ex)
             {
                 // System Debug
-                System.Diagnostics.Debug.Print(string.Format("### WinLeadTime ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                System.Diagnostics.Debug.Print(string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
             }
         }
         #endregion
@@ -216,26 +215,28 @@ namespace FMSMonitoringUI.Monitoring
 
                     if (result != null)
                     {
-                        //this.BeginInvoke(new Action(() => SetData(result.DATA)));
                         SetData(result.DATA);
                     }
                     else
                     {
-                        string log = "WinLeadTime : jsonResult is null";
-                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                        string log = "ConvertWinLeadTime : result is null";
+                        CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
                     }
 
                     _AgingTrayInfo = result.DATA;
                 }
                 else
                 {
-                    string log = "WinLeadTime : jsonResult is null";
-                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                    string log = "ConvertWinLeadTime : jsonResult is null";
+                    CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
                 }
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.Print(string.Format("[Exception:LoadLeadTime] {0}", ex.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("LoadLeadTime Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("LoadLeadTime Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
             }
         }
         #endregion
@@ -268,21 +269,24 @@ namespace FMSMonitoringUI.Monitoring
                     }
                     else
                     {
-                        string log = "LeadTimeCHG : jsonResult is null";
-                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                        string log = "ConvertLeadTimeCHG : result is null";
+                        CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
                     }
 
                     _ChargerTrayInfo = result.DATA;
                 }
                 else
                 {
-                    string log = "LeadTimeCHG : jsonResult is null";
-                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                    string log = "ConvertLeadTimeCHG : jsonResult is null";
+                    CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
                 }
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.Print(string.Format("[Exception:LoadLeadTimeCHG] {0}", ex.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("LoadLeadTimeCHG Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("LoadLeadTimeCHG Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
             }
         }
         #endregion
@@ -408,11 +412,15 @@ namespace FMSMonitoringUI.Monitoring
                 {
                     _win_lead_time data = _AgingTrayInfo[row];
                     form = new WinTrayInfo(_EqpId, data.RACK_ID, value.ToString());
+
+                    CLogger.WriteLog(enLogLevel.ButtonClick, this.WindowID, $"WinTrayInfo : Eqp ID = {_EqpId}, Unit ID = {data.RACK_ID}, Tray ID = {value}");
                 }
                 else
                 {
                     //_lead_time_chg data = _ChargerTrayInfo[row];
                     form = new WinTrayInfo(_EqpId, "", value.ToString());
+
+                    CLogger.WriteLog(enLogLevel.ButtonClick, this.WindowID, $"WinTrayInfo : Eqp ID = {_EqpId}, Tray ID = {value}");
                 }
                 
                 form.ShowDialog();

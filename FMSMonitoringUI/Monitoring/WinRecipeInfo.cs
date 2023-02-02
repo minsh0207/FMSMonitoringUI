@@ -3,6 +3,7 @@ using MonitoringUI;
 using MonitoringUI.Common;
 using MonitoringUI.Controlls;
 using MonitoringUI.Controlls.CButton;
+using Org.BouncyCastle.Ocsp;
 using RestClientLib;
 using System;
 using System.Collections.Generic;
@@ -48,6 +49,8 @@ namespace FMSMonitoringUI.Monitoring
             #endregion
 
             this.WindowID = CAuthority.GetWindowsText(this.Text);
+
+            CLogger.WriteLog(enLogLevel.Info, this.WindowID, "Window Load");
         }
 
         #region InitControl
@@ -100,20 +103,42 @@ namespace FMSMonitoringUI.Monitoring
         #region SetData
         public void SetData(_tray_process_flow rcpItem, string recipeId)
         {
-            RESTClient rest = new RESTClient();
-
-            string jsonResult = rcpItem.JSON_RECIPE;
-            _jsonRecipeInfoResponse result = rest.ConvertRecipeInfo(jsonResult);
-
-            if (result != null)
+            try
             {
-                InitGridView(result.RECIPE_ITEM);
+                RESTClient rest = new RESTClient();
+
+                string jsonResult = rcpItem.JSON_RECIPE;
+
+                if (jsonResult != null)
+                {
+                    _jsonRecipeInfoResponse result = rest.ConvertRecipeInfo(jsonResult);
+
+                    if (result != null)
+                    {
+                        InitGridView(result.RECIPE_ITEM);
+                    }
+                    else
+                    {
+                        Dictionary<string, object> data = new Dictionary<string, object>();
+                        InitGridView(data);
+                    }
+                }
+                else
+                {
+                    string log = "JSON_RECIPE : jsonResult is null";
+                    CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
+                }
+                
             }
-            else
+            catch (Exception ex)
             {
-                Dictionary<string, object> data = new Dictionary<string, object>();
-                InitGridView(data);
+
+                System.Diagnostics.Debug.Print(string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
             }
+            
         }
         #endregion
 
@@ -137,7 +162,7 @@ namespace FMSMonitoringUI.Monitoring
         {
             if (col == 1 && row > -1)
             {
-                //MessageBox.Show($"TrayInfoView DoubleClick CellID = {value}");
+                CLogger.WriteLog(enLogLevel.ButtonClick, this.WindowID, $"Cell Detail Info : Cell ID = {value}");
 
                 WinCellDetailInfo form = new WinCellDetailInfo(value.ToString());
                 form.ShowDialog();

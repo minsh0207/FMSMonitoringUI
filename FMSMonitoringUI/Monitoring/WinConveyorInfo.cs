@@ -26,6 +26,9 @@ namespace FMSMonitoringUI.Monitoring
         private Point point = new Point();
         private string _cvTitle = null;
 
+        private string _trayID1 = string.Empty;
+        private string _trayID2 = string.Empty;
+
         OPCUAClient _OPCUAClient = null;
         int _ConveyorNo = 0;
 
@@ -40,10 +43,6 @@ namespace FMSMonitoringUI.Monitoring
 
             _OPCUAClient = opcua;
             _ConveyorNo = conveyorNo;
-
-            // Timer 
-            //m_timer.Tick += new EventHandler(OnTimer);
-            //m_timer.Stop();
 
             _cvTitle = barTitle;
 
@@ -69,9 +68,9 @@ namespace FMSMonitoringUI.Monitoring
             titBar.MouseMove_Evnet += Title_MouseMoveEvnet;
             #endregion
 
-            #region DataGridView Event
-            gridCVInfo.MouseCellDoubleClick_Evnet += GridCellInfo_MouseCellDoubleClick;
-            #endregion
+            //#region DataGridView Event
+            //gridCVInfo.MouseCellDoubleClick_Evnet += GridCellInfo_MouseCellDoubleClick;
+            //#endregion
 
             _TheadVisiable = true;
 
@@ -82,12 +81,12 @@ namespace FMSMonitoringUI.Monitoring
             }));
 
             this.WindowID = CAuthority.GetWindowsText(this.Text);
+
+            CLogger.WriteLog(enLogLevel.Info, this.WindowID, "Window Load");
         }
 
         private void WinCVTrayInfo_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //m_timer.Stop();
-
             if (this._ProcessThread.IsAlive)
                 this._TheadVisiable = false;
 
@@ -98,9 +97,6 @@ namespace FMSMonitoringUI.Monitoring
         #region MonitoringTimer
         public void ShowForm()
         {
-            // Timer
-            m_timer.Start();
-
             this.Show();
         }
         #endregion
@@ -180,7 +176,10 @@ namespace FMSMonitoringUI.Monitoring
             catch (Exception ex)
             {
                 // System Debug
-                System.Diagnostics.Debug.Print(string.Format("### WinConveyorInfo ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                System.Diagnostics.Debug.Print(string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
             }
         }
         #endregion
@@ -205,8 +204,11 @@ namespace FMSMonitoringUI.Monitoring
             gridCVInfo.SetValue(1, row, (trayExist == true ? "Exist" : "Not Exist")); row++;
             gridCVInfo.SetValue(1, row, GetTrayType(data[(int)enCVTagList.TrayType].Value)); row++;
             gridCVInfo.SetValue(1, row, data[(int)enCVTagList.TrayCount].Value); row++;
-            gridCVInfo.SetValue(1, row, data[(int)enCVTagList.TrayIdL1].Value); row++;
+            gridCVInfo.SetValue(1, row, data[(int)enCVTagList.TrayIdL1].Value); row++;            
             gridCVInfo.SetValue(1, row, data[(int)enCVTagList.TrayIdL2].Value); row++;
+
+            _trayID1 = data[(int)enCVTagList.TrayIdL1].Value.ToString();
+            _trayID2 = data[(int)enCVTagList.TrayIdL2].Value.ToString();
 
             if (_cvTitle == "RTV") gridCVInfo.RowsVisible(row, true);
             else gridCVInfo.RowsVisible(row, false);
@@ -220,6 +222,14 @@ namespace FMSMonitoringUI.Monitoring
         public void SetTitleName(string title)
         {
             titBar.TitleText = title;
+        }
+        #endregion
+
+        #region GetTrayID
+        public void GetTrayID(ref string trayID1, ref string trayID2)
+        {
+            trayID1 = _trayID1;
+            trayID2 = _trayID2;
         }
         #endregion
 
@@ -239,19 +249,19 @@ namespace FMSMonitoringUI.Monitoring
         #endregion
 
         #region DataGridView Event
-        private void GridCellInfo_MouseCellDoubleClick(int col, int row, object value)
-        {
-            if (col == 1 && row > -1)
-            {
-                //MessageBox.Show($"TrayInfoView DoubleClick CellID = {value}");
+        //private void GridCellInfo_MouseCellDoubleClick(int col, int row, object value)
+        //{
+        //    if (col == 1 && row > -1)
+        //    {
+        //        //MessageBox.Show($"TrayInfoView DoubleClick CellID = {value}");
 
-                //WinCellDetailInfo form = new WinCellDetailInfo();
-                //form.SetData();
-                //form.ShowDialog();
+        //        //WinCellDetailInfo form = new WinCellDetailInfo();
+        //        //form.SetData();
+        //        //form.ShowDialog();
 
-                //Refresh();
-            }
-        }
+        //        //Refresh();
+        //    }
+        //}
         #endregion
 
         #region Button Event
@@ -260,29 +270,6 @@ namespace FMSMonitoringUI.Monitoring
             Close();
         }
         #endregion
-
-        #region OnTimer
-        //private void OnTimer(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        m_timer.Stop();
-
-        //        List<DataValue> data = _OPCUAClient.ReadNodeID(_ConveyorNodeID);
-        //        SetData(data);
-
-        //        if (m_timer.Interval != 1000)
-        //            m_timer.Interval = 1000;
-        //        m_timer.Start();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        System.Diagnostics.Debug.Print(string.Format("[Exception:OnTimer] {0}", ex.ToString()));
-        //    }
-        //}
-        #endregion
-
-        
 
         #region Tray Tag Value
         private string GetConveyorType(object idx)

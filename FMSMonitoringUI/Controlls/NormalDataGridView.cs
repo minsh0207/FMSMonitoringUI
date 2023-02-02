@@ -849,7 +849,7 @@ namespace MonitoringUI.Controlls
             catch (Exception ex)
             {
                 // Log 
-                CLogger.WriteLog(enLogLevel.ERROR, DateTime.Now, this.ToString(), CDefine.m_strLoginID, "spdList_ClipboardPasting Error Exception : " + ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, DateTime.Now, this.ToString(), CDefine.m_strLoginID, "spdList_ClipboardPasting Error Exception : " + ex.Message);
 
                 // System Debug
                 System.Diagnostics.Debug.Print(string.Format("### GridView Selection Data Setting Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
@@ -881,7 +881,7 @@ namespace MonitoringUI.Controlls
             catch (Exception ex)
             {
                 // Log
-                CLogger.WriteLog(enLogLevel.ERROR, DateTime.Now, this.ToString(), CDefine.m_strLoginID, "String To Int ERROR : " + ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, DateTime.Now, this.ToString(), CDefine.m_strLoginID, "String To Int ERROR : " + ex.Message);
             }
             return false;
         }
@@ -1860,7 +1860,7 @@ namespace MonitoringUI.Controlls
             {
                 // System Debug
                 System.Diagnostics.Debug.Print(string.Format("### DataGridView OnPaint ERROR : {0}\r\n{1}", ex.GetType(), ex.Message));
-                CLogger.WriteLog(enLogLevel.ERROR, DateTime.Now, this.ToString(), CDefine.m_strLoginID, "DataGridView OnPaint ERROR" + ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, DateTime.Now, this.ToString(), CDefine.m_strLoginID, "DataGridView OnPaint ERROR" + ex.Message);
             }
         }
         #endregion

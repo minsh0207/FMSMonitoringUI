@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
-            this.m_timer = new System.Windows.Forms.Timer(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.ctrlHPC1 = new FMSMonitoringUI.Controlls.CtrlHPC();
             this.ctrlHPCTemp1 = new FMSMonitoringUI.Controlls.CtrlHPCTemp();
@@ -597,7 +595,6 @@
 
         #endregion
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Timer m_timer;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private Controlls.CtrlHPCTemp ctrlHPCTemp1;
         private Controlls.CtrlHPCTemp ctrlHPCTemp2;

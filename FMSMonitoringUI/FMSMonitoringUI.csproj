@@ -718,12 +718,6 @@
     <Compile Include="Monitoring\WinConveyorInfo.Designer.cs">
       <DependentUpon>WinConveyorInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Monitoring\WinTrayDetails.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Monitoring\WinTrayDetails.Designer.cs">
-      <DependentUpon>WinTrayDetails.cs</DependentUpon>
-    </Compile>
     <Compile Include="Monitoring\WinManageEqp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -741,12 +735,6 @@
     </Compile>
     <Compile Include="Monitoring\WinTrayInfo.Designer.cs">
       <DependentUpon>WinTrayInfo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Monitoring\WinTroubleInfo_old.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Monitoring\WinTroubleInfo_old.Designer.cs">
-      <DependentUpon>WinTroubleInfo_old.cs</DependentUpon>
     </Compile>
     <Compile Include="Popup\WinLogin.cs">
       <SubType>Form</SubType>
@@ -1052,9 +1040,6 @@
     <EmbeddedResource Include="Monitoring\WinConveyorInfo.resx">
       <DependentUpon>WinConveyorInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Monitoring\WinTrayDetails.resx">
-      <DependentUpon>WinTrayDetails.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Monitoring\WinFormRoot.en-US.resx">
       <DependentUpon>WinFormRoot.cs</DependentUpon>
     </EmbeddedResource>
@@ -1069,9 +1054,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Monitoring\WinTrayInfo.resx">
       <DependentUpon>WinTrayInfo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Monitoring\WinTroubleInfo_old.resx">
-      <DependentUpon>WinTroubleInfo_old.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Popup\WinLogin.resx">
       <DependentUpon>WinLogin.cs</DependentUpon>
@@ -1143,10 +1125,6 @@
     <ProjectReference Include="..\FormationMonCtrl\FormationMonCtrl.csproj">
       <Project>{ca22df46-7439-4a72-a0be-d592f6d154b2}</Project>
       <Name>FormationMonCtrl</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Logger\Logger.csproj">
-      <Project>{571ea494-e0b0-4c80-b87e-92157ad179ee}</Project>
-      <Name>Logger</Name>
     </ProjectReference>
     <ProjectReference Include="..\OPCUAClientClassLib\OPCUAClientLib.csproj">
       <Project>{065d7112-f84a-4864-868e-9b8fc35696ca}</Project>

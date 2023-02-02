@@ -338,13 +338,17 @@ namespace MonitoringUI.Common
 	public enum enLogLevel
 	{
 		DEBUG = 0,
-		LOG = 1,
-		SEARCH = 2,
-		ADD = 3,
-		SAVE = 4,
-		DELETE = 5,
-		UPDATE = 6,
-		ERROR = 7
+		LOG,
+        Info,
+        ButtonClick,
+        Search,
+		ADD,
+		SAVE,
+		DELETE,
+		UPDATE,
+        Send,
+        Receive,
+		Error
 	}
 
     public enum enDBTable

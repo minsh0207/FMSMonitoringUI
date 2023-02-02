@@ -4,7 +4,6 @@ using MonitoringUI.Common;
 using MonitoringUI.Controlls;
 using MonitoringUI.Controlls.CButton;
 using MySqlX.XDevAPI.Common;
-using Novasoft.Logger;
 using Org.BouncyCastle.Ocsp;
 using RestClientLib;
 using System;
@@ -30,8 +29,6 @@ namespace FMSMonitoringUI.Monitoring
         private string _RackID = string.Empty;
         private string _TrayId = string.Empty;
 
-        private Logger _Logger;
-
         private List<_tray_process_flow> _TrayProcessInfo;
 
         #region Working Thread
@@ -46,9 +43,6 @@ namespace FMSMonitoringUI.Monitoring
             _EqpID = eqpid;
             _RackID = rackid;
             _TrayId = trayId;
-
-            string logPath = ConfigurationManager.AppSettings["LOG_PATH"];
-            _Logger = new Logger(logPath, LogMode.Hour);
 
             InitControl();
             InitGridViewTray();
@@ -83,6 +77,8 @@ namespace FMSMonitoringUI.Monitoring
             }));
 
             this.WindowID = CAuthority.GetWindowsText(this.Text);
+
+            CLogger.WriteLog(enLogLevel.Info, this.WindowID, "Window Load");
         }
         private void WinTrayInfo_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -226,7 +222,10 @@ namespace FMSMonitoringUI.Monitoring
             catch (Exception ex)
             {
                 // System Debug
-                System.Diagnostics.Debug.Print(string.Format("### WinTrayInfo ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                System.Diagnostics.Debug.Print(string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
             }
         }
         #endregion
@@ -278,24 +277,26 @@ namespace FMSMonitoringUI.Monitoring
 
                     if (result != null)
                     {
-                        //this.BeginInvoke(new Action(() => SetData(result.DATA)));
                         SetData(result.DATA);
                     }
                     else
                     {
-                        string log = "WinTrayInfo : jsonResult is null";
-                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                        string log = "ConvertWinTrayInfo : result is null";
+                        CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
                     }
                 }
                 else
                 {
-                    string log = "WinTrayInfo : jsonResult is null";
-                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                    string log = "ConvertWinTrayInfo : jsonResult is null";
+                    CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
                 }
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.Print(string.Format("[Exception:LoadTrayData] {0}", ex.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("LoadTrayData Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("LoadTrayData Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
             }
         }
         #endregion
@@ -332,24 +333,27 @@ namespace FMSMonitoringUI.Monitoring
 
                     if (result != null)
                     {
-                        this.BeginInvoke(new Action(() => SetData(result.DATA)));
+                        SetData(result.DATA);
                     }
                     else
                     {
-                        string log = "TrayPorcessFlow : jsonResult is null";
-                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                        string log = "ConvertTrayPorcessFlow : result is null";
+                        CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
                     }
                     _TrayProcessInfo = result.DATA;
                 }
                 else
                 {
-                    string log = "TrayPorcessFlow : jsonResult is null";
-                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                    string log = "ConvertTrayPorcessFlow : jsonResult is null";
+                    CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
                 }
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.Print(string.Format("[Exception:LoadTrayPorcessFlow] {0}", ex.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("LoadTrayPorcessFlow Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("LoadTrayPorcessFlow Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
             }
         }
         #endregion
@@ -414,6 +418,8 @@ namespace FMSMonitoringUI.Monitoring
         {
             if (col == gridProcessFlow.ColumnCount -1 && row > -1)
             {
+                CLogger.WriteLog(enLogLevel.ButtonClick, this.WindowID, $"Recipe ID : {value}");
+
                 WinRecipeInfo form = new WinRecipeInfo();
                 form.SetData(_TrayProcessInfo[row], value.ToString());
                 form.ShowDialog();

@@ -545,7 +545,7 @@ namespace MonitoringUI.Common
             {
                 // System Debug
                 System.Diagnostics.Debug.Print(string.Format("### Get Aging Rack Status Name Setting Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
-                CLogger.WriteLog(enLogLevel.ERROR, DateTime.Now, this.ToString(), CDefine.m_strLoginID, "GetAgingRackStatusName Error Exception : " + ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, DateTime.Now, this.ToString(), CDefine.m_strLoginID, "GetAgingRackStatusName Error Exception : " + ex.Message);
 
                 // Return
                 return "";
@@ -615,7 +615,7 @@ namespace MonitoringUI.Common
             {
                 // System Debug
                 System.Diagnostics.Debug.Print(string.Format("### Get Unit Status Name Setting Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
-                CLogger.WriteLog(enLogLevel.ERROR, DateTime.Now, this.ToString(), CDefine.m_strLoginID, "GetUnitStatusName Error Exception : " + ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, DateTime.Now, this.ToString(), CDefine.m_strLoginID, "GetUnitStatusName Error Exception : " + ex.Message);
 
                 // Return
                 return "";
@@ -824,7 +824,7 @@ namespace MonitoringUI.Common
             {
                 // System Debug
                 System.Diagnostics.Debug.Print(string.Format("### Get Meas Type Data Setting Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
-                CLogger.WriteLog(enLogLevel.ERROR, DateTime.Now, this.ToString(), CDefine.m_strLoginID, "GetMeasTypeData Error Exception : " + ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, DateTime.Now, this.ToString(), CDefine.m_strLoginID, "GetMeasTypeData Error Exception : " + ex.Message);
 
                 // Return
                 return "";
@@ -948,7 +948,7 @@ namespace MonitoringUI.Common
                 }
                 catch (Exception ex)
                 {
-                    CLogger.WriteLog(enLogLevel.ERROR, DateTime.Now, this.ToString(), CDefine.m_strLoginID, $"SetChangeUnit Error Exception : value[{strData}], ErrMsg[{ex.Message}]");
+                    CLogger.WriteLog(enLogLevel.Error, DateTime.Now, this.ToString(), CDefine.m_strLoginID, $"SetChangeUnit Error Exception : value[{strData}], ErrMsg[{ex.Message}]");
                 }
             }
 

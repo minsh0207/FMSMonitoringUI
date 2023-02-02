@@ -28,12 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.titBar = new MonitoringUI.Controlls.CtrlTitleBar();
             this.panel3 = new System.Windows.Forms.Panel();
             this.gridCVInfo = new FMSMonitoringUI.Controlls.CtrlDataGridView();
-            this.m_timer = new System.Windows.Forms.Timer(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.Exit = new MonitoringUI.Controlls.CButton.CtrlButton();
             this.panel1.SuspendLayout();
@@ -151,7 +149,6 @@
         private MonitoringUI.Controlls.CtrlTitleBar titBar;
         private System.Windows.Forms.Panel panel3;
         private Controlls.CtrlDataGridView gridCVInfo;
-        private System.Windows.Forms.Timer m_timer;
         private System.Windows.Forms.Panel panel2;
         private MonitoringUI.Controlls.CButton.CtrlButton Exit;
     }

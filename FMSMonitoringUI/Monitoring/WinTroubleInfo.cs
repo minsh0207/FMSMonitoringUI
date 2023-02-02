@@ -2,7 +2,6 @@
 using MonitoringUI.Common;
 using MonitoringUI.Controlls;
 using MySqlX.XDevAPI.Common;
-using Novasoft.Logger;
 using Org.BouncyCastle.Ocsp;
 using RestClientLib;
 using System;
@@ -29,8 +28,6 @@ namespace FMSMonitoringUI.Monitoring
         private string _EqpType = string.Empty;
         private string _UnitID = string.Empty;
 
-        private Logger _Logger;
-
         #region Working Thread
         private Thread _ProcessThread;
         private bool _TheadVisiable;
@@ -43,9 +40,6 @@ namespace FMSMonitoringUI.Monitoring
             _EqpName = eqpName;
             _EqpType = eqpType;
             _UnitID = unitID;
-
-            string logPath = ConfigurationManager.AppSettings["LOG_PATH"];
-            _Logger = new Logger(logPath, LogMode.Hour);
 
             InitControl();
             InitGridViewTray();
@@ -80,6 +74,8 @@ namespace FMSMonitoringUI.Monitoring
             }));
 
             this.WindowID = CAuthority.GetWindowsText(this.Text);
+
+            CLogger.WriteLog(enLogLevel.Info, this.WindowID, "Window Load");
         }
         private void WinTroubleInfo_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -184,7 +180,10 @@ namespace FMSMonitoringUI.Monitoring
             catch (Exception ex)
             {
                 // System Debug
-                System.Diagnostics.Debug.Print(string.Format("### WinTroubleInfo ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                System.Diagnostics.Debug.Print(string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
             }
         }
         #endregion
@@ -228,19 +227,22 @@ namespace FMSMonitoringUI.Monitoring
                     }
                     else
                     {
-                        string log = "DatTrouble : jsonResult is null";
-                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                        string log = "ConvertTroubleInfo : result is null";
+                        CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
                     }
                 }
                 else
                 {
-                    string log = "DatTrouble : jsonResult is null";
-                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                    string log = "ConvertTroubleInfo : jsonResult is null";
+                    CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
                 }
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.Print(string.Format("[Exception:LoadTroubleInfo] {0}", ex.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("LoadTroubleInfo Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("LoadTroubleInfo Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
             }
         }
         #endregion
@@ -329,6 +331,9 @@ namespace FMSMonitoringUI.Monitoring
         }
         private void Search_Click(object sender, EventArgs e)
         {
+            string log = $"Search : Unit ID = {_UnitID}, Start Period = {dtSearchPriod.StartDate} ~ End Period = {dtSearchPriod.EndDate}";
+            CLogger.WriteLog(enLogLevel.Search, this.WindowID, log);
+
             LoadTroubleInfo(_EqpType, _UnitID).GetAwaiter().GetResult();
         }
         #endregion

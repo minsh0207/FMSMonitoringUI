@@ -27,6 +27,9 @@ namespace FMSMonitoringUI.Monitoring
     {
         private Point point = new Point();
 
+        private string _trayID1 = string.Empty;
+        private string _trayID2 = string.Empty;
+
         #region Working Thread
         private Thread _ProcessThread;
         private bool _TheadVisiable;
@@ -85,6 +88,8 @@ namespace FMSMonitoringUI.Monitoring
             }));
 
             this.WindowID = CAuthority.GetWindowsText(this.Text);
+
+            CLogger.WriteLog(enLogLevel.Info, this.WindowID, "Window Load");
         }
         private void WinCraneInfo_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -273,10 +278,42 @@ namespace FMSMonitoringUI.Monitoring
             gridCraneCmd.ColumnHeadersWidth(0, 100);
         }
 
+        #region ProcessThreadCallback
+        private void ProcessThreadCallback()
+        {
+            try
+            {
+                while (this._TheadVisiable == true)
+                {
+                    GC.Collect();
+
+                    _CraneInfo = _OPCUAClient.CraneNodeID[_CraneNo];
+                    _CraneData = _OPCUAClient.ReadNodeID(_CraneInfo);
+
+                    if (_CraneData.Count > 0)
+                    {
+                        this.BeginInvoke(new Action(() => SetData()));
+                    }
+
+                    Thread.Sleep(2000);
+                }
+            }
+            catch (Exception ex)
+            {
+                // System Debug
+                System.Diagnostics.Debug.Print(string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
+            }
+        }
+        #endregion
+
+        #region SetData
         public void SetData()
         {
             InitLedStatus();
-            bool onoff = false;
+            bool onoff;
 
             // Stacker Crane
             foreach (var control in gbSCrane.Controls)
@@ -329,6 +366,11 @@ namespace FMSMonitoringUI.Monitoring
                     CtrlLabelBox ctl = control as CtrlLabelBox;
 
                     ctl.TextData = GetTagValuetoString(ctl.Tag);
+
+                    if (ctl.Tag.ToString() == "CraneCommand.TrayIdL1")
+                        _trayID1 = ctl.TextData;
+                    else if (ctl.Tag.ToString() == "CraneCommand.TrayIdL2")
+                        _trayID2= ctl.TextData;
                 }
             }
 
@@ -347,32 +389,13 @@ namespace FMSMonitoringUI.Monitoring
                 }
             }
         }
+        #endregion
 
-        #region ProcessThreadCallback
-        private void ProcessThreadCallback()
+        #region GetTrayID
+        public void GetTrayID(ref string trayID1, ref string trayID2)
         {
-            try
-            {
-                while (this._TheadVisiable == true)
-                {
-                    GC.Collect();
-
-                    _CraneInfo = _OPCUAClient.CraneNodeID[_CraneNo];
-                    _CraneData = _OPCUAClient.ReadNodeID(_CraneInfo);
-
-                    if (_CraneData.Count > 0)
-                    {
-                        this.BeginInvoke(new Action(() => SetData()));
-                    }
-
-                    Thread.Sleep(2000);
-                }
-            }
-            catch (Exception ex)
-            {
-                // System Debug
-                System.Diagnostics.Debug.Print(string.Format("### WinCaraneInfo ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
-            }
+            trayID1 = _trayID1;
+            trayID2 = _trayID2;
         }
         #endregion
 

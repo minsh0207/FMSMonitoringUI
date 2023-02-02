@@ -28,11 +28,70 @@ namespace MonitoringUI.Common
 	//===================================================================
 	public static class CLogger
 	{
-		#region [Write Log]
-		/////////////////////////////////////////////////////////////////////
-		//	Write Log
-		//===================================================================
-		public static void WriteLog(enLogLevel enLevel, DateTime dtLogTime, string strWindowName, string strLoginID, string strLogDescr)
+        #region [Write Log]
+        /////////////////////////////////////////////////////////////////////
+        //	Write Log
+        //===================================================================
+        public static void WriteLog(enLogLevel enLevel, string strWindowName, string strLogDescr)
+        {
+            // Variable
+            string strDirectory;
+            string strFilePath;
+            string strFileName;
+            DateTime logTime = DateTime.Now;
+
+            try
+            {
+                // File Name
+                strWindowName = strWindowName.Replace("FMSMonitoringUI.", "").Trim();
+                //strFileName = string.Format("{0}{1}{2}", strWindowName, DateTime.Now.ToString("yyyy-MM-dd hh"), "H");
+                strFileName = string.Format("[{0}] {1}", DateTime.Now.ToString("yyyy-MM-dd"), strWindowName);
+
+                // Directory Check
+                strDirectory = CDefine.DEF_LOG_PATH + string.Format(@"{0}\{1}\{2}\{3}",
+                    CDefine.DEF_LOG_FILENAME, logTime.Date.ToString("yyyy"), logTime.Date.ToString("MM"), logTime.Date.ToString("dd"));
+
+                if (Directory.Exists(strDirectory) == false)
+                {
+                    // 디렉토리 생성
+                    Directory.CreateDirectory(strDirectory);
+                }
+
+                // File Check
+                strFilePath = string.Format(@"{0}\{1}", strDirectory, logTime.ToString("[yyyy-MM-dd] ") + CDefine.DEF_LOG_FILENAME + ".csv");
+                if (File.Exists(strFilePath) == false)
+                {
+                    //File.Create(sFilePath);
+                }
+
+                // Log Write
+                // 두번째 인자 True = 파일 이어쓰기, False = 파일 덮어쓰기
+                using (StreamWriter sw = new StreamWriter(strFilePath, true, Encoding.Unicode))
+                {
+                    string log;
+
+                    if (strLogDescr == "")
+                        log = "\r\n";
+                    else
+                        log = string.Format("{0}\t[{1}]\t{2}\t{3}", logTime.ToString("[yyyy-MM-dd HH:mm:ss.fff]"), enLevel.ToString(), strWindowName, strLogDescr);
+                        //log = $"{enLevel},[{logTime:[yyyy-MM-dd HH:mm:ss.fff]}],{strWindowName},{strLogDescr}";
+
+                    sw.WriteLine(log);
+
+                    sw.Close();
+                }
+
+                // Log Delete
+                LogDelete(strWindowName, logTime);
+            }
+            catch (Exception ex)
+            {
+                // System Degug
+                System.Diagnostics.Debug.Print(string.Format("### Log Write Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+            }
+
+        }
+        public static void WriteLog(enLogLevel enLevel, DateTime dtLogTime, string strWindowName, string strLoginID, string strLogDescr)
 		{
 			// Variable
 			string strDirectory = "";
@@ -134,7 +193,7 @@ namespace MonitoringUI.Common
                 System.Diagnostics.Debug.Print(string.Format("### Log Delete Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
 
                 // Log Write
-                WriteLog(enLogLevel.ERROR, DateTime.Now, strFileName, "LOGGER", "[Log Delete Error] " + dtLogTime.ToString("[yyyy-MM-dd HH:mm:ss]"));
+                WriteLog(enLogLevel.Error, DateTime.Now, strFileName, "LOGGER", "[Log Delete Error] " + dtLogTime.ToString("[yyyy-MM-dd HH:mm:ss]"));
             }
         }
         #endregion

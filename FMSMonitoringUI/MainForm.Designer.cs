@@ -32,9 +32,9 @@
             this.scMainPanel = new System.Windows.Forms.SplitContainer();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.lbCurrentTime = new System.Windows.Forms.Label();
             this.lbUserName = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.barFormationHPC = new MonitoringUI.Controlls.CtrlTitleBarLabel();
+            this.lbCurrentTime = new System.Windows.Forms.Label();
             this.barMain = new MonitoringUI.Controlls.CtrlTitleBarLabel();
             this.barAging = new MonitoringUI.Controlls.CtrlTitleBarLabel();
             this.barFormationCHG = new MonitoringUI.Controlls.CtrlTitleBarLabel();
@@ -93,17 +93,6 @@
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;
             // 
-            // lbCurrentTime
-            // 
-            this.lbCurrentTime.AutoSize = true;
-            this.lbCurrentTime.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCurrentTime.ForeColor = System.Drawing.Color.White;
-            this.lbCurrentTime.Location = new System.Drawing.Point(1569, 28);
-            this.lbCurrentTime.Name = "lbCurrentTime";
-            this.lbCurrentTime.Size = new System.Drawing.Size(125, 16);
-            this.lbCurrentTime.TabIndex = 4;
-            this.lbCurrentTime.Text = "2022-12-20 09:12:30";
-            // 
             // lbUserName
             // 
             this.lbUserName.AutoSize = true;
@@ -130,6 +119,17 @@
             this.barFormationHPC.Size = new System.Drawing.Size(172, 50);
             this.barFormationHPC.TabIndex = 5;
             this.barFormationHPC.TitleText = "Formation(HPC)";
+            // 
+            // lbCurrentTime
+            // 
+            this.lbCurrentTime.AutoSize = true;
+            this.lbCurrentTime.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCurrentTime.ForeColor = System.Drawing.Color.White;
+            this.lbCurrentTime.Location = new System.Drawing.Point(1569, 28);
+            this.lbCurrentTime.Name = "lbCurrentTime";
+            this.lbCurrentTime.Size = new System.Drawing.Size(125, 16);
+            this.lbCurrentTime.TabIndex = 4;
+            this.lbCurrentTime.Text = "2022-12-20 09:12:30";
             // 
             // barMain
             // 
@@ -183,7 +183,7 @@
             this.Controls.Add(this.scMainPanel);
             this.Name = "MainForm";
             this.Padding = new System.Windows.Forms.Padding(2);
-            this.Text = "MonitoringUI";
+            this.Text = "FMS Monitoring System";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.scMainPanel.Panel1.ResumeLayout(false);

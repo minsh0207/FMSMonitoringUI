@@ -1,10 +1,10 @@
 ﻿using FMSMonitoringUI.Controlls.WindowsForms;
+using Google.Protobuf.WellKnownTypes;
 using MonitoringUI;
 using MonitoringUI.Common;
 using MonitoringUI.Controlls;
 using MonitoringUI.Controlls.CButton;
 using MonitoringUI.Popup;
-using Novasoft.Logger;
 using Org.BouncyCastle.Ocsp;
 using RestClientLib;
 using System;
@@ -28,8 +28,6 @@ namespace FMSMonitoringUI.Monitoring
         private string _EqpID = string.Empty;
         private string _RackID = string.Empty;
 
-        private Logger _Logger;
-
         Dictionary<string, KeyValuePair<string, Color>> _RackStatus;
 
         #region Working Thread
@@ -45,9 +43,6 @@ namespace FMSMonitoringUI.Monitoring
             _RackID = rackId;
 
             _RackStatus = rackStatus;
-
-            string logPath = ConfigurationManager.AppSettings["LOG_PATH"];
-            _Logger = new Logger(logPath, LogMode.Hour);
 
             InitControl();
             InitGridViewEqp();
@@ -82,6 +77,8 @@ namespace FMSMonitoringUI.Monitoring
             }));
 
             this.WindowID = CAuthority.GetWindowsText(this.Text);
+
+            CLogger.WriteLog(enLogLevel.Info, this.WindowID, "Window Load");
 
         }
         private void WinAgingRackSetting_FormClosed(object sender, FormClosedEventArgs e)
@@ -250,7 +247,10 @@ namespace FMSMonitoringUI.Monitoring
             catch (Exception ex)
             {
                 // System Debug
-                System.Diagnostics.Debug.Print(string.Format("### WinAgingRackSetting ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                System.Diagnostics.Debug.Print(string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
             }
         }
         #endregion
@@ -287,24 +287,26 @@ namespace FMSMonitoringUI.Monitoring
 
                     if (result != null)
                     {
-                        //this.BeginInvoke(new Action(() => SetData(result.DATA)));
                         SetData(result.DATA);
                     }
                     else
                     {
-                        string log = "WinAgingRackSetting : jsonResult is null";
-                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                        string log = "ConvertWinAgingRackSetting : result is null";
+                        CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
                     }
                 }
                 else
                 {
-                    string log = "WinAgingRackSetting : jsonResult is null";
-                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                    string log = "ConvertWinAgingRackSetting : jsonResult is null";
+                    CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
                 }
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.Print(string.Format("[Exception:LoadAgingRackSetting] {0}", ex.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("LoadAgingRackSetting Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("LoadAgingRackSetting Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
             }
         }
         #endregion
@@ -312,56 +314,68 @@ namespace FMSMonitoringUI.Monitoring
         #region UpdateManualCommand
         private async Task<bool> UpdateManualCommand(enCommnadType saveType, string rackid, object value)
         {
-            RESTClient rest = new RESTClient();
-            // Set Query
-            StringBuilder strSQL = new StringBuilder();
-
-            strSQL.Append(" UPDATE fms_v.tb_mst_aging");
-            switch (saveType)
+            try
             {
-                case enCommnadType.ConfigurationSave:
-                    strSQL.Append($" SET status = '{value}'");
-                    break;
-                case enCommnadType.PlanTimeSave:
-                    strSQL.Append($" SET end_time = '{value}'");
-                    break;
-                case enCommnadType.DataClearSave:
-                    strSQL.Append($" SET {value}");
-                    break;
-            }
+                RESTClient rest = new RESTClient();
+                // Set Query
+                StringBuilder strSQL = new StringBuilder();
 
-            //필수값
-            strSQL.Append($" WHERE rack_id = '{rackid}'");
-
-            var jsonResult = await rest.GetJson(enActionType.SQL_UPDATE, strSQL.ToString());
-
-            if (jsonResult != null)
-            {
-                _jsonUpdateBaseResponse result = rest.ConvertUpdateBase(jsonResult);
-
-                if (result != null)
+                strSQL.Append(" UPDATE fms_v.tb_mst_aging");
+                switch (saveType)
                 {
-                    if (result.RESPONSE_CODE == "200")
+                    case enCommnadType.ConfigurationSave:
+                        strSQL.Append($" SET status = '{value}'");
+                        break;
+                    case enCommnadType.PlanTimeSave:
+                        strSQL.Append($" SET end_time = '{value}'");
+                        break;
+                    case enCommnadType.DataClearSave:
+                        strSQL.Append($" SET {value}");
+                        break;
+                }
+
+                //필수값
+                strSQL.Append($" WHERE rack_id = '{rackid}'");
+
+                var jsonResult = await rest.GetJson(enActionType.SQL_UPDATE, strSQL.ToString());
+
+                if (jsonResult != null)
+                {
+                    _jsonUpdateBaseResponse result = rest.ConvertUpdateBase(jsonResult);
+
+                    if (result != null)
                     {
-                        return true;
+                        if (result.RESPONSE_CODE == "200")
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
                     }
                     else
                     {
+                        string log = "ConvertUpdateBase : result is null";
+                        CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
+
                         return false;
                     }
                 }
                 else
                 {
-                    string log = "UpdateBase : jsonResult is null";
-                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                    string log = "ConvertUpdateBase : jsonResult is null";
+                    CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
 
                     return false;
                 }
             }
-            else
-            {                
-                string log = "UpdateBase : jsonResult is null";
-                _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print(string.Format("UpdateManualCommand Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("UpdateManualCommand Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
 
                 return false;
             }
@@ -443,6 +457,8 @@ namespace FMSMonitoringUI.Monitoring
         {
             if (col > 0 && row == 0)
             {
+                CLogger.WriteLog(enLogLevel.ButtonClick, this.WindowID, $"Tray Info : Eqp ID = {_EqpID}, Unit ID = {_RackID}, Tray ID = {value}");
+
                 WinTrayInfo form = new WinTrayInfo(_EqpID, _RackID, value.ToString());
                 form.ShowDialog();
             }
@@ -482,12 +498,14 @@ namespace FMSMonitoringUI.Monitoring
             saveLogin.ShowDialog();
 
             bool update = false;
-            string updateValue;
+            string updateValue = string.Empty;
 
             if (CDefine.m_strSaveLoginID == "") return;
 
             if (CAuthority.CheckAuthority(enAuthority.Save, CDefine.m_strSaveLoginID, this.Text))
             {
+                CLogger.WriteLog(enLogLevel.ButtonClick, this.WindowID, $"Save UserID : {CDefine.m_strSaveLoginID}, Save UserName : {CDefine.m_strSaveLoginName}");
+
                 if (btn.Name == ConfigurationSave.Name)
                 {
                     updateValue = GetConfiguration();
@@ -504,10 +522,13 @@ namespace FMSMonitoringUI.Monitoring
                     update = UpdateManualCommand(enCommnadType.DataClearSave, _RackID, updateValue).GetAwaiter().GetResult();
                 }
 
+                CLogger.WriteLog(enLogLevel.Info, this.WindowID, $"{btn.Name} : Rack ID = {_RackID}, Update Value = {updateValue}, Return Code = {(update ? "OK" : "Fail")}");
+
                 if (update)
                     CMessage.MsgInformation($"{btn.Name} OK.");
                 else
                     CMessage.MsgInformation($"{btn.Name} Fail.");
+                
             }
             else
             {

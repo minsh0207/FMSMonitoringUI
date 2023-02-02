@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.m_timer = new System.Windows.Forms.Timer(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.ctrlRack12 = new FMSMonitoringUI.Controlls.CtrlRack();
             this.ctrlRack9 = new FMSMonitoringUI.Controlls.CtrlRack();
@@ -775,7 +773,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Timer m_timer;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;

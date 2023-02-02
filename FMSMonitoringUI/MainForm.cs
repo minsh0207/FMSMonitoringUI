@@ -1,4 +1,5 @@
-﻿using FMSMonitoringUI.Controlls;
+﻿using ExcelDataReader.Log;
+using FMSMonitoringUI.Controlls;
 using FMSMonitoringUI.Controlls.WindowsForms;
 using FMSMonitoringUI.Monitoring;
 using MonitoringUI;
@@ -6,7 +7,6 @@ using MonitoringUI.Common;
 using MonitoringUI.Controlls;
 using MonitoringUI.Monitoring;
 using MonitoringUI.Popup;
-using Novasoft.Logger;
 using OPCUAClientClassLib;
 using RestClientLib;
 using System;
@@ -47,8 +47,6 @@ namespace FMSMonitoringUI
         /// </summary>
         private ApplicationInstance _Application = null;
 
-        private Logger _Logger; // { get; set; }
-
         CtrlMonitoring _CtrlMonitoring = null;
         CtrlAging _CtrlAging = null;
         CtrlFormationCHG _CtrlFormationCHG = null;
@@ -61,6 +59,7 @@ namespace FMSMonitoringUI
         private Dictionary<int, CTroubleEquipmentList> _TroubleEquipmentList;
         private Dictionary<string, CTroubleEquipmentList> _TroubleAgingList;
 
+        private string _MainFormText = string.Empty;
         #endregion
 
         #region Working Thread
@@ -68,14 +67,12 @@ namespace FMSMonitoringUI
         private bool _TheadVisiable;
 
         private Thread _LogOutThread;
-        private int _LogOutCount;
+        private int _LogOutCount = 0;
         #endregion
 
         public MainForm(ApplicationInstance applicationInstance)
         {
             InitializeComponent();
-
-            _Logger = new Logger(ConfigurationManager.AppSettings["LOG_PATH"], LogMode.Hour);
 
             //SetSystemTime();
 
@@ -107,8 +104,10 @@ namespace FMSMonitoringUI
 
             LoadEqpName().GetAwaiter().GetResult();
 
-            string msg = $"============== Start the FMS Monitoring System  ==============";
-            _Logger.Write(LogLevel.Info, msg, LogFileName.AllLog);
+            _MainFormText = "[FMS Monitoring System]";
+
+            CLogger.WriteLog(enLogLevel.Info, "", "");
+            CLogger.WriteLog(enLogLevel.Info, _MainFormText, "== Start the FMS Monitoring System ==");
         }
 
         protected override void OnHandleCreated(EventArgs e)
@@ -122,6 +121,8 @@ namespace FMSMonitoringUI
                 Title_ClickEvnet("Main");
 
                 InitLanguage();
+
+
             }
         }
 
@@ -134,8 +135,7 @@ namespace FMSMonitoringUI
                 return;
             }
 
-            string msg = $"Login ID : {CDefine.m_strLoginID}";
-            _Logger.Write(LogLevel.Info, msg, LogFileName.AllLog);
+            CLogger.WriteLog(enLogLevel.Info, _MainFormText, $"LoginID : {CDefine.m_strLoginID}, UserName : {CDefine.m_strLoginName}");
 
             #region CurrentTimer
             Thread tCurrentTime = new Thread(new ThreadStart(updateTime));
@@ -151,7 +151,8 @@ namespace FMSMonitoringUI
                 _ProcessThread.IsBackground = true; _ProcessThread.Start();
             }));
 
-            // 현장가서 활성화 시킴.
+
+            // 현장가서 활성화 시킴. 
             this.BeginInvoke(new MethodInvoker(delegate ()
             {
                 _LogOutThread = new Thread(() => LogOutThreadCallback());
@@ -180,6 +181,13 @@ namespace FMSMonitoringUI
                     tagName.CallLocalLanguage();
                 }
             }
+
+            #region FMS MonitoringUI
+            _CtrlMonitoring.Text = CAuthority.GetWindowsText(_CtrlMonitoring.ToString());
+            _CtrlAging.Text = CAuthority.GetWindowsText(_CtrlAging.ToString());
+            _CtrlFormationCHG.Text = CAuthority.GetWindowsText(_CtrlFormationCHG.ToString());
+            _CtrlFormationHPC.Text = CAuthority.GetWindowsText(_CtrlFormationHPC.ToString());
+            #endregion
         }
         #endregion
 
@@ -211,14 +219,15 @@ namespace FMSMonitoringUI
             }
             catch (Exception ex)
             {
-
                 // System Debug
-                System.Diagnostics.Debug.Print(string.Format("### Set System Time Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                System.Diagnostics.Debug.Print(string.Format("SetSystemTime Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("SetSystemTime Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, _MainFormText, log);
 
                 // Return
                 return false;
             }
-
         }
         #endregion
 
@@ -233,8 +242,6 @@ namespace FMSMonitoringUI
             {
                 lbUserName.Text = CDefine.m_strLoginName;
                 SetLocalizaion(CDefine.m_enLanguage);
-
-                //MainForm_Load(null, null);
             }
         }
         #endregion
@@ -278,6 +285,7 @@ namespace FMSMonitoringUI
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
                     scMainPanel.Panel2.Controls.Add(_CtrlMonitoring);
                     _CtrlMonitoring.ProcessStart(true);
+
                     this.Text = CAuthority.GetWindowsText(_CtrlMonitoring.ToString());
                     break;
 
@@ -285,7 +293,8 @@ namespace FMSMonitoringUI
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls[0].Dispose();
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
                     scMainPanel.Panel2.Controls.Add(_CtrlAging);
-                    _CtrlAging.ProcessStart(true);
+                    _CtrlAging.ProcessStart(true);                    
+
                     this.Text = CAuthority.GetWindowsText(_CtrlAging.ToString());
                     break;
 
@@ -294,6 +303,7 @@ namespace FMSMonitoringUI
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
                     scMainPanel.Panel2.Controls.Add(_CtrlFormationCHG);
                     _CtrlFormationCHG.ProcessStart(true);
+
                     this.Text = CAuthority.GetWindowsText(_CtrlFormationCHG.ToString());
                     break;
 
@@ -302,11 +312,12 @@ namespace FMSMonitoringUI
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
                     scMainPanel.Panel2.Controls.Add(_CtrlFormationHPC);
                     _CtrlFormationHPC.ProcessStart(true);
+
                     this.Text = CAuthority.GetWindowsText(_CtrlFormationHPC.ToString());
                     break;
             }
 
-            _Logger.Write(LogLevel.Info, $"MonitoringUI - {this.Text}", LogFileName.AllLog);
+            CLogger.WriteLog(enLogLevel.Info, _MainFormText, $"FMSMonitoringUI - {this.Text}");
         }
 
         #region Application_UntrustedCertificate
@@ -338,8 +349,10 @@ namespace FMSMonitoringUI
             }
             catch (Exception ex)
             {
-                ExceptionDlg.Show(this.Text, ex);
-                _Logger.Write(LogLevel.Error, $"{ex}", LogFileName.ErrorLog);
+                ExceptionDlg.Show(_MainFormText, ex);
+
+                string log = string.Format("Application_UntrustedCertificate Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, _MainFormText, log);
             }
         }
         #endregion
@@ -372,6 +385,7 @@ namespace FMSMonitoringUI
                     Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
                     break;
             }
+
             LocalLanguage.resxLanguage = new ResourceManager("MonitoringUI.WinFormRoot", typeof(WinFormRoot).Assembly);
         }
         #endregion
@@ -432,7 +446,10 @@ namespace FMSMonitoringUI
             catch (Exception ex)
             {
                 // System Debug
-                System.Diagnostics.Debug.Print(string.Format("### MainForm ProcessThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                System.Diagnostics.Debug.Print(string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, _MainFormText, log);
             }
         }
         #endregion
@@ -440,11 +457,12 @@ namespace FMSMonitoringUI
         #region LoadTroubleEqpAlarm
         private async Task LoadTroubleEqpAlarm()
         {
+            //// Set Query
+            StringBuilder strSQL = new StringBuilder();
+
             try
             {
-                RESTClient rest = new RESTClient();
-                //// Set Query
-                StringBuilder strSQL = new StringBuilder();
+                RESTClient rest = new RESTClient();                
 
                 strSQL.Append(" SELECT A.id, A.eqp_id, A.eqp_status, A.eqp_name, A.eqp_name_local, A.eqp_trouble_code,");
                 strSQL.Append("        B.trouble_category, B.trouble_name, B.trouble_name_local");
@@ -473,21 +491,24 @@ namespace FMSMonitoringUI
                     }
                     else
                     {
-                        string log = "MstTrouble : result is null";
-                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                        string log = "ConvertTroubleEquiment : result is null";
+                        CLogger.WriteLog(enLogLevel.Error, _MainFormText, log);
                     }
                 }
                 else
                 {
-                    string log = "MstTrouble : jsonResult is null";
-                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                    string log = "ConvertTroubleEquiment : jsonResult is null";
+                    CLogger.WriteLog(enLogLevel.Error, _MainFormText, log);
                 }
 
                 //rest = null;
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.Print(string.Format("[Exception:LoadTroubleAlarm] {0}", ex.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("LoadTroubleAlarm Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("LoadTroubleAlarm Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, _MainFormText, log);
             }
         }
         #endregion
@@ -526,21 +547,22 @@ namespace FMSMonitoringUI
                     }
                     else
                     {
-                        string log = "MstTrouble : result is null";
-                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                        string log = "ConvertTroubleAging : result is null";
+                        CLogger.WriteLog(enLogLevel.Error, _MainFormText, log);
                     }
                 }
                 else
                 {
-                    string log = "MstTrouble : jsonResult is null";
-                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                    string log = "ConvertTroubleAging : jsonResult is null";
+                    CLogger.WriteLog(enLogLevel.Error, _MainFormText, log);
                 }
-
-                //rest = null;
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.Print(string.Format("[Exception:LoadTroubleAlarm] {0}", ex.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("LoadTroubleAgingAlarm Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("LoadTroubleAgingAlarm Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, _MainFormText, log);
             }
         }
         #endregion
@@ -651,8 +673,9 @@ namespace FMSMonitoringUI
             {
                 // Add Data
                 CTroubleEquipmentList troubleEquipmentList = new CTroubleEquipmentList
-                {
+                {                    
                     nEqpTypeID = troubleData.ID,
+                    strEqpID = troubleData.EQP_ID,
                     strUnitName = CDefine.m_enLanguage == enLoginLanguage.English ? troubleData.EQP_NAME : troubleData.EQP_NAME_LOCAL,
                     bStatus = bStatus,
                     bStatusPrev = bStatusPrev,
@@ -667,7 +690,10 @@ namespace FMSMonitoringUI
             catch (Exception ex)
             {
                 // System Debug
-                System.Diagnostics.Debug.Print(string.Format("### Trouble Equipment List Add Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                System.Diagnostics.Debug.Print(string.Format("TroubleEquipmentListAdd Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("TroubleEquipmentListAdd Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, _MainFormText, log);
             }
         }
         #endregion
@@ -684,7 +710,7 @@ namespace FMSMonitoringUI
                 // Add Data
                 CTroubleEquipmentList troubleEquipmentList = new CTroubleEquipmentList
                 {
-                    strUnitID = troubleData.RACK_ID,
+                    strUnitID = troubleData.RACK_ID,                    
                     strUnitName = rackName,
                     bStatus = bStatus,
                     bStatusPrev = bStatusPrev,
@@ -699,7 +725,10 @@ namespace FMSMonitoringUI
             catch (Exception ex)
             {
                 // System Debug
-                System.Diagnostics.Debug.Print(string.Format("### TroubleAgingListAdd Add Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                System.Diagnostics.Debug.Print(string.Format("TroubleAgingListAdd Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("TroubleAgingListAdd Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, _MainFormText, log);
             }
         }
         #endregion
@@ -727,6 +756,12 @@ namespace FMSMonitoringUI
 
                             troubleAlarm.lblTroubleName.Text = trouble.Value.strContent;
                             troubleAlarm.lblTroubleUnitName.Text = trouble.Value.strUnitName;
+
+                            string log = string.Format("TroubleWindowShow : EQP ID = {0}, Unit ID = {1}, Alarm Code = {2}, Alarm Name = {3}",
+                                _CtrlMonitoring._EqpName[trouble.Value.strEqpID], trouble.Value.strUnitName, 
+                                trouble.Value.strTroubleCode, trouble.Value.strContent);
+
+                            CLogger.WriteLog(enLogLevel.Error, _MainFormText, log);
                         }
                     }
                 }
@@ -746,30 +781,23 @@ namespace FMSMonitoringUI
 
                             troubleAlarm.lblTroubleName.Text = trouble.Value.strContent;
                             troubleAlarm.lblTroubleUnitName.Text = trouble.Value.strUnitName;
+
+                            string log = string.Format("TroubleWindowShow : EQP ID = {0}, Unit ID = {1}, Alarm Code = {2}, Alarm Name = {3}",
+                                _CtrlMonitoring._EqpName[trouble.Value.strEqpID], trouble.Value.strUnitName,
+                                trouble.Value.strTroubleCode, trouble.Value.strContent);
+
+                            CLogger.WriteLog(enLogLevel.Error, _MainFormText, log);
                         }
                     }
                 }
-
-
-                //switch (nEqpTypeID)
-                //{
-                //    case "CHG":     // CDefine.DEF_EQP_TYPE_ID_FORMATION:
-                //    case "HPC":
-                //        troubleAlarm.lblTroubleUnitName.Text = "Formation " + strTitle;
-                //        break;
-                //    case "HTA":     //CDefine.DEF_EQP_TYPE_ID_AGING:
-                //    case "LTA":
-                //        troubleAlarm.lblTroubleUnitName.Text = "Aging " + strTitle; ;
-                //        break;
-                //    default:
-                //        troubleAlarm.lblTroubleUnitName.Text = strTitle;
-                //        break;
-                //}
             }
             catch (Exception ex)
             {
                 // System Debug
-                System.Diagnostics.Debug.Print(string.Format("### TroubleWindowShow Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                System.Diagnostics.Debug.Print(string.Format("TroubleWindowShow Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("TroubleWindowShow Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, _MainFormText, log);
             }
         }
         #endregion
@@ -800,21 +828,22 @@ namespace FMSMonitoringUI
                     }
                     else
                     {
-                        string log = "MstEqp : jsonResult is null";
-                        _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                        string log = "ConvertMstEqp : jsonResult is null";
+                        CLogger.WriteLog(enLogLevel.Error, _MainFormText, log);
                     }
                 }
                 else
                 {
-                    string log = "MstEqp : jsonResult is null";
-                    _Logger.Write(LogLevel.Error, log, LogFileName.ErrorLog);
+                    string log = "ConvertMstEqp : jsonResult is null";
+                    CLogger.WriteLog(enLogLevel.Error, _MainFormText, log);
                 }
-
-                //rest = null;
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.Print(string.Format("[Exception:LoadEqpName] {0}", ex.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("LoadEqpName Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("LoadEqpName Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, _MainFormText, log);
             }
         }
         #endregion
@@ -862,7 +891,10 @@ namespace FMSMonitoringUI
             catch (Exception ex)
             {
                 // System Debug
-                System.Diagnostics.Debug.Print(string.Format("### LogOutThreadCallback Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                System.Diagnostics.Debug.Print(string.Format("LogOutThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("LogOutThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, _MainFormText, log);
             }
         }
         #endregion
@@ -878,15 +910,21 @@ namespace FMSMonitoringUI
                     CDefine.m_strLoginID = "";
                     lbUserName.Text = "LogOut";
                     ProgramRestart();
+
+                    string log = string.Format("Logged out due to timeout.");
+                    CLogger.WriteLog(enLogLevel.Info, _MainFormText, log);
                 }
                 else
                 {
-                    _LogOutCount++;
+                    //_LogOutCount++;
                 }
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.Print(string.Format("[Exception:LogOut] {0}", ex.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("LogOut Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("LogOut Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, _MainFormText, log);
             }
         }
         #endregion
@@ -896,18 +934,18 @@ namespace FMSMonitoringUI
         /// 윈도우 프로시저 처리하기
         /// </summary>
         /// <param name="message">메시지</param>
-        protected override void WndProc(ref Message message)
-        {
-            const uint WM_MOUSEACTIVATE = 0x0021;
-            const uint WM_MOUSEMOVE = 0x0200;
+        //protected override void WndProc(ref Message message)
+        //{
+        //    const uint WM_MOUSEACTIVATE = 0x0021;
+        //    const uint WM_MOUSEMOVE = 0x0200;
 
-            if (message.Msg == WM_MOUSEACTIVATE || message.Msg == WM_MOUSEMOVE)
-            {
-                _LogOutCount = 0;
-            }
+        //    if (message.Msg == WM_MOUSEACTIVATE || message.Msg == WM_MOUSEMOVE)
+        //    {
+        //        _LogOutCount = 0;
+        //    }
 
-            base.WndProc(ref message);
-        }
+        //    base.WndProc(ref message);
+        //}
         #endregion
 
         private void ProgramRestart()
@@ -920,7 +958,10 @@ namespace FMSMonitoringUI
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.Print(string.Format("[Exception:ProgramRestart] {0}", ex.ToString()));
+                System.Diagnostics.Debug.Print(string.Format("ProgramRestart Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("ProgramRestart Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, _MainFormText, log);
             }
         }
     }
