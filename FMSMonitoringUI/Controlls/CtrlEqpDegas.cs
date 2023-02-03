@@ -1,5 +1,4 @@
 ﻿using FMSMonitoringUI.Monitoring;
-using FormationMonCtrl;
 using MonitoringUI;
 using MonitoringUI.Common;
 using MySqlX.XDevAPI.Relational;
@@ -74,29 +73,36 @@ namespace FMSMonitoringUI.Controlls
         #region setData
         public override void SetData(List<_entire_eqp_list> data, Dictionary<string, KeyValuePair<string, Color>> eqpStatus)
         {
-            TrayInfoView.SetValue(1, 1, data[0].TRAY_ID);       // Pick
-            TrayInfoView.SetValue(1, 0, data[0].TRAY_ID_2);     // Place
-
-            for (int i = 0; i < data.Count; i++)
+            try
             {
-                if (i > 2) break;
+                TrayInfoView.SetValue(1, 1, data[0].TRAY_ID);       // Pick
+                TrayInfoView.SetValue(1, 0, data[0].TRAY_ID_2);     // Place
 
-                int row = 1 - Convert.ToInt16(data[i].LEVEL);                
-                TrayInfoView.SetReworkTray(1, row, data[i].REWORK_FLAG);
+                for (int i = 0; i < data.Count; i++)
+                {
+                    if (i > 2) break;
+
+                    int row = 1 - Convert.ToInt16(data[i].LEVEL);
+                    TrayInfoView.SetReworkTray(1, row, data[i].REWORK_FLAG);
+                }
+
+                SetEqpMode(data[0].EQP_MODE, eqpStatus[data[0].EQP_MODE]);
+                SetEqpStatus(data[0].EQP_STATUS, eqpStatus[data[0].EQP_STATUS]);
+
+                //if (data[0].REWORK_FLAG == "Y" && data[0].EQP_STATUS == "R")
+                //{
+                //    SetEqpStatus("Re", eqpStatus["Re"]);
+                //}
+                //else
+                //{                
+                //    
+                //}
             }
-
-            SetEqpMode(data[0].EQP_MODE, eqpStatus[data[0].EQP_MODE]);
-            SetEqpStatus(data[0].EQP_STATUS, eqpStatus[data[0].EQP_STATUS]);
-
-            //if (data[0].REWORK_FLAG == "Y" && data[0].EQP_STATUS == "R")
-            //{
-            //    SetEqpStatus("Re", eqpStatus["Re"]);
-            //}
-            //else
-            //{                
-            //    
-            //}
-
+            catch (Exception ex)
+            {
+                // System Debug
+                System.Diagnostics.Debug.Print(string.Format("SetData Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+            }
         }
         private void SetEqpMode(string eqp_mode, KeyValuePair<string, Color> valuePair)
         {

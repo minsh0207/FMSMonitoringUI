@@ -5,7 +5,6 @@ using ExcelDataReader.Log;
 using FMSMonitoringUI.Common;
 using FMSMonitoringUI.Controlls.WindowsForms;
 using FMSMonitoringUI.Monitoring;
-using FormationMonCtrl;
 //using Microsoft.Office.Interop.Excel;
 using MonitoringUI;
 using MonitoringUI.Common;
@@ -51,6 +50,10 @@ namespace FMSMonitoringUI.Controlls
     {
         #region Properties
         public override string Text { get; set; }
+        public bool UseAlarmPopup 
+        {
+            get { return cbUsePopUp.Checked; }
+        }
         #endregion
 
         #region [Variable]
@@ -283,6 +286,7 @@ namespace FMSMonitoringUI.Controlls
             _ListConveyor.Clear();
             _ListSCrane.Clear();
             _ControlIdx.Clear();
+                        
 
             CDeviceInfo[] siteInfo = new CDeviceInfo[CDefine.DEF_PLC_SERVER_COUNT];
 
@@ -291,7 +295,11 @@ namespace FMSMonitoringUI.Controlls
                 _ListSite[i] = new Dictionary<int, ItemInfo>();
                 _ListBCR[i] = new Dictionary<int, BCRMarker>();
                 siteInfo[i] = new CDeviceInfo();
+
+                controlStatus.SetPLCConnectionStatus(i, 4);
             }
+
+            controlStatus.SetRestConnectionStatus(4);
 
             //int craneCnt = 0;
 
@@ -504,8 +512,10 @@ namespace FMSMonitoringUI.Controlls
         #endregion
 
         #region InitLanguage
-        private void InitLanguage()
+        public void InitLanguage()
         {
+            _EqpStatus.Clear();
+
             // CtrlTaggingName 언어 변환 호출
             foreach (var ctl in panel1.Controls)
             {
@@ -536,6 +546,11 @@ namespace FMSMonitoringUI.Controlls
                 {
                     CtrlControlStatus controlStatus = ctl as CtrlControlStatus;
                     controlStatus.CallLocalLanguage();
+                }
+                else if (ctl.GetType() == typeof(CtrlCheckBox))
+                {
+                    CtrlCheckBox cbCtl = ctl as CtrlCheckBox;
+                    cbCtl.CallLocalLanguage();
                 }
             }
         }

@@ -56,23 +56,6 @@ namespace MonitoringUI.Common
 
         public static string m_strLineID = "001";       // 1공장: "001" / 2공장 "002"
         public static string m_strBizRestURI = @"http://192.168.110.5:9001/";       // 1공장: "001" / 2공장 "002"
-        /////////////////////////////////////////////////////////////////////
-        //	Enable LogIn (Enable Check is Only Release Ver)
-        //=================================================================== 
-        public static string m_strUiMon1 = "192.168.10.11";
-        public static string m_strUiMon2 = "192.168.10.12";
-        public static string m_strUiMon3 = "192.168.10.13";
-        public static string m_strUiMon4 = "192.168.10.14";
-        public static string m_strUiMon5 = "192.168.10.15";
-        public static string m_strUiRew1 = "192.168.10.17";
-        public static string m_strUiRew2 = "192.168.10.18";
-        public static string m_strUiSer1 = "192.168.10.1";
-        public static string m_strUiSer2 = "192.168.10.2";
-        public static string m_strUiSch1 = "192.168.10.5";
-        public static string m_strUiSch2 = "192.168.10.6";
-
-		public static string m_strOperator = "192.168.10.24";
-
 
         /////////////////////////////////////////////////////////////////////
         //	Log Path
@@ -83,7 +66,6 @@ namespace MonitoringUI.Common
         public const string DEF_LOG_PATH = @"C:\Formation\Log\";
 #endif
 		public const string DEF_EXE_PATH = @"C:\FormationSystem\FormationSystem.exe";
-		public const string DEF_VERSION = "Formation System V1";
 		public const string DEF_LOG_FILENAME = "FormationUI";
 
         /////////////////////////////////////////////////////////////////////

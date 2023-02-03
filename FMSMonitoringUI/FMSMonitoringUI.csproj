@@ -255,6 +255,12 @@
     <Compile Include="Controlls\WindowsForms\CtrlButtonType2.Designer.cs">
       <DependentUpon>CtrlButtonType2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controlls\WindowsForms\CtrlCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controlls\WindowsForms\CtrlCheckBox.Designer.cs">
+      <DependentUpon>CtrlCheckBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controlls\WindowsForms\CtrlComboBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1122,10 +1128,6 @@
       <Project>{3c8de403-7ff8-41cd-955b-8fcc628dd122}</Project>
       <Name>DBHandler</Name>
     </ProjectReference>
-    <ProjectReference Include="..\FormationMonCtrl\FormationMonCtrl.csproj">
-      <Project>{ca22df46-7439-4a72-a0be-d592f6d154b2}</Project>
-      <Name>FormationMonCtrl</Name>
-    </ProjectReference>
     <ProjectReference Include="..\OPCUAClientClassLib\OPCUAClientLib.csproj">
       <Project>{065d7112-f84a-4864-868e-9b8fc35696ca}</Project>
       <Name>OPCUAClientLib</Name>
@@ -1144,6 +1146,7 @@
     <Content Include="res\Image1.png" />
     <Content Include="res\Left_1.png" />
     <Content Include="res\Left_2.png" />
+    <Content Include="res\login.png" />
     <Content Include="res\MZ.PNG" />
     <Content Include="res\MZ_DP.PNG" />
     <Content Include="res\RealBCR.PNG" />

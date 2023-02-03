@@ -888,6 +888,9 @@
   <data name="DEF_Use_Flag" xml:space="preserve">
     <value>FR-Use Flag</value>
   </data>
+  <data name="DEF_Use_Trouble_Alarm_Popup" xml:space="preserve">
+    <value>FR-Use Trouble Alarm PopUp</value>
+  </data>
   <data name="DEF_Value" xml:space="preserve">
     <value>FR-Value</value>
   </data>

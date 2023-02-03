@@ -1,5 +1,4 @@
 ﻿using FMSMonitoringUI.Monitoring;
-using FormationMonCtrl;
 using MonitoringUI;
 using RestClientLib;
 using System;
@@ -69,19 +68,27 @@ namespace FMSMonitoringUI.Controlls
         #region setData
         public override void SetData(List<_entire_eqp_list> data, Dictionary<string, KeyValuePair<string, Color>> eqpStatus)
         {
-            TrayInfoView.SetValue(1, 0, data[0].TRAY_ID);       // Level 1
-            TrayInfoView.SetValue(0, 0, data[0].TRAY_ID_2);     // Level 2
-
-            for (int i = 0; i < data.Count; i++)
+            try
             {
-                if (i > 2) break;
+                TrayInfoView.SetValue(1, 0, data[0].TRAY_ID);       // Level 1
+                TrayInfoView.SetValue(0, 0, data[0].TRAY_ID_2);     // Level 2
 
-                int col = 1 - Convert.ToInt16(data[i].LEVEL);  // Column 0번재가 Level2
-                TrayInfoView.SetReworkTray(col, 0, data[i].REWORK_FLAG);
+                for (int i = 0; i < data.Count; i++)
+                {
+                    if (i > 2) break;
+
+                    int col = 1 - Convert.ToInt16(data[i].LEVEL);  // Column 0번재가 Level2
+                    TrayInfoView.SetReworkTray(col, 0, data[i].REWORK_FLAG);
+                }
+
+                SetEqpMode(data[0].EQP_MODE, eqpStatus[data[0].EQP_MODE]);
+                SetEqpStatus(data[0].EQP_STATUS, eqpStatus[data[0].EQP_STATUS]);
             }
-
-            SetEqpMode(data[0].EQP_MODE, eqpStatus[data[0].EQP_MODE]);
-            SetEqpStatus(data[0].EQP_STATUS, eqpStatus[data[0].EQP_STATUS]);
+            catch (Exception ex)
+            {
+                // System Debug
+                System.Diagnostics.Debug.Print(string.Format("SetData Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+            }
         }
         private void SetEqpMode(string eqp_mode, KeyValuePair<string, Color> valuePair)
         {

@@ -87,22 +87,24 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(1730, 21);
+            this.pictureBox2.Location = new System.Drawing.Point(1723, 15);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(22, 24);
+            this.pictureBox2.Size = new System.Drawing.Size(35, 34);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.LogIn_Click);
             // 
             // lbUserName
             // 
             this.lbUserName.AutoSize = true;
             this.lbUserName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.lbUserName.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbUserName.ForeColor = System.Drawing.Color.White;
+            this.lbUserName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUserName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(157)))), ((int)(((byte)(206)))));
             this.lbUserName.LanguageID = "DEF_User";
-            this.lbUserName.Location = new System.Drawing.Point(1760, 28);
+            this.lbUserName.Location = new System.Drawing.Point(1763, 27);
             this.lbUserName.Name = "lbUserName";
-            this.lbUserName.Size = new System.Drawing.Size(41, 13);
+            this.lbUserName.Size = new System.Drawing.Size(45, 19);
             this.lbUserName.TabIndex = 6;
             this.lbUserName.Text = "User";
             // 
@@ -123,11 +125,11 @@
             // lbCurrentTime
             // 
             this.lbCurrentTime.AutoSize = true;
-            this.lbCurrentTime.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCurrentTime.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCurrentTime.ForeColor = System.Drawing.Color.White;
-            this.lbCurrentTime.Location = new System.Drawing.Point(1569, 28);
+            this.lbCurrentTime.Location = new System.Drawing.Point(1543, 27);
             this.lbCurrentTime.Name = "lbCurrentTime";
-            this.lbCurrentTime.Size = new System.Drawing.Size(125, 16);
+            this.lbCurrentTime.Size = new System.Drawing.Size(161, 19);
             this.lbCurrentTime.TabIndex = 4;
             this.lbCurrentTime.Text = "2022-12-20 09:12:30";
             // 
@@ -136,7 +138,7 @@
             this.barMain.AccessibleName = "";
             this.barMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.barMain.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.barMain.ForeColor = System.Drawing.Color.White;
+            this.barMain.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(106)))), ((int)(((byte)(147)))));
             this.barMain.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.barMain.LanguageID = "DEF_Main";
             this.barMain.Location = new System.Drawing.Point(212, 10);

@@ -318,6 +318,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
+            this.cbUsePopUp = new FMSMonitoringUI.Controlls.WindowsForms.CtrlCheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox44)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).BeginInit();
@@ -453,6 +454,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.cbUsePopUp);
             this.panel1.Controls.Add(this.ctrlTaggingName5);
             this.panel1.Controls.Add(this.controlStatus);
             this.panel1.Controls.Add(this.ctrlLabel16);
@@ -502,7 +504,7 @@
             this.ctrlTaggingName5.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlTaggingName5.LanguageID = "DEF_Rework";
-            this.ctrlTaggingName5.Location = new System.Drawing.Point(13, 891);
+            this.ctrlTaggingName5.Location = new System.Drawing.Point(10, 967);
             this.ctrlTaggingName5.Name = "ctrlTaggingName5";
             this.ctrlTaggingName5.Size = new System.Drawing.Size(179, 23);
             this.ctrlTaggingName5.StatusCode = "Re";
@@ -5450,6 +5452,18 @@
             this.label29.Size = new System.Drawing.Size(269, 162);
             this.label29.TabIndex = 577;
             // 
+            // cbUsePopUp
+            // 
+            this.cbUsePopUp.AutoSize = true;
+            this.cbUsePopUp.ForeColor = System.Drawing.Color.White;
+            this.cbUsePopUp.LanguageID = "DEF_Use_Trouble_Alarm_Popup";
+            this.cbUsePopUp.Location = new System.Drawing.Point(17, 898);
+            this.cbUsePopUp.Name = "cbUsePopUp";
+            this.cbUsePopUp.Size = new System.Drawing.Size(170, 17);
+            this.cbUsePopUp.TabIndex = 111;
+            this.cbUsePopUp.Text = "Use Trouble Alarm PopUp";
+            this.cbUsePopUp.UseVisualStyleBackColor = true;
+            // 
             // CtrlMonitoring
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -5885,5 +5899,6 @@
         private MonitoringUI.Controlls.CtrlTaggingName ctrlTaggingName5;
         private WindowsForms.CtrlLabel ctrlLabel17;
         private WindowsForms.CtrlLabel ctrlLabel6;
+        private WindowsForms.CtrlCheckBox cbUsePopUp;
     }
 }

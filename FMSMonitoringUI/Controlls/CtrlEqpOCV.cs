@@ -1,5 +1,4 @@
 ﻿using FMSMonitoringUI.Monitoring;
-using FormationMonCtrl;
 using MonitoringUI;
 using RestClientLib;
 using System;
@@ -68,12 +67,20 @@ namespace FMSMonitoringUI.Controlls
         #region setData
         public override void SetData(List<_entire_eqp_list> data, Dictionary<string, KeyValuePair<string, Color>> eqpStatus)
         {
-            int row = 0;    // Convert.ToInt16(data[0].LEVEL);
-            TrayInfoView.SetValue(0, row, data[0].TRAY_ID);
-            TrayInfoView.SetReworkTray(0, row, data[0].REWORK_FLAG);
+            try
+            {
+                int row = 0;    // Convert.ToInt16(data[0].LEVEL);
+                TrayInfoView.SetValue(0, row, data[0].TRAY_ID);
+                TrayInfoView.SetReworkTray(0, row, data[0].REWORK_FLAG);
 
-            SetEqpMode(data[0].EQP_MODE, eqpStatus[data[0].EQP_MODE]);
-            SetEqpStatus(data[0].EQP_STATUS, eqpStatus[data[0].EQP_STATUS]);
+                SetEqpMode(data[0].EQP_MODE, eqpStatus[data[0].EQP_MODE]);
+                SetEqpStatus(data[0].EQP_STATUS, eqpStatus[data[0].EQP_STATUS]);
+            }
+            catch (Exception ex)
+            {
+                // System Debug
+                System.Diagnostics.Debug.Print(string.Format("SetData Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+            }
         }
         private void SetEqpMode(string eqp_mode, KeyValuePair<string, Color> valuePair)
         {

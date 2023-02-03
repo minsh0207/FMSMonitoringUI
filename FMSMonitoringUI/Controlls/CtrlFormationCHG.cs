@@ -3,7 +3,6 @@ using DBHandler;
 using FMSMonitoringUI.Controlls;
 using FMSMonitoringUI.Controlls.WindowsForms;
 using FMSMonitoringUI.Monitoring;
-using FormationMonCtrl;
 using MonitoringUI;
 using MonitoringUI.Common;
 using MonitoringUI.Controlls;
@@ -103,8 +102,11 @@ namespace FMSMonitoringUI
         #endregion
 
         #region InitLanguage
-        private void InitLanguage()
+        public void InitLanguage()
         {
+            _EqpStatus.Clear();
+            _OpMode.Clear();
+
             // CtrlTaggingName 언어 변환 호출
             foreach (var ctl in this.panel1.Controls)
             {

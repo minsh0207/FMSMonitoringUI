@@ -279,13 +279,15 @@ namespace MonitoringUI.Monitoring
         #endregion
 
         #region InitLanguage
-        private void InitLanguage()
+        public void InitLanguage()
         {
             // CtrlTaggingName 언어 변환 호출
 
             btnHTAging.CallLocalLanguage();
             btnLTAging1.CallLocalLanguage();
             btnLTAging2.CallLocalLanguage();
+
+            _RackStatus.Clear();
 
             foreach (var ctl in panel1.Controls)
             {

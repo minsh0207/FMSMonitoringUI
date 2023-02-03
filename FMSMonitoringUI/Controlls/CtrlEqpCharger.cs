@@ -1,7 +1,7 @@
 ﻿using FMSMonitoringUI.Controlls.WindowsForms;
 using FMSMonitoringUI.Monitoring;
-using FormationMonCtrl;
 using MonitoringUI;
+using MonitoringUI.Common;
 using MySqlX.XDevAPI.Relational;
 using RestClientLib;
 using System;
@@ -125,18 +125,26 @@ namespace FMSMonitoringUI.Controlls
         #region setData
         public override void SetData(List<_entire_eqp_list> data, Dictionary<string, KeyValuePair<string, Color>> eqpStatus)
         {
-            for (int i = 0; i < data.Count; i++)
+            try
             {
-                if (data[i].UNIT_ID == null) continue;
+                for (int i = 0; i < data.Count; i++)
+                {
+                    if (data[i].UNIT_ID == null) continue;
 
-                int col = int.Parse(data[i].UNIT_ID.Substring(data[i].UNIT_ID.Length - 3, 1)) -1;
-                int row = uiTlbEqpStatus.RowCount - int.Parse(data[i].UNIT_ID.Substring(data[i].UNIT_ID.Length - 1, 1));
+                    int col = int.Parse(data[i].UNIT_ID.Substring(data[i].UNIT_ID.Length - 3, 1)) - 1;
+                    int row = uiTlbEqpStatus.RowCount - int.Parse(data[i].UNIT_ID.Substring(data[i].UNIT_ID.Length - 1, 1));
 
-                _chgEqpStatus[col, row].Text = string.Format($"  {data[i].EQP_STATUS}");
-                _chgEqpStatus[col, row].BackColor = eqpStatus[data[i].EQP_STATUS].Value;
+                    _chgEqpStatus[col, row].Text = string.Format($"  {data[i].EQP_STATUS}");
+                    _chgEqpStatus[col, row].BackColor = eqpStatus[data[i].EQP_STATUS].Value;
 
-                _chgEqpMode[col, row].Text = string.Format($"  {data[i].EQP_MODE}");
-                _chgEqpMode[col, row].BackColor = eqpStatus[data[i].EQP_MODE].Value;
+                    _chgEqpMode[col, row].Text = string.Format($"  {data[i].EQP_MODE}");
+                    _chgEqpMode[col, row].BackColor = eqpStatus[data[i].EQP_MODE].Value;
+                }
+            }
+            catch (Exception ex)
+            {
+                // System Debug
+                System.Diagnostics.Debug.Print(string.Format("SetData Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
             }
         }
         #endregion

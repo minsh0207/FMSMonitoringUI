@@ -121,8 +121,6 @@ namespace FMSMonitoringUI
                 Title_ClickEvnet("Main");
 
                 InitLanguage();
-
-
             }
         }
 
@@ -284,6 +282,7 @@ namespace FMSMonitoringUI
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls[0].Dispose();
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
                     scMainPanel.Panel2.Controls.Add(_CtrlMonitoring);
+                    _CtrlMonitoring.InitLanguage();
                     _CtrlMonitoring.ProcessStart(true);
 
                     this.Text = CAuthority.GetWindowsText(_CtrlMonitoring.ToString());
@@ -293,6 +292,7 @@ namespace FMSMonitoringUI
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls[0].Dispose();
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
                     scMainPanel.Panel2.Controls.Add(_CtrlAging);
+                    _CtrlAging.InitLanguage();
                     _CtrlAging.ProcessStart(true);                    
 
                     this.Text = CAuthority.GetWindowsText(_CtrlAging.ToString());
@@ -302,6 +302,7 @@ namespace FMSMonitoringUI
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls[0].Dispose();
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
                     scMainPanel.Panel2.Controls.Add(_CtrlFormationCHG);
+                    _CtrlFormationCHG.InitLanguage();
                     _CtrlFormationCHG.ProcessStart(true);
 
                     this.Text = CAuthority.GetWindowsText(_CtrlFormationCHG.ToString());
@@ -311,6 +312,7 @@ namespace FMSMonitoringUI
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls[0].Dispose();
                     //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
                     scMainPanel.Panel2.Controls.Add(_CtrlFormationHPC);
+                    _CtrlFormationHPC.InitLanguage();
                     _CtrlFormationHPC.ProcessStart(true);
 
                     this.Text = CAuthority.GetWindowsText(_CtrlFormationHPC.ToString());
@@ -434,11 +436,14 @@ namespace FMSMonitoringUI
                 {
                     GC.Collect();
 
-                    this.Invoke(new MethodInvoker(delegate ()
+                    if (_CtrlMonitoring.UseAlarmPopup == true)
                     {
-                        LoadTroubleEqpAlarm().GetAwaiter().GetResult();
-                        LoadTroubleAgingAlarm().GetAwaiter().GetResult();
-                    }));
+                        this.Invoke(new MethodInvoker(delegate ()
+                        {
+                            LoadTroubleEqpAlarm().GetAwaiter().GetResult();
+                            LoadTroubleAgingAlarm().GetAwaiter().GetResult();
+                        }));
+                    }
 
                     Thread.Sleep(5000);
                 }
@@ -486,7 +491,6 @@ namespace FMSMonitoringUI
                     {
                         SetData(result.DATA);
 
-                        //if (cbUsePopUp.Checked)
                         TroubleWindowShow();
                     }
                     else
@@ -541,8 +545,7 @@ namespace FMSMonitoringUI
                     if (result != null)
                     {
                         SetData(result.DATA);
-
-                        //if (cbUsePopUp.Checked)
+                        
                         TroubleWindowShow();
                     }
                     else
@@ -964,5 +967,32 @@ namespace FMSMonitoringUI
                 CLogger.WriteLog(enLogLevel.Error, _MainFormText, log);
             }
         }
+
+        #region LogIn_Click
+        private void LogIn_Click(object sender, EventArgs e)
+        {
+            CheckLogin();
+
+            //this.Invoke(new MethodInvoker(delegate ()
+            //{
+                if (this.Text.Substring(0, 9) == "[MON-001]")
+                {
+                    _CtrlMonitoring.InitLanguage();
+                }
+                else if (this.Text.Substring(0, 9) == "[MON-002]")
+                {
+                    _CtrlAging.InitLanguage();
+                }
+                else if (this.Text.Substring(0, 9) == "[MON-003]")
+                {
+                    _CtrlFormationCHG.InitLanguage();
+                }
+                else if (this.Text.Substring(0, 9) == "[MON-004]")
+                {
+                    _CtrlFormationHPC.InitLanguage();
+                }
+            //}));
+        }
+        #endregion
     }
 }
