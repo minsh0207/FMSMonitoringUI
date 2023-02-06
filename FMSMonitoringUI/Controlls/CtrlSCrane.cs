@@ -143,9 +143,9 @@ namespace ControlGallery
         //    }
         //}
 
-        public void UpdateUI(bool trayExist, string craneName)
+        public void UpdateUI(bool trayExist, string craneName, int eqpStatus)
         {
-            cranebox.UpdateUI(trayExist, craneName);
+            cranebox.UpdateUI(trayExist, craneName, eqpStatus);
             //if (_SCHandler != null)
             //{
             //    //CurrentBay = _SCHandler.SC_POSITION_BAY;

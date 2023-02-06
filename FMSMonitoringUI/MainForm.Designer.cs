@@ -127,7 +127,7 @@
             this.lbCurrentTime.AutoSize = true;
             this.lbCurrentTime.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCurrentTime.ForeColor = System.Drawing.Color.White;
-            this.lbCurrentTime.Location = new System.Drawing.Point(1543, 27);
+            this.lbCurrentTime.Location = new System.Drawing.Point(1538, 27);
             this.lbCurrentTime.Name = "lbCurrentTime";
             this.lbCurrentTime.Size = new System.Drawing.Size(161, 19);
             this.lbCurrentTime.TabIndex = 4;
@@ -138,7 +138,7 @@
             this.barMain.AccessibleName = "";
             this.barMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.barMain.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.barMain.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(106)))), ((int)(((byte)(147)))));
+            this.barMain.ForeColor = System.Drawing.Color.White;
             this.barMain.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.barMain.LanguageID = "DEF_Main";
             this.barMain.Location = new System.Drawing.Point(212, 10);

@@ -331,4 +331,15 @@ namespace RestClientLib
         public string TROUBLE_NAME_LOCAL { get; set; }
     }
     #endregion
+
+    #region _rework_tray
+    /// <summary>
+    /// JSON base format : _rework_tray
+    /// </summary>
+    public class _rework_tray
+    {
+        public string TRAY_ID { get; set; }
+        public string REWORK_FLAG { get; set; }
+    }
+    #endregion
 }

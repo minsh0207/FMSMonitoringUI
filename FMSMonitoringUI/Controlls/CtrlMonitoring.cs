@@ -596,7 +596,7 @@ namespace FMSMonitoringUI.Controlls
                         LoadAgingRackCount().GetAwaiter().GetResult();
                     }));
 
-                    Thread.Sleep(300);
+                    Thread.Sleep(5000);
                 }
             }
             catch (Exception ex)
@@ -1225,14 +1225,14 @@ namespace FMSMonitoringUI.Controlls
         #endregion
 
         #region StatusCraneAsync
-        private async Task StatusCraneAsync(CtrlSCrane crane, bool trayExist, string craneName)
+        private async Task StatusCraneAsync(CtrlSCrane crane, bool trayExist, string craneName, int eqpStatus)
         {
-            Task task = StatusCrane(crane, trayExist, craneName);
+            Task task = StatusCrane(crane, trayExist, craneName, eqpStatus);
 
             await task;
         }
 
-        private async Task StatusCrane(CtrlSCrane crane, bool trayExist, string craneName)
+        private async Task StatusCrane(CtrlSCrane crane, bool trayExist, string craneName, int eqpStatus)
                 {
                     if (this.InvokeRequired)
                     {
@@ -1240,7 +1240,7 @@ namespace FMSMonitoringUI.Controlls
                         {
                             this.Invoke(new MethodInvoker(delegate ()
                             {
-                                crane.UpdateUI(trayExist, craneName);
+                                crane.UpdateUI(trayExist, craneName, eqpStatus);
                             }));
 
                             //this.BeginInvoke(new Action(() =>
@@ -1253,14 +1253,14 @@ namespace FMSMonitoringUI.Controlls
         #endregion
 
         #region StatusConveyorAsync
-        private async Task StatusConveyorAsync(int groupno, int siteno, bool trayExist)
+        private async Task StatusConveyorAsync(int groupno, int siteno, bool trayExist, bool trayRework, int eqpStatus)
         {
-            Task task = StatusConveyor(groupno, siteno, trayExist);
+            Task task = StatusConveyor(groupno, siteno, trayExist, trayRework, eqpStatus);
 
             await task;
         }
 
-        private async Task StatusConveyor(int groupno, int siteno, bool trayExist)
+        private async Task StatusConveyor(int groupno, int siteno, bool trayExist, bool trayRework, int eqpStatus)
         {
             if (this.InvokeRequired)
             {
@@ -1272,7 +1272,7 @@ namespace FMSMonitoringUI.Controlls
 
                         if (siteInfo.ConveyorNo > 0)
                         {
-                            _ListConveyor[siteInfo.ConveyorNo].UpdateTrackStatus(siteno, trayExist);
+                            _ListConveyor[siteInfo.ConveyorNo].UpdateTrackStatus(siteno, trayExist, trayRework, eqpStatus);
                         }
 
                         //Refresh();
@@ -1387,6 +1387,8 @@ namespace FMSMonitoringUI.Controlls
                 await Task.Run(() =>
                 {
                     bool trayExist = false;
+                    bool trayRework = false;
+                    int eqpStatus = 0;
                     int pos;
                     Task task;
 
@@ -1401,19 +1403,34 @@ namespace FMSMonitoringUI.Controlls
                             if (item.BrowseName == "ConveyorInformation.TrayExist")
                                 trayExist = bool.Parse(change.Value.ToString());
 
+                            if (item.BrowseName == "EquipmentStatus.Status")
+                                eqpStatus = int.Parse(change.Value.ToString());
+
                             if (trayExist)
                             {
                                 SiteTagInfo tagInfo = ReadSiteInfo(item);
                                 task = DisplayBCRAsync(item.GroupNo, item.SiteNo, tagInfo);
+
+                                //trayRework = CheckReworkTray(tagInfo.TrayIdL1).GetAwaiter().GetResult();
                             }
 
-                            task = StatusConveyorAsync(item.GroupNo, item.SiteNo, trayExist);
+                            task = StatusConveyorAsync(item.GroupNo, item.SiteNo, trayExist, trayRework, eqpStatus);
 
                             log = string.Format("[{0}-CNV{1:D4}] {2} = {3}",
                                 item.ControlType, item.SiteNo, item.BrowseName, change.Value);
                         }
                         else if (item.ControlType == enEqpType.STC)
                         {
+                            if (item.BrowseName == "EquipmentStatus.Status")
+                            {
+                                eqpStatus = int.Parse(change.Value.ToString());
+
+                                if (eqpStatus == 4)
+                                {
+                                    task = StatusCraneAsync(_ListSCrane[item.CraneNo], trayExist, "C", eqpStatus);
+                                }
+                            }
+
                             if (item.BrowseName == "Carriage.PosBay")
                             {
                                 pos = int.Parse(change.Value.ToString());
@@ -1422,47 +1439,70 @@ namespace FMSMonitoringUI.Controlls
                             else if (item.BrowseName == "CraneCommand.TrayExist")
                             {
                                 trayExist = bool.Parse(change.Value.ToString());
-                                task = StatusCraneAsync(_ListSCrane[item.CraneNo], trayExist, "C");
+                                task = StatusCraneAsync(_ListSCrane[item.CraneNo], trayExist, "C", eqpStatus);
                             }
                             else if (item.BrowseName == "WaterTank.TrayExist")  // WaterTank01
                             {
+                                trayExist = bool.Parse(change.Value.ToString());
+
+                                if (trayExist)
+                                {
+                                    if (item.BrowseName == "EquipmentStatus.Status")
+                                        eqpStatus = int.Parse(change.Value.ToString());
+
+                                    //SiteTagInfo tagInfo = ReadSiteInfo(item);
+                                    //trayRework = CheckReworkTray(tagInfo.TrayIdL1).GetAwaiter().GetResult();
+                                }
+
                                 switch (item.GroupNo)
                                 {
                                     case 1: // HT Aging S/Crane
-                                        task = StatusConveyorAsync(item.GroupNo, 1, bool.Parse(change.Value.ToString()));
+                                        task = StatusConveyorAsync(item.GroupNo, 1, trayExist, trayRework, eqpStatus);
                                         break;
 
                                     case 2: // LT Aging S/Crane
                                         if (item.CraneNo == 1)   // LT Aging#1 S/Crane
                                         {
-                                            task = StatusConveyorAsync(item.GroupNo, 11, bool.Parse(change.Value.ToString()));
+                                            task = StatusConveyorAsync(item.GroupNo, 11, trayExist, trayRework, eqpStatus);
                                         }
                                         else   // LT Aging#2 S/Crane
                                         {
-                                            task = StatusConveyorAsync(item.GroupNo, 21, bool.Parse(change.Value.ToString()));
+                                            task = StatusConveyorAsync(item.GroupNo, 21, trayExist, trayRework, eqpStatus);
                                         }
                                         break;
                                     case 3:    // Charger
-                                        task = StatusConveyorAsync(item.GroupNo, 31, bool.Parse(change.Value.ToString()));
+                                        task = StatusConveyorAsync(item.GroupNo, 31, trayExist, trayRework, eqpStatus);
                                         break;
                                 }
+
                             }
                             else if (item.BrowseName == "WaterTank02.TrayExist")  // WaterTank01
                             {
+                                trayExist = bool.Parse(change.Value.ToString());
+
+                                if (trayExist)
+                                {
+                                    if (item.BrowseName == "EquipmentStatus.Status")
+                                        eqpStatus = int.Parse(change.Value.ToString());
+
+                                    //SiteTagInfo tagInfo = ReadSiteInfo(item);
+                                    //trayRework = CheckReworkTray(tagInfo.TrayIdL1).GetAwaiter().GetResult();
+                                }
+
                                 switch (item.GroupNo)
                                 {
                                     case 1: // HT Aging S/Crane
-                                        task = StatusConveyorAsync(item.GroupNo, 2, bool.Parse(change.Value.ToString()));
+                                        task = StatusConveyorAsync(item.GroupNo, 2, trayExist, trayRework, eqpStatus);
                                         break;
 
                                     case 2: // LT Aging S/Crane
                                         if (item.CraneNo == 1)   // LT Aging#1 S/Crane
                                         {
-                                            task = StatusConveyorAsync(item.GroupNo, 12, bool.Parse(change.Value.ToString()));
+                                            task = StatusConveyorAsync(item.GroupNo, 12, trayExist, trayRework, eqpStatus);
                                         }
                                         else   // LT Aging#2 S/Crane
                                         {
-                                            task = StatusConveyorAsync(item.GroupNo, 22, bool.Parse(change.Value.ToString()));
+                                            task = StatusConveyorAsync(item.GroupNo, 22, trayExist, trayRework, eqpStatus);
                                         }
                                         break;
                                 }
@@ -1473,6 +1513,9 @@ namespace FMSMonitoringUI.Controlls
                         }
                         else if (item.ControlType == enEqpType.RTV)
                         {
+                            if (item.BrowseName == "EquipmentStatus.Status")
+                                eqpStatus = int.Parse(change.Value.ToString());
+
                             if (item.BrowseName == "ConveyorInformation.CarriagePos")
                             {
                                 pos = int.Parse(change.Value.ToString());
@@ -1480,7 +1523,7 @@ namespace FMSMonitoringUI.Controlls
                             }
                             else
                             {
-                                task = StatusCraneAsync(ctrlSCraneV1, trayExist, "RTV");
+                                task = StatusCraneAsync(ctrlSCraneV1, trayExist, "RTV", eqpStatus);
 
                                 //if (trayExist)
                                 //{
@@ -1514,6 +1557,59 @@ namespace FMSMonitoringUI.Controlls
                 Application.DoEvents();
                 this.BeginInvoke(new Action(() => Refresh()));
             }            
+        }
+        #endregion
+
+        #region LoadWindowUser
+        private async Task<bool> CheckReworkTray(string strTrayID)
+        {
+            bool ret = false;
+            try
+            {
+                RESTClient rest = new RESTClient();
+                //// Set Query
+                StringBuilder strSQL = new StringBuilder();
+
+                strSQL.Append(" SELECT tray_id, rework_flag");
+                strSQL.Append(" FROM fms_v.tb_dat_tray");
+                //필수값
+                strSQL.Append($" WHERE tray_id = '{strTrayID}'");
+
+                var jsonResult = await rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
+
+                if (jsonResult != null)
+                {
+                    _jsonReworkTrayResponse result = rest.ConvertReworkTray(jsonResult);
+
+                    if (result != null)
+                    {
+                        if (result.DATA[0].REWORK_FLAG == "Y")
+                            ret = true;
+                    }
+                    else
+                    {
+                        string log = "ConvertReworkTray : result is null";
+                        System.Diagnostics.Debug.Print(string.Format("### LoadWindowUser, {0}", log));
+                    }
+                }
+                else
+                {
+                    string log = "ConvertReworkTray : jsonResult is null";
+                    System.Diagnostics.Debug.Print(string.Format("### LoadWindowUser, {0}", log));
+                }
+
+                return ret;
+            }
+            catch (Exception ex)
+            {
+                // System Debug
+                System.Diagnostics.Debug.Print(string.Format("CheckReworkTray Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("CheckReworkTray Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.Text, log);
+
+                return ret;
+            }
         }
         #endregion
 

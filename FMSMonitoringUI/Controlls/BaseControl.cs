@@ -277,11 +277,31 @@ namespace ControlGallery
                     break;
             }
 
-            //
-            if (status == EnumDeviceStatus.None) return def_color;
+            switch (status)
+            {
+                case EnumDeviceStatus.TrayOn:
+                    def_color = Color.SpringGreen;
+                    break;
+
+                case EnumDeviceStatus.TrayRework:
+                    def_color = Color.LightSkyBlue;
+                    break;
+
+                case EnumDeviceStatus.PLCTrouble:
+                    def_color = Color.Red;
+                    break;
+
+                default:
+                    break;
+            }
 
             //
-            if(ShowTroubleState) // Online, Offline 무조건 표시
+            //if (status == EnumDeviceStatus.None) return def_color;
+         
+
+            /*
+            //
+            if (ShowTroubleState) // Online, Offline 무조건 표시
             {
                 if (status >= EnumDeviceStatus.TroubleStateBegin) return Color.Red;
             }
@@ -306,8 +326,7 @@ namespace ControlGallery
                 else return Color.Yellow;
             }
 
-            //
-            if (status.HasFlag(EnumDeviceStatus.TrayOn)) return Color.SpringGreen; //.Yellow;
+            
 
             if (status.HasFlag(EnumDeviceStatus.ReqBCR)) return Color.LightGreen;
             if (status.HasFlag(EnumDeviceStatus.BCRReading)) return Color.RoyalBlue;
@@ -317,18 +336,32 @@ namespace ControlGallery
 
             // station-ready 가 아닌데 Up 이라면, 트레이 없이 입고대가 Up되어 있거나, 트레이 있는데 출고대가 Up 되어 있는 것!
             if (status.HasFlag(EnumDeviceStatus.StationUp)) return Color.Orange;
+            */
 
             return def_color;
         }
 
-        public EnumDeviceStatus GetDeviceStatus(bool trayOn)
+        public EnumDeviceStatus GetDeviceStatus(bool trayOn, bool trayRework, int eqpStatus)
         {
             EnumDeviceStatus ret = EnumDeviceStatus.None;
 
-            if (trayOn == true)
+            switch (eqpStatus)
             {
-                ret |= EnumDeviceStatus.TrayOn;
+                case 4:
+                    ret |= EnumDeviceStatus.PLCTrouble;
+                    break;
+
+                default:
+                    if (trayOn == true)
+                    {
+                        if (trayRework == true)
+                            ret |= EnumDeviceStatus.TrayRework;
+                        else
+                            ret |= EnumDeviceStatus.TrayOn;
+                    }
+                    break;
             }
+            
             return ret;
         }
 

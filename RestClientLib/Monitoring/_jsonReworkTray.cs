@@ -24,7 +24,7 @@ namespace RestClientLib
         public _jsonReworkTrayResponse() { }
         ~_jsonReworkTrayResponse() { }
 
-        public string REWORK_FLAG { get; set; }
+        public List<_rework_tray> DATA;
     }
 
 }

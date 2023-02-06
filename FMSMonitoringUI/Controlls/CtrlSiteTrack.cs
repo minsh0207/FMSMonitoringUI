@@ -394,13 +394,13 @@ namespace ControlGallery
 
         }
 
-        public void UpdateTrackStatus(int siteNo, bool trayOn)
+        public void UpdateTrackStatus(int siteNo, bool trayOn, bool trayRework, int eqpStatus)
         {
             foreach (SiteBox box in _siteBoxes)
             {
                 if (box.SiteNo == siteNo)
                 {
-                    box.DeviceInfo.DeviceStatus = GetDeviceStatus(trayOn);
+                    box.DeviceInfo.DeviceStatus = GetDeviceStatus(trayOn, trayRework, eqpStatus);
                 }
             }
         }

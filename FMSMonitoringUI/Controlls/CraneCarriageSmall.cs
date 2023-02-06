@@ -34,9 +34,9 @@ namespace ControlGallery
 
         #region [Data I/F]
 
-        public void UpdateUI(bool trayExist, string craneName)  //SCHandler h)
+        public void UpdateUI(bool trayExist, string craneName, int eqpStatus)  //SCHandler h)
         {
-            BackColor = GetStatusColor(trayExist);
+            BackColor = GetStatusColor(trayExist, eqpStatus);
             Text = craneName;   // GetStatusText(h).Substring(0, 1);
         }
 
@@ -73,8 +73,12 @@ namespace ControlGallery
          * ---> 초록색 계열 : 온라인
          * 
          */
-        private Color GetStatusColor(bool trayExist)
+        private Color GetStatusColor(bool trayExist, int eqpStatus)
         {
+            if (eqpStatus == 4)
+            {
+                return Color.Red;
+            }
             if (trayExist)
             {
                 return Color.Lime;
