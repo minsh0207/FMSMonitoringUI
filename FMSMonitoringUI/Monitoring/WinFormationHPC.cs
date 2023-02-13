@@ -44,7 +44,7 @@ namespace FMSMonitoringUI.Monitoring
             _EqpType = eqpType;
             _UnitID = unitid;
 
-            titBar.TitleText = titleText;
+            titBar.TitleText = $"{titleText} {LocalLanguage.GetItemString("DEF_Information")}";
         }
 
         #region WinFormationHPC Event
@@ -363,7 +363,7 @@ namespace FMSMonitoringUI.Monitoring
                 // Set Query
                 StringBuilder strSQL = new StringBuilder();
 
-                strSQL.Append(" UPDATE fms_v.tb_mst_aging");
+                strSQL.Append(" UPDATE fms_v.tb_mst_eqp");
                 switch (saveType)
                 {
                     case enCommnadType.DataClearSave:
@@ -372,7 +372,7 @@ namespace FMSMonitoringUI.Monitoring
                 }
 
                 //필수값
-                strSQL.Append($" WHERE rack_id = '{rackid}'");
+                strSQL.Append($" WHERE unit_id = '{rackid}'");
 
                 var jsonResult = await rest.GetJson(enActionType.SQL_UPDATE, strSQL.ToString());
 
@@ -614,11 +614,11 @@ namespace FMSMonitoringUI.Monitoring
             // status는 현장가서 확인 해 볼것.
             if (rbClearInfo.Checked)
             {
-                sql = "status = 'E', tray_cnt = null, tray_id = null, tray_id_2 = null, start_time = null, end_time = null";
+                sql = "tray_cnt = null, tray_id = null, tray_id_2 = null, start_time = null, end_time = null";
             }
             else if (rbClearTrouble.Checked)
             {
-                sql = "status = 'E', trouble_code = null";
+                sql = "eqp_trouble_code = null";
             }
 
             return sql;

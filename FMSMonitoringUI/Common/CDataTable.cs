@@ -554,8 +554,8 @@ namespace MonitoringUI.Common
 
             //dt.Rows.Add("CHINESE", "CHINESE");
             //dt.Rows.Add("KOREAN", "KOREAN");
-            dt.Rows.Add("ENGLISH", "ENGLISH");
-            dt.Rows.Add("FRANCE", "FRANCE");
+            dt.Rows.Add(enLoginLanguage.English.ToString(), enLoginLanguage.English.ToString());
+            dt.Rows.Add(enLoginLanguage.France.ToString(), enLoginLanguage.France.ToString());
 
             return dt;
         }

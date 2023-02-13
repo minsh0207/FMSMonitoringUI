@@ -49,6 +49,7 @@ namespace MonitoringUI.Common
 		public static string m_strSaveLoginName = "";	// Save Login Name
 		public static string m_strSaveLoginClass = "";	// Save Login Class
         public static enLoginLanguage m_enLanguage;     // Login Language
+        public static string m_strLanguage = "";	    // Login Language
         public static int UserClassID 
         {
             get { return Convert.ToInt16(m_strLoginClass); }

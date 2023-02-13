@@ -48,6 +48,8 @@ namespace FMSMonitoringUI.Monitoring
             InitGridViewTray();
             InitLanguage();
 
+            titBar.TitleText = $"{eqpType} {LocalLanguage.GetItemString("DEF_Process_Lead_Time")}";
+
             //InitChart();
         }
 
@@ -113,7 +115,7 @@ namespace FMSMonitoringUI.Monitoring
         #region InitLanguage
         private void InitLanguage()
         {
-            titBar.CallLocalLanguage();
+            //titBar.CallLocalLanguage();
 
             Exit.CallLocalLanguage();
         }
@@ -309,7 +311,7 @@ namespace FMSMonitoringUI.Monitoring
                 gridTrayInfo.SetValue(col, row, item.TRAY_ID_2); col++;
                 gridTrayInfo.SetValue(col, row, item.START_TIME.Year == 1 ? "" : item.START_TIME.ToString()); col++;
                 gridTrayInfo.SetValue(col, row, item.PLAN_TIME.Year == 1 ? "" : item.PLAN_TIME.ToString()); col++;
-                gridTrayInfo.SetValue(col, row, GetTimeSpan(item.START_TIME)); col++;
+                gridTrayInfo.SetValue(col, row, GetTimeSpan(item.TRAY_ID, item.START_TIME)); col++;
                 gridTrayInfo.SetValue(col, row, string.Format($"{item.AGING_TIME} (min)"));
                 row++;
             }
@@ -332,7 +334,7 @@ namespace FMSMonitoringUI.Monitoring
                 gridTrayInfo.SetValue(col, row, item.TRAY_ID_2); col++;
                 gridTrayInfo.SetValue(col, row, item.START_TIME.Year == 1 ? "" : item.START_TIME.ToString()); col++;
                 gridTrayInfo.SetValue(col, row, item.PLAN_TIME.Year == 1 ? "" : item.PLAN_TIME.ToString()); col++;
-                gridTrayInfo.SetValue(col, row, GetTimeSpan(item.START_TIME)); col++;
+                gridTrayInfo.SetValue(col, row, GetTimeSpan(item.TRAY_ID, item.START_TIME)); col++;
                 gridTrayInfo.SetValue(col, row, string.Format($"0 (min)"));
                 row++;
             }
@@ -362,7 +364,7 @@ namespace FMSMonitoringUI.Monitoring
                 rowEx1["Tray ID L2"] = item.TRAY_ID_2;
                 rowEx1["Start Time"] = item.START_TIME;
                 rowEx1["Plan Time"] = item.PLAN_TIME;
-                rowEx1["Process Time"] = GetTimeSpan(item.START_TIME);
+                rowEx1["Process Time"] = GetTimeSpan(item.TRAY_ID, item.START_TIME);
                 rowEx1["Specs (MES)"] = "0000";
 
                 dt.Rows.Add(rowEx1);
@@ -372,8 +374,10 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
-        private string GetTimeSpan(DateTime StartDate)
+        private string GetTimeSpan(string trayID, DateTime StartDate)
         {
+            if (trayID == null || trayID == "") return "";
+
             DateTime CurrentTime = DateTime.Now;
             TimeSpan dateDiff = CurrentTime - StartDate;
 

@@ -22,11 +22,13 @@ namespace MonitoringUI
         {
             get
             {
-                return statusLabel.Text;
+                //return statusLabel.Text;
+                return this.Text;
             }
             set
             {
-                statusLabel.Text = value;
+                //statusLabel.Text = value;
+                this.Text = value;
             }
         }
         #endregion

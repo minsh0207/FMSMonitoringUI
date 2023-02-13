@@ -177,8 +177,8 @@ namespace FMSMonitoringUI.Monitoring
         }
         private void InitGridViewTray()
         {
-            if (_TrayCnt > 1) this.Size = new System.Drawing.Size(1100, 531);
-            else this.Size = new System.Drawing.Size(960, 531);
+            if (_TrayCnt > 1) this.Size = new System.Drawing.Size(1100, 571);
+            else this.Size = new System.Drawing.Size(960, 571);
 
             List<string> lstTitle = new List<string>();
             lstTitle.Add(LocalLanguage.GetItemString("DEF_Tray_Information"));

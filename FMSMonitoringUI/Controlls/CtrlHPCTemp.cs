@@ -80,7 +80,7 @@ namespace FMSMonitoringUI.Controlls
         {
             string[] columnName = { "CH", 
                                     LocalLanguage.GetItemString("DEF_Cell_ID"),
-                                    LocalLanguage.GetItemString("DEF_Templature") };
+                                    LocalLanguage.GetItemString("DEF_Temperature") };
 
             List<string> lstTitle = new List<string>();
             lstTitle = columnName.ToList();
@@ -101,7 +101,7 @@ namespace FMSMonitoringUI.Controlls
             //List<int> lstColumn = new List<int>();
             //lstColumn.Add(-1);      // DataGridView Header 병합
             //lstTitle = new List<string>();
-            //lstTitle.Add("Templature");
+            //lstTitle.Add("Temperature");
             //gridRackTemp.ColumnMergeList(lstColumn, lstTitle);
 
             gridRackTemp.ColumnHeadersHeight(28);

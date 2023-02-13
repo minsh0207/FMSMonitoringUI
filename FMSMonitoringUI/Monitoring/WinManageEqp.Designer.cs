@@ -31,6 +31,10 @@
             this.titBar = new MonitoringUI.Controlls.CtrlTitleBar();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.gridTrayInfo = new FMSMonitoringUI.Controlls.CtrlDataGridView();
+            this.ctrlGroupBox3 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlGroupBox();
+            this.DataClearSave = new MonitoringUI.Controlls.CButton.CtrlButton();
+            this.rbClearTrouble = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
+            this.rbClearInfo = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
             this.ctrlLabel4 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.ctrlGroupBox1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlGroupBox();
             this.EqpControlSave = new MonitoringUI.Controlls.CButton.CtrlButton();
@@ -43,21 +47,17 @@
             this.gridEqpInfo = new FMSMonitoringUI.Controlls.CtrlDataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.Exit = new MonitoringUI.Controlls.CButton.CtrlButton();
-            this.ctrlGroupBox3 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlGroupBox();
-            this.DataClearSave = new MonitoringUI.Controlls.CButton.CtrlButton();
-            this.rbClearTrouble = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
-            this.rbClearInfo = new FMSMonitoringUI.Controlls.WindowsForms.CtrlRadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            this.ctrlGroupBox3.SuspendLayout();
             this.ctrlGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.ctrlGroupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // titBar
@@ -108,6 +108,61 @@
             this.gridTrayInfo.Size = new System.Drawing.Size(404, 385);
             this.gridTrayInfo.TabIndex = 1;
             this.gridTrayInfo.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            // 
+            // ctrlGroupBox3
+            // 
+            this.ctrlGroupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlGroupBox3.Controls.Add(this.DataClearSave);
+            this.ctrlGroupBox3.Controls.Add(this.rbClearTrouble);
+            this.ctrlGroupBox3.Controls.Add(this.rbClearInfo);
+            this.ctrlGroupBox3.ForeColor = System.Drawing.Color.White;
+            this.ctrlGroupBox3.LanguageID = "DEF_Data_Clear";
+            this.ctrlGroupBox3.Location = new System.Drawing.Point(11, 230);
+            this.ctrlGroupBox3.Name = "ctrlGroupBox3";
+            this.ctrlGroupBox3.Size = new System.Drawing.Size(313, 90);
+            this.ctrlGroupBox3.TabIndex = 70;
+            this.ctrlGroupBox3.TabStop = false;
+            this.ctrlGroupBox3.Text = "Data Clear";
+            this.ctrlGroupBox3.TitleText = "Data Clear";
+            // 
+            // DataClearSave
+            // 
+            this.DataClearSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.DataClearSave.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.DataClearSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.DataClearSave.LabelText = "Save";
+            this.DataClearSave.LanguageID = "DEF_Save";
+            this.DataClearSave.Location = new System.Drawing.Point(211, 21);
+            this.DataClearSave.Name = "DataClearSave";
+            this.DataClearSave.Size = new System.Drawing.Size(89, 52);
+            this.DataClearSave.TabIndex = 45;
+            this.DataClearSave.Click += new System.EventHandler(this.Save_Click);
+            // 
+            // rbClearTrouble
+            // 
+            this.rbClearTrouble.AutoSize = true;
+            this.rbClearTrouble.ForeColor = System.Drawing.Color.White;
+            this.rbClearTrouble.LanguageID = "DEF_Clear_Trouble";
+            this.rbClearTrouble.Location = new System.Drawing.Point(13, 55);
+            this.rbClearTrouble.Name = "rbClearTrouble";
+            this.rbClearTrouble.Size = new System.Drawing.Size(101, 17);
+            this.rbClearTrouble.TabIndex = 44;
+            this.rbClearTrouble.TabStop = true;
+            this.rbClearTrouble.Text = "Clear Trouble";
+            this.rbClearTrouble.UseVisualStyleBackColor = true;
+            // 
+            // rbClearInfo
+            // 
+            this.rbClearInfo.AutoSize = true;
+            this.rbClearInfo.ForeColor = System.Drawing.Color.White;
+            this.rbClearInfo.LanguageID = "DEF_Clear_Information";
+            this.rbClearInfo.Location = new System.Drawing.Point(13, 27);
+            this.rbClearInfo.Name = "rbClearInfo";
+            this.rbClearInfo.Size = new System.Drawing.Size(119, 17);
+            this.rbClearInfo.TabIndex = 43;
+            this.rbClearInfo.TabStop = true;
+            this.rbClearInfo.Text = "Clear Information";
+            this.rbClearInfo.UseVisualStyleBackColor = true;
             // 
             // ctrlLabel4
             // 
@@ -284,61 +339,6 @@
             this.Exit.TabIndex = 2;
             this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
-            // ctrlGroupBox3
-            // 
-            this.ctrlGroupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlGroupBox3.Controls.Add(this.DataClearSave);
-            this.ctrlGroupBox3.Controls.Add(this.rbClearTrouble);
-            this.ctrlGroupBox3.Controls.Add(this.rbClearInfo);
-            this.ctrlGroupBox3.ForeColor = System.Drawing.Color.White;
-            this.ctrlGroupBox3.LanguageID = "DEF_Data_Clear";
-            this.ctrlGroupBox3.Location = new System.Drawing.Point(11, 230);
-            this.ctrlGroupBox3.Name = "ctrlGroupBox3";
-            this.ctrlGroupBox3.Size = new System.Drawing.Size(313, 90);
-            this.ctrlGroupBox3.TabIndex = 70;
-            this.ctrlGroupBox3.TabStop = false;
-            this.ctrlGroupBox3.Text = "Data Clear";
-            this.ctrlGroupBox3.TitleText = "Data Clear";
-            // 
-            // DataClearSave
-            // 
-            this.DataClearSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.DataClearSave.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.DataClearSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.DataClearSave.LabelText = "Save";
-            this.DataClearSave.LanguageID = "DEF_Save";
-            this.DataClearSave.Location = new System.Drawing.Point(211, 21);
-            this.DataClearSave.Name = "DataClearSave";
-            this.DataClearSave.Size = new System.Drawing.Size(89, 52);
-            this.DataClearSave.TabIndex = 45;
-            this.DataClearSave.Click += new System.EventHandler(this.Save_Click);
-            // 
-            // rbClearTrouble
-            // 
-            this.rbClearTrouble.AutoSize = true;
-            this.rbClearTrouble.ForeColor = System.Drawing.Color.White;
-            this.rbClearTrouble.LanguageID = "DEF_Clear_Trouble";
-            this.rbClearTrouble.Location = new System.Drawing.Point(13, 55);
-            this.rbClearTrouble.Name = "rbClearTrouble";
-            this.rbClearTrouble.Size = new System.Drawing.Size(101, 17);
-            this.rbClearTrouble.TabIndex = 44;
-            this.rbClearTrouble.TabStop = true;
-            this.rbClearTrouble.Text = "Clear Trouble";
-            this.rbClearTrouble.UseVisualStyleBackColor = true;
-            // 
-            // rbClearInfo
-            // 
-            this.rbClearInfo.AutoSize = true;
-            this.rbClearInfo.ForeColor = System.Drawing.Color.White;
-            this.rbClearInfo.LanguageID = "DEF_Clear_Information";
-            this.rbClearInfo.Location = new System.Drawing.Point(13, 27);
-            this.rbClearInfo.Name = "rbClearInfo";
-            this.rbClearInfo.Size = new System.Drawing.Size(119, 17);
-            this.rbClearInfo.TabIndex = 43;
-            this.rbClearInfo.TabStop = true;
-            this.rbClearInfo.Text = "Clear Information";
-            this.rbClearInfo.UseVisualStyleBackColor = true;
-            // 
             // WinManageEqp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -348,12 +348,14 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.titBar);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "WinManageEqp";
             this.Padding = new System.Windows.Forms.Padding(2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WinManageEqp";
             this.TopMost = true;
+            this.WindowID = "WinManageEqp";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.WinManageEqp_FormClosed);
             this.Load += new System.EventHandler(this.WinManageEqp_Load);
             this.Controls.SetChildIndex(this.titBar, 0);
@@ -364,6 +366,8 @@
             this.splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            this.ctrlGroupBox3.ResumeLayout(false);
+            this.ctrlGroupBox3.PerformLayout();
             this.ctrlGroupBox1.ResumeLayout(false);
             this.ctrlGroupBox1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -371,8 +375,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            this.ctrlGroupBox3.ResumeLayout(false);
-            this.ctrlGroupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

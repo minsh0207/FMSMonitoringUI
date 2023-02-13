@@ -30,8 +30,6 @@ namespace MonitoringUI.Popup
             // Release 일때만... 
 
             InitializeComponent();
-            InitControl();
-            InitLanguage();
 
 //#if (DEBUG == fasle)
 //            AutoUpdater.Start("http://ecs-1-spare/MonitoringUI/MonitoringUI.xml");
@@ -44,13 +42,14 @@ namespace MonitoringUI.Popup
         #region WinLogin Load
         private void WinLogin_Load(object sender, EventArgs e)
         {
-            ;
+            InitControl();
+            InitLanguage();
         }
         #endregion
 
         private void InitControl()
         {
-            cbLanguage_SelectedIndexChanged("ENGLISH", "ENGLISH");
+            cbLanguage_SelectedIndexChanged(CDefine.m_strLanguage, "");
 
             var dt = CDataTable.TableLanguage();
             cbLanguage.DataSource(dt);
@@ -60,6 +59,11 @@ namespace MonitoringUI.Popup
 
             tbPassword.OnTextBoxKeyDownEvent += TbPassword_KeyDown;
             tbPassword.OnTextBoxDoubleClickEvent += TbPassword_DoubleClick;
+
+            if (CDefine.m_enLanguage == enLoginLanguage.English)
+                cbLanguage.SelectedIndex = 0;
+            else if (CDefine.m_enLanguage == enLoginLanguage.France)
+                cbLanguage.SelectedIndex = 1;
 
             cbLanguage.OnCboItemChanged += cbLanguage_SelectedIndexChanged;            
         }
@@ -118,22 +122,36 @@ namespace MonitoringUI.Popup
 
         private void cbLanguage_SelectedIndexChanged(string ItemID, string ItemName)
         {
-            switch (ItemID)
+            if (ItemID == enLoginLanguage.France.ToString())
             {
-                case "FRANCE":
-                    Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("fr-FR");
-                    CDefine.m_enLanguage = enLoginLanguage.France;
-                    break;
-                case "KOREAN":
-                    CDefine.m_enLanguage = enLoginLanguage.Korean;
-                    Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
-                    break;
-                case "ENGLISH":
-                    CDefine.m_enLanguage = enLoginLanguage.English;
-                    Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
-                    break;
-
+                Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("fr-FR");
+                CDefine.m_enLanguage = enLoginLanguage.France;
+                CDefine.m_strLanguage = enLoginLanguage.France.ToString();
             }
+            else if (ItemID == enLoginLanguage.English.ToString())
+            {
+                CDefine.m_enLanguage = enLoginLanguage.English;
+                Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
+                CDefine.m_strLanguage = enLoginLanguage.English.ToString();
+            }
+            
+
+            //switch (ItemID)
+            //{
+            //    case "FRANCE":
+            //        Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("fr-FR");
+            //        CDefine.m_enLanguage = enLoginLanguage.France;
+            //        break;
+            //    case "KOREAN":
+            //        CDefine.m_enLanguage = enLoginLanguage.Korean;
+            //        Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
+            //        break;
+            //    case "ENGLISH":
+            //        CDefine.m_enLanguage = enLoginLanguage.English;
+            //        Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
+            //        break;
+
+            //}
 
             LocalLanguage.resxLanguage = new ResourceManager("MonitoringUI.WinFormRoot", typeof(WinFormRoot).Assembly);
 

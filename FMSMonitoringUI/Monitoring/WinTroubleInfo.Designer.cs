@@ -169,7 +169,7 @@
             this.Exit.LanguageID = "DEF_Exit";
             this.Exit.Location = new System.Drawing.Point(0, 0);
             this.Exit.Name = "Exit";
-            this.Exit.Size = new System.Drawing.Size(263, 40);
+            this.Exit.Size = new System.Drawing.Size(170, 40);
             this.Exit.TabIndex = 0;
             this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
@@ -182,12 +182,14 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "WinTroubleInfo";
             this.Padding = new System.Windows.Forms.Padding(2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WinLeadTime";
             this.TopMost = true;
+            this.WindowID = "WinLeadTime";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.WinTroubleInfo_FormClosed);
             this.Load += new System.EventHandler(this.WinTroubleInfo_Load);
             this.Controls.SetChildIndex(this.panel1, 0);

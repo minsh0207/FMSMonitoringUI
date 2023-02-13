@@ -132,8 +132,8 @@
   <data name="DEF_Aging" xml:space="preserve">
     <value>FR-Aging</value>
   </data>
-  <data name="DEF_Aging_Rack_Setting" xml:space="preserve">
-    <value>FR-Aging Rack Setting</value>
+  <data name="DEF_Aging_Rack_Information" xml:space="preserve">
+    <value>FR-Aging Rack Information</value>
   </data>
   <data name="DEF_Avg_Temp" xml:space="preserve">
     <value>FR-Avg Temp</value>
@@ -141,11 +141,11 @@
   <data name="DEF_Bad_Rack" xml:space="preserve">
     <value>FR-Bad Rack</value>
   </data>
-  <data name="DEF_Bad_Rack1" xml:space="preserve">
-    <value>FR-Bad Rack</value>
-  </data>
   <data name="DEF_Bay" xml:space="preserve">
     <value>FR-Bay</value>
+  </data>
+  <data name="DEF_BCR_Conveyor_Information" xml:space="preserve">
+    <value>FR-BCR Conveyor Information</value>
   </data>
   <data name="DEF_Binding_Time" xml:space="preserve">
     <value>FR-Binding Time</value>
@@ -157,9 +157,6 @@
     <value>FR-Carriage Position</value>
   </data>
   <data name="DEF_Cell_Count" xml:space="preserve">
-    <value>FR-Cell Count</value>
-  </data>
-  <data name="DEF_Cell_Count1" xml:space="preserve">
     <value>FR-Cell Count</value>
   </data>
   <data name="DEF_Cell_ID" xml:space="preserve">
@@ -190,7 +187,7 @@
     <value>FR-Clear Trouble</value>
   </data>
   <data name="DEF_Command_Ready" xml:space="preserve">
-    <value>FR-Command Ready :</value>
+    <value>FR-Command Ready</value>
   </data>
   <data name="DEF_Configuration" xml:space="preserve">
     <value>FR-Configuration</value>
@@ -203,9 +200,6 @@
   </data>
   <data name="DEF_Control_Mode" xml:space="preserve">
     <value>FR-Control Mode :</value>
-  </data>
-  <data name="DEF_Control_Mode1" xml:space="preserve">
-    <value>FR-Control Mode</value>
   </data>
   <data name="DEF_Control_Status" xml:space="preserve">
     <value>FR-Control Status</value>
@@ -232,9 +226,6 @@
     <value>FR-Crane Information</value>
   </data>
   <data name="DEF_Current_Equipment" xml:space="preserve">
-    <value>FR-Current Equipment</value>
-  </data>
-  <data name="DEF_Current_Equipment1" xml:space="preserve">
     <value>FR-Current Equipment</value>
   </data>
   <data name="DEF_Current_Process" xml:space="preserve">
@@ -291,8 +282,8 @@
   <data name="DEF_End_Time" xml:space="preserve">
     <value>FR-End Time</value>
   </data>
-  <data name="DEF_End_Time1" xml:space="preserve">
-    <value>FR-End Time</value>
+  <data name="DEF_Entire_Formation_Line" xml:space="preserve">
+    <value>Entire Formation Line</value>
   </data>
   <data name="DEF_EQP_ID" xml:space="preserve">
     <value>FR-EQP ID</value>
@@ -312,13 +303,7 @@
   <data name="DEF_Equipment_ID" xml:space="preserve">
     <value>FR-Equipment ID</value>
   </data>
-  <data name="DEF_Equipment_ID1" xml:space="preserve">
-    <value>FR-Equipment ID</value>
-  </data>
   <data name="DEF_Equipment_Information" xml:space="preserve">
-    <value>FR-Equipment Information</value>
-  </data>
-  <data name="DEF_Equipment_Information1" xml:space="preserve">
     <value>FR-Equipment Information</value>
   </data>
   <data name="DEF_Equipment_Name" xml:space="preserve">
@@ -372,11 +357,8 @@
   <data name="DEF_Fork_Position" xml:space="preserve">
     <value>FR-Fork Position :</value>
   </data>
-  <data name="DEF_Formation(CHG)" xml:space="preserve">
-    <value>FR-Formation(CHG)</value>
-  </data>
-  <data name="DEF_Formation(HPC)" xml:space="preserve">
-    <value>FR-Formation(HPC)</value>
+  <data name="DEF_Formation" xml:space="preserve">
+    <value>FR-Formation</value>
   </data>
   <data name="DEF_Formation_Box" xml:space="preserve">
     <value>FR-Formation Box</value>
@@ -435,6 +417,9 @@
   <data name="DEF_Idle" xml:space="preserve">
     <value>FR-Idle</value>
   </data>
+  <data name="DEF_Information" xml:space="preserve">
+    <value>Information</value>
+  </data>
   <data name="DEF_INPUT" xml:space="preserve">
     <value>INPUT</value>
   </data>
@@ -443,9 +428,6 @@
   </data>
   <data name="DEF_In_Aging" xml:space="preserve">
     <value>FR-In Aging</value>
-  </data>
-  <data name="DEF_In_Aging1" xml:space="preserve">
-    <value>FR-In Aging :</value>
   </data>
   <data name="DEF_JIG#1_Information" xml:space="preserve">
     <value>FR-JIG#1 Information</value>
@@ -498,9 +480,6 @@
   <data name="DEF_Lot_ID" xml:space="preserve">
     <value>FR-Lot ID</value>
   </data>
-  <data name="DEF_Lot_ID1" xml:space="preserve">
-    <value>FR-Lot ID</value>
-  </data>
   <data name="DEF_LOWER" xml:space="preserve">
     <value>FR-LOWER</value>
   </data>
@@ -518,9 +497,6 @@
   </data>
   <data name="DEF_Magazine_Command" xml:space="preserve">
     <value>FR-Magazine Command</value>
-  </data>
-  <data name="DEF_Main" xml:space="preserve">
-    <value>FR-Main</value>
   </data>
   <data name="DEF_Maintenance" xml:space="preserve">
     <value>FR-Maintenance</value>
@@ -544,9 +520,6 @@
     <value>FR-Name</value>
   </data>
   <data name="DEF_No" xml:space="preserve">
-    <value>FR-No</value>
-  </data>
-  <data name="DEF_No1" xml:space="preserve">
     <value>FR-No</value>
   </data>
   <data name="DEF_NoInput_Rack" xml:space="preserve">
@@ -606,25 +579,16 @@
   <data name="DEF_Previous_Position" xml:space="preserve">
     <value>FR-Previous Position</value>
   </data>
-  <data name="DEF_Previous_Position1" xml:space="preserve">
-    <value>FR-Previous Position</value>
-  </data>
   <data name="DEF_Process_Data" xml:space="preserve">
     <value>FR-Process Data</value>
   </data>
   <data name="DEF_Process_Flow" xml:space="preserve">
     <value>FR-Process Flow</value>
   </data>
-  <data name="DEF_Process_Flow1" xml:space="preserve">
-    <value>FR-Process Flow</value>
-  </data>
   <data name="DEF_Process_Lead_Time" xml:space="preserve">
     <value>FR-Process Lead Time</value>
   </data>
   <data name="DEF_Process_Name" xml:space="preserve">
-    <value>FR-Process Name</value>
-  </data>
-  <data name="DEF_Process_Name1" xml:space="preserve">
     <value>FR-Process Name</value>
   </data>
   <data name="DEF_Process_No" xml:space="preserve">
@@ -662,6 +626,9 @@
   </data>
   <data name="DEF_Recipe_Info" xml:space="preserve">
     <value>FR-Recipe Info</value>
+  </data>
+  <data name="DEF_Recipe_Information" xml:space="preserve">
+    <value>FR-Recipe Information</value>
   </data>
   <data name="DEF_Recipe_Item" xml:space="preserve">
     <value>FR-Recipe Item</value>
@@ -738,9 +705,6 @@
   <data name="DEF_Smoke_Only_or_Both" xml:space="preserve">
     <value>(FR-Smoke Only or Both)</value>
   </data>
-  <data name="DEF_Smoke_Only_or_Both1" xml:space="preserve">
-    <value>FR-Smoke Only or Both</value>
-  </data>
   <data name="DEF_Specs_(MES)" xml:space="preserve">
     <value>FR-Specs (MES)</value>
   </data>
@@ -771,14 +735,11 @@
   <data name="DEF_Tatal_Trouble" xml:space="preserve">
     <value>FR-Tatal Trouble</value>
   </data>
+  <data name="DEF_Temperature" xml:space="preserve">
+    <value>FR-Temperature</value>
+  </data>
   <data name="DEF_Temperature_Alarm_Only" xml:space="preserve">
     <value>(FR-Temperature Alarm Only)</value>
-  </data>
-  <data name="DEF_Temperature_Alarm_Only1" xml:space="preserve">
-    <value>FR-Temperature Alarm Only</value>
-  </data>
-  <data name="DEF_Templature" xml:space="preserve">
-    <value>FR-Templature</value>
   </data>
   <data name="DEF_Total_Rack" xml:space="preserve">
     <value>FR-Total Rack :</value>
@@ -799,7 +760,7 @@
     <value>FR-Tray Details</value>
   </data>
   <data name="DEF_Tray_Exist" xml:space="preserve">
-    <value>FR-Tray Exist :</value>
+    <value>FR-Tray Exist</value>
   </data>
   <data name="DEF_Tray_ID" xml:space="preserve">
     <value>FR-Tray ID</value>
@@ -811,9 +772,6 @@
     <value>FR-Tray ID 2</value>
   </data>
   <data name="DEF_Tray_Info" xml:space="preserve">
-    <value>FR-Tray Info</value>
-  </data>
-  <data name="DEF_Tray_Info1" xml:space="preserve">
     <value>FR-Tray Info</value>
   </data>
   <data name="DEF_Tray_Information" xml:space="preserve">
@@ -832,12 +790,6 @@
     <value>FR-Tray On</value>
   </data>
   <data name="DEF_Tray_Type" xml:space="preserve">
-    <value>FR-Tray Type</value>
-  </data>
-  <data name="DEF_Tray_Type1" xml:space="preserve">
-    <value>FR-Tray Type</value>
-  </data>
-  <data name="DEF_Tray_Type2" xml:space="preserve">
     <value>FR-Tray Type</value>
   </data>
   <data name="DEF_Trouble" xml:space="preserve">

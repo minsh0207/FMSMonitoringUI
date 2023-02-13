@@ -49,11 +49,7 @@ namespace FMSMonitoringUI.Controlls
     public partial class CtrlMonitoring : UserControlRoot
     {
         #region Properties
-        public override string Text { get; set; }
-        public bool UseAlarmPopup 
-        {
-            get { return cbUsePopUp.Checked; }
-        }
+        public override string Text { get; set; }        
         #endregion
 
         #region [Variable]
@@ -851,10 +847,10 @@ namespace FMSMonitoringUI.Controlls
                     int craneNo = trackno / 10;
                     CtrlSiteTrack siteTrack = sender as CtrlSiteTrack;
 
-                    WinWaterTank winForm = new WinWaterTank(_clientFMS[groupno], craneNo, _EqpName[siteTrack.Tag.ToString()]);
-                    winForm.Show();
+                    WinWaterTank form = new WinWaterTank(_clientFMS[groupno], craneNo, _EqpName[siteTrack.Tag.ToString()]);
+                    form.Show();
 
-                    winForm.GetTrayID(ref trayid1, ref trayid2);
+                    form.GetTrayID(ref trayid1, ref trayid2);
                     CLogger.WriteLog(enLogLevel.ButtonClick, this.Text, $"WaterTank = {_EqpName[siteTrack.Tag.ToString()]}, TrayID L1 = {trayid1}, TrayID L2 = {trayid2}");
                 }
                 else
@@ -879,19 +875,19 @@ namespace FMSMonitoringUI.Controlls
                                         
                     if (trackno > 0 && _ListBCR[groupno].ContainsKey(trackno) == false)
                     {
-                        WinConveyorInfo winForm = new WinConveyorInfo("Conveyor", _clientFMS[groupno], trackno);
-                        winForm.Show();
+                        WinConveyorInfo form = new WinConveyorInfo("Conveyor", _clientFMS[groupno], trackno);
+                        form.Show();
 
-                        winForm.GetTrayID(ref trayid1, ref trayid2);
+                        form.GetTrayID(ref trayid1, ref trayid2);
                         CLogger.WriteLog(enLogLevel.ButtonClick, this.Text, $"Track No = {trackno}, TrayID L1 = {trayid1}, TrayID L2 = {trayid2}");
 
                     }
                     else
                     {
-                        WinBCRConveyorInfo winForm = new WinBCRConveyorInfo(_clientFMS[groupno], trackno);
-                        winForm.Show();
+                        WinBCRConveyorInfo form = new WinBCRConveyorInfo(_clientFMS[groupno], trackno);
+                        form.Show();
 
-                        winForm.GetTrayID(ref trayid1, ref trayid2);
+                        form.GetTrayID(ref trayid1, ref trayid2);
                         CLogger.WriteLog(enLogLevel.ButtonClick, this.Text, $"Track No = {trackno}, TrayID L1 = {trayid1}, TrayID L2 = {trayid2}");
                     }
 
@@ -942,10 +938,14 @@ namespace FMSMonitoringUI.Controlls
                         //    JobType = int.Parse(data[(int)enCraneTagList.JobType].Value.ToString())
                         //};
 
-                        WinCraneInfo winForm = new WinCraneInfo(_clientFMS[crane.DeviceID], crane.CraneID, _EqpName[crane.EqpID]);
-                        winForm.Show();
+                        Point parentPoint = this.Location;
 
-                        winForm.GetTrayID(ref trayid1, ref trayid2);
+                        WinCraneInfo form = new WinCraneInfo(_clientFMS[crane.DeviceID], crane.CraneID, _EqpName[crane.EqpID]);
+                        form.StartPosition = FormStartPosition.Manual;  // 폼의 위치가 Location 의 속성에 의해서 결정
+                        form.Location = new Point((this.ClientSize.Width - form.Width) / 2, parentPoint.Y + 90);
+                        form.Show();
+
+                        form.GetTrayID(ref trayid1, ref trayid2);
                         CLogger.WriteLog(enLogLevel.ButtonClick, this.Text, $"Crane No = {crane.CraneID}, TrayID L1 = {trayid1}, TrayID L2 = {trayid2}");
                     }
                 }
@@ -970,10 +970,10 @@ namespace FMSMonitoringUI.Controlls
                     //    Destination = int.Parse(data[(int)enCVTagList.Destination].Value.ToString())
                     //};
 
-                    WinConveyorInfo winForm = new WinConveyorInfo("RTV", _clientFMS[groupno], conveyorNo);
-                    winForm.Show();
+                    WinConveyorInfo form = new WinConveyorInfo("RTV", _clientFMS[groupno], conveyorNo);
+                    form.Show();
 
-                    winForm.GetTrayID(ref trayid1, ref trayid2);
+                    form.GetTrayID(ref trayid1, ref trayid2);
                     CLogger.WriteLog(enLogLevel.ButtonClick, this.Text, $"RTV No = {conveyorNo}, TrayID L1 = {trayid1}, TrayID L2 = {trayid2}");
                 }
             }

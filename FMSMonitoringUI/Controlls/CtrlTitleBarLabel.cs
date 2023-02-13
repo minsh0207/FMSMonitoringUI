@@ -58,12 +58,17 @@ namespace MonitoringUI.Controlls
 
         private void LbTitle_MouseMove(object sender, MouseEventArgs e)
         {
-            lbTitle.ForeColor = Color.FromArgb(0,129,110);
+            //lbTitle.ForeColor = Color.FromArgb(0,129,110);
         }
 
         private void LbTitle_MouseLeave(object sender, EventArgs e)
         {
-            lbTitle.ForeColor = Color.White;
+            //lbTitle.ForeColor = Color.White;
+        }
+
+        public void SetTitelColor(Color color)
+        {
+            lbTitle.ForeColor = color;
         }
 
         #region CallLocalLanguage

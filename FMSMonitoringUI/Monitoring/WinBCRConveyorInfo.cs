@@ -132,23 +132,7 @@ namespace FMSMonitoringUI.Monitoring
         #region InitLanguage
         private void InitLanguage()
         {
-            foreach (var ctl in this.Controls)
-            {
-                if (ctl.GetType() == typeof(CtrlTitleBar))
-                {
-                    CtrlTitleBar control = ctl as CtrlTitleBar;
-                    control.CallLocalLanguage();
-                }
-            }
-
-            foreach (var ctl in panel2.Controls)
-            {
-                if (ctl.GetType() == typeof(CtrlButton))
-                {
-                    CtrlButton control = ctl as CtrlButton;
-                    control.CallLocalLanguage();
-                }
-            }
+            titBar.CallLocalLanguage();
 
             foreach (var ctl in panel3.Controls)
             {
@@ -168,6 +152,8 @@ namespace FMSMonitoringUI.Monitoring
                     control.CallLocalLanguage();
                 }
             }
+
+            Exit.CallLocalLanguage();
         }
         #endregion
 

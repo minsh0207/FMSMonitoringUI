@@ -67,7 +67,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.Exit);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(2, 639);
+            this.panel2.Location = new System.Drawing.Point(2, 607);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(718, 60);
             this.panel2.TabIndex = 1;
@@ -119,7 +119,7 @@
             this.panel3.Location = new System.Drawing.Point(2, 62);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(718, 577);
+            this.panel3.Size = new System.Drawing.Size(718, 545);
             this.panel3.TabIndex = 2;
             // 
             // ctrlLabel3
@@ -127,7 +127,7 @@
             this.ctrlLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel3.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel3.LanguageID = "DEF_Status";
-            this.ctrlLabel3.Location = new System.Drawing.Point(27, 220);
+            this.ctrlLabel3.Location = new System.Drawing.Point(27, 189);
             this.ctrlLabel3.Name = "ctrlLabel3";
             this.ctrlLabel3.Size = new System.Drawing.Size(97, 24);
             this.ctrlLabel3.TabIndex = 12;
@@ -140,7 +140,7 @@
             this.uiTlbStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28F));
             this.uiTlbStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32F));
             this.uiTlbStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.uiTlbStatus.Location = new System.Drawing.Point(119, 220);
+            this.uiTlbStatus.Location = new System.Drawing.Point(119, 189);
             this.uiTlbStatus.Name = "uiTlbStatus";
             this.uiTlbStatus.RowCount = 1;
             this.uiTlbStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -152,7 +152,7 @@
             this.ctrlLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel2.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel2.LanguageID = "DEF_Control_Mode";
-            this.ctrlLabel2.Location = new System.Drawing.Point(27, 143);
+            this.ctrlLabel2.Location = new System.Drawing.Point(27, 112);
             this.ctrlLabel2.Name = "ctrlLabel2";
             this.ctrlLabel2.Size = new System.Drawing.Size(97, 24);
             this.ctrlLabel2.TabIndex = 10;
@@ -164,7 +164,7 @@
             this.ctrlLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel4.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel4.LanguageID = "DEF_Trouble_Status";
-            this.ctrlLabel4.Location = new System.Drawing.Point(384, 220);
+            this.ctrlLabel4.Location = new System.Drawing.Point(384, 190);
             this.ctrlLabel4.Name = "ctrlLabel4";
             this.ctrlLabel4.Size = new System.Drawing.Size(97, 24);
             this.ctrlLabel4.TabIndex = 14;
@@ -176,19 +176,20 @@
             this.ctrlLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel1.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel1.LanguageID = "DEF_Power";
-            this.ctrlLabel1.Location = new System.Drawing.Point(27, 115);
+            this.ctrlLabel1.Location = new System.Drawing.Point(372, 60);
             this.ctrlLabel1.Name = "ctrlLabel1";
             this.ctrlLabel1.Size = new System.Drawing.Size(97, 24);
             this.ctrlLabel1.TabIndex = 8;
             this.ctrlLabel1.Text = "Power :";
             this.ctrlLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ctrlLabel1.Visible = false;
             // 
             // uiTlbMode
             // 
             this.uiTlbMode.AutoSize = true;
             this.uiTlbMode.ColumnCount = 1;
             this.uiTlbMode.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.uiTlbMode.Location = new System.Drawing.Point(119, 143);
+            this.uiTlbMode.Location = new System.Drawing.Point(119, 112);
             this.uiTlbMode.Name = "uiTlbMode";
             this.uiTlbMode.RowCount = 3;
             this.uiTlbMode.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
@@ -202,7 +203,7 @@
             this.MagazineCommand.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.MagazineCommand.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.MagazineCommand.LanguageID = "DEF_Magazine_Command";
-            this.MagazineCommand.Location = new System.Drawing.Point(386, 320);
+            this.MagazineCommand.Location = new System.Drawing.Point(386, 290);
             this.MagazineCommand.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
             this.MagazineCommand.Name = "MagazineCommand";
             this.MagazineCommand.Size = new System.Drawing.Size(303, 31);
@@ -216,7 +217,7 @@
             this.Destination.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.Destination.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Destination.LanguageID = "DEF_Destination";
-            this.Destination.Location = new System.Drawing.Point(386, 286);
+            this.Destination.Location = new System.Drawing.Point(386, 256);
             this.Destination.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
             this.Destination.Name = "Destination";
             this.Destination.Size = new System.Drawing.Size(303, 31);
@@ -230,7 +231,7 @@
             this.FMSTroubleErrNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.FMSTroubleErrNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.FMSTroubleErrNo.LanguageID = "DEF_Trouble_ErrorNo";
-            this.FMSTroubleErrNo.Location = new System.Drawing.Point(386, 252);
+            this.FMSTroubleErrNo.Location = new System.Drawing.Point(386, 222);
             this.FMSTroubleErrNo.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
             this.FMSTroubleErrNo.Name = "FMSTroubleErrNo";
             this.FMSTroubleErrNo.Size = new System.Drawing.Size(303, 31);
@@ -244,7 +245,7 @@
             this.TrayID2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.TrayID2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TrayID2.LanguageID = "DEF_Tray_ID_2";
-            this.TrayID2.Location = new System.Drawing.Point(37, 491);
+            this.TrayID2.Location = new System.Drawing.Point(37, 460);
             this.TrayID2.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
             this.TrayID2.Name = "TrayID2";
             this.TrayID2.Size = new System.Drawing.Size(303, 31);
@@ -258,7 +259,7 @@
             this.TrayID1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.TrayID1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TrayID1.LanguageID = "DEF_Tray_ID_1";
-            this.TrayID1.Location = new System.Drawing.Point(37, 456);
+            this.TrayID1.Location = new System.Drawing.Point(37, 425);
             this.TrayID1.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
             this.TrayID1.Name = "TrayID1";
             this.TrayID1.Size = new System.Drawing.Size(303, 31);
@@ -272,7 +273,7 @@
             this.TrayCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.TrayCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TrayCount.LanguageID = "DEF_Tray_Count";
-            this.TrayCount.Location = new System.Drawing.Point(37, 423);
+            this.TrayCount.Location = new System.Drawing.Point(37, 392);
             this.TrayCount.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
             this.TrayCount.Name = "TrayCount";
             this.TrayCount.Size = new System.Drawing.Size(303, 31);
@@ -286,7 +287,7 @@
             this.TrayType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.TrayType.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TrayType.LanguageID = "DEF_Tray_Type";
-            this.TrayType.Location = new System.Drawing.Point(37, 388);
+            this.TrayType.Location = new System.Drawing.Point(37, 357);
             this.TrayType.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
             this.TrayType.Name = "TrayType";
             this.TrayType.Size = new System.Drawing.Size(303, 31);
@@ -300,7 +301,7 @@
             this.TrayExist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.TrayExist.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TrayExist.LanguageID = "DEF_Tray_Exist";
-            this.TrayExist.Location = new System.Drawing.Point(37, 353);
+            this.TrayExist.Location = new System.Drawing.Point(37, 322);
             this.TrayExist.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
             this.TrayExist.Name = "TrayExist";
             this.TrayExist.Size = new System.Drawing.Size(303, 31);
@@ -314,7 +315,7 @@
             this.CommandReady.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.CommandReady.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CommandReady.LanguageID = "DEF_Command_Ready";
-            this.CommandReady.Location = new System.Drawing.Point(37, 320);
+            this.CommandReady.Location = new System.Drawing.Point(37, 289);
             this.CommandReady.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
             this.CommandReady.Name = "CommandReady";
             this.CommandReady.Size = new System.Drawing.Size(303, 31);
@@ -328,7 +329,7 @@
             this.TroubleErrLevel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.TroubleErrLevel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TroubleErrLevel.LanguageID = "DEF_Trouble_ErrorLevel";
-            this.TroubleErrLevel.Location = new System.Drawing.Point(37, 286);
+            this.TroubleErrLevel.Location = new System.Drawing.Point(37, 255);
             this.TroubleErrLevel.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
             this.TroubleErrLevel.Name = "TroubleErrLevel";
             this.TroubleErrLevel.Size = new System.Drawing.Size(303, 31);
@@ -342,7 +343,7 @@
             this.CVTroubleErrNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.CVTroubleErrNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CVTroubleErrNo.LanguageID = "DEF_Trouble_ErrorNo";
-            this.CVTroubleErrNo.Location = new System.Drawing.Point(37, 252);
+            this.CVTroubleErrNo.Location = new System.Drawing.Point(37, 221);
             this.CVTroubleErrNo.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
             this.CVTroubleErrNo.Name = "CVTroubleErrNo";
             this.CVTroubleErrNo.Size = new System.Drawing.Size(303, 31);
@@ -354,7 +355,7 @@
             // ledTroubleStatus
             // 
             this.ledTroubleStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ledTroubleStatus.Location = new System.Drawing.Point(478, 223);
+            this.ledTroubleStatus.Location = new System.Drawing.Point(478, 193);
             this.ledTroubleStatus.Name = "ledTroubleStatus";
             this.ledTroubleStatus.Size = new System.Drawing.Size(81, 18);
             this.ledTroubleStatus.TabIndex = 15;
@@ -363,11 +364,12 @@
             // ledPower
             // 
             this.ledPower.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ledPower.Location = new System.Drawing.Point(122, 118);
+            this.ledPower.Location = new System.Drawing.Point(467, 63);
             this.ledPower.Name = "ledPower";
             this.ledPower.Size = new System.Drawing.Size(81, 18);
             this.ledPower.TabIndex = 9;
             this.ledPower.TitleText = "";
+            this.ledPower.Visible = false;
             // 
             // ctrlGroupBox2
             // 
@@ -376,7 +378,7 @@
             this.ctrlGroupBox2.LanguageID = "DEF_FMS";
             this.ctrlGroupBox2.Location = new System.Drawing.Point(371, 89);
             this.ctrlGroupBox2.Name = "ctrlGroupBox2";
-            this.ctrlGroupBox2.Size = new System.Drawing.Size(330, 478);
+            this.ctrlGroupBox2.Size = new System.Drawing.Size(330, 450);
             this.ctrlGroupBox2.TabIndex = 6;
             this.ctrlGroupBox2.TabStop = false;
             this.ctrlGroupBox2.Text = "FMS";
@@ -390,7 +392,7 @@
             this.ctrlGroupBox1.LanguageID = "DEF_Conveyor";
             this.ctrlGroupBox1.Location = new System.Drawing.Point(14, 89);
             this.ctrlGroupBox1.Name = "ctrlGroupBox1";
-            this.ctrlGroupBox1.Size = new System.Drawing.Size(341, 478);
+            this.ctrlGroupBox1.Size = new System.Drawing.Size(341, 450);
             this.ctrlGroupBox1.TabIndex = 5;
             this.ctrlGroupBox1.TabStop = false;
             this.ctrlGroupBox1.Text = "Conveyor";
@@ -401,7 +403,7 @@
             this.StationStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.StationStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.StationStatus.LanguageID = "DEF_Station_Status";
-            this.StationStatus.Location = new System.Drawing.Point(23, 437);
+            this.StationStatus.Location = new System.Drawing.Point(23, 406);
             this.StationStatus.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
             this.StationStatus.Name = "StationStatus";
             this.StationStatus.Size = new System.Drawing.Size(303, 31);
@@ -445,29 +447,31 @@
             this.titBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.titBar.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.titBar.ForeColor = System.Drawing.Color.White;
-            this.titBar.LanguageID = "DEF_Conveyor_Information";
+            this.titBar.LanguageID = "DEF_BCR_Conveyor_Information";
             this.titBar.Location = new System.Drawing.Point(2, 2);
             this.titBar.Margin = new System.Windows.Forms.Padding(4);
             this.titBar.Name = "titBar";
             this.titBar.Size = new System.Drawing.Size(718, 60);
             this.titBar.TabIndex = 3;
-            this.titBar.TitleText = "Conveyor Information";
+            this.titBar.TitleText = "BCR Conveyor Information";
             // 
             // WinBCRConveyorInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(722, 722);
+            this.ClientSize = new System.Drawing.Size(722, 690);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.titBar);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "WinBCRConveyorInfo";
             this.Padding = new System.Windows.Forms.Padding(2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WinBCRConveyorInfo";
             this.TopMost = true;
+            this.WindowID = "WinBCRConveyorInfo";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.WinBCRConveyorInfo_FormClosed);
             this.Load += new System.EventHandler(this.WinBCRConveyorInfo_Load);
             this.Controls.SetChildIndex(this.titBar, 0);

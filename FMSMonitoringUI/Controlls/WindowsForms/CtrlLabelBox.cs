@@ -90,7 +90,7 @@ namespace FMSMonitoringUI.Controlls.WindowsForms
         {
             if (_LanguageID != "")
             {
-                lbTitle.Text = LocalLanguage.GetItemString(_LanguageID);
+                lbTitle.Text = LocalLanguage.GetItemString(_LanguageID) + " ";
             }
         }
         #endregion

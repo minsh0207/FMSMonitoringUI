@@ -38,6 +38,7 @@
             this.barMain = new MonitoringUI.Controlls.CtrlTitleBarLabel();
             this.barAging = new MonitoringUI.Controlls.CtrlTitleBarLabel();
             this.barFormationCHG = new MonitoringUI.Controlls.CtrlTitleBarLabel();
+            this.cbUsePopUp = new FMSMonitoringUI.Controlls.WindowsForms.CtrlCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.scMainPanel)).BeginInit();
             this.scMainPanel.Panel1.SuspendLayout();
             this.scMainPanel.SuspendLayout();
@@ -58,6 +59,7 @@
             // scMainPanel.Panel1
             // 
             this.scMainPanel.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.scMainPanel.Panel1.Controls.Add(this.cbUsePopUp);
             this.scMainPanel.Panel1.Controls.Add(this.pictureBox1);
             this.scMainPanel.Panel1.Controls.Add(this.pictureBox2);
             this.scMainPanel.Panel1.Controls.Add(this.lbUserName);
@@ -114,13 +116,13 @@
             this.barFormationHPC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.barFormationHPC.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.barFormationHPC.ForeColor = System.Drawing.Color.White;
-            this.barFormationHPC.LanguageID = "DEF_Formation(HPC)";
-            this.barFormationHPC.Location = new System.Drawing.Point(641, 10);
+            this.barFormationHPC.LanguageID = "DEF_HPC";
+            this.barFormationHPC.Location = new System.Drawing.Point(695, 10);
             this.barFormationHPC.Margin = new System.Windows.Forms.Padding(4);
             this.barFormationHPC.Name = "barFormationHPC";
-            this.barFormationHPC.Size = new System.Drawing.Size(172, 50);
+            this.barFormationHPC.Size = new System.Drawing.Size(132, 50);
             this.barFormationHPC.TabIndex = 5;
-            this.barFormationHPC.TitleText = "Formation(HPC)";
+            this.barFormationHPC.TitleText = "HPC";
             // 
             // lbCurrentTime
             // 
@@ -140,13 +142,13 @@
             this.barMain.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.barMain.ForeColor = System.Drawing.Color.White;
             this.barMain.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.barMain.LanguageID = "DEF_Main";
+            this.barMain.LanguageID = "DEF_Entire_Formation_Line";
             this.barMain.Location = new System.Drawing.Point(212, 10);
             this.barMain.Margin = new System.Windows.Forms.Padding(4);
             this.barMain.Name = "barMain";
-            this.barMain.Size = new System.Drawing.Size(112, 50);
+            this.barMain.Size = new System.Drawing.Size(192, 50);
             this.barMain.TabIndex = 1;
-            this.barMain.TitleText = "Main";
+            this.barMain.TitleText = "Entire Formation Line";
             // 
             // barAging
             // 
@@ -155,10 +157,10 @@
             this.barAging.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.barAging.ForeColor = System.Drawing.Color.White;
             this.barAging.LanguageID = "DEF_Aging";
-            this.barAging.Location = new System.Drawing.Point(334, 10);
+            this.barAging.Location = new System.Drawing.Point(424, 10);
             this.barAging.Margin = new System.Windows.Forms.Padding(4);
             this.barAging.Name = "barAging";
-            this.barAging.Size = new System.Drawing.Size(112, 50);
+            this.barAging.Size = new System.Drawing.Size(132, 50);
             this.barAging.TabIndex = 2;
             this.barAging.TitleText = "Aging";
             // 
@@ -168,13 +170,27 @@
             this.barFormationCHG.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.barFormationCHG.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.barFormationCHG.ForeColor = System.Drawing.Color.White;
-            this.barFormationCHG.LanguageID = "DEF_Formation(CHG)";
-            this.barFormationCHG.Location = new System.Drawing.Point(457, 10);
+            this.barFormationCHG.LanguageID = "DEF_Formation";
+            this.barFormationCHG.Location = new System.Drawing.Point(556, 10);
             this.barFormationCHG.Margin = new System.Windows.Forms.Padding(4);
             this.barFormationCHG.Name = "barFormationCHG";
-            this.barFormationCHG.Size = new System.Drawing.Size(172, 50);
+            this.barFormationCHG.Size = new System.Drawing.Size(132, 50);
             this.barFormationCHG.TabIndex = 3;
-            this.barFormationCHG.TitleText = "Formation(CHG)";
+            this.barFormationCHG.TitleText = "Formation";
+            // 
+            // cbUsePopUp
+            // 
+            this.cbUsePopUp.AutoSize = true;
+            this.cbUsePopUp.Checked = true;
+            this.cbUsePopUp.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbUsePopUp.ForeColor = System.Drawing.Color.White;
+            this.cbUsePopUp.LanguageID = "DEF_Use_Trouble_Alarm_Popup";
+            this.cbUsePopUp.Location = new System.Drawing.Point(1269, 27);
+            this.cbUsePopUp.Name = "cbUsePopUp";
+            this.cbUsePopUp.Size = new System.Drawing.Size(171, 16);
+            this.cbUsePopUp.TabIndex = 112;
+            this.cbUsePopUp.Text = "Use Trouble Alarm PopUp";
+            this.cbUsePopUp.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -209,6 +225,7 @@
         private Controlls.WindowsForms.CtrlLabel lbUserName;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private Controlls.WindowsForms.CtrlCheckBox cbUsePopUp;
     }
 }
 

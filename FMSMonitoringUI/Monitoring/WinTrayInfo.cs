@@ -420,8 +420,8 @@ namespace FMSMonitoringUI.Monitoring
             {
                 CLogger.WriteLog(enLogLevel.ButtonClick, this.WindowID, $"Recipe ID : {value}");
 
-                WinRecipeInfo form = new WinRecipeInfo();
-                form.SetData(_TrayProcessInfo[row], value.ToString());
+                WinRecipeInfo form = new WinRecipeInfo(value.ToString());
+                form.SetData(_TrayProcessInfo[row]);
                 form.ShowDialog();
 
             }
@@ -431,8 +431,19 @@ namespace FMSMonitoringUI.Monitoring
         #region Button Event
         private void CellInfo_Click(object sender, EventArgs e)
         {
+            Point parentPoint = this.Location;
+
             WinCellDetailInfo form = new WinCellDetailInfo(_TrayId);
+            form.StartPosition = FormStartPosition.Manual;  // 폼의 위치가 Location 의 속성에 의해서 결정
+            form.Location = new Point(parentPoint.X, parentPoint.Y);
             form.ShowDialog();
+
+
+            //Point parentPoint = this.Location;
+            //Form2 frm2 = new Form2();
+            //frm2.StartPosition = FormStartPosition.Manual;  // 폼의 위치가 Location 의 속성에 의해서 결정
+            //frm2.Location = new Point(parentPoint.X + 100, parentPoint.Y + 100);
+            //frm2.Show();
         }
 
         private void Exit_Click(object sender, EventArgs e)

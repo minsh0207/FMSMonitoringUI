@@ -126,7 +126,7 @@
             this.ctrlHPCTemp1.Size = new System.Drawing.Size(420, 882);
             this.ctrlHPCTemp1.TabIndex = 1;
             this.ctrlHPCTemp1.TitleName = "JIG#1 Information";
-            this.ctrlHPCTemp1.UnitID = "HPC0100001";
+            this.ctrlHPCTemp1.UnitID = "HPC0110101";
             // 
             // ctrlHPC2
             // 
@@ -156,7 +156,7 @@
             this.ctrlHPCTemp2.Size = new System.Drawing.Size(420, 882);
             this.ctrlHPCTemp2.TabIndex = 2;
             this.ctrlHPCTemp2.TitleName = "JIG#2 Information";
-            this.ctrlHPCTemp2.UnitID = "HPC0100002";
+            this.ctrlHPCTemp2.UnitID = "HPC0110102";
             // 
             // panel1
             // 

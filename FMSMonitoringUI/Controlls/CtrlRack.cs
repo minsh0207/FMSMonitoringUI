@@ -105,7 +105,7 @@ namespace FMSMonitoringUI.Controlls
             TrayInfoView.ColumnWidth(2, 100);
 
             TrayInfoView.SetTitle(1, 0, LocalLanguage.GetItemString("DEF_Tray_ID"));
-            TrayInfoView.SetTitle(2, 0, LocalLanguage.GetItemString("DEF_Templature"));
+            TrayInfoView.SetTitle(2, 0, LocalLanguage.GetItemString("DEF_Avg_Temp"));
             TrayInfoView.SetTitle(2, 1, LocalLanguage.GetItemString("DEF_Start_Time"));
             TrayInfoView.SetTitle(2, 2, LocalLanguage.GetItemString("DEF_Plan_Time"));
 
@@ -122,7 +122,7 @@ namespace FMSMonitoringUI.Controlls
             TrayInfoView.SetValue(3, 0, data.JIG_AVG);
 
             TrayInfoView.SetValue(3, 1, data.START_TIME.Year == 1 ? "" : data.START_TIME.ToString());
-            TrayInfoView.SetValue(3, 2, data.PLAN_TIME.Year == 1 ? "" : data.START_TIME.ToString());
+            TrayInfoView.SetValue(3, 2, data.PLAN_TIME.Year == 1 ? "" : data.PLAN_TIME.ToString());
 
             SetProcessStatus(data.PROCESS_STATUS, processStatus);
 

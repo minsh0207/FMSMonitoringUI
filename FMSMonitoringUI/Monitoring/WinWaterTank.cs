@@ -156,7 +156,7 @@ namespace FMSMonitoringUI.Monitoring
             for (int i = 0; i < _LedMode.Count(); i++)
             {
                 _LedMode[i].LedStatus(0);
-                _LedMode[i].BackColor = Color.FromArgb(46, 46, 46);
+                //_LedMode[i].BackColor = Color.FromArgb(46, 46, 46);
             }
         }
         #endregion

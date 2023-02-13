@@ -71,7 +71,7 @@
             // 
             // titBar
             // 
-            this.titBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.titBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.titBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.titBar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.titBar.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
@@ -86,7 +86,7 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.gbFMS);
             this.panel3.Controls.Add(this.gbWaterTank);
@@ -98,7 +98,7 @@
             // 
             // gbFMS
             // 
-            this.gbFMS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.gbFMS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.gbFMS.Controls.Add(this.lbTrayID2);
             this.gbFMS.Controls.Add(this.lbTrayID1);
             this.gbFMS.Controls.Add(this.lbTrayCount);
@@ -116,7 +116,7 @@
             // 
             // lbTrayID2
             // 
-            this.lbTrayID2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.lbTrayID2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.lbTrayID2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbTrayID2.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lbTrayID2.LanguageID = "DEF_Tray_ID_2";
@@ -132,7 +132,7 @@
             // 
             // lbTrayID1
             // 
-            this.lbTrayID1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.lbTrayID1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.lbTrayID1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbTrayID1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lbTrayID1.LanguageID = "DEF_Tray_ID_1";
@@ -148,7 +148,7 @@
             // 
             // lbTrayCount
             // 
-            this.lbTrayCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.lbTrayCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.lbTrayCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbTrayCount.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lbTrayCount.LanguageID = "DEF_Tray_Count";
@@ -164,7 +164,7 @@
             // 
             // gridWaterTank
             // 
-            this.gridWaterTank.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.gridWaterTank.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.gridWaterTank.ColumnCount = -1;
             this.gridWaterTank.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.gridWaterTank.Location = new System.Drawing.Point(12, 134);
@@ -173,11 +173,11 @@
             this.gridWaterTank.RowCount = -1;
             this.gridWaterTank.Size = new System.Drawing.Size(232, 162);
             this.gridWaterTank.TabIndex = 57;
-            this.gridWaterTank.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.gridWaterTank.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             // 
             // gbWaterTank
             // 
-            this.gbWaterTank.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.gbWaterTank.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.gbWaterTank.Controls.Add(this.ledRestockPressed);
             this.gbWaterTank.Controls.Add(this.ctrlLabel1);
             this.gbWaterTank.Controls.Add(this.ledFireSensor);
@@ -203,7 +203,7 @@
             // 
             // ledRestockPressed
             // 
-            this.ledRestockPressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.ledRestockPressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ledRestockPressed.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ledRestockPressed.Location = new System.Drawing.Point(156, 264);
             this.ledRestockPressed.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -215,7 +215,7 @@
             // 
             // ctrlLabel1
             // 
-            this.ctrlLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.ctrlLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlLabel1.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel1.LanguageID = "DEF_RestockButtonPressed";
@@ -228,7 +228,7 @@
             // 
             // ledFireSensor
             // 
-            this.ledFireSensor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.ledFireSensor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ledFireSensor.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ledFireSensor.Location = new System.Drawing.Point(156, 238);
             this.ledFireSensor.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -240,7 +240,7 @@
             // 
             // ctrlLabel2
             // 
-            this.ctrlLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.ctrlLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel2.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlLabel2.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel2.LanguageID = "DEF_Fire_Sensor";
@@ -253,7 +253,7 @@
             // 
             // ledStationSink
             // 
-            this.ledStationSink.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.ledStationSink.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ledStationSink.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ledStationSink.Location = new System.Drawing.Point(156, 212);
             this.ledStationSink.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -265,7 +265,7 @@
             // 
             // ctrlLabel3
             // 
-            this.ctrlLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.ctrlLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel3.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlLabel3.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel3.LanguageID = "DEF_Station_Sink";
@@ -278,7 +278,7 @@
             // 
             // ledTrayExist
             // 
-            this.ledTrayExist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.ledTrayExist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ledTrayExist.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ledTrayExist.Location = new System.Drawing.Point(156, 164);
             this.ledTrayExist.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -290,7 +290,7 @@
             // 
             // ctrlLabel6
             // 
-            this.ctrlLabel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.ctrlLabel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel6.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlLabel6.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel6.LanguageID = "DEF_Tray_Exist";
@@ -303,7 +303,7 @@
             // 
             // ledInputEnable
             // 
-            this.ledInputEnable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.ledInputEnable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ledInputEnable.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ledInputEnable.Location = new System.Drawing.Point(156, 136);
             this.ledInputEnable.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -315,7 +315,7 @@
             // 
             // ctrlLabel5
             // 
-            this.ctrlLabel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.ctrlLabel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel5.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlLabel5.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel5.LanguageID = "DEF_Input_Enable";
@@ -328,7 +328,7 @@
             // 
             // ctrlLabel4
             // 
-            this.ctrlLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.ctrlLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel4.Font = new System.Drawing.Font("굴림", 9F);
             this.ctrlLabel4.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel4.LanguageID = "DEF_Control_Mode";
@@ -345,7 +345,7 @@
             this.uiTlbMode.ColumnCount = 1;
             this.uiTlbMode.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.uiTlbMode.Font = new System.Drawing.Font("굴림", 9F);
-            this.uiTlbMode.Location = new System.Drawing.Point(153, 24);
+            this.uiTlbMode.Location = new System.Drawing.Point(152, 25);
             this.uiTlbMode.Name = "uiTlbMode";
             this.uiTlbMode.RowCount = 3;
             this.uiTlbMode.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
@@ -356,7 +356,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.Exit);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -387,16 +387,18 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(657, 509);
+            this.ClientSize = new System.Drawing.Size(657, 504);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "WinWaterTank";
             this.Padding = new System.Windows.Forms.Padding(2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WinWaterTank";
             this.TopMost = true;
+            this.WindowID = "WinWaterTank";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.WinWaterTank_FormClosed);
             this.Load += new System.EventHandler(this.WinWaterTank_Load);
             this.Controls.SetChildIndex(this.panel1, 0);

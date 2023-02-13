@@ -89,9 +89,13 @@ namespace FMSMonitoringUI
 
             #region FMS MonitoringUI
             _CtrlMonitoring = new CtrlMonitoring(_Application);
+            _CtrlMonitoring.Tag = barMain.TitleText;
             _CtrlAging = new CtrlAging();
+            _CtrlAging.Tag = barAging.TitleText;
             _CtrlFormationCHG = new CtrlFormationCHG();
+            _CtrlFormationCHG.Tag = barFormationCHG.TitleText;
             _CtrlFormationHPC = new CtrlFormationHPC();
+            _CtrlFormationHPC.Tag = barFormationHPC.TitleText;
             #endregion
 
             _TroubleEquipmentList = new Dictionary<int, CTroubleEquipmentList>();
@@ -99,6 +103,8 @@ namespace FMSMonitoringUI
 
             FormBorderStyle = FormBorderStyle.Sizable;
             WindowState = FormWindowState.Maximized;
+
+            CDefine.m_strLanguage = enLoginLanguage.English.ToString();
 
             CheckLogin();
 
@@ -118,7 +124,7 @@ namespace FMSMonitoringUI
             {
                 SetWindowAuthority();
 
-                Title_ClickEvnet("Main");
+                Title_ClickEvnet(_CtrlMonitoring.Tag.ToString());
 
                 InitLanguage();
             }
@@ -271,52 +277,53 @@ namespace FMSMonitoringUI
         {
             if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
 
-            _CtrlMonitoring.ProcessStart(false);
+            _CtrlMonitoring.ProcessStart(false);            
             _CtrlAging.ProcessStart(false);
             _CtrlFormationCHG.ProcessStart(false);
             _CtrlFormationHPC.ProcessStart(false);
 
-            switch (title)
+            barMain.SetTitelColor(Color.White);
+            barAging.SetTitelColor(Color.White);
+            barFormationCHG.SetTitelColor(Color.White);
+            barFormationHPC.SetTitelColor(Color.White);
+
+            Color SelectColor = Color.FromArgb(0, 129, 110);
+
+            if (title == _CtrlMonitoring.Tag.ToString())
             {
-                case "Main":
-                    //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls[0].Dispose();
-                    //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
-                    scMainPanel.Panel2.Controls.Add(_CtrlMonitoring);
-                    _CtrlMonitoring.InitLanguage();
-                    _CtrlMonitoring.ProcessStart(true);
+                scMainPanel.Panel2.Controls.Add(_CtrlMonitoring);
+                _CtrlMonitoring.InitLanguage();
+                _CtrlMonitoring.ProcessStart(true);
 
-                    this.Text = CAuthority.GetWindowsText(_CtrlMonitoring.ToString());
-                    break;
+                barMain.SetTitelColor(SelectColor);
+                this.Text = CAuthority.GetWindowsText(_CtrlMonitoring.ToString());
+            }
+            else if (title == _CtrlAging.Tag.ToString())
+            {
+                scMainPanel.Panel2.Controls.Add(_CtrlAging);
+                _CtrlAging.InitLanguage();
+                _CtrlAging.ProcessStart(true);
 
-                case "Aging":
-                    //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls[0].Dispose();
-                    //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
-                    scMainPanel.Panel2.Controls.Add(_CtrlAging);
-                    _CtrlAging.InitLanguage();
-                    _CtrlAging.ProcessStart(true);                    
+                barAging.SetTitelColor(SelectColor);
+                this.Text = CAuthority.GetWindowsText(_CtrlAging.ToString());
+            }
+            else if (title == _CtrlFormationCHG.Tag.ToString())
+            {
+                scMainPanel.Panel2.Controls.Add(_CtrlFormationCHG);
+                _CtrlFormationCHG.InitLanguage();
+                _CtrlFormationCHG.ProcessStart(true);
 
-                    this.Text = CAuthority.GetWindowsText(_CtrlAging.ToString());
-                    break;
+                barFormationCHG.SetTitelColor(SelectColor);
+                this.Text = CAuthority.GetWindowsText(_CtrlFormationCHG.ToString());
+            }
+            else if (title == _CtrlFormationHPC.Tag.ToString())
+            {
+                scMainPanel.Panel2.Controls.Add(_CtrlFormationHPC);
+                _CtrlFormationHPC.InitLanguage();
+                _CtrlFormationHPC.ProcessStart(true);
 
-                case "Formation(CHG)":
-                    //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls[0].Dispose();
-                    //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
-                    scMainPanel.Panel2.Controls.Add(_CtrlFormationCHG);
-                    _CtrlFormationCHG.InitLanguage();
-                    _CtrlFormationCHG.ProcessStart(true);
-
-                    this.Text = CAuthority.GetWindowsText(_CtrlFormationCHG.ToString());
-                    break;
-
-                case "Formation(HPC)":
-                    //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls[0].Dispose();
-                    //if (scMainPanel.Panel2.Controls.Count > 0) scMainPanel.Panel2.Controls.Clear();
-                    scMainPanel.Panel2.Controls.Add(_CtrlFormationHPC);
-                    _CtrlFormationHPC.InitLanguage();
-                    _CtrlFormationHPC.ProcessStart(true);
-
-                    this.Text = CAuthority.GetWindowsText(_CtrlFormationHPC.ToString());
-                    break;
+                barFormationHPC.SetTitelColor(SelectColor);
+                this.Text = CAuthority.GetWindowsText(_CtrlFormationHPC.ToString());
             }
 
             CLogger.WriteLog(enLogLevel.Info, _MainFormText, $"FMSMonitoringUI - {this.Text}");
@@ -436,7 +443,7 @@ namespace FMSMonitoringUI
                 {
                     GC.Collect();
 
-                    if (_CtrlMonitoring.UseAlarmPopup == true)
+                    if (cbUsePopUp.Checked == true)
                     {
                         this.Invoke(new MethodInvoker(delegate ()
                         {

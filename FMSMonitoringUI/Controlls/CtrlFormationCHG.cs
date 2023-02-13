@@ -294,10 +294,10 @@ namespace FMSMonitoringUI
 
             //        string[] trayID = { $"TrayIDTT{i}00{j}", $"TrayIDBB{i}00{j}" };
             //        string startTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
-            //        string templature = string.Format($"{i+40}℃");
+            //        string temperature = string.Format($"{i+40}℃");
             //        string lotID = string.Format($"LotID{i}00{j}");
 
-            //        formationCell.setBox(trayID, startTime, templature, lotID);
+            //        formationCell.setBox(trayID, startTime, temperature, lotID);
             //    }
             //}
 

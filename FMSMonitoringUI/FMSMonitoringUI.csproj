@@ -1048,6 +1048,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Monitoring\WinFormRoot.en-US.resx">
       <DependentUpon>WinFormRoot.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Monitoring\WinFormRoot.fr-FR.resx">
       <DependentUpon>WinFormRoot.cs</DependentUpon>

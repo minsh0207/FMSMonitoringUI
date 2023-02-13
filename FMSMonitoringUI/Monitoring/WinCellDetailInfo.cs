@@ -110,7 +110,7 @@ namespace FMSMonitoringUI.Monitoring
 
             lbCellIDList.CallLocalLanguage();
             lbCellInfo.CallLocalLanguage();
-            lbProcessName.CallLocalLanguage();
+            lbProcessFlow.CallLocalLanguage();
             lbRecipeInfo.CallLocalLanguage();
             lbProcessData.CallLocalLanguage();
 
@@ -134,10 +134,10 @@ namespace FMSMonitoringUI.Monitoring
             {
                 lstTitle.Add(i.ToString());
             }
-            lstTitle.Add("");
+            //lstTitle.Add("");
             gridCellIDLIst.AddRowsHeaderList(lstTitle);
 
-            gridCellIDLIst.RowsHeight(26);
+            gridCellIDLIst.RowsHeight(22);
 
             gridCellIDLIst.SetGridViewStyles();
             gridCellIDLIst.ColumnHeadersWidth(0, 60);
@@ -175,7 +175,7 @@ namespace FMSMonitoringUI.Monitoring
                 // Cell의 현재 설비 정보
                 LocalLanguage.GetItemString("DEF_EQP_ID"),
                 LocalLanguage.GetItemString("DEF_Unit_ID"),
-                LocalLanguage.GetItemString("DEF_UnitID_Level"),
+                //LocalLanguage.GetItemString("DEF_UnitID_Level"),
                 // Cell의 현재 설비 정보
                 LocalLanguage.GetItemString("DEF_Recipe_ID"),
                 LocalLanguage.GetItemString("DEF_Route_OrderNo"),
@@ -187,22 +187,22 @@ namespace FMSMonitoringUI.Monitoring
                 // Rework 관련 정보
                 LocalLanguage.GetItemString("DEF_Rework_Flag"),
                 LocalLanguage.GetItemString("DEF_Rework_Time"),
-                LocalLanguage.GetItemString("DEF_Rework_EQPID"),
-                LocalLanguage.GetItemString("DEF_Rework_UnitID"),
+                //LocalLanguage.GetItemString("DEF_Rework_EQPID"),
+                //LocalLanguage.GetItemString("DEF_Rework_UnitID"),
                 // 화재 관련
                 LocalLanguage.GetItemString("DEF_Fire_Flag"),
-                LocalLanguage.GetItemString("DEF_Fire_Time"),
-                LocalLanguage.GetItemString("DEF_Fire_EQPID"),
-                LocalLanguage.GetItemString("DEF_Fire_UnitID"),
+                LocalLanguage.GetItemString("DEF_Fire_Time")
+                //LocalLanguage.GetItemString("DEF_Fire_EQPID"),
+                //LocalLanguage.GetItemString("DEF_Fire_UnitID"),
                 // Scrap 관련
-                LocalLanguage.GetItemString("DEF_Scrap_Flag"),
-                LocalLanguage.GetItemString("DEF_Scrap_User"),
-                LocalLanguage.GetItemString("DEF_Scrap_Time"),
-                ""
+                //LocalLanguage.GetItemString("DEF_Scrap_Flag"),
+                //LocalLanguage.GetItemString("DEF_Scrap_User"),
+                //LocalLanguage.GetItemString("DEF_Scrap_Time"),
+                //""
             };
             gridCellInfo.AddRowsHeaderList(lstTitle);
 
-            gridCellInfo.RowsHeight(26);
+            gridCellInfo.RowsHeight(22);
 
             gridCellInfo.SetGridViewStyles();
             gridCellInfo.ColumnHeadersWidth(0, 160);            
@@ -224,7 +224,7 @@ namespace FMSMonitoringUI.Monitoring
             }
             gridProcessName.AddRowsHeaderList(lstTitle);
 
-            gridProcessName.RowsHeight(26);
+            gridProcessName.RowsHeight(22);
 
             gridProcessName.SetGridViewStyles();
             gridProcessName.ColumnHeadersWidth(0, 60);
@@ -245,7 +245,7 @@ namespace FMSMonitoringUI.Monitoring
             }
             gridRecipeInfo.AddRowsHeaderList(lstTitle);
 
-            gridRecipeInfo.RowsHeight(26);
+            gridRecipeInfo.RowsHeight(22);
 
             gridRecipeInfo.SetGridViewStyles();
             //gridRecipeInfo.ColumnHeadersWidth(0, 140);
@@ -271,7 +271,7 @@ namespace FMSMonitoringUI.Monitoring
             }
             gridProcessData.AddRowsHeaderList(lstTitle);
 
-            gridProcessData.RowsHeight(26);
+            gridProcessData.RowsHeight(22);
 
             gridProcessData.SetGridViewStyles();
             //gridProcessData.ColumnHeadersWidth(0, 140);
@@ -385,14 +385,14 @@ namespace FMSMonitoringUI.Monitoring
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].GRADE_EQP_TYPE); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].GRADE_PROCESS_TYPE); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].GRADE_PROCESS_NO); row++;
-            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].GRADE_STEP_NO); row++;
+            //gridCellInfo.SetValue(1, row, _CellInfo[cellNo].GRADE_STEP_NO); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].GRADE_EQP_ID); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].MODEL_ID); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].ROUTE_ID); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].LOT_ID); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].EQP_ID); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].UNIT_ID); row++;
-            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].UNIT_ID_LEVEL); row++;
+            //gridCellInfo.SetValue(1, row, _CellInfo[cellNo].UNIT_ID_LEVEL); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].RECIPE_ID); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].ROUTE_ORDER_NO); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].EQP_TYPE); row++;
@@ -402,15 +402,15 @@ namespace FMSMonitoringUI.Monitoring
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].END_TIME.Year == 1 ? "" : _CellInfo[cellNo].END_TIME.ToString()); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].REWORK_FLAG); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].REWORK_TIME.Year == 1 ? "" : _CellInfo[cellNo].REWORK_TIME.ToString()); row++;
-            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].REWORK_EQP_ID); row++;
-            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].REWORK_UNIT_ID); row++;
+            //gridCellInfo.SetValue(1, row, _CellInfo[cellNo].REWORK_EQP_ID); row++;
+            //gridCellInfo.SetValue(1, row, _CellInfo[cellNo].REWORK_UNIT_ID); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].FIRE_FLAG); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].FIRE_TIME.Year == 1 ? "" : _CellInfo[cellNo].FIRE_TIME.ToString()); row++;
-            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].FIRE_EQP_ID); row++;
-            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].FIRE_UNIT_ID); row++;
-            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].SCRAP_FLAG); row++;
-            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].SCRAP_USER); row++;
-            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].SCRAP_TIME.Year == 1 ? "" : _CellInfo[cellNo].SCRAP_TIME.ToString()); row++;
+            //gridCellInfo.SetValue(1, row, _CellInfo[cellNo].FIRE_EQP_ID); row++;
+            //gridCellInfo.SetValue(1, row, _CellInfo[cellNo].FIRE_UNIT_ID); row++;
+            //gridCellInfo.SetValue(1, row, _CellInfo[cellNo].SCRAP_FLAG); row++;
+            //gridCellInfo.SetValue(1, row, _CellInfo[cellNo].SCRAP_USER); row++;
+            //gridCellInfo.SetValue(1, row, _CellInfo[cellNo].SCRAP_TIME.Year == 1 ? "" : _CellInfo[cellNo].SCRAP_TIME.ToString()); row++;
 
         }
         private void SetProcessName(List<_cell_process_flow> data)

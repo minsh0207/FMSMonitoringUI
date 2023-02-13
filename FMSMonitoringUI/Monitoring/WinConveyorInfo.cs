@@ -46,7 +46,7 @@ namespace FMSMonitoringUI.Monitoring
 
             _cvTitle = barTitle;
 
-            titBar.TitleText = string.Format("{0} Information", barTitle);
+            titBar.TitleText = string.Format("{0} {1}", barTitle, LocalLanguage.GetItemString("DEF_Information"));
             Invalidate();
         }
 

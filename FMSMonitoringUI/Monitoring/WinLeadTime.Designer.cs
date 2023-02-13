@@ -123,12 +123,14 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "WinLeadTime";
             this.Padding = new System.Windows.Forms.Padding(2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WinLeadTime";
             this.TopMost = true;
+            this.WindowID = "WinLeadTime";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.WinLeadTime_FormClosed);
             this.Load += new System.EventHandler(this.WinLeadTime_Load);
             this.Controls.SetChildIndex(this.panel1, 0);

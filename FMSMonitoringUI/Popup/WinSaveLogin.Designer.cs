@@ -150,12 +150,14 @@
             this.ClientSize = new System.Drawing.Size(477, 312);
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(90)))), ((int)(((byte)(107)))));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "WinSaveLogin";
             this.Padding = new System.Windows.Forms.Padding(2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WinSaveLogin";
             this.TopMost = true;
+            this.WindowID = "WinSaveLogin";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Window_Closed);
             this.Load += new System.EventHandler(this.Window_Loaded);
             this.Controls.SetChildIndex(this.panel1, 0);

@@ -56,7 +56,7 @@
             this.panel1.Location = new System.Drawing.Point(2, 2);
             this.panel1.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1496, 65);
+            this.panel1.Size = new System.Drawing.Size(1496, 60);
             this.panel1.TabIndex = 0;
             // 
             // titBar
@@ -70,7 +70,7 @@
             this.titBar.Location = new System.Drawing.Point(0, 0);
             this.titBar.Margin = new System.Windows.Forms.Padding(4);
             this.titBar.Name = "titBar";
-            this.titBar.Size = new System.Drawing.Size(1494, 63);
+            this.titBar.Size = new System.Drawing.Size(1494, 58);
             this.titBar.TabIndex = 0;
             this.titBar.TitleText = "Tray Information";
             // 
@@ -80,9 +80,9 @@
             this.panel3.Controls.Add(this.panel2);
             this.panel3.Controls.Add(this.splitContainer1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(2, 67);
+            this.panel3.Location = new System.Drawing.Point(2, 62);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1496, 714);
+            this.panel3.Size = new System.Drawing.Size(1496, 719);
             this.panel3.TabIndex = 2;
             // 
             // panel2
@@ -141,7 +141,7 @@
             this.ctrlLabel1.LanguageID = "DEF_Tray_Info";
             this.ctrlLabel1.Location = new System.Drawing.Point(2, 1);
             this.ctrlLabel1.Name = "ctrlLabel1";
-            this.ctrlLabel1.Size = new System.Drawing.Size(137, 48);
+            this.ctrlLabel1.Size = new System.Drawing.Size(137, 34);
             this.ctrlLabel1.TabIndex = 3;
             this.ctrlLabel1.Text = "Tray Info";
             this.ctrlLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -155,7 +155,7 @@
             this.CellInfo.LanguageID = "DEF_Cell_Information";
             this.CellInfo.Location = new System.Drawing.Point(176, 5);
             this.CellInfo.Name = "CellInfo";
-            this.CellInfo.Size = new System.Drawing.Size(147, 36);
+            this.CellInfo.Size = new System.Drawing.Size(147, 27);
             this.CellInfo.TabIndex = 2;
             this.CellInfo.Click += new System.EventHandler(this.CellInfo_Click);
             // 
@@ -163,11 +163,10 @@
             // 
             this.gridTrayInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.gridTrayInfo.ColumnCount = -1;
-            this.gridTrayInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gridTrayInfo.Location = new System.Drawing.Point(0, 48);
+            this.gridTrayInfo.Location = new System.Drawing.Point(0, 34);
             this.gridTrayInfo.Name = "gridTrayInfo";
             this.gridTrayInfo.RowCount = -1;
-            this.gridTrayInfo.Size = new System.Drawing.Size(325, 603);
+            this.gridTrayInfo.Size = new System.Drawing.Size(325, 617);
             this.gridTrayInfo.TabIndex = 0;
             this.gridTrayInfo.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             // 
@@ -178,7 +177,7 @@
             this.ctrlLabel2.LanguageID = "DEF_Process_Flow";
             this.ctrlLabel2.Location = new System.Drawing.Point(3, 0);
             this.ctrlLabel2.Name = "ctrlLabel2";
-            this.ctrlLabel2.Size = new System.Drawing.Size(158, 48);
+            this.ctrlLabel2.Size = new System.Drawing.Size(158, 34);
             this.ctrlLabel2.TabIndex = 4;
             this.ctrlLabel2.Text = "Process Flow";
             this.ctrlLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -187,11 +186,10 @@
             // 
             this.gridProcessFlow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.gridProcessFlow.ColumnCount = -1;
-            this.gridProcessFlow.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gridProcessFlow.Location = new System.Drawing.Point(0, 48);
+            this.gridProcessFlow.Location = new System.Drawing.Point(0, 34);
             this.gridProcessFlow.Name = "gridProcessFlow";
             this.gridProcessFlow.RowCount = -1;
-            this.gridProcessFlow.Size = new System.Drawing.Size(1161, 603);
+            this.gridProcessFlow.Size = new System.Drawing.Size(1161, 617);
             this.gridProcessFlow.TabIndex = 1;
             this.gridProcessFlow.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             // 
@@ -203,12 +201,14 @@
             this.ClientSize = new System.Drawing.Size(1500, 805);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "WinTrayInfo";
             this.Padding = new System.Windows.Forms.Padding(2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WinTrayInfo";
             this.TopMost = true;
+            this.WindowID = "WinTrayInfo";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.WinTrayInfo_FormClosed);
             this.Load += new System.EventHandler(this.WinTrayInfo_Load);
             this.Controls.SetChildIndex(this.panel1, 0);

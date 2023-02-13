@@ -48,7 +48,7 @@
             this.panel1.Location = new System.Drawing.Point(2, 2);
             this.panel1.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(390, 71);
+            this.panel1.Size = new System.Drawing.Size(390, 60);
             this.panel1.TabIndex = 0;
             // 
             // titBar
@@ -62,7 +62,7 @@
             this.titBar.Location = new System.Drawing.Point(0, 0);
             this.titBar.Margin = new System.Windows.Forms.Padding(4);
             this.titBar.Name = "titBar";
-            this.titBar.Size = new System.Drawing.Size(388, 69);
+            this.titBar.Size = new System.Drawing.Size(388, 58);
             this.titBar.TabIndex = 0;
             this.titBar.TitleText = "Recipe Information";
             // 
@@ -73,9 +73,9 @@
             this.panel3.Controls.Add(this.lbParameter);
             this.panel3.Controls.Add(this.gridRecipeInfo);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(2, 73);
+            this.panel3.Location = new System.Drawing.Point(2, 62);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(390, 655);
+            this.panel3.Size = new System.Drawing.Size(390, 659);
             this.panel3.TabIndex = 2;
             // 
             // lbParameter
@@ -87,7 +87,7 @@
             this.lbParameter.LanguageID = "DEF_Parameter";
             this.lbParameter.Location = new System.Drawing.Point(0, 0);
             this.lbParameter.Name = "lbParameter";
-            this.lbParameter.Size = new System.Drawing.Size(388, 44);
+            this.lbParameter.Size = new System.Drawing.Size(388, 34);
             this.lbParameter.TabIndex = 2;
             this.lbParameter.Text = "Parameter";
             this.lbParameter.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -97,11 +97,10 @@
             this.gridRecipeInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.gridRecipeInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.gridRecipeInfo.ColumnCount = -1;
-            this.gridRecipeInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridRecipeInfo.Location = new System.Drawing.Point(0, 0);
+            this.gridRecipeInfo.Location = new System.Drawing.Point(0, 37);
             this.gridRecipeInfo.Name = "gridRecipeInfo";
             this.gridRecipeInfo.RowCount = -1;
-            this.gridRecipeInfo.Size = new System.Drawing.Size(388, 653);
+            this.gridRecipeInfo.Size = new System.Drawing.Size(388, 620);
             this.gridRecipeInfo.TabIndex = 1;
             this.gridRecipeInfo.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             // 
@@ -111,7 +110,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.Exit);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(2, 728);
+            this.panel2.Location = new System.Drawing.Point(2, 721);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(390, 60);
             this.panel2.TabIndex = 3;
@@ -137,16 +136,18 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(394, 811);
+            this.ClientSize = new System.Drawing.Size(394, 805);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "WinRecipeInfo";
             this.Padding = new System.Windows.Forms.Padding(2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WinRecipeInfo";
             this.TopMost = true;
+            this.WindowID = "WinRecipeInfo";
             this.Load += new System.EventHandler(this.WinRecipeInfo_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.panel3, 0);

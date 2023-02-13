@@ -22,13 +22,15 @@ namespace FMSMonitoringUI.Monitoring
     {
         private Point point = new Point();
 
-        public WinRecipeInfo()
+        public WinRecipeInfo(string recipeID)
         {
             InitializeComponent();
 
             InitControl();
             InitLanguage();
             //InitGridView();
+
+            titBar.TitleText = $"{recipeID} {LocalLanguage.GetItemString("DEF_Recipe_Information")}";
         }
 
         private void WinRecipeInfo_Load(object sender, EventArgs e)
@@ -64,7 +66,7 @@ namespace FMSMonitoringUI.Monitoring
         #region InitLanguage
         private void InitLanguage()
         {
-            titBar.CallLocalLanguage();
+            //titBar.CallLocalLanguage();
             lbParameter.CallLocalLanguage();
             Exit.CallLocalLanguage();
         }
@@ -101,7 +103,7 @@ namespace FMSMonitoringUI.Monitoring
         #endregion
 
         #region SetData
-        public void SetData(_tray_process_flow rcpItem, string recipeId)
+        public void SetData(_tray_process_flow rcpItem)
         {
             try
             {
