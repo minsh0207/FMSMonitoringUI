@@ -1,5 +1,6 @@
 ﻿using FMSMonitoringUI.Monitoring;
 using MonitoringUI;
+using MonitoringUI.Common;
 using MySqlX.XDevAPI.Relational;
 using OPCUAClientClassLib;
 using RestClientLib;
@@ -137,7 +138,10 @@ namespace FMSMonitoringUI.Controlls
             TrayInfoView.SetValue(1, nRow, data.JIG_AVG); nRow++;
             TrayInfoView.SetValue(1, nRow, data.PRESSURE); nRow++;
             TrayInfoView.SetValue(1, nRow, data.TROUBLE_CODE); nRow++;
-            TrayInfoView.SetValue(1, nRow, data.TROUBLE_NAME);
+            string troubleName = (CDefine.m_enLanguage == enLoginLanguage.English ? data.TROUBLE_NAME : data.TROUBLE_NAME_LOCAL);
+            TrayInfoView.SetValue(1, nRow, troubleName);
+
+            TrayInfoView.SetReworkTray(1, 0, data.REWORK_FLAG);
 
             SetEqpStatus(data.EQP_STATUS, eqpStatusColor);
 
@@ -285,6 +289,17 @@ namespace FMSMonitoringUI.Controlls
             if (_LanguageID != "")
             {
                 lbRackID.Text = LocalLanguage.GetItemString(_LanguageID);
+            }
+        }
+        #endregion
+
+        #region lbEqpType_MouseClick
+        private void lbEqpType_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (((MouseEventArgs)e).Button == MouseButtons.Right)
+            {
+                WinTroubleInfo winTroubleInfo = new WinTroubleInfo(EqpName, _EqpType, "", _unitD);
+                winTroubleInfo.ShowDialog();
             }
         }
         #endregion

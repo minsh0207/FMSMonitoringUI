@@ -31,6 +31,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.Exit = new MonitoringUI.Controlls.CButton.CtrlButton();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.ledTrayExist = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
+            this.ledCommandReady = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
             this.ctrlLabel3 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.uiTlbStatus = new System.Windows.Forms.TableLayoutPanel();
             this.ctrlLabel2 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
@@ -92,6 +94,8 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.ledTrayExist);
+            this.panel3.Controls.Add(this.ledCommandReady);
             this.panel3.Controls.Add(this.ctrlLabel3);
             this.panel3.Controls.Add(this.uiTlbStatus);
             this.panel3.Controls.Add(this.ctrlLabel2);
@@ -121,6 +125,24 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(718, 545);
             this.panel3.TabIndex = 2;
+            // 
+            // ledTrayExist
+            // 
+            this.ledTrayExist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ledTrayExist.Location = new System.Drawing.Point(222, 333);
+            this.ledTrayExist.Name = "ledTrayExist";
+            this.ledTrayExist.Size = new System.Drawing.Size(81, 18);
+            this.ledTrayExist.TabIndex = 72;
+            this.ledTrayExist.TitleText = "";
+            // 
+            // ledCommandReady
+            // 
+            this.ledCommandReady.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ledCommandReady.Location = new System.Drawing.Point(222, 297);
+            this.ledCommandReady.Name = "ledCommandReady";
+            this.ledCommandReady.Size = new System.Drawing.Size(81, 15);
+            this.ledCommandReady.TabIndex = 69;
+            this.ledCommandReady.TitleText = "";
             // 
             // ctrlLabel3
             // 
@@ -287,7 +309,7 @@
             this.TrayType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.TrayType.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TrayType.LanguageID = "DEF_Tray_Type";
-            this.TrayType.Location = new System.Drawing.Point(37, 357);
+            this.TrayType.Location = new System.Drawing.Point(37, 358);
             this.TrayType.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
             this.TrayType.Name = "TrayType";
             this.TrayType.Size = new System.Drawing.Size(303, 31);
@@ -301,10 +323,10 @@
             this.TrayExist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.TrayExist.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TrayExist.LanguageID = "DEF_Tray_Exist";
-            this.TrayExist.Location = new System.Drawing.Point(37, 322);
-            this.TrayExist.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
+            this.TrayExist.Location = new System.Drawing.Point(37, 323);
+            this.TrayExist.Margin = new System.Windows.Forms.Padding(30, 35, 30, 35);
             this.TrayExist.Name = "TrayExist";
-            this.TrayExist.Size = new System.Drawing.Size(303, 31);
+            this.TrayExist.Size = new System.Drawing.Size(303, 33);
             this.TrayExist.TabIndex = 20;
             this.TrayExist.TextData = "";
             this.TrayExist.TitleText = "Tray Exist ";
@@ -315,10 +337,10 @@
             this.CommandReady.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.CommandReady.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CommandReady.LanguageID = "DEF_Command_Ready";
-            this.CommandReady.Location = new System.Drawing.Point(37, 289);
-            this.CommandReady.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
+            this.CommandReady.Location = new System.Drawing.Point(37, 288);
+            this.CommandReady.Margin = new System.Windows.Forms.Padding(30, 35, 30, 35);
             this.CommandReady.Name = "CommandReady";
-            this.CommandReady.Size = new System.Drawing.Size(303, 31);
+            this.CommandReady.Size = new System.Drawing.Size(303, 33);
             this.CommandReady.TabIndex = 18;
             this.CommandReady.TextData = "";
             this.CommandReady.TitleText = "Command Ready ";
@@ -515,5 +537,7 @@
         private System.Windows.Forms.TableLayoutPanel uiTlbStatus;
         private MonitoringUI.Controlls.CButton.CtrlButton Exit;
         private MonitoringUI.Controlls.CtrlTitleBar titBar;
+        private Controlls.WindowsForms.CtrlLED ledTrayExist;
+        private Controlls.WindowsForms.CtrlLED ledCommandReady;
     }
 }

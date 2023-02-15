@@ -30,6 +30,8 @@ namespace MonitoringUI
         }
         #endregion
 
+        public string EqpName { get; set; }
+
         public UserControlEqp()
         {
             InitializeComponent();

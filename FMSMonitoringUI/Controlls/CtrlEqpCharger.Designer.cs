@@ -80,6 +80,7 @@
             this.lbTitle.TabIndex = 42;
             this.lbTitle.Text = "CHG";
             this.lbTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbTitle.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseClick);
             this.lbTitle.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseDoubleClick);
             // 
             // btnLeadTime

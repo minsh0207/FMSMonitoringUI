@@ -1,4 +1,5 @@
 ﻿using FMSMonitoringUI.Controlls.WindowsForms;
+using FMSMonitoringUI.Monitoring;
 using MonitoringUI;
 using System;
 using System.Collections.Generic;
@@ -61,7 +62,7 @@ namespace FMSMonitoringUI.Controlls
         #endregion
 
         #region InitLanguage
-        private void InitLanguage()
+        private  void InitLanguage()
         {
             btnLeadTime.CallLocalLanguage();
 
@@ -84,6 +85,17 @@ namespace FMSMonitoringUI.Controlls
 
             double ratio = 100.0 * inAgingCnt / totalRackCnt;
             lbRatio.Text = string.Format($"{ratio:F1}%");
+        }
+        #endregion
+
+        #region lbEqpType_MouseClick
+        private void lbEqpType_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (((MouseEventArgs)e).Button == MouseButtons.Right)
+            {
+                WinTroubleInfo winTroubleInfo = new WinTroubleInfo(EqpName, _EqpType, EqpID, "", _EqpLevel);
+                winTroubleInfo.ShowDialog();
+            }
         }
         #endregion
 

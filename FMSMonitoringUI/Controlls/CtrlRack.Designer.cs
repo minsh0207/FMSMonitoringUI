@@ -51,6 +51,7 @@
             this.lbOPStatus.TabIndex = 3;
             this.lbOPStatus.Text = "Processing";
             this.lbOPStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbOPStatus.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseClick);
             this.lbOPStatus.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseDoubleClick);
             // 
             // lbEqpStatus
@@ -65,6 +66,7 @@
             this.lbEqpStatus.TabIndex = 2;
             this.lbEqpStatus.Text = "R";
             this.lbEqpStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbEqpStatus.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseClick);
             this.lbEqpStatus.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseDoubleClick);
             // 
             // lbRackID
@@ -78,6 +80,7 @@
             this.lbRackID.TabIndex = 1;
             this.lbRackID.Text = "  Rack ID : ";
             this.lbRackID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbRackID.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseClick);
             this.lbRackID.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseDoubleClick);
             // 
             // splitContainer1

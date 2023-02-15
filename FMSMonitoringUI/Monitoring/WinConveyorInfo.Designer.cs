@@ -31,6 +31,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.titBar = new MonitoringUI.Controlls.CtrlTitleBar();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.ledTrayExist = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
             this.gridCVInfo = new FMSMonitoringUI.Controlls.CtrlDataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Exit = new MonitoringUI.Controlls.CButton.CtrlButton();
@@ -69,12 +70,22 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.ledTrayExist);
             this.panel3.Controls.Add(this.gridCVInfo);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(2, 62);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(396, 325);
             this.panel3.TabIndex = 2;
+            // 
+            // ledTrayExist
+            // 
+            this.ledTrayExist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ledTrayExist.Location = new System.Drawing.Point(267, 68);
+            this.ledTrayExist.Name = "ledTrayExist";
+            this.ledTrayExist.Size = new System.Drawing.Size(64, 18);
+            this.ledTrayExist.TabIndex = 2;
+            this.ledTrayExist.TitleText = "";
             // 
             // gridCVInfo
             // 
@@ -153,5 +164,6 @@
         private Controlls.CtrlDataGridView gridCVInfo;
         private System.Windows.Forms.Panel panel2;
         private MonitoringUI.Controlls.CButton.CtrlButton Exit;
+        private Controlls.WindowsForms.CtrlLED ledTrayExist;
     }
 }

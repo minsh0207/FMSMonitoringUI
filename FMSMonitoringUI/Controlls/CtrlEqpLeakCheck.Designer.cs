@@ -51,6 +51,7 @@
             this.lbEqpMode.TabIndex = 2;
             this.lbEqpMode.Text = "R";
             this.lbEqpMode.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbEqpMode.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseClick);
             this.lbEqpMode.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseDoubleClick);
             // 
             // lbEqpType
@@ -64,6 +65,7 @@
             this.lbEqpType.TabIndex = 1;
             this.lbEqpType.Text = "  EQP";
             this.lbEqpType.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbEqpType.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseClick);
             this.lbEqpType.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseDoubleClick);
             // 
             // splitContainer1
@@ -100,6 +102,8 @@
             this.lbEqpStatus.TabIndex = 4;
             this.lbEqpStatus.Text = "Running";
             this.lbEqpStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbEqpStatus.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseClick);
+            this.lbEqpStatus.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseDoubleClick);
             // 
             // TrayInfoView
             // 

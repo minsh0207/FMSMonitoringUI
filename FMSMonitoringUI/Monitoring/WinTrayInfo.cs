@@ -243,12 +243,10 @@ namespace FMSMonitoringUI.Monitoring
                 {
                     strSQL.Append(" SELECT A.eqp_name,");
                     strSQL.Append("        B.model_id, B.tray_id, B.tray_input_time, B.route_id, B.lot_id, B.start_time, B.plan_time, B.current_cell_cnt, B.tray_zone,");
-                    strSQL.Append("        C.process_name");
+                    strSQL.Append("        (SELECT sf_get_process_name(B.model_id, B.route_id, B.eqp_type, B.process_type, B.process_no)) AS process_name");
                     strSQL.Append(" FROM fms_v.tb_mst_eqp   A");
                     strSQL.Append("     LEFT OUTER JOIN fms_v.tb_dat_tray   B");
                     strSQL.Append("         ON B.tray_id IN (A.tray_id, A.tray_id_2)");
-                    strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_route_order   C");
-                    strSQL.Append("         ON B.route_order_no = C.route_order_no AND B.route_id = C.route_id");
                     //필수값
                     strSQL.Append($" WHERE B.eqp_id = '{eqpid}' AND B.tray_id = '{trayid}'");
                 }
@@ -256,15 +254,13 @@ namespace FMSMonitoringUI.Monitoring
                 {
                     strSQL.Append(" SELECT A.rack_id,");
                     strSQL.Append("        B.model_id, B.tray_id, B.tray_input_time, B.route_id, B.lot_id, B.start_time, B.plan_time, B.current_cell_cnt, B.tray_zone,");
-                    strSQL.Append("        C.process_name,");
-                    strSQL.Append("        D.eqp_name");
+                    strSQL.Append("        (SELECT sf_get_process_name(B.model_id, B.route_id, B.eqp_type, B.process_type, B.process_no)) AS process_name,");
+                    strSQL.Append("        C.eqp_name");
                     strSQL.Append(" FROM fms_v.tb_mst_aging   A");
                     strSQL.Append("     LEFT OUTER JOIN fms_v.tb_dat_tray   B");
                     strSQL.Append("         ON B.tray_id IN (A.tray_id, A.tray_id_2)");
-                    strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_route_order   C");
-                    strSQL.Append("         ON B.route_order_no = C.route_order_no AND B.route_id = C.route_id");
-                    strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_eqp   D");
-                    strSQL.Append("         ON B.eqp_id = D.eqp_id");
+                    strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_eqp   C");
+                    strSQL.Append("         ON B.eqp_id = C.eqp_id");
                     //필수값
                     strSQL.Append($" WHERE B.unit_id = '{rackid}' AND B.tray_id = '{trayid}' AND D.eqp_id = '{eqpid}'");
                 }
@@ -367,7 +363,7 @@ namespace FMSMonitoringUI.Monitoring
             gridTrayInfo.SetValue(1, row, data[0].MODEL_ID); row++;
             gridTrayInfo.SetValue(1, row, data[0].TRAY_ID); row++;
             gridTrayInfo.SetValue(1, row, data[0].TRAY_INPUT_TIME.Year == 1 ? "" : data[0].TRAY_INPUT_TIME.ToString()); row++;
-            gridTrayInfo.SetValue(1, row, data[0].TRAY_ZONE); row++;
+            gridTrayInfo.SetValue(1, row, GetTrayType(data[0].TRAY_ZONE)); row++;
             gridTrayInfo.SetValue(1, row, data[0].ROUTE_ID); row++;
             gridTrayInfo.SetValue(1, row, data[0].LOT_ID); row++;
             gridTrayInfo.SetValue(1, row, data[0].PROCESS_NAME); row++;
@@ -449,6 +445,25 @@ namespace FMSMonitoringUI.Monitoring
         private void Exit_Click(object sender, EventArgs e)
         {
             Close();
+        }
+        #endregion
+
+        #region GetTrayType
+        private string GetTrayType(string trayZone)
+        {
+            string ret = string.Empty;
+
+            switch (trayZone)
+            {
+                case "BD":
+                    ret = "BD\nBefore Degas Long Tray";
+                    break;
+                case "AD":
+                    ret = "AD\nAfter Degas Short Tray";
+                    break;
+            }
+
+            return ret;
         }
         #endregion
     }

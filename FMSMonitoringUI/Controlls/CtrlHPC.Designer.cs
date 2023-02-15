@@ -51,6 +51,7 @@
             this.lbOPMode.TabIndex = 3;
             this.lbOPMode.Text = "Discharge (CCCV)";
             this.lbOPMode.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbOPMode.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseClick);
             this.lbOPMode.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseDoubleClick);
             // 
             // lbEqpStatus
@@ -65,6 +66,7 @@
             this.lbEqpStatus.TabIndex = 2;
             this.lbEqpStatus.Text = "R";
             this.lbEqpStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbEqpStatus.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseClick);
             this.lbEqpStatus.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseDoubleClick);
             // 
             // lbRackID
@@ -77,6 +79,7 @@
             this.lbRackID.Size = new System.Drawing.Size(141, 30);
             this.lbRackID.TabIndex = 1;
             this.lbRackID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbRackID.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseClick);
             this.lbRackID.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseDoubleClick);
             // 
             // splitContainer1

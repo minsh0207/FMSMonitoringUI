@@ -139,10 +139,11 @@ namespace FMSMonitoringUI
                 Update(certificate);
             }
 
-            if (base.ShowDialog(owner) != DialogResult.OK)
-            {
-                return false;
-            }
+            // 인증서 체크하지 않고 넘어간다.
+            //if (base.ShowDialog(owner) != DialogResult.OK)
+            //{
+            //    return false;
+            //}
 
             return true;
         }

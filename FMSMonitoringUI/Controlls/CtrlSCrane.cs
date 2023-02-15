@@ -14,6 +14,7 @@ namespace ControlGallery
 
             //
             cranebox.MouseDoubleClick += CraneObject_MouseDoubleClick;
+            cranebox.MouseClick += Cranebox_MouseClick;
             lbRail.MouseDoubleClick += CraneObject_MouseDoubleClick;
         }
 
@@ -159,6 +160,10 @@ namespace ControlGallery
             OnMouseDoubleClick(e);
         }
 
+        private void Cranebox_MouseClick(object sender, MouseEventArgs e)
+        {
+            OnMouseClick(e);
+        }
         #endregion
 
         double _pixelsPerBay = 1.0;

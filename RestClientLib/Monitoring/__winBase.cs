@@ -23,6 +23,7 @@ namespace RestClientLib
         public string LEVEL { get; set; }
         public string TROUBLE_CODE { get; set; }
         public string TROUBLE_NAME { get; set; }
+        public string TROUBLE_NAME_LOCAL { get; set; }
         public DateTime TRAY_INPUT_TIME { get; set; }
         public string TRAY_ZONE { get; set; }
         public string MODEL_ID { get; set; }
@@ -135,6 +136,7 @@ namespace RestClientLib
         public string LEVEL { get; set; }
         public string TROUBLE_CODE { get; set; }
         public string TROUBLE_NAME { get; set; }
+        public string TROUBLE_NAME_LOCAL { get; set; }
         public DateTime TRAY_INPUT_TIME { get; set; }
         public string TRAY_ZONE { get; set; }
         public string MODEL_ID { get; set; }
@@ -214,6 +216,8 @@ namespace RestClientLib
         public string EQP_NAME_LOCAL { get; set; }
         public string PROCESS_STATUS { get; set; }
         public int OPERATION_MODE { get; set; }
+        public string REWORK_FLAG { get; set; }
+        public string LEVEL { get; set; }
         public DateTime START_TIME { get; set; }
         public DateTime PLAN_TIME { get; set; }
     }
@@ -234,6 +238,8 @@ namespace RestClientLib
         public DateTime PLAN_TIME { get; set; }
         public string TROUBLE_CODE { get; set; }
         public string TROUBLE_NAME { get; set; }
+        public string TROUBLE_NAME_LOCAL { get; set; }
+        public string REWORK_FLAG { get; set; }
 
     }
     #endregion

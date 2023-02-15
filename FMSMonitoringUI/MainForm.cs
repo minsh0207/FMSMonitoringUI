@@ -821,10 +821,10 @@ namespace FMSMonitoringUI
                 //// Set Query
                 StringBuilder strSQL = new StringBuilder();
 
-                strSQL.Append(" SELECT eqp_id, eqp_name, eqp_name_local");
+                strSQL.Append(" SELECT eqp_name, eqp_name_local, IF(unit_id IS NULL, eqp_id, unit_id) AS eqp_id");
                 strSQL.Append(" FROM fms_v.tb_mst_eqp");
                 //필수값
-                strSQL.Append($" WHERE unit_id IS NULL");
+                //strSQL.Append($" WHERE unit_id IS NULL");
 
                 var jsonResult = await rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
 
@@ -878,6 +878,8 @@ namespace FMSMonitoringUI
 
             _CtrlMonitoring._EqpName = dict;
             _CtrlAging._EqpName = dict;
+            _CtrlFormationCHG._EqpName = dict;
+            _CtrlFormationHPC._EqpName = dict;
         }
         #endregion
 

@@ -39,6 +39,10 @@ namespace FMSMonitoringUI
         /// </summary>
         private Dictionary<string, Color> _EqpStatus = new Dictionary<string, Color>();
         private Dictionary<int, Color> _OpMode = new Dictionary<int, Color>();
+        /// <summary>
+        /// First=Equipment ID, Second=Eqp Name
+        /// </summary>
+        public Dictionary<string, string> _EqpName;
         #endregion
 
         #region Working Thread
@@ -58,12 +62,13 @@ namespace FMSMonitoringUI
             InitializeComponent();
 
             InitFormationBox();
-            InitControls();
+            
         }
 
         #region CtrlFormationCHG Load
         private void CtrlFormationCHG_Load(object sender, EventArgs e)
         {
+            InitControls();
             InitLanguage();
 
             CLogger.WriteLog(enLogLevel.Info, this.Text, "Window Load");
@@ -94,6 +99,9 @@ namespace FMSMonitoringUI
 
                     //charger.MouseDoubleClick += Charger_MouseDoubleClick;
                     _ListCharger.Add(charger.UnitID, charger);
+
+                    if (charger.UnitID != "CHG0110304")     // 마짐가 Rack은 사용안함.
+                        charger.EqpName = _EqpName[charger.UnitID];
 
                     if (_EqpID == "") _EqpID = charger.EqpID;
                 }
@@ -201,14 +209,29 @@ namespace FMSMonitoringUI
                 // Set Query
                 StringBuilder strSQL = new StringBuilder();
 
+                //strSQL.Append(" SELECT A.unit_id, A.eqp_name, A.eqp_name_local, A.tray_id, B.tray_id_2,");
+                //strSQL.Append("        A.start_time, A.plan_time, A.process_status, A.operation_mode,");
+                //strSQL.Append("        B.*,");
+                //strSQL.Append("        C.rework_flag");
+                //strSQL.Append(" FROM fms_v.tb_mst_eqp   A");
+                //strSQL.Append("     LEFT OUTER JOIN fms_v.tb_dat_temp_unit  B");
+                //strSQL.Append("         ON A.unit_id = B.unit_id");
+                //strSQL.Append("     LEFT OUTER JOIN fms_v.tb_dat_tray  C");
+                //strSQL.Append("         ON A.tray_id = B.tray_id");
+                //strSQL.Append("         AND (B.unit_id, B.event_time) in (");
+                //strSQL.Append("         SELECT unit_id, max(event_time) as event_time FROM fms_v.tb_dat_temp_unit GROUP BY unit_id)");
+
                 strSQL.Append(" SELECT A.unit_id, A.eqp_name, A.eqp_name_local, A.tray_id, B.tray_id_2,");
                 strSQL.Append("        A.start_time, A.plan_time, A.process_status, A.operation_mode,");
-                strSQL.Append("        B.*");
+                strSQL.Append("        B.*,");
+                strSQL.Append("        C.rework_flag, IF(C.tray_id = B.tray_id, '0', '1') AS Level");
                 strSQL.Append(" FROM fms_v.tb_mst_eqp   A");
                 strSQL.Append("     LEFT OUTER JOIN fms_v.tb_dat_temp_unit  B");
                 strSQL.Append("         ON A.unit_id = B.unit_id");
                 strSQL.Append("         AND (B.unit_id, B.event_time) in (");
                 strSQL.Append("         SELECT unit_id, max(event_time) as event_time FROM fms_v.tb_dat_temp_unit GROUP BY unit_id)");
+                strSQL.Append("     LEFT OUTER JOIN fms_v.tb_dat_tray  C");
+                strSQL.Append("         ON C.tray_id IN (B.tray_id, B.tray_id_2)");
                 //필수값
                 strSQL.Append($" WHERE A.eqp_id = '{_EqpID}'");
                 strSQL.Append("        AND (A.eqp_type = 'CHG' AND A.unit_id IS NOT NULL)");
@@ -263,7 +286,7 @@ namespace FMSMonitoringUI
                 {
                     data[i].PROCESS_STATUS = "I";
                 }
-
+                
                 chg.SetData(data[i], _EqpStatus[data[i].PROCESS_STATUS], _OpMode[data[i].OPERATION_MODE]);
             }
 

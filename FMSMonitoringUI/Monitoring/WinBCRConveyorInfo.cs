@@ -200,9 +200,13 @@ namespace FMSMonitoringUI.Monitoring
             ConveyorType.TextData = GetConveyorType(data[(int)enCVTagList.ConveyorType].Value);
             CVTroubleErrNo.TextData = data[(int)enCVTagList.EqpErrorNo].Value.ToString();
             TroubleErrLevel.TextData = data[(int)enCVTagList.EqpErrorLevel].Value.ToString();
-            CommandReady.TextData = data[(int)enCVTagList.CommandReady].Value.ToString();
+            //CommandReady.TextData = data[(int)enCVTagList.CommandReady].Value.ToString();
+            onoff = bool.Parse(data[(int)enCVTagList.CommandReady].Value.ToString());
+            ledCommandReady.LedOnOff(onoff);
             StationStatus.TextData = GetStationStatus(data[(int)enCVTagList.StationStatus].Value);
-            TrayExist.TextData = data[(int)enCVTagList.TrayExist].Value.ToString();
+            //TrayExist.TextData = data[(int)enCVTagList.TrayExist].Value.ToString();
+            onoff = bool.Parse(data[(int)enCVTagList.TrayExist].Value.ToString());
+            ledTrayExist.LedOnOff(onoff);
             TrayType.TextData = GetTrayType(data[(int)enCVTagList.TrayType].Value);
             TrayCount.TextData = data[(int)enCVTagList.TrayCount].Value.ToString();
             TrayID1.TextData = data[(int)enCVTagList.TrayIdL1].Value.ToString();

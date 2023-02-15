@@ -201,7 +201,8 @@ namespace FMSMonitoringUI.Monitoring
             gridCVInfo.SetValue(1, row, GetStationStatus(data[(int)enCVTagList.StationStatus].Value)); row++;
 
             bool trayExist = Convert.ToBoolean(data[(int)enCVTagList.TrayExist].Value);
-            gridCVInfo.SetValue(1, row, (trayExist == true ? "Exist" : "Not Exist")); row++;
+            //gridCVInfo.SetValue(1, row, (trayExist == true ? "Exist" : "Not Exist")); row++;
+            ledTrayExist.LedOnOff(trayExist); row++;
             gridCVInfo.SetValue(1, row, GetTrayType(data[(int)enCVTagList.TrayType].Value)); row++;
             gridCVInfo.SetValue(1, row, data[(int)enCVTagList.TrayCount].Value); row++;
             gridCVInfo.SetValue(1, row, data[(int)enCVTagList.TrayIdL1].Value); row++;            

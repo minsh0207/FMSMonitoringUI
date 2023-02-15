@@ -260,14 +260,12 @@ namespace FMSMonitoringUI.Monitoring
                 strSQL.Append(" SELECT A.eqp_id, A.eqp_name, A.eqp_mode, A.operation_mode, A.eqp_status, A.eqp_trouble_code,C.tray_id, IF(A.tray_id = C.tray_id, '1', '2') AS level,");
                 strSQL.Append("        B.trouble_code, B.trouble_name,");
                 strSQL.Append("        C.tray_input_time, C.tray_zone, C.model_id, C.route_id, C.lot_id, C.start_time, C.plan_time, C.current_cell_cnt,");
-                strSQL.Append("        D.process_name");
+                strSQL.Append("        (SELECT sf_get_process_name(C.model_id, C.route_id, C.eqp_type, C.process_type, C.process_no)) AS process_name");
                 strSQL.Append(" FROM fms_v.tb_mst_eqp   A");
                 strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_trouble    B");
                 strSQL.Append("         ON A.eqp_trouble_code = B.trouble_code AND A.eqp_type = B.eqp_type");
                 strSQL.Append("     LEFT OUTER JOIN fms_v.tb_dat_tray   C");
                 strSQL.Append("         ON C.tray_id IN (A.tray_id, A.tray_id_2)");
-                strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_route_order    D");
-                strSQL.Append("         ON A.route_order_no = D.route_order_no AND C.route_id = D.route_id");
                 //필수값
                 if (eqptype == "HPC")
                 {
@@ -455,7 +453,8 @@ namespace FMSMonitoringUI.Monitoring
             gridEqpInfo.SetValue(1, row, GetOperationMode(data[0].OPERATION_MODE)); row++;
 
             gridEqpInfo.SetValue(1, row, data[0].TROUBLE_CODE); row++;
-            gridEqpInfo.SetValue(1, row, data[0].TROUBLE_NAME);
+            string troubleName = (CDefine.m_enLanguage == enLoginLanguage.English ? data[0].TROUBLE_NAME : data[0].TROUBLE_NAME_LOCAL);
+            gridEqpInfo.SetValue(1, row, troubleName);
 
             if (data[0].TRAY_ID == null) return;
 
@@ -465,7 +464,7 @@ namespace FMSMonitoringUI.Monitoring
                 gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_ID); row++;
                 gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_ID == null ? "" : data[i].LEVEL); row++;
                 gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_INPUT_TIME.Year == 1 ? "" : data[i].TRAY_INPUT_TIME.ToString()); row++;
-                gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_ZONE); row++;
+                gridTrayInfo.SetValue(i + 1, row, GetTrayType(data[i].TRAY_ZONE)); row++;
                 gridTrayInfo.SetValue(i + 1, row, data[i].MODEL_ID); row++;
                 gridTrayInfo.SetValue(i + 1, row, data[i].ROUTE_ID); row++;
                 gridTrayInfo.SetValue(i + 1, row, data[i].LOT_ID); row++;
@@ -569,6 +568,25 @@ namespace FMSMonitoringUI.Monitoring
             }
 
             return statusName;
+        }
+        #endregion
+
+        #region GetTrayType
+        private string GetTrayType(string trayZone)
+        {
+            string ret = string.Empty;
+
+            switch (trayZone)
+            {
+                case "BD":
+                    ret = "BD\nBefore Degas Long Tray";
+                    break;
+                case "AD":
+                    ret = "AD\nAfter Degas Short Tray";
+                    break;
+            }
+
+            return ret;
         }
         #endregion
 

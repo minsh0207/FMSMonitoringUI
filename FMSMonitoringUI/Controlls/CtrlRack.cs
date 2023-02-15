@@ -124,6 +124,9 @@ namespace FMSMonitoringUI.Controlls
             TrayInfoView.SetValue(3, 1, data.START_TIME.Year == 1 ? "" : data.START_TIME.ToString());
             TrayInfoView.SetValue(3, 2, data.PLAN_TIME.Year == 1 ? "" : data.PLAN_TIME.ToString());
 
+            int row = 1 + Convert.ToInt16(data.LEVEL);
+            TrayInfoView.SetReworkTray(1, row, data.REWORK_FLAG);
+
             SetProcessStatus(data.PROCESS_STATUS, processStatus);
 
             if (data.PROCESS_STATUS == "R")
@@ -244,6 +247,17 @@ namespace FMSMonitoringUI.Controlls
             }
 
             return statusName;
+        }
+        #endregion
+
+        #region lbEqpType_MouseClick
+        private void lbEqpType_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (((MouseEventArgs)e).Button == MouseButtons.Right)
+            {
+                WinTroubleInfo winTroubleInfo = new WinTroubleInfo(EqpName, _EqpType, "", _unitD);
+                winTroubleInfo.ShowDialog();
+            }
         }
         #endregion
     }

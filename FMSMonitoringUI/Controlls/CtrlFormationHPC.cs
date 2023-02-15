@@ -15,6 +15,7 @@ using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -38,6 +39,10 @@ namespace FMSMonitoringUI
         /// </summary>
         private Dictionary<string, Color> _EqpStatus;
         private Dictionary<int, Color> _OpMode;
+        /// <summary>
+        /// First=Equipment ID, Second=Eqp Name
+        /// </summary>
+        public Dictionary<string, string> _EqpName;
         #endregion
 
         #region Working Thread
@@ -60,12 +65,12 @@ namespace FMSMonitoringUI
             _OpMode = new Dictionary<int, Color>();
 
             InitFormationBox();
-            InitControls();
         }
 
         #region CtrlFormationHPC Load
         private void CtrlFormationHPC_Load(object sender, EventArgs e)
         {            
+            InitControls();
             InitLanguage();            
 
             CLogger.WriteLog(enLogLevel.Info, this.Text, "Window Load");
@@ -97,9 +102,11 @@ namespace FMSMonitoringUI
 
             //ctrlHPC1.MouseDoubleClick += HPC_MouseDoubleClick;
             _ListHPC.Add(ctrlHPC1.UnitID, ctrlHPC1);
+            ctrlHPC1.EqpName = _EqpName[ctrlHPC1.UnitID];
 
             //ctrlHPC2.MouseDoubleClick += HPC_MouseDoubleClick;
             _ListHPC.Add(ctrlHPC2.UnitID, ctrlHPC2);
+            ctrlHPC2.EqpName = _EqpName[ctrlHPC2.UnitID];
 
             if (_EqpID == "") _EqpID = ctrlHPC2.EqpID;
         }
@@ -208,15 +215,16 @@ namespace FMSMonitoringUI
                 //strSQL.Append($"       B.pressure, B.event_time, ROUND(SUM({GetJigNoString("B")})/{CDefine.DEF_MAX_CELL_COUNT}, 1) as temp_avg,");
                 strSQL.Append("       B.pressure, B.event_time, B.jig_avg,");
                 strSQL.Append("       C.trouble_code, C.trouble_name,");
-                strSQL.Append("       D.process_name");
+                strSQL.Append("       (SELECT sf_get_process_name(D.model_id, D.route_id, D.eqp_type, D.process_type, D.process_no)) AS process_name,");
+                strSQL.Append("       D.rework_flag");
                 strSQL.Append(" FROM fms_v.tb_mst_eqp   A");
                 strSQL.Append("        LEFT OUTER JOIN fms_v.tb_dat_temp_hpc    B");
                 strSQL.Append("             ON A.eqp_id = B.eqp_id AND B.unit_id = A.unit_id ");
                 strSQL.Append("                 AND B.event_time = (SELECT MAX(event_time) FROM tb_dat_temp_hpc WHERE eqp_id = A.eqp_id AND unit_id = B.unit_id)");
                 strSQL.Append("         LEFT OUTER JOIN fms_v.tb_mst_trouble   C");
                 strSQL.Append("             ON A.eqp_trouble_code = C.trouble_code AND A.eqp_type = C.eqp_type");
-                strSQL.Append("         LEFT OUTER JOIN fms_v.tb_mst_route_order    D");
-                strSQL.Append("             ON A.route_order_no = D.route_order_no");
+                strSQL.Append("         LEFT OUTER JOIN fms_v.tb_dat_tray    D");
+                strSQL.Append("             ON D.tray_id = B.tray_id ");
                 //필수값
                 strSQL.Append($" WHERE A.eqp_id = '{eqpid}'");
                 strSQL.Append("    AND A.unit_id = B.unit_id");

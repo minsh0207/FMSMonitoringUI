@@ -1,4 +1,5 @@
-﻿using Google.Protobuf.WellKnownTypes;
+﻿using FMSMonitoringUI.Controlls.WindowsForms;
+using Google.Protobuf.WellKnownTypes;
 using MonitoringUI.Controlls;
 using MySqlX.XDevAPI.Relational;
 using System;
@@ -110,7 +111,7 @@ namespace FMSMonitoringUI.Controlls
             dataGridView1.RowHeadersVisible = false;
 
             // 읽기 전용
-            dataGridView1.ReadOnly= true;
+            dataGridView1.ReadOnly = true;
 
             // 셀의 테두리 스타일
             dataGridView1.BorderStyle = BorderStyle.FixedSingle;
@@ -214,7 +215,7 @@ namespace FMSMonitoringUI.Controlls
         /// List<String> To AddHighHeader Input
         /// </summary>
         /// <param name="lstData"></param>
-        public void AddColumnHeaderList(List<string> lstData)
+        public void AddColumnHeaderList(List<string> lstData, bool sortMode=false)
         {
             //Init
             int nMax = lstData.Count;
@@ -229,7 +230,11 @@ namespace FMSMonitoringUI.Controlls
                 dataGridView1.Columns[nCol].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
                 // Sort 막음
-                dataGridView1.Columns[nCol].SortMode = DataGridViewColumnSortMode.NotSortable;
+                if (sortMode == false)
+                    dataGridView1.Columns[nCol].SortMode = DataGridViewColumnSortMode.NotSortable;
+                else
+                    dataGridView1.Columns[nCol].SortMode = DataGridViewColumnSortMode.Automatic;
+
             }
         }
         public void AddRowsHeaderList(List<string> lstData)

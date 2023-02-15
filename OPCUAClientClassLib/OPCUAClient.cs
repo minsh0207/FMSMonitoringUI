@@ -330,7 +330,7 @@ namespace OPCUAClientClassLib
 
                 // Get the endpoint by connecting to server's discovery endpoint.
                 // Try to find the first endopint without security.
-                bool urlType = true;
+                bool urlType = false;
                 if (urlType)
                 {
                     EndpointDescription endpoint;
@@ -426,6 +426,7 @@ namespace OPCUAClientClassLib
             try
             {
                 _session = new Session(_OPCApplication);
+
             }
             catch (Exception ex)
             {
@@ -474,7 +475,7 @@ namespace OPCUAClientClassLib
             _session.ConnectionStatusUpdate += new ServerConnectionStatusUpdateEventHandler(Session_ServerConnectionStatusUpdate);
 
             // Id & Password
-            //_session.UserIdentity = new UserIdentity() { IdentityType = UserIdentityType.UserName, UserName = "fms", Password = "fms@!" };
+            _session.UserIdentity = new UserIdentity() { IdentityType = UserIdentityType.UserName, UserName = "fms", Password = "fms@!" };
 
             // Call connect with URL
             //if (IsReverseConnectSelected)
@@ -518,7 +519,7 @@ namespace OPCUAClientClassLib
                 switch (e.Status)
                 {
                     case ServerConnectionStatus.Disconnected:
-                        _LOG_(LogLevel.OPCUA, $"Disconnected to [{_session.EndpointDescription.EndpointUrl}]");
+                        //_LOG_(LogLevel.OPCUA, $"Disconnected to [{_session.EndpointDescription.EndpointUrl}]");
                         UpdateAfterDisconnect();                                               
                         break;
                     case ServerConnectionStatus.Connected:

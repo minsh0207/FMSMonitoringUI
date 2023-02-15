@@ -105,6 +105,7 @@
             this.lbTitle.TabIndex = 42;
             this.lbTitle.Text = "LTA";
             this.lbTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbTitle.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseClick);
             // 
             // btnLeadTime
             // 

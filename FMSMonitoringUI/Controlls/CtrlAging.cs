@@ -330,7 +330,7 @@ namespace MonitoringUI.Monitoring
 
                         CLogger.WriteLog(enLogLevel.ButtonClick, this.Text, $"Rack TroubleInfo : Eqp Name = {strEqpName}, Unit ID = {strUnitID}");
 
-                        WinTroubleInfo winTroubleInfo = new WinTroubleInfo(strEqpName, strEqpType, strUnitID);
+                        WinTroubleInfo winTroubleInfo = new WinTroubleInfo(strEqpName, strEqpType, "", strUnitID);
                         winTroubleInfo.ShowDialog();
                     }
                 }

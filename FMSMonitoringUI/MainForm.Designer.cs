@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.scMainPanel = new System.Windows.Forms.SplitContainer();
+            this.cbUsePopUp = new FMSMonitoringUI.Controlls.WindowsForms.CtrlCheckBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lbUserName = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
@@ -38,7 +39,6 @@
             this.barMain = new MonitoringUI.Controlls.CtrlTitleBarLabel();
             this.barAging = new MonitoringUI.Controlls.CtrlTitleBarLabel();
             this.barFormationCHG = new MonitoringUI.Controlls.CtrlTitleBarLabel();
-            this.cbUsePopUp = new FMSMonitoringUI.Controlls.WindowsForms.CtrlCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.scMainPanel)).BeginInit();
             this.scMainPanel.Panel1.SuspendLayout();
             this.scMainPanel.SuspendLayout();
@@ -75,6 +75,18 @@
             this.scMainPanel.Size = new System.Drawing.Size(1900, 975);
             this.scMainPanel.SplitterDistance = 62;
             this.scMainPanel.TabIndex = 0;
+            // 
+            // cbUsePopUp
+            // 
+            this.cbUsePopUp.AutoSize = true;
+            this.cbUsePopUp.ForeColor = System.Drawing.Color.White;
+            this.cbUsePopUp.LanguageID = "DEF_Use_Trouble_Alarm_Popup";
+            this.cbUsePopUp.Location = new System.Drawing.Point(1269, 27);
+            this.cbUsePopUp.Name = "cbUsePopUp";
+            this.cbUsePopUp.Size = new System.Drawing.Size(171, 16);
+            this.cbUsePopUp.TabIndex = 112;
+            this.cbUsePopUp.Text = "Use Trouble Alarm PopUp";
+            this.cbUsePopUp.UseVisualStyleBackColor = true;
             // 
             // pictureBox1
             // 
@@ -177,20 +189,6 @@
             this.barFormationCHG.Size = new System.Drawing.Size(132, 50);
             this.barFormationCHG.TabIndex = 3;
             this.barFormationCHG.TitleText = "Formation";
-            // 
-            // cbUsePopUp
-            // 
-            this.cbUsePopUp.AutoSize = true;
-            this.cbUsePopUp.Checked = true;
-            this.cbUsePopUp.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbUsePopUp.ForeColor = System.Drawing.Color.White;
-            this.cbUsePopUp.LanguageID = "DEF_Use_Trouble_Alarm_Popup";
-            this.cbUsePopUp.Location = new System.Drawing.Point(1269, 27);
-            this.cbUsePopUp.Name = "cbUsePopUp";
-            this.cbUsePopUp.Size = new System.Drawing.Size(171, 16);
-            this.cbUsePopUp.TabIndex = 112;
-            this.cbUsePopUp.Text = "Use Trouble Alarm PopUp";
-            this.cbUsePopUp.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 

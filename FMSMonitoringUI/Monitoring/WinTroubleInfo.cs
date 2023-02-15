@@ -26,22 +26,26 @@ namespace FMSMonitoringUI.Monitoring
         private Point point = new Point();
         private string _EqpName = string.Empty;
         private string _EqpType = string.Empty;
+        private string _EqpID = string.Empty;
         private string _UnitID = string.Empty;
+        private int _AgingIdx = 0;
 
         #region Working Thread
         private Thread _ProcessThread;
         private bool _TheadVisiable;
         #endregion
 
-        public WinTroubleInfo(string eqpName, string eqpType, string unitID)
+        public WinTroubleInfo(string eqpName, string eqpType, string eqpID, string unitID, int agingIdx=0)
         {
             InitializeComponent();
 
             _EqpName = eqpName;
             _EqpType = eqpType;
+            _EqpID = eqpID;
             _UnitID = unitID;
+            _AgingIdx = agingIdx;
 
-            InitControl();
+            InitControl(_EqpID, _EqpName);
             InitGridViewTray();
             InitLanguage();
             //InitChart();
@@ -99,7 +103,7 @@ namespace FMSMonitoringUI.Monitoring
         //}
 
         #region InitControl
-        private void InitControl()
+        private void InitControl(string eqpID, string eqpName)
         {
             Exit.Left = (this.panel2.Width - Exit.Width) / 2;             
             Exit.Top = (this.panel2.Height - Exit.Height) / 2;
@@ -109,9 +113,17 @@ namespace FMSMonitoringUI.Monitoring
             dtSearchPriod.StartDate = DateTime.Now.AddDays(-5);
             dtSearchPriod.EndDate = DateTime.Now.AddDays(1);
 
-            string rackName = $"{_UnitID.Substring(1,2)}Line-{_UnitID.Substring(3, 1)}Lane-{_UnitID.Substring(4, 2)}Bay-{_UnitID.Substring(6, 2)}F";
-            lbRackID.TextData = rackName;
-
+            //if (eqpID == "")
+            //{
+            //    string titleName = $"{_UnitID.Substring(3, 2)}Line-{_UnitID.Substring(5, 1)}Lane-{_UnitID.Substring(6, 2)}Bay-{_UnitID.Substring(8, 2)}F";
+            //    lbRackID.TextData = titleName;
+            //    lbRackID.LanguageID = "DEF_Rack_ID";
+            //}
+            //else
+            {
+                lbRackID.TextData = eqpName;
+                lbRackID.LanguageID = "DEF_Equipment_Name";
+            }
         }
         #endregion
 
@@ -129,14 +141,16 @@ namespace FMSMonitoringUI.Monitoring
         #region InitGridViewTray
         private void InitGridViewTray()
         {
-            List<string> lstTitle = new List<string>();
-            lstTitle.Add(LocalLanguage.GetItemString("DEF_Equipment_Name"));
-            lstTitle.Add(LocalLanguage.GetItemString("DEF_Unit_ID"));
-            lstTitle.Add(LocalLanguage.GetItemString("DEF_Trouble_Category"));
-            lstTitle.Add(LocalLanguage.GetItemString("DEF_Trouble_Code"));
-            lstTitle.Add(LocalLanguage.GetItemString("DEF_Trouble_Name"));
-            lstTitle.Add(LocalLanguage.GetItemString("DEF_Event_Time"));
-            gridTrayInfo.AddColumnHeaderList(lstTitle);
+            List<string> lstTitle = new List<string>
+            {
+                LocalLanguage.GetItemString("DEF_Equipment_Name"),
+                LocalLanguage.GetItemString("DEF_Unit_ID"),
+                LocalLanguage.GetItemString("DEF_Trouble_Category"),
+                LocalLanguage.GetItemString("DEF_Trouble_Code"),
+                LocalLanguage.GetItemString("DEF_Trouble_Name"),
+                LocalLanguage.GetItemString("DEF_Event_Time")
+            };
+            gridTrayInfo.AddColumnHeaderList(lstTitle, true);
 
             lstTitle = new List<string>();
             lstTitle.Add("");
@@ -171,7 +185,7 @@ namespace FMSMonitoringUI.Monitoring
 
                     this.Invoke(new MethodInvoker(delegate ()
                     {
-                        LoadTroubleInfo(_EqpType, _UnitID).GetAwaiter().GetResult();
+                        LoadTroubleInfo(_EqpType, _EqpID, _UnitID).GetAwaiter().GetResult();
                     }));
 
                     //Thread.Sleep(3000);
@@ -189,14 +203,10 @@ namespace FMSMonitoringUI.Monitoring
         #endregion
 
         #region LoadTroubleInfo
-        private async Task LoadTroubleInfo(string eqpType, string unitID)
+        private async Task LoadTroubleInfo(string eqpType, string eqpID, string unitID)
         {
             try
             {
-#if DEBUG
-                unitID = "HPC0110101";
-                eqpType = "HPC";
-#endif
                 RESTClient rest = new RESTClient();
                 //// Set Query
                 StringBuilder strSQL = new StringBuilder();
@@ -205,10 +215,25 @@ namespace FMSMonitoringUI.Monitoring
                 strSQL.Append("        B.trouble_name, B.trouble_name_local");
                 strSQL.Append(" FROM fms_v.tb_dat_trouble   A");
                 strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_trouble    B");
-                strSQL.Append("           ON A.trouble_code = B.trouble_code");
+                strSQL.Append("           ON A.trouble_code = B.trouble_code AND A.eqp_type = B.eqp_type");
                 //필수값
                 strSQL.Append($" WHERE A.eqp_type = '{eqpType}'");
-                strSQL.Append($"    AND A.unit_id = '{unitID}'");
+
+                if (_AgingIdx > 0 && (eqpType == "HTA") || (eqpType == "LTA1") || (eqpType == "LTA2"))
+                {
+                    string lane = (eqpType == "LTA2" ? "02" : "01");
+
+                    strSQL.Append($"    AND (A.unit_id LIKE '{eqpType.Substring(0, 1)}{lane}{_AgingIdx * 2 - 1}%'");
+                    strSQL.Append($"      OR A.unit_id LIKE '{eqpType.Substring(0, 1)}{lane}{_AgingIdx * 2}%')");
+                }
+                else
+                {
+                    if (eqpID == "")
+                        strSQL.Append($"    AND A.unit_id = '{unitID}'");
+                    else
+                        strSQL.Append($"    AND A.eqp_id = '{eqpID}'");
+                }   
+
                 //strSQL.Append($"    AND A.event_time     BETWEEN concat({ ctrlDateTimeDT2DT1.StartDate:yyyyMMdd}, {ctrlDateTimeDT2DT1.StartDate:HHmmss})");
                 //strSQL.Append($"    AND concat({ ctrlDateTimeDT2DT1.EndDate:yyyyMMdd}, {ctrlDateTimeDT2DT1.EndDate:HHmmss})");
                 strSQL.Append($"    AND A.event_time     BETWEEN '{dtSearchPriod.StartDate:yyyyMMddHHmmss}'");
@@ -258,12 +283,22 @@ namespace FMSMonitoringUI.Monitoring
             foreach (var item in data)
             {
                 int col = 0;
-                
-                gridTrayInfo.SetValue(col, row, _EqpName); col++;
+
+                if (_EqpName == "Charge/Discharge")
+                {
+                    string unitName = $"{item.UNIT_ID.Substring(5, 1)}Lane-{item.UNIT_ID.Substring(6, 2)}Bay-{item.UNIT_ID.Substring(8, 2)}F";
+                    gridTrayInfo.SetValue(col, row, unitName); col++;
+                }
+                else
+                {
+                    gridTrayInfo.SetValue(col, row, _EqpName); col++;
+                }
+
                 gridTrayInfo.SetValue(col, row, item.UNIT_ID); col++;
                 gridTrayInfo.SetValue(col, row, item.TROUBLE_CATEGORY); col++;
                 gridTrayInfo.SetValue(col, row, item.TROUBLE_CODE); col++;
-                gridTrayInfo.SetValue(col, row, item.TROUBLE_CODE); col++;
+                string troubleName = (CDefine.m_enLanguage == enLoginLanguage.English ? item.TROUBLE_NAME : item.TROUBLE_NAME_LOCAL);
+                gridTrayInfo.SetValue(col, row, troubleName); col++;
                 gridTrayInfo.SetValue(col, row, item.EVENT_TIME.Year == 1 ? "" : item.EVENT_TIME.ToString());
                 row++;
             }
@@ -334,7 +369,7 @@ namespace FMSMonitoringUI.Monitoring
             string log = $"Search : Unit ID = {_UnitID}, Start Period = {dtSearchPriod.StartDate} ~ End Period = {dtSearchPriod.EndDate}";
             CLogger.WriteLog(enLogLevel.Search, this.WindowID, log);
 
-            LoadTroubleInfo(_EqpType, _UnitID).GetAwaiter().GetResult();
+            LoadTroubleInfo(_EqpType, _EqpID, _UnitID).GetAwaiter().GetResult();
         }
         #endregion
     }

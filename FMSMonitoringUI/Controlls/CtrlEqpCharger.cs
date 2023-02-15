@@ -38,7 +38,7 @@ namespace FMSMonitoringUI.Controlls
         }
         #endregion
 
-        private List<string> _UnitID { get; set; }
+        public List<string> UnitID { get; set; }
 
         private Label[,] _chgEqpStatus;
         private Label[,] _chgEqpMode;
@@ -64,7 +64,7 @@ namespace FMSMonitoringUI.Controlls
             _chgEqpStatus = new Label[uiTlbEqpStatus.ColumnCount, uiTlbEqpStatus.RowCount];
             _chgEqpMode = new Label[uiTlbEqpStatus.ColumnCount, uiTlbEqpStatus.RowCount];
 
-            _UnitID = new List<string>();
+            UnitID = new List<string>();
 
             for (int col = 0; col < uiTlbEqpStatus.ColumnCount; col++)
             {
@@ -102,7 +102,7 @@ namespace FMSMonitoringUI.Controlls
                     uiTlbEqpStatus.Controls.Add(_chgEqpStatus[col, row], col, row);
 
                     string chgUnitID = string.Format($"CHG0110{col+1}0{row+1}");
-                    _UnitID.Add(chgUnitID);
+                    UnitID.Add(chgUnitID);
                 }
             }
 
@@ -149,11 +149,24 @@ namespace FMSMonitoringUI.Controlls
         }
         #endregion
 
+        #region lbEqpType_MouseDoubleClick
         private void lbEqpType_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             //WinManageEqp form = new WinManageEqp(EqpID, "", EqpType, 1);
             //form.ShowDialog();
         }
+        #endregion
+
+        #region lbEqpType_MouseClick
+        private void lbEqpType_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (((MouseEventArgs)e).Button == MouseButtons.Right)
+            {
+                WinTroubleInfo winTroubleInfo = new WinTroubleInfo("Charge/Discharge", _EqpType, EqpID, "");
+                winTroubleInfo.ShowDialog();
+            }
+        }
+        #endregion
 
         #region TitleBarLavel Click
         private void CtrlButton1_Click(object sender, EventArgs e)
@@ -162,5 +175,6 @@ namespace FMSMonitoringUI.Controlls
                 Click_Evnet(EqpID, _EqpType, -1);
         }
         #endregion
+
     }
 }

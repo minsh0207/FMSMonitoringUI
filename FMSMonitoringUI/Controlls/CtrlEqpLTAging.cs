@@ -89,6 +89,17 @@ namespace FMSMonitoringUI.Controlls
         }
         #endregion
 
+        #region lbEqpType_MouseClick
+        private void lbEqpType_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (((MouseEventArgs)e).Button == MouseButtons.Right)
+            {
+                WinTroubleInfo winTroubleInfo = new WinTroubleInfo(EqpName, _EqpType, EqpID, "", _EqpLevel);
+                winTroubleInfo.ShowDialog();
+            }
+        }
+        #endregion
+
         #region TitleBarLavel Click
         private void CtrlButton1_Click(object sender, EventArgs e)
         {

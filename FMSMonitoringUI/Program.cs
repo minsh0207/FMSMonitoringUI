@@ -25,7 +25,7 @@ namespace FMSMonitoringUI
                 ApplicationLicenseManager.AddProcessLicenses(System.Reflection.Assembly.GetExecutingAssembly(), "FMSMonitoringUI.License.License.lic");
                 
                 // Create the certificate if it does not exist yet
-                //ApplicationInstance.Default.AutoCreateCertificate = true;
+                ApplicationInstance.Default.AutoCreateCertificate = true;
 
                 // start the application.
                 ApplicationInstance.Default.Start(Program.Run, ApplicationInstance.Default);

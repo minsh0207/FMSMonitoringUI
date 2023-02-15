@@ -52,7 +52,7 @@
             this.panel1.Location = new System.Drawing.Point(2, 2);
             this.panel1.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1197, 60);
+            this.panel1.Size = new System.Drawing.Size(1380, 60);
             this.panel1.TabIndex = 0;
             // 
             // titBar
@@ -66,7 +66,7 @@
             this.titBar.Location = new System.Drawing.Point(0, 0);
             this.titBar.Margin = new System.Windows.Forms.Padding(4);
             this.titBar.Name = "titBar";
-            this.titBar.Size = new System.Drawing.Size(1195, 58);
+            this.titBar.Size = new System.Drawing.Size(1378, 58);
             this.titBar.TabIndex = 0;
             this.titBar.TitleText = "Trouble Information";
             // 
@@ -78,7 +78,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(2, 62);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1197, 655);
+            this.panel3.Size = new System.Drawing.Size(1380, 655);
             this.panel3.TabIndex = 2;
             // 
             // panel4
@@ -90,7 +90,7 @@
             this.panel4.Controls.Add(this.lbRackID);
             this.panel4.Location = new System.Drawing.Point(0, -1);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1195, 48);
+            this.panel4.Size = new System.Drawing.Size(1379, 48);
             this.panel4.TabIndex = 4;
             // 
             // Search
@@ -100,7 +100,7 @@
             this.Search.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.Search.LabelText = "Search";
             this.Search.LanguageID = "DEF_Search";
-            this.Search.Location = new System.Drawing.Point(1042, 8);
+            this.Search.Location = new System.Drawing.Point(1220, 8);
             this.Search.Name = "Search";
             this.Search.Size = new System.Drawing.Size(140, 30);
             this.Search.TabIndex = 0;
@@ -113,7 +113,7 @@
             this.dtSearchPriod.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.dtSearchPriod.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
             this.dtSearchPriod.LanguageID = "DEF_Search_Period";
-            this.dtSearchPriod.Location = new System.Drawing.Point(604, 9);
+            this.dtSearchPriod.Location = new System.Drawing.Point(782, 9);
             this.dtSearchPriod.Name = "dtSearchPriod";
             this.dtSearchPriod.Size = new System.Drawing.Size(407, 27);
             this.dtSearchPriod.StartDate = new System.DateTime(2023, 1, 27, 14, 44, 55, 479);
@@ -132,7 +132,7 @@
             this.lbRackID.TabIndex = 4;
             this.lbRackID.TextData = "HT-01Line-1Lane-01Bay-1F";
             this.lbRackID.TitleText = "Rack ID ";
-            this.lbRackID.TitleWidth = 130F;
+            this.lbRackID.TitleWidth = 134F;
             // 
             // gridTrayInfo
             // 
@@ -142,7 +142,7 @@
             this.gridTrayInfo.Location = new System.Drawing.Point(0, 48);
             this.gridTrayInfo.Name = "gridTrayInfo";
             this.gridTrayInfo.RowCount = -1;
-            this.gridTrayInfo.Size = new System.Drawing.Size(1195, 605);
+            this.gridTrayInfo.Size = new System.Drawing.Size(1378, 605);
             this.gridTrayInfo.TabIndex = 1;
             this.gridTrayInfo.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             // 
@@ -154,7 +154,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(2, 717);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1197, 60);
+            this.panel2.Size = new System.Drawing.Size(1380, 60);
             this.panel2.TabIndex = 3;
             // 
             // Exit
@@ -178,7 +178,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(1201, 805);
+            this.ClientSize = new System.Drawing.Size(1384, 805);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);

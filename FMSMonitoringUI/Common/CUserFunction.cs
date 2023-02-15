@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OPCUAClientClassLib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,5 +36,42 @@ namespace MonitoringUI.Common
         public string EqpTypeID { get; set; } = "0";
         public string OperGroupID { get; set; } = "0";
         public string OperID { get; set; } = "0";
+    }
+
+    public class CMonitoredItem
+    {
+        public CMonitoredItem() 
+        {
+            GroupNo = 0;
+            SiteNo = 0;
+            CraneNo = 0;
+            TrayExist = false;
+            EqpStatus = 1;
+            TrayRework = false;
+            FireSensor = false;
+            CraneName = string.Empty;
+        }
+
+        public int GroupNo { get; set; }
+        public int SiteNo { get; set; }
+        public int CraneNo { get; set; }
+        public bool TrayExist { get; set; }
+        public int EqpStatus { get; set; }
+        public bool TrayRework { get; set; }
+        public bool FireSensor { get; set; }
+        public string CraneName { get; set; }
+    }
+    public class CSubscribeInfo
+    {
+        public Dictionary<int, CMonitoredItem> Item;
+
+        /// <summary>
+        /// first= Site no, Second = Monitored Item
+        /// </summary>
+        public CSubscribeInfo()
+        {
+            Item = new Dictionary<int, CMonitoredItem>();
+        }
+
     }
 }

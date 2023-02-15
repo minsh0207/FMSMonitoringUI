@@ -195,10 +195,23 @@ namespace FMSMonitoringUI.Controlls
         //}
         //#endregion
 
+        #region lbEqpType_MouseDoubleClick
         private void lbEqpType_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             WinFormationHPC form = new WinFormationHPC(lbEqpType.Text, EqpID, EqpType, UnitID);
             form.Show();
         }
+        #endregion
+
+        #region lbEqpType_MouseClick
+        private void lbEqpType_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (((MouseEventArgs)e).Button == MouseButtons.Right)
+            {
+                WinTroubleInfo winTroubleInfo = new WinTroubleInfo(EqpName, _EqpType, "", _unitD);
+                winTroubleInfo.ShowDialog();
+            }
+        }
+        #endregion
     }
 }
