@@ -48,8 +48,11 @@ namespace MonitoringUI.Common
                 strFileName = string.Format("[{0}] {1}", DateTime.Now.ToString("yyyy-MM-dd"), strWindowName);
 
                 // Directory Check
-                strDirectory = CDefine.DEF_LOG_PATH + string.Format(@"{0}\{1}\{2}\{3}",
-                    CDefine.DEF_LOG_FILENAME, logTime.Date.ToString("yyyy"), logTime.Date.ToString("MM"), logTime.Date.ToString("dd"));
+                //strDirectory = CDefine.DEF_LOG_PATH + string.Format(@"{0}\{1}\{2}\{3}",
+                //    CDefine.DEF_LOG_FILENAME, logTime.Date.ToString("yyyy"), logTime.Date.ToString("MM"), logTime.Date.ToString("dd"));
+
+                strDirectory = CDefine.DEF_LOG_PATH + string.Format(@"{0}-{1}-{2}",
+                    logTime.Date.ToString("yyyy"), logTime.Date.ToString("MM"), logTime.Date.ToString("dd"));
 
                 if (Directory.Exists(strDirectory) == false)
                 {

@@ -61,13 +61,21 @@ namespace MonitoringUI.Common
         /////////////////////////////////////////////////////////////////////
         //	Log Path
         //===================================================================
+        //#if (DEBUG == FALSE)
+        //		public const string DEF_LOG_PATH = @"C:\Formation\LOG\";
+        //#else
+        //        public const string DEF_LOG_PATH = @"C:\Formation\Log\";
+        //#endif
+        //		public const string DEF_EXE_PATH = @"C:\FormationSystem\FormationSystem.exe";
+        //		public const string DEF_LOG_FILENAME = "FormationUI";
+
 #if (DEBUG == FALSE)
 		public const string DEF_LOG_PATH = @"C:\Formation\LOG\";
 #else
-        public const string DEF_LOG_PATH = @"C:\Formation\Log\";
+        public const string DEF_LOG_PATH = @"D:\Logs\FMSSystem\";
 #endif
-		public const string DEF_EXE_PATH = @"C:\FormationSystem\FormationSystem.exe";
-		public const string DEF_LOG_FILENAME = "FormationUI";
+        public const string DEF_EXE_PATH = @"C:\FormationSystem\FormationSystem.exe";
+        public const string DEF_LOG_FILENAME = "FormationUI";
 
         /////////////////////////////////////////////////////////////////////
         //	Exit Button Size
