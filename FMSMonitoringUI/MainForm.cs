@@ -186,6 +186,8 @@ namespace FMSMonitoringUI
                 }
             }
 
+            cbUsePopUp.CallLocalLanguage();
+
             #region FMS MonitoringUI
             _CtrlMonitoring.Text = CAuthority.GetWindowsText(_CtrlMonitoring.ToString());
             _CtrlAging.Text = CAuthority.GetWindowsText(_CtrlAging.ToString());
@@ -443,14 +445,17 @@ namespace FMSMonitoringUI
                 {
                     GC.Collect();
 
-                    if (cbUsePopUp.Checked == true)
+                    this.Invoke(new MethodInvoker(delegate ()
                     {
-                        this.Invoke(new MethodInvoker(delegate ()
-                        {
-                            LoadTroubleEqpAlarm().GetAwaiter().GetResult();
-                            LoadTroubleAgingAlarm().GetAwaiter().GetResult();
-                        }));
-                    }
+                        LoadTroubleEqpAlarm().GetAwaiter().GetResult();
+                        LoadTroubleAgingAlarm().GetAwaiter().GetResult();
+
+                        // Main창에서 Alarm발생여부 Icon 표시
+                        if (_TroubleEquipmentList.Count > 0 || _TroubleAgingList.Count > 0)
+                            AlarmOccur.Visible = true;
+                        else
+                            AlarmOccur.Visible = false;
+                    }));
 
                     Thread.Sleep(5000);
                 }
@@ -498,7 +503,10 @@ namespace FMSMonitoringUI
                     {
                         SetData(result.DATA);
 
-                        TroubleWindowShow();
+                        if (cbUsePopUp.Checked == true)
+                        {
+                            TroubleWindowShow();
+                        }
                     }
                     else
                     {
@@ -552,8 +560,11 @@ namespace FMSMonitoringUI
                     if (result != null)
                     {
                         SetData(result.DATA);
-                        
-                        TroubleWindowShow();
+
+                        if (cbUsePopUp.Checked == true)
+                        {
+                            TroubleWindowShow();
+                        }
                     }
                     else
                     {

@@ -39,11 +39,13 @@
             this.barMain = new MonitoringUI.Controlls.CtrlTitleBarLabel();
             this.barAging = new MonitoringUI.Controlls.CtrlTitleBarLabel();
             this.barFormationCHG = new MonitoringUI.Controlls.CtrlTitleBarLabel();
+            this.AlarmOccur = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.scMainPanel)).BeginInit();
             this.scMainPanel.Panel1.SuspendLayout();
             this.scMainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AlarmOccur)).BeginInit();
             this.SuspendLayout();
             // 
             // scMainPanel
@@ -59,6 +61,7 @@
             // scMainPanel.Panel1
             // 
             this.scMainPanel.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.scMainPanel.Panel1.Controls.Add(this.AlarmOccur);
             this.scMainPanel.Panel1.Controls.Add(this.cbUsePopUp);
             this.scMainPanel.Panel1.Controls.Add(this.pictureBox1);
             this.scMainPanel.Panel1.Controls.Add(this.pictureBox2);
@@ -190,6 +193,16 @@
             this.barFormationCHG.TabIndex = 3;
             this.barFormationCHG.TitleText = "Formation";
             // 
+            // AlarmOccur
+            // 
+            this.AlarmOccur.Image = ((System.Drawing.Image)(resources.GetObject("AlarmOccur.Image")));
+            this.AlarmOccur.Location = new System.Drawing.Point(1194, 9);
+            this.AlarmOccur.Name = "AlarmOccur";
+            this.AlarmOccur.Size = new System.Drawing.Size(50, 45);
+            this.AlarmOccur.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.AlarmOccur.TabIndex = 113;
+            this.AlarmOccur.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -208,6 +221,7 @@
             this.scMainPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AlarmOccur)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -224,6 +238,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private Controlls.WindowsForms.CtrlCheckBox cbUsePopUp;
+        private System.Windows.Forms.PictureBox AlarmOccur;
     }
 }
 

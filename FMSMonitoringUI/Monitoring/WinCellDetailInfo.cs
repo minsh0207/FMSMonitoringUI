@@ -259,9 +259,11 @@ namespace FMSMonitoringUI.Monitoring
         {
             if (dataItem == null) return;
 
-            List<string> lstTitle = new List<string>();
-            lstTitle.Add("Name");      // -1
-            lstTitle.Add("Value");
+            List<string> lstTitle = new List<string>
+            {
+                LocalLanguage.GetItemString("DEF_Name"),
+                LocalLanguage.GetItemString("DEF_Value")
+            };
             gridProcessData.AddColumnHeaderList(lstTitle);
 
             lstTitle = new List<string>();

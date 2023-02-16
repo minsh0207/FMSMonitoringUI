@@ -1140,6 +1140,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="LedNone.ico" />
+    <Content Include="res\alarm_status.ico" />
     <Content Include="res\Bottom_1.png" />
     <Content Include="res\Bottom_2.png" />
     <Content Include="res\DP.PNG" />
