@@ -78,13 +78,26 @@ namespace MonitoringUI.Common
                 //// Set Query
                 StringBuilder strSQL = new StringBuilder();
 
-                strSQL.Append(" SELECT A.user_id, A.window_id, A.auth_view, A.auth_save,");
-                strSQL.Append("        B.window_name, B.window_name_local, B.default_class_id");
-                strSQL.Append("   FROM fms_v.tb_mst_window_user A");
+                //strSQL.Append(" SELECT A.user_id, A.window_id, A.auth_view, A.auth_save,");
+                //strSQL.Append("        B.window_name, B.window_name_local, B.default_class_id");
+                //strSQL.Append("   FROM fms_v.tb_mst_window_user A");
+                //strSQL.Append("         LEFT OUTER JOIN fms_v.tb_mst_window B");
+                //strSQL.Append("                 ON A.window_id = B.window_id");
+                ////필수값
+                //strSQL.Append($" WHERE A.user_id = '{strUserID}' AND A.window_id LIKE 'MON-%'");
+
+                strSQL.Append(" SELECT A.user_id, A.class_id,");
+                strSQL.Append("        B.window_id , B.window_name, B.default_class_id,");
+                strSQL.Append("        IF (C.auth_view IS NULL, 'Y', C.auth_view) AS auth_view,");
+                strSQL.Append("        IF (C.auth_save IS NULL, 'Y', C.auth_save) AS auth_save");
+                strSQL.Append("   FROM fms_v.tb_mst_user A ");
                 strSQL.Append("         LEFT OUTER JOIN fms_v.tb_mst_window B");
-                strSQL.Append("                 ON A.window_id = B.window_id");
+                strSQL.Append("                 ON 1=1");
+                strSQL.Append("         LEFT OUTER JOIN fms_v.tb_mst_window_user C");
+                strSQL.Append("                 ON A.user_id = C.user_id AND B.window_id = C.window_id");
                 //필수값
-                strSQL.Append($" WHERE A.user_id = '{strUserID}' AND A.window_id LIKE 'MON-%'");
+                strSQL.Append($" WHERE A.user_id = '{strUserID}'");
+                //strSQL.Append("  GROUP BY B.window_id");
 
                 var jsonResult = await rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
 
@@ -219,7 +232,7 @@ namespace MonitoringUI.Common
             {
                 string windowid = WindowsNameToWindowID(strWindowName);
 
-                if (_WindowIDList[windowid].DefaultClassID >= CDefine.UserClassID)
+                if (windowid != "" && CDefine.UserClassID >= _WindowIDList[windowid].DefaultClassID)
                 {
                     bAuth_View = _WindowIDList[windowid].View;
                     bAuth_Save = _WindowIDList[windowid].Save;
