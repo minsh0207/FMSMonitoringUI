@@ -168,37 +168,6 @@ namespace MonitoringUI.Controlls.CComboBox
         }
         #endregion
 
-        #region InitComboWithAll
-        public void InitComboBoxListWithAll(bool bNull, string strFilter = "")
-        {
-            try
-            {
-                //Init
-                cbItems.DataSource = null;
-                cbItems.Items.Clear();
-                cbItems.DisplayMember = CDefine.DEF_GRIDVIEW_COMBOXNAME;
-                cbItems.ValueMember = CDefine.DEF_GRIDVIEW_COMBOXID;
-
-                //Data Set
-                DataTable dt = GetListTable(enDBTable.MST_PROD_MODEL, bNull, strFilter);
-                DataRow row = dt.NewRow();
-                row[CDefine.DEF_GRIDVIEW_COMBOXID] = "ALL";
-                row[CDefine.DEF_GRIDVIEW_COMBOXNAME] = "ALL";
-                dt.Rows.InsertAt(row, 0);
-
-                cbItems.DataSource = dt;
-
-                //Selected
-                if (cbItems.Items.Count > 0) cbItems.SelectedItem = 0;
-            }
-            catch (Exception ex)
-            {
-                // System Debug
-                System.Diagnostics.Debug.Print(string.Format("### Init ComBo, Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
-            }
-        } 
-        #endregion
-
         #region [ComboBox Selected Change Event]
         /// <summary>
         /// UserControl ComboBox Selected Index Change To This. EventHandler ADD(UserForm).

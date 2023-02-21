@@ -51,7 +51,7 @@ namespace MonitoringUI.Popup
         {
             cbLanguage_SelectedIndexChanged(CDefine.m_strLanguage, "");
 
-            var dt = CDataTable.TableLanguage();
+            var dt = TableLanguage();
             cbLanguage.DataSource(dt);
 
             btConfirm.Click += BtConfirm_Click;
@@ -158,6 +158,22 @@ namespace MonitoringUI.Popup
             InitLanguage();
 
             Refresh();
+        }
+
+        private DataTable TableLanguage()
+        {
+
+            DataTable dt = new DataTable();
+
+            dt.Columns.Add(CDefine.DEF_GRIDVIEW_COMBOXID);
+            dt.Columns.Add(CDefine.DEF_GRIDVIEW_COMBOXNAME);
+
+            //dt.Rows.Add("CHINESE", "CHINESE");
+            //dt.Rows.Add("KOREAN", "KOREAN");
+            dt.Rows.Add(enLoginLanguage.English.ToString(), enLoginLanguage.English.ToString());
+            dt.Rows.Add(enLoginLanguage.France.ToString(), enLoginLanguage.France.ToString());
+
+            return dt;
         }
 
         private void BtConfirm_Click(object sender, EventArgs e)

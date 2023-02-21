@@ -131,22 +131,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\CConstants.cs" />
     <Compile Include="Common\CDefine.cs" />
     <Compile Include="Common\CLogger.cs" />
-    <Compile Include="Common\COPCGroupCtrl.cs" />
     <Compile Include="Common\COPCUAConfig.cs" />
     <Compile Include="Common\CAuthority.cs" />
-    <Compile Include="Common\CConstants.cs" />
-    <Compile Include="Common\CDataBaseDirect.cs" />
-    <Compile Include="Common\CDataBaseQuery.cs" />
-    <Compile Include="Common\CDataTable.cs" />
     <Compile Include="Common\CMessage.cs" />
-    <Compile Include="Common\CMonitoringTask.cs" />
-    <Compile Include="Common\CString.cs" />
-    <Compile Include="Common\CTaskJson.cs" />
     <Compile Include="Common\CUser.cs" />
     <Compile Include="Common\CUserFunction.cs" />
-    <Compile Include="Common\CUtills.cs" />
     <Compile Include="Controlls\BaseControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -165,11 +157,11 @@
     <Compile Include="Controlls\BubbleText.Designer.cs">
       <DependentUpon>BubbleText.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controlls\CButton\CtrlButtonCancel.cs">
+    <Compile Include="Controlls\WindowsForms\CtrlComboRoot.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controlls\CButton\CtrlButtonCancel.Designer.cs">
-      <DependentUpon>CtrlButtonCancel.cs</DependentUpon>
+    <Compile Include="Controlls\WindowsForms\CtrlComboRoot.Designer.cs">
+      <DependentUpon>CtrlComboRoot.cs</DependentUpon>
     </Compile>
     <Compile Include="Controlls\CtrlControlStatus.cs">
       <SubType>UserControl</SubType>
@@ -189,65 +181,11 @@
     <Compile Include="Controlls\CtrlHPCTemp.Designer.cs">
       <DependentUpon>CtrlHPCTemp.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controlls\NormalDataGridView.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controlls\NormalDataGridView.Designer.cs">
-      <DependentUpon>NormalDataGridView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controlls\WindowsForms\CtrlButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controlls\WindowsForms\CtrlButton.Designer.cs">
       <DependentUpon>CtrlButton.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CButton\CtrlButtonConfirm.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CButton\CtrlButtonConfirm.Designer.cs">
-      <DependentUpon>CtrlButtonConfirm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CButton\CtrlButtonExit.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CButton\CtrlButtonExit.Designer.cs">
-      <DependentUpon>CtrlButtonExit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CButton\CtrlButtonModify.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CButton\CtrlButtonModify.Designer.cs">
-      <DependentUpon>CtrlButtonModify.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CButton\CtrlButtonSave.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CButton\CtrlButtonSave.Designer.cs">
-      <DependentUpon>CtrlButtonSave.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CButton\CtrlButtonSearch.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CButton\CtrlButtonSearch.Designer.cs">
-      <DependentUpon>CtrlButtonSearch.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CComboBox\CtrlComboLanguage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CComboBox\CtrlComboLanguage.Designer.cs">
-      <DependentUpon>CtrlComboLanguage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CComboBox\CtrlComboLineID.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CComboBox\CtrlComboLineID.Designer.cs">
-      <DependentUpon>CtrlComboLineID.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CComboBox\CtrlComboLotID.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CComboBox\CtrlComboLotID.Designer.cs">
-      <DependentUpon>CtrlComboLotID.cs</DependentUpon>
     </Compile>
     <Compile Include="Controlls\WindowsForms\CtrlButtonType2.cs">
       <SubType>Component</SubType>
@@ -267,65 +205,17 @@
     <Compile Include="Controlls\WindowsForms\CtrlComboBox.Designer.cs">
       <DependentUpon>CtrlComboBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controlls\CComboBox\CtrlComboModel.cs">
+    <Compile Include="Controlls\WindowsForms\CtrlDateTimeDT.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controlls\CComboBox\CtrlComboModel.Designer.cs">
-      <DependentUpon>CtrlComboModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CComboBox\CtrlComboProcessName.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CComboBox\CtrlComboProcessName.Designer.cs">
-      <DependentUpon>CtrlComboProcessName.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CComboBox\CtrlComboRoot.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CComboBox\CtrlComboRoot.Designer.cs">
-      <DependentUpon>CtrlComboRoot.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CComboBox\CtrlComboRouteID.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CComboBox\CtrlComboRouteID.Designer.cs">
-      <DependentUpon>CtrlComboRouteID.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CDateTime\CtrlDateTimeD.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CDateTime\CtrlDateTimeD.Designer.cs">
-      <DependentUpon>CtrlDateTimeD.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CDateTime\CtrlDateTimeD2D.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CDateTime\CtrlDateTimeD2D.Designer.cs">
-      <DependentUpon>CtrlDateTimeD2D.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CDateTime\CtrlDateTimeDT.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CDateTime\CtrlDateTimeDT.Designer.cs">
+    <Compile Include="Controlls\WindowsForms\CtrlDateTimeDT.Designer.cs">
       <DependentUpon>CtrlDateTimeDT.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controlls\CDateTime\CtrlDateTimeDT2DT.cs">
+    <Compile Include="Controlls\WindowsForms\CtrlDateTimeDT2DT.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controlls\CDateTime\CtrlDateTimeDT2DT.Designer.cs">
+    <Compile Include="Controlls\WindowsForms\CtrlDateTimeDT2DT.Designer.cs">
       <DependentUpon>CtrlDateTimeDT2DT.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CDateTime\CtrlDateTimeDT2T.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CDateTime\CtrlDateTimeDT2T.Designer.cs">
-      <DependentUpon>CtrlDateTimeDT2T.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CDateTime\CtrlDateTimePlanTime.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CDateTime\CtrlDateTimePlanTime.Designer.cs">
-      <DependentUpon>CtrlDateTimePlanTime.cs</DependentUpon>
     </Compile>
     <Compile Include="Controlls\WindowsForms\CtrlGroupBox.cs">
       <SubType>Component</SubType>
@@ -362,90 +252,6 @@
     </Compile>
     <Compile Include="Controlls\WindowsForms\CtrlLabelBox.Designer.cs">
       <DependentUpon>CtrlLabelBox.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CTextBox\CtrlTextBoxCurrProcess.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CTextBox\CtrlTextBoxCurrProcess.Designer.cs">
-      <DependentUpon>CtrlTextBoxCurrProcess.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CTextBox\CtrlTextBoxEqpName.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CTextBox\CtrlTextBoxEqpName.Designer.cs">
-      <DependentUpon>CtrlTextBoxEqpName.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CTextBox\CtrlTextBoxInputCellType.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CTextBox\CtrlTextBoxInputCellType.Designer.cs">
-      <DependentUpon>CtrlTextBoxInputCellType.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CTextBox\CtrlTextBoxInputModelID.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CTextBox\CtrlTextBoxInputModelID.Designer.cs">
-      <DependentUpon>CtrlTextBoxInputModelID.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CTextBox\CtrlTextBoxInputRouteID.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CTextBox\CtrlTextBoxInputRouteID.Designer.cs">
-      <DependentUpon>CtrlTextBoxInputRouteID.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CTextBox\CtrlTextBoxNextProcess.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CTextBox\CtrlTextBoxNextProcess.Designer.cs">
-      <DependentUpon>CtrlTextBoxNextProcess.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CTextBox\CtrlTextBoxPassword.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CTextBox\CtrlTextBoxPassword.Designer.cs">
-      <DependentUpon>CtrlTextBoxPassword.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CTextBox\CtrlTextBoxProcessName.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CTextBox\CtrlTextBoxProcessName.Designer.cs">
-      <DependentUpon>CtrlTextBoxProcessName.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CTextBox\CtrlTextBoxRackID.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CTextBox\CtrlTextBoxRackID.Designer.cs">
-      <DependentUpon>CtrlTextBoxRackID.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CTextBox\CtrlTextBoxRoot.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CTextBox\CtrlTextBoxRoot.Designer.cs">
-      <DependentUpon>CtrlTextBoxRoot.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CTextBox\CtrlTextBoxStartCell.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CTextBox\CtrlTextBoxStartCell.Designer.cs">
-      <DependentUpon>CtrlTextBoxStartCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CTextBox\CtrlTextBoxTopRoot.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CTextBox\CtrlTextBoxTopRoot.Designer.cs">
-      <DependentUpon>CtrlTextBoxTopRoot.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CTextBox\CtrlTextBoxTrayID.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CTextBox\CtrlTextBoxTrayID.Designer.cs">
-      <DependentUpon>CtrlTextBoxTrayID.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controlls\CTextBox\CtrlTextBoxUserID.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controlls\CTextBox\CtrlTextBoxUserID.Designer.cs">
-      <DependentUpon>CtrlTextBoxUserID.cs</DependentUpon>
     </Compile>
     <Compile Include="Controlls\CtrlAging.cs">
       <SubType>UserControl</SubType>
@@ -768,8 +574,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="REST\ClassForREST.cs" />
-    <Compile Include="REST\RESTClient_old.cs" />
     <Compile Include="TrustCertificate\TrustCertificateDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -782,8 +586,8 @@
     <Compile Include="Monitoring\WinFormRoot.Designer.cs">
       <DependentUpon>WinFormRoot.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Controlls\CButton\CtrlButtonCancel.resx">
-      <DependentUpon>CtrlButtonCancel.cs</DependentUpon>
+    <EmbeddedResource Include="Controlls\WindowsForms\CtrlComboRoot.resx">
+      <DependentUpon>CtrlComboRoot.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controlls\CtrlControlStatus.resx">
       <DependentUpon>CtrlControlStatus.cs</DependentUpon>
@@ -794,68 +598,17 @@
     <EmbeddedResource Include="Controlls\CtrlHPCTemp.resx">
       <DependentUpon>CtrlHPCTemp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\NormalDataGridView.resx">
-      <DependentUpon>NormalDataGridView.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Controlls\WindowsForms\CtrlButton.resx">
       <DependentUpon>CtrlButton.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CButton\CtrlButtonConfirm.resx">
-      <DependentUpon>CtrlButtonConfirm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CButton\CtrlButtonExit.resx">
-      <DependentUpon>CtrlButtonExit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CButton\CtrlButtonModify.resx">
-      <DependentUpon>CtrlButtonModify.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CButton\CtrlButtonSave.resx">
-      <DependentUpon>CtrlButtonSave.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CButton\CtrlButtonSearch.resx">
-      <DependentUpon>CtrlButtonSearch.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CComboBox\CtrlComboLanguage.resx">
-      <DependentUpon>CtrlComboLanguage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CComboBox\CtrlComboLineID.resx">
-      <DependentUpon>CtrlComboLineID.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CComboBox\CtrlComboLotID.resx">
-      <DependentUpon>CtrlComboLotID.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controlls\WindowsForms\CtrlComboBox.resx">
       <DependentUpon>CtrlComboBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CComboBox\CtrlComboModel.resx">
-      <DependentUpon>CtrlComboModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CComboBox\CtrlComboProcessName.resx">
-      <DependentUpon>CtrlComboProcessName.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CComboBox\CtrlComboRoot.resx">
-      <DependentUpon>CtrlComboRoot.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CComboBox\CtrlComboRouteID.resx">
-      <DependentUpon>CtrlComboRouteID.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CDateTime\CtrlDateTimeD.resx">
-      <DependentUpon>CtrlDateTimeD.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CDateTime\CtrlDateTimeD2D.resx">
-      <DependentUpon>CtrlDateTimeD2D.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CDateTime\CtrlDateTimeDT.resx">
+    <EmbeddedResource Include="Controlls\WindowsForms\CtrlDateTimeDT.resx">
       <DependentUpon>CtrlDateTimeDT.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CDateTime\CtrlDateTimeDT2DT.resx">
+    <EmbeddedResource Include="Controlls\WindowsForms\CtrlDateTimeDT2DT.resx">
       <DependentUpon>CtrlDateTimeDT2DT.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CDateTime\CtrlDateTimeDT2T.resx">
-      <DependentUpon>CtrlDateTimeDT2T.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CDateTime\CtrlDateTimePlanTime.resx">
-      <DependentUpon>CtrlDateTimePlanTime.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controlls\WindowsForms\CtrlGroupBox.resx">
       <DependentUpon>CtrlGroupBox.cs</DependentUpon>
@@ -871,48 +624,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controlls\WindowsForms\CtrlLabelBox.resx">
       <DependentUpon>CtrlLabelBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CTextBox\CtrlTextBoxCurrProcess.resx">
-      <DependentUpon>CtrlTextBoxCurrProcess.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CTextBox\CtrlTextBoxEqpName.resx">
-      <DependentUpon>CtrlTextBoxEqpName.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CTextBox\CtrlTextBoxInputCellType.resx">
-      <DependentUpon>CtrlTextBoxInputCellType.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CTextBox\CtrlTextBoxInputModelID.resx">
-      <DependentUpon>CtrlTextBoxInputModelID.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CTextBox\CtrlTextBoxInputRouteID.resx">
-      <DependentUpon>CtrlTextBoxInputRouteID.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CTextBox\CtrlTextBoxNextProcess.resx">
-      <DependentUpon>CtrlTextBoxNextProcess.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CTextBox\CtrlTextBoxPassword.resx">
-      <DependentUpon>CtrlTextBoxPassword.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CTextBox\CtrlTextBoxProcessName.resx">
-      <DependentUpon>CtrlTextBoxProcessName.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CTextBox\CtrlTextBoxRackID.resx">
-      <DependentUpon>CtrlTextBoxRackID.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CTextBox\CtrlTextBoxRoot.resx">
-      <DependentUpon>CtrlTextBoxRoot.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CTextBox\CtrlTextBoxStartCell.resx">
-      <DependentUpon>CtrlTextBoxStartCell.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CTextBox\CtrlTextBoxTopRoot.resx">
-      <DependentUpon>CtrlTextBoxTopRoot.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CTextBox\CtrlTextBoxTrayID.resx">
-      <DependentUpon>CtrlTextBoxTrayID.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controlls\CTextBox\CtrlTextBoxUserID.resx">
-      <DependentUpon>CtrlTextBoxUserID.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controlls\CtrlAging.resx">
       <DependentUpon>CtrlAging.cs</DependentUpon>

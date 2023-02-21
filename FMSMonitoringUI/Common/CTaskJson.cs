@@ -183,50 +183,6 @@ namespace MonitoringUI.Common
         }
         #endregion
 
-        #region [StoredProcedure]
-        /// <summary>
-        /// 틀만잡음 구조를 모르겠음.
-        /// Input param 순서: 상관 없음
-        /// Param mode : IN | OUT | INOUT
-        /// IN: 없을 경우 error 발생
-        /// OUT/INOUT: optional param의 경우 입력하지 않아도 되며, 리턴 값이 있을 경우 해당 변수에 값을 담아서 리턴한다
-        /// </summary>
-        /// <param name="enTable"></param>
-        /// <param name="JsonCrud"></param>
-        /// <param name="searchFilter"></param>
-        /// <returns></returns>
-        public async Task<object> StoredProcedure(enDBStoredProcedure enSp, JsonCRUD JsonCrud, JObject searchFilter)
-        {
-            try
-            {
-                
-                string strSp = GetStoredProcedureString(enSp);
-
-                if (strSp.Length < 1) throw new Exception("Stored Procedure Null : No[ " + strSp.ToString() + " ]");
-
-                //RestClient Crate
-                RESTClient_old restClinet = new RESTClient_old();
-
-                // Url Table
-                string strUrl = m_UriSp + strSp;
-
-                // 추가사항 : Param mode 이 필요함..IN 일 경우 에러 발생?
-
-                //Jons Result, Return
-                var JsonResult = await restClinet.JsonRequest(JsonApiType.SP, JsonCrud, strUrl, searchFilter);
-
-                //
-                return GetStoredProcedureType(enSp, JsonResult);
-            }
-            catch (Exception ex)
-            {
-                // System Debug
-                System.Diagnostics.Debug.Print(string.Format("### CTaskJson, Delete Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
-                return null;
-            }
-        }
-        #endregion
-
         #region [Table Is Type, Return]
         /// <summary>
         /// enTable , JsonResult
