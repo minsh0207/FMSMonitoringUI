@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using UnifiedAutomation.UaBase;
 using UnifiedAutomation.UaClient;
@@ -21,11 +22,11 @@ namespace OPCUAClientClassLib
             }
         }
 
-        private BrowsePath GetBrowsePath(NodeId startingNodeId, IList<QualifiedName> qnames)
+        private BrowsePath GetBrowsePath(NodeId startingNodeId, IList<QualifiedName> qnames, string fullBrowseName="")
         {
             BrowsePath browsePath = new BrowsePath();
             browsePath.StartingNode = startingNodeId;
-            browsePath.UserData = "";
+            browsePath.UserData = fullBrowseName;
 
             foreach (QualifiedName qname in qnames)
             {
@@ -44,6 +45,7 @@ namespace OPCUAClientClassLib
         public Dictionary<int, List<BrowsePath>> AddBrowsePath(string startNodeID, string eqpType, List<CBrowerInfo> taglist)
         {
             int idx = 0;
+            int nsIdx = 0;
             // parse the node id.
             NodeId startingNodeId = NodeId.Parse(startNodeID);
 
@@ -53,15 +55,40 @@ namespace OPCUAClientClassLib
             foreach (var item in taglist)
             {
                 StringBuilder sb = new StringBuilder();
+                StringBuilder sb2 = new StringBuilder();
 
                 string[] taglevel = item.BrowerPath.Split('.');
 
-                for (int i = 0; i < taglevel.Count() - 1; i++)
-                {
-                    sb.Append($"/2:{taglevel[i]}");
-                }
+                //for (int i = 0; i < taglevel.Count() - 1; i++)
+                //{
+                //    sb.Append($"/2:{taglevel[i]}");
+                //}
+                //browsePath.Add(GetBrowsePath(startingNodeId, AbsoluteName.ToQualifiedNames($"{sb}/2:Address Space.{eqpType}.{item.BrowerPath}")));
 
-                browsePath.Add(GetBrowsePath(startingNodeId, AbsoluteName.ToQualifiedNames($"{sb}/2:Address Space.{eqpType}.{item.BrowerPath}")));
+                // 프랑스가서 경로 확인 후 맞춰 줄것
+                for (int i = 0; i < taglevel.Count(); i++)
+                {
+                    if (_BrowseNSIndex.ContainsKey(taglevel[i]))
+                    {
+                        nsIdx = _BrowseNSIndex[taglevel[i]];
+                        sb.Append($"/{nsIdx}:{taglevel[i]}");
+                    }
+                    else
+                    {
+                        // _BrowseNSIndex에 BrowerName이 없는것은 이전 NamespaceIndex와 동일한것으로 간주한다.
+                        sb.Append($"/{nsIdx}:{taglevel[i]}");
+                    }
+
+                    if (i == taglevel.Count() - 1)
+                    {
+                        sb2.Append($"{taglevel[i]}");
+                    }
+                    else
+                    {
+                        sb2.Append($"{taglevel[i]}.");
+                    }
+                }
+                browsePath.Add(GetBrowsePath(startingNodeId, AbsoluteName.ToQualifiedNames($"{sb}"), sb2.ToString()));
 
                 if (browsePath.Count > BROWSEPATH_MAXCOUNT)
                 {
@@ -79,6 +106,7 @@ namespace OPCUAClientClassLib
         public Dictionary<int, List<BrowsePath>> AddSubscibeBrowsePath(string startNodeID, string eqpType, List<CBrowerInfo> taglist)
         {
             int idx = 0;
+            int nsIdx = 0;
             // parse the node id.
             NodeId startingNodeId = NodeId.Parse(startNodeID);
 
@@ -88,17 +116,43 @@ namespace OPCUAClientClassLib
             foreach (var item in taglist)
             {
                 StringBuilder sb = new StringBuilder();
+                StringBuilder sb2 = new StringBuilder();
 
                 string[] taglevel = item.BrowerPath.Split('.');
 
-                for (int i = 0; i < taglevel.Count() - 1; i++)
-                {
-                    sb.Append($"/2:{taglevel[i]}");
-                }
-
                 if (item.SubScribe)
                 {
-                    browsePath.Add(GetBrowsePath(startingNodeId, AbsoluteName.ToQualifiedNames($"{sb}/2:Address Space.{eqpType}.{item.BrowerPath}")));
+                    //for (int i = 0; i < taglevel.Count() - 1; i++)
+                    //{
+                    //    sb.Append($"/2:{taglevel[i]}");
+                    //}
+                    //browsePath.Add(GetBrowsePath(startingNodeId, AbsoluteName.ToQualifiedNames($"{sb}/2:Address Space.{eqpType}.{item.BrowerPath}")));
+
+                    for (int i = 0; i < taglevel.Count(); i++)
+                    {
+                        //sb.Append($"/2:{taglevel[i]}");
+
+                        if (_BrowseNSIndex.ContainsKey(taglevel[i]))
+                        {
+                            nsIdx = _BrowseNSIndex[taglevel[i]];
+                            sb.Append($"/{nsIdx}:{taglevel[i]}");
+                        }
+                        else
+                        {
+                            // _BrowseNSIndex에 BrowerName이 없는것은 이전 NamespaceIndex와 동일한것으로 간주한다.
+                            sb.Append($"/{nsIdx}:{taglevel[i]}");
+                        }
+
+                        if (i == taglevel.Count() - 1)
+                        {
+                            sb2.Append($"{taglevel[i]}");
+                        }
+                        else
+                        {
+                            sb2.Append($"{taglevel[i]}.");
+                        }
+                    }
+                    browsePath.Add(GetBrowsePath(startingNodeId, AbsoluteName.ToQualifiedNames($"{sb}"), sb2.ToString()));
 
                     if (browsePath.Count > BROWSEPATH_MAXCOUNT)
                     {
@@ -130,13 +184,17 @@ namespace OPCUAClientClassLib
 
                     for (int j = 0; j < browerResult.Count; j++)
                     {
+                        //string[] taglevel = browsePath[j].ToString().Replace("/2:", ".").Split('.');
+
+                        string[] taglevel = browsePath[j].UserData.ToString().Split('.');
+
                         string sNodeId = browerResult[j].Targets[0].TargetId.ToString();
-                        string[] taglevel = browsePath[j].ToString().Replace("/2:", ".").Split('.');
 //#if DEBUG
-                        string[] temp_no = taglevel[2].ToString().Split('_');
-                        int cv_no = int.Parse(temp_no[1]);
+                        //string[] temp_no = taglevel[2].ToString().Split('_');
+                        //int cv_no = int.Parse(temp_no[1]);
 //#else
-//                    int cv_no = int.Parse(taglevel[2].Substring(3));
+                        int cv_no = int.Parse(taglevel[1].Substring(taglevel[1].Length - 4));
+                        
 //#endif
                         nodesToRead.Add(new ReadValueId() 
                         {
@@ -147,8 +205,11 @@ namespace OPCUAClientClassLib
 
                         if (taglevel[taglevel.Count() - 1] == "MagazineCommand")
                         {
-                            _ConveyorNodeID.Add(cv_no, nodesToRead);
-                            nodesToRead = new List<ReadValueId>();
+                            if (_ConveyorNodeID.ContainsKey(cv_no) == false)
+                            {
+                                _ConveyorNodeID.Add(cv_no, nodesToRead);
+                                nodesToRead = new List<ReadValueId>();
+                            }                            
                         }
                     }
                 }
@@ -175,7 +236,8 @@ namespace OPCUAClientClassLib
                 for (int j = 0; j < browerResult.Count; j++)
                 {
                     string sNodeId = browerResult[j].Targets[0].TargetId.ToString();
-                    string[] taglevel = browsePath[j].ToString().Replace("/2:", ".").Split('.');
+                    //string[] taglevel = browsePath[j].ToString().Replace("/2:", ".").Split('.');
+                    string[] taglevel = browsePath[j].UserData.ToString().Split('.');
 
                     //string tagLevel1 = taglevel[taglevel.Count() - 2];
                     //string tagLevel2 = taglevel[taglevel.Count() - 1];
@@ -192,17 +254,28 @@ namespace OPCUAClientClassLib
                     //    });
                     //}
 
-                    
+                    string tagName = string.Empty;
+
+                    if (taglevel[taglevel.Length - 2] == "PrevLocation")
+                    {
+                        tagName = string.Format($"{taglevel[taglevel.Length - 3]}.{taglevel[taglevel.Length - 2]}.{taglevel[taglevel.Length - 1]}");
+                    }
+                    else
+                    {
+                        tagName = string.Format($"{taglevel[taglevel.Length - 2]}.{taglevel[taglevel.Length - 1]}");
+                    }
+
                     nodesToRead.Add(new ReadValueId()
                     {
                         NodeId = NodeId.Parse(sNodeId),
                         AttributeId = Attributes.Value,
-                        UserData = string.Format($"{taglevel[taglevel.Length - 2]}.{taglevel[taglevel.Length - 1]}")
+                        UserData = tagName
                     });
 
-                    if (taglevel[taglevel.Count() - 1] == "RestockButtonPressed")
+                    if ((taglevel[taglevel.Count() - 2] == "WaterTank02") &&
+                        (taglevel[taglevel.Count() - 1] == "RestockButtonPressed"))
                     {
-                        ItemInfo crane = controlInfo[taglevel[1].ToString()];
+                        ItemInfo crane = controlInfo[taglevel[0].ToString()];
                         _CraneNodeID.Add(crane.CraneNo, nodesToRead);
 
                         nodesToRead = new List<ReadValueId>();

@@ -1241,6 +1241,7 @@
             // 
             this.ctrlEqpHPC2.BackColor = System.Drawing.Color.DimGray;
             this.ctrlEqpHPC2.EqpID = "F1HPC01";
+            this.ctrlEqpHPC2.EqpName = null;
             this.ctrlEqpHPC2.EqpType = "HPC";
             this.ctrlEqpHPC2.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpHPC2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
@@ -1256,6 +1257,7 @@
             this.ctrlEqpCharger1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlEqpCharger1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ctrlEqpCharger1.EqpID = "F1CHG01";
+            this.ctrlEqpCharger1.EqpName = null;
             this.ctrlEqpCharger1.EqpType = "CHG";
             this.ctrlEqpCharger1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpCharger1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
@@ -1263,6 +1265,7 @@
             this.ctrlEqpCharger1.Name = "ctrlEqpCharger1";
             this.ctrlEqpCharger1.Size = new System.Drawing.Size(165, 134);
             this.ctrlEqpCharger1.TabIndex = 584;
+            this.ctrlEqpCharger1.UnitID = ((System.Collections.Generic.List<string>)(resources.GetObject("ctrlEqpCharger1.UnitID")));
             // 
             // ctrlEqpLTAging4
             // 
@@ -1270,6 +1273,7 @@
             this.ctrlEqpLTAging4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ctrlEqpLTAging4.EqpID = "F1LTA02";
             this.ctrlEqpLTAging4.EqpLevel = 2;
+            this.ctrlEqpLTAging4.EqpName = null;
             this.ctrlEqpLTAging4.EqpType = "LTA2";
             this.ctrlEqpLTAging4.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpLTAging4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
@@ -1284,6 +1288,7 @@
             this.ctrlEqpLTAging3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ctrlEqpLTAging3.EqpID = "F1LTA02";
             this.ctrlEqpLTAging3.EqpLevel = 1;
+            this.ctrlEqpLTAging3.EqpName = null;
             this.ctrlEqpLTAging3.EqpType = "LTA2";
             this.ctrlEqpLTAging3.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpLTAging3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
@@ -1298,6 +1303,7 @@
             this.ctrlEqpHTAging2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ctrlEqpHTAging2.EqpID = "F1HTA01";
             this.ctrlEqpHTAging2.EqpLevel = 2;
+            this.ctrlEqpHTAging2.EqpName = null;
             this.ctrlEqpHTAging2.EqpType = "HTA";
             this.ctrlEqpHTAging2.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpHTAging2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
@@ -1312,6 +1318,7 @@
             this.ctrlEqpLTAging2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ctrlEqpLTAging2.EqpID = "F1LTA01";
             this.ctrlEqpLTAging2.EqpLevel = 2;
+            this.ctrlEqpLTAging2.EqpName = null;
             this.ctrlEqpLTAging2.EqpType = "LTA1";
             this.ctrlEqpLTAging2.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpLTAging2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
@@ -1326,6 +1333,7 @@
             this.ctrlEqpLTAging1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ctrlEqpLTAging1.EqpID = "F1LTA01";
             this.ctrlEqpLTAging1.EqpLevel = 1;
+            this.ctrlEqpLTAging1.EqpName = null;
             this.ctrlEqpLTAging1.EqpType = "LTA1";
             this.ctrlEqpLTAging1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpLTAging1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
@@ -1340,6 +1348,7 @@
             this.ctrlEqpHTAging1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ctrlEqpHTAging1.EqpID = "F1HTA01";
             this.ctrlEqpHTAging1.EqpLevel = 1;
+            this.ctrlEqpHTAging1.EqpName = null;
             this.ctrlEqpHTAging1.EqpType = "HTA";
             this.ctrlEqpHTAging1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpHTAging1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
@@ -1370,9 +1379,9 @@
             this.ctrlSCraneH3.Controls.Add(this.object_85b0f3cb_bd20_487a_bfd7_03e370778b9c);
             this.ctrlSCraneH3.Controls.Add(this.craneCarriageSmall5);
             this.ctrlSCraneH3.CraneDirection = ControlGallery.EnumCraneDirection.Right;
-            this.ctrlSCraneH3.CraneID = 2;
+            this.ctrlSCraneH3.CraneID = 1;
             this.ctrlSCraneH3.CurrentBay = 0;
-            this.ctrlSCraneH3.DeviceID = 2;
+            this.ctrlSCraneH3.DeviceID = 1;
             this.ctrlSCraneH3.DisplayText = "";
             this.ctrlSCraneH3.EqpID = "F1SCL02";
             this.ctrlSCraneH3.Font = new System.Drawing.Font("Segoe UI Emoji", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1410,9 +1419,9 @@
             // 
             this.ctrlSCraneH2.Controls.Add(this.cranebox);
             this.ctrlSCraneH2.CraneDirection = ControlGallery.EnumCraneDirection.Right;
-            this.ctrlSCraneH2.CraneID = 1;
+            this.ctrlSCraneH2.CraneID = 0;
             this.ctrlSCraneH2.CurrentBay = 0;
-            this.ctrlSCraneH2.DeviceID = 2;
+            this.ctrlSCraneH2.DeviceID = 1;
             this.ctrlSCraneH2.DisplayText = "";
             this.ctrlSCraneH2.EqpID = "F1SCL01";
             this.ctrlSCraneH2.Font = new System.Drawing.Font("Segoe UI Emoji", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1438,9 +1447,9 @@
             // ctrlSCraneH1
             // 
             this.ctrlSCraneH1.CraneDirection = ControlGallery.EnumCraneDirection.Right;
-            this.ctrlSCraneH1.CraneID = 0;
+            this.ctrlSCraneH1.CraneID = 2;
             this.ctrlSCraneH1.CurrentBay = 0;
-            this.ctrlSCraneH1.DeviceID = 1;
+            this.ctrlSCraneH1.DeviceID = 2;
             this.ctrlSCraneH1.DisplayText = "";
             this.ctrlSCraneH1.EqpID = "F1SCH01";
             this.ctrlSCraneH1.Font = new System.Drawing.Font("Segoe UI Emoji", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1800,7 +1809,7 @@
             // 
             // ctrlSiteTrack49
             // 
-            this.ctrlSiteTrack49.CVPLCListDeviceID = 2;
+            this.ctrlSiteTrack49.CVPLCListDeviceID = 1;
             this.ctrlSiteTrack49.DisplayText = "";
             this.ctrlSiteTrack49.FirstSiteNo = 22;
             this.ctrlSiteTrack49.InterSitePadding = 2;
@@ -1833,7 +1842,7 @@
             // 
             // ctrlSiteTrack48
             // 
-            this.ctrlSiteTrack48.CVPLCListDeviceID = 2;
+            this.ctrlSiteTrack48.CVPLCListDeviceID = 1;
             this.ctrlSiteTrack48.DisplayText = "";
             this.ctrlSiteTrack48.FirstSiteNo = 21;
             this.ctrlSiteTrack48.InterSitePadding = 2;
@@ -1866,7 +1875,7 @@
             // 
             // ctrlSiteTrack47
             // 
-            this.ctrlSiteTrack47.CVPLCListDeviceID = 2;
+            this.ctrlSiteTrack47.CVPLCListDeviceID = 1;
             this.ctrlSiteTrack47.DisplayText = "";
             this.ctrlSiteTrack47.FirstSiteNo = 12;
             this.ctrlSiteTrack47.InterSitePadding = 2;
@@ -1899,7 +1908,7 @@
             // 
             // ctrlSiteTrack46
             // 
-            this.ctrlSiteTrack46.CVPLCListDeviceID = 2;
+            this.ctrlSiteTrack46.CVPLCListDeviceID = 1;
             this.ctrlSiteTrack46.DisplayText = "";
             this.ctrlSiteTrack46.FirstSiteNo = 11;
             this.ctrlSiteTrack46.InterSitePadding = 2;
@@ -1932,7 +1941,7 @@
             // 
             // ctrlSiteTrack45
             // 
-            this.ctrlSiteTrack45.CVPLCListDeviceID = 1;
+            this.ctrlSiteTrack45.CVPLCListDeviceID = 2;
             this.ctrlSiteTrack45.DisplayText = "W";
             this.ctrlSiteTrack45.FirstSiteNo = 2;
             this.ctrlSiteTrack45.InterSitePadding = 2;
@@ -1965,7 +1974,7 @@
             // 
             // ctrlSiteTrack44
             // 
-            this.ctrlSiteTrack44.CVPLCListDeviceID = 1;
+            this.ctrlSiteTrack44.CVPLCListDeviceID = 2;
             this.ctrlSiteTrack44.DisplayText = "W";
             this.ctrlSiteTrack44.FirstSiteNo = 1;
             this.ctrlSiteTrack44.InterSitePadding = 2;
@@ -2030,6 +2039,7 @@
             // 
             this.ctrlEqpLKC.BackColor = System.Drawing.Color.DimGray;
             this.ctrlEqpLKC.EqpID = "F1LKC01";
+            this.ctrlEqpLKC.EqpName = null;
             this.ctrlEqpLKC.EqpType = "LKC";
             this.ctrlEqpLKC.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpLKC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
@@ -2043,6 +2053,7 @@
             // 
             this.ctrlEqpHPC1.BackColor = System.Drawing.Color.DimGray;
             this.ctrlEqpHPC1.EqpID = "F1HPC01";
+            this.ctrlEqpHPC1.EqpName = null;
             this.ctrlEqpHPC1.EqpType = "HPC";
             this.ctrlEqpHPC1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpHPC1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
@@ -2057,6 +2068,7 @@
             // 
             this.ctrlEqpPAC.BackColor = System.Drawing.Color.DimGray;
             this.ctrlEqpPAC.EqpID = "F1PAC01";
+            this.ctrlEqpPAC.EqpName = null;
             this.ctrlEqpPAC.EqpType = "PAC";
             this.ctrlEqpPAC.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpPAC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
@@ -2069,6 +2081,7 @@
             // 
             this.ctrlEqpVSI.BackColor = System.Drawing.Color.DimGray;
             this.ctrlEqpVSI.EqpID = "F1VSI01";
+            this.ctrlEqpVSI.EqpName = null;
             this.ctrlEqpVSI.EqpType = "VSI";
             this.ctrlEqpVSI.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpVSI.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
@@ -2081,6 +2094,7 @@
             // 
             this.ctrlEqpNGS.BackColor = System.Drawing.Color.DimGray;
             this.ctrlEqpNGS.EqpID = "F1NGS01";
+            this.ctrlEqpNGS.EqpName = null;
             this.ctrlEqpNGS.EqpType = "NGS";
             this.ctrlEqpNGS.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpNGS.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
@@ -2093,6 +2107,7 @@
             // 
             this.ctrlEqpDGS.BackColor = System.Drawing.Color.DimGray;
             this.ctrlEqpDGS.EqpID = "F1DGS01";
+            this.ctrlEqpDGS.EqpName = null;
             this.ctrlEqpDGS.EqpType = "DGS";
             this.ctrlEqpDGS.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpDGS.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
@@ -2105,6 +2120,7 @@
             // 
             this.ctrlEqpMIC.BackColor = System.Drawing.Color.DimGray;
             this.ctrlEqpMIC.EqpID = "F1MIC01";
+            this.ctrlEqpMIC.EqpName = null;
             this.ctrlEqpMIC.EqpType = "MIC";
             this.ctrlEqpMIC.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpMIC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
@@ -2117,6 +2133,7 @@
             // 
             this.ctrlEqpDCR.BackColor = System.Drawing.Color.DimGray;
             this.ctrlEqpDCR.EqpID = "F1DCR01";
+            this.ctrlEqpDCR.EqpName = null;
             this.ctrlEqpDCR.EqpType = "DCR";
             this.ctrlEqpDCR.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpDCR.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
@@ -2129,6 +2146,7 @@
             // 
             this.ctrlEqpOCV.BackColor = System.Drawing.Color.DimGray;
             this.ctrlEqpOCV.EqpID = "F1OCV01";
+            this.ctrlEqpOCV.EqpName = null;
             this.ctrlEqpOCV.EqpType = "OCV";
             this.ctrlEqpOCV.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpOCV.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
@@ -2141,7 +2159,7 @@
             // 
             this.ctrlSiteTrack43.CVPLCListDeviceID = 0;
             this.ctrlSiteTrack43.DisplayText = "";
-            this.ctrlSiteTrack43.FirstSiteNo = 106;
+            this.ctrlSiteTrack43.FirstSiteNo = 1106;
             this.ctrlSiteTrack43.InterSitePadding = 6;
             this.ctrlSiteTrack43.IsControled = true;
             this.ctrlSiteTrack43.IsUpperStage = false;
@@ -2172,7 +2190,7 @@
             // 
             this.ctrlSiteTrack42.CVPLCListDeviceID = 0;
             this.ctrlSiteTrack42.DisplayText = "";
-            this.ctrlSiteTrack42.FirstSiteNo = 111;
+            this.ctrlSiteTrack42.FirstSiteNo = 1111;
             this.ctrlSiteTrack42.InterSitePadding = 6;
             this.ctrlSiteTrack42.IsControled = true;
             this.ctrlSiteTrack42.IsUpperStage = false;
@@ -2203,7 +2221,7 @@
             // 
             this.ctrlSiteTrack41.CVPLCListDeviceID = 0;
             this.ctrlSiteTrack41.DisplayText = "";
-            this.ctrlSiteTrack41.FirstSiteNo = 125;
+            this.ctrlSiteTrack41.FirstSiteNo = 1125;
             this.ctrlSiteTrack41.InterSitePadding = 6;
             this.ctrlSiteTrack41.IsControled = true;
             this.ctrlSiteTrack41.IsUpperStage = false;
@@ -2234,7 +2252,7 @@
             // 
             this.ctrlSiteTrack40.CVPLCListDeviceID = 0;
             this.ctrlSiteTrack40.DisplayText = "";
-            this.ctrlSiteTrack40.FirstSiteNo = 169;
+            this.ctrlSiteTrack40.FirstSiteNo = 1169;
             this.ctrlSiteTrack40.InterSitePadding = 6;
             this.ctrlSiteTrack40.IsControled = true;
             this.ctrlSiteTrack40.IsUpperStage = false;
@@ -2446,14 +2464,12 @@
             // 
             // button1
             // 
-            this.button1.Enabled = false;
             this.button1.Location = new System.Drawing.Point(37, 851);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(191, 63);
             this.button1.TabIndex = 528;
             this.button1.Text = "TEST";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // pictureBox38
@@ -2470,7 +2486,7 @@
             // 
             this.ctrlSiteTrack39.CVPLCListDeviceID = 0;
             this.ctrlSiteTrack39.DisplayText = "";
-            this.ctrlSiteTrack39.FirstSiteNo = 211;
+            this.ctrlSiteTrack39.FirstSiteNo = 1211;
             this.ctrlSiteTrack39.InterSitePadding = 0;
             this.ctrlSiteTrack39.IsControled = true;
             this.ctrlSiteTrack39.IsUpperStage = false;
@@ -2532,8 +2548,8 @@
             this.ctrlSiteTrack38.SiteNoDirection = ControlGallery.SiteTrackDirection.TopToBottom;
             this.ctrlSiteTrack38.SiteNoIncStep = 1;
             this.ctrlSiteTrack38.SiteNoList = new int[] {
-        405,
-        201};
+        1405,
+        1201};
             this.ctrlSiteTrack38.SiteTextDisp = null;
             this.ctrlSiteTrack38.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack38.Size = new System.Drawing.Size(33, 35);
@@ -2565,8 +2581,8 @@
             this.ctrlSiteTrack37.SiteNoDirection = ControlGallery.SiteTrackDirection.TopToBottom;
             this.ctrlSiteTrack37.SiteNoIncStep = 1;
             this.ctrlSiteTrack37.SiteNoList = new int[] {
-        401,
-        136};
+        1401,
+        1136};
             this.ctrlSiteTrack37.SiteTextDisp = new string[0];
             this.ctrlSiteTrack37.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack37.Size = new System.Drawing.Size(33, 35);
@@ -2577,7 +2593,7 @@
             // 
             this.ctrlSiteTrack36.CVPLCListDeviceID = 0;
             this.ctrlSiteTrack36.DisplayText = "G1";
-            this.ctrlSiteTrack36.FirstSiteNo = 101;
+            this.ctrlSiteTrack36.FirstSiteNo = 1101;
             this.ctrlSiteTrack36.InterSitePadding = 0;
             this.ctrlSiteTrack36.IsControled = true;
             this.ctrlSiteTrack36.IsUpperStage = false;
@@ -2608,7 +2624,7 @@
             // 
             this.ctrlSiteTrack35.CVPLCListDeviceID = 0;
             this.ctrlSiteTrack35.DisplayText = "";
-            this.ctrlSiteTrack35.FirstSiteNo = 175;
+            this.ctrlSiteTrack35.FirstSiteNo = 1175;
             this.ctrlSiteTrack35.InterSitePadding = 0;
             this.ctrlSiteTrack35.IsControled = true;
             this.ctrlSiteTrack35.IsUpperStage = false;
@@ -4099,8 +4115,8 @@
             this.ctrlSiteTrack34.SiteNoDirection = ControlGallery.SiteTrackDirection.TopToBottom;
             this.ctrlSiteTrack34.SiteNoIncStep = 1;
             this.ctrlSiteTrack34.SiteNoList = new int[] {
-        404,
-        200};
+        1404,
+        1200};
             this.ctrlSiteTrack34.SiteTextDisp = new string[0];
             this.ctrlSiteTrack34.SiteTrayDirection = ControlGallery.TrayMovingDirection.TopToBottom;
             this.ctrlSiteTrack34.Size = new System.Drawing.Size(33, 35);
@@ -4132,8 +4148,8 @@
             this.ctrlSiteTrack31.SiteNoDirection = ControlGallery.SiteTrackDirection.TopToBottom;
             this.ctrlSiteTrack31.SiteNoIncStep = 1;
             this.ctrlSiteTrack31.SiteNoList = new int[] {
-        406,
-        210};
+        1406,
+        1210};
             this.ctrlSiteTrack31.SiteTextDisp = null;
             this.ctrlSiteTrack31.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack31.Size = new System.Drawing.Size(33, 35);
@@ -4166,8 +4182,8 @@
             this.ctrlSiteTrack30.SiteNoDirection = ControlGallery.SiteTrackDirection.TopToBottom;
             this.ctrlSiteTrack30.SiteNoIncStep = 1;
             this.ctrlSiteTrack30.SiteNoList = new int[] {
-        400,
-        102};
+        1400,
+        1102};
             this.ctrlSiteTrack30.SiteTextDisp = null;
             this.ctrlSiteTrack30.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack30.Size = new System.Drawing.Size(35, 35);
@@ -4199,8 +4215,8 @@
             this.ctrlSiteTrack29.SiteNoDirection = ControlGallery.SiteTrackDirection.TopToBottom;
             this.ctrlSiteTrack29.SiteNoIncStep = 1;
             this.ctrlSiteTrack29.SiteNoList = new int[] {
-        403,
-        174};
+        1403,
+        1174};
             this.ctrlSiteTrack29.SiteTextDisp = null;
             this.ctrlSiteTrack29.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack29.Size = new System.Drawing.Size(35, 35);
@@ -4244,28 +4260,28 @@
             this.ctrlSiteTrack1.SiteNoDirection = ControlGallery.SiteTrackDirection.RightToLeft;
             this.ctrlSiteTrack1.SiteNoIncStep = 1;
             this.ctrlSiteTrack1.SiteNoList = new int[] {
-        103,
+        1103,
         -1,
-        104,
-        107,
-        108,
-        109,
+        1104,
+        1107,
+        1108,
+        1109,
         -1,
-        113,
-        114,
-        115,
-        116,
-        119,
-        120,
+        1113,
+        1114,
+        1115,
+        1116,
+        1119,
+        1120,
         -1,
-        124,
+        1124,
         -1,
-        126,
-        127,
-        134,
-        135,
+        1126,
+        1127,
+        1134,
+        1135,
         -1,
-        139};
+        1139};
             this.ctrlSiteTrack1.SiteTextDisp = null;
             this.ctrlSiteTrack1.SiteTrayDirection = ControlGallery.TrayMovingDirection.RightToLeft;
             this.ctrlSiteTrack1.Size = new System.Drawing.Size(836, 35);
@@ -4298,29 +4314,29 @@
             this.ctrlSiteTrack2.SiteNoDirection = ControlGallery.SiteTrackDirection.LeftToRight;
             this.ctrlSiteTrack2.SiteNoIncStep = 1;
             this.ctrlSiteTrack2.SiteNoList = new int[] {
-        144,
-        143,
+        1144,
+        1143,
         -1,
-        145,
-        147,
-        148,
-        158,
+        1145,
+        1147,
+        1148,
+        1158,
         -1,
-        159,
+        1159,
         -1,
-        160,
-        162,
-        163,
-        165,
-        166,
+        1160,
+        1162,
+        1163,
+        1165,
+        1166,
         -1,
-        168,
-        170,
+        1168,
+        1170,
         -1,
-        171,
-        172,
+        1171,
+        1172,
         -1,
-        173};
+        1173};
             this.ctrlSiteTrack2.SiteTextDisp = null;
             this.ctrlSiteTrack2.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack2.Size = new System.Drawing.Size(869, 35);
@@ -4331,7 +4347,7 @@
             // 
             this.ctrlSiteTrack28.CVPLCListDeviceID = 3;
             this.ctrlSiteTrack28.DisplayText = "";
-            this.ctrlSiteTrack28.FirstSiteNo = 224;
+            this.ctrlSiteTrack28.FirstSiteNo = 4224;
             this.ctrlSiteTrack28.InterSitePadding = 2;
             this.ctrlSiteTrack28.IsControled = true;
             this.ctrlSiteTrack28.IsUpperStage = false;
@@ -4383,12 +4399,12 @@
             this.ctrlSiteTrack26.SiteNoDirection = ControlGallery.SiteTrackDirection.LeftToRight;
             this.ctrlSiteTrack26.SiteNoIncStep = 1;
             this.ctrlSiteTrack26.SiteNoList = new int[] {
-        217,
-        218,
-        219,
-        220,
-        221,
-        223};
+        4217,
+        4218,
+        4219,
+        4220,
+        4221,
+        4223};
             this.ctrlSiteTrack26.SiteTextDisp = null;
             this.ctrlSiteTrack26.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack26.Size = new System.Drawing.Size(223, 35);
@@ -4397,9 +4413,9 @@
             // 
             // ctrlSiteTrack24
             // 
-            this.ctrlSiteTrack24.CVPLCListDeviceID = 2;
+            this.ctrlSiteTrack24.CVPLCListDeviceID = 1;
             this.ctrlSiteTrack24.DisplayText = "";
-            this.ctrlSiteTrack24.FirstSiteNo = 211;
+            this.ctrlSiteTrack24.FirstSiteNo = 2211;
             this.ctrlSiteTrack24.InterSitePadding = 2;
             this.ctrlSiteTrack24.IsControled = true;
             this.ctrlSiteTrack24.IsUpperStage = false;
@@ -4428,7 +4444,7 @@
             // 
             // ctrlSiteTrack23
             // 
-            this.ctrlSiteTrack23.CVPLCListDeviceID = 2;
+            this.ctrlSiteTrack23.CVPLCListDeviceID = 1;
             this.ctrlSiteTrack23.DisplayText = "";
             this.ctrlSiteTrack23.FirstSiteNo = 1;
             this.ctrlSiteTrack23.InterSitePadding = 6;
@@ -4451,10 +4467,10 @@
             this.ctrlSiteTrack23.SiteNoDirection = ControlGallery.SiteTrackDirection.LeftToRight;
             this.ctrlSiteTrack23.SiteNoIncStep = 1;
             this.ctrlSiteTrack23.SiteNoList = new int[] {
-        212,
-        213,
-        214,
-        216};
+        2212,
+        2213,
+        2214,
+        2216};
             this.ctrlSiteTrack23.SiteTextDisp = null;
             this.ctrlSiteTrack23.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack23.Size = new System.Drawing.Size(147, 35);
@@ -4463,7 +4479,7 @@
             // 
             // ctrlSiteTrack22
             // 
-            this.ctrlSiteTrack22.CVPLCListDeviceID = 2;
+            this.ctrlSiteTrack22.CVPLCListDeviceID = 1;
             this.ctrlSiteTrack22.DisplayText = "";
             this.ctrlSiteTrack22.FirstSiteNo = 207;
             this.ctrlSiteTrack22.InterSitePadding = 6;
@@ -4485,7 +4501,11 @@
             this.ctrlSiteTrack22.SiteNo = 0;
             this.ctrlSiteTrack22.SiteNoDirection = ControlGallery.SiteTrackDirection.LeftToRight;
             this.ctrlSiteTrack22.SiteNoIncStep = 1;
-            this.ctrlSiteTrack22.SiteNoList = null;
+            this.ctrlSiteTrack22.SiteNoList = new int[] {
+        2207,
+        2208,
+        2209,
+        2210};
             this.ctrlSiteTrack22.SiteTextDisp = null;
             this.ctrlSiteTrack22.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack22.Size = new System.Drawing.Size(147, 35);
@@ -4536,7 +4556,7 @@
             // 
             // ctrlSiteTrack20
             // 
-            this.ctrlSiteTrack20.CVPLCListDeviceID = 1;
+            this.ctrlSiteTrack20.CVPLCListDeviceID = 2;
             this.ctrlSiteTrack20.DisplayText = "";
             this.ctrlSiteTrack20.FirstSiteNo = 1;
             this.ctrlSiteTrack20.InterSitePadding = 6;
@@ -4559,11 +4579,11 @@
             this.ctrlSiteTrack20.SiteNoDirection = ControlGallery.SiteTrackDirection.LeftToRight;
             this.ctrlSiteTrack20.SiteNoIncStep = 1;
             this.ctrlSiteTrack20.SiteNoList = new int[] {
-        201,
-        202,
-        203,
-        204,
-        206};
+        3201,
+        3202,
+        3203,
+        3204,
+        3206};
             this.ctrlSiteTrack20.SiteTextDisp = null;
             this.ctrlSiteTrack20.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack20.Size = new System.Drawing.Size(185, 35);
@@ -4595,11 +4615,11 @@
             this.ctrlSiteTrack19.SiteNoDirection = ControlGallery.SiteTrackDirection.LeftToRight;
             this.ctrlSiteTrack19.SiteNoIncStep = 1;
             this.ctrlSiteTrack19.SiteNoList = new int[] {
-        212,
-        213,
-        214,
-        220,
-        219};
+        1212,
+        1213,
+        1214,
+        1220,
+        1219};
             this.ctrlSiteTrack19.SiteTextDisp = null;
             this.ctrlSiteTrack19.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack19.Size = new System.Drawing.Size(185, 35);
@@ -4631,8 +4651,8 @@
             this.ctrlSiteTrack18.SiteNoDirection = ControlGallery.SiteTrackDirection.LeftToRight;
             this.ctrlSiteTrack18.SiteNoIncStep = 1;
             this.ctrlSiteTrack18.SiteNoList = new int[] {
-        208,
-        209};
+        1208,
+        1209};
             this.ctrlSiteTrack18.SiteTextDisp = null;
             this.ctrlSiteTrack18.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack18.Size = new System.Drawing.Size(71, 35);
@@ -4664,8 +4684,8 @@
             this.ctrlSiteTrack17.SiteNoDirection = ControlGallery.SiteTrackDirection.RightToLeft;
             this.ctrlSiteTrack17.SiteNoIncStep = 1;
             this.ctrlSiteTrack17.SiteNoList = new int[] {
-        204,
-        205};
+        1204,
+        1205};
             this.ctrlSiteTrack17.SiteTextDisp = null;
             this.ctrlSiteTrack17.SiteTrayDirection = ControlGallery.TrayMovingDirection.RightToLeft;
             this.ctrlSiteTrack17.Size = new System.Drawing.Size(76, 35);
@@ -4676,7 +4696,7 @@
             // 
             this.ctrlSiteTrack16.CVPLCListDeviceID = 0;
             this.ctrlSiteTrack16.DisplayText = "";
-            this.ctrlSiteTrack16.FirstSiteNo = 203;
+            this.ctrlSiteTrack16.FirstSiteNo = 1203;
             this.ctrlSiteTrack16.InterSitePadding = 6;
             this.ctrlSiteTrack16.IsControled = true;
             this.ctrlSiteTrack16.IsUpperStage = false;
@@ -4728,9 +4748,9 @@
             this.ctrlSiteTrack15.SiteNoDirection = ControlGallery.SiteTrackDirection.RightToLeft;
             this.ctrlSiteTrack15.SiteNoIncStep = 1;
             this.ctrlSiteTrack15.SiteNoList = new int[] {
-        202,
-        206,
-        207};
+        1202,
+        1206,
+        1207};
             this.ctrlSiteTrack15.SiteTextDisp = null;
             this.ctrlSiteTrack15.SiteTrayDirection = ControlGallery.TrayMovingDirection.RightToLeft;
             this.ctrlSiteTrack15.Size = new System.Drawing.Size(114, 35);
@@ -4741,7 +4761,7 @@
             // 
             this.ctrlSiteTrack14.CVPLCListDeviceID = 0;
             this.ctrlSiteTrack14.DisplayText = "";
-            this.ctrlSiteTrack14.FirstSiteNo = 110;
+            this.ctrlSiteTrack14.FirstSiteNo = 1110;
             this.ctrlSiteTrack14.InterSitePadding = 2;
             this.ctrlSiteTrack14.IsControled = true;
             this.ctrlSiteTrack14.IsUpperStage = false;
@@ -4801,7 +4821,7 @@
             // 
             this.ctrlSiteTrack13.CVPLCListDeviceID = 0;
             this.ctrlSiteTrack13.DisplayText = "";
-            this.ctrlSiteTrack13.FirstSiteNo = 105;
+            this.ctrlSiteTrack13.FirstSiteNo = 1105;
             this.ctrlSiteTrack13.InterSitePadding = 6;
             this.ctrlSiteTrack13.IsControled = true;
             this.ctrlSiteTrack13.IsUpperStage = false;
@@ -4832,7 +4852,7 @@
             // 
             this.ctrlSiteTrack12.CVPLCListDeviceID = 0;
             this.ctrlSiteTrack12.DisplayText = "";
-            this.ctrlSiteTrack12.FirstSiteNo = 112;
+            this.ctrlSiteTrack12.FirstSiteNo = 1112;
             this.ctrlSiteTrack12.InterSitePadding = 6;
             this.ctrlSiteTrack12.IsControled = true;
             this.ctrlSiteTrack12.IsUpperStage = false;
@@ -4915,7 +4935,7 @@
             // 
             this.ctrlSiteTrack11.CVPLCListDeviceID = 0;
             this.ctrlSiteTrack11.DisplayText = "";
-            this.ctrlSiteTrack11.FirstSiteNo = 167;
+            this.ctrlSiteTrack11.FirstSiteNo = 1167;
             this.ctrlSiteTrack11.InterSitePadding = 6;
             this.ctrlSiteTrack11.IsControled = true;
             this.ctrlSiteTrack11.IsUpperStage = false;
@@ -4968,13 +4988,13 @@
             this.ctrlSiteTrack10.SiteNoDirection = ControlGallery.SiteTrackDirection.TopToBottom;
             this.ctrlSiteTrack10.SiteNoIncStep = 1;
             this.ctrlSiteTrack10.SiteNoList = new int[] {
-        117,
+        1117,
         -1,
         -1,
         -1,
-        118,
+        1118,
         -1,
-        164};
+        1164};
             this.ctrlSiteTrack10.SiteTextDisp = new string[] {
         "164=G2"};
             this.ctrlSiteTrack10.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
@@ -5008,13 +5028,13 @@
             this.ctrlSiteTrack9.SiteNoDirection = ControlGallery.SiteTrackDirection.TopToBottom;
             this.ctrlSiteTrack9.SiteNoIncStep = 1;
             this.ctrlSiteTrack9.SiteNoList = new int[] {
-        122,
+        1122,
         -1,
         -1,
         -1,
-        123,
+        1123,
         -1,
-        161};
+        1161};
             this.ctrlSiteTrack9.SiteTextDisp = new string[] {
         "161=G1"};
             this.ctrlSiteTrack9.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
@@ -5026,7 +5046,7 @@
             // 
             this.ctrlSiteTrack8.CVPLCListDeviceID = 0;
             this.ctrlSiteTrack8.DisplayText = "";
-            this.ctrlSiteTrack8.FirstSiteNo = 121;
+            this.ctrlSiteTrack8.FirstSiteNo = 1121;
             this.ctrlSiteTrack8.InterSitePadding = 6;
             this.ctrlSiteTrack8.IsControled = true;
             this.ctrlSiteTrack8.IsUpperStage = false;
@@ -5104,9 +5124,9 @@
             this.ctrlSiteTrack7.SiteNoDirection = ControlGallery.SiteTrackDirection.TopToBottom;
             this.ctrlSiteTrack7.SiteNoIncStep = 1;
             this.ctrlSiteTrack7.SiteNoList = new int[] {
-        154,
-        155,
-        156};
+        1154,
+        1155,
+        1156};
             this.ctrlSiteTrack7.SiteTextDisp = null;
             this.ctrlSiteTrack7.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack7.Size = new System.Drawing.Size(33, 115);
@@ -5138,13 +5158,13 @@
             this.ctrlSiteTrack6.SiteNoDirection = ControlGallery.SiteTrackDirection.TopToBottom;
             this.ctrlSiteTrack6.SiteNoIncStep = 1;
             this.ctrlSiteTrack6.SiteNoList = new int[] {
-        137,
+        1137,
         -1,
         -1,
         -1,
-        138,
+        1138,
         -1,
-        146};
+        1146};
             this.ctrlSiteTrack6.SiteTextDisp = new string[] {
         "46=E"};
             this.ctrlSiteTrack6.SiteTrayDirection = ControlGallery.TrayMovingDirection.TopToBottom;
@@ -5177,17 +5197,17 @@
             this.ctrlSiteTrack5.SiteNoDirection = ControlGallery.SiteTrackDirection.TopToBottom;
             this.ctrlSiteTrack5.SiteNoIncStep = 1;
             this.ctrlSiteTrack5.SiteNoList = new int[] {
-        130,
-        129,
-        128,
+        1130,
+        1129,
+        1128,
         -1,
         -1,
-        152,
-        151,
-        150,
+        1152,
+        1151,
+        1150,
         -1,
         -1,
-        149};
+        1149};
             this.ctrlSiteTrack5.SiteTextDisp = null;
             this.ctrlSiteTrack5.SiteTrayDirection = ControlGallery.TrayMovingDirection.TopToBottom;
             this.ctrlSiteTrack5.Size = new System.Drawing.Size(33, 435);
@@ -5219,15 +5239,15 @@
             this.ctrlSiteTrack4.SiteNoDirection = ControlGallery.SiteTrackDirection.TopToBottom;
             this.ctrlSiteTrack4.SiteNoIncStep = 1;
             this.ctrlSiteTrack4.SiteNoList = new int[] {
-        131,
-        132,
-        133,
+        1131,
+        1132,
+        1133,
         -1,
-        141,
+        1141,
         -1,
         -1,
         -1,
-        142};
+        1142};
             this.ctrlSiteTrack4.SiteTextDisp = null;
             this.ctrlSiteTrack4.SiteTrayDirection = ControlGallery.TrayMovingDirection.TopToBottom;
             this.ctrlSiteTrack4.Size = new System.Drawing.Size(33, 355);
@@ -5236,9 +5256,9 @@
             // 
             // ctrlSiteTrack21
             // 
-            this.ctrlSiteTrack21.CVPLCListDeviceID = 1;
+            this.ctrlSiteTrack21.CVPLCListDeviceID = 2;
             this.ctrlSiteTrack21.DisplayText = "";
-            this.ctrlSiteTrack21.FirstSiteNo = 205;
+            this.ctrlSiteTrack21.FirstSiteNo = 3205;
             this.ctrlSiteTrack21.InterSitePadding = 2;
             this.ctrlSiteTrack21.IsControled = true;
             this.ctrlSiteTrack21.IsUpperStage = false;
@@ -5290,8 +5310,8 @@
             this.ctrlSiteTrack33.SiteNoDirection = ControlGallery.SiteTrackDirection.TopToBottom;
             this.ctrlSiteTrack33.SiteNoIncStep = 1;
             this.ctrlSiteTrack33.SiteNoList = new int[] {
-        217,
-        218};
+        1217,
+        1218};
             this.ctrlSiteTrack33.SiteTextDisp = null;
             this.ctrlSiteTrack33.SiteTrayDirection = ControlGallery.TrayMovingDirection.TopToBottom;
             this.ctrlSiteTrack33.Size = new System.Drawing.Size(33, 80);
@@ -5323,8 +5343,8 @@
             this.ctrlSiteTrack32.SiteNoDirection = ControlGallery.SiteTrackDirection.BottomToTop;
             this.ctrlSiteTrack32.SiteNoIncStep = 1;
             this.ctrlSiteTrack32.SiteNoList = new int[] {
-        215,
-        216};
+        1215,
+        1216};
             this.ctrlSiteTrack32.SiteTextDisp = null;
             this.ctrlSiteTrack32.SiteTrayDirection = ControlGallery.TrayMovingDirection.BottomToTop;
             this.ctrlSiteTrack32.Size = new System.Drawing.Size(33, 80);
@@ -5333,9 +5353,9 @@
             // 
             // ctrlSiteTrack25
             // 
-            this.ctrlSiteTrack25.CVPLCListDeviceID = 2;
+            this.ctrlSiteTrack25.CVPLCListDeviceID = 1;
             this.ctrlSiteTrack25.DisplayText = "";
-            this.ctrlSiteTrack25.FirstSiteNo = 215;
+            this.ctrlSiteTrack25.FirstSiteNo = 2215;
             this.ctrlSiteTrack25.InterSitePadding = 2;
             this.ctrlSiteTrack25.IsControled = true;
             this.ctrlSiteTrack25.IsUpperStage = false;
@@ -5366,7 +5386,7 @@
             // 
             this.ctrlSiteTrack27.CVPLCListDeviceID = 3;
             this.ctrlSiteTrack27.DisplayText = "";
-            this.ctrlSiteTrack27.FirstSiteNo = 222;
+            this.ctrlSiteTrack27.FirstSiteNo = 4222;
             this.ctrlSiteTrack27.InterSitePadding = 2;
             this.ctrlSiteTrack27.IsControled = true;
             this.ctrlSiteTrack27.IsUpperStage = false;
@@ -5418,8 +5438,8 @@
             this.ctrlSiteTrack3.SiteNoDirection = ControlGallery.SiteTrackDirection.TopToBottom;
             this.ctrlSiteTrack3.SiteNoIncStep = 1;
             this.ctrlSiteTrack3.SiteNoList = new int[] {
-        402,
-        140};
+        1402,
+        1140};
             this.ctrlSiteTrack3.SiteTextDisp = new string[0];
             this.ctrlSiteTrack3.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack3.Size = new System.Drawing.Size(33, 35);

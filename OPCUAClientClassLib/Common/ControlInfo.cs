@@ -160,6 +160,7 @@ namespace OPCUAClientClassLib
 
     public class CBrowerInfo
     {
+        public string EqpID { get; set; }
         public string BrowerPath { get; set; }
         public bool SubScribe { get; set; }
     }

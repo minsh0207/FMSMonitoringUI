@@ -19,6 +19,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 using System.IO;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Xml.Linq;
 
 namespace OPCUAClientClassLib
 {
@@ -74,9 +75,9 @@ namespace OPCUAClientClassLib
         //    set => _StartNodeID = value;
         //}
 
-        
 
-        Dictionary<string, List<CBrowerInfo>> _OPCTagList;
+
+        private Dictionary<string, List<CBrowerInfo>> _OPCTagList;
         public Dictionary<string, List<CBrowerInfo>> OPCTagList
         {
             get => _OPCTagList;
@@ -90,25 +91,35 @@ namespace OPCUAClientClassLib
         //    set => _SubscribeTagList = value;
         //}
 
-        Dictionary<int, List<BrowsePath>> _PathsToTranslate;
+        private Dictionary<int, List<BrowsePath>> _PathsToTranslate;
         public Dictionary<int, List<BrowsePath>> PathsToTranslate
         {
             get => _PathsToTranslate;
             set => _PathsToTranslate = value;
         }
 
-        Dictionary<int, List<ReadValueId>> _ConveyorNodeID;
+        private Dictionary<int, List<ReadValueId>> _ConveyorNodeID;
         public Dictionary<int, List<ReadValueId>> ConveyorNodeID
         {
             get => _ConveyorNodeID;
             set => _ConveyorNodeID = value;
         }
 
-        Dictionary<int, List<ReadValueId>> _CraneNodeID;
+        private Dictionary<int, List<ReadValueId>> _CraneNodeID;
         public Dictionary<int, List<ReadValueId>> CraneNodeID
         {
             get => _CraneNodeID;
             set => _CraneNodeID = value;
+        }
+
+        /// <summary>
+        /// First=BrowseName, Second=NamespaceIndex
+        /// </summary>
+        private Dictionary<string, int> _BrowseNSIndex = new Dictionary<string, int>();
+        public Dictionary<string, int> BrowseNSIndex
+        {
+            get => _BrowseNSIndex;
+            set => _BrowseNSIndex = value;
         }
 
         //Dictionary<int, OPCTagItem> _BrowseNodeID; 
@@ -475,8 +486,8 @@ namespace OPCUAClientClassLib
             _session.ConnectionStatusUpdate += new ServerConnectionStatusUpdateEventHandler(Session_ServerConnectionStatusUpdate);
 
             // Id & Password
-            _session.UserIdentity = new UserIdentity() { IdentityType = UserIdentityType.UserName, UserName = "fms", Password = "fms@!" };
-
+            //_session.UserIdentity = new UserIdentity() { IdentityType = UserIdentityType.UserName, UserName = "fms", Password = "fms@!" };
+            
             // Call connect with URL
             //if (IsReverseConnectSelected)
             //{
@@ -486,7 +497,7 @@ namespace OPCUAClientClassLib
             {
                 _session.Connect(connect_uri, SecuritySelection.None);
             }
-        }        
+        }
 
         /// <summary>
         ///
@@ -535,6 +546,9 @@ namespace OPCUAClientClassLib
                                 List<CBrowerInfo> tagList = kv.Value;
 
                                 string startNodeID = GetStartNodeID(eqpType);
+
+                                NodeId nodeToBrowse = NodeId.Parse(startNodeID); //new NodeId(Objects.ObjectsFolder, 0);
+                                ScanOPCServer(nodeToBrowse, startNodeID);
 
                                 Dictionary<int, List<BrowsePath>> dictBrowsePath = AddBrowsePath(startNodeID, eqpType, tagList);
                                 Dictionary<int, List<BrowsePathResult>> dictResultPath = ReadBrowse(dictBrowsePath);
@@ -673,6 +687,8 @@ namespace OPCUAClientClassLib
                 {
                     _EqpType = kv.Value[0].ControlType.ToString();
 
+                    if (_EqpID == null) _EqpID = kv.Value[0].EqpID;
+
                     if (_EqpType == "CNV")
                     {
                         ConveyorTag(kv.Value, dataList[0].Children[0]);
@@ -718,13 +734,14 @@ namespace OPCUAClientClassLib
             {
                 for (int i = 0; i < trackList.Count; i++)
                 {
-                    if (trackList[i].SiteNo > 300) continue;
+                    //if (trackList[i].SiteNo > 300) continue;
 //#if DEBUG
-                    trackno = string.Format($"CNV_{{0}}", trackList[i].SiteNo);
-//#else
-//                    trackno = string.Format($"CNV00{{0:D2}}", trackList[i].SiteNo);
-//#endif
-
+                    trackno = string.Format($"CNV{trackList[i].SiteNo}");
+                    //#else
+                    //                    trackno = string.Format($"CNV00{{0:D2}}", trackList[i].SiteNo);
+                    //#endif
+                    // Water Tank에 있는 Conveyor는 StackerCrane에 종속되어 있어 TagList에서 제외시킴.
+                    if (trackList[i].SiteNo < 1000) continue;
 
                     foreach (var itemLv1 in item.Children)
                     {
@@ -736,10 +753,13 @@ namespace OPCUAClientClassLib
 
                                 if (itemLv3.Children.Count == 0)
                                 {
-                                    browerInfo = new CBrowerInfo();
-
-                                    browerInfo.BrowerPath = string.Format($"{trackList[i].EqpID}.{trackno}.{itemLv2.TagName}.{itemLv3.TagName}");
-                                    browerInfo.SubScribe = itemLv3.Subscribe;
+                                    browerInfo = new CBrowerInfo
+                                    {
+                                        EqpID = trackList[i].EqpID,
+                                        BrowerPath = string.Format($"{trackList[i].EqpID}.{trackno}.{itemLv2.TagName}.{itemLv3.TagName}"),
+                                        //BrowerPath = string.Format($"{trackno}.{itemLv2.TagName}.{itemLv3.TagName}"),
+                                        SubScribe = itemLv3.Subscribe
+                                    };
 
                                     if (_OPCTagList.ContainsKey(ctrlType))
                                     {
@@ -754,10 +774,13 @@ namespace OPCUAClientClassLib
                                 {
                                     foreach (var itemLv4 in itemLv3.Children)
                                     {
-                                        browerInfo = new CBrowerInfo();
-
-                                        browerInfo.BrowerPath = string.Format($"{trackList[i].EqpID}.{trackno}.{itemLv2.TagName}.{itemLv3.TagName}.{itemLv4.TagName}");
-                                        browerInfo.SubScribe = itemLv4.Subscribe;
+                                        browerInfo = new CBrowerInfo
+                                        {
+                                            EqpID = trackList[i].EqpID,
+                                            BrowerPath = string.Format($"{trackList[i].EqpID}.{trackno}.{itemLv2.TagName}.{itemLv3.TagName}.{itemLv4.TagName}"),
+                                            //BrowerPath = string.Format($"{trackno}.{itemLv2.TagName}.{itemLv3.TagName}.{itemLv4.TagName}")
+                                            SubScribe = itemLv4.Subscribe
+                                        };
 
                                         if (browerInfo.SubScribe == true)
                                         {
@@ -874,23 +897,56 @@ namespace OPCUAClientClassLib
             }            
         }
 
-#region GetStartNodeID
+        #region GetStartNodeID
         /// <summary>
         /// OPCServer에 시작 Tag NodeID를 가져온다.
         /// </summary>
         private string GetStartNodeID(string eqpType)
         {
-            // parse the node id.
-            NodeId startingNodeId = NodeId.Parse(_FirstNodeID);
+            string startNodeID = string.Empty;
+            byte[] continuationPoint;
 
-            List<BrowsePath> browsePath = new List<BrowsePath>();
+            if (_FirstNodeID == "")
+            {
+                NodeId nodeToBrowse = new NodeId(Objects.ObjectsFolder, 0);
 
-            //browsePath.Add(GetBrowsePath(startingNodeId, AbsoluteName.ToQualifiedNames($"/2:{_EqpID}")));
-            browsePath.Add(GetBrowsePath(startingNodeId, AbsoluteName.ToQualifiedNames($"/2:{eqpType}")));
+                BrowseContext browseContext = new BrowseContext()
+                {
+                    BrowseDirection = BrowseDirection.Forward,
+                    ReferenceTypeId = ReferenceTypeIds.HierarchicalReferences,
+                    IncludeSubtypes = true,
+                    NodeClassMask = 0,
+                    ResultMask = (uint)BrowseResultMask.All,
+                    MaxReferencesToReturn = 100
+                };
 
-            List<BrowsePathResult> browerResult = ReadBrowse(browsePath);
+                List<ReferenceDescription> results = _session.Browse(
+                                    nodeToBrowse,
+                                    browseContext,
+                                    out continuationPoint);
 
-            string startNodeID = browerResult[0].Targets[0].TargetId.ToString();
+                foreach (var item in results)
+                {
+                    if (eqpType == item.ToString())
+                    {
+                        startNodeID = item.NodeId.ToString();
+                    }
+                }
+            }
+            else
+            {
+                // parse the node id.
+                NodeId startingNodeId = NodeId.Parse(_FirstNodeID);
+
+                List<BrowsePath> browsePath = new List<BrowsePath>
+                {
+                    GetBrowsePath(startingNodeId, AbsoluteName.ToQualifiedNames($"/2:{eqpType}"))
+                };
+
+                List<BrowsePathResult> browerResult = ReadBrowse(browsePath);
+
+                startNodeID = browerResult[0].Targets[0].TargetId.ToString();
+            }
 
             _LOG_(LogLevel.OPCUA, $"[{EQP_ID}] Start NodeID : {startNodeID}");
 
@@ -1112,12 +1168,13 @@ namespace OPCUAClientClassLib
 #endregion
 
 #region ScanOPCServer
-        public void ScanOPCServer(NodeId nodeToBrowse)
+        public void ScanOPCServer(NodeId nodeToBrowse, string nodeID)
         {
             byte[] continuationPoint;
             List<ReferenceDescription> results;
 
             BrowsedNodeList.Clear();
+            _BrowseNSIndex.Clear();
 
             BrowseContext browseContext = new BrowseContext()
             {
@@ -1131,7 +1188,6 @@ namespace OPCUAClientClassLib
 
             try
             {
-                
                 // Call browse service.
                 results = _session.Browse(
                     nodeToBrowse,
@@ -1143,8 +1199,6 @@ namespace OPCUAClientClassLib
                 {
                     string nodeName = item.DisplayName.ToString();
 
-                    //if (nodeName == "Types" || nodeName == "Views" || nodeName == "Aliases" || nodeName == "Server") continue;
-
                     if (!NodeListCheckPass(nodeName)) continue;
 
                     // Get the data about the parent tree node
@@ -1155,6 +1209,12 @@ namespace OPCUAClientClassLib
 
                     BaseNode parent = new BaseNode();
                     parent.NodeId = item.NodeId.ToString();
+
+                    // 각 Tag의 Browse별 NamespaceIndex를 가져온다.
+                    if (_BrowseNSIndex.ContainsKey(item.BrowseName.Name) == false)
+                    {
+                        _BrowseNSIndex[item.BrowseName.Name] = item.BrowseName.NamespaceIndex;
+                    }
 
                     BrowseNodesRecursive(parent);
                 }
@@ -1190,9 +1250,10 @@ namespace OPCUAClientClassLib
                     browseContext,
                     out continuationPoint);
 
+            BaseNode baseNode = new BaseNode();
+
             foreach (var node in browseResults)
             {
-
                 string path = $"{parent.Path}{path_sep}{node.DisplayName.Text}";
                 //if (!WhiteAndBlackListCheckPass(path)) continue;
 
@@ -1206,6 +1267,11 @@ namespace OPCUAClientClassLib
                 child.BrowseName = child.Path; // node.BrowseName.Name;
                 BrowsedNodeList.Add(child);
 
+                // 각 Tag의 Browse별 NamespaceIndex를 가져온다.
+                if (_BrowseNSIndex.ContainsKey(node.BrowseName.Name) == false)
+                {
+                    _BrowseNSIndex[node.BrowseName.Name] = node.BrowseName.NamespaceIndex;
+                }
 
                 //_LOG_($"BrowsedAdded: {child.Path}");
 
@@ -1220,12 +1286,17 @@ namespace OPCUAClientClassLib
                     //System.Console.WriteLine($"\nMethod: {child.BrowseName}");
                     //GetArgumentsAsChildNodes(child, path_sep);
                 }
-
                 */
 
-                //
-                BrowseNodesRecursive(child, path_sep);
+                baseNode = child;
             }
+
+            if (_BrowseNSIndex.ContainsKey("Common"))
+            {
+                return;
+            }
+
+            BrowseNodesRecursive(baseNode, path_sep);
         }
 
         private bool NodeListCheckPass(string path)

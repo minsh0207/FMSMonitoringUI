@@ -125,7 +125,7 @@
             this.lbTrayID2.Name = "lbTrayID2";
             this.lbTrayID2.Size = new System.Drawing.Size(232, 30);
             this.lbTrayID2.TabIndex = 60;
-            this.lbTrayID2.Tag = "WaterTank.TrayIdL2";
+            this.lbTrayID2.Tag = "TrayIdL2";
             this.lbTrayID2.TextData = "";
             this.lbTrayID2.TitleText = "Tray ID 2 ";
             this.lbTrayID2.TitleWidth = 110F;
@@ -141,7 +141,7 @@
             this.lbTrayID1.Name = "lbTrayID1";
             this.lbTrayID1.Size = new System.Drawing.Size(232, 30);
             this.lbTrayID1.TabIndex = 59;
-            this.lbTrayID1.Tag = "WaterTank.TrayIdL1";
+            this.lbTrayID1.Tag = "TrayIdL1";
             this.lbTrayID1.TextData = "";
             this.lbTrayID1.TitleText = "Tray ID 1 ";
             this.lbTrayID1.TitleWidth = 110F;
@@ -157,7 +157,7 @@
             this.lbTrayCount.Name = "lbTrayCount";
             this.lbTrayCount.Size = new System.Drawing.Size(232, 30);
             this.lbTrayCount.TabIndex = 58;
-            this.lbTrayCount.Tag = "WaterTank.TrayCount";
+            this.lbTrayCount.Tag = "TrayCount";
             this.lbTrayCount.TextData = "";
             this.lbTrayCount.TitleText = "Tray Count ";
             this.lbTrayCount.TitleWidth = 110F;
@@ -210,7 +210,7 @@
             this.ledRestockPressed.Name = "ledRestockPressed";
             this.ledRestockPressed.Size = new System.Drawing.Size(104, 15);
             this.ledRestockPressed.TabIndex = 80;
-            this.ledRestockPressed.Tag = "WaterTank.RestockButtonPressed";
+            this.ledRestockPressed.Tag = "RestockButtonPressed";
             this.ledRestockPressed.TitleText = "";
             // 
             // ctrlLabel1
@@ -235,7 +235,7 @@
             this.ledFireSensor.Name = "ledFireSensor";
             this.ledFireSensor.Size = new System.Drawing.Size(104, 15);
             this.ledFireSensor.TabIndex = 78;
-            this.ledFireSensor.Tag = "WaterTank.FireSensor";
+            this.ledFireSensor.Tag = "FireSensor";
             this.ledFireSensor.TitleText = "";
             // 
             // ctrlLabel2
@@ -260,7 +260,7 @@
             this.ledStationSink.Name = "ledStationSink";
             this.ledStationSink.Size = new System.Drawing.Size(104, 15);
             this.ledStationSink.TabIndex = 76;
-            this.ledStationSink.Tag = "WaterTank.StationSink";
+            this.ledStationSink.Tag = "StationSink";
             this.ledStationSink.TitleText = "";
             // 
             // ctrlLabel3
@@ -285,7 +285,7 @@
             this.ledTrayExist.Name = "ledTrayExist";
             this.ledTrayExist.Size = new System.Drawing.Size(104, 15);
             this.ledTrayExist.TabIndex = 74;
-            this.ledTrayExist.Tag = "WaterTank.TrayExist";
+            this.ledTrayExist.Tag = "TrayExist";
             this.ledTrayExist.TitleText = "";
             // 
             // ctrlLabel6
@@ -310,7 +310,7 @@
             this.ledInputEnable.Name = "ledInputEnable";
             this.ledInputEnable.Size = new System.Drawing.Size(104, 15);
             this.ledInputEnable.TabIndex = 72;
-            this.ledInputEnable.Tag = "WaterTank.InputEnable";
+            this.ledInputEnable.Tag = "InputEnable";
             this.ledInputEnable.TitleText = "";
             // 
             // ctrlLabel5

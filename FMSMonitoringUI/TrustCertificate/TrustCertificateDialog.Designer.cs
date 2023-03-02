@@ -25,7 +25,7 @@
 ** http://unifiedautomation.com/License/SLA/2.7/
 ******************************************************************************/
 
-namespace FMSMonitoringUI
+namespace UnifiedAutomation.GettingStarted
 {
     partial class TrustCertificateDialog
     {
@@ -63,6 +63,11 @@ namespace FMSMonitoringUI
             this.OkButton = new System.Windows.Forms.Button();
             this.MainPanel = new System.Windows.Forms.TableLayoutPanel();
             this.WarningLabel = new System.Windows.Forms.Label();
+            this.InstructionsGB = new System.Windows.Forms.GroupBox();
+            this.TopPN = new System.Windows.Forms.Panel();
+            this.HelpBTN = new System.Windows.Forms.Button();
+            this.ShowCodeBTN = new System.Windows.Forms.Button();
+            this.InstructionsLB = new System.Windows.Forms.Label();
             this.ThumbprintTextBox = new System.Windows.Forms.TextBox();
             this.ThumbprintLabel = new System.Windows.Forms.Label();
             this.HashAlgorithmLabel = new System.Windows.Forms.Label();
@@ -88,8 +93,11 @@ namespace FMSMonitoringUI
             this.ValidFromTextBox = new System.Windows.Forms.TextBox();
             this.ValidFromLabel = new System.Windows.Forms.Label();
             this.TimeoutTimer = new System.Windows.Forms.Timer(this.components);
+            this.SecurityRightsLabel = new System.Windows.Forms.Label();
             this.ButtonsPanel.SuspendLayout();
             this.MainPanel.SuspendLayout();
+            this.InstructionsGB.SuspendLayout();
+            this.TopPN.SuspendLayout();
             this.ValidityTimePanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,29 +108,27 @@ namespace FMSMonitoringUI
             this.ButtonsPanel.Controls.Add(this.CloseButton);
             this.ButtonsPanel.Controls.Add(this.OkButton);
             this.ButtonsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ButtonsPanel.Location = new System.Drawing.Point(0, 286);
-            this.ButtonsPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.ButtonsPanel.Location = new System.Drawing.Point(0, 397);
             this.ButtonsPanel.Name = "ButtonsPanel";
-            this.ButtonsPanel.Size = new System.Drawing.Size(701, 27);
+            this.ButtonsPanel.Size = new System.Drawing.Size(601, 29);
             this.ButtonsPanel.TabIndex = 0;
             // 
             // CountdownLabel
             // 
             this.CountdownLabel.AutoSize = true;
-            this.CountdownLabel.Location = new System.Drawing.Point(520, 7);
-            this.CountdownLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.CountdownLabel.Location = new System.Drawing.Point(446, 8);
             this.CountdownLabel.Name = "CountdownLabel";
-            this.CountdownLabel.Size = new System.Drawing.Size(83, 12);
-            this.CountdownLabel.TabIndex = 3;
+            this.CountdownLabel.Size = new System.Drawing.Size(71, 13);
+            this.CountdownLabel.TabIndex = 4;
             this.CountdownLabel.Text = "Reject in {0}s";
+            this.CountdownLabel.Visible = false;
             // 
             // PermanentCheckBox
             // 
             this.PermanentCheckBox.AutoSize = true;
-            this.PermanentCheckBox.Location = new System.Drawing.Point(98, 6);
-            this.PermanentCheckBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.PermanentCheckBox.Location = new System.Drawing.Point(84, 7);
             this.PermanentCheckBox.Name = "PermanentCheckBox";
-            this.PermanentCheckBox.Size = new System.Drawing.Size(179, 16);
+            this.PermanentCheckBox.Size = new System.Drawing.Size(155, 17);
             this.PermanentCheckBox.TabIndex = 2;
             this.PermanentCheckBox.Text = "Save Certificate in TrustList";
             this.PermanentCheckBox.UseVisualStyleBackColor = true;
@@ -131,10 +137,9 @@ namespace FMSMonitoringUI
             // 
             this.CloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CloseButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CloseButton.Location = new System.Drawing.Point(610, 3);
-            this.CloseButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.CloseButton.Location = new System.Drawing.Point(523, 3);
             this.CloseButton.Name = "CloseButton";
-            this.CloseButton.Size = new System.Drawing.Size(88, 21);
+            this.CloseButton.Size = new System.Drawing.Size(75, 23);
             this.CloseButton.TabIndex = 1;
             this.CloseButton.Text = "Reject";
             this.CloseButton.UseVisualStyleBackColor = true;
@@ -142,10 +147,9 @@ namespace FMSMonitoringUI
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.OkButton.Location = new System.Drawing.Point(4, 3);
-            this.OkButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.OkButton.Location = new System.Drawing.Point(3, 3);
             this.OkButton.Name = "OkButton";
-            this.OkButton.Size = new System.Drawing.Size(88, 21);
+            this.OkButton.Size = new System.Drawing.Size(75, 23);
             this.OkButton.TabIndex = 0;
             this.OkButton.Text = "Trust";
             this.OkButton.UseVisualStyleBackColor = true;
@@ -159,32 +163,33 @@ namespace FMSMonitoringUI
             this.MainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.MainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.MainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.MainPanel.Controls.Add(this.SecurityRightsLabel, 0, 2);
             this.MainPanel.Controls.Add(this.WarningLabel, 0, 1);
-            this.MainPanel.Controls.Add(this.ThumbprintTextBox, 1, 11);
-            this.MainPanel.Controls.Add(this.ThumbprintLabel, 0, 11);
-            this.MainPanel.Controls.Add(this.HashAlgorithmLabel, 0, 10);
-            this.MainPanel.Controls.Add(this.KeySizeTextBox, 1, 9);
-            this.MainPanel.Controls.Add(this.KeySizeLabel, 0, 9);
-            this.MainPanel.Controls.Add(this.IssuerNameTextBox, 1, 8);
-            this.MainPanel.Controls.Add(this.IssuerNameLabel, 0, 8);
-            this.MainPanel.Controls.Add(this.SubjectNameTextBox, 1, 7);
-            this.MainPanel.Controls.Add(this.SubjectNameLabel, 0, 7);
-            this.MainPanel.Controls.Add(this.OrganizationUnitTextBox, 1, 4);
-            this.MainPanel.Controls.Add(this.OrganizationUnitLabel, 0, 4);
-            this.MainPanel.Controls.Add(this.OrganizationNameTextBox, 1, 3);
-            this.MainPanel.Controls.Add(this.OrganizationNameLabel, 0, 3);
-            this.MainPanel.Controls.Add(this.DomainNamesTextBox, 1, 6);
-            this.MainPanel.Controls.Add(this.DomainNamesLabel, 0, 6);
-            this.MainPanel.Controls.Add(this.ApplicationNameLabel, 0, 2);
-            this.MainPanel.Controls.Add(this.ApplicationUriLabel, 0, 5);
-            this.MainPanel.Controls.Add(this.ApplicationNameTextBox, 1, 2);
-            this.MainPanel.Controls.Add(this.ApplicationUriTextBox, 1, 5);
-            this.MainPanel.Controls.Add(this.ValidityTimePanel, 1, 10);
+            this.MainPanel.Controls.Add(this.InstructionsGB, 0, 0);
+            this.MainPanel.Controls.Add(this.ThumbprintTextBox, 1, 12);
+            this.MainPanel.Controls.Add(this.ThumbprintLabel, 0, 12);
+            this.MainPanel.Controls.Add(this.HashAlgorithmLabel, 0, 11);
+            this.MainPanel.Controls.Add(this.KeySizeTextBox, 1, 10);
+            this.MainPanel.Controls.Add(this.KeySizeLabel, 0, 10);
+            this.MainPanel.Controls.Add(this.IssuerNameTextBox, 1, 9);
+            this.MainPanel.Controls.Add(this.IssuerNameLabel, 0, 9);
+            this.MainPanel.Controls.Add(this.SubjectNameTextBox, 1, 8);
+            this.MainPanel.Controls.Add(this.SubjectNameLabel, 0, 8);
+            this.MainPanel.Controls.Add(this.OrganizationUnitTextBox, 1, 5);
+            this.MainPanel.Controls.Add(this.OrganizationUnitLabel, 0, 5);
+            this.MainPanel.Controls.Add(this.OrganizationNameTextBox, 1, 4);
+            this.MainPanel.Controls.Add(this.OrganizationNameLabel, 0, 4);
+            this.MainPanel.Controls.Add(this.DomainNamesTextBox, 1, 7);
+            this.MainPanel.Controls.Add(this.DomainNamesLabel, 0, 7);
+            this.MainPanel.Controls.Add(this.ApplicationNameLabel, 0, 3);
+            this.MainPanel.Controls.Add(this.ApplicationUriLabel, 0, 6);
+            this.MainPanel.Controls.Add(this.ApplicationNameTextBox, 1, 3);
+            this.MainPanel.Controls.Add(this.ApplicationUriTextBox, 1, 6);
+            this.MainPanel.Controls.Add(this.ValidityTimePanel, 1, 11);
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.Location = new System.Drawing.Point(0, 0);
-            this.MainPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.RowCount = 12;
+            this.MainPanel.RowCount = 13;
             this.MainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.MainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.MainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -197,43 +202,107 @@ namespace FMSMonitoringUI
             this.MainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.MainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.MainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.MainPanel.Size = new System.Drawing.Size(701, 286);
+            this.MainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.MainPanel.Size = new System.Drawing.Size(601, 397);
             this.MainPanel.TabIndex = 1;
             // 
             // WarningLabel
             // 
-            this.WarningLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.WarningLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.WarningLabel.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.WarningLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.MainPanel.SetColumnSpan(this.WarningLabel, 3);
             this.WarningLabel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WarningLabel.Location = new System.Drawing.Point(7, 6);
-            this.WarningLabel.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.WarningLabel.Location = new System.Drawing.Point(6, 93);
+            this.WarningLabel.Margin = new System.Windows.Forms.Padding(6);
             this.WarningLabel.Name = "WarningLabel";
-            this.WarningLabel.Size = new System.Drawing.Size(687, 32);
+            this.WarningLabel.Size = new System.Drawing.Size(589, 35);
             this.WarningLabel.TabIndex = 47;
             this.WarningLabel.Text = "<instructions>";
+            // 
+            // InstructionsGB
+            // 
+            this.InstructionsGB.BackColor = System.Drawing.Color.Transparent;
+            this.MainPanel.SetColumnSpan(this.InstructionsGB, 3);
+            this.InstructionsGB.Controls.Add(this.TopPN);
+            this.InstructionsGB.Dock = System.Windows.Forms.DockStyle.Top;
+            this.InstructionsGB.Location = new System.Drawing.Point(3, 3);
+            this.InstructionsGB.Name = "InstructionsGB";
+            this.InstructionsGB.Size = new System.Drawing.Size(595, 81);
+            this.InstructionsGB.TabIndex = 46;
+            this.InstructionsGB.TabStop = false;
+            this.InstructionsGB.Text = "Instructions";
+            this.InstructionsGB.Visible = false;
+            // 
+            // TopPN
+            // 
+            this.TopPN.BackColor = System.Drawing.Color.Transparent;
+            this.TopPN.Controls.Add(this.HelpBTN);
+            this.TopPN.Controls.Add(this.ShowCodeBTN);
+            this.TopPN.Controls.Add(this.InstructionsLB);
+            this.TopPN.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TopPN.Location = new System.Drawing.Point(3, 16);
+            this.TopPN.Name = "TopPN";
+            this.TopPN.Padding = new System.Windows.Forms.Padding(3);
+            this.TopPN.Size = new System.Drawing.Size(589, 62);
+            this.TopPN.TabIndex = 2;
+            // 
+            // HelpBTN
+            // 
+            this.HelpBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.HelpBTN.Location = new System.Drawing.Point(510, 35);
+            this.HelpBTN.Name = "HelpBTN";
+            this.HelpBTN.Size = new System.Drawing.Size(75, 23);
+            this.HelpBTN.TabIndex = 2;
+            this.HelpBTN.Text = "Help";
+            this.HelpBTN.UseVisualStyleBackColor = true;
+            this.HelpBTN.Click += new System.EventHandler(this.ShowHelpBTN_Click);
+            // 
+            // ShowCodeBTN
+            // 
+            this.ShowCodeBTN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ShowCodeBTN.Location = new System.Drawing.Point(510, 6);
+            this.ShowCodeBTN.Name = "ShowCodeBTN";
+            this.ShowCodeBTN.Size = new System.Drawing.Size(75, 23);
+            this.ShowCodeBTN.TabIndex = 1;
+            this.ShowCodeBTN.Text = "Show Code";
+            this.ShowCodeBTN.UseVisualStyleBackColor = true;
+            this.ShowCodeBTN.Click += new System.EventHandler(this.ShowCodeBTN_Click);
+            // 
+            // InstructionsLB
+            // 
+            this.InstructionsLB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.InstructionsLB.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.InstructionsLB.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.InstructionsLB.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InstructionsLB.Location = new System.Drawing.Point(3, 3);
+            this.InstructionsLB.Margin = new System.Windows.Forms.Padding(0);
+            this.InstructionsLB.Name = "InstructionsLB";
+            this.InstructionsLB.Padding = new System.Windows.Forms.Padding(3);
+            this.InstructionsLB.Size = new System.Drawing.Size(504, 56);
+            this.InstructionsLB.TabIndex = 0;
+            this.InstructionsLB.Text = "<instructions>";
             // 
             // ThumbprintTextBox
             // 
             this.ThumbprintTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ThumbprintTextBox.Location = new System.Drawing.Point(123, 291);
-            this.ThumbprintTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.ThumbprintTextBox.Location = new System.Drawing.Point(105, 394);
             this.ThumbprintTextBox.Name = "ThumbprintTextBox";
             this.ThumbprintTextBox.ReadOnly = true;
-            this.ThumbprintTextBox.Size = new System.Drawing.Size(558, 21);
+            this.ThumbprintTextBox.Size = new System.Drawing.Size(493, 20);
             this.ThumbprintTextBox.TabIndex = 41;
             // 
             // ThumbprintLabel
             // 
             this.ThumbprintLabel.AutoSize = true;
             this.ThumbprintLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ThumbprintLabel.Location = new System.Drawing.Point(4, 288);
-            this.ThumbprintLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ThumbprintLabel.Location = new System.Drawing.Point(3, 391);
             this.ThumbprintLabel.Name = "ThumbprintLabel";
-            this.ThumbprintLabel.Size = new System.Drawing.Size(111, 27);
+            this.ThumbprintLabel.Size = new System.Drawing.Size(96, 26);
             this.ThumbprintLabel.TabIndex = 40;
             this.ThumbprintLabel.Text = "Thumbprint";
             this.ThumbprintLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -242,10 +311,9 @@ namespace FMSMonitoringUI
             // 
             this.HashAlgorithmLabel.AutoSize = true;
             this.HashAlgorithmLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.HashAlgorithmLabel.Location = new System.Drawing.Point(4, 260);
-            this.HashAlgorithmLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.HashAlgorithmLabel.Location = new System.Drawing.Point(3, 361);
             this.HashAlgorithmLabel.Name = "HashAlgorithmLabel";
-            this.HashAlgorithmLabel.Size = new System.Drawing.Size(111, 28);
+            this.HashAlgorithmLabel.Size = new System.Drawing.Size(96, 30);
             this.HashAlgorithmLabel.TabIndex = 39;
             this.HashAlgorithmLabel.Text = "Validity Period";
             this.HashAlgorithmLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -253,21 +321,19 @@ namespace FMSMonitoringUI
             // KeySizeTextBox
             // 
             this.KeySizeTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.KeySizeTextBox.Location = new System.Drawing.Point(123, 236);
-            this.KeySizeTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.KeySizeTextBox.Location = new System.Drawing.Point(105, 338);
             this.KeySizeTextBox.Name = "KeySizeTextBox";
             this.KeySizeTextBox.ReadOnly = true;
-            this.KeySizeTextBox.Size = new System.Drawing.Size(558, 21);
+            this.KeySizeTextBox.Size = new System.Drawing.Size(493, 20);
             this.KeySizeTextBox.TabIndex = 38;
             // 
             // KeySizeLabel
             // 
             this.KeySizeLabel.AutoSize = true;
             this.KeySizeLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.KeySizeLabel.Location = new System.Drawing.Point(4, 233);
-            this.KeySizeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.KeySizeLabel.Location = new System.Drawing.Point(3, 335);
             this.KeySizeLabel.Name = "KeySizeLabel";
-            this.KeySizeLabel.Size = new System.Drawing.Size(111, 27);
+            this.KeySizeLabel.Size = new System.Drawing.Size(96, 26);
             this.KeySizeLabel.TabIndex = 37;
             this.KeySizeLabel.Text = "Key Size";
             this.KeySizeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -275,21 +341,19 @@ namespace FMSMonitoringUI
             // IssuerNameTextBox
             // 
             this.IssuerNameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.IssuerNameTextBox.Location = new System.Drawing.Point(123, 209);
-            this.IssuerNameTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.IssuerNameTextBox.Location = new System.Drawing.Point(105, 312);
             this.IssuerNameTextBox.Name = "IssuerNameTextBox";
             this.IssuerNameTextBox.ReadOnly = true;
-            this.IssuerNameTextBox.Size = new System.Drawing.Size(558, 21);
+            this.IssuerNameTextBox.Size = new System.Drawing.Size(493, 20);
             this.IssuerNameTextBox.TabIndex = 36;
             // 
             // IssuerNameLabel
             // 
             this.IssuerNameLabel.AutoSize = true;
             this.IssuerNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.IssuerNameLabel.Location = new System.Drawing.Point(4, 206);
-            this.IssuerNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.IssuerNameLabel.Location = new System.Drawing.Point(3, 309);
             this.IssuerNameLabel.Name = "IssuerNameLabel";
-            this.IssuerNameLabel.Size = new System.Drawing.Size(111, 27);
+            this.IssuerNameLabel.Size = new System.Drawing.Size(96, 26);
             this.IssuerNameLabel.TabIndex = 35;
             this.IssuerNameLabel.Text = "Issuer Name";
             this.IssuerNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -297,21 +361,19 @@ namespace FMSMonitoringUI
             // SubjectNameTextBox
             // 
             this.SubjectNameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SubjectNameTextBox.Location = new System.Drawing.Point(123, 182);
-            this.SubjectNameTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.SubjectNameTextBox.Location = new System.Drawing.Point(105, 286);
             this.SubjectNameTextBox.Name = "SubjectNameTextBox";
             this.SubjectNameTextBox.ReadOnly = true;
-            this.SubjectNameTextBox.Size = new System.Drawing.Size(558, 21);
+            this.SubjectNameTextBox.Size = new System.Drawing.Size(493, 20);
             this.SubjectNameTextBox.TabIndex = 34;
             // 
             // SubjectNameLabel
             // 
             this.SubjectNameLabel.AutoSize = true;
             this.SubjectNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SubjectNameLabel.Location = new System.Drawing.Point(4, 179);
-            this.SubjectNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.SubjectNameLabel.Location = new System.Drawing.Point(3, 283);
             this.SubjectNameLabel.Name = "SubjectNameLabel";
-            this.SubjectNameLabel.Size = new System.Drawing.Size(111, 27);
+            this.SubjectNameLabel.Size = new System.Drawing.Size(96, 26);
             this.SubjectNameLabel.TabIndex = 33;
             this.SubjectNameLabel.Text = "Subject Name";
             this.SubjectNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -319,21 +381,19 @@ namespace FMSMonitoringUI
             // OrganizationUnitTextBox
             // 
             this.OrganizationUnitTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.OrganizationUnitTextBox.Location = new System.Drawing.Point(123, 101);
-            this.OrganizationUnitTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.OrganizationUnitTextBox.Location = new System.Drawing.Point(105, 208);
             this.OrganizationUnitTextBox.Name = "OrganizationUnitTextBox";
             this.OrganizationUnitTextBox.ReadOnly = true;
-            this.OrganizationUnitTextBox.Size = new System.Drawing.Size(558, 21);
+            this.OrganizationUnitTextBox.Size = new System.Drawing.Size(493, 20);
             this.OrganizationUnitTextBox.TabIndex = 32;
             // 
             // OrganizationUnitLabel
             // 
             this.OrganizationUnitLabel.AutoSize = true;
             this.OrganizationUnitLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.OrganizationUnitLabel.Location = new System.Drawing.Point(4, 98);
-            this.OrganizationUnitLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.OrganizationUnitLabel.Location = new System.Drawing.Point(3, 205);
             this.OrganizationUnitLabel.Name = "OrganizationUnitLabel";
-            this.OrganizationUnitLabel.Size = new System.Drawing.Size(111, 27);
+            this.OrganizationUnitLabel.Size = new System.Drawing.Size(96, 26);
             this.OrganizationUnitLabel.TabIndex = 31;
             this.OrganizationUnitLabel.Text = "Organizational Unit";
             this.OrganizationUnitLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -341,21 +401,19 @@ namespace FMSMonitoringUI
             // OrganizationNameTextBox
             // 
             this.OrganizationNameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.OrganizationNameTextBox.Location = new System.Drawing.Point(123, 74);
-            this.OrganizationNameTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.OrganizationNameTextBox.Location = new System.Drawing.Point(105, 182);
             this.OrganizationNameTextBox.Name = "OrganizationNameTextBox";
             this.OrganizationNameTextBox.ReadOnly = true;
-            this.OrganizationNameTextBox.Size = new System.Drawing.Size(558, 21);
+            this.OrganizationNameTextBox.Size = new System.Drawing.Size(493, 20);
             this.OrganizationNameTextBox.TabIndex = 30;
             // 
             // OrganizationNameLabel
             // 
             this.OrganizationNameLabel.AutoSize = true;
             this.OrganizationNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.OrganizationNameLabel.Location = new System.Drawing.Point(4, 71);
-            this.OrganizationNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.OrganizationNameLabel.Location = new System.Drawing.Point(3, 179);
             this.OrganizationNameLabel.Name = "OrganizationNameLabel";
-            this.OrganizationNameLabel.Size = new System.Drawing.Size(111, 27);
+            this.OrganizationNameLabel.Size = new System.Drawing.Size(96, 26);
             this.OrganizationNameLabel.TabIndex = 29;
             this.OrganizationNameLabel.Text = "Organization";
             this.OrganizationNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -363,21 +421,19 @@ namespace FMSMonitoringUI
             // DomainNamesTextBox
             // 
             this.DomainNamesTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DomainNamesTextBox.Location = new System.Drawing.Point(123, 155);
-            this.DomainNamesTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.DomainNamesTextBox.Location = new System.Drawing.Point(105, 260);
             this.DomainNamesTextBox.Name = "DomainNamesTextBox";
             this.DomainNamesTextBox.ReadOnly = true;
-            this.DomainNamesTextBox.Size = new System.Drawing.Size(558, 21);
+            this.DomainNamesTextBox.Size = new System.Drawing.Size(493, 20);
             this.DomainNamesTextBox.TabIndex = 9;
             // 
             // DomainNamesLabel
             // 
             this.DomainNamesLabel.AutoSize = true;
             this.DomainNamesLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DomainNamesLabel.Location = new System.Drawing.Point(4, 152);
-            this.DomainNamesLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.DomainNamesLabel.Location = new System.Drawing.Point(3, 257);
             this.DomainNamesLabel.Name = "DomainNamesLabel";
-            this.DomainNamesLabel.Size = new System.Drawing.Size(111, 27);
+            this.DomainNamesLabel.Size = new System.Drawing.Size(96, 26);
             this.DomainNamesLabel.TabIndex = 7;
             this.DomainNamesLabel.Text = "DNS Names";
             this.DomainNamesLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -386,10 +442,9 @@ namespace FMSMonitoringUI
             // 
             this.ApplicationNameLabel.AutoSize = true;
             this.ApplicationNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ApplicationNameLabel.Location = new System.Drawing.Point(4, 44);
-            this.ApplicationNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ApplicationNameLabel.Location = new System.Drawing.Point(3, 153);
             this.ApplicationNameLabel.Name = "ApplicationNameLabel";
-            this.ApplicationNameLabel.Size = new System.Drawing.Size(111, 27);
+            this.ApplicationNameLabel.Size = new System.Drawing.Size(96, 26);
             this.ApplicationNameLabel.TabIndex = 0;
             this.ApplicationNameLabel.Text = "Application Name";
             this.ApplicationNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -398,10 +453,9 @@ namespace FMSMonitoringUI
             // 
             this.ApplicationUriLabel.AutoSize = true;
             this.ApplicationUriLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ApplicationUriLabel.Location = new System.Drawing.Point(4, 125);
-            this.ApplicationUriLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ApplicationUriLabel.Location = new System.Drawing.Point(3, 231);
             this.ApplicationUriLabel.Name = "ApplicationUriLabel";
-            this.ApplicationUriLabel.Size = new System.Drawing.Size(111, 27);
+            this.ApplicationUriLabel.Size = new System.Drawing.Size(96, 26);
             this.ApplicationUriLabel.TabIndex = 1;
             this.ApplicationUriLabel.Text = "Application URI";
             this.ApplicationUriLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -409,56 +463,52 @@ namespace FMSMonitoringUI
             // ApplicationNameTextBox
             // 
             this.ApplicationNameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ApplicationNameTextBox.Location = new System.Drawing.Point(123, 47);
-            this.ApplicationNameTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.ApplicationNameTextBox.Location = new System.Drawing.Point(105, 156);
             this.ApplicationNameTextBox.Name = "ApplicationNameTextBox";
             this.ApplicationNameTextBox.ReadOnly = true;
-            this.ApplicationNameTextBox.Size = new System.Drawing.Size(558, 21);
+            this.ApplicationNameTextBox.Size = new System.Drawing.Size(493, 20);
             this.ApplicationNameTextBox.TabIndex = 2;
             // 
             // ApplicationUriTextBox
             // 
             this.ApplicationUriTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ApplicationUriTextBox.Location = new System.Drawing.Point(123, 128);
-            this.ApplicationUriTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.ApplicationUriTextBox.Location = new System.Drawing.Point(105, 234);
             this.ApplicationUriTextBox.Name = "ApplicationUriTextBox";
             this.ApplicationUriTextBox.ReadOnly = true;
-            this.ApplicationUriTextBox.Size = new System.Drawing.Size(558, 21);
+            this.ApplicationUriTextBox.Size = new System.Drawing.Size(493, 20);
             this.ApplicationUriTextBox.TabIndex = 3;
             // 
             // ValidityTimePanel
             // 
-            this.ValidityTimePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ValidityTimePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.ValidityTimePanel.Controls.Add(this.ValidToTextBox);
             this.ValidityTimePanel.Controls.Add(this.ValidToLabel);
             this.ValidityTimePanel.Controls.Add(this.ValidFromTextBox);
             this.ValidityTimePanel.Controls.Add(this.ValidFromLabel);
-            this.ValidityTimePanel.Location = new System.Drawing.Point(123, 263);
-            this.ValidityTimePanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.ValidityTimePanel.Location = new System.Drawing.Point(105, 364);
             this.ValidityTimePanel.Name = "ValidityTimePanel";
-            this.ValidityTimePanel.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.ValidityTimePanel.Size = new System.Drawing.Size(558, 22);
+            this.ValidityTimePanel.Padding = new System.Windows.Forms.Padding(3);
+            this.ValidityTimePanel.Size = new System.Drawing.Size(493, 24);
             this.ValidityTimePanel.TabIndex = 44;
             // 
             // ValidToTextBox
             // 
             this.ValidToTextBox.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ValidToTextBox.Location = new System.Drawing.Point(202, 3);
+            this.ValidToTextBox.Location = new System.Drawing.Point(173, 3);
             this.ValidToTextBox.Margin = new System.Windows.Forms.Padding(0);
             this.ValidToTextBox.Name = "ValidToTextBox";
             this.ValidToTextBox.ReadOnly = true;
-            this.ValidToTextBox.Size = new System.Drawing.Size(116, 21);
+            this.ValidToTextBox.Size = new System.Drawing.Size(100, 20);
             this.ValidToTextBox.TabIndex = 45;
             // 
             // ValidToLabel
             // 
             this.ValidToLabel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ValidToLabel.Location = new System.Drawing.Point(161, 3);
-            this.ValidToLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ValidToLabel.Location = new System.Drawing.Point(138, 3);
             this.ValidToLabel.Name = "ValidToLabel";
-            this.ValidToLabel.Size = new System.Drawing.Size(41, 16);
+            this.ValidToLabel.Size = new System.Drawing.Size(35, 18);
             this.ValidToLabel.TabIndex = 44;
             this.ValidToLabel.Text = "Until";
             this.ValidToLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -466,20 +516,19 @@ namespace FMSMonitoringUI
             // ValidFromTextBox
             // 
             this.ValidFromTextBox.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ValidFromTextBox.Location = new System.Drawing.Point(45, 3);
+            this.ValidFromTextBox.Location = new System.Drawing.Point(38, 3);
             this.ValidFromTextBox.Margin = new System.Windows.Forms.Padding(0);
             this.ValidFromTextBox.Name = "ValidFromTextBox";
             this.ValidFromTextBox.ReadOnly = true;
-            this.ValidFromTextBox.Size = new System.Drawing.Size(116, 21);
+            this.ValidFromTextBox.Size = new System.Drawing.Size(100, 20);
             this.ValidFromTextBox.TabIndex = 43;
             // 
             // ValidFromLabel
             // 
             this.ValidFromLabel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ValidFromLabel.Location = new System.Drawing.Point(4, 3);
-            this.ValidFromLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ValidFromLabel.Location = new System.Drawing.Point(3, 3);
             this.ValidFromLabel.Name = "ValidFromLabel";
-            this.ValidFromLabel.Size = new System.Drawing.Size(41, 16);
+            this.ValidFromLabel.Size = new System.Drawing.Size(35, 18);
             this.ValidFromLabel.TabIndex = 46;
             this.ValidFromLabel.Text = "From";
             this.ValidFromLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -489,22 +538,39 @@ namespace FMSMonitoringUI
             this.TimeoutTimer.Interval = 1000;
             this.TimeoutTimer.Tick += new System.EventHandler(this.TimeoutTimer_Tick);
             // 
+            // SecurityRightsLabel
+            // 
+            this.SecurityRightsLabel.AutoSize = true;
+            this.SecurityRightsLabel.BackColor = System.Drawing.Color.Red;
+            this.MainPanel.SetColumnSpan(this.SecurityRightsLabel, 3);
+            this.SecurityRightsLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SecurityRightsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SecurityRightsLabel.ForeColor = System.Drawing.Color.White;
+            this.SecurityRightsLabel.Location = new System.Drawing.Point(3, 134);
+            this.SecurityRightsLabel.Name = "SecurityRightsLabel";
+            this.SecurityRightsLabel.Padding = new System.Windows.Forms.Padding(3);
+            this.SecurityRightsLabel.Size = new System.Drawing.Size(595, 19);
+            this.SecurityRightsLabel.TabIndex = 54;
+            this.SecurityRightsLabel.Text = "Process Does Not Have Adminstrator Rights - Save in Trust List May Fail";
+            this.SecurityRightsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // TrustCertificateDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(701, 313);
+            this.ClientSize = new System.Drawing.Size(601, 426);
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.ButtonsPanel);
-            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "TrustCertificateDialog";
             this.Text = "Untrusted Certificate";
             this.ButtonsPanel.ResumeLayout(false);
             this.ButtonsPanel.PerformLayout();
             this.MainPanel.ResumeLayout(false);
             this.MainPanel.PerformLayout();
+            this.InstructionsGB.ResumeLayout(false);
+            this.TopPN.ResumeLayout(false);
             this.ValidityTimePanel.ResumeLayout(false);
             this.ValidityTimePanel.PerformLayout();
             this.ResumeLayout(false);
@@ -543,8 +609,14 @@ namespace FMSMonitoringUI
         private System.Windows.Forms.Label ValidToLabel;
         private System.Windows.Forms.Label ValidFromLabel;
         private System.Windows.Forms.CheckBox PermanentCheckBox;
+        private System.Windows.Forms.GroupBox InstructionsGB;
+        private System.Windows.Forms.Panel TopPN;
+        private System.Windows.Forms.Button HelpBTN;
+        private System.Windows.Forms.Button ShowCodeBTN;
+        private System.Windows.Forms.Label InstructionsLB;
         private System.Windows.Forms.Label WarningLabel;
         private System.Windows.Forms.Timer TimeoutTimer;
         private System.Windows.Forms.Label CountdownLabel;
+        private System.Windows.Forms.Label SecurityRightsLabel;
     }
 }

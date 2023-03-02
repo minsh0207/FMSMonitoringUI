@@ -38,8 +38,9 @@ using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 using UnifiedAutomation.UaBase;
+using UnifiedAutomation.UaClient;
 
-namespace FMSMonitoringUI
+namespace UnifiedAutomation.GettingStarted
 {
     /// <summary>
     /// A dialog that allows a user to review and accept or reject an untrusted certificate.
@@ -54,14 +55,84 @@ namespace FMSMonitoringUI
         {
             InitializeComponent();
             Icon = GuiUtils.GetDefaultIcon();
-            
+            this.CancelButton = this.CloseButton;
+            SecurityRightsLabel.Visible = !SecurityUtils.CheckIfProcessHasAdminRights();
         }
         #endregion
 
         #region Private Fields
+        private FMSMonitoringUI.MainForm m_parent;
         private TrustCertificateDialogSettings m_settings;
         private int m_counter;
         #endregion
+
+        /// <summary>
+        /// Shows the dialog.
+        /// </summary>
+        /// <param name="parent">The parent.</param>
+        //public void ShowDialog(FMSMonitoringUI.MainForm parent)
+        //{
+        //    try
+        //    {
+        //        HelpBTN.Enabled = parent != null && parent.HelpExists(GetType());
+        //        // fetch the certificate from the current endpoint.
+        //        EndpointDescription endpoint;
+        //        using (Discovery discovery = new Discovery())
+        //        {
+        //            endpoint = discovery.GetMostSecureEndpoint(parent.Endpoint.EndpointUrl);
+        //        }
+
+        //        ICertificate certificate = SecurityUtils.LoadCertificate(endpoint.ServerCertificate);
+
+        //        if (certificate == null)
+        //        {
+        //            MessageDialog.Show(this, "No server has been selected.");
+        //            return;
+        //        }
+
+        //        // launch the trust dialog.
+        //        TrustCertificateDialogSettings settings = new TrustCertificateDialogSettings()
+        //        {
+        //            Application = parent.Application,
+        //            UntrustedCertificate = certificate
+        //        };
+
+        //        bool trust = ShowDialog(parent, settings, 0);
+
+        //        if (trust)
+        //        {
+        //            // note that this code does not to enable 'temporary trust'.
+
+        //            // the ApplicationInstance.UntrustedCertificate event is raised when a new secure channel
+        //            // is created. Trapping this event allows you to temporarily ignore trust errors.
+
+        //            // save trusted certificate to store if requested.
+        //            if (settings.SaveToTrustList)
+        //            {
+        //                parent.Application.TrustedStore.Add(settings.UntrustedCertificate, true, false);
+        //            }
+        //        }
+        //    }
+        //    catch (Exception exception)
+        //    {
+        //        ExceptionDlg.ShowInnerException(this.Text, exception);
+        //    }
+        //}
+
+        private void OkButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // set the flag indicating whether it is permenent.
+                m_settings.SaveToTrustList = PermanentCheckBox.Checked;
+
+                DialogResult = DialogResult.OK;
+            }
+            catch (Exception exception)
+            {
+                ExceptionDlg.ShowInnerException(this.Text, exception);
+            }
+        }
 
         #region Public Interface
         /// <summary>
@@ -69,17 +140,21 @@ namespace FMSMonitoringUI
         /// </summary>
         /// <param name="owner">The owner.</param>
         /// <param name="settings">The settings.</param>
-        /// <param name="timeout">The timeout.</param>
-        /// <returns>True if the certificate should be trusted.</returns>
-        public static bool ShowDialog(Form owner, TrustCertificateDialogSettings settings, int timeout)
+        /// <returns>The new certificate.</returns>
+        /// [Trust Certificate]
+        public bool ShowDialog(FMSMonitoringUI.MainForm owner, TrustCertificateDialogSettings settings, int timeout)
         {
-            if (owner != null && owner.InvokeRequired)
+            if (settings == null)
+            {
+                throw new ArgumentNullException("settings");
+            }
+
+            if (owner.InvokeRequired)
             {
                 ManualResetEvent e = new ManualResetEvent(false);
+                bool? result = owner.Invoke(new ShowDialogEventHandler(ShowDialog), owner, settings, e) as bool?;
 
-                bool? result = owner.Invoke(new ShowDialogEventHandler(ShowDialog), owner, settings, timeout, e) as bool?;
-
-                if (!e.WaitOne(timeout + 200))
+                if (!e.WaitOne(timeout))
                 {
                     return false;
                 }
@@ -87,32 +162,24 @@ namespace FMSMonitoringUI
                 return (result != null) ? result.Value : false;
             }
 
-            return ShowDialog(null, settings, timeout, null);
-        }
-
-        /// <summary>
-        /// Shows the dialog.
-        /// </summary>
-        /// <param name="owner">The owner.</param>
-        /// <param name="settings">The settings.</param>
-        /// <returns>The new certificate.</returns>
-        public bool ShowDialog(IWin32Window owner, TrustCertificateDialogSettings settings, int timeout)
-        {
-            if (settings == null)
-            {
-                throw new ArgumentNullException("settings");
-            }
-
             m_settings = settings;
+            m_parent = owner as FMSMonitoringUI.MainForm;
 
             if (timeout != 0)
             {
                 m_counter = timeout / 1000 + 1;
                 TimeoutTimer.Enabled = true;
+                CountdownLabel.Visible = true;
             }
 
-            CountdownLabel.Visible = (timeout != 0);
+            InstructionsGB.Visible = false;
             WarningLabel.Visible = false;
+
+            if (m_parent != null)
+            {
+                //InstructionsLB.Text = m_parent.GetInstructions(GetType());
+                InstructionsGB.Visible = true;
+            }
 
             if (settings.ValidationError.IsBad())
             {
@@ -122,16 +189,6 @@ namespace FMSMonitoringUI
 
             WarningLabel.Visible = settings.ValidationError.IsBad();
 
-            if (settings.IsHttpsCertificate)
-            {
-                PermanentCheckBox.Visible = false;
-                ApplicationNameLabel.Text = "Domain Name";
-                ApplicationUriLabel.Visible = false;
-                ApplicationUriTextBox.Visible = false;
-                DomainNamesLabel.Visible = false;
-                DomainNamesTextBox.Visible = false;
-            }
-
             ICertificate certificate = settings.UntrustedCertificate;
 
             if (certificate != null)
@@ -139,7 +196,7 @@ namespace FMSMonitoringUI
                 Update(certificate);
             }
 
-            // 인증서 체크하지 않고 넘어간다.
+            // 인증서 확인없이 승인한다.
             //if (base.ShowDialog(owner) != DialogResult.OK)
             //{
             //    return false;
@@ -147,12 +204,13 @@ namespace FMSMonitoringUI
 
             return true;
         }
+        /// [Trust Certificate]
         #endregion
 
         #region Private Methods
-        private delegate bool ShowDialogEventHandler(Form owner, TrustCertificateDialogSettings settings, int timeout, ManualResetEvent e);
+        private delegate bool ShowDialogEventHandler(FMSMonitoringUI.MainForm owner, TrustCertificateDialogSettings settings, int timeout, ManualResetEvent e);
 
-        private static bool ShowDialog(IWin32Window owner, TrustCertificateDialogSettings settings, int timeout, ManualResetEvent e)
+        private static bool ShowDialog(FMSMonitoringUI.MainForm owner, TrustCertificateDialogSettings settings, int timeout, ManualResetEvent e)
         {
             TrustCertificateDialog dialog = new TrustCertificateDialog();
             dialog.StartPosition = FormStartPosition.CenterParent;
@@ -239,16 +297,27 @@ namespace FMSMonitoringUI
             KeySizeTextBox.Text += certificate.InternalCertificate.PublicKey.Key.KeySize.ToString();
         }
 
-        private void OkButton_Click(object sender, EventArgs e)
+        private void ShowHelpBTN_Click(object sender, EventArgs e)
         {
             try
             {
-                m_settings.SaveToTrustList = PermanentCheckBox.Checked;
-                DialogResult = DialogResult.OK;
+                //m_parent.ShowHelp(this.GetType());
             }
             catch (Exception exception)
             {
-                ExceptionDlg.Show(this.Text, exception);
+                ExceptionDlg.ShowInnerException(this.Text, exception);
+            }
+        }
+
+        private void ShowCodeBTN_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //m_parent.ShowCode(this.GetType());
+            }
+            catch (Exception exception)
+            {
+                ExceptionDlg.ShowInnerException(this.Text, exception);
             }
         }
 
@@ -301,14 +370,6 @@ namespace FMSMonitoringUI
         /// The certificate validation error.
         /// </value>
         public StatusCode ValidationError { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the untrusted certificate is an HTTPS certificate.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if the certificate is an HTTPS certificate; otherwise, <c>false</c>.
-        /// </value>
-        public bool IsHttpsCertificate { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether save the certificate to the application trust list.

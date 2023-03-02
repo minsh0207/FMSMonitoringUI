@@ -28,6 +28,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 using System.Windows.Threading;
+using UnifiedAutomation.GettingStarted;
 using UnifiedAutomation.UaBase;
 using UnifiedAutomation.UaClient;
 
@@ -170,6 +171,7 @@ namespace FMSMonitoringUI
 
             if (this._TheadVisiable)
                 this._ProcessThread.Abort();
+
         }
         #endregion
 
@@ -351,7 +353,10 @@ namespace FMSMonitoringUI
                     SaveToTrustList = false
                 };
 
-                e.Accept = TrustCertificateDialog.ShowDialog(this, settings, 30000);
+                //e.Accept = TrustCertificateDialog.ShowDialog(this, settings, 30000);
+                TrustCertificateDialog dialog = new TrustCertificateDialog();
+                dialog.StartPosition = FormStartPosition.CenterParent;
+                e.Accept = dialog.ShowDialog(this, settings, 30000);
 
                 if (settings.SaveToTrustList)
                 {
@@ -365,7 +370,7 @@ namespace FMSMonitoringUI
                 string log = string.Format("Application_UntrustedCertificate Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
                 CLogger.WriteLog(enLogLevel.Error, _MainFormText, log);
             }
-        }
+        }        
         #endregion
 
         //private void button1_Click(object sender, EventArgs e)

@@ -97,9 +97,11 @@ namespace OPCUAClientClassLib
                 {
                     string sNodeId = browerResult[j].Targets[0].TargetId.ToString();
 
-                    string[] taglevel = browsePath[j].ToString().Replace("/2:", ".").Split('.');
+                    //string[] taglevel = browsePath[j].ToString().Replace("/2:", ".").Split('.');
+                    string[] taglevel = browsePath[j].UserData.ToString().Split('.');
 
-                    ItemInfo groupInfo = controlInfo[taglevel[1].ToString()];
+                    ItemInfo groupInfo = controlInfo[taglevel[0].ToString()];
+                    //ItemInfo groupInfo = controlInfo[eqpId];
 
                     ItemInfo item = new ItemInfo();
                     
@@ -115,10 +117,10 @@ namespace OPCUAClientClassLib
                     {
 
 //#if DEBUG
-                        string[] temp_no = taglevel[2].ToString().Split('_');
-                        int siteno = int.Parse(temp_no[1]);
+                        //string[] temp_no = taglevel[2].ToString().Split('_');
+                        //int siteno = int.Parse(temp_no[1]);
 //#else
-//                        int siteno = int.Parse(taglevel[2].Substring(3));
+                        int siteno = int.Parse(taglevel[1].Substring(taglevel[1].Length - 4));
 //#endif
 
                         item.SiteNo = siteno;
@@ -175,15 +177,15 @@ namespace OPCUAClientClassLib
         /// </summary>
         /// <param name="clientHandle">The source of the event.</param>
         /// <param name="value">The instance containing the changed data.</param>
-        private void Subscription_DataChanged(Subscription subscription, DataChangedEventArgs e)
-        {
+        //private void Subscription_DataChanged(Subscription subscription, DataChangedEventArgs e)
+        //{
 
-            string msg = string.Empty;
+        //    string msg = string.Empty;
 
-            msg = $"Item Count = {e.DataChanges.Count}";
-            _LOG_(LogLevel.Receive, msg);
+        //    msg = $"Item Count = {e.DataChanges.Count}";
+        //    _LOG_(LogLevel.Receive, msg);
 
-        }
+        //}
 
 /// <summary>
 /// Callback to receive subscription status change events.

@@ -39,13 +39,15 @@ namespace FMSMonitoringUI.Monitoring
 
         OPCUAClient _OPCUAClient = null;
         int _CraneNo = 0;
+        string _TankIdx = string.Empty;
 
-        public WinWaterTank(OPCUAClient opcua, int craneNo, string barTitle)
+        public WinWaterTank(OPCUAClient opcua, int craneNo, string barTitle, int tankIdx)
         {
             InitializeComponent();
 
             _OPCUAClient = opcua;
             _CraneNo = craneNo;
+            _TankIdx = (tankIdx == 1 ? "WaterTank01." : "WaterTank02.");
 
             InitControl();
             InitLanguage();
@@ -108,7 +110,7 @@ namespace FMSMonitoringUI.Monitoring
                 _LedMode[i] = new CtrlLED();
                 _LedMode[i].TitleText = titleMode[i];
                 //_LedMode[i].Dock = DockStyle.Fill;
-                _LedMode[i].Tag = "WaterTank.Mode";
+                _LedMode[i].Tag = "Mode";
                 uiTlbMode.Controls.Add(_LedMode[i], 0, i);
             }
 
@@ -239,12 +241,12 @@ namespace FMSMonitoringUI.Monitoring
                 {
                     CtrlLED ctl = control as CtrlLED;
 
-                    onoff = GetTagValuetoBool(ctl.Tag);
+                    onoff = GetTagValuetoBool(_TankIdx + ctl.Tag);
                     ctl.LedOnOff(onoff);
                 }
             }
 
-            int nVal = GetTagValuetoInt(_LedMode[0].Tag);
+            int nVal = GetTagValuetoInt(_TankIdx + _LedMode[0].Tag);
             int idx = GetDatatoBitIdx(nVal);
             _LedMode[idx].LedOnOff(nVal);
 
@@ -255,11 +257,11 @@ namespace FMSMonitoringUI.Monitoring
                 {
                     CtrlLabelBox ctl = control as CtrlLabelBox;
 
-                    ctl.TextData = GetTagValuetoString(ctl.Tag);
+                    ctl.TextData = GetTagValuetoString(_TankIdx + ctl.Tag);
 
-                    if (ctl.Tag.ToString() == "WaterTank.TrayIdL1")
+                    if (ctl.Tag.ToString() == _TankIdx + "TrayIdL1")
                         _trayID1 = ctl.TextData;
-                    else if (ctl.Tag.ToString() == "WaterTank.TrayIdL2")
+                    else if (ctl.Tag.ToString() == _TankIdx + "TrayIdL2")
                         _trayID2 = ctl.TextData;
                 }
             }
@@ -272,7 +274,7 @@ namespace FMSMonitoringUI.Monitoring
                 for (int row = 0; row < item.Length; row++)
                 {
                     string tagName = string.Format($"{location[col]}.{item[row]}");
-                    gridWaterTank.SetValue(col + 1, row, (GetTagValuetoString(tagName)));
+                    gridWaterTank.SetValue(col + 1, row, (GetTagValuetoString(_TankIdx + tagName)));
                 }
             }
         }
@@ -340,7 +342,7 @@ namespace FMSMonitoringUI.Monitoring
 
             if (tagIdx < 0) return "";
 
-            return _CraneData[tagIdx].Value.ToString();
+            return (_CraneData[tagIdx].Value != null ? _CraneData[tagIdx].Value.ToString() : "");
         }
         #endregion
 
