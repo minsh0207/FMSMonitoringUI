@@ -248,7 +248,7 @@ namespace FMSMonitoringUI
 
             if (CDefine.m_strLoginID != "")
             {
-                lbUserName.Text = CDefine.m_strLoginName;
+                lbUserName.Text = $"{CDefine.m_strLoginName} ({CDefine.m_strLoginID})";
                 SetLocalizaion(CDefine.m_enLanguage);
             }
         }
@@ -412,7 +412,8 @@ namespace FMSMonitoringUI
             string strCurrentTime = "";
             while (true)
             {
-                strCurrentTime = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                //strCurrentTime = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                strCurrentTime = System.DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss");
                 //lbCurrentTime.Text = strCurrentTime;
                 SetCurrentTime(strCurrentTime);
                 Task.Delay(1000).GetAwaiter().GetResult();

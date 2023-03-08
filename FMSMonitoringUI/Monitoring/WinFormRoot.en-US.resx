@@ -511,7 +511,7 @@
     <value>Manual Command</value>
   </data>
   <data name="DEF_Model_ID" xml:space="preserve">
-    <value>Model ID</value>
+    <value>Cell Model</value>
   </data>
   <data name="DEF_MZ/DP" xml:space="preserve">
     <value>MZ/DP</value>

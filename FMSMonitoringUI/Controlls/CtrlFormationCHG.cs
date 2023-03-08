@@ -286,8 +286,16 @@ namespace FMSMonitoringUI
                 {
                     data[i].PROCESS_STATUS = "I";
                 }
+
+                if (_EqpStatus.ContainsKey(data[i].PROCESS_STATUS) && _OpMode.ContainsKey(data[i].OPERATION_MODE))
+                {
+                    chg.SetData(data[i], _EqpStatus[data[i].PROCESS_STATUS], _OpMode[data[i].OPERATION_MODE]);
+                }
                 
-                chg.SetData(data[i], _EqpStatus[data[i].PROCESS_STATUS], _OpMode[data[i].OPERATION_MODE]);
+                //Color eqpStatus = _EqpStatus[data[i].PROCESS_STATUS];
+                //Color opStatus = _OpMode[data[i].OPERATION_MODE];
+
+                //chg.SetData(data[i], eqpStatus, opStatus);
             }
 
             ctrlRackTemp.SetData(data);

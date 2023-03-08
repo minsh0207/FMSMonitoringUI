@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.scMainPanel = new System.Windows.Forms.SplitContainer();
+            this.AlarmOccur = new System.Windows.Forms.PictureBox();
             this.cbUsePopUp = new FMSMonitoringUI.Controlls.WindowsForms.CtrlCheckBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -39,13 +40,12 @@
             this.barMain = new MonitoringUI.Controlls.CtrlTitleBarLabel();
             this.barAging = new MonitoringUI.Controlls.CtrlTitleBarLabel();
             this.barFormationCHG = new MonitoringUI.Controlls.CtrlTitleBarLabel();
-            this.AlarmOccur = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.scMainPanel)).BeginInit();
             this.scMainPanel.Panel1.SuspendLayout();
             this.scMainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AlarmOccur)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AlarmOccur)).BeginInit();
             this.SuspendLayout();
             // 
             // scMainPanel
@@ -79,6 +79,16 @@
             this.scMainPanel.SplitterDistance = 62;
             this.scMainPanel.TabIndex = 0;
             // 
+            // AlarmOccur
+            // 
+            this.AlarmOccur.Image = ((System.Drawing.Image)(resources.GetObject("AlarmOccur.Image")));
+            this.AlarmOccur.Location = new System.Drawing.Point(1194, 9);
+            this.AlarmOccur.Name = "AlarmOccur";
+            this.AlarmOccur.Size = new System.Drawing.Size(50, 45);
+            this.AlarmOccur.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.AlarmOccur.TabIndex = 113;
+            this.AlarmOccur.TabStop = false;
+            // 
             // cbUsePopUp
             // 
             this.cbUsePopUp.AutoSize = true;
@@ -104,7 +114,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(1723, 15);
+            this.pictureBox2.Location = new System.Drawing.Point(1657, 15);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(35, 34);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -119,7 +129,7 @@
             this.lbUserName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbUserName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(157)))), ((int)(((byte)(206)))));
             this.lbUserName.LanguageID = "DEF_User";
-            this.lbUserName.Location = new System.Drawing.Point(1763, 27);
+            this.lbUserName.Location = new System.Drawing.Point(1697, 27);
             this.lbUserName.Name = "lbUserName";
             this.lbUserName.Size = new System.Drawing.Size(45, 19);
             this.lbUserName.TabIndex = 6;
@@ -144,7 +154,7 @@
             this.lbCurrentTime.AutoSize = true;
             this.lbCurrentTime.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCurrentTime.ForeColor = System.Drawing.Color.White;
-            this.lbCurrentTime.Location = new System.Drawing.Point(1538, 27);
+            this.lbCurrentTime.Location = new System.Drawing.Point(1472, 27);
             this.lbCurrentTime.Name = "lbCurrentTime";
             this.lbCurrentTime.Size = new System.Drawing.Size(161, 19);
             this.lbCurrentTime.TabIndex = 4;
@@ -193,16 +203,6 @@
             this.barFormationCHG.TabIndex = 3;
             this.barFormationCHG.TitleText = "Formation";
             // 
-            // AlarmOccur
-            // 
-            this.AlarmOccur.Image = ((System.Drawing.Image)(resources.GetObject("AlarmOccur.Image")));
-            this.AlarmOccur.Location = new System.Drawing.Point(1194, 9);
-            this.AlarmOccur.Name = "AlarmOccur";
-            this.AlarmOccur.Size = new System.Drawing.Size(50, 45);
-            this.AlarmOccur.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.AlarmOccur.TabIndex = 113;
-            this.AlarmOccur.TabStop = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -219,9 +219,9 @@
             this.scMainPanel.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scMainPanel)).EndInit();
             this.scMainPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.AlarmOccur)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AlarmOccur)).EndInit();
             this.ResumeLayout(false);
 
         }
