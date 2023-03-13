@@ -1474,7 +1474,7 @@
             this.bcrMarker35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.bcrMarker35.Location = new System.Drawing.Point(151, 395);
             this.bcrMarker35.Name = "bcrMarker35";
-            this.bcrMarker35.PLCNo = 136;
+            this.bcrMarker35.PLCNo = 1136;
             this.bcrMarker35.ShowSiteNo = false;
             this.bcrMarker35.ShowTroubleState = false;
             this.bcrMarker35.SiteNo = 0;
@@ -1495,7 +1495,7 @@
             this.bcrMarker34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.bcrMarker34.Location = new System.Drawing.Point(34, 435);
             this.bcrMarker34.Name = "bcrMarker34";
-            this.bcrMarker34.PLCNo = 140;
+            this.bcrMarker34.PLCNo = 1140;
             this.bcrMarker34.ShowSiteNo = false;
             this.bcrMarker34.ShowTroubleState = false;
             this.bcrMarker34.SiteNo = 0;
@@ -1516,7 +1516,7 @@
             this.bcrMarker33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.bcrMarker33.Location = new System.Drawing.Point(645, 755);
             this.bcrMarker33.Name = "bcrMarker33";
-            this.bcrMarker33.PLCNo = 169;
+            this.bcrMarker33.PLCNo = 1169;
             this.bcrMarker33.ShowSiteNo = false;
             this.bcrMarker33.ShowTroubleState = false;
             this.bcrMarker33.SiteNo = 0;
@@ -1537,7 +1537,7 @@
             this.bcrMarker32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.bcrMarker32.Location = new System.Drawing.Point(569, 755);
             this.bcrMarker32.Name = "bcrMarker32";
-            this.bcrMarker32.PLCNo = 167;
+            this.bcrMarker32.PLCNo = 1167;
             this.bcrMarker32.ShowSiteNo = false;
             this.bcrMarker32.ShowTroubleState = false;
             this.bcrMarker32.SiteNo = 0;
@@ -1558,7 +1558,7 @@
             this.bcrMarker31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.bcrMarker31.Location = new System.Drawing.Point(491, 755);
             this.bcrMarker31.Name = "bcrMarker31";
-            this.bcrMarker31.PLCNo = 164;
+            this.bcrMarker31.PLCNo = 1164;
             this.bcrMarker31.ShowSiteNo = false;
             this.bcrMarker31.ShowTroubleState = false;
             this.bcrMarker31.SiteNo = 0;
@@ -1579,7 +1579,7 @@
             this.bcrMarker30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.bcrMarker30.Location = new System.Drawing.Point(415, 755);
             this.bcrMarker30.Name = "bcrMarker30";
-            this.bcrMarker30.PLCNo = 161;
+            this.bcrMarker30.PLCNo = 1161;
             this.bcrMarker30.ShowSiteNo = false;
             this.bcrMarker30.ShowTroubleState = false;
             this.bcrMarker30.SiteNo = 0;
@@ -1600,7 +1600,7 @@
             this.bcrMarker29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.bcrMarker29.Location = new System.Drawing.Point(149, 755);
             this.bcrMarker29.Name = "bcrMarker29";
-            this.bcrMarker29.PLCNo = 146;
+            this.bcrMarker29.PLCNo = 1146;
             this.bcrMarker29.ShowSiteNo = false;
             this.bcrMarker29.ShowTroubleState = false;
             this.bcrMarker29.SiteNo = 0;
@@ -1621,7 +1621,7 @@
             this.bcrMarker28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.bcrMarker28.Location = new System.Drawing.Point(720, 435);
             this.bcrMarker28.Name = "bcrMarker28";
-            this.bcrMarker28.PLCNo = 108;
+            this.bcrMarker28.PLCNo = 1108;
             this.bcrMarker28.ShowSiteNo = false;
             this.bcrMarker28.ShowTroubleState = false;
             this.bcrMarker28.SiteNo = 0;
@@ -1642,7 +1642,7 @@
             this.bcrMarker27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.bcrMarker27.Location = new System.Drawing.Point(1033, 880);
             this.bcrMarker27.Name = "bcrMarker27";
-            this.bcrMarker27.PLCNo = 217;
+            this.bcrMarker27.PLCNo = 4217;
             this.bcrMarker27.ShowSiteNo = false;
             this.bcrMarker27.ShowTroubleState = false;
             this.bcrMarker27.SiteNo = 0;
@@ -1658,12 +1658,12 @@
             this.bcrMarker26.BCRMarkThickness = 4;
             this.bcrMarker26.BCRUseYN = true;
             this.bcrMarker26.BubbleText = "";
-            this.bcrMarker26.CVPLCListDeviceID = 2;
+            this.bcrMarker26.CVPLCListDeviceID = 1;
             this.bcrMarker26.DisplayText = "";
             this.bcrMarker26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.bcrMarker26.Location = new System.Drawing.Point(1033, 548);
             this.bcrMarker26.Name = "bcrMarker26";
-            this.bcrMarker26.PLCNo = 212;
+            this.bcrMarker26.PLCNo = 2212;
             this.bcrMarker26.ShowSiteNo = false;
             this.bcrMarker26.ShowTroubleState = false;
             this.bcrMarker26.SiteNo = 0;
@@ -1679,12 +1679,12 @@
             this.bcrMarker25.BCRMarkThickness = 4;
             this.bcrMarker25.BCRUseYN = true;
             this.bcrMarker25.BubbleText = "";
-            this.bcrMarker25.CVPLCListDeviceID = 2;
+            this.bcrMarker25.CVPLCListDeviceID = 1;
             this.bcrMarker25.DisplayText = "";
             this.bcrMarker25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.bcrMarker25.Location = new System.Drawing.Point(1147, 459);
             this.bcrMarker25.Name = "bcrMarker25";
-            this.bcrMarker25.PLCNo = 211;
+            this.bcrMarker25.PLCNo = 2211;
             this.bcrMarker25.ShowSiteNo = false;
             this.bcrMarker25.ShowTroubleState = false;
             this.bcrMarker25.SiteNo = 0;
@@ -1700,12 +1700,12 @@
             this.bcrMarker24.BCRMarkThickness = 4;
             this.bcrMarker24.BCRUseYN = true;
             this.bcrMarker24.BubbleText = "";
-            this.bcrMarker24.CVPLCListDeviceID = 2;
+            this.bcrMarker24.CVPLCListDeviceID = 1;
             this.bcrMarker24.DisplayText = "";
             this.bcrMarker24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.bcrMarker24.Location = new System.Drawing.Point(1034, 346);
             this.bcrMarker24.Name = "bcrMarker24";
-            this.bcrMarker24.PLCNo = 207;
+            this.bcrMarker24.PLCNo = 2207;
             this.bcrMarker24.ShowSiteNo = false;
             this.bcrMarker24.ShowTroubleState = false;
             this.bcrMarker24.SiteNo = 0;
@@ -1721,12 +1721,12 @@
             this.bcrMarker23.BCRMarkThickness = 4;
             this.bcrMarker23.BCRUseYN = true;
             this.bcrMarker23.BubbleText = "";
-            this.bcrMarker23.CVPLCListDeviceID = 1;
+            this.bcrMarker23.CVPLCListDeviceID = 2;
             this.bcrMarker23.DisplayText = "";
             this.bcrMarker23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.bcrMarker23.Location = new System.Drawing.Point(1186, 258);
             this.bcrMarker23.Name = "bcrMarker23";
-            this.bcrMarker23.PLCNo = 206;
+            this.bcrMarker23.PLCNo = 3206;
             this.bcrMarker23.ShowSiteNo = false;
             this.bcrMarker23.ShowTroubleState = false;
             this.bcrMarker23.SiteNo = 0;
@@ -1746,7 +1746,7 @@
             this.bcrMarker22.DisplayText = "";
             this.bcrMarker22.Location = new System.Drawing.Point(1218, 71);
             this.bcrMarker22.Name = "bcrMarker22";
-            this.bcrMarker22.PLCNo = 217;
+            this.bcrMarker22.PLCNo = 1217;
             this.bcrMarker22.ShowSiteNo = false;
             this.bcrMarker22.ShowTroubleState = false;
             this.bcrMarker22.SiteNo = 0;
@@ -1766,7 +1766,7 @@
             this.bcrMarker21.DisplayText = "";
             this.bcrMarker21.Location = new System.Drawing.Point(1105, 70);
             this.bcrMarker21.Name = "bcrMarker21";
-            this.bcrMarker21.PLCNo = 216;
+            this.bcrMarker21.PLCNo = 1216;
             this.bcrMarker21.ShowSiteNo = false;
             this.bcrMarker21.ShowTroubleState = false;
             this.bcrMarker21.SiteNo = 0;
@@ -3647,7 +3647,7 @@
             this.bcrMarker20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.bcrMarker20.Location = new System.Drawing.Point(377, 715);
             this.bcrMarker20.Name = "bcrMarker20";
-            this.bcrMarker20.PLCNo = 160;
+            this.bcrMarker20.PLCNo = 1160;
             this.bcrMarker20.ShowSiteNo = false;
             this.bcrMarker20.ShowTroubleState = false;
             this.bcrMarker20.SiteNo = 0;
@@ -3710,7 +3710,7 @@
             this.bcrMarker19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.bcrMarker19.Location = new System.Drawing.Point(530, 715);
             this.bcrMarker19.Name = "bcrMarker19";
-            this.bcrMarker19.PLCNo = 165;
+            this.bcrMarker19.PLCNo = 1165;
             this.bcrMarker19.ShowSiteNo = false;
             this.bcrMarker19.ShowTroubleState = false;
             this.bcrMarker19.SiteNo = 0;
@@ -3731,7 +3731,7 @@
             this.bcrMarker18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.bcrMarker18.Location = new System.Drawing.Point(453, 715);
             this.bcrMarker18.Name = "bcrMarker18";
-            this.bcrMarker18.PLCNo = 162;
+            this.bcrMarker18.PLCNo = 1162;
             this.bcrMarker18.ShowSiteNo = false;
             this.bcrMarker18.ShowTroubleState = false;
             this.bcrMarker18.SiteNo = 0;
@@ -3752,7 +3752,7 @@
             this.bcrMarker17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.bcrMarker17.Location = new System.Drawing.Point(73, 715);
             this.bcrMarker17.Name = "bcrMarker17";
-            this.bcrMarker17.PLCNo = 143;
+            this.bcrMarker17.PLCNo = 1143;
             this.bcrMarker17.ShowSiteNo = false;
             this.bcrMarker17.ShowTroubleState = false;
             this.bcrMarker17.SiteNo = 0;
@@ -3772,7 +3772,7 @@
             this.bcrMarker16.DisplayText = "";
             this.bcrMarker16.Location = new System.Drawing.Point(220, 521);
             this.bcrMarker16.Name = "bcrMarker16";
-            this.bcrMarker16.PLCNo = 152;
+            this.bcrMarker16.PLCNo = 1152;
             this.bcrMarker16.ShowSiteNo = false;
             this.bcrMarker16.ShowTroubleState = false;
             this.bcrMarker16.SiteNo = 0;
@@ -3792,7 +3792,7 @@
             this.bcrMarker15.DisplayText = "";
             this.bcrMarker15.Location = new System.Drawing.Point(182, 641);
             this.bcrMarker15.Name = "bcrMarker15";
-            this.bcrMarker15.PLCNo = 138;
+            this.bcrMarker15.PLCNo = 1138;
             this.bcrMarker15.ShowSiteNo = false;
             this.bcrMarker15.ShowTroubleState = false;
             this.bcrMarker15.SiteNo = 0;
@@ -3812,7 +3812,7 @@
             this.bcrMarker14.DisplayText = "";
             this.bcrMarker14.Location = new System.Drawing.Point(106, 402);
             this.bcrMarker14.Name = "bcrMarker14";
-            this.bcrMarker14.PLCNo = 133;
+            this.bcrMarker14.PLCNo = 1133;
             this.bcrMarker14.ShowSiteNo = false;
             this.bcrMarker14.ShowTroubleState = false;
             this.bcrMarker14.SiteNo = 0;
@@ -3832,7 +3832,7 @@
             this.bcrMarker13.DisplayText = "";
             this.bcrMarker13.Location = new System.Drawing.Point(264, 435);
             this.bcrMarker13.Name = "bcrMarker13";
-            this.bcrMarker13.PLCNo = 126;
+            this.bcrMarker13.PLCNo = 1126;
             this.bcrMarker13.ShowSiteNo = false;
             this.bcrMarker13.ShowTroubleState = false;
             this.bcrMarker13.SiteNo = 0;
@@ -3852,7 +3852,7 @@
             this.bcrMarker12.DisplayText = "";
             this.bcrMarker12.Location = new System.Drawing.Point(492, 435);
             this.bcrMarker12.Name = "bcrMarker12";
-            this.bcrMarker12.PLCNo = 116;
+            this.bcrMarker12.PLCNo = 1116;
             this.bcrMarker12.ShowSiteNo = false;
             this.bcrMarker12.ShowTroubleState = false;
             this.bcrMarker12.SiteNo = 0;
@@ -3872,7 +3872,7 @@
             this.bcrMarker11.DisplayText = "";
             this.bcrMarker11.Location = new System.Drawing.Point(871, 435);
             this.bcrMarker11.Name = "bcrMarker11";
-            this.bcrMarker11.PLCNo = 103;
+            this.bcrMarker11.PLCNo = 1103;
             this.bcrMarker11.ShowSiteNo = false;
             this.bcrMarker11.ShowTroubleState = false;
             this.bcrMarker11.SiteNo = 0;
@@ -3893,7 +3893,7 @@
             this.bcrMarker10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.bcrMarker10.Location = new System.Drawing.Point(872, 715);
             this.bcrMarker10.Name = "bcrMarker10";
-            this.bcrMarker10.PLCNo = 173;
+            this.bcrMarker10.PLCNo = 1173;
             this.bcrMarker10.ShowSiteNo = false;
             this.bcrMarker10.ShowTroubleState = false;
             this.bcrMarker10.SiteNo = 0;
@@ -3914,7 +3914,7 @@
             this.bcrMarker9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.bcrMarker9.Location = new System.Drawing.Point(1184, 880);
             this.bcrMarker9.Name = "bcrMarker9";
-            this.bcrMarker9.PLCNo = 221;
+            this.bcrMarker9.PLCNo = 4221;
             this.bcrMarker9.ShowSiteNo = false;
             this.bcrMarker9.ShowTroubleState = false;
             this.bcrMarker9.SiteNo = 0;
@@ -3930,12 +3930,12 @@
             this.bcrMarker8.BCRMarkThickness = 4;
             this.bcrMarker8.BCRUseYN = true;
             this.bcrMarker8.BubbleText = "";
-            this.bcrMarker8.CVPLCListDeviceID = 2;
+            this.bcrMarker8.CVPLCListDeviceID = 1;
             this.bcrMarker8.DisplayText = "";
             this.bcrMarker8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.bcrMarker8.Location = new System.Drawing.Point(1147, 548);
             this.bcrMarker8.Name = "bcrMarker8";
-            this.bcrMarker8.PLCNo = 216;
+            this.bcrMarker8.PLCNo = 2216;
             this.bcrMarker8.ShowSiteNo = false;
             this.bcrMarker8.ShowTroubleState = false;
             this.bcrMarker8.SiteNo = 0;
@@ -3951,12 +3951,12 @@
             this.bcrMarker7.BCRMarkThickness = 4;
             this.bcrMarker7.BCRUseYN = true;
             this.bcrMarker7.BubbleText = "";
-            this.bcrMarker7.CVPLCListDeviceID = 2;
+            this.bcrMarker7.CVPLCListDeviceID = 1;
             this.bcrMarker7.DisplayText = "";
             this.bcrMarker7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.bcrMarker7.Location = new System.Drawing.Point(1148, 346);
             this.bcrMarker7.Name = "bcrMarker7";
-            this.bcrMarker7.PLCNo = 210;
+            this.bcrMarker7.PLCNo = 2210;
             this.bcrMarker7.ShowSiteNo = false;
             this.bcrMarker7.ShowTroubleState = false;
             this.bcrMarker7.SiteNo = 0;
@@ -3972,12 +3972,12 @@
             this.bcrMarker6.BCRMarkThickness = 4;
             this.bcrMarker6.BCRUseYN = true;
             this.bcrMarker6.BubbleText = "";
-            this.bcrMarker6.CVPLCListDeviceID = 1;
+            this.bcrMarker6.CVPLCListDeviceID = 2;
             this.bcrMarker6.DisplayText = "";
             this.bcrMarker6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.bcrMarker6.Location = new System.Drawing.Point(1032, 257);
             this.bcrMarker6.Name = "bcrMarker6";
-            this.bcrMarker6.PLCNo = 201;
+            this.bcrMarker6.PLCNo = 3201;
             this.bcrMarker6.ShowSiteNo = false;
             this.bcrMarker6.ShowTroubleState = false;
             this.bcrMarker6.SiteNo = 0;
@@ -3998,7 +3998,7 @@
             this.bcrMarker5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.bcrMarker5.Location = new System.Drawing.Point(953, 819);
             this.bcrMarker5.Name = "bcrMarker5";
-            this.bcrMarker5.PLCNo = 200;
+            this.bcrMarker5.PLCNo = 1200;
             this.bcrMarker5.ShowSiteNo = false;
             this.bcrMarker5.ShowTroubleState = false;
             this.bcrMarker5.SiteNo = 0;
@@ -4019,7 +4019,7 @@
             this.bcrMarker4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.bcrMarker4.Location = new System.Drawing.Point(952, 714);
             this.bcrMarker4.Name = "bcrMarker4";
-            this.bcrMarker4.PLCNo = 175;
+            this.bcrMarker4.PLCNo = 1175;
             this.bcrMarker4.ShowSiteNo = false;
             this.bcrMarker4.ShowTroubleState = false;
             this.bcrMarker4.SiteNo = 0;
@@ -4039,7 +4039,7 @@
             this.bcrMarker3.DisplayText = "";
             this.bcrMarker3.Location = new System.Drawing.Point(912, 333);
             this.bcrMarker3.Name = "bcrMarker3";
-            this.bcrMarker3.PLCNo = 202;
+            this.bcrMarker3.PLCNo = 1202;
             this.bcrMarker3.ShowSiteNo = false;
             this.bcrMarker3.ShowTroubleState = false;
             this.bcrMarker3.SiteNo = 0;
@@ -4059,7 +4059,7 @@
             this.bcrMarker2.DisplayText = "";
             this.bcrMarker2.Location = new System.Drawing.Point(833, 145);
             this.bcrMarker2.Name = "bcrMarker2";
-            this.bcrMarker2.PLCNo = 208;
+            this.bcrMarker2.PLCNo = 1208;
             this.bcrMarker2.ShowSiteNo = false;
             this.bcrMarker2.ShowTroubleState = false;
             this.bcrMarker2.SiteNo = 0;
@@ -4080,7 +4080,7 @@
             this.bcrMarker1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.bcrMarker1.Location = new System.Drawing.Point(951, 145);
             this.bcrMarker1.Name = "bcrMarker1";
-            this.bcrMarker1.PLCNo = 211;
+            this.bcrMarker1.PLCNo = 1211;
             this.bcrMarker1.ShowSiteNo = false;
             this.bcrMarker1.ShowTroubleState = false;
             this.bcrMarker1.SiteNo = 0;

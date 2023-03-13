@@ -115,7 +115,6 @@ namespace OPCUAClientClassLib
                     }
                     else
                     {
-
 //#if DEBUG
                         //string[] temp_no = taglevel[2].ToString().Split('_');
                         //int siteno = int.Parse(temp_no[1]);

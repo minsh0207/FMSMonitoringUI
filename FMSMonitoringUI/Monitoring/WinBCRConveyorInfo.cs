@@ -181,8 +181,8 @@ namespace FMSMonitoringUI.Monitoring
 
             InitLedStatus();
 
-            bool onoff = bool.Parse(data[(int)enCVTagList.Power].Value.ToString());
-            ledPower.LedOnOff(onoff);
+            //bool onoff = bool.Parse(data[(int)enCVTagList.Power].Value.ToString());
+            //ledPower.LedOnOff(onoff);
 
             int value = int.Parse(data[(int)enCVTagList.Mode].Value.ToString());
             int idx = GetDatatoBitIdx(value);
@@ -192,11 +192,15 @@ namespace FMSMonitoringUI.Monitoring
             idx = GetDatatoBitIdx(value);
             _LedStatus[idx].LedStatus(value);
 
-            onoff = bool.Parse(data[(int)enCVTagList.FMSStatus].Value.ToString());
+            bool onoff = bool.Parse(data[(int)enCVTagList.FMSStatus].Value.ToString());
             ledTroubleStatus.LedOnOff(onoff);
 
             // Conveyor
-            ConveyorNo.TextData= data[(int)enCVTagList.ConveyorNo].Value.ToString();
+            if (data[(int)enCVTagList.TrackNo].Value.ToString() == "0")
+                ConveyorNo.TextData = _ConveyorNo.ToString();
+            else
+                ConveyorNo.TextData = data[(int)enCVTagList.TrackNo].Value.ToString();
+
             ConveyorType.TextData = GetConveyorType(data[(int)enCVTagList.ConveyorType].Value);
             CVTroubleErrNo.TextData = data[(int)enCVTagList.EqpErrorNo].Value.ToString();
             TroubleErrLevel.TextData = data[(int)enCVTagList.EqpErrorLevel].Value.ToString();
@@ -209,11 +213,12 @@ namespace FMSMonitoringUI.Monitoring
             ledTrayExist.LedOnOff(onoff);
             TrayType.TextData = GetTrayType(data[(int)enCVTagList.TrayType].Value);
             TrayCount.TextData = data[(int)enCVTagList.TrayCount].Value.ToString();
-            TrayID1.TextData = data[(int)enCVTagList.TrayIdL1].Value.ToString();
-            TrayID2.TextData = data[(int)enCVTagList.TrayIdL2].Value.ToString();
 
-            _trayID1 = data[(int)enCVTagList.TrayIdL1].Value.ToString();
-            _trayID2 = data[(int)enCVTagList.TrayIdL2].Value.ToString();
+            TrayID1.TextData = Convert.ToString(data[(int)enCVTagList.TrayIdL1].Value);
+            TrayID2.TextData = Convert.ToString(data[(int)enCVTagList.TrayIdL2].Value);
+
+            _trayID1 = Convert.ToString(data[(int)enCVTagList.TrayIdL1].Value);
+            _trayID2 = Convert.ToString(data[(int)enCVTagList.TrayIdL2].Value);
 
             if (CheckStationStatus(data[(int)enCVTagList.ConveyorType].Value))
                 StationStatus.Visible = true;

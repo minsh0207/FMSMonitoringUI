@@ -58,8 +58,6 @@
             this.ledCarriageFireSen = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
             this.ctrlLine3 = new MonitoringUI.Controlls.CtrlLine();
             this.ctrlLine1 = new MonitoringUI.Controlls.CtrlLine();
-            this.ledPower = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
-            this.ctrlLabel1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.ctrlLabel3 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.ctrlLabel2 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.uiTlbStatus = new System.Windows.Forms.TableLayoutPanel();
@@ -82,6 +80,8 @@
             this.ctrlLabel10 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.uiTlbMode = new System.Windows.Forms.TableLayoutPanel();
             this.uiTlbForkPos = new System.Windows.Forms.TableLayoutPanel();
+            this.ledPower = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
+            this.ctrlLabel1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.titBar = new MonitoringUI.Controlls.CtrlTitleBar();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -103,7 +103,7 @@
             this.panel3.Location = new System.Drawing.Point(2, 62);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(713, 730);
+            this.panel3.Size = new System.Drawing.Size(713, 703);
             this.panel3.TabIndex = 2;
             // 
             // gbFMS
@@ -137,7 +137,7 @@
             this.gbFMS.LanguageID = "DEF_FMS";
             this.gbFMS.Location = new System.Drawing.Point(355, 5);
             this.gbFMS.Name = "gbFMS";
-            this.gbFMS.Size = new System.Drawing.Size(345, 719);
+            this.gbFMS.Size = new System.Drawing.Size(345, 687);
             this.gbFMS.TabIndex = 5;
             this.gbFMS.TabStop = false;
             this.gbFMS.Text = "FMS";
@@ -200,7 +200,7 @@
             // ledToForkingEnable
             // 
             this.ledToForkingEnable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ledToForkingEnable.Location = new System.Drawing.Point(245, 679);
+            this.ledToForkingEnable.Location = new System.Drawing.Point(245, 656);
             this.ledToForkingEnable.Name = "ledToForkingEnable";
             this.ledToForkingEnable.Size = new System.Drawing.Size(49, 15);
             this.ledToForkingEnable.TabIndex = 97;
@@ -210,7 +210,7 @@
             // ledFromForkingEnable
             // 
             this.ledFromForkingEnable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ledFromForkingEnable.Location = new System.Drawing.Point(144, 679);
+            this.ledFromForkingEnable.Location = new System.Drawing.Point(144, 656);
             this.ledFromForkingEnable.Name = "ledFromForkingEnable";
             this.ledFromForkingEnable.Size = new System.Drawing.Size(49, 15);
             this.ledFromForkingEnable.TabIndex = 96;
@@ -224,7 +224,7 @@
             this.gridCraneCmd.Location = new System.Drawing.Point(16, 530);
             this.gridCraneCmd.Name = "gridCraneCmd";
             this.gridCraneCmd.RowCount = -1;
-            this.gridCraneCmd.Size = new System.Drawing.Size(313, 179);
+            this.gridCraneCmd.Size = new System.Drawing.Size(313, 150);
             this.gridCraneCmd.TabIndex = 98;
             this.gridCraneCmd.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             // 
@@ -457,7 +457,7 @@
             this.gbSCrane.LanguageID = "DEF_S/Crane";
             this.gbSCrane.Location = new System.Drawing.Point(17, 5);
             this.gbSCrane.Name = "gbSCrane";
-            this.gbSCrane.Size = new System.Drawing.Size(323, 719);
+            this.gbSCrane.Size = new System.Drawing.Size(323, 687);
             this.gbSCrane.TabIndex = 4;
             this.gbSCrane.TabStop = false;
             this.gbSCrane.Text = "S/Crane";
@@ -488,30 +488,6 @@
             this.ctrlLine1.Name = "ctrlLine1";
             this.ctrlLine1.Size = new System.Drawing.Size(299, 1);
             this.ctrlLine1.TabIndex = 80;
-            // 
-            // ledPower
-            // 
-            this.ledPower.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ledPower.Location = new System.Drawing.Point(590, 30);
-            this.ledPower.Name = "ledPower";
-            this.ledPower.Size = new System.Drawing.Size(81, 15);
-            this.ledPower.TabIndex = 79;
-            this.ledPower.Tag = "EquipmentStatus.Power";
-            this.ledPower.TitleText = "On";
-            this.ledPower.Visible = false;
-            // 
-            // ctrlLabel1
-            // 
-            this.ctrlLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlLabel1.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel1.LanguageID = "DEF_Power";
-            this.ctrlLabel1.Location = new System.Drawing.Point(500, 30);
-            this.ctrlLabel1.Name = "ctrlLabel1";
-            this.ctrlLabel1.Size = new System.Drawing.Size(92, 15);
-            this.ctrlLabel1.TabIndex = 78;
-            this.ctrlLabel1.Text = "Power :";
-            this.ctrlLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ctrlLabel1.Visible = false;
             // 
             // ctrlLabel3
             // 
@@ -783,6 +759,30 @@
             this.uiTlbForkPos.Size = new System.Drawing.Size(140, 119);
             this.uiTlbForkPos.TabIndex = 82;
             // 
+            // ledPower
+            // 
+            this.ledPower.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ledPower.Location = new System.Drawing.Point(590, 30);
+            this.ledPower.Name = "ledPower";
+            this.ledPower.Size = new System.Drawing.Size(81, 15);
+            this.ledPower.TabIndex = 79;
+            this.ledPower.Tag = "EquipmentStatus.Power";
+            this.ledPower.TitleText = "On";
+            this.ledPower.Visible = false;
+            // 
+            // ctrlLabel1
+            // 
+            this.ctrlLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel1.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel1.LanguageID = "DEF_Power";
+            this.ctrlLabel1.Location = new System.Drawing.Point(500, 30);
+            this.ctrlLabel1.Name = "ctrlLabel1";
+            this.ctrlLabel1.Size = new System.Drawing.Size(92, 15);
+            this.ctrlLabel1.TabIndex = 78;
+            this.ctrlLabel1.Text = "Power :";
+            this.ctrlLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ctrlLabel1.Visible = false;
+            // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -817,7 +817,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.Exit);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(2, 792);
+            this.panel2.Location = new System.Drawing.Point(2, 765);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(713, 60);
             this.panel2.TabIndex = 4;
@@ -843,7 +843,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(717, 875);
+            this.ClientSize = new System.Drawing.Size(717, 848);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);

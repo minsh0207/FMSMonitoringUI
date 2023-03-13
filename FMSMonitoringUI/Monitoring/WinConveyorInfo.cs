@@ -1,4 +1,5 @@
-﻿using MonitoringUI;
+﻿using Google.Protobuf.WellKnownTypes;
+using MonitoringUI;
 using MonitoringUI.Common;
 using MonitoringUI.Controlls;
 using MySqlX.XDevAPI.Common;
@@ -129,7 +130,7 @@ namespace FMSMonitoringUI.Monitoring
 
             lstTitle = new List<string>
             {
-                LocalLanguage.GetItemString("DEF_Conveyor_No"),
+                LocalLanguage.GetItemString("DEF_Track_No"),
                 LocalLanguage.GetItemString("DEF_Conveyor_Trye"),
                 LocalLanguage.GetItemString("DEF_Station_Status"),
                 LocalLanguage.GetItemString("DEF_Tray_Exist").Replace(" :", ""),
@@ -190,7 +191,14 @@ namespace FMSMonitoringUI.Monitoring
             if (data == null || data.Count == 0) return;
 
             int row = 0;
-            gridCVInfo.SetValue(1, row, data[(int)enCVTagList.ConveyorNo].Value); row++;
+            int trackNo;
+
+            if (data[(int)enCVTagList.TrackNo].Value.ToString() == "0")
+                trackNo = _ConveyorNo;
+            else
+                trackNo = (int)data[(int)enCVTagList.TrackNo].Value;
+
+            gridCVInfo.SetValue(1, row, trackNo); row++;            
             gridCVInfo.SetValue(1, row, GetConveyorType(data[(int)enCVTagList.ConveyorType].Value)); row++;
 
             if (CheckStationStatus(data[(int)enCVTagList.ConveyorType].Value)) 
@@ -208,8 +216,8 @@ namespace FMSMonitoringUI.Monitoring
             gridCVInfo.SetValue(1, row, data[(int)enCVTagList.TrayIdL1].Value); row++;            
             gridCVInfo.SetValue(1, row, data[(int)enCVTagList.TrayIdL2].Value); row++;
 
-            _trayID1 = data[(int)enCVTagList.TrayIdL1].Value.ToString();
-            _trayID2 = data[(int)enCVTagList.TrayIdL2].Value.ToString();
+            _trayID1 = Convert.ToString(data[(int)enCVTagList.TrayIdL1].Value);
+            _trayID2 = Convert.ToString(data[(int)enCVTagList.TrayIdL2].Value);
 
             if (_cvTitle == "RTV") gridCVInfo.RowsVisible(row, true);
             else gridCVInfo.RowsVisible(row, false);
@@ -230,7 +238,7 @@ namespace FMSMonitoringUI.Monitoring
         public void GetTrayID(ref string trayID1, ref string trayID2)
         {
             trayID1 = _trayID1;
-            trayID2 = _trayID2;
+            trayID2 = _trayID2; ;
         }
         #endregion
 

@@ -452,14 +452,14 @@
             // 
             this.ConveyorNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ConveyorNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ConveyorNo.LanguageID = "DEF_Conveyor_No";
+            this.ConveyorNo.LanguageID = "DEF_Track_No";
             this.ConveyorNo.Location = new System.Drawing.Point(37, 15);
             this.ConveyorNo.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
             this.ConveyorNo.Name = "ConveyorNo";
             this.ConveyorNo.Size = new System.Drawing.Size(303, 31);
             this.ConveyorNo.TabIndex = 3;
             this.ConveyorNo.TextData = "100";
-            this.ConveyorNo.TitleText = "Conveyor No";
+            this.ConveyorNo.TitleText = "Track No";
             this.ConveyorNo.TitleWidth = 130F;
             // 
             // titBar

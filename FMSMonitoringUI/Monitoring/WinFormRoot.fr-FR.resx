@@ -210,8 +210,8 @@
   <data name="DEF_Conveyor_Information" xml:space="preserve">
     <value>FR-Conveyor Information</value>
   </data>
-  <data name="DEF_Conveyor_No" xml:space="preserve">
-    <value>FR-Conveyor No</value>
+  <data name="DEF_Track_No" xml:space="preserve">
+    <value>FR-Track No</value>
   </data>
   <data name="DEF_Conveyor_Status" xml:space="preserve">
     <value>FR-Conveyor Status</value>
@@ -452,6 +452,9 @@
   </data>
   <data name="DEF_Job_Type" xml:space="preserve">
     <value>FR-Job Type :</value>
+  </data>
+  <data name="DEF_Lane" xml:space="preserve">
+    <value>FR-Lane</value>
   </data>
   <data name="DEF_Language" xml:space="preserve">
     <value>FR-Language</value>

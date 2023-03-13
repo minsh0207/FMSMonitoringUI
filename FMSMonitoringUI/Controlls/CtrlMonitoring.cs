@@ -1294,11 +1294,8 @@ namespace FMSMonitoringUI.Controlls
 
             SiteTagInfo tagInfo = new SiteTagInfo();
 
-            if (data[(int)enCVTagList.TrayIdL1].Value != null)
-                tagInfo.TrayIdL1 = data[(int)enCVTagList.TrayIdL1].Value.ToString();
-
-            if (data[(int)enCVTagList.TrayIdL1].Value != null)
-                tagInfo.TrayIdL2 = data[(int)enCVTagList.TrayIdL2].Value.ToString();
+            tagInfo.TrayIdL1 = Convert.ToString(data[(int)enCVTagList.TrayIdL1].Value);
+            tagInfo.TrayIdL2 = Convert.ToString(data[(int)enCVTagList.TrayIdL2].Value);
 
             return tagInfo;
         }
@@ -1309,11 +1306,8 @@ namespace FMSMonitoringUI.Controlls
 
             SiteTagInfo tagInfo = new SiteTagInfo();
 
-            if (data[(int)enCVTagList.TrayIdL1].Value != null)
-                tagInfo.TrayIdL1 = data[(int)enCVTagList.TrayIdL1].Value.ToString();
-
-            if (data[(int)enCVTagList.TrayIdL1].Value != null)
-                tagInfo.TrayIdL2 = data[(int)enCVTagList.TrayIdL2].Value.ToString();
+            tagInfo.TrayIdL1 = Convert.ToString(data[(int)enCVTagList.TrayIdL1].Value);
+            tagInfo.TrayIdL2 = Convert.ToString(data[(int)enCVTagList.TrayIdL2].Value);
 
             return tagInfo;
         }
@@ -1828,7 +1822,7 @@ namespace FMSMonitoringUI.Controlls
 
             task = StatusConveyorAsync(item.GroupNo, item.SiteNo, _SubscribeInfo[groupNo].Item[siteNo]);
 
-            log = string.Format("[{0}-CNV{1:D4}] {2} = {3}", item.ControlType, siteNo, item.BrowseName, value);
+            log = string.Format("[{0}-T{1:D4}] {2} = {3}", item.ControlType, siteNo, item.BrowseName, value);
 
             CLogger.WriteLog(enLogLevel.Receive, this.Text, log);
         }
@@ -2040,16 +2034,16 @@ namespace FMSMonitoringUI.Controlls
             switch (eqpIdx)
             {
                 case 0:
-                    eqp = "F01STCL0010";
+                    eqp = "F1SCL01";   // "F01STCL0010";
                     break;
                 case 1:
-                    eqp = "F01STCL0020";
+                    eqp = "F1SCL02";    //"F01STCL0020";
                     break;
                 case 2:
-                    eqp = "F01STCH0010";
+                    eqp = "F1SCH01";    //"F01STCH0010";
                     break;
                 case 3:
-                    eqp = "F01STCF0010";
+                    eqp = "F1SCF01";    //"F01STCF0010";
                     break;
                 default:
                     CLogger.WriteLog(enLogLevel.Error, this.Text, "GetCraneEqpID is Empty");

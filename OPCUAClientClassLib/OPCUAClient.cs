@@ -20,6 +20,7 @@ using System.IO;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Xml.Linq;
+using System.Diagnostics;
 
 namespace OPCUAClientClassLib
 {
@@ -547,8 +548,14 @@ namespace OPCUAClientClassLib
 
                                 string startNodeID = GetStartNodeID(eqpType);
 
+                                //Stopwatch stopwatch = new Stopwatch();
+                                //stopwatch.Start();
+
                                 NodeId nodeToBrowse = NodeId.Parse(startNodeID); //new NodeId(Objects.ObjectsFolder, 0);
                                 ScanOPCServer(nodeToBrowse, startNodeID);
+
+                                //stopwatch.Stop();
+                                //MessageBox.Show($"{ stopwatch.ElapsedMilliseconds }");
 
                                 Dictionary<int, List<BrowsePath>> dictBrowsePath = AddBrowsePath(startNodeID, eqpType, tagList);
                                 Dictionary<int, List<BrowsePathResult>> dictResultPath = ReadBrowse(dictBrowsePath);
@@ -557,7 +564,7 @@ namespace OPCUAClientClassLib
                                 {
                                     AddConveyorNodeID(dictResultPath, dictBrowsePath);
                                 }
-                                else if (eqpType == enEqpType.STC.ToString())
+                                else    //if (eqpType == enEqpType.STC.ToString())
                                 {
                                     AddCraneNodeID(dictResultPath, dictBrowsePath, _ControlIdx);
                                 }
@@ -736,7 +743,7 @@ namespace OPCUAClientClassLib
                 {
                     //if (trackList[i].SiteNo > 300) continue;
 //#if DEBUG
-                    trackno = string.Format($"CNV{trackList[i].SiteNo}");
+                    trackno = string.Format($"T{trackList[i].SiteNo}");
                     //#else
                     //                    trackno = string.Format($"CNV00{{0:D2}}", trackList[i].SiteNo);
                     //#endif
@@ -1238,10 +1245,12 @@ namespace OPCUAClientClassLib
                 BrowseDirection = BrowseDirection.Forward,
                 ReferenceTypeId = ReferenceTypeIds.HierarchicalReferences,
                 IncludeSubtypes = true,
-                NodeClassMask = 0,
+                NodeClassMask = 1,      // Object Type만 가져온다.
                 ResultMask = (uint)BrowseResultMask.All,
                 MaxReferencesToReturn = 100
             };
+
+            if (parent.NodeId == null) return;
 
             nodeToBrowse = NodeId.Parse(parent.NodeId);
 
@@ -1289,12 +1298,18 @@ namespace OPCUAClientClassLib
                 */
 
                 baseNode = child;
+
+                //BrowseNodesRecursive(child, path_sep);
             }
 
-            if (_BrowseNSIndex.ContainsKey("Common"))
-            {
-                return;
-            }
+            //#if DEBUG
+            //            BaseNode temp = BrowsedNodeList.Find(x => x.BrowseName.EndsWith("T1102"));
+            //#endif
+
+            //if (_BrowseNSIndex.ContainsKey("Common"))
+            //{
+            //    return;
+            //}
 
             BrowseNodesRecursive(baseNode, path_sep);
         }

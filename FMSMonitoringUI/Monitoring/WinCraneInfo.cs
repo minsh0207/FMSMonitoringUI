@@ -256,10 +256,10 @@ namespace FMSMonitoringUI.Monitoring
 
             lstTitle = new List<string>
             {
-                LocalLanguage.GetItemString("DEF_Line"),
+                LocalLanguage.GetItemString("DEF_Lane"),
                 LocalLanguage.GetItemString("DEF_Bay"),
                 LocalLanguage.GetItemString("DEF_Floor"),
-                LocalLanguage.GetItemString("DEF_Deep"),
+                //LocalLanguage.GetItemString("DEF_Deep"),
                 LocalLanguage.GetItemString("DEF_Station"),
                 LocalLanguage.GetItemString("DEF_Forking_Enable")
             };
@@ -378,7 +378,7 @@ namespace FMSMonitoringUI.Monitoring
             if (nVal > 0) _LedJobType[nVal - 1].LedOnOff(nVal);
 
             string[] location = { "LocationFrom", "LocationTo" };
-            string[] item = { "Line", "Bay", "Floor", "Deep", "Station" };
+            string[] item = { "Lane", "Bay", "Floor", "Station" };
 
             for (int col = 0; col < location.Length; col++)
             {
@@ -461,7 +461,7 @@ namespace FMSMonitoringUI.Monitoring
 
             if (tagIdx < 0) return "";
 
-            return _CraneData[tagIdx].Value.ToString();
+            return Convert.ToString(_CraneData[tagIdx].Value);
         }
         #endregion
 

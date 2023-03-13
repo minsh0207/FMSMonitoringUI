@@ -267,15 +267,17 @@ namespace FMSMonitoringUI.Monitoring
                 strSQL.Append("     LEFT OUTER JOIN fms_v.tb_dat_tray   C");
                 strSQL.Append("         ON C.tray_id IN (A.tray_id, A.tray_id_2)");
                 //필수값
-                if (eqptype == "HPC")
-                {
-                    strSQL.Append($" WHERE A.unit_id = '{unitid}'");
-                    strSQL.Append($"    AND (A.eqp_type = '{eqptype}' AND A.unit_id IS NOT NULL)");
-                }
-                else
-                {
-                    strSQL.Append($" WHERE A.eqp_id = '{eqpid}'");
-                }
+                strSQL.Append($" WHERE A.eqp_id = '{eqpid}'");
+
+                //if (eqptype == "HPC")
+                //{
+                //    strSQL.Append($" WHERE A.unit_id = '{unitid}'");
+                //    strSQL.Append($"    AND (A.eqp_type = '{eqptype}' AND A.unit_id IS NOT NULL)");
+                //}
+                //else
+                //{
+                //    strSQL.Append($" WHERE A.eqp_id = '{eqpid}'");
+                //}
 
                 var jsonResult = await rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
 

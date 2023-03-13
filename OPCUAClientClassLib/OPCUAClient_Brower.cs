@@ -88,6 +88,7 @@ namespace OPCUAClientClassLib
                         sb2.Append($"{taglevel[i]}.");
                     }
                 }
+
                 browsePath.Add(GetBrowsePath(startingNodeId, AbsoluteName.ToQualifiedNames($"{sb}"), sb2.ToString()));
 
                 if (browsePath.Count > BROWSEPATH_MAXCOUNT)

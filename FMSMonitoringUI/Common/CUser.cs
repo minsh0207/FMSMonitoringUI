@@ -48,7 +48,7 @@ namespace MonitoringUI.Common
                 {
                     _jsonMstUserResponse result = rest.ConvertMstUser(jsonResult);
 
-                    if (result != null && result.DATA.Count > 0 && result.DATA[0].USER_PASSWORD != null)
+                    if (result.RESPONSE_CODE == "200" && result != null && result.DATA.Count > 0 && result.DATA[0].USER_PASSWORD != null)
                     {
                         CDefine.m_strLoginID = result.DATA[0].USER_ID;
                         CDefine.m_strLoginPass = result.DATA[0].USER_PASSWORD;

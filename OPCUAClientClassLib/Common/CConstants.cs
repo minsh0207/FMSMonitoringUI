@@ -17,12 +17,22 @@ namespace OPCUAClientClassLib
         /// Conveyor
         /// </summary>
         CNV = 0,
-
         /// <summary>
         /// StackerCrane
         /// </summary>
         STC,
-
+        /// <summary>
+        /// StackerCrane(LT)
+        /// </summary>
+        //STL,
+        /// <summary>
+        /// StackerCrane(HT)
+        /// </summary>
+        //STH,
+        /// <summary>
+        /// StackerCrane(FORMATION)
+        /// </summary>
+        //STF,
         /// <summary>
         /// RTV
         /// </summary>
@@ -31,16 +41,13 @@ namespace OPCUAClientClassLib
 
     public enum enCVTagList
     {
-        Alive = 0,
-        Power,
-        Mode,
+        Mode = 0,
         Status,
         EqpErrorNo,
         EqpErrorLevel,
         FMSStatus,
         FMSErrorNo,
-        TimeSync,
-        ConveyorNo,
+        TrackNo,
         ConveyorType,
         StationStatus,
         TrayExist,
