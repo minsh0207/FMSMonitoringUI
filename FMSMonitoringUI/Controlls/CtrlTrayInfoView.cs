@@ -220,8 +220,20 @@ namespace FMSMonitoringUI.Controlls
         {
             dataGridView1[col, row].Value = value;
         }
+        public void SetValue(int col, int row, string value, string rework_flag)
+        {
+            dataGridView1[col, row].Value = value;
 
-        public void SetReworkTray(int col, int row, string rework_flag)
+            SetReworkTray(col, row, rework_flag);
+        }
+        public void SetValue(int col, int row, float value, string rework_flag)
+        {
+            dataGridView1[col, row].Value = value;
+
+            SetReworkTray(col, row, rework_flag);
+        }
+
+        private void SetReworkTray(int col, int row, string rework_flag)
         {
             if (rework_flag == "Y")
             {

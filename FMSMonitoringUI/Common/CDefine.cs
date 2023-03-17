@@ -78,6 +78,12 @@ namespace MonitoringUI.Common
         public const string DEF_LOG_FILENAME = "FormationUI";
 
         /////////////////////////////////////////////////////////////////////
+        //	Equipment ID
+        //===================================================================
+        public const string DEF_EQP_HPC = "F1HPC01";
+        public const string DEF_EQP_CHG = "F1CHG01";
+
+        /////////////////////////////////////////////////////////////////////
         //	Exit Button Size
         //===================================================================
         public const int DEF_EXIT_WIDTH = 170;

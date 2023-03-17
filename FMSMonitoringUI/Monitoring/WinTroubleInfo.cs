@@ -299,7 +299,8 @@ namespace FMSMonitoringUI.Monitoring
                 gridTrayInfo.SetValue(col, row, item.TROUBLE_CODE); col++;
                 string troubleName = (CDefine.m_enLanguage == enLoginLanguage.English ? item.TROUBLE_NAME : item.TROUBLE_NAME_LOCAL);
                 gridTrayInfo.SetValue(col, row, troubleName); col++;
-                gridTrayInfo.SetValue(col, row, item.EVENT_TIME.Year == 1 ? "" : item.EVENT_TIME.ToString());
+                string time = item.EVENT_TIME.ToString("dd-MM-yyyy HH:mm:ss");
+                gridTrayInfo.SetValue(col, row, item.EVENT_TIME.Year == 1 ? "" : time);
                 row++;
             }
 

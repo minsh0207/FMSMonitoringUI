@@ -94,7 +94,7 @@
             this.cbUsePopUp.AutoSize = true;
             this.cbUsePopUp.ForeColor = System.Drawing.Color.White;
             this.cbUsePopUp.LanguageID = "DEF_Use_Trouble_Alarm_Popup";
-            this.cbUsePopUp.Location = new System.Drawing.Point(1269, 27);
+            this.cbUsePopUp.Location = new System.Drawing.Point(1269, 28);
             this.cbUsePopUp.Name = "cbUsePopUp";
             this.cbUsePopUp.Size = new System.Drawing.Size(171, 16);
             this.cbUsePopUp.TabIndex = 112;

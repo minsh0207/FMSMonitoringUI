@@ -66,7 +66,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(2, 787);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1496, 60);
+            this.panel2.Size = new System.Drawing.Size(1580, 60);
             this.panel2.TabIndex = 1;
             // 
             // Exit
@@ -81,7 +81,7 @@
             this.Exit.LanguageID = "DEF_Exit";
             this.Exit.Location = new System.Drawing.Point(0, 0);
             this.Exit.Name = "Exit";
-            this.Exit.Size = new System.Drawing.Size(170, 40);
+            this.Exit.Size = new System.Drawing.Size(254, 40);
             this.Exit.TabIndex = 0;
             this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
@@ -102,8 +102,8 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.gridProcessData);
             this.splitContainer2.Panel2.Controls.Add(this.lbProcessData);
-            this.splitContainer2.Size = new System.Drawing.Size(579, 725);
-            this.splitContainer2.SplitterDistance = 296;
+            this.splitContainer2.Size = new System.Drawing.Size(663, 725);
+            this.splitContainer2.SplitterDistance = 338;
             this.splitContainer2.TabIndex = 4;
             // 
             // gridRecipeInfo
@@ -115,7 +115,7 @@
             this.gridRecipeInfo.Location = new System.Drawing.Point(0, 34);
             this.gridRecipeInfo.Name = "gridRecipeInfo";
             this.gridRecipeInfo.RowCount = -1;
-            this.gridRecipeInfo.Size = new System.Drawing.Size(294, 689);
+            this.gridRecipeInfo.Size = new System.Drawing.Size(336, 689);
             this.gridRecipeInfo.TabIndex = 7;
             this.gridRecipeInfo.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             // 
@@ -127,7 +127,7 @@
             this.lbRecipeInfo.LanguageID = "DEF_Recipe_Info";
             this.lbRecipeInfo.Location = new System.Drawing.Point(0, 0);
             this.lbRecipeInfo.Name = "lbRecipeInfo";
-            this.lbRecipeInfo.Size = new System.Drawing.Size(294, 34);
+            this.lbRecipeInfo.Size = new System.Drawing.Size(336, 34);
             this.lbRecipeInfo.TabIndex = 9;
             this.lbRecipeInfo.Text = "Recipe Info";
             this.lbRecipeInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -138,10 +138,10 @@
             this.gridProcessData.ColumnCount = -1;
             this.gridProcessData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridProcessData.Font = new System.Drawing.Font("돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.gridProcessData.Location = new System.Drawing.Point(0, 44);
+            this.gridProcessData.Location = new System.Drawing.Point(0, 34);
             this.gridProcessData.Name = "gridProcessData";
             this.gridProcessData.RowCount = -1;
-            this.gridProcessData.Size = new System.Drawing.Size(277, 679);
+            this.gridProcessData.Size = new System.Drawing.Size(319, 689);
             this.gridProcessData.TabIndex = 8;
             this.gridProcessData.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             // 
@@ -153,7 +153,7 @@
             this.lbProcessData.LanguageID = "DEF_Process_Data";
             this.lbProcessData.Location = new System.Drawing.Point(0, 0);
             this.lbProcessData.Name = "lbProcessData";
-            this.lbProcessData.Size = new System.Drawing.Size(277, 44);
+            this.lbProcessData.Size = new System.Drawing.Size(319, 34);
             this.lbProcessData.TabIndex = 10;
             this.lbProcessData.Text = "Process Data";
             this.lbProcessData.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -166,7 +166,7 @@
             this.panel1.Location = new System.Drawing.Point(2, 2);
             this.panel1.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1496, 60);
+            this.panel1.Size = new System.Drawing.Size(1580, 60);
             this.panel1.TabIndex = 0;
             // 
             // titBar
@@ -180,7 +180,7 @@
             this.titBar.Location = new System.Drawing.Point(0, 0);
             this.titBar.Margin = new System.Windows.Forms.Padding(4);
             this.titBar.Name = "titBar";
-            this.titBar.Size = new System.Drawing.Size(1494, 58);
+            this.titBar.Size = new System.Drawing.Size(1578, 58);
             this.titBar.TabIndex = 0;
             this.titBar.TitleText = "Cell Information";
             // 
@@ -299,7 +299,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(1500, 871);
+            this.ClientSize = new System.Drawing.Size(1584, 871);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.splitContainer2);

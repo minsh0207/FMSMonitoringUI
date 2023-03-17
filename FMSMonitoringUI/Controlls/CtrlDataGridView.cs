@@ -252,6 +252,8 @@ namespace FMSMonitoringUI.Controlls
             for (int nRow = 0; nRow < nMax; nRow++)
             {
                 dataGridView1[0, nRow].Value = lstData[nRow];
+
+                // Data Cell만 클릭하도록 하기 위해 추가(중간 Row에 Value가 아닌 Name이 있는 경우)
                 if (lstData[nRow].ToString() == "" )
                 {
                     dataGridView1.Rows[nRow].Tag = true;
@@ -405,7 +407,7 @@ namespace FMSMonitoringUI.Controlls
             {
                 // Data Cell만 클릭하도록 하기 위해 추가
                 if ((row >= 0 && col > 0) ||
-                    (row >= 0 && bool.Parse(dataGridView1.Rows[row].Tag.ToString())))
+                    (row >= 0 && dataGridView1.Rows[row].Tag != null && Convert.ToBoolean(dataGridView1.Rows[row].Tag.ToString())))
                 {
                     if (dataGridView1[col, row].Value != null)
                     {
@@ -433,7 +435,7 @@ namespace FMSMonitoringUI.Controlls
             {
                 // Data Cell만 클릭하도록 하기 위해 추가
                 if ((row >= 0 && col > 0) ||
-                    (row >= 0 && bool.Parse(dataGridView1.Rows[row].Tag.ToString())))
+                    (row >= 0 && dataGridView1.Rows[row].Tag != null && Convert.ToBoolean(dataGridView1.Rows[row].Tag.ToString())))
                 {
                     if (dataGridView1[col, row].Value != null)
                     {

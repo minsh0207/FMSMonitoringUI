@@ -30,6 +30,19 @@ namespace FMSMonitoringUI.Controlls
                 lbEqpType.Text = string.Format($" {_EqpType}");
             }
         }
+        string _UnitID = "";
+        [DisplayName("UNIT ID"), Description("UNIT ID"), Category("GroupBox Setting")]
+        public string UnitID
+        {
+            get
+            {
+                return _UnitID;
+            }
+            set
+            {
+                _UnitID = value;
+            }
+        }
         #endregion
 
         public CtrlEqpMicroCurrent()
@@ -70,8 +83,7 @@ namespace FMSMonitoringUI.Controlls
             try
             {
                 int row = 0;    // Convert.ToInt16(data[0].LEVEL);
-                TrayInfoView.SetValue(0, row, data[0].TRAY_ID);
-                TrayInfoView.SetReworkTray(0, row, data[0].REWORK_FLAG);
+                TrayInfoView.SetValue(0, row, data[0].TRAY_ID, data[0].REWORK_TRAY_1);
 
                 SetEqpMode(data[0].EQP_MODE, eqpStatus[data[0].EQP_MODE]);
                 SetEqpStatus(data[0].EQP_STATUS, eqpStatus[data[0].EQP_STATUS]);

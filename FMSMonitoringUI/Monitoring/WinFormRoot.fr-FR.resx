@@ -858,4 +858,10 @@
   <data name="DEF_Water_Tank" xml:space="preserve">
     <value>FR-Water Tank</value>
   </data>
+  <data name="DEF_ProcessEnd" xml:space="preserve">
+    <value>FR-Process End</value>
+  </data>
+  <data name="DEF_Unload_Complete" xml:space="preserve">
+    <value>FR-Unload Complete</value>
+  </data>
 </root>

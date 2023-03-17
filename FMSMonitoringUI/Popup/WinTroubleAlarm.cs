@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using System.Windows.Threading;         // 참조 WinDowsBase 추가
 using MonitoringUI.Common;
 using System;
+using System.Drawing;
 #endregion
 
 #region [Name Space]
@@ -54,6 +55,9 @@ namespace MonitoringUI.Popup
 
             //BackGround Color
             m_bToggleOn = true;
+
+            lblTroubleName.ForeColor = System.Drawing.Color.Red;
+            lblTroubleUnitName.ForeColor = System.Drawing.Color.Red;
         }
         #endregion
 
@@ -144,6 +148,43 @@ namespace MonitoringUI.Popup
                 //    //CLogger.WriteLog(enLogLevel.LOG, DateTime.Now, this.ToString(), CDefine.m_strLoginID, "OnTimer : Start");
                 //}
             }
+        }
+        #endregion
+
+        #region SetTroubleInfo
+        public void SetTroubleInfo(string troubleName, string unitName)
+        {
+            lblTroubleName.Text = troubleName;
+            
+            lblTroubleName.Font = AutoFontSize(lblTroubleName, troubleName);
+            //lblTroubleName.AutoSize = true;
+
+            lblTroubleUnitName.Text = unitName;
+        }
+        #endregion
+
+        #region AutoFontSize
+        private Font AutoFontSize(Label label, String text)
+        {
+            Font ft;
+            Graphics gp;
+            SizeF sz;
+            Single Faktor, FaktorX, FaktorY;
+
+            gp = label.CreateGraphics();
+            sz = gp.MeasureString(text, label.Font);
+            gp.Dispose();
+
+            FaktorX = (label.Width) / sz.Width;
+            FaktorY = (label.Height) / sz.Height;
+
+            if (FaktorX > FaktorY)
+                Faktor = FaktorY;
+            else
+                Faktor = FaktorX;
+            ft = label.Font;
+
+            return new Font(ft.Name, ft.SizeInPoints * (Faktor) - 1);
         }
         #endregion
 

@@ -248,7 +248,7 @@ namespace FMSMonitoringUI.Monitoring
                     strSQL.Append("     LEFT OUTER JOIN fms_v.tb_dat_tray   B");
                     strSQL.Append("         ON B.tray_id IN (A.tray_id, A.tray_id_2)");
                     //필수값
-                    strSQL.Append($" WHERE B.eqp_id = '{eqpid}' AND B.tray_id = '{trayid}'");
+                    strSQL.Append($" WHERE A.eqp_id = '{eqpid}' AND B.tray_id = '{trayid}'");
                 }
                 else
                 {
@@ -262,7 +262,7 @@ namespace FMSMonitoringUI.Monitoring
                     strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_eqp   C");
                     strSQL.Append("         ON B.eqp_id = C.eqp_id");
                     //필수값
-                    strSQL.Append($" WHERE B.unit_id = '{rackid}' AND B.tray_id = '{trayid}' AND D.eqp_id = '{eqpid}'");
+                    strSQL.Append($" WHERE A.rack_id = '{rackid}' AND B.tray_id = '{trayid}' AND B.eqp_id = '{eqpid}'");
                 }
 
                 var jsonResult = await rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
@@ -362,14 +362,17 @@ namespace FMSMonitoringUI.Monitoring
             int row = 0;
             gridTrayInfo.SetValue(1, row, data[0].MODEL_ID); row++;
             gridTrayInfo.SetValue(1, row, data[0].TRAY_ID); row++;
-            gridTrayInfo.SetValue(1, row, data[0].TRAY_INPUT_TIME.Year == 1 ? "" : data[0].TRAY_INPUT_TIME.ToString()); row++;
+            string time = data[0].TRAY_INPUT_TIME.ToString("dd-MM-yyyy HH:mm:ss");
+            gridTrayInfo.SetValue(1, row, data[0].TRAY_INPUT_TIME.Year == 1 ? "" : time); row++;
             gridTrayInfo.SetValue(1, row, GetTrayType(data[0].TRAY_ZONE)); row++;
             gridTrayInfo.SetValue(1, row, data[0].ROUTE_ID); row++;
             gridTrayInfo.SetValue(1, row, data[0].LOT_ID); row++;
             gridTrayInfo.SetValue(1, row, data[0].PROCESS_NAME); row++;
             gridTrayInfo.SetValue(1, row, data[0].EQP_NAME); row++;
-            gridTrayInfo.SetValue(1, row, data[0].START_TIME.Year == 1 ? "" : data[0].START_TIME.ToString()); row++;
-            gridTrayInfo.SetValue(1, row, data[0].PLAN_TIME.Year == 1 ? "" : data[0].PLAN_TIME.ToString()); row++;
+            time = data[0].START_TIME.ToString("dd-MM-yyyy HH:mm:ss");
+            gridTrayInfo.SetValue(1, row, data[0].START_TIME.Year == 1 ? "" : time); row++;
+            time = data[0].PLAN_TIME.ToString("dd-MM-yyyy HH:mm:ss");
+            gridTrayInfo.SetValue(1, row, data[0].PLAN_TIME.Year == 1 ? "" : time); row++;
             gridTrayInfo.SetValue(1, row, data[0].CURRENT_CELL_CNT);
 
         }
@@ -386,8 +389,10 @@ namespace FMSMonitoringUI.Monitoring
                 gridProcessFlow.SetValue(col, i, i + 1); col++;
                 gridProcessFlow.SetValue(col, i, data[i].PROCESS_NAME); col++;
                 gridProcessFlow.SetValue(col, i, data[i].EQP_NAME); col++;
-                gridProcessFlow.SetValue(col, i, data[i].START_TIME.Year == 1 ? "" : data[i].START_TIME.ToString()); col++;
-                gridProcessFlow.SetValue(col, i, data[i].END_TIME.Year == 1 ? "" : data[i].END_TIME.ToString()); col++;
+                string time = data[i].START_TIME.ToString("dd-MM-yyyy HH:mm:ss");
+                gridProcessFlow.SetValue(col, i, data[i].START_TIME.Year == 1 ? "" : time); col++;
+                time = data[i].END_TIME.ToString("dd-MM-yyyy HH:mm:ss");
+                gridProcessFlow.SetValue(col, i, data[i].END_TIME.Year == 1 ? "" : time); col++;
                 gridProcessFlow.SetValue(col, i, data[i].CURRENT_CELL_CNT); col++;
                 gridProcessFlow.SetStyleButton(col, i, data[i].RECIPE_ID);
             }

@@ -63,7 +63,7 @@ namespace FMSMonitoringUI.Controlls
         {
             InitializeComponent();
 
-            //TrayInfoView.MouseCellDoubleClick_Evnet += TrayInfoView_MouseCellDoubleClick;
+            TrayInfoView.MouseCellDoubleClick_Evnet += TrayInfoView_MouseCellDoubleClick;
         }
 
         #region CtrlEqpControl_Load
@@ -120,8 +120,7 @@ namespace FMSMonitoringUI.Controlls
                     if (hpc.UNIT_ID == _unitD)
                     {
                         int row = 0;
-                        TrayInfoView.SetValue(0, row, hpc.TRAY_ID);
-                        TrayInfoView.SetReworkTray(0, row, hpc.REWORK_FLAG);
+                        TrayInfoView.SetValue(0, row, hpc.TRAY_ID, hpc.REWORK_TRAY_1);
 
                         SetEqpMode(hpc.EQP_MODE, eqpStatus[hpc.EQP_MODE]);
                         SetEqpStatus(hpc.EQP_STATUS, eqpStatus[hpc.EQP_STATUS]);
@@ -187,13 +186,13 @@ namespace FMSMonitoringUI.Controlls
         }
         #endregion
 
-        //#region DataGridView Event
-        //private void TrayInfoView_MouseCellDoubleClick(int col, int row, object value)
-        //{
-        //    WinTrayInfo form = new WinTrayInfo(EqpID, "", value.ToString());
-        //    form.ShowDialog();
-        //}
-        //#endregion
+        #region DataGridView Event
+        private void TrayInfoView_MouseCellDoubleClick(int col, int row, object value)
+        {
+            WinTrayInfo form = new WinTrayInfo(EqpID, "", value.ToString());
+            form.ShowDialog();
+        }
+        #endregion
 
         #region lbEqpType_MouseDoubleClick
         private void lbEqpType_MouseDoubleClick(object sender, MouseEventArgs e)

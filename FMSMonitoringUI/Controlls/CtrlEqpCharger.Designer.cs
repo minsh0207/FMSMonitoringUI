@@ -260,7 +260,6 @@
             this.Controls.Add(this.uiTlbEqpMode3);
             this.Controls.Add(this.uiTlbEqpMode2);
             this.Controls.Add(this.uiTlbEqpMode1);
-            this.Controls.Add(this.uiTlbEqpStatus);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label16);
@@ -269,6 +268,7 @@
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.uiTlbEqpStatus);
             this.Name = "CtrlEqpCharger";
             this.Size = new System.Drawing.Size(163, 134);
             this.Load += new System.EventHandler(this.CtrlEqpCharger_Load);

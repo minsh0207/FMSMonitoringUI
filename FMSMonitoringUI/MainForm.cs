@@ -95,6 +95,8 @@ namespace FMSMonitoringUI
             _CtrlAging.Tag = barAging.TitleText;
             _CtrlFormationCHG = new CtrlFormationCHG();
             _CtrlFormationCHG.Tag = barFormationCHG.TitleText;
+            // Formation에 있는 Process Status정보를 가져온다.
+            _CtrlMonitoring._ProcessStatus = _CtrlFormationCHG._EqpStatus;
             _CtrlFormationHPC = new CtrlFormationHPC();
             _CtrlFormationHPC.Tag = barFormationHPC.TitleText;
             #endregion
@@ -779,10 +781,13 @@ namespace FMSMonitoringUI
                         if (trouble.Value.bStatus == true)
                         {
                             WinTroubleAlarm troubleAlarm = new WinTroubleAlarm();
+                            troubleAlarm.SetTroubleInfo(trouble.Value.strContent, trouble.Value.strUnitName);
                             troubleAlarm.Show();
 
-                            troubleAlarm.lblTroubleName.Text = trouble.Value.strContent;
-                            troubleAlarm.lblTroubleUnitName.Text = trouble.Value.strUnitName;
+                            //troubleAlarm.lblTroubleName.Text = trouble.Value.strContent;
+                            //troubleAlarm.lblTroubleName.AutoSize = true;
+                            //troubleAlarm.AutoFontSize(troubleAlarm.lblTroubleName, trouble.Value.strContent);
+                            //troubleAlarm.lblTroubleUnitName.Text = trouble.Value.strUnitName;
 
                             string log = string.Format("TroubleWindowShow : EQP ID = {0}, Unit ID = {1}, Alarm Code = {2}, Alarm Name = {3}",
                                 _CtrlMonitoring._EqpName[trouble.Value.strEqpID], trouble.Value.strUnitName, 

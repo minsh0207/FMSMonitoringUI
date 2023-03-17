@@ -6,6 +6,7 @@ using MonitoringUI.Controlls;
 using MonitoringUI.Controlls.CButton;
 using MonitoringUI.Controlls.CComboBox;
 using MonitoringUI.Controlls.CDateTime;
+using MySqlX.XDevAPI.Relational;
 using OPCUAClientClassLib;
 using Org.BouncyCastle.Asn1.Tsp;
 using RestClientLib;
@@ -216,6 +217,11 @@ namespace FMSMonitoringUI.Monitoring
 
             TrayID1.TextData = Convert.ToString(data[(int)enCVTagList.TrayIdL1].Value);
             TrayID2.TextData = Convert.ToString(data[(int)enCVTagList.TrayIdL2].Value);
+
+            if (Convert.ToString(data[(int)enCVTagList.TrayIdL2].Value) == "")
+                TrayID2.Visible = false;
+            else
+                TrayID2.Visible = true;
 
             _trayID1 = Convert.ToString(data[(int)enCVTagList.TrayIdL1].Value);
             _trayID2 = Convert.ToString(data[(int)enCVTagList.TrayIdL2].Value);

@@ -75,28 +75,11 @@ namespace FMSMonitoringUI.Controlls
         {
             try
             {
-                TrayInfoView.SetValue(1, 1, data[0].TRAY_ID);       // Pick
-                TrayInfoView.SetValue(1, 0, data[0].TRAY_ID_2);     // Place
-
-                for (int i = 0; i < data.Count; i++)
-                {
-                    if (i > 2) break;
-
-                    int row = 1 - Convert.ToInt16(data[i].LEVEL);
-                    TrayInfoView.SetReworkTray(1, row, data[i].REWORK_FLAG);
-                }
+                TrayInfoView.SetValue(1, 1, data[0].TRAY_ID, data[0].REWORK_TRAY_1);       // Pick
+                TrayInfoView.SetValue(1, 0, data[0].TRAY_ID_2, data[0].REWORK_TRAY_2);     // Place
 
                 SetEqpMode(data[0].EQP_MODE, eqpStatus[data[0].EQP_MODE]);
                 SetEqpStatus(data[0].EQP_STATUS, eqpStatus[data[0].EQP_STATUS]);
-
-                //if (data[0].REWORK_FLAG == "Y" && data[0].EQP_STATUS == "R")
-                //{
-                //    SetEqpStatus("Re", eqpStatus["Re"]);
-                //}
-                //else
-                //{                
-                //    
-                //}
             }
             catch (Exception ex)
             {

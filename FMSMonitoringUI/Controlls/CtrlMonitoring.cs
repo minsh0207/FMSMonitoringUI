@@ -80,9 +80,14 @@ namespace FMSMonitoringUI.Controlls
         private Dictionary<string, ItemInfo> _ControlIdx;   // = new Dictionary<string, ItemInfo>();
 
         /// <summary>
-        /// string=Eqp Text, Color=Eqp Status Color
+        /// string=Eqp Status, Color=Eqp Status Color
         /// </summary>
         private Dictionary<string, KeyValuePair<string, Color>> _EqpStatus;    // = new Dictionary<string, KeyValuePair<string, string>>();
+
+        /// <summary>
+        /// string=Process Status, Color=Process Status Color
+        /// </summary>
+        public Dictionary<string, Color> _ProcessStatus;
 
         /// <summary>
         /// First=Equipment ID, Second=Eqp UserControl
@@ -143,6 +148,7 @@ namespace FMSMonitoringUI.Controlls
             _ListBCR = new Dictionary<int, BCRMarker>[CDefine.DEF_PLC_SERVER_COUNT];
             _ControlIdx = new Dictionary<string, ItemInfo>();
             _EqpStatus = new Dictionary<string, KeyValuePair<string, Color>>();
+            _ProcessStatus = new Dictionary<string, Color>();
             _EntireEqpList = new Dictionary<string, UserControlEqp>();
             _OPCGroupList = new COPCGroupCtrl();
             _EqpName = new Dictionary<string, string>();
@@ -461,7 +467,6 @@ namespace FMSMonitoringUI.Controlls
                 }
                 else if (ctl.GetType() == typeof(CtrlEqpOCV) ||
                          ctl.GetType() == typeof(CtrlEqpDCIR) ||
-                         ctl.GetType() == typeof(CtrlEqpMicroCurrent) ||
                          ctl.GetType() == typeof(CtrlEqpDegas) ||
                          ctl.GetType() == typeof(CtrlEqpVisionInsp) ||
                          ctl.GetType() == typeof(CtrlEqpLeakCheck) ||
@@ -512,6 +517,20 @@ namespace FMSMonitoringUI.Controlls
                     //}
                     eqp.EqpName = _EqpName[eqp.EqpID];
                 }
+                else if (ctl.GetType() == typeof(CtrlEqpCharger))
+                {
+                    CtrlEqpCharger eqp = ctl as CtrlEqpCharger;
+
+                    _EntireEqpList.Add(eqp.EqpID, eqp);
+                    eqp.EqpName = _EqpName[eqp.EqpID];
+                }
+                else if (ctl.GetType() == typeof(CtrlEqpMicroCurrent))
+                {
+                    CtrlEqpMicroCurrent eqp = ctl as CtrlEqpMicroCurrent;
+
+                    _EntireEqpList.Add(eqp.EqpID, eqp);
+                    eqp.EqpName = _EqpName[eqp.UnitID];
+                }
             }
 
             for (int i = 0; i < CDefine.DEF_PLC_SERVER_COUNT; i++)
@@ -529,7 +548,7 @@ namespace FMSMonitoringUI.Controlls
             ctrlEqpLTAging3.Click_Evnet += CtrlEqpAging_Click;
             ctrlEqpLTAging4.Click_Evnet += CtrlEqpAging_Click;
 
-            ctrlEqpCharger1.Click_Evnet += CtrlEqpAging_Click;
+            ctrlEqpCharger.Click_Evnet += CtrlEqpAging_Click;
 
 
             //int idx = 0;
@@ -661,14 +680,16 @@ namespace FMSMonitoringUI.Controlls
                 //// Set Query
                 StringBuilder strSQL = new StringBuilder();
 
-                strSQL.Append(" SELECT A.eqp_type, A.eqp_id, A.unit_id, A.eqp_mode, A.eqp_status,");
-                strSQL.Append("        B.rework_flag, IF(B.tray_id = A.tray_id, '0', '1') AS Level,");
-                strSQL.Append("        CASE WHEN B.tray_id = null THEN A.tray_id ELSE B.tray_id END AS tray_id, A.tray_id_2 ");
+                strSQL.Append(" SELECT A.eqp_type, A.eqp_id, A.unit_id, A.eqp_mode, A.eqp_status, A.process_status,");
+                strSQL.Append("        B.rework_flag AS rework_tray_1, C.rework_flag AS rework_tray_2,");
+                strSQL.Append("        CASE WHEN B.tray_id = null THEN A.tray_id ELSE B.tray_id END AS tray_id, A.tray_id_2");
                 strSQL.Append("   FROM fms_v.tb_mst_eqp     A ");
                 strSQL.Append("        LEFT OUTER JOIN fms_v.tb_dat_tray B");
-                strSQL.Append("           ON B.tray_id IN (A.tray_id, A.tray_id_2)");
+                strSQL.Append("           ON B.tray_id = A.tray_id");
+                strSQL.Append("        LEFT OUTER JOIN fms_v.tb_dat_tray C");
+                strSQL.Append("           ON C.tray_id = A.tray_id_2");
                 //필수값
-                strSQL.Append(" WHERE (A.eqp_type NOT IN ('SCH', 'SCF', 'SCL'))");
+                strSQL.Append(" WHERE (A.eqp_type NOT IN ('HTA', 'LTA', 'SCH', 'SCF', 'SCL'))");
                 strSQL.Append("    AND ((A.eqp_type = 'HPC' AND A.unit_id IS NOT NULL)");
                 strSQL.Append("      OR (A.eqp_type = 'CHG' AND A.unit_id IS NOT NULL)");
                 strSQL.Append("      OR (A.eqp_type NOT IN ('HPC', 'CHG')))");
@@ -835,24 +856,44 @@ namespace FMSMonitoringUI.Controlls
                 }
             }
 
-            for (int i = 0; i < _EntireEqpList.Count; i++)
+            for (int i = 0; i < eqpData.Count; i++)
             {
-                string eqpid = _EntireEqpList.Keys.ToList()[i];
+                string eqpid = eqpData.Keys.ToList()[i];
 
-                if (eqpData.ContainsKey(eqpid))
+                if (eqpid == CDefine.DEF_EQP_HPC)
                 {
-                    if (eqpid == "F1HPC01")
-                    {
-                        ctrlEqpHPC1.SetData(eqpData[eqpid], _EqpStatus);
-                        ctrlEqpHPC2.SetData(eqpData[eqpid], _EqpStatus);
-                    }
-                    else
-                    {
-                        UserControlEqp ctrlEqp = _EntireEqpList[eqpid];
-                        ctrlEqp.SetData(eqpData[eqpid], _EqpStatus);
-                    }
+                    ctrlEqpHPC1.SetData(eqpData[eqpid], _EqpStatus);
+                    ctrlEqpHPC2.SetData(eqpData[eqpid], _EqpStatus);
+                }
+                if (eqpid == CDefine.DEF_EQP_CHG)
+                {
+                    ctrlEqpCharger.SetData(eqpData[eqpid], _EqpStatus, _ProcessStatus);
+                }
+                else
+                {
+                    UserControlEqp ctrlEqp = _EntireEqpList[eqpid];
+                    ctrlEqp.SetData(eqpData[eqpid], _EqpStatus);
                 }
             }
+
+            //for (int i = 0; i < _EntireEqpList.Count; i++)
+            //{
+            //    string eqpid = _EntireEqpList.Keys.ToList()[i];
+
+            //    if (eqpData.ContainsKey(eqpid))
+            //    {
+            //        if (eqpid == "F1HPC01")
+            //        {
+            //            ctrlEqpHPC1.SetData(eqpData[eqpid], _EqpStatus);
+            //            ctrlEqpHPC2.SetData(eqpData[eqpid], _EqpStatus);
+            //        }
+            //        else
+            //        {
+            //            UserControlEqp ctrlEqp = _EntireEqpList[eqpid];
+            //            ctrlEqp.SetData(eqpData[eqpid], _EqpStatus);
+            //        }
+            //    }
+            //}
         }
         // Aging 
         private void SetData(List<_aging_rack_count> data)

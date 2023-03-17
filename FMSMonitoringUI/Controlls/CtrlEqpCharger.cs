@@ -123,7 +123,9 @@ namespace FMSMonitoringUI.Controlls
         #endregion
 
         #region setData
-        public override void SetData(List<_entire_eqp_list> data, Dictionary<string, KeyValuePair<string, Color>> eqpStatus)
+        public void SetData(List<_entire_eqp_list> data,
+                            Dictionary<string, KeyValuePair<string, Color>> eqpStatus,
+                            Dictionary<string, Color> processStatus)
         {
             try
             {
@@ -131,11 +133,12 @@ namespace FMSMonitoringUI.Controlls
                 {
                     if (data[i].UNIT_ID == null) continue;
 
-                    int col = int.Parse(data[i].UNIT_ID.Substring(data[i].UNIT_ID.Length - 3, 1)) - 1;
-                    int row = uiTlbEqpStatus.RowCount - int.Parse(data[i].UNIT_ID.Substring(data[i].UNIT_ID.Length - 1, 1));
+                    int col = i / 4;    // int.Parse(data[i].UNIT_ID.Substring(data[i].UNIT_ID.Length - 3, 1)) - 1;
+                    int row = 3 - (i % 4);    // uiTlbEqpStatus.RowCount - int.Parse(data[i].UNIT_ID.Substring(data[i].UNIT_ID.Length - 1, 1));
 
-                    _chgEqpStatus[col, row].Text = string.Format($"  {data[i].EQP_STATUS}");
-                    _chgEqpStatus[col, row].BackColor = eqpStatus[data[i].EQP_STATUS].Value;
+                    string status = data[i].PROCESS_STATUS == null ? "I" : data[i].PROCESS_STATUS.ToString();
+                    _chgEqpStatus[col, row].Text = string.Format($"  {status}");
+                    _chgEqpStatus[col, row].BackColor = processStatus[status];
 
                     _chgEqpMode[col, row].Text = string.Format($"  {data[i].EQP_MODE}");
                     _chgEqpMode[col, row].BackColor = eqpStatus[data[i].EQP_MODE].Value;
@@ -146,6 +149,67 @@ namespace FMSMonitoringUI.Controlls
                 // System Debug
                 System.Diagnostics.Debug.Print(string.Format("SetData Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
             }
+        }
+        public override void SetData(List<_entire_eqp_list> data, Dictionary<string, KeyValuePair<string, Color>> eqpStatus)
+        {            
+        }
+        #endregion
+
+        #region GetProcessStatus
+        private string GetProcessStatus(string status)
+        {
+            string statusName = string.Empty;
+
+            switch (status)
+            {
+                case "I":
+                    statusName = LocalLanguage.GetItemString("DEF_Idle");
+                    break;
+                case "L":
+                    statusName = LocalLanguage.GetItemString("DEF_Load_Request");
+                    break;
+                case "1":
+                    statusName = LocalLanguage.GetItemString("DEF_Loading");
+                    break;
+                case "A":
+                    statusName = LocalLanguage.GetItemString("DEF_Tray_Arrived");
+                    break;
+                case "R":
+                    statusName = LocalLanguage.GetItemString("DEF_Running");
+                    break;
+                case "E":
+                    statusName = LocalLanguage.GetItemString("DEF_ProcessEnd");
+                    break;
+                case "U":
+                    statusName = LocalLanguage.GetItemString("DEF_Unload_Request");
+                    break;
+                case "2":
+                    statusName = LocalLanguage.GetItemString("DEF_Unloading");
+                    break;
+                case "P":
+                    statusName = LocalLanguage.GetItemString("DEF_Pause");
+                    break;
+                case "S":
+                    statusName = LocalLanguage.GetItemString("DEF_Stop");
+                    break;
+                case "T":
+                    statusName = LocalLanguage.GetItemString("DEF_Trouble");
+                    break;
+                case "F":
+                    statusName = LocalLanguage.GetItemString("DEF_Fire");
+                    break;
+                case "X":
+                    statusName = LocalLanguage.GetItemString("DEF_Not_Use");
+                    break;
+                case "":
+                    statusName = LocalLanguage.GetItemString("DEF_Unload_Complete");
+                    break;
+                default:
+                    statusName = LocalLanguage.GetItemString("DEF_Idle");
+                    break;
+            }
+
+            return statusName;
         }
         #endregion
 
@@ -176,5 +240,12 @@ namespace FMSMonitoringUI.Controlls
         }
         #endregion
 
+        public void uiTlbEqpStatus_Click(object sender, MouseEventArgs e)
+        {
+
+            //MessageBox.Show("Cell chosen: (" +
+            //                 uiTlbEqpStatus.GetRow((Panel)sender) + ", " +
+            //                 uiTlbEqpStatus.GetColumn((Panel)sender) + ")");
+        }
     }
 }

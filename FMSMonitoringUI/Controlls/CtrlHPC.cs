@@ -128,20 +128,20 @@ namespace FMSMonitoringUI.Controlls
         public void SetData(_ctrl_formation_hpc data, Color eqpStatusColor, Color opModeColor)
         {
             int nRow = 0;
-            TrayInfoView.SetValue(1, nRow, data.TRAY_ID); nRow++;
+            TrayInfoView.SetValue(1, nRow, data.TRAY_ID, data.REWORK_FLAG); nRow++;
             TrayInfoView.SetValue(1, nRow, GetEqpStatus(data.EQP_MODE)); nRow++;
             TrayInfoView.SetValue(1, nRow, GetEqpStatus(data.EQP_STATUS)); nRow++;
             TrayInfoView.SetValue(1, nRow, GetOperationMode(data.OPERATION_MODE)); nRow++;
             TrayInfoView.SetValue(1, nRow, data.PROCESS_NAME); nRow++;
-            TrayInfoView.SetValue(1, nRow, data.START_TIME.Year == 1 ? "" : data.START_TIME.ToString()); nRow++;
-            TrayInfoView.SetValue(1, nRow, data.PLAN_TIME.Year == 1 ? "" : data.PLAN_TIME.ToString()); nRow++;
+            string time = data.START_TIME.ToString("dd-MM-yyyy HH:mm:ss");
+            TrayInfoView.SetValue(1, nRow, data.START_TIME.Year == 1 ? "" : time); nRow++;
+            time = data.PLAN_TIME.ToString("dd-MM-yyyy HH:mm:ss");
+            TrayInfoView.SetValue(1, nRow, data.PLAN_TIME.Year == 1 ? "" : time); nRow++;
             TrayInfoView.SetValue(1, nRow, data.JIG_AVG); nRow++;
             TrayInfoView.SetValue(1, nRow, data.PRESSURE); nRow++;
             TrayInfoView.SetValue(1, nRow, data.TROUBLE_CODE); nRow++;
             string troubleName = (CDefine.m_enLanguage == enLoginLanguage.English ? data.TROUBLE_NAME : data.TROUBLE_NAME_LOCAL);
             TrayInfoView.SetValue(1, nRow, troubleName);
-
-            TrayInfoView.SetReworkTray(1, 0, data.REWORK_FLAG);
 
             SetEqpStatus(data.EQP_STATUS, eqpStatusColor);
 

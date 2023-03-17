@@ -70,7 +70,7 @@
             this.ctrlLabel17 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.ctrlLabel6 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.ctrlEqpHPC2 = new FMSMonitoringUI.Controlls.CtrlEqpHPC();
-            this.ctrlEqpCharger1 = new FMSMonitoringUI.Controlls.CtrlEqpCharger();
+            this.ctrlEqpCharger = new FMSMonitoringUI.Controlls.CtrlEqpCharger();
             this.ctrlEqpLTAging4 = new FMSMonitoringUI.Controlls.CtrlEqpLTAging();
             this.ctrlEqpLTAging3 = new FMSMonitoringUI.Controlls.CtrlEqpLTAging();
             this.ctrlEqpHTAging2 = new FMSMonitoringUI.Controlls.CtrlEqpHTAging();
@@ -963,7 +963,7 @@
             this.panel2.Controls.Add(this.ctrlLabel17);
             this.panel2.Controls.Add(this.ctrlLabel6);
             this.panel2.Controls.Add(this.ctrlEqpHPC2);
-            this.panel2.Controls.Add(this.ctrlEqpCharger1);
+            this.panel2.Controls.Add(this.ctrlEqpCharger);
             this.panel2.Controls.Add(this.ctrlEqpLTAging4);
             this.panel2.Controls.Add(this.ctrlEqpLTAging3);
             this.panel2.Controls.Add(this.ctrlEqpHTAging2);
@@ -1252,20 +1252,20 @@
             this.ctrlEqpHPC2.TitleText = "HPC JIG#2";
             this.ctrlEqpHPC2.UnitID = "HPC0110102";
             // 
-            // ctrlEqpCharger1
+            // ctrlEqpCharger
             // 
-            this.ctrlEqpCharger1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlEqpCharger1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ctrlEqpCharger1.EqpID = "F1CHG01";
-            this.ctrlEqpCharger1.EqpName = null;
-            this.ctrlEqpCharger1.EqpType = "CHG";
-            this.ctrlEqpCharger1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ctrlEqpCharger1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlEqpCharger1.Location = new System.Drawing.Point(1257, 745);
-            this.ctrlEqpCharger1.Name = "ctrlEqpCharger1";
-            this.ctrlEqpCharger1.Size = new System.Drawing.Size(165, 134);
-            this.ctrlEqpCharger1.TabIndex = 584;
-            this.ctrlEqpCharger1.UnitID = ((System.Collections.Generic.List<string>)(resources.GetObject("ctrlEqpCharger1.UnitID")));
+            this.ctrlEqpCharger.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlEqpCharger.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ctrlEqpCharger.EqpID = "F1CHG01";
+            this.ctrlEqpCharger.EqpName = null;
+            this.ctrlEqpCharger.EqpType = "CHG";
+            this.ctrlEqpCharger.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlEqpCharger.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
+            this.ctrlEqpCharger.Location = new System.Drawing.Point(1257, 745);
+            this.ctrlEqpCharger.Name = "ctrlEqpCharger";
+            this.ctrlEqpCharger.Size = new System.Drawing.Size(165, 134);
+            this.ctrlEqpCharger.TabIndex = 584;
+            this.ctrlEqpCharger.UnitID = ((System.Collections.Generic.List<string>)(resources.GetObject("ctrlEqpCharger.UnitID")));
             // 
             // ctrlEqpLTAging4
             // 
@@ -2128,6 +2128,7 @@
             this.ctrlEqpMIC.Name = "ctrlEqpMIC";
             this.ctrlEqpMIC.Size = new System.Drawing.Size(143, 80);
             this.ctrlEqpMIC.TabIndex = 537;
+            this.ctrlEqpMIC.UnitID = "MIC0110101";
             // 
             // ctrlEqpDCR
             // 
@@ -5888,7 +5889,7 @@
         private System.Windows.Forms.PictureBox pictureBox44;
         private System.Windows.Forms.PictureBox pictureBox43;
         private System.Windows.Forms.PictureBox pictureBox40;
-        private CtrlEqpCharger ctrlEqpCharger1;
+        private CtrlEqpCharger ctrlEqpCharger;
         private CtrlEqpHPC ctrlEqpHPC2;
         private WindowsForms.CtrlLabel ctrlLabel10;
         private WindowsForms.CtrlLabel ctrlLabel11;

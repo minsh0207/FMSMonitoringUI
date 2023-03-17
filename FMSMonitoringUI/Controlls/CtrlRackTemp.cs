@@ -97,41 +97,28 @@ namespace FMSMonitoringUI.Controlls
         #region setData
         public void SetData(List<_ctrl_formation_chg> data)
         {
-            foreach (var jig in data) 
+            for (int i = 0; i < data.Count; i++)
             {
-                // Lower JIG 온도
                 int col = 1;
-                int row;
 
-                if (int.Parse(jig.UNIT_ID.Substring(jig.UNIT_ID.Length - 3, 1)) > 1)
-                {
-                    row = int.Parse(jig.UNIT_ID.Substring(jig.UNIT_ID.Length - 3, 1)) * 2 + int.Parse(jig.UNIT_ID.Substring(jig.UNIT_ID.Length - 1, 1));
-                    row--;
-                }
-                else
-                {
-                    row = int.Parse(jig.UNIT_ID.Substring(jig.UNIT_ID.Length - 1, 1));
-                    row--;
-                }
-
-                TrayInfoView.SetValue(col, row, jig.JIG_11); col++;
-                TrayInfoView.SetValue(col, row, jig.JIG_12); col++;
-                TrayInfoView.SetValue(col, row, jig.JIG_13); col++;
-                TrayInfoView.SetValue(col, row, jig.JIG_14); col++;
-                TrayInfoView.SetValue(col, row, jig.JIG_15); col++;
-                TrayInfoView.SetValue(col, row, jig.JIG_16); col++;
-                TrayInfoView.SetValue(col, row, jig.JIG_17); col++;
-                TrayInfoView.SetValue(col, row, jig.JIG_18); col++;
+                TrayInfoView.SetValue(col, i, data[i].JIG_11); col++;
+                TrayInfoView.SetValue(col, i, data[i].JIG_12); col++;
+                TrayInfoView.SetValue(col, i, data[i].JIG_13); col++;
+                TrayInfoView.SetValue(col, i, data[i].JIG_14); col++;
+                TrayInfoView.SetValue(col, i, data[i].JIG_15); col++;
+                TrayInfoView.SetValue(col, i, data[i].JIG_16); col++;
+                TrayInfoView.SetValue(col, i, data[i].JIG_17); col++;
+                TrayInfoView.SetValue(col, i, data[i].JIG_18); col++;
 
                 // Upper JIG 온도
-                TrayInfoView.SetValue(col, row, jig.JIG_21); col++;
-                TrayInfoView.SetValue(col, row, jig.JIG_22); col++;
-                TrayInfoView.SetValue(col, row, jig.JIG_23); col++;
-                TrayInfoView.SetValue(col, row, jig.JIG_24); col++;
-                TrayInfoView.SetValue(col, row, jig.JIG_25); col++;
-                TrayInfoView.SetValue(col, row, jig.JIG_26); col++;
-                TrayInfoView.SetValue(col, row, jig.JIG_27); col++;
-                TrayInfoView.SetValue(col, row, jig.JIG_28);
+                TrayInfoView.SetValue(col, i, data[i].JIG_21); col++;
+                TrayInfoView.SetValue(col, i, data[i].JIG_22); col++;
+                TrayInfoView.SetValue(col, i, data[i].JIG_23); col++;
+                TrayInfoView.SetValue(col, i, data[i].JIG_24); col++;
+                TrayInfoView.SetValue(col, i, data[i].JIG_25); col++;
+                TrayInfoView.SetValue(col, i, data[i].JIG_26); col++;
+                TrayInfoView.SetValue(col, i, data[i].JIG_27); col++;
+                TrayInfoView.SetValue(col, i, data[i].JIG_28);
             }
         }
         #endregion

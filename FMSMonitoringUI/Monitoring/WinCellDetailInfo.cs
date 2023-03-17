@@ -45,9 +45,12 @@ namespace FMSMonitoringUI.Monitoring
             InitGridViewCellList();
             InitGridViewCell();
             InitGridViewProcessName(0);
-            Dictionary<string, object> data = new Dictionary<string, object>();
-            InitGridViewRecipeInfo(data);
-            InitGridViewProcessData(data);
+            
+            List<_recipe_item> recipeItem = new List<_recipe_item>();
+            InitGridViewRecipeInfo(recipeItem);
+
+            Dictionary<string, object> recipeData = new Dictionary<string, object>();
+            InitGridViewProcessData(recipeData);
             InitLanguage();
 
             _TrayId = trayId;
@@ -229,7 +232,9 @@ namespace FMSMonitoringUI.Monitoring
             gridProcessName.SetGridViewStyles();
             gridProcessName.ColumnHeadersWidth(0, 60);
         }
-        private void InitGridViewRecipeInfo(Dictionary<string, object> rcpItem)
+
+        //private void InitGridViewRecipeInfo(Dictionary<string, string> rcpItem)
+        private void InitGridViewRecipeInfo(List<_recipe_item> rcpItem)
         {
             List<string> lstTitle = new List<string>
             {
@@ -241,20 +246,26 @@ namespace FMSMonitoringUI.Monitoring
             lstTitle = new List<string>();
             foreach (var item in rcpItem)
             {
-                lstTitle.Add(item.Key);
+                //lstTitle.Add(item.Key);
+                lstTitle.Add(item.NAME);
             }
             gridRecipeInfo.AddRowsHeaderList(lstTitle);
 
             gridRecipeInfo.RowsHeight(22);
 
             gridRecipeInfo.SetGridViewStyles();
-            //gridRecipeInfo.ColumnHeadersWidth(0, 140);
+            gridRecipeInfo.ColumnHeadersWidth(0, 200);
 
             for (int i = 0; i < rcpItem.Count; i++)
             {
-                gridRecipeInfo.SetValue(1, i, rcpItem.Values.ToList()[i]);
+                //gridRecipeInfo.SetValue(1, i, rcpItem.Values.ToList()[i]);
+
+                //string val = string.Format("{0:0.0} {1}", rcpItem[i].VALUE, rcpItem[i].UNIT);
+                string val = string.Format("{0} {1}", rcpItem[i].VALUE, rcpItem[i].UNIT);
+                gridRecipeInfo.SetValue(1, i, val);
             }
         }
+        //private void InitGridViewProcessData(List<_recipe_item> dataItem)
         private void InitGridViewProcessData(Dictionary<string, object> dataItem)
         {
             if (dataItem == null) return;
@@ -270,17 +281,20 @@ namespace FMSMonitoringUI.Monitoring
             foreach (var item in dataItem)
             {
                 lstTitle.Add(item.Key);
+                //lstTitle.Add(item.NAME);
             }
             gridProcessData.AddRowsHeaderList(lstTitle);
 
             gridProcessData.RowsHeight(22);
 
             gridProcessData.SetGridViewStyles();
-            //gridProcessData.ColumnHeadersWidth(0, 140);
+            gridProcessData.ColumnHeadersWidth(0, 200);
 
             for (int i = 0; i < dataItem.Count; i++)
             {
-                gridProcessData.SetValue(1, i, dataItem.Values.ToList()[i]);
+
+                gridProcessData.SetValue(1, i, string.Format("{0:0.00}", dataItem.Values.ToList()[i]));
+                //gridProcessData.SetValue(1, i, dataItem[i].VALUE);
             }
         }
         #endregion
@@ -378,7 +392,8 @@ namespace FMSMonitoringUI.Monitoring
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].CELL_ID); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].TRAY_ID); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].CELL_NO); row++;
-            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].TRAY_INPUT_TIME.Year == 1 ? "" : _CellInfo[cellNo].TRAY_INPUT_TIME.ToString()); row++;
+            string time = _CellInfo[cellNo].TRAY_INPUT_TIME.ToString("dd-MM-yyyy HH:mm:ss");
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].TRAY_INPUT_TIME.Year == 1 ? "" : time); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].TRAY_INPUT_EQP_ID); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].GRADE); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].GRADE_CODE); row++;
@@ -400,14 +415,18 @@ namespace FMSMonitoringUI.Monitoring
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].EQP_TYPE); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].PROCESS_TYPE); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].PROCESS_NO); row++;
-            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].START_TIME.Year == 1 ? "" : _CellInfo[cellNo].START_TIME.ToString()); row++;
-            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].END_TIME.Year == 1 ? "" : _CellInfo[cellNo].END_TIME.ToString()); row++;
+            time = _CellInfo[cellNo].START_TIME.ToString("dd-MM-yyyy HH:mm:ss");
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].START_TIME.Year == 1 ? "" : time); row++;
+            time = _CellInfo[cellNo].END_TIME.ToString("dd-MM-yyyy HH:mm:ss");
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].END_TIME.Year == 1 ? "" : time); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].REWORK_FLAG); row++;
-            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].REWORK_TIME.Year == 1 ? "" : _CellInfo[cellNo].REWORK_TIME.ToString()); row++;
+            time = _CellInfo[cellNo].REWORK_TIME.ToString("dd-MM-yyyy HH:mm:ss");
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].REWORK_TIME.Year == 1 ? "" : time); row++;
             //gridCellInfo.SetValue(1, row, _CellInfo[cellNo].REWORK_EQP_ID); row++;
             //gridCellInfo.SetValue(1, row, _CellInfo[cellNo].REWORK_UNIT_ID); row++;
             gridCellInfo.SetValue(1, row, _CellInfo[cellNo].FIRE_FLAG); row++;
-            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].FIRE_TIME.Year == 1 ? "" : _CellInfo[cellNo].FIRE_TIME.ToString()); row++;
+            time = _CellInfo[cellNo].FIRE_TIME.ToString("dd-MM-yyyy HH:mm:ss");
+            gridCellInfo.SetValue(1, row, _CellInfo[cellNo].FIRE_TIME.Year == 1 ? "" : time); row++;
             //gridCellInfo.SetValue(1, row, _CellInfo[cellNo].FIRE_EQP_ID); row++;
             //gridCellInfo.SetValue(1, row, _CellInfo[cellNo].FIRE_UNIT_ID); row++;
             //gridCellInfo.SetValue(1, row, _CellInfo[cellNo].SCRAP_FLAG); row++;
@@ -446,8 +465,8 @@ namespace FMSMonitoringUI.Monitoring
                     }
                     else
                     {
-                        Dictionary<string, object> data = new Dictionary<string, object>();
-                        InitGridViewRecipeInfo(data);
+                        List<_recipe_item> recipeItem = new List<_recipe_item>();
+                        InitGridViewRecipeInfo(recipeItem);
                     }
                 }
                 else
@@ -643,9 +662,11 @@ namespace FMSMonitoringUI.Monitoring
                 GetCellProcessName(value.ToString());
             }
 
-            Dictionary<string, object> data = new Dictionary<string, object>();
-            InitGridViewRecipeInfo(data);
-            InitGridViewProcessData(data);
+            List<_recipe_item> recipeItem = new List<_recipe_item>();
+            InitGridViewRecipeInfo(recipeItem);
+
+            Dictionary<string, object> recipeData = new Dictionary<string, object>();
+            InitGridViewProcessData(recipeData);
         }        
         private void GridProcessName_MouseCellDoubleClick(int col, int row, object value)
         {

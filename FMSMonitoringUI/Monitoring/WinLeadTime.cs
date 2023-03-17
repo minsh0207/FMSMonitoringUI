@@ -309,8 +309,10 @@ namespace FMSMonitoringUI.Monitoring
                 gridTrayInfo.SetValue(col, row, item.RACK_ID); col++;
                 gridTrayInfo.SetValue(col, row, item.TRAY_ID); col++;
                 gridTrayInfo.SetValue(col, row, item.TRAY_ID_2); col++;
-                gridTrayInfo.SetValue(col, row, item.START_TIME.Year == 1 ? "" : item.START_TIME.ToString()); col++;
-                gridTrayInfo.SetValue(col, row, item.PLAN_TIME.Year == 1 ? "" : item.PLAN_TIME.ToString()); col++;
+                string time = item.START_TIME.ToString("dd-MM-yyyy HH:mm:ss");
+                gridTrayInfo.SetValue(col, row, item.START_TIME.Year == 1 ? "" : time); col++;
+                time = item.PLAN_TIME.ToString("dd-MM-yyyy HH:mm:ss");
+                gridTrayInfo.SetValue(col, row, item.PLAN_TIME.Year == 1 ? "" : time); col++;
                 gridTrayInfo.SetValue(col, row, GetTimeSpan(item.TRAY_ID, item.START_TIME)); col++;
                 gridTrayInfo.SetValue(col, row, string.Format($"{item.AGING_TIME} (min)"));
                 row++;

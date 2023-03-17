@@ -179,7 +179,7 @@
         RK5CYII=
 </value>
   </data>
-  <data name="ctrlEqpCharger1.UnitID" mimetype="application/x-microsoft.net.object.binary.base64">
+  <data name="ctrlEqpCharger.UnitID" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAJoBbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1u
         ZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XV0sIG1zY29ybGliLCBWZXJzaW9u

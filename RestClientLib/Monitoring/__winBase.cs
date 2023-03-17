@@ -216,8 +216,8 @@ namespace RestClientLib
         public string EQP_NAME_LOCAL { get; set; }
         public string PROCESS_STATUS { get; set; }
         public int OPERATION_MODE { get; set; }
-        public string REWORK_FLAG { get; set; }
-        public string LEVEL { get; set; }
+        public string REWORK_TRAY_1 { get; set; }
+        public string REWORK_TRAY_2 { get; set; }
         public DateTime START_TIME { get; set; }
         public DateTime PLAN_TIME { get; set; }
     }
@@ -268,10 +268,11 @@ namespace RestClientLib
         public string UNIT_ID { get; set; }
         public string EQP_MODE { get; set; }
         public string EQP_STATUS { get; set; }
+        public string PROCESS_STATUS { get; set; }
         public string TRAY_ID { get; set; }
         public string TRAY_ID_2 { get; set; }
-        public string LEVEL { get; set; }
-        public string REWORK_FLAG { get; set; }
+        public string REWORK_TRAY_1 { get; set; }
+        public string REWORK_TRAY_2 { get; set; }
 
     }
     #endregion

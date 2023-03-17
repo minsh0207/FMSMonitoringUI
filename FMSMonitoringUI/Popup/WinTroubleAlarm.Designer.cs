@@ -42,7 +42,7 @@
             this.panBack.Controls.Add(this.panText);
             this.panBack.Location = new System.Drawing.Point(37, 36);
             this.panBack.Name = "panBack";
-            this.panBack.Size = new System.Drawing.Size(1611, 217);
+            this.panBack.Size = new System.Drawing.Size(1611, 262);
             this.panBack.TabIndex = 4;
             this.panBack.Click += new System.EventHandler(this.lblTrouble_MouseDown);
             // 
@@ -53,7 +53,7 @@
             this.panText.Controls.Add(this.lblTroubleName);
             this.panText.Location = new System.Drawing.Point(12, 13);
             this.panText.Name = "panText";
-            this.panText.Size = new System.Drawing.Size(1582, 190);
+            this.panText.Size = new System.Drawing.Size(1582, 236);
             this.panText.TabIndex = 4;
             this.panText.Click += new System.EventHandler(this.lblTrouble_MouseDown);
             // 
@@ -61,9 +61,9 @@
             // 
             this.lblTroubleUnitName.BackColor = System.Drawing.Color.Yellow;
             this.lblTroubleUnitName.Font = new System.Drawing.Font("굴림", 54.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblTroubleUnitName.Location = new System.Drawing.Point(3, 117);
+            this.lblTroubleUnitName.Location = new System.Drawing.Point(3, 159);
             this.lblTroubleUnitName.Name = "lblTroubleUnitName";
-            this.lblTroubleUnitName.Size = new System.Drawing.Size(1579, 73);
+            this.lblTroubleUnitName.Size = new System.Drawing.Size(1579, 74);
             this.lblTroubleUnitName.TabIndex = 4;
             this.lblTroubleUnitName.Text = "Unit Name";
             this.lblTroubleUnitName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -75,10 +75,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTroubleName.BackColor = System.Drawing.Color.Yellow;
-            this.lblTroubleName.Font = new System.Drawing.Font("굴림", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblTroubleName.Location = new System.Drawing.Point(3, 2);
+            this.lblTroubleName.Font = new System.Drawing.Font("굴림", 69.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblTroubleName.Location = new System.Drawing.Point(3, 1);
             this.lblTroubleName.Name = "lblTroubleName";
-            this.lblTroubleName.Size = new System.Drawing.Size(1579, 96);
+            this.lblTroubleName.Size = new System.Drawing.Size(1576, 156);
             this.lblTroubleName.TabIndex = 3;
             this.lblTroubleName.Text = "Warning FIRE!!";
             this.lblTroubleName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -89,7 +89,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Red;
-            this.ClientSize = new System.Drawing.Size(1681, 288);
+            this.ClientSize = new System.Drawing.Size(1681, 336);
             this.Controls.Add(this.panBack);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "WinTroubleAlarm";

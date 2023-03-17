@@ -249,7 +249,7 @@ namespace FMSMonitoringUI.Monitoring
                 // Set Query
                 StringBuilder strSQL = new StringBuilder();
 
-                strSQL.Append(" SELECT A.unit_id, A.eqp_name, A.operation_mode, A.eqp_status, A.process_status, A.eqp_trouble_code,C.tray_id, IF(A.tray_id = C.tray_id, '1', '2') AS level,");
+                strSQL.Append(" SELECT A.unit_id, A.eqp_name, A.eqp_mode, A.operation_mode, A.eqp_status, A.process_status, A.eqp_trouble_code,C.tray_id, IF(A.tray_id = C.tray_id, '1', '2') AS level,");
                 strSQL.Append("        B.trouble_name,");
                 strSQL.Append("        C.tray_input_time, C.tray_zone, C.model_id, C.route_id, C.recipe_id, C.start_time, C.plan_time, C.current_cell_cnt,");
                 strSQL.Append("        (SELECT sf_get_process_name(C.model_id, C.route_id, C.eqp_type, C.process_type, C.process_no)) AS process_name");
@@ -447,15 +447,18 @@ namespace FMSMonitoringUI.Monitoring
             {
                 row = 0;
                 gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_ID); row++;
-                gridTrayInfo.SetValue(i + 1, row, data[i].LEVEL); row++;
-                gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_INPUT_TIME.Year == 1 ? "" : data[i].TRAY_INPUT_TIME.ToString()); row++;
+                gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_ID == null ? "" : data[i].LEVEL); row++;
+                string time = data[i].TRAY_INPUT_TIME.ToString("dd-MM-yyyy HH:mm:ss");
+                gridTrayInfo.SetValue(i + 1, row, data[i].TRAY_INPUT_TIME.Year == 1 ? "" : time); row++;
                 gridTrayInfo.SetValue(i + 1, row, GetTrayType(data[i].TRAY_ZONE)); row++;
                 gridTrayInfo.SetValue(i + 1, row, data[i].MODEL_ID); row++;
                 gridTrayInfo.SetValue(i + 1, row, data[i].ROUTE_ID); row++;
                 gridTrayInfo.SetValue(i + 1, row, data[i].RECIPE_ID); row++;
                 gridTrayInfo.SetValue(i + 1, row, data[i].PROCESS_NAME); row++;
-                gridTrayInfo.SetValue(i + 1, row, data[i].START_TIME.Year == 1 ? "" : data[i].START_TIME.ToString()); row++;
-                gridTrayInfo.SetValue(i + 1, row, data[i].PLAN_TIME.Year == 1 ? "" : data[i].PLAN_TIME.ToString()); row++;
+                time = data[i].START_TIME.ToString("dd-MM-yyyy HH:mm:ss");
+                gridTrayInfo.SetValue(i + 1, row, data[i].START_TIME.Year == 1 ? "" : time); row++;
+                time = data[i].PLAN_TIME.ToString("dd-MM-yyyy HH:mm:ss");
+                gridTrayInfo.SetValue(i + 1, row, data[i].PLAN_TIME.Year == 1 ? "" : time); row++;
             }
         }
         #endregion

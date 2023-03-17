@@ -196,7 +196,7 @@ namespace FMSMonitoringUI.Monitoring
             if (data[(int)enCVTagList.TrackNo].Value.ToString() == "0")
                 trackNo = _ConveyorNo;
             else
-                trackNo = (int)data[(int)enCVTagList.TrackNo].Value;
+                trackNo = Convert.ToInt16(data[(int)enCVTagList.TrackNo].Value);
 
             gridCVInfo.SetValue(1, row, trackNo); row++;            
             gridCVInfo.SetValue(1, row, GetConveyorType(data[(int)enCVTagList.ConveyorType].Value)); row++;
@@ -213,7 +213,13 @@ namespace FMSMonitoringUI.Monitoring
             ledTrayExist.LedOnOff(trayExist); row++;
             gridCVInfo.SetValue(1, row, GetTrayType(data[(int)enCVTagList.TrayType].Value)); row++;
             gridCVInfo.SetValue(1, row, data[(int)enCVTagList.TrayCount].Value); row++;
-            gridCVInfo.SetValue(1, row, data[(int)enCVTagList.TrayIdL1].Value); row++;            
+            gridCVInfo.SetValue(1, row, data[(int)enCVTagList.TrayIdL1].Value); row++;
+
+            if (Convert.ToString(data[(int)enCVTagList.TrayIdL2].Value) == "")
+                gridCVInfo.RowsVisible(row, false);
+            else
+                gridCVInfo.RowsVisible(row, true);
+
             gridCVInfo.SetValue(1, row, data[(int)enCVTagList.TrayIdL2].Value); row++;
 
             _trayID1 = Convert.ToString(data[(int)enCVTagList.TrayIdL1].Value);

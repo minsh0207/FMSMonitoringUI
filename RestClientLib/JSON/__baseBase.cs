@@ -63,14 +63,23 @@ namespace RestClientLib
         public _recipe_data() { }
         ~_recipe_data() { }
 
+        public string RECIPE_ID { get; set; }
         public int ROUTE_ORDER_NO { get; set; }
         public string EQP_TYPE { get; set; }
         public string PROCESS_TYPE { get; set; }
         public int PROCESS_NO { get; set; }
-        public string NEXT_OPERATION_EXIST { get; set; }
+        public string NEXT_PROCESS_EXIST { get; set; }
         public string OPERATION_MODE { get; set; }
 
-        public Dictionary<string, object> RECIPE_ITEM;
+        //public Dictionary<string, object> RECIPE_ITEM;
+        public List<_recipe_item> RECIPE_ITEM;
+    }
+
+    public class _recipe_item
+    {
+        public string NAME { get; set; }
+        public string VALUE { get; set; }
+        public string UNIT { get; set; }
     }
 
 

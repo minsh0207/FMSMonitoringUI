@@ -73,7 +73,8 @@ namespace FMSMonitoringUI.Monitoring
         #endregion
 
         #region InitGridView
-        private void InitGridView(Dictionary<string, object> rcpItem)
+        //private void InitGridView(Dictionary<string, string> rcpItem)
+        private void InitGridView(List<_recipe_item> rcpItem)
         {
             List<string> lstTitle = new List<string>
             {
@@ -83,9 +84,11 @@ namespace FMSMonitoringUI.Monitoring
             gridRecipeInfo.AddColumnHeaderList(lstTitle);
 
             lstTitle = new List<string>();
+
             foreach (var item in rcpItem)
             {
-                lstTitle.Add(item.Key);
+                //lstTitle.Add(item.Key);
+                lstTitle.Add(item.NAME);
             }
             gridRecipeInfo.AddRowsHeaderList(lstTitle);
 
@@ -93,11 +96,13 @@ namespace FMSMonitoringUI.Monitoring
             gridRecipeInfo.RowsHeight(24);
 
             gridRecipeInfo.SetGridViewStyles();
-            //gridRecipeInfo.ColumnHeadersWidth(0, 140);
+            gridRecipeInfo.ColumnHeadersWidth(0, 300);
 
             for (int i = 0; i < rcpItem.Count; i++)
             {
-                gridRecipeInfo.SetValue(1, i, rcpItem.Values.ToList()[i]);
+                //gridRecipeInfo.SetValue(1, i, rcpItem.Values.ToList()[i]);
+                string val = $"{rcpItem[i].VALUE} {rcpItem[i].UNIT}";
+                gridRecipeInfo.SetValue(1, i, val);
             }
         }
         #endregion
@@ -121,8 +126,8 @@ namespace FMSMonitoringUI.Monitoring
                     }
                     else
                     {
-                        Dictionary<string, object> data = new Dictionary<string, object>();
-                        InitGridView(data);
+                        List<_recipe_item> recipeItem = new List<_recipe_item>();
+                        InitGridView(recipeItem);
                     }
                 }
                 else

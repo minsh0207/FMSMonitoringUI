@@ -37,7 +37,7 @@ namespace FMSMonitoringUI
         /// <summary>
         /// string=Eqp Text, Color=Eqp Status Color
         /// </summary>
-        private Dictionary<string, Color> _EqpStatus = new Dictionary<string, Color>();
+        public Dictionary<string, Color> _EqpStatus = new Dictionary<string, Color>();
         private Dictionary<int, Color> _OpMode = new Dictionary<int, Color>();
         /// <summary>
         /// First=Equipment ID, Second=Eqp Name
@@ -62,14 +62,15 @@ namespace FMSMonitoringUI
             InitializeComponent();
 
             InitFormationBox();
-            
+
+            InitLanguage();     // CtrlMonitoring으로 _EqpStatus를 넘겨줘야 해서 미리 초기화 시킴.
         }
 
         #region CtrlFormationCHG Load
         private void CtrlFormationCHG_Load(object sender, EventArgs e)
         {
             InitControls();
-            InitLanguage();
+            //InitLanguage();
 
             CLogger.WriteLog(enLogLevel.Info, this.Text, "Window Load");
         }
@@ -221,17 +222,21 @@ namespace FMSMonitoringUI
                 //strSQL.Append("         AND (B.unit_id, B.event_time) in (");
                 //strSQL.Append("         SELECT unit_id, max(event_time) as event_time FROM fms_v.tb_dat_temp_unit GROUP BY unit_id)");
 
-                strSQL.Append(" SELECT A.unit_id, A.eqp_name, A.eqp_name_local, A.tray_id, B.tray_id_2,");
+                strSQL.Append(" SELECT A.unit_id, A.eqp_name, A.eqp_name_local, A.tray_id, A.tray_id_2,");
                 strSQL.Append("        A.start_time, A.plan_time, A.process_status, A.operation_mode,");
                 strSQL.Append("        B.*,");
-                strSQL.Append("        C.rework_flag, IF(C.tray_id = B.tray_id, '0', '1') AS Level");
+                strSQL.Append("        C.rework_flag AS rework_tray_1,");
+                strSQL.Append("        D.rework_flag AS rework_tray_2");
                 strSQL.Append(" FROM fms_v.tb_mst_eqp   A");
                 strSQL.Append("     LEFT OUTER JOIN fms_v.tb_dat_temp_unit  B");
-                strSQL.Append("         ON A.unit_id = B.unit_id");
-                strSQL.Append("         AND (B.unit_id, B.event_time) in (");
-                strSQL.Append("         SELECT unit_id, max(event_time) as event_time FROM fms_v.tb_dat_temp_unit GROUP BY unit_id)");
+                strSQL.Append("         ON A.eqp_type = B.eqp_type");
+                strSQL.Append("             AND B.eqp_id = A.eqp_id");
+                strSQL.Append("             AND B.unit_id = A.unit_id");
+                strSQL.Append("             AND B.event_time = (SELECT MAX(event_time) AS event_time_max FROM tb_dat_temp_unit WHERE unit_id = B.unit_id)");
                 strSQL.Append("     LEFT OUTER JOIN fms_v.tb_dat_tray  C");
-                strSQL.Append("         ON C.tray_id IN (B.tray_id, B.tray_id_2)");
+                strSQL.Append("         ON C.tray_id = A.tray_id");
+                strSQL.Append("     LEFT OUTER JOIN fms_v.tb_dat_tray  D");
+                strSQL.Append("         ON D.tray_id = A.tray_id_2");
                 //필수값
                 strSQL.Append($" WHERE A.eqp_id = '{_EqpID}'");
                 strSQL.Append("        AND (A.eqp_type = 'CHG' AND A.unit_id IS NOT NULL)");

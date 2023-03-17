@@ -117,15 +117,14 @@ namespace FMSMonitoringUI.Controlls
         #region setData
         public void SetData(_ctrl_formation_chg data, Color processStatus, Color operationMode)
         {
-            TrayInfoView.SetValue(1, 1, data.TRAY_ID);
-            TrayInfoView.SetValue(1, 2, data.TRAY_ID_2);
+            TrayInfoView.SetValue(1, 1, data.TRAY_ID, data.REWORK_TRAY_1);
+            TrayInfoView.SetValue(1, 2, data.TRAY_ID_2, data.REWORK_TRAY_2);
             TrayInfoView.SetValue(3, 0, data.JIG_AVG);
 
-            TrayInfoView.SetValue(3, 1, data.START_TIME.Year == 1 ? "" : data.START_TIME.ToString());
-            TrayInfoView.SetValue(3, 2, data.PLAN_TIME.Year == 1 ? "" : data.PLAN_TIME.ToString());
-
-            int row = 1 + Convert.ToInt16(data.LEVEL);
-            TrayInfoView.SetReworkTray(1, row, data.REWORK_FLAG);
+            string time = data.START_TIME.ToString("dd-MM-yyyy HH:mm:ss");
+            TrayInfoView.SetValue(3, 1, data.START_TIME.Year == 1 ? "" : time);
+            time = data.PLAN_TIME.ToString("dd-MM-yyyy HH:mm:ss");
+            TrayInfoView.SetValue(3, 2, data.PLAN_TIME.Year == 1 ? "" : time);
 
             SetProcessStatus(data.PROCESS_STATUS, processStatus);
 
@@ -201,7 +200,7 @@ namespace FMSMonitoringUI.Controlls
         }
         #endregion
 
-        #region GetEqpStatus
+        #region GetProcessStatus
         private string GetProcessStatus(string status)
         {
             string statusName = string.Empty;
@@ -223,6 +222,9 @@ namespace FMSMonitoringUI.Controlls
                 case "R":
                     statusName = LocalLanguage.GetItemString("DEF_Running");
                     break;
+                case "E":
+                    statusName = LocalLanguage.GetItemString("DEF_ProcessEnd");
+                    break;
                 case "U":
                     statusName = LocalLanguage.GetItemString("DEF_Unload_Request");
                     break;
@@ -243,6 +245,9 @@ namespace FMSMonitoringUI.Controlls
                     break;
                 case "X":
                     statusName = LocalLanguage.GetItemString("DEF_Not_Use");
+                    break;
+                case "":
+                    statusName = LocalLanguage.GetItemString("DEF_Unload_Complete");
                     break;
             }
 
