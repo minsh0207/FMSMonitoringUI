@@ -290,6 +290,8 @@ namespace FMSMonitoringUI.Controlls
             {
                 lbRackID.Text = LocalLanguage.GetItemString(_LanguageID);
             }
+
+            InitGridView();
         }
         #endregion
 

@@ -100,6 +100,19 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
+        //화면 깜빡임 방지
+        #region CreateParams
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                var cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;
+                return cp;
+            }
+        }
+        #endregion
+
         #region MonitoringTimer
         public void ShowForm()
         {

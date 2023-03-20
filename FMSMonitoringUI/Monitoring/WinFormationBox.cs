@@ -85,6 +85,19 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
+        //화면 깜빡임 방지
+        #region CreateParams
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                var cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;
+                return cp;
+            }
+        }
+        #endregion
+
         #region InitControl
         private void InitControl()
         {
@@ -433,12 +446,12 @@ namespace FMSMonitoringUI.Monitoring
             gridEqpInfo.SetValue(1, row, data[0].EQP_NAME); row++;
             gridEqpInfo.SetValue(1, row, GetEqpStatus(data[0].EQP_MODE)); row++;
             gridEqpInfo.SetValue(1, row, GetEqpStatus(data[0].EQP_STATUS)); row++;
-            gridEqpInfo.SetValue(1, row, GetEqpStatus(data[0].PROCESS_STATUS)); row++;
+            gridEqpInfo.SetValue(1, row, GetProcessStatus(data[0].PROCESS_STATUS)); row++;
             if (data[0].OPERATION_MODE == 0) gridEqpInfo.RowsVisible(row, false);
             else gridEqpInfo.RowsVisible(row, true);
 
             gridEqpInfo.SetValue(1, row, GetOperationMode(data[0].OPERATION_MODE)); row++;
-            gridEqpInfo.SetValue(1, row, data[0].USE_FLAG); row++;
+            gridEqpInfo.SetValue(1, row, data[0].USE_FLAG ?? "Y"); row++;
             gridEqpInfo.SetValue(1, row, data[0].TROUBLE_CODE); row++;
             string troubleName = (CDefine.m_enLanguage == enLoginLanguage.English ? data[0].TROUBLE_NAME : data[0].TROUBLE_NAME_LOCAL);
             gridEqpInfo.SetValue(1, row, troubleName);
@@ -527,6 +540,64 @@ namespace FMSMonitoringUI.Monitoring
                     break;
                 case "F2":
                         statusName = $"{LocalLanguage.GetItemString("DEF_Fire2")}\r\n{LocalLanguage.GetItemString("DEF_Smoke_Only_or_Both")}";
+                    break;
+            }
+
+            return statusName;
+        }
+        #endregion
+
+        #region GetProcessStatus
+        private string GetProcessStatus(string status)
+        {
+            string statusName = string.Empty;
+
+            switch (status)
+            {
+                case "I":
+                    statusName = LocalLanguage.GetItemString("DEF_Idle");
+                    break;
+                case "L":
+                    statusName = LocalLanguage.GetItemString("DEF_Load_Request");
+                    break;
+                case "1":
+                    statusName = LocalLanguage.GetItemString("DEF_Loading");
+                    break;
+                case "A":
+                    statusName = LocalLanguage.GetItemString("DEF_Tray_Arrived");
+                    break;
+                case "R":
+                    statusName = LocalLanguage.GetItemString("DEF_Running");
+                    break;
+                case "E":
+                    statusName = LocalLanguage.GetItemString("DEF_ProcessEnd");
+                    break;
+                case "U":
+                    statusName = LocalLanguage.GetItemString("DEF_Unload_Request");
+                    break;
+                case "2":
+                    statusName = LocalLanguage.GetItemString("DEF_Unloading");
+                    break;
+                case "P":
+                    statusName = LocalLanguage.GetItemString("DEF_Pause");
+                    break;
+                case "S":
+                    statusName = LocalLanguage.GetItemString("DEF_Stop");
+                    break;
+                case "T":
+                    statusName = LocalLanguage.GetItemString("DEF_Trouble");
+                    break;
+                case "F":
+                    statusName = LocalLanguage.GetItemString("DEF_Fire");
+                    break;
+                case "X":
+                    statusName = LocalLanguage.GetItemString("DEF_Not_Use");
+                    break;
+                case "":
+                    statusName = LocalLanguage.GetItemString("DEF_Unload_Complete");
+                    break;
+                default:
+                    statusName = LocalLanguage.GetItemString("DEF_Idle");
                     break;
             }
 

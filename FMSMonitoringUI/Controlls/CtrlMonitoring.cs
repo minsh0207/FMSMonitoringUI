@@ -300,7 +300,6 @@ namespace FMSMonitoringUI.Controlls
             _ListSCrane.Clear();
             _ControlIdx.Clear();
 
-
             CDeviceInfo[] siteInfo = new CDeviceInfo[CDefine.DEF_PLC_SERVER_COUNT];
 
             for (int i = 0; i < CDefine.DEF_PLC_SERVER_COUNT; i++)
@@ -338,12 +337,12 @@ namespace FMSMonitoringUI.Controlls
                             int deviceID = conveyor.CVPLCListDeviceID;
                             ItemInfo itemInfo;
 
-                            //if (site.SiteNo == 1)
+                            //if (site.SiteNo == 1101)
                             //{
                             //    itemInfo = new ItemInfo()
                             //    {
                             //        SiteNo = site.SiteNo,
-                            //        ControlType = enEqpType.CNV,
+                            //        ControlType = enEqpType.RTV,
                             //        GroupNo = deviceID,
                             //        ConveyorNo = conveyor.PLCNo,
                             //        EqpID = GetConveyorEqpID(deviceID)
@@ -523,6 +522,7 @@ namespace FMSMonitoringUI.Controlls
 
                     _EntireEqpList.Add(eqp.EqpID, eqp);
                     eqp.EqpName = _EqpName[eqp.EqpID];
+                    eqp.SetUnitName(_EqpName);
                 }
                 else if (ctl.GetType() == typeof(CtrlEqpMicroCurrent))
                 {
@@ -549,7 +549,6 @@ namespace FMSMonitoringUI.Controlls
             ctrlEqpLTAging4.Click_Evnet += CtrlEqpAging_Click;
 
             ctrlEqpCharger.Click_Evnet += CtrlEqpAging_Click;
-
 
             //int idx = 0;
             //int groupCnt = groupCtrl.Count();
@@ -611,6 +610,25 @@ namespace FMSMonitoringUI.Controlls
                 {
                     CtrlCheckBox cbCtl = ctl as CtrlCheckBox;
                     cbCtl.CallLocalLanguage();
+                }
+            }
+
+            foreach (var ctl in panel2.Controls)
+            {
+                if (ctl.GetType() == typeof(CtrlEqpHTAging))
+                {
+                    CtrlEqpHTAging cbCtl = ctl as CtrlEqpHTAging;
+                    cbCtl.InitLanguage();
+                }
+                else if (ctl.GetType() == typeof(CtrlEqpLTAging))
+                {
+                    CtrlEqpLTAging cbCtl = ctl as CtrlEqpLTAging;
+                    cbCtl.InitLanguage();
+                }
+                else if (ctl.GetType() == typeof(CtrlEqpCharger))
+                {
+                    CtrlEqpCharger cbCtl = ctl as CtrlEqpCharger;
+                    cbCtl.InitLanguage();
                 }
             }
         }
@@ -1129,7 +1147,7 @@ namespace FMSMonitoringUI.Controlls
                 else
                 {
                     int groupno = crane.DeviceID;
-                    int conveyorNo = 101;
+                    int conveyorNo = 1101;
 
                     //List<ReadValueId> cvInfo = _clientFMS[groupno].ConveyorNodeID[conveyorNo];
                     //List<DataValue> data = _clientFMS[groupno].ReadNodeID(cvInfo);
@@ -1640,7 +1658,14 @@ namespace FMSMonitoringUI.Controlls
 
                         if (item.ControlType == enEqpType.CNV)
                         {
-                            ConveyorDataChange(item, change.Value.ToString());
+                            if (item.SiteNo == 1101)
+                            {
+                                RTVDataChange(item, change.Value.ToString());
+                            }
+                            else
+                            {
+                                ConveyorDataChange(item, change.Value.ToString());
+                            }
 
                             //_SubscribeInfo[item.GroupNo].Item[item.SiteNo].GroupNo = item.GroupNo;
                             //_SubscribeInfo[item.GroupNo].Item[item.SiteNo].SiteNo = item.SiteNo;
@@ -1785,35 +1810,35 @@ namespace FMSMonitoringUI.Controlls
                             //log = string.Format("[{0}-CraneNo{1:D2}] {2} = {3}",
                             //    item.ControlType, item.CraneNo + 1, item.BrowseName, change.Value);
                         }
-                        else if (item.ControlType == enEqpType.RTV)
-                        {
-                            RTVDataChange(item, change.Value.ToString());
+                        //else if (item.ControlType == enEqpType.RTV)
+                        //{
+                        //    RTVDataChange(item, change.Value.ToString());
 
-                            //if (item.BrowseName == "EquipmentStatus.Status")
-                            //    _SubscribeInfo[item.GroupNo].Item[item.CraneNo].EqpStatus = Convert.ToInt16(change.Value.ToString());
+                        //    //if (item.BrowseName == "EquipmentStatus.Status")
+                        //    //    _SubscribeInfo[item.GroupNo].Item[item.CraneNo].EqpStatus = Convert.ToInt16(change.Value.ToString());
 
-                            //if (item.BrowseName == "ConveyorInformation.CarriagePos")
-                            //{
-                            //    pos = int.Parse(change.Value.ToString());
-                            //    task = MoveCraneAsync(ctrlSCraneV1, pos, _SubscribeInfo[item.GroupNo].Item[item.CraneNo]);
-                            //}
-                            //else
-                            //{
-                            //    _SubscribeInfo[item.GroupNo].Item[item.CraneNo].CraneName = "RTV";
-                            //    task = StatusCraneAsync(ctrlSCraneV1, _SubscribeInfo[item.GroupNo].Item[item.CraneNo]);
+                        //    //if (item.BrowseName == "ConveyorInformation.CarriagePos")
+                        //    //{
+                        //    //    pos = int.Parse(change.Value.ToString());
+                        //    //    task = MoveCraneAsync(ctrlSCraneV1, pos, _SubscribeInfo[item.GroupNo].Item[item.CraneNo]);
+                        //    //}
+                        //    //else
+                        //    //{
+                        //    //    _SubscribeInfo[item.GroupNo].Item[item.CraneNo].CraneName = "RTV";
+                        //    //    task = StatusCraneAsync(ctrlSCraneV1, _SubscribeInfo[item.GroupNo].Item[item.CraneNo]);
 
-                            //    //if (trayExist)
-                            //    //{
-                            //    //    SiteTagInfo tagInfo = ReadSiteInfo(item);
-                            //    //    task = DisplayBCRAsync(item.SiteNo, tagInfo);
-                            //    //}
+                        //    //    //if (trayExist)
+                        //    //    //{
+                        //    //    //    SiteTagInfo tagInfo = ReadSiteInfo(item);
+                        //    //    //    task = DisplayBCRAsync(item.SiteNo, tagInfo);
+                        //    //    //}
 
-                            //    //task = StatusConveyorAsync(item.SiteNo, trayExist);
-                            //}
+                        //    //    //task = StatusConveyorAsync(item.SiteNo, trayExist);
+                        //    //}
 
-                            //log = string.Format("[{0}-{1:D2}] {2} = {3}",
-                            //    item.ControlType, 1, item.BrowseName, change.Value);
-                        }
+                        //    //log = string.Format("[{0}-{1:D2}] {2} = {3}",
+                        //    //    item.ControlType, 1, item.BrowseName, change.Value);
+                        //}
 
                         //CLogger.WriteLog(enLogLevel.Receive, this.Text, log);
                     }
@@ -1848,18 +1873,28 @@ namespace FMSMonitoringUI.Controlls
             int siteNo = item.SiteNo;
 
             if (item.BrowseName == "ConveyorInformation.TrayExist")
+            {
                 _SubscribeInfo[groupNo].Item[siteNo].TrayExist = Convert.ToBoolean(value);
+
+                if (_SubscribeInfo[groupNo].Item[siteNo].TrayExist)
+                {
+                    SiteTagInfo tagInfo = ReadSiteInfo(item);
+                    task = DisplayBCRAsync(item.GroupNo, item.SiteNo, tagInfo);
+
+                    _SubscribeInfo[groupNo].Item[siteNo].TrayRework = CheckReworkTray(tagInfo.TrayIdL1);
+                }
+            }
 
             if (item.BrowseName == "EquipmentStatus.Status")
                 _SubscribeInfo[groupNo].Item[siteNo].EqpStatus = Convert.ToInt16(value);
 
-            if (_SubscribeInfo[groupNo].Item[siteNo].TrayExist)
-            {
-                SiteTagInfo tagInfo = ReadSiteInfo(item);
-                task = DisplayBCRAsync(item.GroupNo, item.SiteNo, tagInfo);
+            //if (_SubscribeInfo[groupNo].Item[siteNo].TrayExist)
+            //{
+            //    SiteTagInfo tagInfo = ReadSiteInfo(item);
+            //    task = DisplayBCRAsync(item.GroupNo, item.SiteNo, tagInfo);
 
-                _SubscribeInfo[groupNo].Item[siteNo].TrayRework = CheckReworkTray(tagInfo.TrayIdL1);
-            }
+            //    _SubscribeInfo[groupNo].Item[siteNo].TrayRework = CheckReworkTray(tagInfo.TrayIdL1);
+            //}
 
             task = StatusConveyorAsync(item.GroupNo, item.SiteNo, _SubscribeInfo[groupNo].Item[siteNo]);
 
@@ -1888,16 +1923,17 @@ namespace FMSMonitoringUI.Controlls
             }
             else if (item.BrowseName == "Carriage.PosBay")
             {
-                double dBayCnt = 0;
+                double dBayCnt;
+
                 switch (item.CraneNo)
                 {
-                    case 0:     // HT Aging
+                    case 2:     // HT Aging (Device No)
                         dBayCnt = 12;
                         break;
-                    case 3:     // Charger
+                    case 3:     // Charger (Device No)
                         dBayCnt = 5;
                         break;
-                    default:    // LT Aging
+                    default:    // LT Aging (Device No)
                         dBayCnt = 18;
                         break;
                 }
@@ -1934,17 +1970,17 @@ namespace FMSMonitoringUI.Controlls
                 switch (item.GroupNo)
                 {
                     case 1: // LT Aging WaterTank
-                        if (item.CraneNo == 1)   // LT Aging#1 S/Crane
+                        if (item.CraneNo == 0)   // LT Aging#1 S/Crane
                         {
-                            task = StatusConveyorAsync(groupNo, 11, _SubscribeInfo[groupNo].Item[siteNo]);
+                            task = StatusConveyorAsync(groupNo, 1, _SubscribeInfo[groupNo].Item[siteNo]);
                         }
                         else   // LT Aging#2 WaterTank
                         {
-                            task = StatusConveyorAsync(groupNo, 21, _SubscribeInfo[groupNo].Item[siteNo]);
+                            task = StatusConveyorAsync(groupNo, 11, _SubscribeInfo[groupNo].Item[siteNo]);
                         }
                         break;
                     case 2: // HT Aging WaterTank
-                        task = StatusConveyorAsync(groupNo, 1, _SubscribeInfo[groupNo].Item[siteNo]);
+                        task = StatusConveyorAsync(groupNo, 21, _SubscribeInfo[groupNo].Item[siteNo]);
                         break;                    
                     case 3:    // Charger WaterTank
                         task = StatusConveyorAsync(groupNo, 31, _SubscribeInfo[groupNo].Item[siteNo]);
@@ -1979,17 +2015,17 @@ namespace FMSMonitoringUI.Controlls
                     switch (item.GroupNo)
                     {
                         case 1: // LT Aging WaterTank
-                            if (item.CraneNo == 1)   // LT Aging#1 WaterTank
+                            if (item.CraneNo == 0)   // LT Aging#1 WaterTank
                             {
-                                task = StatusConveyorAsync(groupNo, 12, _SubscribeInfo[groupNo].Item[siteNo]);
+                                task = StatusConveyorAsync(groupNo, 2, _SubscribeInfo[groupNo].Item[siteNo]);
                             }
                             else   // LT Aging#2 WaterTank
                             {
-                                task = StatusConveyorAsync(groupNo, 22, _SubscribeInfo[groupNo].Item[siteNo]);
+                                task = StatusConveyorAsync(groupNo, 12, _SubscribeInfo[groupNo].Item[siteNo]);
                             }
                             break;
                         case 2: // HT Aging WaterTank
-                            task = StatusConveyorAsync(groupNo, 2, _SubscribeInfo[groupNo].Item[siteNo]);
+                            task = StatusConveyorAsync(groupNo, 22, _SubscribeInfo[groupNo].Item[siteNo]);
                             break;
                     }
                 }
@@ -2009,20 +2045,23 @@ namespace FMSMonitoringUI.Controlls
             Task task;
 
             int groupNo = item.GroupNo;
-            int craneNo = item.CraneNo;
+            int siteNo = item.SiteNo;
+
+            if (item.BrowseName == "ConveyorInformation.TrayExist")
+                _SubscribeInfo[groupNo].Item[siteNo].TrayExist = Convert.ToBoolean(value);
 
             if (item.BrowseName == "EquipmentStatus.Status")
-                _SubscribeInfo[groupNo].Item[craneNo].EqpStatus = Convert.ToInt16(value);
+                _SubscribeInfo[groupNo].Item[siteNo].EqpStatus = Convert.ToInt16(value);
 
             if (item.BrowseName == "ConveyorInformation.CarriagePos")
             {
                 pos = int.Parse(value);
-                task = MoveCraneAsync(ctrlSCraneV1, pos, _SubscribeInfo[groupNo].Item[craneNo]);
+                task = MoveCraneAsync(ctrlSCraneV1, pos, _SubscribeInfo[groupNo].Item[siteNo]);
             }
             else
             {
-                _SubscribeInfo[groupNo].Item[craneNo].CraneName = "RTV";
-                task = StatusCraneAsync(ctrlSCraneV1, _SubscribeInfo[groupNo].Item[craneNo]);
+                _SubscribeInfo[groupNo].Item[siteNo].CraneName = "RTV";
+                task = StatusCraneAsync(ctrlSCraneV1, _SubscribeInfo[groupNo].Item[siteNo]);
 
                 //if (trayExist)
                 //{
@@ -2105,17 +2144,17 @@ namespace FMSMonitoringUI.Controlls
                 switch (groupNo)
                 {
                     case 1: // LT Aging WaterTank
-                        if (craneNo == 1)   // LT Aging#1 WaterTank
+                        if (craneNo == 0)   // LT Aging#1 WaterTank
                         {
-                            siteNo = 11;
+                            siteNo = 1;
                         }
                         else   // LT Aging#2 WaterTank
                         {
-                            siteNo = 21;
+                            siteNo = 11;
                         }
                         break;
                     case 2: // HT Aging WaterTank
-                        siteNo = 1;
+                        siteNo = 21;
                         break;
                     case 3:
                         siteNo = 31;
@@ -2127,17 +2166,17 @@ namespace FMSMonitoringUI.Controlls
                 switch (groupNo)
                 {
                     case 1: // LT Aging WaterTank
-                        if (craneNo == 1)   // LT Aging#1 WaterTank
+                        if (craneNo == 0)   // LT Aging#1 WaterTank
                         {
-                            siteNo = 12;
+                            siteNo = 2;
                         }
                         else   // LT Aging#2 WaterTank
                         {
-                            siteNo = 22;
+                            siteNo = 12;
                         }
                         break;
                     case 2: // HT Aging WaterTank
-                        siteNo = 2;
+                        siteNo = 22;
                         break;
                 }
             }

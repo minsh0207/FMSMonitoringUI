@@ -139,6 +139,15 @@ namespace FMSMonitoringUI
                     tagName.CallLocalLanguage();
                 }
             }
+
+            foreach (var ctl in splitContainer1.Panel1.Controls)
+            {
+                if (ctl.GetType() == typeof(CtrlRack))
+                {
+                    CtrlRack charger = ctl as CtrlRack;
+                    charger.CallLocalLanguage();
+                }
+            }
         }
         #endregion
 

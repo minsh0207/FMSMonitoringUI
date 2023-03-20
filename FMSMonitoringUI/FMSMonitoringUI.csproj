@@ -157,6 +157,12 @@
     <Compile Include="Controlls\BubbleText.Designer.cs">
       <DependentUpon>BubbleText.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controlls\CtrlRackStatus.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controlls\CtrlRackStatus.Designer.cs">
+      <DependentUpon>CtrlRackStatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controlls\WindowsForms\CtrlComboRoot.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -586,6 +592,9 @@
     <Compile Include="Monitoring\WinFormRoot.Designer.cs">
       <DependentUpon>WinFormRoot.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Controlls\CtrlRackStatus.resx">
+      <DependentUpon>CtrlRackStatus.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controlls\WindowsForms\CtrlComboRoot.resx">
       <DependentUpon>CtrlComboRoot.cs</DependentUpon>
     </EmbeddedResource>
@@ -763,6 +772,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Monitoring\WinFormRoot.fr-FR.resx">
       <DependentUpon>WinFormRoot.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Monitoring\WinManageEqp.resx">
       <DependentUpon>WinManageEqp.cs</DependentUpon>

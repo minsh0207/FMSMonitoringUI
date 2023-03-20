@@ -265,5 +265,12 @@ namespace FMSMonitoringUI.Controlls
             }
         }
         #endregion
+
+        #region CallLocalLanguage
+        public void CallLocalLanguage()
+        {
+            InitGridView();
+        }
+        #endregion
     }
 }

@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace FMSMonitoringUI.Controlls
 {
@@ -38,10 +39,15 @@ namespace FMSMonitoringUI.Controlls
         }
         #endregion
 
-        public List<string> UnitID { get; set; }
+        //public List<string> UnitID { get; set; }
+        /// <summary>
+        /// First=Equipment ID, Second=Eqp Name
+        /// </summary>
+        public Dictionary<string, string> _EqpName;
 
         private Label[,] _chgEqpStatus;
         private Label[,] _chgEqpMode;
+        private CtrlRackStatus[,] _rackStatus;
 
         public CtrlEqpCharger()
         {
@@ -61,66 +67,58 @@ namespace FMSMonitoringUI.Controlls
         #region InitControl
         private void InitControl()
         {
-            _chgEqpStatus = new Label[uiTlbEqpStatus.ColumnCount, uiTlbEqpStatus.RowCount];
-            _chgEqpMode = new Label[uiTlbEqpStatus.ColumnCount, uiTlbEqpStatus.RowCount];
+            _rackStatus = new CtrlRackStatus[uiTlbEqpStatus.ColumnCount, uiTlbEqpStatus.RowCount];
 
-            UnitID = new List<string>();
+            //UnitID = new List<string>();
+            //_EqpName = new Dictionary<string, string>();
 
             for (int col = 0; col < uiTlbEqpStatus.ColumnCount; col++)
             {
                 for (int row = 0; row < uiTlbEqpStatus.RowCount; row++)
                 {
-                    if (col == 2 && row == 0)
-                    {
-                        _chgEqpStatus[col, row] = new Label
-                        {
-                            Text = "  X",
-                            TextAlign = ContentAlignment.MiddleCenter,
-                            BackColor = Color.LightGray
-                        };
-                        _chgEqpMode[col, row] = new Label
-                        {
-                            BackColor = Color.LightGray
-                        };
-                    }
-                    else
-                    {
-                        _chgEqpStatus[col, row] = new Label
-                        {
-                            Text = "I",
-                            TextAlign = ContentAlignment.MiddleCenter,
-                            BackColor = Color.FromArgb(255, 255, 128)
-                        };
 
-                        _chgEqpMode[col, row] = new Label
-                        {
-                            BackColor = Color.FromArgb(197, 135, 21)
-                        };
-                        
-                    }
+                    _rackStatus[col, row] = new CtrlRackStatus();
+                    _rackStatus[col, row].Dock = DockStyle.Left;
 
-                    uiTlbEqpStatus.Controls.Add(_chgEqpStatus[col, row], col, row);
+                    int floor = 4 - row;
+                    string unitID = string.Format($"CHG0110{col + 1}0{floor}");
 
-                    string chgUnitID = string.Format($"CHG0110{col+1}0{row+1}");
-                    UnitID.Add(chgUnitID);
+                    _rackStatus[col, row].EqpType = EqpType;
+                    //_rackStatus[col, row].EqpName = _EqpName[unitID];
+                    _rackStatus[col, row].UnitID = unitID;
+
+                    uiTlbEqpStatus.Controls.Add(_rackStatus[col, row], col, row);
                 }
             }
 
-            for (int row = 0; row < uiTlbEqpStatus.RowCount; row++)
-            {
-                uiTlbEqpMode1.Controls.Add(_chgEqpMode[0, row], 0, row);
-                uiTlbEqpMode2.Controls.Add(_chgEqpMode[1, row], 0, row);
-                uiTlbEqpMode3.Controls.Add(_chgEqpMode[2, row], 0, row);
-            }
+            _rackStatus[2, 0].SetData("", Color.LightGray, "X", Color.LightGray);
         }
         #endregion
 
         #region InitLanguage
-        private void InitLanguage()
+        public void InitLanguage()
         {
             btnLeadTime.CallLocalLanguage();
         }
         #endregion
+
+        public void SetUnitName(Dictionary<string, string> eqpName)
+        {
+            int maxFloor = uiTlbEqpStatus.RowCount;
+            int maxBay = uiTlbEqpStatus.ColumnCount;
+
+            for (int col = 0; col < maxBay; col++)
+            {
+                for (int row = 0; row < maxFloor; row++)
+                {   
+                    int floor = maxFloor - row;
+                    string unitID = string.Format($"CHG0110{col + 1}0{floor}");
+
+                    if (col == 2 && floor == 4) continue;       // CHG0110304는 사용하지 않음.
+                    _rackStatus[col, row].EqpName = eqpName[unitID];
+                }
+            }
+        }
 
         #region setData
         public void SetData(List<_entire_eqp_list> data,
@@ -129,19 +127,24 @@ namespace FMSMonitoringUI.Controlls
         {
             try
             {
+                int maxFloor = uiTlbEqpStatus.RowCount;
+                int maxBay = uiTlbEqpStatus.ColumnCount;
+
                 for (int i = 0; i < data.Count; i++)
                 {
                     if (data[i].UNIT_ID == null) continue;
 
-                    int col = i / 4;    // int.Parse(data[i].UNIT_ID.Substring(data[i].UNIT_ID.Length - 3, 1)) - 1;
-                    int row = 3 - (i % 4);    // uiTlbEqpStatus.RowCount - int.Parse(data[i].UNIT_ID.Substring(data[i].UNIT_ID.Length - 1, 1));
+                    int col = i / maxFloor;    // int.Parse(data[i].UNIT_ID.Substring(data[i].UNIT_ID.Length - 3, 1)) - 1;
+                    int row = maxBay - (i % maxFloor);    // uiTlbEqpStatus.RowCount - int.Parse(data[i].UNIT_ID.Substring(data[i].UNIT_ID.Length - 1, 1));
 
-                    string status = data[i].PROCESS_STATUS == null ? "I" : data[i].PROCESS_STATUS.ToString();
-                    _chgEqpStatus[col, row].Text = string.Format($"  {status}");
-                    _chgEqpStatus[col, row].BackColor = processStatus[status];
+                    string status = data[i].PROCESS_STATUS ?? "I";
+                    _rackStatus[col, row].SetData(data[i].EQP_MODE, eqpStatus[data[i].EQP_MODE].Value, status, processStatus[status]);
+                    
+                    //_chgEqpStatus[col, row].Text = string.Format($"  {status}");
+                    //_chgEqpStatus[col, row].BackColor = processStatus[status];
 
-                    _chgEqpMode[col, row].Text = string.Format($"  {data[i].EQP_MODE}");
-                    _chgEqpMode[col, row].BackColor = eqpStatus[data[i].EQP_MODE].Value;
+                    //_chgEqpMode[col, row].Text = string.Format($"  {data[i].EQP_MODE}");
+                    //_chgEqpMode[col, row].BackColor = eqpStatus[data[i].EQP_MODE].Value;
                 }
             }
             catch (Exception ex)
@@ -221,16 +224,16 @@ namespace FMSMonitoringUI.Controlls
         }
         #endregion
 
-        #region lbEqpType_MouseClick
-        private void lbEqpType_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (((MouseEventArgs)e).Button == MouseButtons.Right)
-            {
-                WinTroubleInfo winTroubleInfo = new WinTroubleInfo("Charge/Discharge", _EqpType, EqpID, "");
-                winTroubleInfo.ShowDialog();
-            }
-        }
-        #endregion
+        //#region lbEqpType_MouseClick
+        //private void lbEqpType_MouseClick(object sender, MouseEventArgs e)
+        //{
+        //    if (((MouseEventArgs)e).Button == MouseButtons.Right)
+        //    {
+        //        WinTroubleInfo winTroubleInfo = new WinTroubleInfo("Charge/Discharge", _EqpType, EqpID, "");
+        //        winTroubleInfo.ShowDialog();
+        //    }
+        //}
+        //#endregion
 
         #region TitleBarLavel Click
         private void CtrlButton1_Click(object sender, EventArgs e)
@@ -240,12 +243,12 @@ namespace FMSMonitoringUI.Controlls
         }
         #endregion
 
-        public void uiTlbEqpStatus_Click(object sender, MouseEventArgs e)
-        {
+        //public void uiTlbEqpStatus_Click(object sender, MouseEventArgs e)
+        //{
 
-            //MessageBox.Show("Cell chosen: (" +
-            //                 uiTlbEqpStatus.GetRow((Panel)sender) + ", " +
-            //                 uiTlbEqpStatus.GetColumn((Panel)sender) + ")");
-        }
+        //    //MessageBox.Show("Cell chosen: (" +
+        //    //                 uiTlbEqpStatus.GetRow((Panel)sender) + ", " +
+        //    //                 uiTlbEqpStatus.GetColumn((Panel)sender) + ")");
+        //}
     }
 }

@@ -25,6 +25,8 @@ namespace ControlGallery
             CalcSiteRects();
         }
 
+        private bool _TrayOn = false;
+
         #region [Class Vars]
 
         SiteBox[] _siteBoxes;
@@ -396,6 +398,8 @@ namespace ControlGallery
 
         public void UpdateTrackStatus(int siteNo, bool trayOn, bool trayRework, int eqpStatus)
         {
+            _TrayOn = trayOn;
+
             foreach (SiteBox box in _siteBoxes)
             {
                 if (box.SiteNo == siteNo)
@@ -483,7 +487,7 @@ namespace ControlGallery
                                         break;
                                 }
 
-                                g.DrawString(siteTitle[sitebox.SiteNo], this.Font, Brushes.White, rectangle);
+                                g.DrawString(siteTitle[sitebox.SiteNo], this.Font, (_TrayOn ? Brushes.Black : Brushes.White), rectangle);
                             }
                         }
                     }

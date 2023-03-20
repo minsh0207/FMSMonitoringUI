@@ -283,7 +283,7 @@
     <value>FR-End Time</value>
   </data>
   <data name="DEF_Entire_Formation_Line" xml:space="preserve">
-    <value>Entire Formation Line</value>
+    <value>FR-Entire Formation Line</value>
   </data>
   <data name="DEF_EQP_ID" xml:space="preserve">
     <value>FR-EQP ID</value>
@@ -517,7 +517,7 @@
     <value>FR-Cell Model</value>
   </data>
   <data name="DEF_MZ/DP" xml:space="preserve">
-    <value>FR-MZ/DP</value>
+    <value>FR-Magazine/Dispenser</value>
   </data>
   <data name="DEF_Name" xml:space="preserve">
     <value>FR-Name</value>

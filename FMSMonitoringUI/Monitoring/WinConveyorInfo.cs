@@ -95,6 +95,19 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
+        //화면 깜빡임 방지
+        #region CreateParams
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                var cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;
+                return cp;
+            }
+        }
+        #endregion
+
         #region MonitoringTimer
         public void ShowForm()
         {
@@ -132,12 +145,12 @@ namespace FMSMonitoringUI.Monitoring
             {
                 LocalLanguage.GetItemString("DEF_Track_No"),
                 LocalLanguage.GetItemString("DEF_Conveyor_Trye"),
-                LocalLanguage.GetItemString("DEF_Station_Status"),
                 LocalLanguage.GetItemString("DEF_Tray_Exist").Replace(" :", ""),
                 LocalLanguage.GetItemString("DEF_Tray_Type"),
                 LocalLanguage.GetItemString("DEF_Tray_Count"),
                 LocalLanguage.GetItemString("DEF_Tray_ID_1"),
                 LocalLanguage.GetItemString("DEF_Tray_ID_2"),
+                LocalLanguage.GetItemString("DEF_Station_Status"),
                 LocalLanguage.GetItemString("DEF_Carriage_Position"),
                 LocalLanguage.GetItemString("DEF_Destination")
             };
@@ -201,13 +214,6 @@ namespace FMSMonitoringUI.Monitoring
             gridCVInfo.SetValue(1, row, trackNo); row++;            
             gridCVInfo.SetValue(1, row, GetConveyorType(data[(int)enCVTagList.ConveyorType].Value)); row++;
 
-            if (CheckStationStatus(data[(int)enCVTagList.ConveyorType].Value)) 
-                gridCVInfo.RowsVisible(row, true);
-            else 
-                gridCVInfo.RowsVisible(row, false);
-
-            gridCVInfo.SetValue(1, row, GetStationStatus(data[(int)enCVTagList.StationStatus].Value)); row++;
-
             bool trayExist = Convert.ToBoolean(data[(int)enCVTagList.TrayExist].Value);
             //gridCVInfo.SetValue(1, row, (trayExist == true ? "Exist" : "Not Exist")); row++;
             ledTrayExist.LedOnOff(trayExist); row++;
@@ -224,6 +230,13 @@ namespace FMSMonitoringUI.Monitoring
 
             _trayID1 = Convert.ToString(data[(int)enCVTagList.TrayIdL1].Value);
             _trayID2 = Convert.ToString(data[(int)enCVTagList.TrayIdL2].Value);
+
+            if (CheckStationStatus(data[(int)enCVTagList.ConveyorType].Value))
+                gridCVInfo.RowsVisible(row, true);
+            else
+                gridCVInfo.RowsVisible(row, false);
+
+            gridCVInfo.SetValue(1, row, GetStationStatus(data[(int)enCVTagList.StationStatus].Value)); row++;
 
             if (_cvTitle == "RTV") gridCVInfo.RowsVisible(row, true);
             else gridCVInfo.RowsVisible(row, false);
@@ -321,6 +334,9 @@ namespace FMSMonitoringUI.Monitoring
                     break;
                 case 256:
                     ret = "MZ / DP";
+                    break;
+                case 512:
+                    ret = "RTV";
                     break;
             }
 

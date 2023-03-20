@@ -39,12 +39,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.uiTlbEqpStatus = new System.Windows.Forms.TableLayoutPanel();
-            this.ctrlLine1 = new MonitoringUI.Controlls.CtrlLine();
-            this.ctrlLine2 = new MonitoringUI.Controlls.CtrlLine();
-            this.ctrlLine3 = new MonitoringUI.Controlls.CtrlLine();
-            this.uiTlbEqpMode1 = new System.Windows.Forms.TableLayoutPanel();
-            this.uiTlbEqpMode2 = new System.Windows.Forms.TableLayoutPanel();
-            this.uiTlbEqpMode3 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -65,8 +59,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.btnLeadTime);
-            this.splitContainer1.Size = new System.Drawing.Size(163, 27);
-            this.splitContainer1.SplitterDistance = 62;
+            this.splitContainer1.Size = new System.Drawing.Size(161, 27);
+            this.splitContainer1.SplitterDistance = 61;
             this.splitContainer1.TabIndex = 57;
             // 
             // lbTitle
@@ -76,11 +70,10 @@
             this.lbTitle.ForeColor = System.Drawing.Color.White;
             this.lbTitle.Location = new System.Drawing.Point(0, 0);
             this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(60, 25);
+            this.lbTitle.Size = new System.Drawing.Size(59, 25);
             this.lbTitle.TabIndex = 42;
             this.lbTitle.Text = "CHG";
             this.lbTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lbTitle.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseClick);
             this.lbTitle.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbEqpType_MouseDoubleClick);
             // 
             // btnLeadTime
@@ -93,7 +86,7 @@
             this.btnLeadTime.LanguageID = "DEF_Lead_Time";
             this.btnLeadTime.Location = new System.Drawing.Point(0, 0);
             this.btnLeadTime.Name = "btnLeadTime";
-            this.btnLeadTime.Size = new System.Drawing.Size(95, 25);
+            this.btnLeadTime.Size = new System.Drawing.Size(94, 25);
             this.btnLeadTime.TabIndex = 0;
             // 
             // label12
@@ -140,7 +133,7 @@
             // 
             this.label16.Font = new System.Drawing.Font("돋움", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label16.ForeColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(30, 119);
+            this.label16.Location = new System.Drawing.Point(30, 118);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(32, 11);
             this.label16.TabIndex = 75;
@@ -150,7 +143,7 @@
             // 
             this.label17.Font = new System.Drawing.Font("돋움", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(75, 119);
+            this.label17.Location = new System.Drawing.Point(76, 118);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(32, 11);
             this.label17.TabIndex = 76;
@@ -160,7 +153,7 @@
             // 
             this.label18.Font = new System.Drawing.Font("돋움", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label18.ForeColor = System.Drawing.Color.White;
-            this.label18.Location = new System.Drawing.Point(119, 119);
+            this.label18.Location = new System.Drawing.Point(119, 118);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(32, 11);
             this.label18.TabIndex = 77;
@@ -172,81 +165,19 @@
             this.uiTlbEqpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.uiTlbEqpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.uiTlbEqpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.uiTlbEqpStatus.Location = new System.Drawing.Point(24, 37);
+            this.uiTlbEqpStatus.Font = new System.Drawing.Font("돋움", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.uiTlbEqpStatus.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.uiTlbEqpStatus.Location = new System.Drawing.Point(26, 33);
+            this.uiTlbEqpStatus.Margin = new System.Windows.Forms.Padding(1);
             this.uiTlbEqpStatus.Name = "uiTlbEqpStatus";
+            this.uiTlbEqpStatus.Padding = new System.Windows.Forms.Padding(1);
             this.uiTlbEqpStatus.RowCount = 4;
             this.uiTlbEqpStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.uiTlbEqpStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.uiTlbEqpStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.uiTlbEqpStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.uiTlbEqpStatus.Size = new System.Drawing.Size(134, 76);
+            this.uiTlbEqpStatus.Size = new System.Drawing.Size(133, 83);
             this.uiTlbEqpStatus.TabIndex = 78;
-            // 
-            // ctrlLine1
-            // 
-            this.ctrlLine1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlLine1.Location = new System.Drawing.Point(24, 54);
-            this.ctrlLine1.Name = "ctrlLine1";
-            this.ctrlLine1.Size = new System.Drawing.Size(132, 3);
-            this.ctrlLine1.TabIndex = 79;
-            // 
-            // ctrlLine2
-            // 
-            this.ctrlLine2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlLine2.Location = new System.Drawing.Point(24, 74);
-            this.ctrlLine2.Name = "ctrlLine2";
-            this.ctrlLine2.Size = new System.Drawing.Size(132, 3);
-            this.ctrlLine2.TabIndex = 80;
-            // 
-            // ctrlLine3
-            // 
-            this.ctrlLine3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ctrlLine3.Location = new System.Drawing.Point(24, 93);
-            this.ctrlLine3.Name = "ctrlLine3";
-            this.ctrlLine3.Size = new System.Drawing.Size(132, 3);
-            this.ctrlLine3.TabIndex = 81;
-            // 
-            // uiTlbEqpMode1
-            // 
-            this.uiTlbEqpMode1.ColumnCount = 1;
-            this.uiTlbEqpMode1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.uiTlbEqpMode1.Location = new System.Drawing.Point(24, 37);
-            this.uiTlbEqpMode1.Name = "uiTlbEqpMode1";
-            this.uiTlbEqpMode1.RowCount = 4;
-            this.uiTlbEqpMode1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.uiTlbEqpMode1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.uiTlbEqpMode1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.uiTlbEqpMode1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.uiTlbEqpMode1.Size = new System.Drawing.Size(10, 76);
-            this.uiTlbEqpMode1.TabIndex = 79;
-            // 
-            // uiTlbEqpMode2
-            // 
-            this.uiTlbEqpMode2.ColumnCount = 1;
-            this.uiTlbEqpMode2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.uiTlbEqpMode2.Location = new System.Drawing.Point(70, 37);
-            this.uiTlbEqpMode2.Name = "uiTlbEqpMode2";
-            this.uiTlbEqpMode2.RowCount = 4;
-            this.uiTlbEqpMode2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.uiTlbEqpMode2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.uiTlbEqpMode2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.uiTlbEqpMode2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.uiTlbEqpMode2.Size = new System.Drawing.Size(10, 76);
-            this.uiTlbEqpMode2.TabIndex = 80;
-            // 
-            // uiTlbEqpMode3
-            // 
-            this.uiTlbEqpMode3.ColumnCount = 1;
-            this.uiTlbEqpMode3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.uiTlbEqpMode3.Location = new System.Drawing.Point(115, 37);
-            this.uiTlbEqpMode3.Name = "uiTlbEqpMode3";
-            this.uiTlbEqpMode3.RowCount = 4;
-            this.uiTlbEqpMode3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.uiTlbEqpMode3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.uiTlbEqpMode3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.uiTlbEqpMode3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.uiTlbEqpMode3.Size = new System.Drawing.Size(10, 76);
-            this.uiTlbEqpMode3.TabIndex = 82;
             // 
             // CtrlEqpCharger
             // 
@@ -254,12 +185,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Controls.Add(this.ctrlLine3);
-            this.Controls.Add(this.ctrlLine2);
-            this.Controls.Add(this.ctrlLine1);
-            this.Controls.Add(this.uiTlbEqpMode3);
-            this.Controls.Add(this.uiTlbEqpMode2);
-            this.Controls.Add(this.uiTlbEqpMode1);
+            this.Controls.Add(this.uiTlbEqpStatus);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label16);
@@ -268,9 +194,8 @@
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.splitContainer1);
-            this.Controls.Add(this.uiTlbEqpStatus);
             this.Name = "CtrlEqpCharger";
-            this.Size = new System.Drawing.Size(163, 134);
+            this.Size = new System.Drawing.Size(161, 134);
             this.Load += new System.EventHandler(this.CtrlEqpCharger_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -293,11 +218,5 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TableLayoutPanel uiTlbEqpStatus;
-        private MonitoringUI.Controlls.CtrlLine ctrlLine1;
-        private MonitoringUI.Controlls.CtrlLine ctrlLine2;
-        private MonitoringUI.Controlls.CtrlLine ctrlLine3;
-        private System.Windows.Forms.TableLayoutPanel uiTlbEqpMode1;
-        private System.Windows.Forms.TableLayoutPanel uiTlbEqpMode2;
-        private System.Windows.Forms.TableLayoutPanel uiTlbEqpMode3;
     }
 }

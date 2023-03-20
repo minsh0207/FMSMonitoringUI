@@ -229,7 +229,7 @@ namespace MonitoringUI.Monitoring
         #endregion
 
         #region InitGridView
-        private void InitGridView()
+        private void InitGridView(bool changeLanguage = false)
         {
             string[] columnName = {
                 LocalLanguage.GetItemString("DEF_Status_Name"), 
@@ -272,9 +272,13 @@ namespace MonitoringUI.Monitoring
             AgingInfoView_LT2.SetGridViewStyles();
             AgingInfoView_LT2.ColumnHeadersWidth(0, 140);
 
-            AgingTab.SelectedIndex = 0;
-            _AgingType = "H";
-            _AgingLine = "01";
+            if (changeLanguage == false)
+            {
+                AgingTab.SelectedIndex = 0;
+
+                _AgingType = "H";
+                _AgingLine = "01";
+            }
         }
         #endregion
 
@@ -305,6 +309,8 @@ namespace MonitoringUI.Monitoring
                     tagName.CallLocalLanguage();
                 }
             }
+
+            InitGridView(true);
         }
         #endregion
 

@@ -33,6 +33,7 @@ namespace FMSMonitoringUI.Monitoring
             titBar.TitleText = $"{recipeID} {LocalLanguage.GetItemString("DEF_Recipe_Information")}";
         }
 
+        #region WinRecipeInfo_Load
         private void WinRecipeInfo_Load(object sender, EventArgs e)
         {
             if (CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, this.Text) == false)
@@ -54,6 +55,20 @@ namespace FMSMonitoringUI.Monitoring
 
             CLogger.WriteLog(enLogLevel.Info, this.WindowID, "Window Load");
         }
+        #endregion
+
+        //화면 깜빡임 방지
+        #region CreateParams
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                var cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;
+                return cp;
+            }
+        }
+        #endregion
 
         #region InitControl
         private void InitControl()

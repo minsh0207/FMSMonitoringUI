@@ -63,7 +63,7 @@ namespace FMSMonitoringUI.Controlls
         #endregion
 
         #region InitLanguage
-        private void InitLanguage()
+        public void InitLanguage()
         {
             btnLeadTime.CallLocalLanguage();
 

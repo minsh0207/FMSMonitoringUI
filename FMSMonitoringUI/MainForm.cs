@@ -1004,21 +1004,23 @@ namespace FMSMonitoringUI
         {
             CheckLogin();
 
+            InitLanguage();
+
             //this.Invoke(new MethodInvoker(delegate ()
             //{
-                if (this.Text.Substring(0, 9) == "[MON-001]")
-                {
+            //if (this.Text.Substring(0, 9) == "[MON-001]")
+            {
                     _CtrlMonitoring.InitLanguage();
                 }
-                else if (this.Text.Substring(0, 9) == "[MON-002]")
+                //else if (this.Text.Substring(0, 9) == "[MON-002]")
                 {
                     _CtrlAging.InitLanguage();
                 }
-                else if (this.Text.Substring(0, 9) == "[MON-003]")
+                //else if (this.Text.Substring(0, 9) == "[MON-003]")
                 {
                     _CtrlFormationCHG.InitLanguage();
                 }
-                else if (this.Text.Substring(0, 9) == "[MON-004]")
+                //else if (this.Text.Substring(0, 9) == "[MON-004]")
                 {
                     _CtrlFormationHPC.InitLanguage();
                 }

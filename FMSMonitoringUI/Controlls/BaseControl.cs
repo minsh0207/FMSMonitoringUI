@@ -358,6 +358,12 @@ namespace ControlGallery
                             ret |= EnumDeviceStatus.TrayRework;
                         else
                             ret |= EnumDeviceStatus.TrayOn;
+
+                        // Font색상을 검정색으로 변경
+                    }
+                    else
+                    {
+
                     }
                     break;
             }
