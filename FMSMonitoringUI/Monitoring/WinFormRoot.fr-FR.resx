@@ -316,7 +316,7 @@
     <value>FR-Event Time</value>
   </data>
   <data name="DEF_Exit" xml:space="preserve">
-    <value>FR-Exit</value>
+    <value>FR-Close</value>
   </data>
   <data name="DEF_Fire" xml:space="preserve">
     <value>FR-Fire</value>
@@ -863,5 +863,17 @@
   </data>
   <data name="DEF_Unload_Complete" xml:space="preserve">
     <value>FR-Unload Complete</value>
+  </data>
+  <data name="DEF_Track_Pause" xml:space="preserve">
+    <value>FR-Track Pause</value>
+  </data>
+  <data name="DEF_Write" xml:space="preserve">
+    <value>FR-Write</value>
+  </data>
+  <data name="DEF_RTV_From" xml:space="preserve">
+    <value>FR-RTV From</value>
+  </data>
+  <data name="DEF_RTV_To" xml:space="preserve">
+    <value>FR-RTV To</value>
   </data>
 </root>

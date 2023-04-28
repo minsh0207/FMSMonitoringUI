@@ -64,7 +64,7 @@ namespace FMSMonitoringUI.Monitoring
         #region WinCraneInfo
         private void WinCraneInfo_Load(object sender, EventArgs e)
         {
-            if (CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, this.Text) == false)
+            if (CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, this.Name) == false)
             {
                 Exit_Click(null, null);
                 return;

@@ -99,27 +99,61 @@ namespace FMSMonitoringUI.Controlls
         {
             for (int i = 0; i < data.Count; i++)
             {
-                int col = 1;
+                int col = 1;                
 
-                TrayInfoView.SetValue(col, i, data[i].JIG_11); col++;
-                TrayInfoView.SetValue(col, i, data[i].JIG_12); col++;
-                TrayInfoView.SetValue(col, i, data[i].JIG_13); col++;
-                TrayInfoView.SetValue(col, i, data[i].JIG_14); col++;
-                TrayInfoView.SetValue(col, i, data[i].JIG_15); col++;
-                TrayInfoView.SetValue(col, i, data[i].JIG_16); col++;
-                TrayInfoView.SetValue(col, i, data[i].JIG_17); col++;
-                TrayInfoView.SetValue(col, i, data[i].JIG_18); col++;
+                TrayInfoView.SetValue(col, i, data[i].JIG_11); 
+                TrayInfoView.SetStyleForeColor(col, i, CheckTempLimit(data[i].JIG_11, data[i].EQP_TEMP_LSL, data[i].EQP_TEMP_USL)); col++;
+                TrayInfoView.SetValue(col, i, data[i].JIG_12);
+                TrayInfoView.SetStyleForeColor(col, i, CheckTempLimit(data[i].JIG_12, data[i].EQP_TEMP_LSL, data[i].EQP_TEMP_USL)); col++;
+                TrayInfoView.SetValue(col, i, data[i].JIG_13);
+                TrayInfoView.SetStyleForeColor(col, i, CheckTempLimit(data[i].JIG_13, data[i].EQP_TEMP_LSL, data[i].EQP_TEMP_USL)); col++;
+                TrayInfoView.SetValue(col, i, data[i].JIG_14);
+                TrayInfoView.SetStyleForeColor(col, i, CheckTempLimit(data[i].JIG_14, data[i].EQP_TEMP_LSL, data[i].EQP_TEMP_USL)); col++;
+                TrayInfoView.SetValue(col, i, data[i].JIG_15);
+                TrayInfoView.SetStyleForeColor(col, i, CheckTempLimit(data[i].JIG_15, data[i].EQP_TEMP_LSL, data[i].EQP_TEMP_USL)); col++;
+                TrayInfoView.SetValue(col, i, data[i].JIG_16);
+                TrayInfoView.SetStyleForeColor(col, i, CheckTempLimit(data[i].JIG_16, data[i].EQP_TEMP_LSL, data[i].EQP_TEMP_USL)); col++;
+                TrayInfoView.SetValue(col, i, data[i].JIG_17);
+                TrayInfoView.SetStyleForeColor(col, i, CheckTempLimit(data[i].JIG_17, data[i].EQP_TEMP_LSL, data[i].EQP_TEMP_USL)); col++;
+                TrayInfoView.SetValue(col, i, data[i].JIG_18);
+                TrayInfoView.SetStyleForeColor(col, i, CheckTempLimit(data[i].JIG_18, data[i].EQP_TEMP_LSL, data[i].EQP_TEMP_USL)); col++;
 
                 // Upper JIG 온도
-                TrayInfoView.SetValue(col, i, data[i].JIG_21); col++;
-                TrayInfoView.SetValue(col, i, data[i].JIG_22); col++;
-                TrayInfoView.SetValue(col, i, data[i].JIG_23); col++;
-                TrayInfoView.SetValue(col, i, data[i].JIG_24); col++;
-                TrayInfoView.SetValue(col, i, data[i].JIG_25); col++;
-                TrayInfoView.SetValue(col, i, data[i].JIG_26); col++;
-                TrayInfoView.SetValue(col, i, data[i].JIG_27); col++;
+                TrayInfoView.SetValue(col, i, data[i].JIG_21);
+                TrayInfoView.SetStyleForeColor(col, i, CheckTempLimit(data[i].JIG_21, data[i].EQP_TEMP_LSL, data[i].EQP_TEMP_USL)); col++;
+                TrayInfoView.SetValue(col, i, data[i].JIG_22);
+                TrayInfoView.SetStyleForeColor(col, i, CheckTempLimit(data[i].JIG_22, data[i].EQP_TEMP_LSL, data[i].EQP_TEMP_USL)); col++;
+                TrayInfoView.SetValue(col, i, data[i].JIG_23);
+                TrayInfoView.SetStyleForeColor(col, i, CheckTempLimit(data[i].JIG_23, data[i].EQP_TEMP_LSL, data[i].EQP_TEMP_USL)); col++;
+                TrayInfoView.SetValue(col, i, data[i].JIG_24);
+                TrayInfoView.SetStyleForeColor(col, i, CheckTempLimit(data[i].JIG_24, data[i].EQP_TEMP_LSL, data[i].EQP_TEMP_USL)); col++;
+                TrayInfoView.SetValue(col, i, data[i].JIG_25);
+                TrayInfoView.SetStyleForeColor(col, i, CheckTempLimit(data[i].JIG_25, data[i].EQP_TEMP_LSL, data[i].EQP_TEMP_USL)); col++;
+                TrayInfoView.SetValue(col, i, data[i].JIG_26);
+                TrayInfoView.SetStyleForeColor(col, i, CheckTempLimit(data[i].JIG_26, data[i].EQP_TEMP_LSL, data[i].EQP_TEMP_USL)); col++;
+                TrayInfoView.SetValue(col, i, data[i].JIG_27);
+                TrayInfoView.SetStyleForeColor(col, i, CheckTempLimit(data[i].JIG_27, data[i].EQP_TEMP_LSL, data[i].EQP_TEMP_USL)); col++;
                 TrayInfoView.SetValue(col, i, data[i].JIG_28);
+                TrayInfoView.SetStyleForeColor(col, i, CheckTempLimit(data[i].JIG_28, data[i].EQP_TEMP_LSL, data[i].EQP_TEMP_USL));
             }
+        }
+        #endregion
+
+        #region CheckTempLimit
+        private Color CheckTempLimit(float temp, float spacTemplsl, float spacTempusl)
+        {
+            Color tempColor = Color.White;
+
+            if (temp <= spacTemplsl)
+            {
+                tempColor = Color.Blue;
+            }
+            if (temp >= spacTempusl)
+            {
+                tempColor = Color.Red;
+            }
+
+            return tempColor;
         }
         #endregion
     }

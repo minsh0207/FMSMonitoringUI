@@ -1,5 +1,4 @@
 ﻿using ControlGallery;
-using DBHandler;
 using FMSMonitoringUI.Controlls;
 using FMSMonitoringUI.Controlls.WindowsForms;
 using MonitoringUI;
@@ -343,6 +342,8 @@ namespace FMSMonitoringUI
         }
         #endregion
 
+        
+
         //private void HPC_MouseDoubleClick(object sender, MouseEventArgs e)
         //{
         //    ;
@@ -597,6 +598,8 @@ namespace FMSMonitoringUI
 
             return strJIGNo.ToString();
         }
+
+
 
         
     }

@@ -99,6 +99,7 @@
     <Compile Include="Monitoring\_jsonCtrlFormationCHG.cs" />
     <Compile Include="Monitoring\_jsonManualCommand.cs" />
     <Compile Include="Monitoring\_jsonTroubleAging.cs" />
+    <Compile Include="Monitoring\_jsonTroubleConveyor.cs" />
     <Compile Include="Monitoring\_jsonTroubleEquipment.cs" />
     <Compile Include="Monitoring\_jsonEntireEqpList.cs" />
     <Compile Include="Monitoring\_jsonReworkTray.cs" />

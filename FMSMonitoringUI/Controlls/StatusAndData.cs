@@ -8,19 +8,19 @@ namespace ControlGallery
         public int CVPLCListDeviceID;
         public int SiteNo;
         public EnumDeviceStatus DeviceStatus = EnumDeviceStatus.None;
-        public short WordStatus;
-        public short WordTroubleCode;
+        public int TrackPause;
+        public int TrayOn;
         public short[] DataWordArray;
 
         public bool IsControled = true;
-        public void SetData(int plcno, int plc_reader_id, int siteno, EnumDeviceStatus status = EnumDeviceStatus.None, short wst = 0, short wtr = 0, short[] data_arr = null)
+        public void SetData(int plcno, int plc_reader_id, int siteno, EnumDeviceStatus status = EnumDeviceStatus.None, int pause = 0, int trayExist = 0, short[] data_arr = null)
         {
             PLCNo = plcno;
             CVPLCListDeviceID = plc_reader_id;
             SiteNo = siteno;
             DeviceStatus = status;
-            WordStatus = wst;
-            WordTroubleCode = wtr;
+            TrackPause = pause;
+            TrayOn = trayExist;
             DataWordArray = data_arr;
         }
 
@@ -37,7 +37,8 @@ namespace ControlGallery
         Online = 1,
         TrayOn = 2,
         TrayRework = 4,
-        PLCTrouble = 8
+        PLCTrouble = 8,
+        TrackPause = 16
 
         //,NormalStateBegin = 1
 
@@ -65,7 +66,7 @@ namespace ControlGallery
         //,RouteNotFound = 32768
         //,PLCTrouble = 65536
 
-        , MAXVALUE
+        //MAXVALUE
     }
 
 }

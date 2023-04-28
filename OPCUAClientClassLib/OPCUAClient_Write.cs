@@ -105,5 +105,30 @@ namespace OPCUAClientClassLib
                 null);
             return results;     // Good = 0
         }
+
+        public void NodesToWriteValue(List<InfoData> dataList)
+        {
+            if (dataList.Count() == 0) return;
+
+            List<WriteValue> nodesToWrite = new List<WriteValue>();
+
+            foreach (var item in dataList)
+            {
+                DataValue dataValue = new DataValue
+                {
+                    Value = TypeUtils.Cast(item.Value, item.Type)
+                };
+
+                nodesToWrite.Add(new WriteValue()
+                {
+                    NodeId = item.Nodeid,
+                    Value = dataValue,
+                    AttributeId = Attributes.Value
+                });
+            }
+
+            // Call to ClientAPI.
+            List<StatusCode> results = _session.Write(nodesToWrite, null);
+        }
     }
 }

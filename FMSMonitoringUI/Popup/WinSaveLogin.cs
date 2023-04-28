@@ -273,6 +273,10 @@ namespace MonitoringUI.Popup
 
         #endregion
 
+        private void btConfirm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
     #endregion
 }

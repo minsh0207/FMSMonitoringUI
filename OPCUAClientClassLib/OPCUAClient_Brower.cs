@@ -190,18 +190,31 @@ namespace OPCUAClientClassLib
                         string[] taglevel = browsePath[j].UserData.ToString().Split('.');
 
                         string sNodeId = browerResult[j].Targets[0].TargetId.ToString();
-//#if DEBUG
+                        //#if DEBUG
                         //string[] temp_no = taglevel[2].ToString().Split('_');
                         //int cv_no = int.Parse(temp_no[1]);
-//#else
-                        int cv_no = int.Parse(taglevel[1].Substring(taglevel[1].Length - 4));
-                        
+                        //#else
+                        int cv_no;
+                        if (taglevel[1] == enEqpType.RTV01.ToString())
+                            cv_no = (int)enEqpType.RTV01;
+                        else
+                            cv_no = int.Parse(taglevel[1].Substring(taglevel[1].Length - 4));
+
+                        StringBuilder tagPath = new StringBuilder();
+                        for (int k = 2; k < taglevel.Length; k++)
+                        {
+                            if (k == 2)
+                                tagPath.Append(taglevel[k]);
+                            else
+                                tagPath.Append($".{taglevel[k]}");
+                        }
 //#endif
                         nodesToRead.Add(new ReadValueId() 
                         {
                             NodeId = NodeId.Parse(sNodeId), 
                             AttributeId = Attributes.Value,
-                            UserData = string.Format($"{taglevel[taglevel.Length - 2]}.{taglevel[taglevel.Length - 1]}")
+                            UserData = tagPath.ToString()
+                            //UserData = string.Format($"{taglevel[taglevel.Length - 2]}.{taglevel[taglevel.Length - 1]}")
                         });
 
                         if (taglevel[taglevel.Count() - 1] == "MagazineCommand")
@@ -273,7 +286,7 @@ namespace OPCUAClientClassLib
                         UserData = tagName
                     });
 
-                    if ((taglevel[taglevel.Count() - 2] == "WaterTank02") &&
+                    if ((taglevel[taglevel.Count() - 2] == "WaterTank2") &&
                         (taglevel[taglevel.Count() - 1] == "RestockButtonPressed"))
                     {
                         ItemInfo crane = controlInfo[taglevel[0].ToString()];

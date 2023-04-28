@@ -51,7 +51,7 @@ namespace MonitoringUI
             //찾을수없다면 그대로 출력
             strNameTo = resxLanguage.GetString(strName) != null ? resxLanguage.GetString(strName) : strName;
 
-            if (strNameTo.IndexOf("DEF", 0, strNameTo.Length, StringComparison.OrdinalIgnoreCase) > 0)
+            if (strNameTo.IndexOf("DEF", 0, strNameTo.Length, StringComparison.OrdinalIgnoreCase) > -1)
             {
                 if (strNameTo.Substring(0, 3) == "DEF")
                 {

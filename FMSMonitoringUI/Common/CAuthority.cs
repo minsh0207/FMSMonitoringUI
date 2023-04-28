@@ -62,7 +62,7 @@ namespace MonitoringUI.Common
 
             if (!bAuth)
             {
-                CMessage.MsgInformation("You do not have user permissions.");
+                CMessage.MsgInformation("You don't have user permissions.");
             }
 
             return bAuth;
@@ -230,6 +230,14 @@ namespace MonitoringUI.Common
 
             try
             {
+                //string name = string.Empty;
+                //string[] title = strWindowName.Split(']');
+
+                //if (title.Length < 2)
+                //    name = title[0];
+                //else
+                //    name = title[1].Substring(1);
+
                 string windowid = WindowsNameToWindowID(strWindowName);
 
                 if (windowid != "" && CDefine.UserClassID >= _WindowIDList[windowid].DefaultClassID)

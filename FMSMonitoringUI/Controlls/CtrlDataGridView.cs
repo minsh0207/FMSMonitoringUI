@@ -33,7 +33,7 @@ namespace FMSMonitoringUI.Controlls
         private int _columnIndex = -1;
         public int ColumnCount
         {
-            get { return _columnIndex; }
+            get { return dataGridView1.ColumnCount; }
             set
             {
                 if (_columnIndex != value)
@@ -46,7 +46,7 @@ namespace FMSMonitoringUI.Controlls
         private int _rowCount = -1;
         public int RowCount
         {
-            get { return _rowCount; }
+            get { return dataGridView1.RowCount; }
             set
             {
                 if (_rowCount != value)

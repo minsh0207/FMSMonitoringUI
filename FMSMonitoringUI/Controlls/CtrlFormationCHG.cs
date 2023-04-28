@@ -1,5 +1,4 @@
 ﻿using ControlGallery;
-using DBHandler;
 using FMSMonitoringUI.Controlls;
 using FMSMonitoringUI.Controlls.WindowsForms;
 using FMSMonitoringUI.Monitoring;
@@ -232,7 +231,7 @@ namespace FMSMonitoringUI
                 //strSQL.Append("         SELECT unit_id, max(event_time) as event_time FROM fms_v.tb_dat_temp_unit GROUP BY unit_id)");
 
                 strSQL.Append(" SELECT A.unit_id, A.eqp_name, A.eqp_name_local, A.tray_id, A.tray_id_2,");
-                strSQL.Append("        A.start_time, A.plan_time, A.process_status, A.operation_mode,");
+                strSQL.Append("        A.start_time, A.plan_time, A.process_status, A.operation_mode, A.eqp_temp_lsl, A.eqp_temp_usl,");
                 strSQL.Append("        B.*,");
                 strSQL.Append("        C.rework_flag AS rework_tray_1,");
                 strSQL.Append("        D.rework_flag AS rework_tray_2");

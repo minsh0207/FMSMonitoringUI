@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CtrlMonitoring));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ctrlLabel18 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
+            this.pictureBox39 = new System.Windows.Forms.PictureBox();
             this.ctrlTaggingName5 = new MonitoringUI.Controlls.CtrlTaggingName();
             this.controlStatus = new FMSMonitoringUI.Controlls.CtrlControlStatus();
             this.ctrlLabel16 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
@@ -67,6 +69,18 @@
             this.ctrlTaggingName20 = new MonitoringUI.Controlls.CtrlTaggingName();
             this.ctrlTaggingName3 = new MonitoringUI.Controlls.CtrlTaggingName();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lt024 = new AgingControls.AgingLineControl();
+            this.lt021 = new AgingControls.AgingLineControl();
+            this.lt022 = new AgingControls.AgingLineControl();
+            this.lt023 = new AgingControls.AgingLineControl();
+            this.lt014 = new AgingControls.AgingLineControl();
+            this.lt011 = new AgingControls.AgingLineControl();
+            this.lt012 = new AgingControls.AgingLineControl();
+            this.lt013 = new AgingControls.AgingLineControl();
+            this.ht014 = new AgingControls.AgingLineControl();
+            this.ht013 = new AgingControls.AgingLineControl();
+            this.ht012 = new AgingControls.AgingLineControl();
+            this.ht011 = new AgingControls.AgingLineControl();
             this.ctrlLabel17 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.ctrlLabel6 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.ctrlEqpHPC2 = new FMSMonitoringUI.Controlls.CtrlEqpHPC();
@@ -314,11 +328,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
+            this.ctrlSiteTrack51 = new ControlGallery.CtrlSiteTrack();
             this.object_85b0f3cb_bd20_487a_bfd7_03e370778b9c = new ControlGallery.CraneCarriageSmall(this.components);
             this.craneCarriageSmall5 = new ControlGallery.CraneCarriageSmall(this.components);
             this.cranebox = new ControlGallery.CraneCarriageSmall(this.components);
             this.object_4decb782_b49f_4227_8415_8bd40a0ea345 = new ControlGallery.CraneCarriageSmall(this.components);
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox39)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox44)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox40)).BeginInit();
@@ -450,6 +466,8 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.ctrlLabel18);
+            this.panel1.Controls.Add(this.pictureBox39);
             this.panel1.Controls.Add(this.ctrlTaggingName5);
             this.panel1.Controls.Add(this.controlStatus);
             this.panel1.Controls.Add(this.ctrlLabel16);
@@ -490,6 +508,29 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(204, 995);
             this.panel1.TabIndex = 331;
+            // 
+            // ctrlLabel18
+            // 
+            this.ctrlLabel18.AutoSize = true;
+            this.ctrlLabel18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.ctrlLabel18.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlLabel18.ForeColor = System.Drawing.Color.White;
+            this.ctrlLabel18.LanguageID = "DEF_Trouble";
+            this.ctrlLabel18.Location = new System.Drawing.Point(51, 313);
+            this.ctrlLabel18.Name = "ctrlLabel18";
+            this.ctrlLabel18.Size = new System.Drawing.Size(56, 13);
+            this.ctrlLabel18.TabIndex = 112;
+            this.ctrlLabel18.Text = "Trouble";
+            // 
+            // pictureBox39
+            // 
+            this.pictureBox39.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox39.Image")));
+            this.pictureBox39.Location = new System.Drawing.Point(17, 303);
+            this.pictureBox39.Name = "pictureBox39";
+            this.pictureBox39.Size = new System.Drawing.Size(31, 31);
+            this.pictureBox39.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox39.TabIndex = 111;
+            this.pictureBox39.TabStop = false;
             // 
             // ctrlTaggingName5
             // 
@@ -539,7 +580,7 @@
             this.ctrlLabel15.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.ctrlLabel15.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel15.LanguageID = "DEF_Smoke_Only_or_Both";
-            this.ctrlLabel15.Location = new System.Drawing.Point(18, 871);
+            this.ctrlLabel15.Location = new System.Drawing.Point(18, 897);
             this.ctrlLabel15.Name = "ctrlLabel15";
             this.ctrlLabel15.Size = new System.Drawing.Size(142, 16);
             this.ctrlLabel15.TabIndex = 107;
@@ -552,7 +593,7 @@
             this.ctrlTaggingName4.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlTaggingName4.LanguageID = "DEF_Fire2";
-            this.ctrlTaggingName4.Location = new System.Drawing.Point(11, 845);
+            this.ctrlTaggingName4.Location = new System.Drawing.Point(11, 871);
             this.ctrlTaggingName4.Name = "ctrlTaggingName4";
             this.ctrlTaggingName4.Size = new System.Drawing.Size(179, 23);
             this.ctrlTaggingName4.StatusCode = "F2";
@@ -568,7 +609,7 @@
             this.ctrlLabel14.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.ctrlLabel14.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel14.LanguageID = "DEF_Temperature_Alarm_Only";
-            this.ctrlLabel14.Location = new System.Drawing.Point(18, 827);
+            this.ctrlLabel14.Location = new System.Drawing.Point(18, 853);
             this.ctrlLabel14.Name = "ctrlLabel14";
             this.ctrlLabel14.Size = new System.Drawing.Size(171, 16);
             this.ctrlLabel14.TabIndex = 105;
@@ -581,7 +622,7 @@
             this.ctrlTaggingName2.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlTaggingName2.LanguageID = "DEF_Machine_Trouble";
-            this.ctrlTaggingName2.Location = new System.Drawing.Point(11, 703);
+            this.ctrlTaggingName2.Location = new System.Drawing.Point(11, 729);
             this.ctrlTaggingName2.Name = "ctrlTaggingName2";
             this.ctrlTaggingName2.Size = new System.Drawing.Size(179, 23);
             this.ctrlTaggingName2.StatusCode = "T";
@@ -597,7 +638,7 @@
             this.ctrlLabel13.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.ctrlLabel13.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel13.LanguageID = "DEF_Eqp_Status";
-            this.ctrlLabel13.Location = new System.Drawing.Point(10, 636);
+            this.ctrlLabel13.Location = new System.Drawing.Point(10, 662);
             this.ctrlLabel13.Name = "ctrlLabel13";
             this.ctrlLabel13.Size = new System.Drawing.Size(74, 16);
             this.ctrlLabel13.TabIndex = 102;
@@ -610,7 +651,7 @@
             this.ctrlTaggingName1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlTaggingName1.LanguageID = "DEF_Maintenance";
-            this.ctrlTaggingName1.Location = new System.Drawing.Point(11, 591);
+            this.ctrlTaggingName1.Location = new System.Drawing.Point(11, 617);
             this.ctrlTaggingName1.Name = "ctrlTaggingName1";
             this.ctrlTaggingName1.Size = new System.Drawing.Size(179, 23);
             this.ctrlTaggingName1.StatusCode = "M";
@@ -626,7 +667,7 @@
             this.ctrlLabel12.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.ctrlLabel12.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel12.LanguageID = "DEF_Eqp_Mode";
-            this.ctrlLabel12.Location = new System.Drawing.Point(10, 548);
+            this.ctrlLabel12.Location = new System.Drawing.Point(10, 574);
             this.ctrlLabel12.Name = "ctrlLabel12";
             this.ctrlLabel12.Size = new System.Drawing.Size(70, 16);
             this.ctrlLabel12.TabIndex = 100;
@@ -639,7 +680,7 @@
             this.ctrlLabel11.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.ctrlLabel11.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel11.LanguageID = "DEF_Conveyor_Trye";
-            this.ctrlLabel11.Location = new System.Drawing.Point(10, 327);
+            this.ctrlLabel11.Location = new System.Drawing.Point(10, 353);
             this.ctrlLabel11.Name = "ctrlLabel11";
             this.ctrlLabel11.Size = new System.Drawing.Size(101, 16);
             this.ctrlLabel11.TabIndex = 99;
@@ -664,12 +705,12 @@
             this.ctrlLabel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlLabel9.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlLabel9.ForeColor = System.Drawing.Color.White;
-            this.ctrlLabel9.LanguageID = "DEF_Trouble";
+            this.ctrlLabel9.LanguageID = "DEF_Track_Pause";
             this.ctrlLabel9.Location = new System.Drawing.Point(51, 279);
             this.ctrlLabel9.Name = "ctrlLabel9";
-            this.ctrlLabel9.Size = new System.Drawing.Size(56, 13);
+            this.ctrlLabel9.Size = new System.Drawing.Size(89, 13);
             this.ctrlLabel9.TabIndex = 97;
-            this.ctrlLabel9.Text = "Trouble";
+            this.ctrlLabel9.Text = "Track Pause";
             // 
             // ctrlLabel8
             // 
@@ -734,7 +775,7 @@
             this.ctrlLabel5.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlLabel5.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel5.LanguageID = "DEF_Real_BCR";
-            this.ctrlLabel5.Location = new System.Drawing.Point(51, 397);
+            this.ctrlLabel5.Location = new System.Drawing.Point(51, 423);
             this.ctrlLabel5.Name = "ctrlLabel5";
             this.ctrlLabel5.Size = new System.Drawing.Size(69, 13);
             this.ctrlLabel5.TabIndex = 89;
@@ -747,7 +788,7 @@
             this.ctrlLabel4.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlLabel4.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel4.LanguageID = "DEF_Virtual_BCR";
-            this.ctrlLabel4.Location = new System.Drawing.Point(51, 363);
+            this.ctrlLabel4.Location = new System.Drawing.Point(51, 389);
             this.ctrlLabel4.Name = "ctrlLabel4";
             this.ctrlLabel4.Size = new System.Drawing.Size(82, 13);
             this.ctrlLabel4.TabIndex = 88;
@@ -760,7 +801,7 @@
             this.ctrlLabel3.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlLabel3.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel3.LanguageID = "DEF_Dispenser";
-            this.ctrlLabel3.Location = new System.Drawing.Point(51, 501);
+            this.ctrlLabel3.Location = new System.Drawing.Point(51, 527);
             this.ctrlLabel3.Name = "ctrlLabel3";
             this.ctrlLabel3.Size = new System.Drawing.Size(73, 13);
             this.ctrlLabel3.TabIndex = 87;
@@ -773,7 +814,7 @@
             this.ctrlLabel2.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlLabel2.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel2.LanguageID = "DEF_Magazine";
-            this.ctrlLabel2.Location = new System.Drawing.Point(51, 467);
+            this.ctrlLabel2.Location = new System.Drawing.Point(51, 493);
             this.ctrlLabel2.Name = "ctrlLabel2";
             this.ctrlLabel2.Size = new System.Drawing.Size(71, 13);
             this.ctrlLabel2.TabIndex = 86;
@@ -786,7 +827,7 @@
             this.ctrlLabel1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlLabel1.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel1.LanguageID = "DEF_MZ/DP";
-            this.ctrlLabel1.Location = new System.Drawing.Point(51, 430);
+            this.ctrlLabel1.Location = new System.Drawing.Point(51, 456);
             this.ctrlLabel1.Name = "ctrlLabel1";
             this.ctrlLabel1.Size = new System.Drawing.Size(144, 13);
             this.ctrlLabel1.TabIndex = 85;
@@ -795,7 +836,7 @@
             // pictureBox34
             // 
             this.pictureBox34.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox34.Image")));
-            this.pictureBox34.Location = new System.Drawing.Point(17, 386);
+            this.pictureBox34.Location = new System.Drawing.Point(17, 412);
             this.pictureBox34.Name = "pictureBox34";
             this.pictureBox34.Size = new System.Drawing.Size(31, 31);
             this.pictureBox34.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -805,7 +846,7 @@
             // pictureBox33
             // 
             this.pictureBox33.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox33.Image")));
-            this.pictureBox33.Location = new System.Drawing.Point(17, 352);
+            this.pictureBox33.Location = new System.Drawing.Point(17, 378);
             this.pictureBox33.Name = "pictureBox33";
             this.pictureBox33.Size = new System.Drawing.Size(31, 31);
             this.pictureBox33.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -819,7 +860,7 @@
             this.ctrlTaggingName16.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlTaggingName16.LanguageID = "DEF_Fire";
-            this.ctrlTaggingName16.Location = new System.Drawing.Point(11, 801);
+            this.ctrlTaggingName16.Location = new System.Drawing.Point(11, 827);
             this.ctrlTaggingName16.Name = "ctrlTaggingName16";
             this.ctrlTaggingName16.Size = new System.Drawing.Size(179, 23);
             this.ctrlTaggingName16.StatusCode = "F";
@@ -835,7 +876,7 @@
             this.ctrlTaggingName17.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlTaggingName17.LanguageID = "DEF_Pause";
-            this.ctrlTaggingName17.Location = new System.Drawing.Point(11, 728);
+            this.ctrlTaggingName17.Location = new System.Drawing.Point(11, 754);
             this.ctrlTaggingName17.Name = "ctrlTaggingName17";
             this.ctrlTaggingName17.Size = new System.Drawing.Size(179, 23);
             this.ctrlTaggingName17.StatusCode = "P";
@@ -851,7 +892,7 @@
             this.ctrlTaggingName18.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlTaggingName18.LanguageID = "DEF_Idle";
-            this.ctrlTaggingName18.Location = new System.Drawing.Point(11, 654);
+            this.ctrlTaggingName18.Location = new System.Drawing.Point(11, 680);
             this.ctrlTaggingName18.Name = "ctrlTaggingName18";
             this.ctrlTaggingName18.Size = new System.Drawing.Size(179, 23);
             this.ctrlTaggingName18.StatusCode = "I";
@@ -867,7 +908,7 @@
             this.ctrlTaggingName19.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlTaggingName19.LanguageID = "DEF_Running";
-            this.ctrlTaggingName19.Location = new System.Drawing.Point(11, 679);
+            this.ctrlTaggingName19.Location = new System.Drawing.Point(11, 705);
             this.ctrlTaggingName19.Name = "ctrlTaggingName19";
             this.ctrlTaggingName19.Size = new System.Drawing.Size(179, 23);
             this.ctrlTaggingName19.StatusCode = "R";
@@ -883,7 +924,7 @@
             this.ctrlTaggingName21.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlTaggingName21.LanguageID = "DEF_Control";
-            this.ctrlTaggingName21.Location = new System.Drawing.Point(11, 566);
+            this.ctrlTaggingName21.Location = new System.Drawing.Point(11, 592);
             this.ctrlTaggingName21.Name = "ctrlTaggingName21";
             this.ctrlTaggingName21.Size = new System.Drawing.Size(179, 23);
             this.ctrlTaggingName21.StatusCode = "C";
@@ -895,7 +936,7 @@
             // pictureBox30
             // 
             this.pictureBox30.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox30.Image")));
-            this.pictureBox30.Location = new System.Drawing.Point(16, 491);
+            this.pictureBox30.Location = new System.Drawing.Point(16, 517);
             this.pictureBox30.Name = "pictureBox30";
             this.pictureBox30.Size = new System.Drawing.Size(31, 31);
             this.pictureBox30.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -905,7 +946,7 @@
             // pictureBox26
             // 
             this.pictureBox26.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox26.Image")));
-            this.pictureBox26.Location = new System.Drawing.Point(16, 456);
+            this.pictureBox26.Location = new System.Drawing.Point(16, 482);
             this.pictureBox26.Name = "pictureBox26";
             this.pictureBox26.Size = new System.Drawing.Size(31, 31);
             this.pictureBox26.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -915,7 +956,7 @@
             // pictureBox25
             // 
             this.pictureBox25.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox25.Image")));
-            this.pictureBox25.Location = new System.Drawing.Point(16, 421);
+            this.pictureBox25.Location = new System.Drawing.Point(16, 447);
             this.pictureBox25.Name = "pictureBox25";
             this.pictureBox25.Size = new System.Drawing.Size(31, 31);
             this.pictureBox25.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -929,12 +970,12 @@
             this.ctrlTaggingName20.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlTaggingName20.LanguageID = "DEF_Loading";
-            this.ctrlTaggingName20.Location = new System.Drawing.Point(11, 776);
+            this.ctrlTaggingName20.Location = new System.Drawing.Point(11, 802);
             this.ctrlTaggingName20.Name = "ctrlTaggingName20";
             this.ctrlTaggingName20.Size = new System.Drawing.Size(179, 23);
             this.ctrlTaggingName20.StatusCode = "L";
             this.ctrlTaggingName20.TabIndex = 78;
-            this.ctrlTaggingName20.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(101)))), ((int)(((byte)(58)))));
+            this.ctrlTaggingName20.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.ctrlTaggingName20.TagText = "Loading";
             this.ctrlTaggingName20.TextColor = System.Drawing.Color.Black;
             // 
@@ -945,7 +986,7 @@
             this.ctrlTaggingName3.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlTaggingName3.LanguageID = "DEF_Stop";
-            this.ctrlTaggingName3.Location = new System.Drawing.Point(11, 752);
+            this.ctrlTaggingName3.Location = new System.Drawing.Point(11, 778);
             this.ctrlTaggingName3.Name = "ctrlTaggingName3";
             this.ctrlTaggingName3.Size = new System.Drawing.Size(179, 23);
             this.ctrlTaggingName3.StatusCode = "S";
@@ -957,6 +998,18 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.lt024);
+            this.panel2.Controls.Add(this.lt021);
+            this.panel2.Controls.Add(this.lt022);
+            this.panel2.Controls.Add(this.lt023);
+            this.panel2.Controls.Add(this.lt014);
+            this.panel2.Controls.Add(this.lt011);
+            this.panel2.Controls.Add(this.lt012);
+            this.panel2.Controls.Add(this.lt013);
+            this.panel2.Controls.Add(this.ht014);
+            this.panel2.Controls.Add(this.ht013);
+            this.panel2.Controls.Add(this.ht012);
+            this.panel2.Controls.Add(this.ht011);
             this.panel2.Controls.Add(this.ctrlLabel17);
             this.panel2.Controls.Add(this.ctrlLabel6);
             this.panel2.Controls.Add(this.ctrlEqpHPC2);
@@ -1204,11 +1257,288 @@
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label22);
             this.panel2.Controls.Add(this.label29);
+            this.panel2.Controls.Add(this.ctrlSiteTrack51);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel2.Location = new System.Drawing.Point(210, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1707, 995);
             this.panel2.TabIndex = 332;
+            // 
+            // lt024
+            // 
+            this.lt024.BackColor = System.Drawing.Color.Gray;
+            this.lt024.BayCount = 17;
+            this.lt024.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.lt024.BayNoLabelDisplayStep = 5;
+            this.lt024.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.lt024.BoxMargin = 1;
+            this.lt024.DoubleReach = false;
+            this.lt024.DoubleReachLinePrefix = "";
+            this.lt024.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.lt024.EqpID = "F1LTA01";
+            this.lt024.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lt024.LinePrefix = "L024";
+            this.lt024.Location = new System.Drawing.Point(1184, 656);
+            this.lt024.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lt024.Name = "lt024";
+            this.lt024.RackCount = 5;
+            this.lt024.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.lt024.ShowBayNumber = false;
+            this.lt024.Size = new System.Drawing.Size(311, 31);
+            this.lt024.TabIndex = 599;
+            // 
+            // lt021
+            // 
+            this.lt021.BackColor = System.Drawing.Color.Gray;
+            this.lt021.BayCount = 17;
+            this.lt021.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.lt021.BayNoLabelDisplayStep = 5;
+            this.lt021.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.lt021.BoxMargin = 1;
+            this.lt021.DoubleReach = false;
+            this.lt021.DoubleReachLinePrefix = "";
+            this.lt021.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.lt021.EqpID = "F1LTA01";
+            this.lt021.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lt021.LinePrefix = "L021";
+            this.lt021.Location = new System.Drawing.Point(1184, 526);
+            this.lt021.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lt021.Name = "lt021";
+            this.lt021.RackCount = 5;
+            this.lt021.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.lt021.ShowBayNumber = false;
+            this.lt021.Size = new System.Drawing.Size(311, 31);
+            this.lt021.TabIndex = 597;
+            // 
+            // lt022
+            // 
+            this.lt022.BackColor = System.Drawing.Color.Gray;
+            this.lt022.BayCount = 17;
+            this.lt022.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.lt022.BayNoLabelDisplayStep = 5;
+            this.lt022.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.lt022.BoxMargin = 1;
+            this.lt022.DoubleReach = false;
+            this.lt022.DoubleReachLinePrefix = "";
+            this.lt022.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.lt022.EqpID = "F1LTA01";
+            this.lt022.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lt022.LinePrefix = "L022";
+            this.lt022.Location = new System.Drawing.Point(1184, 555);
+            this.lt022.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lt022.Name = "lt022";
+            this.lt022.RackCount = 5;
+            this.lt022.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.lt022.ShowBayNumber = false;
+            this.lt022.Size = new System.Drawing.Size(311, 31);
+            this.lt022.TabIndex = 600;
+            // 
+            // lt023
+            // 
+            this.lt023.BackColor = System.Drawing.Color.Gray;
+            this.lt023.BayCount = 17;
+            this.lt023.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.lt023.BayNoLabelDisplayStep = 5;
+            this.lt023.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.lt023.BoxMargin = 1;
+            this.lt023.DoubleReach = false;
+            this.lt023.DoubleReachLinePrefix = "";
+            this.lt023.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.lt023.EqpID = "F1LTA01";
+            this.lt023.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lt023.LinePrefix = "L023";
+            this.lt023.Location = new System.Drawing.Point(1184, 628);
+            this.lt023.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lt023.Name = "lt023";
+            this.lt023.RackCount = 5;
+            this.lt023.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.lt023.ShowBayNumber = false;
+            this.lt023.Size = new System.Drawing.Size(311, 31);
+            this.lt023.TabIndex = 598;
+            // 
+            // lt014
+            // 
+            this.lt014.BackColor = System.Drawing.Color.Gray;
+            this.lt014.BayCount = 17;
+            this.lt014.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.lt014.BayNoLabelDisplayStep = 5;
+            this.lt014.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.lt014.BoxMargin = 1;
+            this.lt014.DoubleReach = false;
+            this.lt014.DoubleReachLinePrefix = "";
+            this.lt014.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.lt014.EqpID = "F1LTA01";
+            this.lt014.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lt014.LinePrefix = "L014";
+            this.lt014.Location = new System.Drawing.Point(1184, 452);
+            this.lt014.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lt014.Name = "lt014";
+            this.lt014.RackCount = 5;
+            this.lt014.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.lt014.ShowBayNumber = false;
+            this.lt014.Size = new System.Drawing.Size(311, 31);
+            this.lt014.TabIndex = 595;
+            // 
+            // lt011
+            // 
+            this.lt011.BackColor = System.Drawing.Color.Gray;
+            this.lt011.BayCount = 17;
+            this.lt011.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.lt011.BayNoLabelDisplayStep = 5;
+            this.lt011.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.lt011.BoxMargin = 1;
+            this.lt011.DoubleReach = false;
+            this.lt011.DoubleReachLinePrefix = "";
+            this.lt011.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.lt011.EqpID = "F1LTA01";
+            this.lt011.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lt011.LinePrefix = "L011";
+            this.lt011.Location = new System.Drawing.Point(1184, 322);
+            this.lt011.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lt011.Name = "lt011";
+            this.lt011.RackCount = 5;
+            this.lt011.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.lt011.ShowBayNumber = false;
+            this.lt011.Size = new System.Drawing.Size(311, 31);
+            this.lt011.TabIndex = 593;
+            // 
+            // lt012
+            // 
+            this.lt012.BackColor = System.Drawing.Color.Gray;
+            this.lt012.BayCount = 17;
+            this.lt012.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.lt012.BayNoLabelDisplayStep = 5;
+            this.lt012.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.lt012.BoxMargin = 1;
+            this.lt012.DoubleReach = false;
+            this.lt012.DoubleReachLinePrefix = "";
+            this.lt012.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.lt012.EqpID = "F1LTA01";
+            this.lt012.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lt012.LinePrefix = "L012";
+            this.lt012.Location = new System.Drawing.Point(1184, 351);
+            this.lt012.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lt012.Name = "lt012";
+            this.lt012.RackCount = 5;
+            this.lt012.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.lt012.ShowBayNumber = false;
+            this.lt012.Size = new System.Drawing.Size(311, 31);
+            this.lt012.TabIndex = 596;
+            // 
+            // lt013
+            // 
+            this.lt013.BackColor = System.Drawing.Color.Gray;
+            this.lt013.BayCount = 17;
+            this.lt013.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.lt013.BayNoLabelDisplayStep = 5;
+            this.lt013.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.lt013.BoxMargin = 1;
+            this.lt013.DoubleReach = false;
+            this.lt013.DoubleReachLinePrefix = "";
+            this.lt013.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.lt013.EqpID = "F1LTA01";
+            this.lt013.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lt013.LinePrefix = "L013";
+            this.lt013.Location = new System.Drawing.Point(1184, 424);
+            this.lt013.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lt013.Name = "lt013";
+            this.lt013.RackCount = 5;
+            this.lt013.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.lt013.ShowBayNumber = false;
+            this.lt013.Size = new System.Drawing.Size(311, 31);
+            this.lt013.TabIndex = 594;
+            // 
+            // ht014
+            // 
+            this.ht014.BackColor = System.Drawing.Color.Gray;
+            this.ht014.BayCount = 11;
+            this.ht014.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.ht014.BayNoLabelDisplayStep = 5;
+            this.ht014.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.ht014.BoxMargin = 1;
+            this.ht014.DoubleReach = false;
+            this.ht014.DoubleReachLinePrefix = "";
+            this.ht014.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.ht014.EqpID = "F1HTA01";
+            this.ht014.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ht014.LinePrefix = "H014";
+            this.ht014.Location = new System.Drawing.Point(1224, 249);
+            this.ht014.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ht014.Name = "ht014";
+            this.ht014.RackCount = 5;
+            this.ht014.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.ht014.ShowBayNumber = false;
+            this.ht014.Size = new System.Drawing.Size(228, 31);
+            this.ht014.TabIndex = 591;
+            // 
+            // ht013
+            // 
+            this.ht013.BackColor = System.Drawing.Color.Gray;
+            this.ht013.BayCount = 11;
+            this.ht013.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.ht013.BayNoLabelDisplayStep = 5;
+            this.ht013.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.ht013.BoxMargin = 1;
+            this.ht013.DoubleReach = false;
+            this.ht013.DoubleReachLinePrefix = "";
+            this.ht013.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.ht013.EqpID = "F1HTA01";
+            this.ht013.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ht013.LinePrefix = "H013";
+            this.ht013.Location = new System.Drawing.Point(1224, 221);
+            this.ht013.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ht013.Name = "ht013";
+            this.ht013.RackCount = 5;
+            this.ht013.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.ht013.ShowBayNumber = false;
+            this.ht013.Size = new System.Drawing.Size(228, 31);
+            this.ht013.TabIndex = 590;
+            // 
+            // ht012
+            // 
+            this.ht012.BackColor = System.Drawing.Color.Gray;
+            this.ht012.BayCount = 11;
+            this.ht012.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.ht012.BayNoLabelDisplayStep = 5;
+            this.ht012.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.ht012.BoxMargin = 1;
+            this.ht012.DoubleReach = false;
+            this.ht012.DoubleReachLinePrefix = "";
+            this.ht012.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.ht012.EqpID = "F1HTA01";
+            this.ht012.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ht012.LinePrefix = "H012";
+            this.ht012.Location = new System.Drawing.Point(1224, 153);
+            this.ht012.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ht012.Name = "ht012";
+            this.ht012.RackCount = 5;
+            this.ht012.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.ht012.ShowBayNumber = false;
+            this.ht012.Size = new System.Drawing.Size(228, 31);
+            this.ht012.TabIndex = 589;
+            // 
+            // ht011
+            // 
+            this.ht011.BackColor = System.Drawing.Color.Gray;
+            this.ht011.BayCount = 11;
+            this.ht011.BayDir = AgingControls.AgingLineControl.BayDirection.LeftToRight;
+            this.ht011.BayNoLabelDisplayStep = 5;
+            this.ht011.BayNoLabelPos = AgingControls.AgingLineControl.BayNumberLabelPosition.Top;
+            this.ht011.BoxMargin = 1;
+            this.ht011.DoubleReach = false;
+            this.ht011.DoubleReachLinePrefix = "";
+            this.ht011.DoubleReachRackDirection = AgingControls.AgingLineControl.DoubleReachDisplayDirection.Horizontal;
+            this.ht011.EqpID = "F1HTA01";
+            this.ht011.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ht011.LinePrefix = "H011";
+            this.ht011.Location = new System.Drawing.Point(1224, 125);
+            this.ht011.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ht011.Name = "ht011";
+            this.ht011.RackCount = 5;
+            this.ht011.RackDir = AgingControls.AgingLineControl.RackDirection.BottomUp;
+            this.ht011.ShowBayNumber = false;
+            this.ht011.Size = new System.Drawing.Size(228, 31);
+            this.ht011.TabIndex = 588;
             // 
             // ctrlLabel17
             // 
@@ -1413,11 +1743,11 @@
             this.ctrlSCraneH1.DisplayText = "";
             this.ctrlSCraneH1.EqpID = "F1SCH01";
             this.ctrlSCraneH1.Font = new System.Drawing.Font("Segoe UI Emoji", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctrlSCraneH1.Location = new System.Drawing.Point(1192, 186);
+            this.ctrlSCraneH1.Location = new System.Drawing.Point(1189, 185);
             this.ctrlSCraneH1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ctrlSCraneH1.MaxBayCount = 100;
             this.ctrlSCraneH1.Name = "ctrlSCraneH1";
-            this.ctrlSCraneH1.Size = new System.Drawing.Size(293, 32);
+            this.ctrlSCraneH1.Size = new System.Drawing.Size(297, 32);
             this.ctrlSCraneH1.TabIndex = 570;
             this.ctrlSCraneH1.Tag = "HTA S/Crane";
             // 
@@ -1775,7 +2105,7 @@
             this.ctrlSiteTrack49.InterSitePadding = 2;
             this.ctrlSiteTrack49.IsControled = true;
             this.ctrlSiteTrack49.IsUpperStage = false;
-            this.ctrlSiteTrack49.Location = new System.Drawing.Point(1496, 646);
+            this.ctrlSiteTrack49.Location = new System.Drawing.Point(1497, 652);
             this.ctrlSiteTrack49.MainLoop = false;
             this.ctrlSiteTrack49.MarginHorizontal = 0;
             this.ctrlSiteTrack49.MarginVertical = 0;
@@ -1808,7 +2138,7 @@
             this.ctrlSiteTrack48.InterSitePadding = 2;
             this.ctrlSiteTrack48.IsControled = true;
             this.ctrlSiteTrack48.IsUpperStage = false;
-            this.ctrlSiteTrack48.Location = new System.Drawing.Point(1496, 547);
+            this.ctrlSiteTrack48.Location = new System.Drawing.Point(1497, 551);
             this.ctrlSiteTrack48.MainLoop = false;
             this.ctrlSiteTrack48.MarginHorizontal = 0;
             this.ctrlSiteTrack48.MarginVertical = 0;
@@ -1841,7 +2171,7 @@
             this.ctrlSiteTrack47.InterSitePadding = 2;
             this.ctrlSiteTrack47.IsControled = true;
             this.ctrlSiteTrack47.IsUpperStage = false;
-            this.ctrlSiteTrack47.Location = new System.Drawing.Point(1495, 444);
+            this.ctrlSiteTrack47.Location = new System.Drawing.Point(1496, 448);
             this.ctrlSiteTrack47.MainLoop = false;
             this.ctrlSiteTrack47.MarginHorizontal = 0;
             this.ctrlSiteTrack47.MarginVertical = 0;
@@ -1874,7 +2204,7 @@
             this.ctrlSiteTrack46.InterSitePadding = 2;
             this.ctrlSiteTrack46.IsControled = true;
             this.ctrlSiteTrack46.IsUpperStage = false;
-            this.ctrlSiteTrack46.Location = new System.Drawing.Point(1496, 348);
+            this.ctrlSiteTrack46.Location = new System.Drawing.Point(1497, 347);
             this.ctrlSiteTrack46.MainLoop = false;
             this.ctrlSiteTrack46.MarginHorizontal = 0;
             this.ctrlSiteTrack46.MarginVertical = 0;
@@ -1907,7 +2237,7 @@
             this.ctrlSiteTrack45.InterSitePadding = 2;
             this.ctrlSiteTrack45.IsControled = true;
             this.ctrlSiteTrack45.IsUpperStage = false;
-            this.ctrlSiteTrack45.Location = new System.Drawing.Point(1456, 243);
+            this.ctrlSiteTrack45.Location = new System.Drawing.Point(1455, 246);
             this.ctrlSiteTrack45.MainLoop = false;
             this.ctrlSiteTrack45.MarginHorizontal = 0;
             this.ctrlSiteTrack45.MarginVertical = 0;
@@ -1940,7 +2270,7 @@
             this.ctrlSiteTrack44.InterSitePadding = 2;
             this.ctrlSiteTrack44.IsControled = true;
             this.ctrlSiteTrack44.IsUpperStage = false;
-            this.ctrlSiteTrack44.Location = new System.Drawing.Point(1456, 146);
+            this.ctrlSiteTrack44.Location = new System.Drawing.Point(1455, 149);
             this.ctrlSiteTrack44.MainLoop = false;
             this.ctrlSiteTrack44.MarginHorizontal = 0;
             this.ctrlSiteTrack44.MarginVertical = 0;
@@ -2555,7 +2885,7 @@
             // ctrlSiteTrack36
             // 
             this.ctrlSiteTrack36.CVPLCListDeviceID = 0;
-            this.ctrlSiteTrack36.DisplayText = "G1";
+            this.ctrlSiteTrack36.DisplayText = "";
             this.ctrlSiteTrack36.FirstSiteNo = 1101;
             this.ctrlSiteTrack36.InterSitePadding = 0;
             this.ctrlSiteTrack36.IsControled = true;
@@ -2569,7 +2899,7 @@
             this.ctrlSiteTrack36.ShowSiteNo = false;
             this.ctrlSiteTrack36.ShowTroubleState = false;
             this.ctrlSiteTrack36.SiteBorderColor = System.Drawing.Color.DimGray;
-            this.ctrlSiteTrack36.SiteBoxColor = System.Drawing.Color.Red;
+            this.ctrlSiteTrack36.SiteBoxColor = System.Drawing.Color.Gray;
             this.ctrlSiteTrack36.SiteBoxHeight = 34;
             this.ctrlSiteTrack36.SiteBoxWidth = 32;
             this.ctrlSiteTrack36.SiteCount = 1;
@@ -3625,9 +3955,9 @@
             this.label25.CausesValidation = false;
             this.label25.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
             this.label25.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label25.Location = new System.Drawing.Point(1187, 625);
+            this.label25.Location = new System.Drawing.Point(1185, 625);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(307, 57);
+            this.label25.Size = new System.Drawing.Size(310, 63);
             this.label25.TabIndex = 404;
             this.label25.Text = "LT AGING#2";
             this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -3639,9 +3969,9 @@
             this.label24.CausesValidation = false;
             this.label24.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
             this.label24.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label24.Location = new System.Drawing.Point(1187, 423);
+            this.label24.Location = new System.Drawing.Point(1183, 421);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(307, 57);
+            this.label24.Size = new System.Drawing.Size(311, 63);
             this.label24.TabIndex = 403;
             this.label24.Text = "LT AGING#1";
             this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -3653,9 +3983,9 @@
             this.label23.CausesValidation = false;
             this.label23.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
             this.label23.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label23.Location = new System.Drawing.Point(1222, 223);
+            this.label23.Location = new System.Drawing.Point(1221, 220);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(232, 57);
+            this.label23.Size = new System.Drawing.Size(231, 63);
             this.label23.TabIndex = 402;
             this.label23.Text = "HT AGING";
             this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -4122,7 +4452,7 @@
             // ctrlSiteTrack30
             // 
             this.ctrlSiteTrack30.CVPLCListDeviceID = 0;
-            this.ctrlSiteTrack30.DisplayText = "G2";
+            this.ctrlSiteTrack30.DisplayText = "";
             this.ctrlSiteTrack30.FirstSiteNo = 102;
             this.ctrlSiteTrack30.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlSiteTrack30.InterSitePadding = 0;
@@ -4310,7 +4640,7 @@
             // 
             this.ctrlSiteTrack28.CVPLCListDeviceID = 3;
             this.ctrlSiteTrack28.DisplayText = "";
-            this.ctrlSiteTrack28.FirstSiteNo = 4224;
+            this.ctrlSiteTrack28.FirstSiteNo = 4108;
             this.ctrlSiteTrack28.InterSitePadding = 2;
             this.ctrlSiteTrack28.IsControled = true;
             this.ctrlSiteTrack28.IsUpperStage = false;
@@ -4362,12 +4692,12 @@
             this.ctrlSiteTrack26.SiteNoDirection = ControlGallery.SiteTrackDirection.LeftToRight;
             this.ctrlSiteTrack26.SiteNoIncStep = 1;
             this.ctrlSiteTrack26.SiteNoList = new int[] {
-        4217,
-        4218,
-        4219,
-        4220,
-        4221,
-        4223};
+        4101,
+        4102,
+        4103,
+        4104,
+        4105,
+        4107};
             this.ctrlSiteTrack26.SiteTextDisp = null;
             this.ctrlSiteTrack26.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack26.Size = new System.Drawing.Size(223, 35);
@@ -4378,7 +4708,7 @@
             // 
             this.ctrlSiteTrack24.CVPLCListDeviceID = 1;
             this.ctrlSiteTrack24.DisplayText = "";
-            this.ctrlSiteTrack24.FirstSiteNo = 2211;
+            this.ctrlSiteTrack24.FirstSiteNo = 2105;
             this.ctrlSiteTrack24.InterSitePadding = 2;
             this.ctrlSiteTrack24.IsControled = true;
             this.ctrlSiteTrack24.IsUpperStage = false;
@@ -4430,10 +4760,10 @@
             this.ctrlSiteTrack23.SiteNoDirection = ControlGallery.SiteTrackDirection.LeftToRight;
             this.ctrlSiteTrack23.SiteNoIncStep = 1;
             this.ctrlSiteTrack23.SiteNoList = new int[] {
-        2212,
-        2213,
-        2214,
-        2216};
+        2201,
+        2202,
+        2203,
+        2205};
             this.ctrlSiteTrack23.SiteTextDisp = null;
             this.ctrlSiteTrack23.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack23.Size = new System.Drawing.Size(147, 35);
@@ -4465,10 +4795,10 @@
             this.ctrlSiteTrack22.SiteNoDirection = ControlGallery.SiteTrackDirection.LeftToRight;
             this.ctrlSiteTrack22.SiteNoIncStep = 1;
             this.ctrlSiteTrack22.SiteNoList = new int[] {
-        2207,
-        2208,
-        2209,
-        2210};
+        2101,
+        2102,
+        2103,
+        2104};
             this.ctrlSiteTrack22.SiteTextDisp = null;
             this.ctrlSiteTrack22.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack22.Size = new System.Drawing.Size(147, 35);
@@ -4482,9 +4812,9 @@
             this.label16.CausesValidation = false;
             this.label16.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
             this.label16.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label16.Location = new System.Drawing.Point(1187, 527);
+            this.label16.Location = new System.Drawing.Point(1183, 525);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(307, 57);
+            this.label16.Size = new System.Drawing.Size(309, 63);
             this.label16.TabIndex = 365;
             this.label16.Text = "LT AGING#2";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -4496,9 +4826,9 @@
             this.label15.CausesValidation = false;
             this.label15.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
             this.label15.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label15.Location = new System.Drawing.Point(1186, 327);
+            this.label15.Location = new System.Drawing.Point(1183, 321);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(307, 57);
+            this.label15.Size = new System.Drawing.Size(311, 64);
             this.label15.TabIndex = 364;
             this.label15.Text = "LT AGING#1";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -4510,9 +4840,9 @@
             this.label14.CausesValidation = false;
             this.label14.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
             this.label14.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label14.Location = new System.Drawing.Point(1222, 126);
+            this.label14.Location = new System.Drawing.Point(1221, 123);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(232, 57);
+            this.label14.Size = new System.Drawing.Size(232, 63);
             this.label14.TabIndex = 363;
             this.label14.Text = "HT AGING";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -4542,11 +4872,11 @@
             this.ctrlSiteTrack20.SiteNoDirection = ControlGallery.SiteTrackDirection.LeftToRight;
             this.ctrlSiteTrack20.SiteNoIncStep = 1;
             this.ctrlSiteTrack20.SiteNoList = new int[] {
-        3201,
-        3202,
-        3203,
-        3204,
-        3206};
+        3101,
+        3102,
+        3103,
+        3104,
+        3106};
             this.ctrlSiteTrack20.SiteTextDisp = null;
             this.ctrlSiteTrack20.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack20.Size = new System.Drawing.Size(185, 35);
@@ -5209,7 +5539,7 @@
             // 
             this.ctrlSiteTrack21.CVPLCListDeviceID = 2;
             this.ctrlSiteTrack21.DisplayText = "";
-            this.ctrlSiteTrack21.FirstSiteNo = 3205;
+            this.ctrlSiteTrack21.FirstSiteNo = 3105;
             this.ctrlSiteTrack21.InterSitePadding = 2;
             this.ctrlSiteTrack21.IsControled = true;
             this.ctrlSiteTrack21.IsUpperStage = false;
@@ -5306,7 +5636,7 @@
             // 
             this.ctrlSiteTrack25.CVPLCListDeviceID = 1;
             this.ctrlSiteTrack25.DisplayText = "";
-            this.ctrlSiteTrack25.FirstSiteNo = 2215;
+            this.ctrlSiteTrack25.FirstSiteNo = 2204;
             this.ctrlSiteTrack25.InterSitePadding = 2;
             this.ctrlSiteTrack25.IsControled = true;
             this.ctrlSiteTrack25.IsUpperStage = false;
@@ -5337,7 +5667,7 @@
             // 
             this.ctrlSiteTrack27.CVPLCListDeviceID = 3;
             this.ctrlSiteTrack27.DisplayText = "";
-            this.ctrlSiteTrack27.FirstSiteNo = 4222;
+            this.ctrlSiteTrack27.FirstSiteNo = 4106;
             this.ctrlSiteTrack27.InterSitePadding = 2;
             this.ctrlSiteTrack27.IsControled = true;
             this.ctrlSiteTrack27.IsUpperStage = false;
@@ -5421,6 +5751,38 @@
             this.label29.Size = new System.Drawing.Size(269, 162);
             this.label29.TabIndex = 577;
             // 
+            // ctrlSiteTrack51
+            // 
+            this.ctrlSiteTrack51.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack51.DisplayText = "RTV";
+            this.ctrlSiteTrack51.FirstSiteNo = 999;
+            this.ctrlSiteTrack51.InterSitePadding = 0;
+            this.ctrlSiteTrack51.IsControled = true;
+            this.ctrlSiteTrack51.IsUpperStage = false;
+            this.ctrlSiteTrack51.Location = new System.Drawing.Point(992, 124);
+            this.ctrlSiteTrack51.MainLoop = false;
+            this.ctrlSiteTrack51.MarginHorizontal = 0;
+            this.ctrlSiteTrack51.MarginVertical = 0;
+            this.ctrlSiteTrack51.Name = "ctrlSiteTrack51";
+            this.ctrlSiteTrack51.PLCNo = 51;
+            this.ctrlSiteTrack51.ShowSiteNo = false;
+            this.ctrlSiteTrack51.ShowTroubleState = false;
+            this.ctrlSiteTrack51.SiteBorderColor = System.Drawing.Color.DimGray;
+            this.ctrlSiteTrack51.SiteBoxColor = System.Drawing.Color.Gray;
+            this.ctrlSiteTrack51.SiteBoxHeight = 34;
+            this.ctrlSiteTrack51.SiteBoxWidth = 32;
+            this.ctrlSiteTrack51.SiteCount = 1;
+            this.ctrlSiteTrack51.SiteNo = 0;
+            this.ctrlSiteTrack51.SiteNoDirection = ControlGallery.SiteTrackDirection.LeftToRight;
+            this.ctrlSiteTrack51.SiteNoIncStep = 1;
+            this.ctrlSiteTrack51.SiteNoList = null;
+            this.ctrlSiteTrack51.SiteTextDisp = null;
+            this.ctrlSiteTrack51.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
+            this.ctrlSiteTrack51.Size = new System.Drawing.Size(33, 35);
+            this.ctrlSiteTrack51.TabIndex = 601;
+            this.ctrlSiteTrack51.TextRotateAngle = 0;
+            this.ctrlSiteTrack51.Visible = false;
+            // 
             // object_85b0f3cb_bd20_487a_bfd7_03e370778b9c
             // 
             this.object_85b0f3cb_bd20_487a_bfd7_03e370778b9c.BackColor = System.Drawing.Color.Black;
@@ -5476,6 +5838,7 @@
             this.Load += new System.EventHandler(this.CtrlMonitoring_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox39)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox44)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox40)).EndInit();
@@ -5895,5 +6258,20 @@
         private MonitoringUI.Controlls.CtrlTaggingName ctrlTaggingName5;
         private WindowsForms.CtrlLabel ctrlLabel17;
         private WindowsForms.CtrlLabel ctrlLabel6;
+        private AgingControls.AgingLineControl ht011;
+        private AgingControls.AgingLineControl ht012;
+        private AgingControls.AgingLineControl ht014;
+        private AgingControls.AgingLineControl ht013;
+        private AgingControls.AgingLineControl lt014;
+        private AgingControls.AgingLineControl lt011;
+        private AgingControls.AgingLineControl lt012;
+        private AgingControls.AgingLineControl lt013;
+        private AgingControls.AgingLineControl lt024;
+        private AgingControls.AgingLineControl lt021;
+        private AgingControls.AgingLineControl lt022;
+        private AgingControls.AgingLineControl lt023;
+        private ControlGallery.CtrlSiteTrack ctrlSiteTrack51;
+        private WindowsForms.CtrlLabel ctrlLabel18;
+        private System.Windows.Forms.PictureBox pictureBox39;
     }
 }

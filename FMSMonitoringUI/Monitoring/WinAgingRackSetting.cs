@@ -53,7 +53,7 @@ namespace FMSMonitoringUI.Monitoring
         #region WinAgingRackSetting Event
         private void WinAgingRackSetting_Load(object sender, EventArgs e)
         {
-            if (CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, this.Text) == false)
+            if (CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, this.Name) == false)
             {
                 Exit_Click(null, null);
                 return;
@@ -110,6 +110,7 @@ namespace FMSMonitoringUI.Monitoring
             Exit.Left = (this.panel3.Width - Exit.Width) / 2;             
             Exit.Top = (this.panel3.Height - Exit.Height) / 2;
 
+            //var dt = new DateTime(2023, 4, 28, 12, 12, 12);
             dtPlanTime.StartTime = DateTime.Now;
             dtPlanTime.OnValueChanged += OnDateTimeChanged;
         }
@@ -277,10 +278,10 @@ namespace FMSMonitoringUI.Monitoring
                 // Set Query
                 StringBuilder strSQL = new StringBuilder();
 
-                strSQL.Append(" SELECT A.aging_type, A.line, A.lane, A.bay, A.floor, A.rack_id, A.use_flag, A.status, A.tray_cnt, A.process_no,");
+                strSQL.Append(" SELECT A.aging_type, A.line, A.lane, A.bay, A.floor, A.rack_id, A.use_flag, A.status, A.tray_cnt, A.process_no, A.start_time, A.plan_time,");
                 strSQL.Append("        C.tray_id AS sel_tray_id, IF(A.tray_id = C.tray_id, '1', '2') AS level,");
                 strSQL.Append("        B.trouble_name,B.trouble_name_local,");
-                strSQL.Append("        C.tray_zone, C.model_id, C.route_id, C.recipe_id, C.tray_input_time, C.start_time, C.plan_time,");
+                strSQL.Append("        C.tray_zone, C.model_id, C.route_id, C.recipe_id, C.tray_input_time,");
                 strSQL.Append("        (SELECT sf_get_process_name(C.model_id, C.route_id, C.eqp_type, C.process_type, C.process_no)) AS process_name");
                 strSQL.Append(" FROM fms_v.tb_mst_aging   A");
                 strSQL.Append("     LEFT OUTER JOIN fms_v.tb_mst_trouble    B");
@@ -338,7 +339,8 @@ namespace FMSMonitoringUI.Monitoring
                         strSQL.Append($" SET status = '{value}'");
                         break;
                     case enCommnadType.PlanTimeSave:
-                        strSQL.Append($" SET end_time = '{value}'");
+                        //strSQL.Append($" SET end_time = '{value}'");
+                        strSQL.Append($" SET plan_time = '{value}'");
                         break;
                     case enCommnadType.DataClearSave:
                         strSQL.Append($" SET {value}");
@@ -448,6 +450,17 @@ namespace FMSMonitoringUI.Monitoring
                 gridTrayInfo.SetValue(i + 1, row, data[i].START_TIME.Year == 1 ? "" : time); row++;
                 time = data[i].PLAN_TIME.ToString("dd-MM-yyyy HH:mm:ss");
                 gridTrayInfo.SetValue(i + 1, row, data[i].PLAN_TIME.Year == 1 ? "" : time);
+
+                if (data[i].PLAN_TIME.Year != 1)
+                {
+                    var dt = new DateTime(data[i].PLAN_TIME.Year,
+                                      data[i].PLAN_TIME.Month,
+                                      data[i].PLAN_TIME.Day,
+                                      data[i].PLAN_TIME.Hour,
+                                      data[i].PLAN_TIME.Minute,
+                                      data[i].PLAN_TIME.Second);
+                    dtPlanTime.StartTime = dt;
+                }                
             }
         }
         #endregion
@@ -517,7 +530,7 @@ namespace FMSMonitoringUI.Monitoring
 
             if (CDefine.m_strSaveLoginID == "") return;
 
-            if (CAuthority.CheckAuthority(enAuthority.Save, CDefine.m_strSaveLoginID, this.Text))
+            if (CAuthority.CheckAuthority(enAuthority.Save, CDefine.m_strSaveLoginID, this.Name))
             {
                 CLogger.WriteLog(enLogLevel.ButtonClick, this.WindowID, $"Save UserID : {CDefine.m_strSaveLoginID}, Save UserName : {CDefine.m_strSaveLoginName}");
 
@@ -609,7 +622,7 @@ namespace FMSMonitoringUI.Monitoring
             }
             else if (rbPlanTime.Checked)
             {
-                now = dtPlanTime.StartTime.ToString("yyyyMMddHHmmss");
+                now = dtPlanTime.StartTime.ToString("yyyy-MM-dd hh-mm-ss");
             }
 
             return now;

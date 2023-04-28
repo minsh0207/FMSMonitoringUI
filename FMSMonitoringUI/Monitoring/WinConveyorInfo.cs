@@ -54,7 +54,7 @@ namespace FMSMonitoringUI.Monitoring
         #region WinCVTrayInfo Event
         private void WinCVTrayInfo_Load(object sender, EventArgs e)
         {
-            if (CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, this.Text) == false)
+            if (CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, this.Name) == false)
             {
                 Exit_Click(null, null);
                 return;
@@ -141,19 +141,39 @@ namespace FMSMonitoringUI.Monitoring
             gridCVInfo.AddColumnHeaderList(lstTitle);
             gridCVInfo.ColumnHeadersVisible(false);
 
-            lstTitle = new List<string>
+            if (_cvTitle == "RTV")
             {
-                LocalLanguage.GetItemString("DEF_Track_No"),
-                LocalLanguage.GetItemString("DEF_Conveyor_Trye"),
-                LocalLanguage.GetItemString("DEF_Tray_Exist").Replace(" :", ""),
-                LocalLanguage.GetItemString("DEF_Tray_Type"),
-                LocalLanguage.GetItemString("DEF_Tray_Count"),
-                LocalLanguage.GetItemString("DEF_Tray_ID_1"),
-                LocalLanguage.GetItemString("DEF_Tray_ID_2"),
-                LocalLanguage.GetItemString("DEF_Station_Status"),
-                LocalLanguage.GetItemString("DEF_Carriage_Position"),
-                LocalLanguage.GetItemString("DEF_Destination")
-            };
+                lstTitle = new List<string>
+                {
+                    LocalLanguage.GetItemString("DEF_Track_No"),
+                    LocalLanguage.GetItemString("DEF_Conveyor_Trye"),
+                    LocalLanguage.GetItemString("DEF_Tray_Exist").Replace(" :", ""),
+                    LocalLanguage.GetItemString("DEF_Tray_Type"),
+                    LocalLanguage.GetItemString("DEF_Tray_Count"),
+                    LocalLanguage.GetItemString("DEF_Tray_ID_1"),
+                    LocalLanguage.GetItemString("DEF_Tray_ID_2"),
+                    LocalLanguage.GetItemString("DEF_Station_Status"),
+                    LocalLanguage.GetItemString("DEF_Destination"),
+                    LocalLanguage.GetItemString("DEF_Carriage_Position"),
+                    LocalLanguage.GetItemString("DEF_RTV_From"),
+                    LocalLanguage.GetItemString("DEF_RTV_To")
+                };
+            }
+            else
+            {
+                lstTitle = new List<string>
+                {
+                    LocalLanguage.GetItemString("DEF_Track_No"),
+                    LocalLanguage.GetItemString("DEF_Conveyor_Trye"),
+                    LocalLanguage.GetItemString("DEF_Tray_Exist").Replace(" :", ""),
+                    LocalLanguage.GetItemString("DEF_Tray_Type"),
+                    LocalLanguage.GetItemString("DEF_Tray_Count"),
+                    LocalLanguage.GetItemString("DEF_Tray_ID_1"),
+                    LocalLanguage.GetItemString("DEF_Tray_ID_2"),
+                    LocalLanguage.GetItemString("DEF_Station_Status"),
+                    LocalLanguage.GetItemString("DEF_Destination")
+                };
+            }
 
             gridCVInfo.AddRowsHeaderList(lstTitle);
 
@@ -167,7 +187,7 @@ namespace FMSMonitoringUI.Monitoring
             //TrayInfoView.ColumnMergeList(lstColumn, lstTitle);
 
             gridCVInfo.SetGridViewStyles();
-            gridCVInfo.ColumnHeadersWidth(0, 200);            
+            gridCVInfo.ColumnHeadersWidth(0, 200);
         }
         #endregion
 
@@ -182,7 +202,7 @@ namespace FMSMonitoringUI.Monitoring
 
                     List<ReadValueId> cvInfo = _OPCUAClient.ConveyorNodeID[_ConveyorNo];
                     List<DataValue> data = _OPCUAClient.ReadNodeID(cvInfo);
-                    this.BeginInvoke(new Action(() => SetData(data)));
+                    this.BeginInvoke(new Action(() => SetData(data, cvInfo)));
 
                     Thread.Sleep(2000);
                 }
@@ -199,50 +219,76 @@ namespace FMSMonitoringUI.Monitoring
         #endregion
 
         #region SetData
-        public void SetData(List<DataValue> data)
+        public void SetData(List<DataValue> data, List<ReadValueId> cvInfo)
         {
             if (data == null || data.Count == 0) return;
 
             int row = 0;
             int trackNo;
 
-            if (data[(int)enCVTagList.TrackNo].Value.ToString() == "0")
+            int tagIdx = GetTagIndex("ConveyorInformation.TrackNo", cvInfo);
+            if (data[tagIdx].Value.ToString() == "0")
                 trackNo = _ConveyorNo;
             else
-                trackNo = Convert.ToInt16(data[(int)enCVTagList.TrackNo].Value);
+                trackNo = Convert.ToInt16(data[tagIdx].Value);
+            gridCVInfo.SetValue(1, row, trackNo); row++;
 
-            gridCVInfo.SetValue(1, row, trackNo); row++;            
-            gridCVInfo.SetValue(1, row, GetConveyorType(data[(int)enCVTagList.ConveyorType].Value)); row++;
+            int cvTypeIdx = GetTagIndex("ConveyorInformation.ConveyorType", cvInfo);
+            gridCVInfo.SetValue(1, row, GetConveyorType(data[cvTypeIdx].Value)); row++;
 
-            bool trayExist = Convert.ToBoolean(data[(int)enCVTagList.TrayExist].Value);
+            tagIdx = GetTagIndex("ConveyorInformation.TrayExist", cvInfo);
+            bool trayExist = Convert.ToBoolean(data[tagIdx].Value);
             //gridCVInfo.SetValue(1, row, (trayExist == true ? "Exist" : "Not Exist")); row++;
             ledTrayExist.LedOnOff(trayExist); row++;
-            gridCVInfo.SetValue(1, row, GetTrayType(data[(int)enCVTagList.TrayType].Value)); row++;
-            gridCVInfo.SetValue(1, row, data[(int)enCVTagList.TrayCount].Value); row++;
-            gridCVInfo.SetValue(1, row, data[(int)enCVTagList.TrayIdL1].Value); row++;
 
-            if (Convert.ToString(data[(int)enCVTagList.TrayIdL2].Value) == "")
-                gridCVInfo.RowsVisible(row, false);
-            else
+            tagIdx = GetTagIndex("ConveyorInformation.TrayType", cvInfo);
+            gridCVInfo.SetValue(1, row, GetTrayType(data[tagIdx].Value)); row++;
+
+            tagIdx = GetTagIndex("ConveyorInformation.TrayCount", cvInfo);
+            gridCVInfo.SetValue(1, row, data[tagIdx].Value); row++;
+
+            tagIdx = GetTagIndex("ConveyorInformation.TrayIdL1", cvInfo);
+            gridCVInfo.SetValue(1, row, data[tagIdx].Value); row++;
+            _trayID1 = Convert.ToString(data[tagIdx].Value);
+
+            tagIdx = GetTagIndex("ConveyorInformation.TrayIdL2", cvInfo);
+            //if (Convert.ToString(data[tagIdx].Value) == "")
+            //    gridCVInfo.RowsVisible(row, false);
+            //else
+            //    gridCVInfo.RowsVisible(row, true);
+
+            gridCVInfo.SetValue(1, row, data[tagIdx].Value); row++;
+            _trayID2 = Convert.ToString(data[tagIdx].Value);            
+
+            if (CheckStationStatus(data[cvTypeIdx].Value))
+            {
                 gridCVInfo.RowsVisible(row, true);
-
-            gridCVInfo.SetValue(1, row, data[(int)enCVTagList.TrayIdL2].Value); row++;
-
-            _trayID1 = Convert.ToString(data[(int)enCVTagList.TrayIdL1].Value);
-            _trayID2 = Convert.ToString(data[(int)enCVTagList.TrayIdL2].Value);
-
-            if (CheckStationStatus(data[(int)enCVTagList.ConveyorType].Value))
-                gridCVInfo.RowsVisible(row, true);
+            }
             else
                 gridCVInfo.RowsVisible(row, false);
 
-            gridCVInfo.SetValue(1, row, GetStationStatus(data[(int)enCVTagList.StationStatus].Value)); row++;
+            tagIdx = GetTagIndex("ConveyorInformation.StationStatus", cvInfo);
+            gridCVInfo.SetValue(1, row, GetStationStatus(data[tagIdx].Value)); row++;
 
-            if (_cvTitle == "RTV") gridCVInfo.RowsVisible(row, true);
-            else gridCVInfo.RowsVisible(row, false);
-            gridCVInfo.SetValue(1, row, data[(int)enCVTagList.CarriagePos].Value); row++;
+            if (_cvTitle == "RTV")
+            {
+                tagIdx = GetTagIndex("ConveyorCommand.Destination", cvInfo);
+                gridCVInfo.SetValue(1, row, data[tagIdx].Value); row++;
 
-            gridCVInfo.SetValue(1, row, data[(int)enCVTagList.Destination].Value);
+                tagIdx = GetTagIndex("ConveyorInformation.CarriagePos", cvInfo);
+                gridCVInfo.SetValue(1, row, data[tagIdx].Value); row++;
+
+                tagIdx = GetTagIndex("ConveyorCommand.RTVFrom", cvInfo);
+                gridCVInfo.SetValue(1, row, data[tagIdx].Value); row++;
+
+                tagIdx = GetTagIndex("ConveyorCommand.RTVTo", cvInfo);
+                gridCVInfo.SetValue(1, row, data[tagIdx].Value);
+            }
+            else
+            {
+                tagIdx = GetTagIndex("ConveyorCommand.Destination", cvInfo);
+                gridCVInfo.SetValue(1, row, data[tagIdx].Value);
+            }
         }
         #endregion
 
@@ -399,6 +445,13 @@ namespace FMSMonitoringUI.Monitoring
             }
 
             return false;
+        }
+        #endregion
+
+        #region GetTagIndex
+        private int GetTagIndex(string tagPath, List<ReadValueId> cvInfo)
+        {
+            return cvInfo.FindIndex(x => x.UserData.ToString().EndsWith(tagPath));
         }
         #endregion
     }

@@ -846,10 +846,6 @@
       <Project>{9bf784c3-464b-4468-881c-2a535f319cb9}</Project>
       <Name>CSVMgr</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DBHandler\DBHandler.csproj">
-      <Project>{3c8de403-7ff8-41cd-955b-8fcc628dd122}</Project>
-      <Name>DBHandler</Name>
-    </ProjectReference>
     <ProjectReference Include="..\OPCUAClientClassLib\OPCUAClientLib.csproj">
       <Project>{065d7112-f84a-4864-868e-9b8fc35696ca}</Project>
       <Name>OPCUAClientLib</Name>

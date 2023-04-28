@@ -125,6 +125,7 @@ namespace FMSMonitoringUI.Controlls
                 gridRackTemp.SetValue(0, row, hpc.CELL_NO);
                 gridRackTemp.SetValue(1, row, hpc.CELL_ID);
                 gridRackTemp.SetValue(2, row, hpc.JIG_AVG);
+                gridRackTemp.SetStyleForeColor(2, row, CheckTempLimit(hpc.JIG_AVG, hpc.EQP_TEMP_LSL, hpc.EQP_TEMP_USL));
             }
         }
         #endregion
@@ -147,6 +148,24 @@ namespace FMSMonitoringUI.Controlls
             {
                 lbTitle.Text = LocalLanguage.GetItemString(_LanguageID);
             }
+        }
+        #endregion
+
+        #region CheckTempLimit
+        private Color CheckTempLimit(float temp, float spacTemplsl, float spacTempusl)
+        {
+            Color tempColor = Color.White;
+
+            if (temp <= spacTemplsl)
+            {
+                tempColor = Color.Blue;
+            }
+            if (temp >= spacTempusl)
+            {
+                tempColor = Color.Red;
+            }
+
+            return tempColor;
         }
         #endregion
     }

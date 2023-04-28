@@ -291,6 +291,10 @@ namespace ControlGallery
                     def_color = Color.Red;
                     break;
 
+                case EnumDeviceStatus.TrackPause:
+                    def_color = Color.DarkOrange;
+                    break;
+
                 default:
                     break;
             }
@@ -341,29 +345,34 @@ namespace ControlGallery
             return def_color;
         }
 
-        public EnumDeviceStatus GetDeviceStatus(bool trayOn, bool trayRework, int eqpStatus)
+        public EnumDeviceStatus GetDeviceStatus(bool trayOn, bool trayRework, int eqpStatus, bool trackPause)
         {
             EnumDeviceStatus ret = EnumDeviceStatus.None;
 
             switch (eqpStatus)
             {
                 case 4:
-                    ret |= EnumDeviceStatus.PLCTrouble;
+                    ret = EnumDeviceStatus.PLCTrouble;
                     break;
 
                 default:
                     if (trayOn == true)
                     {
                         if (trayRework == true)
-                            ret |= EnumDeviceStatus.TrayRework;
+                            ret = EnumDeviceStatus.TrayRework;
                         else
-                            ret |= EnumDeviceStatus.TrayOn;
+                            ret = EnumDeviceStatus.TrayOn;
 
                         // Font색상을 검정색으로 변경
                     }
                     else
                     {
 
+                    }
+
+                    if (trackPause == true)
+                    {
+                        ret = EnumDeviceStatus.TrackPause;
                     }
                     break;
             }
@@ -380,7 +389,7 @@ namespace ControlGallery
 
             if (mc_status == 0)
             {
-                ret |= EnumDeviceStatus.TrayOn;
+                ret = EnumDeviceStatus.TrayOn;
             }
             else
             {

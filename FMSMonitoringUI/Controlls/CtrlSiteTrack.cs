@@ -396,15 +396,19 @@ namespace ControlGallery
 
         }
 
-        public void UpdateTrackStatus(int siteNo, bool trayOn, bool trayRework, int eqpStatus)
+        public void UpdateTrackStatus(int siteNo, bool trayOn, bool trayRework, int eqpStatus, bool trackPause)
         {
-            _TrayOn = trayOn;
+            //_TrayOn = trayOn;
 
             foreach (SiteBox box in _siteBoxes)
             {
                 if (box.SiteNo == siteNo)
                 {
-                    box.DeviceInfo.DeviceStatus = GetDeviceStatus(trayOn, trayRework, eqpStatus);
+                    //_TrayOn = trayOn;
+
+                    box.DeviceInfo.DeviceStatus = GetDeviceStatus(trayOn, trayRework, eqpStatus, trackPause);
+                    box.DeviceInfo.TrayOn = trayOn == true ? 1 : 0;
+                    box.DeviceInfo.TrackPause = trackPause == true ? 1 : 0;
                 }
             }
         }
@@ -419,7 +423,7 @@ namespace ControlGallery
             {
                 using (Pen p = new Pen(SiteBorderColor))
                 {
-                    if(!_isControled) p.DashStyle = System.Drawing.Drawing2D.DashStyle.DashDot; // 내꺼 아님
+                    if (!_isControled) p.DashStyle = System.Drawing.Drawing2D.DashStyle.DashDot; // 내꺼 아님
                     foreach (SiteBox sitebox in _siteBoxes)
                     {
                         using (SolidBrush b = new SolidBrush(GetStatusColor(sitebox.DeviceInfo.DeviceStatus, SiteBoxColor, sitebox.SiteNo)))
@@ -451,12 +455,14 @@ namespace ControlGallery
                             string[] title = item.Split('=');
                             siteTitle.Add(int.Parse(title[0].ToString()), title[1].ToString());
                         }
-                    }                    
+                    }
 
                     foreach (SiteBox sitebox in _siteBoxes)
                     {
                         using (SolidBrush b = new SolidBrush(GetStatusColor(sitebox.DeviceInfo.DeviceStatus, SiteBoxColor, sitebox.SiteNo)))
                         {
+                            int trayOn = sitebox.DeviceInfo.TrayOn;
+
                             g.FillRectangle(b, sitebox.Rect);
                             g.DrawRectangle(p, sitebox.Rect);
 
@@ -487,7 +493,25 @@ namespace ControlGallery
                                         break;
                                 }
 
-                                g.DrawString(siteTitle[sitebox.SiteNo], this.Font, (_TrayOn ? Brushes.Black : Brushes.White), rectangle);
+                                g.DrawString(siteTitle[sitebox.SiteNo], this.Font, (trayOn == 1 ? Brushes.Black : Brushes.White), rectangle);
+                            }
+
+                            if (sitebox.DeviceInfo.TrackPause == 1)
+                            {
+                                Rectangle rectangle = new Rectangle();                                
+
+                                // g.DrawString(" P", this.Font, (trayOn == 1 ? Brushes.Black : Brushes.White), rectangle);
+
+                                if (trayOn == 1)
+                                {
+                                    rectangle = new Rectangle(sitebox.Rect.X + 2, sitebox.Rect.Y + 10, 0, 0);
+                                    g.DrawString("P(T)", this.Font, Brushes.Black, rectangle);
+                                }
+                                else
+                                {
+                                    rectangle = new Rectangle(sitebox.Rect.X + 6, sitebox.Rect.Y + 10, 0, 0);
+                                    g.DrawString(" P", this.Font, Brushes.Black, rectangle);
+                                }                                
                             }
                         }
                     }
@@ -529,11 +553,11 @@ namespace ControlGallery
         private int _demo_index = 1;
         public void DemoSiteStatus()
         {
-            _siteBoxes[0].DeviceInfo.DeviceStatus = (EnumDeviceStatus)_demo_index;
-            Refresh();
+            //_siteBoxes[0].DeviceInfo.DeviceStatus = (EnumDeviceStatus)_demo_index;
+            //Refresh();
 
-            _demo_index <<= 1;
-            if (_demo_index >= (int)EnumDeviceStatus.MAXVALUE) _demo_index = 1;
+            //_demo_index <<= 1;
+            //if (_demo_index >= (int)EnumDeviceStatus.MAXVALUE) _demo_index = 1;
         }
 #endif
         #endregion

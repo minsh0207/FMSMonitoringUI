@@ -36,37 +36,37 @@ namespace OPCUAClientClassLib
         /// <summary>
         /// RTV
         /// </summary>
-        RTV,
+        RTV01 = 999,
     }
 
-    public enum enCVTagList
-    {
-        Mode = 0,
-        Status,
-        EqpErrorNo,
-        EqpErrorLevel,
-        FMSStatus,
-        FMSErrorNo,
-        TrackNo,
-        ConveyorType,
-        StationStatus,
-        TrayExist,
-        TrayType,
-        TrayCount,
-        TrayIdL1,
-        TrayIdL2,
-        CarriagePos,
-        CommandReady,
-        Destination,
-        MagazineCommand
-    }
+    //public enum enCVTagList
+    //{
+    //    Mode = 0,
+    //    Status,
+    //    EqpErrorNo,
+    //    EqpErrorLevel,
+    //    FMSStatus,
+    //    FMSErrorNo,
+    //    TrackNo,
+    //    ConveyorType,
+    //    StationStatus,
+    //    TrayExist,
+    //    TrayType,
+    //    TrayCount,
+    //    TrayIdL1,
+    //    TrayIdL2,
+    //    CarriagePos,
+    //    CommandReady,
+    //    Destination,
+    //    MagazineCommand
+    //}
 
-    public enum enCraneTagList
-    {
-        TrayExist = 0,
-        JobType,
-        TrayIdL1,
-        TrayIdL2,
-        TrayCount
-    }
+    //public enum enCraneTagList
+    //{
+    //    TrayExist = 0,
+    //    JobType,
+    //    TrayIdL1,
+    //    TrayIdL2,
+    //    TrayCount
+    //}
 }

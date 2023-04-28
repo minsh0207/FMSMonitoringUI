@@ -127,7 +127,7 @@ namespace FMSMonitoringUI.Controlls
 
         private void lbRackStatus_Click(object sender, MouseEventArgs e)
         {
-            if (lbPorcessStatus.Text != "X")
+            if (lbPorcessStatus.Text != " X ")  // PorcessStatus에 X:사용금지와 구분하기 위해 ' X '로 변경
             {
                 if (((MouseEventArgs)e).Button == MouseButtons.Right)
                 {

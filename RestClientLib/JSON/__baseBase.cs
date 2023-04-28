@@ -179,7 +179,7 @@ namespace RestClientLib
         public string JSON_PROCESS_DATA { get; set; }
         public string JSON_PROCESS_START_DATA { get; set; }
         public string UPDATE_USER { get; set; }
-        public string UPDATE_TIME { get; set; }
+        public DateTime UPDATE_TIME { get; set; }
         public string CREATE_TIME { get; set; }
     }
     #endregion
@@ -290,7 +290,7 @@ namespace RestClientLib
         public string JSON_RECIPE { get; set; }
         public string JSON_PROCESS_DATA { get; set; }
         public string UPDATE_USER { get; set; }
-        public string UPDATE_TIME { get; set; }
+        public DateTime UPDATE_TIME { get; set; }
         public string CREATE_TIME { get; set; }
     }
     #endregion
@@ -312,7 +312,7 @@ namespace RestClientLib
         public int OUT_TRAY_CNT { get; set; }
         public int OUT_CELL_CNT { get; set; }
         public string UPDATE_USER { get; set; }
-        public string UPDATE_TIME { get; set; }
+        public DateTime UPDATE_TIME { get; set; }
         public string CREATE_TIME { get; set; }
     }
     #endregion
@@ -334,7 +334,7 @@ namespace RestClientLib
         public string JSON_RECIPE { get; set; }
         public string JSON_PROCESS_DATA { get; set; }
         public string UPDATE_USER { get; set; }
-        public string UPDATE_TIME { get; set; }
+        public DateTime UPDATE_TIME { get; set; }
         public string CREATE_TIME { get; set; }
     }
     #endregion
@@ -352,7 +352,7 @@ namespace RestClientLib
         public float EQP_TEMP { get; set; }
         public string TRAY_IDS { get; set; }
         public string UPDATE_USER { get; set; }
-        public string UPDATE_TIME { get; set; }
+        public DateTime UPDATE_TIME { get; set; }
         public string CREATE_TIME { get; set; }
     }
     #endregion
@@ -371,7 +371,7 @@ namespace RestClientLib
         public float UNIT_TEMP { get; set; }
         public string TRAY_IDS { get; set; }
         public string UPDATE_USER { get; set; }
-        public string UPDATE_TIME { get; set; }
+        public DateTime UPDATE_TIME { get; set; }
         public string CREATE_TIME { get; set; }
     }
     #endregion
@@ -500,7 +500,7 @@ namespace RestClientLib
         public string JSON_PROCESS_DATA { get; set; }
         public string JSON_PROCESS_START_DATA { get; set; }
         public string UPDATE_USER { get; set; }
-        public string UPDATE_TIME { get; set; }
+        public DateTime UPDATE_TIME { get; set; }
         public string CREATE_TIME { get; set; }
     }
     #endregion
@@ -549,8 +549,9 @@ namespace RestClientLib
         public string FORCE_OUT_FLAG { get; set; }
         public string FORCE_OUT_USER { get; set; }
         public string FORCE_OUT_TIME { get; set; }
-        public string FIRE_STATUS { get; set; }
-        public string FIRE_ENVETTIME { get; set; }
+        public string FIRE_FLAG { get; set; }
+        public DateTime FIRE_TIME { get; set; }
+        public DateTime FIRE_TIMER_START { get; set; }
         public string RACK_TYPE { get; set; }
         public string IN_MODEL_ID { get; set; }
         public string IN_ROUTE_ID { get; set; }
@@ -559,9 +560,9 @@ namespace RestClientLib
         public int IN_PROCESS_NO { get; set; }
         public string IN_TRAY_ZONE { get; set; }
         public string IN_CELL_TYPE { get; set; }
-        public string UPDATE_USER { get; set; }
-        public string UPDATE_TIME { get; set; }
-        public string CREATE_TIME { get; set; }
+        public DateTime UPDATE_USER { get; set; }
+        public DateTime UPDATE_TIME { get; set; }
+        public DateTime CREATE_TIME { get; set; }
     }
     #endregion
     #region tb_mst_eqp
@@ -632,7 +633,7 @@ namespace RestClientLib
         public string CELL_TYPE { get; set; }
         public string CELL_SIZE { get; set; }
         public string UPDATE_USER { get; set; }
-        public string UPDATE_TIME { get; set; }
+        public DateTime UPDATE_TIME { get; set; }
         public string CREATE_TIME { get; set; }
     }
     #endregion
@@ -648,7 +649,7 @@ namespace RestClientLib
         public string PROCESS_TYPE_NAME_LOCAL { get; set; }
         public string DESCR { get; set; }
         public string UPDATE_USER { get; set; }
-        public string UPDATE_TIME { get; set; }
+        public DateTime UPDATE_TIME { get; set; }
         public string CREATE_TIME { get; set; }
     }
     #endregion
@@ -665,7 +666,7 @@ namespace RestClientLib
         public string ROUTE_TYPE { get; set; }
         public string JSON_DATA { get; set; }
         public string UPDATE_USER { get; set; }
-        public string UPDATE_TIME { get; set; }
+        public DateTime UPDATE_TIME { get; set; }
         public string CREATE_TIME { get; set; }
     }
     #endregion
@@ -683,7 +684,7 @@ namespace RestClientLib
         public string ROUTE_TYPE { get; set; }
         public string JSON_DATA { get; set; }
         public string UPDATE_USER { get; set; }
-        public string UPDATE_TIME { get; set; }
+        public DateTime UPDATE_TIME { get; set; }
         public string CREATE_TIME { get; set; }
     }
     #endregion
@@ -706,7 +707,7 @@ namespace RestClientLib
         public string RECIPE_ID { get; set; }
         public string JSON_RECIPE { get; set; }
         public string UPDATE_USER { get; set; }
-        public string UPDATE_TIME { get; set; }
+        public DateTime UPDATE_TIME { get; set; }
         public string CREATE_TIME { get; set; }
     }
     #endregion
@@ -765,7 +766,7 @@ namespace RestClientLib
         public string IN_TRAY_ZONE { get; set; }
         public string IN_CELL_TYPE { get; set; }
         public string UPDATE_USER { get; set; }
-        public string UPDATE_TIME { get; set; }
+        public DateTime UPDATE_TIME { get; set; }
         public string CREATE_TIME { get; set; }
     }
     #endregion

@@ -47,7 +47,7 @@ namespace FMSMonitoringUI.Monitoring
 
             _OPCUAClient = opcua;
             _CraneNo = craneNo;
-            _TankIdx = (tankIdx == 1 ? "WaterTank01." : "WaterTank02.");
+            _TankIdx = (tankIdx == 1 ? "WaterTank1." : "WaterTank2.");
 
             InitControl();
             InitLanguage();
@@ -63,7 +63,7 @@ namespace FMSMonitoringUI.Monitoring
         #region WinWaterTank Event
         private void WinWaterTank_Load(object sender, EventArgs e)
         {
-            if (CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, this.Text) == false)
+            if (CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, this.Name) == false)
             {
                 Exit_Click(null, null);
                 return;

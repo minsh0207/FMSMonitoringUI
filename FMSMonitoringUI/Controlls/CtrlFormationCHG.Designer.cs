@@ -557,6 +557,7 @@
             // 
             this.ctrlTaggingName12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlTaggingName12.ColorText = "N";
+            this.ctrlTaggingName12.Enabled = false;
             this.ctrlTaggingName12.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingName12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlTaggingName12.LanguageID = "DEF_Not_Use";
@@ -568,6 +569,7 @@
             this.ctrlTaggingName12.TagColor = System.Drawing.Color.DarkGray;
             this.ctrlTaggingName12.TagText = "Not Use";
             this.ctrlTaggingName12.TextColor = System.Drawing.Color.Black;
+            this.ctrlTaggingName12.Visible = false;
             // 
             // ctrlTaggingName11
             // 
@@ -701,6 +703,7 @@
             // 
             this.ctrlTaggingNameLong8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlTaggingNameLong8.ColorText = "Data";
+            this.ctrlTaggingNameLong8.Enabled = false;
             this.ctrlTaggingNameLong8.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlTaggingNameLong8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlTaggingNameLong8.LanguageID = "DEF_Data_Error";
@@ -712,6 +715,7 @@
             this.ctrlTaggingNameLong8.TagColor = System.Drawing.Color.Red;
             this.ctrlTaggingNameLong8.TagText = "Data Error";
             this.ctrlTaggingNameLong8.TextColor = System.Drawing.Color.Black;
+            this.ctrlTaggingNameLong8.Visible = false;
             // 
             // ctrlTaggingNameLong5
             // 

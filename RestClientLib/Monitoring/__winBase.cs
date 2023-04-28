@@ -181,7 +181,7 @@ namespace RestClientLib
         public string TRAY_ID_2 { get; set; }
         public string STATUS { get; set; }
         public int PROCESS_NO { get; set; }
-        public string FIRE_STATUS { get; set; }
+        public string FIRE_FLAG { get; set; }
         public string USE_FLAG { get; set; }
     }
     #endregion
@@ -218,6 +218,8 @@ namespace RestClientLib
         public int OPERATION_MODE { get; set; }
         public string REWORK_TRAY_1 { get; set; }
         public string REWORK_TRAY_2 { get; set; }
+        public float EQP_TEMP_LSL { get; set; }
+        public float EQP_TEMP_USL { get; set; }
         public DateTime START_TIME { get; set; }
         public DateTime PLAN_TIME { get; set; }
     }
@@ -255,6 +257,8 @@ namespace RestClientLib
         public string CELL_ID { get; set; }
         public DateTime EVENT_TIME { get; set; }
         public float JIG_AVG { get; set; }
+        public float EQP_TEMP_LSL { get; set; }
+        public float EQP_TEMP_USL { get; set; }
 
     }
     #endregion
@@ -324,6 +328,23 @@ namespace RestClientLib
         public string RACK_ID { get; set; }
         public string STATUS { get; set; }
         public string TROUBLE_CODE { get; set; }
+        public string TROUBLE_CATEGORY { get; set; }
+        public string TROUBLE_NAME { get; set; }
+        public string TROUBLE_NAME_LOCAL { get; set; }
+    }
+    #endregion
+    #region TroubleConveyorList
+    /// <summary>
+    /// JSON base format : TroubleConveyorList
+    /// </summary>
+    public class _trouble_conveyor_list
+    {
+        public int ID { get; set; }
+        public string EQP_ID { get; set; }
+        public string EQP_STATUS { get; set; }
+        public string EQP_NAME { get; set; }
+        public string EQP_NAME_LOCAL { get; set; }
+        public string EQP_TROUBLE_CODE { get; set; }
         public string TROUBLE_CATEGORY { get; set; }
         public string TROUBLE_NAME { get; set; }
         public string TROUBLE_NAME_LOCAL { get; set; }

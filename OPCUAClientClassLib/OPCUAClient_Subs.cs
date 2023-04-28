@@ -115,12 +115,16 @@ namespace OPCUAClientClassLib
                     }
                     else
                     {
-//#if DEBUG
+                        //#if DEBUG
                         //string[] temp_no = taglevel[2].ToString().Split('_');
                         //int siteno = int.Parse(temp_no[1]);
-//#else
-                        int siteno = int.Parse(taglevel[1].Substring(taglevel[1].Length - 4));
-//#endif
+                        //#else
+                        int siteno; // int.Parse(taglevel[1].Substring(taglevel[1].Length - 4));
+                        //#endif
+                        if (taglevel[1] == enEqpType.RTV01.ToString())
+                            siteno = (int)enEqpType.RTV01;
+                        else
+                            siteno = int.Parse(taglevel[1].Substring(taglevel[1].Length - 4));
 
                         item.SiteNo = siteno;
                         item.GroupNo = groupInfo.GroupNo;
@@ -134,7 +138,7 @@ namespace OPCUAClientClassLib
                     {
                         DiscardOldest = true,
                         QueueSize = 1,
-                        SamplingInterval = 250,                     //250 -> 100
+                        //SamplingInterval = 250,                     //250 -> 100
                         UserData = item,
                         // DataChangeTrigger.Status                 : Status 가 변경되었을 때에만 감지 (PLC와의 연결 상태에 대한 것만을 감지한다고 보면 됨)
                         // DataChangeTrigger.StatusValue            : Status 또는 Value 가 변경되었을 때에만 감지(위의 것 + 값이 변경되었을 때만 감지함.True->True 로 새로 write 하더라도 감지 안됨)

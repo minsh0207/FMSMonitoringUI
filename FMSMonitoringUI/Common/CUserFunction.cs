@@ -47,6 +47,7 @@ namespace MonitoringUI.Common
             CraneNo = 0;
             TrayExist = false;
             EqpStatus = 1;
+            PreEqpStatus = 1;
             TrayRework = false;
             FireSensor = false;
             CraneName = string.Empty;
@@ -57,6 +58,8 @@ namespace MonitoringUI.Common
         public int CraneNo { get; set; }
         public bool TrayExist { get; set; }
         public int EqpStatus { get; set; }
+        public bool TrackPause { get; set; }
+        public int PreEqpStatus { get; set; }   // 이전 EqpStatus
         public bool TrayRework { get; set; }
         public bool FireSensor { get; set; }
         public string CraneName { get; set; }

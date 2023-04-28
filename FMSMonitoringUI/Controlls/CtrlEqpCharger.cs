@@ -84,14 +84,14 @@ namespace FMSMonitoringUI.Controlls
                     string unitID = string.Format($"CHG0110{col + 1}0{floor}");
 
                     _rackStatus[col, row].EqpType = EqpType;
-                    //_rackStatus[col, row].EqpName = _EqpName[unitID];
+                    _rackStatus[col, row].EqpID = EqpID;
                     _rackStatus[col, row].UnitID = unitID;
 
                     uiTlbEqpStatus.Controls.Add(_rackStatus[col, row], col, row);
                 }
             }
 
-            _rackStatus[2, 0].SetData("", Color.LightGray, "X", Color.LightGray);
+            _rackStatus[2, 0].SetData("", Color.LightGray, " X ", Color.LightGray);
         }
         #endregion
 
@@ -129,6 +129,7 @@ namespace FMSMonitoringUI.Controlls
             {
                 int maxFloor = uiTlbEqpStatus.RowCount;
                 int maxBay = uiTlbEqpStatus.ColumnCount;
+                string status;
 
                 for (int i = 0; i < data.Count; i++)
                 {
@@ -137,8 +138,17 @@ namespace FMSMonitoringUI.Controlls
                     int col = i / maxFloor;    // int.Parse(data[i].UNIT_ID.Substring(data[i].UNIT_ID.Length - 3, 1)) - 1;
                     int row = maxBay - (i % maxFloor);    // uiTlbEqpStatus.RowCount - int.Parse(data[i].UNIT_ID.Substring(data[i].UNIT_ID.Length - 1, 1));
 
-                    string status = data[i].PROCESS_STATUS ?? "I";
-                    _rackStatus[col, row].SetData(data[i].EQP_MODE, eqpStatus[data[i].EQP_MODE].Value, status, processStatus[status]);
+                    if (data[i].EQP_STATUS == "T" || data[i].EQP_STATUS == "F")
+                    {
+                        status = data[i].EQP_STATUS;
+                        _rackStatus[col, row].SetData(data[i].EQP_MODE, eqpStatus[data[i].EQP_MODE].Value, status, eqpStatus[status].Value);
+                    }
+                    else
+                    {
+                        status = data[i].PROCESS_STATUS ?? "I";
+                        _rackStatus[col, row].SetData(data[i].EQP_MODE, eqpStatus[data[i].EQP_MODE].Value, status, processStatus[status]);
+                    }
+                    
                     
                     //_chgEqpStatus[col, row].Text = string.Format($"  {status}");
                     //_chgEqpStatus[col, row].BackColor = processStatus[status];

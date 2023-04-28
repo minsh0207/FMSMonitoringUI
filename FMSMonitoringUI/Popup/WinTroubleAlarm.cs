@@ -21,6 +21,19 @@ namespace MonitoringUI.Popup
     #region [Class]
     public partial class WinTroubleAlarm : Form
     {
+        #region Event
+        public delegate void TroubleCloseEventHandler(string troubleTitle);
+        public event TroubleCloseEventHandler TroubleCloseEvent = null;
+
+        public void OnTroubleClose(string troubleTitle)
+        {
+            if (TroubleCloseEvent != null)
+            {
+                TroubleCloseEvent(troubleTitle);
+            }
+        }
+        #endregion
+
         #region [Variable]
 
         // Timer
@@ -28,6 +41,8 @@ namespace MonitoringUI.Popup
 
         // Board Color Change Toggle
         bool m_bToggleOn;
+
+        string troubleTitle;
 
         #endregion
 
@@ -152,7 +167,7 @@ namespace MonitoringUI.Popup
         #endregion
 
         #region SetTroubleInfo
-        public void SetTroubleInfo(string troubleName, string unitName)
+        public void SetTroubleInfo(string troubleName, string unitName, string troubleCode)
         {
             lblTroubleName.Text = troubleName;
             
@@ -160,6 +175,8 @@ namespace MonitoringUI.Popup
             //lblTroubleName.AutoSize = true;
 
             lblTroubleUnitName.Text = unitName;
+
+            troubleTitle = $"{unitName}_{troubleCode}";
         }
         #endregion
 
@@ -195,6 +212,9 @@ namespace MonitoringUI.Popup
         public void Exit()
         {
             m_timer.Stop();
+
+            OnTroubleClose(troubleTitle);
+
             CLogger.WriteLog(enLogLevel.LOG, DateTime.Now, this.ToString(), CDefine.m_strLoginID, "Exit  : Timer Stop");
             this.Close();
         }

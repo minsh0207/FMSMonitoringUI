@@ -36,7 +36,7 @@ namespace FMSMonitoringUI.Monitoring
         #region WinRecipeInfo_Load
         private void WinRecipeInfo_Load(object sender, EventArgs e)
         {
-            if (CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, this.Text) == false)
+            if (CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, this.Name) == false)
             {
                 Exit_Click(null, null);
                 return;
@@ -135,7 +135,7 @@ namespace FMSMonitoringUI.Monitoring
                 {
                     _jsonRecipeInfoResponse result = rest.ConvertRecipeInfo(jsonResult);
 
-                    if (result != null)
+                    if (result != null && result.RECIPE_ITEM != null)
                     {
                         InitGridView(result.RECIPE_ITEM);
                     }

@@ -742,13 +742,17 @@ namespace OPCUAClientClassLib
                 for (int i = 0; i < trackList.Count; i++)
                 {
                     //if (trackList[i].SiteNo > 300) continue;
-//#if DEBUG
-                    trackno = string.Format($"T{trackList[i].SiteNo}");
+                    //#if DEBUG
+                    if (trackList[i].SiteNo == (int)enEqpType.RTV01)
+                        trackno = enEqpType.RTV01.ToString();
+                    else
+                        trackno = string.Format($"T{trackList[i].SiteNo}");
+                    
                     //#else
                     //                    trackno = string.Format($"CNV00{{0:D2}}", trackList[i].SiteNo);
                     //#endif
                     // Water Tank에 있는 Conveyor는 StackerCrane에 종속되어 있어 TagList에서 제외시킴.
-                    if (trackList[i].SiteNo < 1000) continue;
+                    if (trackList[i].SiteNo < (int)enEqpType.RTV01) continue;
 
                     foreach (var itemLv1 in item.Children)
                     {
@@ -788,11 +792,6 @@ namespace OPCUAClientClassLib
                                             //BrowerPath = string.Format($"{trackno}.{itemLv2.TagName}.{itemLv3.TagName}.{itemLv4.TagName}")
                                             SubScribe = itemLv4.Subscribe
                                         };
-
-                                        if (browerInfo.SubScribe == true)
-                                        {
-                                            ;
-                                        }
 
                                         if (_OPCTagList.ContainsKey(ctrlType))
                                         {

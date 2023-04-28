@@ -173,6 +173,22 @@ namespace AgingControls
             Invalidate();
         }
         #endregion
+        #region SetStatus
+        public void SetStatus(List<_aging_rack_data> data, Dictionary<string, KeyValuePair<string, Color>> rackColor)
+        {
+            foreach (var item in data)
+            {
+                AgingRack rack = this.AgingRacks.Find(x => x.RackID == item.RACK_ID);
+
+                if (rack != null)
+                {
+                    rack.SetStatus(item, rackColor);
+                }
+            }
+
+            Invalidate();
+        }
+        #endregion
 
         #region [Set AgingRack Data to Control]
         //
@@ -342,7 +358,7 @@ namespace AgingControls
                     {
                         rack.SetData(
                             row["status"].ToString(),       // status (CHAR)
-                            row["fire_status"].ToString(),   // firestatus (CHAR)
+                            row["fire_flag"].ToString(),   // firestatus (CHAR)
                             row["tray_id"].ToString(),       // tTrayCurr trayid
                             "A",        // opergroupid (CHAR)
                             "B",        // operid (CHAR)
@@ -427,7 +443,7 @@ namespace AgingControls
         //
         private void AgingLineControl_MouseHover(object sender, EventArgs e)
         {
-            string tt = GetToolTipText();
+            string tt = GetToolTipText(true);
             if (tt.Length > 0)
             {
                 _toolTip.SetToolTip(this, tt);
@@ -440,11 +456,21 @@ namespace AgingControls
             }
         }
 
-        private string GetToolTipText()
+        private string GetToolTipText(bool agingStatus)
         {
             AgingRack rack = FindRackOfCurrentMousePosition();
+
+            if (rack == null) return string.Empty;
+
+            string toolTip;
+
+            if (agingStatus)
+                toolTip = string.Format("{0}", rack.RackID);
+            else
+                toolTip = string.Format("{0}\n{1}", rack.RackID, rack.TrayId.Length > 0 ? rack.TrayId : "(Empty)");
+
             if (null != rack && !rack.Hide)
-                return string.Format("{0}\n{1}", rack.RackID, rack.TrayId.Length>0?rack.TrayId:"(Empty)");
+                return toolTip;
             else
                 return string.Empty;
         }
@@ -1134,7 +1160,7 @@ namespace AgingControls
                     c = rackColor["NotUse"].Value;
                     bg_color = new SolidBrush(c);
                     fg_color = Brushes.White;
-                    DisplayString = "NotUse";
+                    DisplayString = "";
                 }
                 else
                 {
@@ -1440,6 +1466,55 @@ namespace AgingControls
 
                 
 
+
+            }
+            catch (Exception ex)
+            {
+                // System Debug
+                System.Diagnostics.Debug.Print(string.Format("### Set Data Add Error Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+            }
+        }
+
+        public void SetStatus(_aging_rack_data data, Dictionary<string, KeyValuePair<string, Color>> rackColor)
+        {
+            try
+            {
+                Color c;
+                Brush bg_color; // = new SolidBrush(color);
+                Brush fg_color = Brushes.Black;
+
+                if (data.USE_FLAG == "N")
+                {
+                    c = rackColor["NotUse"].Value;
+                    bg_color = new SolidBrush(c);
+                    fg_color = Brushes.White;
+                }
+                else
+                {
+                    switch (data.STATUS)
+                    {
+                        case "F":
+                            if (data.PROCESS_NO > 0)
+                            {
+                                c = rackColor[data.PROCESS_NO + "A"].Value;
+                                bg_color = new SolidBrush(c);
+                            }
+                            else
+                            {
+                                c = rackColor[data.STATUS].Value;
+                                bg_color = new SolidBrush(c);
+                            }
+                            break;
+
+                        default:
+                            c = rackColor[data.STATUS].Value;
+                            bg_color = new SolidBrush(c);
+                            break;
+                    }
+                }
+
+                bgBrush = bg_color;
+                fgBrush = fg_color;
 
             }
             catch (Exception ex)

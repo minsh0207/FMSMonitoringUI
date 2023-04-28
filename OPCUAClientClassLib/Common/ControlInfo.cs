@@ -211,4 +211,20 @@ namespace OPCUAClientClassLib
             }
         }
     }
+
+    public class InfoData
+    {
+        public NodeId Nodeid { get; set; }
+
+        public object Value { get; set; }
+
+        public BuiltInType Type { get; set; }
+
+        public InfoData(NodeId nodeid, object vlaue, BuiltInType type)
+        {
+            Nodeid = nodeid;
+            Value = vlaue;
+            Type = type;
+        }
+    }
 }

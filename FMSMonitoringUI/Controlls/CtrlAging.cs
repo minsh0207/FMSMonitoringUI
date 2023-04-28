@@ -14,7 +14,6 @@ using Newtonsoft.Json;
 using MonitoringUI.Common;
 using MySql.Data.MySqlClient;
 using System.Reflection;
-using DBHandler;
 using MySqlX.XDevAPI;
 using System.Threading;
 using FMSMonitoringUI.Monitoring;
@@ -37,7 +36,7 @@ namespace MonitoringUI.Monitoring
         #endregion
 
         #region [Variable]
-        private MySqlManager _mysql;
+        //private MySqlManager _mysql;
         //private Logger _Logger;
 
         private string _AgingType = string.Empty;
@@ -46,7 +45,7 @@ namespace MonitoringUI.Monitoring
         /// <summary>
         /// string=Eqp Text, Color=Eqp Status Color
         /// </summary>
-        private Dictionary<string, KeyValuePair<string, Color>> _RackStatus;
+        public Dictionary<string, KeyValuePair<string, Color>> _RackStatus;
         /// <summary>
         /// First=Equipment ID, Second=Eqp Name
         /// </summary>
@@ -69,8 +68,9 @@ namespace MonitoringUI.Monitoring
             _EqpName = new Dictionary<string, string>();
 
             InitAgingRack();
+            InitLanguage();
 
-            _mysql = new MySqlManager(ConfigurationManager.ConnectionStrings["DB_CONNECTION_STRING"].ConnectionString);
+            //_mysql = new MySqlManager(ConfigurationManager.ConnectionStrings["DB_CONNECTION_STRING"].ConnectionString);
 
             ctrlButtonDataView.Click += CtrlButtonDataView_Click;
 
@@ -240,7 +240,8 @@ namespace MonitoringUI.Monitoring
                 LocalLanguage.GetItemString("DEF_No_Input_Rack"), 
                 LocalLanguage.GetItemString("DEF_No_Output_Rack"), 
                 LocalLanguage.GetItemString("DEF_Bad_Rack"),
-                LocalLanguage.GetItemString("DEF_Tatal_Trouble") };
+                LocalLanguage.GetItemString("DEF_Tatal_Trouble"),
+                LocalLanguage.GetItemString("DEF_Ratio").Replace(":", "")};
 
             List<string> lstTitle = new List<string>();
 
@@ -580,10 +581,16 @@ namespace MonitoringUI.Monitoring
                     this.Invoke(new MethodInvoker(delegate ()
                     {
                         LoadAgingRackData(AgingTab.SelectedIndex).GetAwaiter().GetResult();
+                    }));
+
+                    Thread.Sleep(2500);
+
+                    this.Invoke(new MethodInvoker(delegate ()
+                    {
                         LoadAgingRackCount(AgingTab.SelectedIndex).GetAwaiter().GetResult();
                     }));
 
-                    Thread.Sleep(5000);
+                    Thread.Sleep(2500);
                 }
             }
             catch (Exception ex)
@@ -604,7 +611,7 @@ namespace MonitoringUI.Monitoring
                 StringBuilder strSQL = new StringBuilder();
 
                 // Rack 정보
-                strSQL.Append(" SELECT aging_type, line, lane, rack_id, tray_id, tray_id_2, status, process_no, fire_status, use_flag");
+                strSQL.Append(" SELECT aging_type, line, lane, rack_id, tray_id, tray_id_2, status, process_no, fire_flag, use_flag");
                 strSQL.Append(" FROM fms_v.tb_mst_aging");
                 //필수값
                 strSQL.Append($" WHERE aging_type = '{_AgingType}' AND line = '{_AgingLine}'");
@@ -657,8 +664,8 @@ namespace MonitoringUI.Monitoring
 
                 //// Tray Count 정보
                 strSQL.Append(" SELECT COUNT(aging_type) AS total_rack_cnt,");
-                strSQL.Append("        COUNT(if(status = 'F', tray_cnt, null)) AS in_aging,");
-                strSQL.Append("        COUNT(if(status = 'E', tray_cnt, null)) AS empty_rack,");
+                strSQL.Append("        COUNT(if(status = 'F', status, null)) AS in_aging,");
+                strSQL.Append("        COUNT(if(status = 'E', status, null)) AS empty_rack,");
                 strSQL.Append("        COUNT(if(status = 'U', status, null)) AS unloading_rack,");
                 strSQL.Append("        COUNT(if(status = 'X', status, null)) AS no_input_rack,");
                 strSQL.Append("        COUNT(if(status = 'O', status, null)) AS no_output_rack,");
@@ -770,7 +777,10 @@ namespace MonitoringUI.Monitoring
             gridRackCount.SetValue(col, 0, data[0].NO_INPUT_RACK); col++;
             gridRackCount.SetValue(col, 0, data[0].NO_OUTPUT_RACK); col++;
             gridRackCount.SetValue(col, 0, data[0].BAD_RACK); col++;
-            gridRackCount.SetValue(col, 0, data[0].TOTAL_TROUBLE);
+            gridRackCount.SetValue(col, 0, data[0].TOTAL_TROUBLE); col++;
+                        
+            double ratio = 100.0 * data[0].IN_AGING / data[0].TOTAL_RACK_CNT;
+            gridRackCount.SetValue(col, 0, string.Format($"{ratio:F1}%"));
         }
         #endregion
 
@@ -824,5 +834,25 @@ namespace MonitoringUI.Monitoring
         {
             //updateTable();
         }
+
+        #region emptySpace_Paint
+        // Aging에 사용하지 않는 부분 표시
+        private void emptySpace_Paint(object sender, PaintEventArgs e)
+        {
+            Pen line = new Pen(Color.White);
+
+            Panel pnl = sender as Panel;
+
+            e.Graphics.DrawLine(line, 0, 0 , pnl.Width, pnl.Height);
+            e.Graphics.DrawLine(line, 0, pnl.Height, pnl.Width, 0);
+
+            //Graphics graphics = CreateGraphics();
+            //Pen pen = new Pen(Color.Black);
+            //graphics.DrawLine(pen, 0, 0, 400, 400);
+            //graphics.DrawLine(pen, 0, 400, 400, 0);
+
+            e.Graphics.Dispose();
+        }
+        #endregion
     }
 }

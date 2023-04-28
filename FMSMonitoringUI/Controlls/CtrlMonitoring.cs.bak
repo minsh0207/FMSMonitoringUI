@@ -1,13 +1,12 @@
 ﻿using ControlGallery;
 using CSVMgr;
+using DBHandler;
 using ExcelDataReader.Log;
-using FMSMonitoringUI.Common;
-using FMSMonitoringUI.Controlls.WindowsForms;
-using FMSMonitoringUI.Monitoring;
 //using Microsoft.Office.Interop.Excel;
 using MonitoringUI;
 using MonitoringUI.Common;
 using MonitoringUI.Controlls;
+using MonitoringUI.Controlls.WindowsForms;
 using MonitoringUI.Monitoring;
 using MonitoringUI.Popup;
 using MySql.Data.MySqlClient;
@@ -118,7 +117,7 @@ namespace FMSMonitoringUI.Controlls
         //    set { _OPCApplication = value; }
         //}
 
-        //private MySqlManager _mysql;
+        private MySqlManager _mysql;
 
         private int _CVGroupNo = 0;
         private int _CVTrackNo = 0;
@@ -172,7 +171,7 @@ namespace FMSMonitoringUI.Controlls
 
             _SubscribeInfo = new CSubscribeInfo[CDefine.DEF_PLC_SERVER_COUNT];
 
-            //_mysql = new MySqlManager(ConfigurationManager.ConnectionStrings["DB_CONNECTION_STRING"].ConnectionString);
+            _mysql = new MySqlManager(ConfigurationManager.ConnectionStrings["DB_CONNECTION_STRING"].ConnectionString);
         }
         #endregion
 
@@ -353,7 +352,7 @@ namespace FMSMonitoringUI.Controlls
                             int deviceID = conveyor.CVPLCListDeviceID;
                             ItemInfo itemInfo;
 
-                            //if (site.SiteNo == 999)
+                            //if (site.SiteNo == 1101)
                             //{
                             //    itemInfo = new ItemInfo()
                             //    {
@@ -1179,22 +1178,12 @@ namespace FMSMonitoringUI.Controlls
 
                     if (trackno > 0 && _ListBCR[groupno].ContainsKey(trackno) == false)
                     {
-                        if ((System.Windows.Forms.Control.ModifierKeys & Keys.Control) == Keys.Control)
-                        {
-                            WinBCRConveyorInfo form = new WinBCRConveyorInfo(_clientFMS[groupno], trackno);
-                            form.ShowDialog();
+                        WinConveyorInfo form = new WinConveyorInfo("Conveyor", _clientFMS[groupno], trackno);
+                        form.ShowDialog();
 
-                            form.GetTrayID(ref trayid1, ref trayid2);
-                            CLogger.WriteLog(enLogLevel.ButtonClick, this.Text, $"Track No = {trackno}, TrayID L1 = {trayid1}, TrayID L2 = {trayid2}");
-                        }
-                        else
-                        {
-                            WinConveyorInfo form = new WinConveyorInfo("Conveyor", _clientFMS[groupno], trackno);
-                            form.ShowDialog();
+                        form.GetTrayID(ref trayid1, ref trayid2);
+                        CLogger.WriteLog(enLogLevel.ButtonClick, this.Text, $"Track No = {trackno}, TrayID L1 = {trayid1}, TrayID L2 = {trayid2}");
 
-                            form.GetTrayID(ref trayid1, ref trayid2);
-                            CLogger.WriteLog(enLogLevel.ButtonClick, this.Text, $"Track No = {trackno}, TrayID L1 = {trayid1}, TrayID L2 = {trayid2}");
-                        }
                     }
                     else
                     {
@@ -1280,7 +1269,7 @@ namespace FMSMonitoringUI.Controlls
                 else
                 {
                     int groupno = crane.DeviceID;
-                    int conveyorNo = (int)enEqpType.RTV01;
+                    int conveyorNo = 1101;
 
                     //List<ReadValueId> cvInfo = _clientFMS[groupno].ConveyorNodeID[conveyorNo];
                     //List<DataValue> data = _clientFMS[groupno].ReadNodeID(cvInfo);
@@ -1393,7 +1382,7 @@ namespace FMSMonitoringUI.Controlls
             //            trayExist = bool.Parse(change.Value.ToString());
             //            task = StatusCraneAsync(_ListSCrane[item.CraneNo], trayExist, "C");
             //        }
-            //        else if (item.BrowseName == "WaterTank.TrayExist")  // WaterTank1
+            //        else if (item.BrowseName == "WaterTank.TrayExist")  // WaterTank01
             //        {
             //            switch (item.GroupNo)
             //            {
@@ -1416,7 +1405,7 @@ namespace FMSMonitoringUI.Controlls
             //                    break;
             //            }
             //        }
-            //        else if (item.BrowseName == "WaterTank2.TrayExist")  // WaterTank1
+            //        else if (item.BrowseName == "WaterTank02.TrayExist")  // WaterTank01
             //        {
             //            switch (item.GroupNo)
             //            {
@@ -1486,10 +1475,8 @@ namespace FMSMonitoringUI.Controlls
 
             SiteTagInfo tagInfo = new SiteTagInfo();
 
-            int tagIdx = GetTagIndex("ConveyorInformation.TrayIdL1", cvInfo);
-            tagInfo.TrayIdL1 = Convert.ToString(data[tagIdx].Value);
-            tagIdx = GetTagIndex("ConveyorInformation.TrayIdL2", cvInfo);
-            tagInfo.TrayIdL2 = Convert.ToString(data[tagIdx].Value);
+            tagInfo.TrayIdL1 = Convert.ToString(data[(int)enCVTagList.TrayIdL1].Value);
+            tagInfo.TrayIdL2 = Convert.ToString(data[(int)enCVTagList.TrayIdL2].Value);
 
             return tagInfo;
         }
@@ -1500,19 +1487,10 @@ namespace FMSMonitoringUI.Controlls
 
             SiteTagInfo tagInfo = new SiteTagInfo();
 
-            int tagIdx = GetTagIndex("ConveyorInformation.TrayIdL1", cvInfo);
-            tagInfo.TrayIdL1 = Convert.ToString(data[tagIdx].Value);
-            tagIdx = GetTagIndex("ConveyorInformation.TrayIdL2", cvInfo);
-            tagInfo.TrayIdL2 = Convert.ToString(data[tagIdx].Value);
+            tagInfo.TrayIdL1 = Convert.ToString(data[(int)enCVTagList.TrayIdL1].Value);
+            tagInfo.TrayIdL2 = Convert.ToString(data[(int)enCVTagList.TrayIdL2].Value);
 
             return tagInfo;
-        }
-        #endregion
-
-        #region GetTagIndex
-        private int GetTagIndex(string tagPath, List<ReadValueId> cvInfo)
-        {
-            return cvInfo.FindIndex(x => x.UserData.ToString().EndsWith(tagPath));
         }
         #endregion
 
@@ -1527,8 +1505,7 @@ namespace FMSMonitoringUI.Controlls
             List<ReadValueId> cvInfo = _clientFMS[item.ServerNo].ConveyorNodeID[item.SiteNo];
             List<DataValue> data = _clientFMS[item.ServerNo].ReadNodeID(cvInfo);
 
-            int tagIdx = GetTagIndex("EquipmentStatus.Trouble.ErrorNo", cvInfo);
-            string errorNo = data[tagIdx].Value.ToString();
+            string errorNo = data[(int)enCVTagList.EqpErrorNo].Value.ToString();
 
             if (trouble == false) errorNo = "0";
 
@@ -1541,39 +1518,45 @@ namespace FMSMonitoringUI.Controlls
             List<ReadValueId> craneInfo = _clientFMS[serverNo].CraneNodeID[craneNo];
             List<DataValue> data = _clientFMS[serverNo].ReadNodeID(craneInfo);
 
-            string tagPath = $"WaterTank{watertankNo}.TrayIdL1";
-            int trayIdx1 = craneInfo.FindIndex(x => x.UserData.ToString().EndsWith(tagPath));
-
-            tagPath = $"WaterTank{watertankNo}.TrayIdL2";
-            int trayIdx2 = craneInfo.FindIndex(x => x.UserData.ToString().EndsWith(tagPath));
+            int[] trayIdx = { 0, 0 };
+            if (watertankNo == 1)
+            {
+                trayIdx[0] = 43;    // Water Tank01번에 Tray ID L1의 Index
+                trayIdx[1] = 44;    // Water Tank01번에 Tray ID L2의 Index
+            }
+            else
+            {
+                trayIdx[0] = 57;    // Water Tank02번에 Tray ID L1의 Index
+                trayIdx[1] = 58;    // Water Tank02번에 Tray ID L2의 Index
+            }
 
             SiteTagInfo tagInfo = new SiteTagInfo();
 
-            if (data[trayIdx1].Value != null)
-                tagInfo.TrayIdL1 = data[trayIdx1].Value.ToString();
+            if (data[trayIdx[0]].Value != null)
+                tagInfo.TrayIdL1 = data[trayIdx[0]].Value.ToString();
 
-            if (data[trayIdx2].Value != null)
-                tagInfo.TrayIdL2 = data[trayIdx2].Value.ToString();
+            if (data[trayIdx[1]].Value != null)
+                tagInfo.TrayIdL2 = data[trayIdx[1]].Value.ToString();
 
             return tagInfo;
         }
 
         #region EQPTrayInfo
-        //private void ReadEqpInfo()
-        //{
-        //    DataSet ds = _mysql.SelectEqpInfo();
+        private void ReadEqpInfo()
+        {
+            DataSet ds = _mysql.SelectEqpInfo();
 
-        //    foreach (DataRow row in ds.Tables[0].Rows)
-        //    {
-        //        string eqpid = row["eqp_id"].ToString();
+            foreach (DataRow row in ds.Tables[0].Rows)
+            {
+                string eqpid = row["eqp_id"].ToString();
 
-        //        if (_EntireEqpList.ContainsKey(eqpid))
-        //        {
-        //            UserControlEqp userControl = _EntireEqpList[eqpid];
-        //            //userControl.SetData(row);
-        //        }
-        //    }
-        //}
+                if (_EntireEqpList.ContainsKey(eqpid))
+                {
+                    UserControlEqp userControl = _EntireEqpList[eqpid];
+                    //userControl.SetData(row);
+                }
+            }
+        }
         #endregion
 
         #region MoveCraneAsync
@@ -1696,7 +1679,7 @@ namespace FMSMonitoringUI.Controlls
 
                         if (siteInfo.ConveyorNo > 0)
                         {
-                            _ListConveyor[siteInfo.ConveyorNo].UpdateTrackStatus(siteno, item.TrayExist, item.TrayRework, item.EqpStatus, item.TrackPause);
+                            _ListConveyor[siteInfo.ConveyorNo].UpdateTrackStatus(siteno, item.TrayExist, item.TrayRework, item.EqpStatus);
                         }
 
                         //Refresh();
@@ -1816,7 +1799,7 @@ namespace FMSMonitoringUI.Controlls
 
                         if (item.ControlType == enEqpType.CNV)
                         {
-                            if (item.SiteNo == (int)enEqpType.RTV01)
+                            if (item.SiteNo == 1101)
                             {
                                 RTVDataChange(item, change.Value.ToString());
                             }
@@ -1882,7 +1865,7 @@ namespace FMSMonitoringUI.Controlls
                             //    _SubscribeInfo[item.GroupNo].Item[item.CraneNo].TrayExist = Convert.ToBoolean(change.Value.ToString());
                             //    task = StatusCraneAsync(_ListSCrane[item.CraneNo], _SubscribeInfo[item.GroupNo].Item[item.CraneNo]);
                             //}
-                            //else if ((item.BrowseName == "WaterTank.TrayExist") || // WaterTank1
+                            //else if ((item.BrowseName == "WaterTank.TrayExist") || // WaterTank01
                             //         (item.BrowseName == "WaterTank.FireSensor"))
                             //{
                             //    int siteNo = GetWaterTankSiteNo(1, item.GroupNo, item.CraneNo);
@@ -1924,7 +1907,7 @@ namespace FMSMonitoringUI.Controlls
                             //    }
 
                             //}
-                            //else if ((item.BrowseName == "WaterTank2.TrayExist") || // WaterTank1
+                            //else if ((item.BrowseName == "WaterTank02.TrayExist") || // WaterTank01
                             //         (item.BrowseName == "WaterTank.FireSensor"))
                             //{
                             //    int siteNo = GetWaterTankSiteNo(2, item.GroupNo, item.CraneNo);
@@ -2063,11 +2046,7 @@ namespace FMSMonitoringUI.Controlls
                     _SubscribeInfo[groupNo].Item[siteNo].PreEqpStatus = Convert.ToInt16(value);
                 }
             }
-
-            if (item.BrowseName == "ConveyorInformation.TrackPause")
-            {
-                _SubscribeInfo[groupNo].Item[siteNo].TrackPause = Convert.ToBoolean(value);
-            }
+                
 
 
             //if (_SubscribeInfo[groupNo].Item[siteNo].TrayExist)
@@ -2129,18 +2108,18 @@ namespace FMSMonitoringUI.Controlls
                 _SubscribeInfo[groupNo].Item[craneNo].TrayExist = Convert.ToBoolean(value);
                 task = StatusCraneAsync(_ListSCrane[craneNo], _SubscribeInfo[groupNo].Item[craneNo]);
             }
-            else if ((item.BrowseName == "WaterTank1.TrayExist") || // WaterTank1
-                     (item.BrowseName == "WaterTank1.FireSensor"))
+            else if ((item.BrowseName == "WaterTank01.TrayExist") || // WaterTank01
+                     (item.BrowseName == "WaterTank01.FireSensor"))
             {
                 int siteNo = GetWaterTankSiteNo(1, item.GroupNo, item.CraneNo);
 
                 _SubscribeInfo[groupNo].Item[siteNo].GroupNo = item.GroupNo;
                 _SubscribeInfo[groupNo].Item[siteNo].CraneNo = item.CraneNo;
 
-                if (item.BrowseName == "WaterTank1.TrayExist")
+                if (item.BrowseName == "WaterTank01.TrayExist")
                     _SubscribeInfo[groupNo].Item[siteNo].TrayExist = Convert.ToBoolean(value);
 
-                if (item.BrowseName == "WaterTank1.FireSensor")
+                if (item.BrowseName == "WaterTank01.FireSensor")
                     _SubscribeInfo[groupNo].Item[siteNo].FireSensor = Convert.ToBoolean(value);
 
                 if (_SubscribeInfo[groupNo].Item[siteNo].TrayExist)
@@ -2170,8 +2149,8 @@ namespace FMSMonitoringUI.Controlls
                 }
 
             }
-            else if ((item.BrowseName == "WaterTank2.TrayExist") || // WaterTank2
-                     (item.BrowseName == "WaterTank2.FireSensor"))
+            else if ((item.BrowseName == "WaterTank02.TrayExist") || // WaterTank02
+                     (item.BrowseName == "WaterTank02.FireSensor"))
             {
                 int siteNo = GetWaterTankSiteNo(2, item.GroupNo, item.CraneNo);
 
@@ -2180,12 +2159,12 @@ namespace FMSMonitoringUI.Controlls
                     _SubscribeInfo[groupNo].Item[siteNo].GroupNo = item.GroupNo;
                     _SubscribeInfo[groupNo].Item[siteNo].CraneNo = item.CraneNo;
 
-                    if (item.BrowseName == "WaterTank2.TrayExist")
+                    if (item.BrowseName == "WaterTank02.TrayExist")
                     {
                         _SubscribeInfo[groupNo].Item[siteNo].TrayExist = Convert.ToBoolean(value);
                     }
 
-                    if (item.BrowseName == "WaterTank2.FireSensor")
+                    if (item.BrowseName == "WaterTank02.FireSensor")
                         _SubscribeInfo[groupNo].Item[siteNo].FireSensor = Convert.ToBoolean(value);
 
                     if (_SubscribeInfo[groupNo].Item[siteNo].TrayExist)

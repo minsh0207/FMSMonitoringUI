@@ -50,7 +50,7 @@ namespace FMSMonitoringUI.Monitoring
         #region WinFormationHPC Event
         private void WinFormationHPC_Load(object sender, EventArgs e)
         {
-            if (CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, this.Text) == false)
+            if (CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, this.Name) == false)
             {
                 Exit_Click(null, null);
                 return;
@@ -366,7 +366,7 @@ namespace FMSMonitoringUI.Monitoring
         #endregion
 
         #region UpdateManualCommand
-        private async Task<bool> UpdateManualCommand(enCommnadType saveType, string rackid, object value)
+        private async Task<bool> UpdateManualCommand(enCommnadType saveType, string unitId, object value)
         {
             try
             {
@@ -383,7 +383,7 @@ namespace FMSMonitoringUI.Monitoring
                 }
 
                 //필수값
-                strSQL.Append($" WHERE unit_id = '{rackid}'");
+                strSQL.Append($" WHERE unit_id = '{unitId}'");
 
                 var jsonResult = await rest.GetJson(enActionType.SQL_UPDATE, strSQL.ToString());
 
@@ -501,7 +501,7 @@ namespace FMSMonitoringUI.Monitoring
             bool update = false;
             string updateValue = string.Empty;
 
-            if (CAuthority.CheckAuthority(enAuthority.Save, CDefine.m_strSaveLoginID, this.Text))
+            if (CAuthority.CheckAuthority(enAuthority.Save, CDefine.m_strSaveLoginID, this.Name))
             {
                 CLogger.WriteLog(enLogLevel.ButtonClick, this.WindowID, $"Save UserID : {CDefine.m_strSaveLoginID}, Save UserName : {CDefine.m_strSaveLoginName}");
 

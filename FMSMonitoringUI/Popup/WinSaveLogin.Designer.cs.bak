@@ -175,8 +175,8 @@
         private System.Windows.Forms.Panel panel1;
         private Controlls.CButton.CtrlButton btConfirm;
         private Controlls.CButton.CtrlButton btExit;
-         private FMSMonitoringUI.Controlls.WindowsForms.CtrlTextBox tbPassword;
-        private FMSMonitoringUI.Controlls.WindowsForms.CtrlTextBox tbLoginID;
+        private MonitoringUI.Controlls.WindowsForms.CtrlTextBox tbPassword;
+        private MonitoringUI.Controlls.WindowsForms.CtrlTextBox tbLoginID;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox3;

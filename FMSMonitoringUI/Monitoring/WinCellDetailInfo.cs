@@ -59,7 +59,7 @@ namespace FMSMonitoringUI.Monitoring
         #region WinCellDetailInfo Event
         private void WinCellDetailInfo_Load(object sender, EventArgs e)
         {
-            if (CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, this.Text) == false)
+            if (CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, this.Name) == false)
             {
                 Exit_Click(null, null);
                 return;
@@ -394,7 +394,7 @@ namespace FMSMonitoringUI.Monitoring
         {
             if (data == null || data.Count == 0) return;
 
-            for (int i = 0; i < CDefine.DEF_MAX_CELL_COUNT; i++)
+            for (int i = 0; i < data.Count(); i++)
             {
                 gridCellIDLIst.SetValue(1, i, data[i].CELL_ID);
             }
@@ -472,7 +472,7 @@ namespace FMSMonitoringUI.Monitoring
                 {
                     _jsonRecipeInfoResponse result = rest.ConvertRecipeInfo(jsonResult);
 
-                    if (result != null)
+                    if (result != null && result.RECIPE_ITEM != null)
                     {
                         InitGridViewRecipeInfo(result.RECIPE_ITEM);
                     }
@@ -599,7 +599,7 @@ namespace FMSMonitoringUI.Monitoring
                 strSQL.Append(" FROM tb_dat_cell_proc A, tb_mst_route_order B");
                 //필수값
                 strSQL.Append($" WHERE A.cell_id = '{cellId}'");
-                strSQL.Append("    AND A.proc_work_index = 0");
+                //strSQL.Append("    AND A.proc_work_index = 0");
                 strSQL.Append("    AND B.route_id = A.route_id");
                 strSQL.Append("    AND B.eqp_type = A.eqp_type");
                 strSQL.Append("    AND B.process_type = A.process_type");

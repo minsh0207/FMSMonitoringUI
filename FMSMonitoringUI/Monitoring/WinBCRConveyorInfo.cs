@@ -43,6 +43,9 @@ namespace FMSMonitoringUI.Monitoring
 
         OPCUAClient _OPCUAClient = null;
         int _ConveyorNo = 0;
+        bool _FirstActivate;
+
+        private List<InfoData> _CmdInfoData;
 
         public WinBCRConveyorInfo(OPCUAClient opcua, int conveyorNo)
         {
@@ -54,12 +57,14 @@ namespace FMSMonitoringUI.Monitoring
             InitControl();
             InitLanguage();
             InitLedStatus();
+
+            _FirstActivate = true;
         }
 
         #region WinBCRConveyorInfo Event
         private void WinBCRConveyorInfo_Load(object sender, EventArgs e)
         {
-            if (CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, this.Text) == false)
+            if (CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, this.Name) == false)
             {
                 Exit_Click(null, null);
                 return;
@@ -165,8 +170,14 @@ namespace FMSMonitoringUI.Monitoring
                     CtrlLabel control = ctl as CtrlLabel;
                     control.CallLocalLanguage();
                 }
+                else if (ctl.GetType() == typeof(CtrlTextBox))
+                {
+                    CtrlTextBox control = ctl as CtrlTextBox;
+                    control.CallLocalLanguage();
+                }
             }
 
+            Write.CallLocalLanguage();
             Exit.CallLocalLanguage();
         }
         #endregion
@@ -188,82 +199,6 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
-        #region SetData
-        public void SetData(List<DataValue> data)
-        {
-            if (data == null || data.Count == 0) return;
-
-            InitLedStatus();
-
-            //bool onoff = bool.Parse(data[(int)enCVTagList.Power].Value.ToString());
-            //ledPower.LedOnOff(onoff);
-
-            int value = int.Parse(data[(int)enCVTagList.Mode].Value.ToString());
-            int idx = GetDatatoBitIdx(value);
-            _LedMode[idx].LedControlMode(value);
-
-            value = int.Parse(data[(int)enCVTagList.Status].Value.ToString());
-            idx = GetDatatoBitIdx(value);
-            _LedStatus[idx].LedStatus(value);
-
-            bool onoff = bool.Parse(data[(int)enCVTagList.FMSStatus].Value.ToString());
-            ledTroubleStatus.LedOnOff(onoff);
-
-            // Conveyor
-            if (data[(int)enCVTagList.TrackNo].Value.ToString() == "0")
-                ConveyorNo.TextData = _ConveyorNo.ToString();
-            else
-                ConveyorNo.TextData = data[(int)enCVTagList.TrackNo].Value.ToString();
-
-            ConveyorType.TextData = GetConveyorType(data[(int)enCVTagList.ConveyorType].Value);
-            CVTroubleErrNo.TextData = data[(int)enCVTagList.EqpErrorNo].Value.ToString();
-            TroubleErrLevel.TextData = data[(int)enCVTagList.EqpErrorLevel].Value.ToString();
-            //CommandReady.TextData = data[(int)enCVTagList.CommandReady].Value.ToString();
-            onoff = bool.Parse(data[(int)enCVTagList.CommandReady].Value.ToString());
-            ledCommandReady.LedOnOff(onoff);
-            StationStatus.TextData = GetStationStatus(data[(int)enCVTagList.StationStatus].Value);
-            //TrayExist.TextData = data[(int)enCVTagList.TrayExist].Value.ToString();
-            onoff = bool.Parse(data[(int)enCVTagList.TrayExist].Value.ToString());
-            ledTrayExist.LedOnOff(onoff);
-            TrayType.TextData = GetTrayType(data[(int)enCVTagList.TrayType].Value);
-            TrayCount.TextData = data[(int)enCVTagList.TrayCount].Value.ToString();
-
-            TrayID1.TextData = Convert.ToString(data[(int)enCVTagList.TrayIdL1].Value);
-            TrayID2.TextData = Convert.ToString(data[(int)enCVTagList.TrayIdL2].Value);
-
-            if (Convert.ToString(data[(int)enCVTagList.TrayIdL2].Value) == "")
-                TrayID2.Visible = false;
-            else
-                TrayID2.Visible = true;
-
-            _trayID1 = Convert.ToString(data[(int)enCVTagList.TrayIdL1].Value);
-            _trayID2 = Convert.ToString(data[(int)enCVTagList.TrayIdL2].Value);
-
-            if (CheckStationStatus(data[(int)enCVTagList.ConveyorType].Value))
-                StationStatus.Visible = true;
-            else
-                StationStatus.Visible = false;
-
-            // FMS
-            FMSTroubleErrNo.TextData = data[(int)enCVTagList.FMSErrorNo].Value.ToString();
-            Destination.TextData = data[(int)enCVTagList.Destination].Value.ToString();
-            MagazineCommand.TextData = GetMagazineCommand(data[(int)enCVTagList.MagazineCommand].Value);
-
-            if (CheckMagazineCommand(data[(int)enCVTagList.ConveyorType].Value))
-                MagazineCommand.Visible = true;
-            else
-                MagazineCommand.Visible = false;
-        }
-        #endregion
-
-        #region GetTrayID
-        public void GetTrayID(ref string trayID1, ref string trayID2)
-        {
-            trayID1 = _trayID1;
-            trayID2 = _trayID2;
-        }
-        #endregion
-
         #region ProcessThreadCallback
         private void ProcessThreadCallback()
         {
@@ -275,7 +210,7 @@ namespace FMSMonitoringUI.Monitoring
 
                     List<ReadValueId> cvInfo = _OPCUAClient.ConveyorNodeID[_ConveyorNo];
                     List<DataValue> data = _OPCUAClient.ReadNodeID(cvInfo);
-                    this.BeginInvoke(new Action(() => SetData(data)));
+                    this.BeginInvoke(new Action(() => SetData(data, cvInfo)));
 
                     Thread.Sleep(2000);
                 }
@@ -290,6 +225,144 @@ namespace FMSMonitoringUI.Monitoring
             }
         }
         #endregion
+
+        #region SetData
+        public void SetData(List<DataValue> data, List<ReadValueId> cvInfo)
+        {
+            if (data == null || data.Count == 0) return;
+
+            InitLedStatus();
+
+            //bool onoff = bool.Parse(data[(int)enCVTagList.Power].Value.ToString());
+            //ledPower.LedOnOff(onoff);
+
+            int tagIdx = GetTagIndex("EquipmentStatus.Mode", cvInfo);
+            int value = int.Parse(data[tagIdx].Value.ToString());
+            int idx = GetDatatoBitIdx(value);
+            _LedMode[idx].LedControlMode(value);
+
+            tagIdx = GetTagIndex("EquipmentStatus.Status", cvInfo);
+            value = int.Parse(data[tagIdx].Value.ToString());
+            idx = GetDatatoBitIdx(value);
+            _LedStatus[idx].LedStatus(value);
+
+            tagIdx = GetTagIndex("FmsStatus.Trouble.Status", cvInfo);
+            bool onoff = bool.Parse(data[tagIdx].Value.ToString());
+            ledTroubleStatus.LedOnOff(onoff);
+
+            // Conveyor
+            tagIdx = GetTagIndex("ConveyorInformation.TrackNo", cvInfo);
+            if (data[tagIdx].Value.ToString() == "0")
+                ConveyorNo.TextData = _ConveyorNo.ToString();
+            else
+                ConveyorNo.TextData = data[tagIdx].Value.ToString();
+
+            int cvTypeIdx = GetTagIndex("ConveyorInformation.ConveyorType", cvInfo);
+            ConveyorType.TextData = GetConveyorType(data[cvTypeIdx].Value);
+
+            tagIdx = GetTagIndex("EquipmentStatus.Trouble.ErrorNo", cvInfo);
+            CVTroubleErrNo.TextData = data[tagIdx].Value.ToString();
+
+            tagIdx = GetTagIndex("EquipmentStatus.Trouble.ErrorLevel", cvInfo);
+            TroubleErrLevel.TextData = data[tagIdx].Value.ToString();
+
+            tagIdx = GetTagIndex("ConveyorInformation.Direction", cvInfo);
+            Direction.TextData = GetDirection(data[tagIdx].Value);
+
+            tagIdx = GetTagIndex("ConveyorInformation.TrackingDestination", cvInfo);
+            TrackingDestination.TextData = data[tagIdx].Value.ToString();
+
+            //CommandReady.TextData = data[(int)enCVTagList.CommandReady].Value.ToString();
+            tagIdx = GetTagIndex("ConveyorCommand.CommandReady", cvInfo);
+            onoff = bool.Parse(data[tagIdx].Value.ToString());
+            ledCommandReady.LedOnOff(onoff);
+
+            tagIdx = GetTagIndex("ConveyorInformation.StationStatus", cvInfo);
+            StationStatus.TextData = GetStationStatus(data[tagIdx].Value);
+
+            //TrayExist.TextData = data[(int)enCVTagList.TrayExist].Value.ToString();
+            tagIdx = GetTagIndex("ConveyorInformation.TrayExist", cvInfo);
+            onoff = bool.Parse(data[tagIdx].Value.ToString());
+            ledTrayExist.LedOnOff(onoff);
+
+            tagIdx = GetTagIndex("ConveyorInformation.TrayType", cvInfo);
+            TrayType.TextData = GetTrayType(data[tagIdx].Value);
+
+            tagIdx = GetTagIndex("ConveyorInformation.TrayCount", cvInfo);
+            TrayCount.TextData = data[tagIdx].Value.ToString();
+
+            tagIdx = GetTagIndex("ConveyorInformation.TrayIdL1", cvInfo);
+            TrayID1.TextData = Convert.ToString(data[tagIdx].Value);
+            _trayID1 = Convert.ToString(data[tagIdx].Value);
+
+            tagIdx = GetTagIndex("ConveyorInformation.TrayIdL2", cvInfo);
+            TrayID2.TextData = Convert.ToString(data[tagIdx].Value);
+            //if (Convert.ToString(data[tagIdx].Value) == "")
+            //    TrayID2.Visible = false;
+            //else
+            //    TrayID2.Visible = true;            
+            _trayID2 = Convert.ToString(data[tagIdx].Value);
+
+
+            if (CheckStationStatus(data[tagIdx].Value))
+                StationStatus.Visible = true;
+            else
+                StationStatus.Visible = false;
+
+            // FMS
+            tagIdx = GetTagIndex("FmsStatus.Trouble.ErrorNo", cvInfo);
+            FMSTroubleErrNo.TextData = data[tagIdx].Value.ToString();
+
+            if (_FirstActivate == true)
+            {
+                tagIdx = GetTagIndex("ConveyorInformation.TrackPause", cvInfo);
+                bool pause = Convert.ToBoolean(data[tagIdx].Value);
+
+                if (pause == true)
+                {
+                    TrackPauseOn.Checked = true;
+                    TrackPauseOff.Checked = false;
+                }
+                else
+                {
+                    TrackPauseOn.Checked = false;
+                    TrackPauseOff.Checked = true;
+                }
+
+                tagIdx = GetTagIndex("ConveyorCommand.TrayCount", cvInfo);
+                CmdTrayCount.TextData = data[tagIdx].Value.ToString();
+
+                tagIdx = GetTagIndex("ConveyorCommand.TrayIdL1", cvInfo);
+                CmdTrayID1.TextData = Convert.ToString(data[tagIdx].Value);
+
+                tagIdx = GetTagIndex("ConveyorCommand.TrayIdL2", cvInfo);
+                CmdTrayID2.TextData = Convert.ToString(data[tagIdx].Value);
+
+                tagIdx = GetTagIndex("ConveyorCommand.Destination", cvInfo);
+                CmdDestination.TextData = data[tagIdx].Value.ToString();
+
+                _FirstActivate = false;
+            }            
+
+            tagIdx = GetTagIndex("ConveyorCommand.MagazineCommand", cvInfo);
+            MagazineCommand.TextData = GetMagazineCommand(data[tagIdx].Value);
+
+            if (CheckMagazineCommand(data[cvTypeIdx].Value))
+                MagazineCommand.Visible = true;
+            else
+                MagazineCommand.Visible = false;
+        }
+        #endregion
+
+        #region GetTrayID
+        public void GetTrayID(ref string trayID1, ref string trayID2)
+        {
+            trayID1 = _trayID1;
+            trayID2 = _trayID2;
+        }
+        #endregion
+
+        
 
         #region Titel Mouse Event
         private void Title_MouseDownEvnet(object sender, MouseEventArgs e)
@@ -310,6 +383,20 @@ namespace FMSMonitoringUI.Monitoring
         private void Exit_Click(object sender, EventArgs e)
         {
             Close();
+        }
+        private void Write_Click(object sender, EventArgs e)
+        {
+            _CmdInfoData = new List<InfoData>();
+
+            string val = TrackPauseOn.Checked == true ? "1" : "0";
+            AddTrayInfoData("ConveyorInformation.TrackPause", val, BuiltInType.Boolean);
+
+            AddTrayInfoData("ConveyorCommand.TrayCount", CmdTrayCount.TextData, BuiltInType.UInt16);
+            AddTrayInfoData("ConveyorCommand.TrayIdL1", CmdTrayID1.TextData, BuiltInType.String);
+            AddTrayInfoData("ConveyorCommand.TrayIdL2", CmdTrayID2.TextData, BuiltInType.String);
+            AddTrayInfoData("ConveyorCommand.Destination", CmdDestination.TextData, BuiltInType.UInt16);
+
+            _OPCUAClient.NodesToWriteValue(_CmdInfoData);
         }
         #endregion        
 
@@ -403,17 +490,35 @@ namespace FMSMonitoringUI.Monitoring
             switch (mzCmd)
             {
                 case 1:
-                    ret = "적재";
+                    ret = "Loading";    //"적재";
                     break;
                 case 2:
                     ret = "Bypass";
                     break;
                 case 4:
-                    ret = "배출후 적재";
+                    ret = "Load after discharge";   // "배출후 적재";
                     break;
                 case 8:
-                    ret = "강제배출(1단)";
+                    ret = "Force Tray Unload";   // "강제배출(1단)";
                     break;
+            }
+
+            return ret;
+        }
+
+        private string GetDirection(object idx)
+        {
+            string ret = string.Empty;
+
+            bool mzCmd = Convert.ToBoolean(idx);
+
+            if (mzCmd)
+            {
+                ret = "Forward (Loading)";
+            }
+            else
+            {
+                ret = "Backward (Unloading)";
             }
 
             return ret;
@@ -474,5 +579,23 @@ namespace FMSMonitoringUI.Monitoring
             return false;
         }
         #endregion
+
+        #region GetTagIndex
+        private int GetTagIndex(string tagPath, List<ReadValueId> cvInfo)
+        {
+            return cvInfo.FindIndex(x => x.UserData.ToString().EndsWith(tagPath));
+        }
+        #endregion
+
+        public void AddTrayInfoData(string browsename, object value, BuiltInType type)
+        {
+            List<ReadValueId> cvInfo = _OPCUAClient.ConveyorNodeID[_ConveyorNo];
+
+            int tagIdx = GetTagIndex(browsename, cvInfo);
+
+            NodeId nodeid = cvInfo[tagIdx].NodeId;
+            InfoData trayInfo = new InfoData(nodeid, value, type);
+            _CmdInfoData.Add(trayInfo);
+        }
     }
 }

@@ -36,6 +36,8 @@ namespace RestClientLib
             httpClient.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
 
+            httpClient.Timeout = TimeSpan.FromSeconds(2);
+
             //_Logger = new Logger(CRestModulePath.LOG_PATH, LogMode.Hour);
         }
         public async Task<string> GetJson(enActionType actionID, object RequestBody)
@@ -86,7 +88,8 @@ namespace RestClientLib
             string baseAddress = @"https://210.91.148.176";
             //string baseAddress = @"http://localhost:30001/";
 
-            string ecsAddress = @"https://210.91.148.176";
+            //string ecsAddress = @"https://210.91.148.176";
+            string ecsAddress = @"https://localhost";
 
             string address;
 

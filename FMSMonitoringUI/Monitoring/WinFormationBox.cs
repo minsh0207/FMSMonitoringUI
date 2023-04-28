@@ -47,7 +47,7 @@ namespace FMSMonitoringUI.Monitoring
         #region WinFormationBox
         private void WinFormationBox_Load(object sender, EventArgs e)
         {
-            if (CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, this.Text) == false)
+            if (CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, this.Name) == false)
             {
                 Exit_Click(null, null);
                 return;
@@ -318,6 +318,8 @@ namespace FMSMonitoringUI.Monitoring
                 reqBody["ACTION_ID"] = enActionType.SEND_MANUAL_COMMAND.ToString();
                 reqBody["ACTION_USER"] = CDefine.m_strSaveLoginID;
                 reqBody["REQUEST_TIME"] = DateTime.Now.ToString();
+
+
                 reqBody["EQP_TYPE"] = eqpType;
                 reqBody["EQP_ID"] = eqpID;
                 reqBody["UNIT_ID"] = unitID;
@@ -369,7 +371,7 @@ namespace FMSMonitoringUI.Monitoring
         #endregion
 
         #region UpdateManualCommand
-        private async Task<bool> UpdateManualCommand(enCommnadType saveType, string rackid, object value)
+        private async Task<bool> UpdateManualCommand(enCommnadType saveType, string unitId, object value)
         {
             try
             {
@@ -377,11 +379,11 @@ namespace FMSMonitoringUI.Monitoring
                 // Set Query
                 StringBuilder strSQL = new StringBuilder();
 
-                strSQL.Append(" UPDATE fms_v.tb_mst_aging");
+                strSQL.Append(" UPDATE fms_v.tb_mst_eqp");
                 switch (saveType)
                 {
                     case enCommnadType.ConfigurationSave:
-                        strSQL.Append($" SET status = '{value}'");
+                        strSQL.Append($" SET use_flag = '{value}'");
                         break;
                     case enCommnadType.DataClearSave:
                         strSQL.Append($" SET {value}");
@@ -389,7 +391,7 @@ namespace FMSMonitoringUI.Monitoring
                 }
 
                 //필수값
-                strSQL.Append($" WHERE rack_id = '{rackid}'");
+                strSQL.Append($" WHERE unit_id = '{unitId}'");
 
                 var jsonResult = await rest.GetJson(enActionType.SQL_UPDATE, strSQL.ToString());
 
@@ -656,7 +658,7 @@ namespace FMSMonitoringUI.Monitoring
             bool update = false;
             string updateValue = string.Empty;
 
-            if (CAuthority.CheckAuthority(enAuthority.Save, CDefine.m_strSaveLoginID, this.Text))
+            if (CAuthority.CheckAuthority(enAuthority.Save, CDefine.m_strSaveLoginID, this.Name))
             {
                 CLogger.WriteLog(enLogLevel.ButtonClick, this.WindowID, $"Save UserID : {CDefine.m_strSaveLoginID}, Save UserName : {CDefine.m_strSaveLoginName}");
 
@@ -697,11 +699,11 @@ namespace FMSMonitoringUI.Monitoring
 
             if (rbYesIn.Checked)        // 입고 가능
             {
-                status = "E";
+                status = "Y";
             }
             else if (rbNoIn.Checked)    // 입고 불가
             {
-                status = "X";
+                status = "N";
             }
 
             //if (rbYesOut.Checked)       // 출고 가능
@@ -745,11 +747,11 @@ namespace FMSMonitoringUI.Monitoring
             // status는 현장가서 확인 해 볼것.
             if (rbClearInfo.Checked)
             {
-                sql = "status = 'E', tray_cnt = null, tray_id = null, tray_id_2 = null, start_time = null, end_time = null";
+                sql = "tray_cnt = null, tray_id = null, tray_id_2 = null, start_time = null, end_time = null";
             }
             else if (rbClearTrouble.Checked)
             {
-                sql = "status = 'E', trouble_code = null";
+                sql = "eqp_trouble_code = null";
             }
 
             return sql;
