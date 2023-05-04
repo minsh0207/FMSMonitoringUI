@@ -447,7 +447,7 @@ namespace FMSMonitoringUI.Monitoring
         {
             Point parentPoint = this.Location;
 
-            WinCellDetailInfo form = new WinCellDetailInfo(_TrayId);
+            WinCellDetailInfo form = new WinCellDetailInfo(_TrayId, "");
             form.StartPosition = FormStartPosition.Manual;  // 폼의 위치가 Location 의 속성에 의해서 결정
             form.Location = new Point(parentPoint.X, parentPoint.Y);
             form.ShowDialog();

@@ -4143,9 +4143,9 @@
             this.bcrMarker12.BubbleText = "";
             this.bcrMarker12.CVPLCListDeviceID = 0;
             this.bcrMarker12.DisplayText = "";
-            this.bcrMarker12.Location = new System.Drawing.Point(492, 435);
+            this.bcrMarker12.Location = new System.Drawing.Point(529, 435);
             this.bcrMarker12.Name = "bcrMarker12";
-            this.bcrMarker12.PLCNo = 1116;
+            this.bcrMarker12.PLCNo = 1115;
             this.bcrMarker12.ShowSiteNo = false;
             this.bcrMarker12.ShowTroubleState = false;
             this.bcrMarker12.SiteNo = 0;

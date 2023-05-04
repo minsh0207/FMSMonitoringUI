@@ -184,7 +184,7 @@
             this.CmdDestination.TabIndex = 85;
             this.CmdDestination.TextData = "";
             this.CmdDestination.TitleText = "Destination ";
-            this.CmdDestination.TitleWidth = 141F;
+            this.CmdDestination.TitleWidth = 140F;
             // 
             // CmdTrayID2
             // 
@@ -199,7 +199,7 @@
             this.CmdTrayID2.TabIndex = 84;
             this.CmdTrayID2.TextData = "";
             this.CmdTrayID2.TitleText = "Tray ID 2 ";
-            this.CmdTrayID2.TitleWidth = 141F;
+            this.CmdTrayID2.TitleWidth = 140F;
             // 
             // Write
             // 
@@ -215,6 +215,7 @@
             this.Write.Name = "Write";
             this.Write.Size = new System.Drawing.Size(165, 40);
             this.Write.TabIndex = 83;
+            this.Write.Click += new System.EventHandler(this.Write_Click);
             // 
             // CmdTrayID1
             // 
@@ -229,7 +230,7 @@
             this.CmdTrayID1.TabIndex = 82;
             this.CmdTrayID1.TextData = "";
             this.CmdTrayID1.TitleText = "Tray ID 1 ";
-            this.CmdTrayID1.TitleWidth = 141F;
+            this.CmdTrayID1.TitleWidth = 140F;
             // 
             // CmdTrayCount
             // 
@@ -244,7 +245,7 @@
             this.CmdTrayCount.TabIndex = 74;
             this.CmdTrayCount.TextData = "";
             this.CmdTrayCount.TitleText = "Tray Count ";
-            this.CmdTrayCount.TitleWidth = 141F;
+            this.CmdTrayCount.TitleWidth = 140F;
             // 
             // MagazineCommand
             // 
@@ -539,6 +540,7 @@
             this.TrackPauseOff.TabStop = true;
             this.TrackPauseOff.Text = "Off";
             this.TrackPauseOff.UseVisualStyleBackColor = true;
+            this.TrackPauseOff.Click += new System.EventHandler(this.TrackPause_Click);
             // 
             // TrackPauseOn
             // 
@@ -551,6 +553,7 @@
             this.TrackPauseOn.TabIndex = 22;
             this.TrackPauseOn.Text = "On";
             this.TrackPauseOn.UseVisualStyleBackColor = true;
+            this.TrackPauseOn.Click += new System.EventHandler(this.TrackPause_Click);
             // 
             // ctrlGroupBox1
             // 

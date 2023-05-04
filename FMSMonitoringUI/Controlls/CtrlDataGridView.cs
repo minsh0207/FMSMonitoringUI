@@ -435,6 +435,7 @@ namespace FMSMonitoringUI.Controlls
             {
                 // Data Cell만 클릭하도록 하기 위해 추가
                 if ((row >= 0 && col > 0) ||
+                    (row >= 0 && dataGridView1.ColumnCount == 1) ||
                     (row >= 0 && dataGridView1.Rows[row].Tag != null && Convert.ToBoolean(dataGridView1.Rows[row].Tag.ToString())))
                 {
                     if (dataGridView1[col, row].Value != null)

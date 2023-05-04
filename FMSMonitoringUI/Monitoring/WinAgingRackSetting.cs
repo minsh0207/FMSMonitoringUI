@@ -1,6 +1,4 @@
-﻿using FMSMonitoringUI.Controlls.WindowsForms;
-using Google.Protobuf.WellKnownTypes;
-using MonitoringUI;
+﻿using MonitoringUI;
 using MonitoringUI.Common;
 using MonitoringUI.Controlls;
 using MonitoringUI.Controlls.CButton;
@@ -19,6 +17,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FMSMonitoringUI.Controlls.WindowsForms;
 
 namespace FMSMonitoringUI.Monitoring
 {
@@ -113,6 +112,8 @@ namespace FMSMonitoringUI.Monitoring
             //var dt = new DateTime(2023, 4, 28, 12, 12, 12);
             dtPlanTime.StartTime = DateTime.Now;
             dtPlanTime.OnValueChanged += OnDateTimeChanged;
+
+            Remark.SetTextBoxEnable(false);
         }
         #endregion
 
@@ -278,7 +279,7 @@ namespace FMSMonitoringUI.Monitoring
                 // Set Query
                 StringBuilder strSQL = new StringBuilder();
 
-                strSQL.Append(" SELECT A.aging_type, A.line, A.lane, A.bay, A.floor, A.rack_id, A.use_flag, A.status, A.tray_cnt, A.process_no, A.start_time, A.plan_time,");
+                strSQL.Append(" SELECT A.aging_type, A.line, A.lane, A.bay, A.floor, A.rack_id, A.use_flag, A.status, A.tray_cnt, A.process_no, A.start_time, A.plan_time, A.remark,");
                 strSQL.Append("        C.tray_id AS sel_tray_id, IF(A.tray_id = C.tray_id, '1', '2') AS level,");
                 strSQL.Append("        B.trouble_name,B.trouble_name_local,");
                 strSQL.Append("        C.tray_zone, C.model_id, C.route_id, C.recipe_id, C.tray_input_time,");
@@ -324,7 +325,7 @@ namespace FMSMonitoringUI.Monitoring
         #endregion
 
         #region UpdateManualCommand
-        private async Task<bool> UpdateManualCommand(enCommnadType saveType, string rackid, object value)
+        private async Task<bool> UpdateManualCommand(enCommnadType saveType, string rackid, object value, string remark = "")
         {
             try
             {
@@ -336,7 +337,10 @@ namespace FMSMonitoringUI.Monitoring
                 switch (saveType)
                 {
                     case enCommnadType.ConfigurationSave:
-                        strSQL.Append($" SET status = '{value}'");
+                        if (value.ToString() == "X")
+                            strSQL.Append($" SET status = '{value}', remark = '{remark}'");
+                        else
+                            strSQL.Append($" SET status = '{value}', remark = ''");
                         break;
                     case enCommnadType.PlanTimeSave:
                         //strSQL.Append($" SET end_time = '{value}'");
@@ -462,6 +466,8 @@ namespace FMSMonitoringUI.Monitoring
                     dtPlanTime.StartTime = dt;
                 }                
             }
+
+            Remark.TextData = data[0].REMARK;
         }
         #endregion
 
@@ -537,7 +543,9 @@ namespace FMSMonitoringUI.Monitoring
                 if (btn.Name == ConfigurationSave.Name)
                 {
                     updateValue = GetConfiguration();
-                    update = UpdateManualCommand(enCommnadType.ConfigurationSave, _RackID, updateValue).GetAwaiter().GetResult();
+                    string remark = Remark.TextData;
+
+                    update = UpdateManualCommand(enCommnadType.ConfigurationSave, _RackID, updateValue, remark).GetAwaiter().GetResult();
                 }
                 else if (btn.Name == PlanTimeSave.Name)
                 {
@@ -556,7 +564,10 @@ namespace FMSMonitoringUI.Monitoring
                     CMessage.MsgInformation($"{btn.Name} OK.");
                 else
                     CMessage.MsgInformation($"{btn.Name} Fail.");
-                
+
+                string log = $"{btn.Name}={updateValue}";
+                SetUserEventLog("ManualCommand", _RackID, log).GetAwaiter().GetResult();
+
             }
             else
             {
@@ -645,6 +656,80 @@ namespace FMSMonitoringUI.Monitoring
             }
 
             return sql;
+        }
+        #endregion
+
+        #region SetUserEventLog
+        private async Task SetUserEventLog(string userEvent, string trayId, string userEventLog)
+        {
+            try
+            {
+                RESTClient rest = new RESTClient();
+
+                _jsonUserEventRequest request = new _jsonUserEventRequest();
+                request.ACTION_ID = "USER_EVENT";
+                request.ACTION_USER = "MON";
+                request.REQUEST_TIME = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}";
+
+                //Request 세팅
+                request.USER_ID = CDefine.m_strSaveLoginID;
+                string windowid = CAuthority.WindowsNameToWindowID(this.Name);
+                request.WINDOW_ID = windowid;
+                request.TRAY_ID = trayId;
+                request.CELL_ID = null;
+                request.USER_EVENT = userEvent;
+                request.USER_EVENT_LOG = userEventLog;
+
+                var jsonResult = await rest.SetJson(CRestModulePath.POST_USER_EVENT, request);
+
+                if (jsonResult != null)
+                {
+                    _jsonManualCommandResponse result = rest.ConvertManualCommand(jsonResult);
+
+                    if (result != null)
+                    {
+                        if (result.RESPONSE_CODE == "200")
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        string log = "SetUserEventLog : result is null";
+                        CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
+
+                        return;
+                    }
+                }
+                else
+                {
+                    string log = "SetUserEventLog : jsonResult is null";
+                    CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
+
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print(string.Format("SetUserEventLog Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("SetUserEventLog Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.Text, log);
+            }
+        }
+        #endregion
+
+        #region Configuration_Click
+        private void Configuration_Click(object sender, EventArgs e)
+        {
+            if (rbNoIn.Checked == true)
+                Remark.SetTextBoxEnable(true);
+            else
+                Remark.SetTextBoxEnable(false);
         }
         #endregion
     }

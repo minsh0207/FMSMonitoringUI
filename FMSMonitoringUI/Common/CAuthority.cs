@@ -151,7 +151,7 @@ namespace MonitoringUI.Common
         #endregion
 
         #region [DB Load WindowID]
-        private static string WindowsNameToWindowID(string strWindowName)
+        public static string WindowsNameToWindowID(string strWindowName)
         {
             string strWindowID = "";
             string[] strData = strWindowName.Split('.');
@@ -212,7 +212,10 @@ namespace MonitoringUI.Common
                     strWindowID = CDefine.DEF_MON_WIN_WATER_TANK;
                     break;
                 case "WinTroubleInfo":
-                    strWindowID = CDefine.DEF_MON_WIN_WATER_TANK;
+                    strWindowID = CDefine.DEF_MON_WIN_TROUBLE_INFO;
+                    break;
+                case "WinPackingInfo":
+                    strWindowID = CDefine.DEF_MON_WIN_PACKING_INFO;
                     break;
                 default:
                     break;

@@ -95,6 +95,13 @@ namespace OPCUAClientClassLib
 
                 for (int j = 0; j < browerResult.Count; j++)
                 {
+                    if (browerResult[j].Targets.Count == 0)
+                    {
+                        string log = $"Tag Matching Error : {browsePath[j].UserData}";
+                        _LOG_(LogLevel.Error, log);
+                        continue;
+                    }
+
                     string sNodeId = browerResult[j].Targets[0].TargetId.ToString();
 
                     //string[] taglevel = browsePath[j].ToString().Replace("/2:", ".").Split('.');
@@ -105,7 +112,7 @@ namespace OPCUAClientClassLib
 
                     ItemInfo item = new ItemInfo();
                     
-                    if (groupInfo.ControlType == enEqpType.STC)
+                    if (groupInfo.ControlType == GetCraneEqpType(groupInfo.CraneNo))
                     {
                         item.CraneNo = groupInfo.CraneNo;
                         item.GroupNo = groupInfo.GroupNo;
@@ -190,12 +197,12 @@ namespace OPCUAClientClassLib
 
         //}
 
-/// <summary>
-/// Callback to receive subscription status change events.
-/// </summary>
-/// <param name="subscription">The source of the event.</param>
-/// <param name="e">The new status of the subscription.</param>
-private void Subscription_StatusChanged(Subscription subscription, SubscriptionStatusChangedEventArgs e)
+        /// <summary>
+        /// Callback to receive subscription status change events.
+        /// </summary>
+        /// <param name="subscription">The source of the event.</param>
+        /// <param name="e">The new status of the subscription.</param>
+        private void Subscription_StatusChanged(Subscription subscription, SubscriptionStatusChangedEventArgs e)
         {
             try
             {
@@ -210,5 +217,33 @@ private void Subscription_StatusChanged(Subscription subscription, SubscriptionS
                 ExceptionDlg.Show("Error in Subscription_StatusChanged callback", exception);
             }
         }
+
+        #region GetCraneEqpType
+        // 20230502 msh : GetCraneEqpType 추가
+        private enEqpType GetCraneEqpType(int eqpIdx)
+        {
+            enEqpType eqpType = enEqpType.None;
+
+            switch (eqpIdx)
+            {
+                case 0:
+                    eqpType = enEqpType.SCL;   // "F01STCL0010";
+                    break;
+                case 1:
+                    eqpType = enEqpType.SCL;   //"F01STCL0020";
+                    break;
+                case 2:
+                    eqpType = enEqpType.SCH;    //"F01STCH0010";
+                    break;
+                case 3:
+                    eqpType = enEqpType.SCF;    //"F01STCF0010";
+                    break;
+                default:
+                    break;
+            }
+
+            return eqpType;
+        }
+        #endregion
     }
 }

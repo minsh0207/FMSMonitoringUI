@@ -75,13 +75,13 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(2, 62);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(396, 359);
+            this.panel3.Size = new System.Drawing.Size(396, 366);
             this.panel3.TabIndex = 2;
             // 
             // ledTrayExist
             // 
             this.ledTrayExist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ledTrayExist.Location = new System.Drawing.Point(267, 68);
+            this.ledTrayExist.Location = new System.Drawing.Point(267, 100);
             this.ledTrayExist.Name = "ledTrayExist";
             this.ledTrayExist.Size = new System.Drawing.Size(64, 18);
             this.ledTrayExist.TabIndex = 2;
@@ -90,12 +90,12 @@
             // gridCVInfo
             // 
             this.gridCVInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.gridCVInfo.ColumnCount = 0;
+            this.gridCVInfo.ColumnCount = 1;
             this.gridCVInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridCVInfo.Location = new System.Drawing.Point(0, 0);
             this.gridCVInfo.Name = "gridCVInfo";
-            this.gridCVInfo.RowCount = -1;
-            this.gridCVInfo.Size = new System.Drawing.Size(394, 357);
+            this.gridCVInfo.RowCount = 1;
+            this.gridCVInfo.Size = new System.Drawing.Size(394, 364);
             this.gridCVInfo.TabIndex = 1;
             this.gridCVInfo.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             // 
@@ -105,7 +105,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.Exit);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(2, 421);
+            this.panel2.Location = new System.Drawing.Point(2, 428);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(396, 60);
             this.panel2.TabIndex = 3;
@@ -131,7 +131,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(400, 505);
+            this.ClientSize = new System.Drawing.Size(400, 512);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);

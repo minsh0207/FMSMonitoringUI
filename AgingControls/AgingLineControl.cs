@@ -167,6 +167,7 @@ namespace AgingControls
             {
                 AgingRack rack = this.AgingRacks.Find(x => x.RackID == item.RACK_ID);
 
+                rack.Remark = item.REMARK;
                 rack.SetData(item, rackColor);
             }
 
@@ -464,10 +465,17 @@ namespace AgingControls
 
             string toolTip;
 
-            if (agingStatus)
-                toolTip = string.Format("{0}", rack.RackID);
+            if (rack.Remark != null && rack.Remark != "")
+            {
+                toolTip = string.Format("{0}", rack.Remark);
+            }
             else
-                toolTip = string.Format("{0}\n{1}", rack.RackID, rack.TrayId.Length > 0 ? rack.TrayId : "(Empty)");
+            {
+                if (agingStatus)
+                    toolTip = string.Format("{0}", rack.RackID);
+                else
+                    toolTip = string.Format("{0}\n{1}", rack.RackID, rack.TrayId.Length > 0 ? rack.TrayId : "(Empty)");
+            }            
 
             if (null != rack && !rack.Hide)
                 return toolTip;
@@ -1101,6 +1109,9 @@ namespace AgingControls
 
         // to show this rack or not
         public bool Hide = false;
+
+        // Remark
+        public string Remark = string.Empty;
 
         // when you give arbitrary number of strings for arguments
         public void SetTrayIDs(params string[] trays)

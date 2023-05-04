@@ -611,7 +611,7 @@ namespace MonitoringUI.Monitoring
                 StringBuilder strSQL = new StringBuilder();
 
                 // Rack 정보
-                strSQL.Append(" SELECT aging_type, line, lane, rack_id, tray_id, tray_id_2, status, process_no, fire_flag, use_flag");
+                strSQL.Append(" SELECT aging_type, line, lane, rack_id, tray_id, tray_id_2, status, process_no, fire_flag, use_flag, remark");
                 strSQL.Append(" FROM fms_v.tb_mst_aging");
                 //필수값
                 strSQL.Append($" WHERE aging_type = '{_AgingType}' AND line = '{_AgingLine}'");

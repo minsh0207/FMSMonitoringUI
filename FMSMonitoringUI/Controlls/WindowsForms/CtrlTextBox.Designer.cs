@@ -37,10 +37,10 @@
             // tableLayoutPanel
             // 
             this.tableLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
+            this.tableLayoutPanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel.ColumnCount = 2;
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 173F));
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
             this.tableLayoutPanel.Controls.Add(this.TextBoxData, 1, 0);
             this.tableLayoutPanel.Controls.Add(this.lbTitle, 0, 0);
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -49,16 +49,17 @@
             this.tableLayoutPanel.Name = "tableLayoutPanel";
             this.tableLayoutPanel.RowCount = 1;
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(282, 37);
+            this.tableLayoutPanel.Size = new System.Drawing.Size(282, 32);
             this.tableLayoutPanel.TabIndex = 0;
             // 
             // TextBoxData
             // 
             this.TextBoxData.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TextBoxData.Location = new System.Drawing.Point(110, 5);
+            this.TextBoxData.Location = new System.Drawing.Point(108, 3);
+            this.TextBoxData.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxData.Multiline = true;
             this.TextBoxData.Name = "TextBoxData";
-            this.TextBoxData.Size = new System.Drawing.Size(167, 27);
+            this.TextBoxData.Size = new System.Drawing.Size(171, 26);
             this.TextBoxData.TabIndex = 2;
             this.TextBoxData.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.TextBoxData.TextChanged += new System.EventHandler(this.TextBoxData_TextChanged);
@@ -71,10 +72,10 @@
             this.lbTitle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbTitle.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lbTitle.ForeColor = System.Drawing.Color.White;
-            this.lbTitle.Location = new System.Drawing.Point(2, 2);
+            this.lbTitle.Location = new System.Drawing.Point(1, 1);
             this.lbTitle.Margin = new System.Windows.Forms.Padding(0);
             this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(103, 33);
+            this.lbTitle.Size = new System.Drawing.Size(104, 30);
             this.lbTitle.TabIndex = 0;
             this.lbTitle.Text = "label1";
             this.lbTitle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -88,7 +89,7 @@
             this.Controls.Add(this.tableLayoutPanel);
             this.Margin = new System.Windows.Forms.Padding(30);
             this.Name = "CtrlTextBox";
-            this.Size = new System.Drawing.Size(282, 37);
+            this.Size = new System.Drawing.Size(282, 32);
             this.tableLayoutPanel.ResumeLayout(false);
             this.tableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);

@@ -11,6 +11,7 @@ using Novasoft.Logger;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net;
+//using CSVMgr;
 
 namespace RestClientLib
 {
@@ -20,7 +21,7 @@ namespace RestClientLib
 
         static HttpClient httpClient = null;
 
-        public RESTClient(string eqpType = "BASE", string unitID = "NULL")
+        public RESTClient(string eqpType = "IMS", string unitID = "NULL")
         {
             httpClient = new HttpClient();
 
@@ -85,30 +86,38 @@ namespace RestClientLib
 
         private string GetRestServerURI(enRestEqpType serverType, enRestUnitID unitID)
         {
-            string baseAddress = @"https://210.91.148.176";
-            //string baseAddress = @"http://localhost:30001/";
-
-            //string ecsAddress = @"https://210.91.148.176";
-            string ecsAddress = @"https://localhost";
-
             string address;
 
             switch (serverType)
             {
-                case enRestEqpType.BASE:
-                    address = $"{baseAddress}:{(int)serverType}/";
+                case enRestEqpType.IMS:
+                    address = $"{CRestModulePath.BaseUrl}:{(int)serverType}/";
                     break;
                 case enRestEqpType.HPC:
                 case enRestEqpType.CHG:
-                    address = $"{ecsAddress}:{(int)unitID}/";
+                    address = $"{CRestModulePath.ECSUrl}:{(int)unitID}/";
                     break;
                 default:
-                    address = $"{ecsAddress}:{(int)serverType}/";
+                    address = $"{CRestModulePath.ECSUrl}:{(int)serverType}/";
                     break;
             }
 
             return address;
         }
+
+
+        /// <summary>
+        /// RestServerList.csv에서 OPC Config정보를 읽어온다.
+        /// </summary>
+        /// <returns></returns>
+        //private void ReadRestConfig()
+        //{
+        //    CSVLoader csv_opc = new CSVLoader(CRestModulePath.CONFIG_FILENAME_REST);
+
+        //    List<CRestServerConfig> item =  csv_opc.Load<CRestServerConfig>();
+
+        //    Dictionary<string, ServerInfo> RestServerInfo = new Dictionary<string, ServerInfo>();
+        //}
 
         /// <summary>
         /// Json data를 가져온다.

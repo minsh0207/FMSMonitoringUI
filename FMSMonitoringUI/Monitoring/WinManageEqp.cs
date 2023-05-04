@@ -34,6 +34,7 @@ namespace FMSMonitoringUI.Monitoring
         private string _EqpID = string.Empty;
         private string _UnitID = string.Empty;
         private string _EqpType = string.Empty;
+        private string _TrayId = string.Empty;
         private int _TrayCnt = 0;
 
         #region Working Thread
@@ -473,6 +474,8 @@ namespace FMSMonitoringUI.Monitoring
 
             if (data[0].TRAY_ID == null) return;
 
+            _TrayId = data[0].TRAY_ID;
+
             for (int i = 0; i < data.Count; i++)
             {
                 row = 0;
@@ -661,6 +664,9 @@ namespace FMSMonitoringUI.Monitoring
                     CMessage.MsgInformation($"{btn.Name} OK.");
                 else
                     CMessage.MsgInformation($"{btn.Name} Fail.");
+
+                string log = $"{btn.Name}={updateValue}";
+                SetUserEventLog("ManualCommand", _TrayId, log).GetAwaiter().GetResult();
             }
             else
             {
@@ -705,6 +711,70 @@ namespace FMSMonitoringUI.Monitoring
             }
 
             return sql;
+        }
+        #endregion
+
+        #region SetUserEventLog
+        private async Task SetUserEventLog(string userEvent, string trayId, string userEventLog)
+        {
+            try
+            {
+                RESTClient rest = new RESTClient();
+
+                _jsonUserEventRequest request = new _jsonUserEventRequest();
+                request.ACTION_ID = "USER_EVENT";
+                request.ACTION_USER = "MON";
+                request.REQUEST_TIME = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}";
+
+                //Request 세팅
+                request.USER_ID = CDefine.m_strSaveLoginID;
+                string windowid = CAuthority.WindowsNameToWindowID(this.Name);
+                request.WINDOW_ID = windowid;
+                request.TRAY_ID = trayId;
+                request.CELL_ID = null;
+                request.USER_EVENT = userEvent;
+                request.USER_EVENT_LOG = userEventLog;
+
+                var jsonResult = await rest.SetJson(CRestModulePath.POST_USER_EVENT, request);
+
+                if (jsonResult != null)
+                {
+                    _jsonManualCommandResponse result = rest.ConvertManualCommand(jsonResult);
+
+                    if (result != null)
+                    {
+                        if (result.RESPONSE_CODE == "200")
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        string log = "SetUserEventLog : result is null";
+                        CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
+
+                        return;
+                    }
+                }
+                else
+                {
+                    string log = "SetUserEventLog : jsonResult is null";
+                    CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
+
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print(string.Format("SetUserEventLog Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+                string log = string.Format("SetUserEventLog Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                CLogger.WriteLog(enLogLevel.Error, this.Text, log);
+            }
         }
         #endregion
     }

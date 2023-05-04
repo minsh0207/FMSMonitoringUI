@@ -146,6 +146,7 @@ namespace RestClientLib
         public DateTime START_TIME { get; set; }
         public DateTime PLAN_TIME { get; set; }
         public string PROCESS_NAME { get; set; }
+        public string REMARK { get; set; }
     }
     #endregion
     #region AgingRackCount
@@ -183,6 +184,7 @@ namespace RestClientLib
         public int PROCESS_NO { get; set; }
         public string FIRE_FLAG { get; set; }
         public string USE_FLAG { get; set; }
+        public string REMARK { get; set; }
     }
     #endregion
     #region WinFormationBox

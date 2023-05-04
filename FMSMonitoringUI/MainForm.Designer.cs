@@ -31,12 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.scMainPanel = new System.Windows.Forms.SplitContainer();
             this.AlarmOccur = new System.Windows.Forms.PictureBox();
-            this.cbUsePopUp = new FMSMonitoringUI.Controlls.WindowsForms.CtrlCheckBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.lbCurrentTime = new System.Windows.Forms.Label();
+            this.lbVersionInfo = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
+            this.cbUsePopUp = new FMSMonitoringUI.Controlls.WindowsForms.CtrlCheckBox();
             this.lbUserName = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.barFormationHPC = new MonitoringUI.Controlls.CtrlTitleBarLabel();
-            this.lbCurrentTime = new System.Windows.Forms.Label();
             this.barMain = new MonitoringUI.Controlls.CtrlTitleBarLabel();
             this.barAging = new MonitoringUI.Controlls.CtrlTitleBarLabel();
             this.barFormationCHG = new MonitoringUI.Controlls.CtrlTitleBarLabel();
@@ -61,6 +62,7 @@
             // scMainPanel.Panel1
             // 
             this.scMainPanel.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.scMainPanel.Panel1.Controls.Add(this.lbVersionInfo);
             this.scMainPanel.Panel1.Controls.Add(this.AlarmOccur);
             this.scMainPanel.Panel1.Controls.Add(this.cbUsePopUp);
             this.scMainPanel.Panel1.Controls.Add(this.pictureBox1);
@@ -89,18 +91,6 @@
             this.AlarmOccur.TabIndex = 113;
             this.AlarmOccur.TabStop = false;
             // 
-            // cbUsePopUp
-            // 
-            this.cbUsePopUp.AutoSize = true;
-            this.cbUsePopUp.ForeColor = System.Drawing.Color.White;
-            this.cbUsePopUp.LanguageID = "DEF_Use_Trouble_Alarm_Popup";
-            this.cbUsePopUp.Location = new System.Drawing.Point(1269, 28);
-            this.cbUsePopUp.Name = "cbUsePopUp";
-            this.cbUsePopUp.Size = new System.Drawing.Size(171, 16);
-            this.cbUsePopUp.TabIndex = 112;
-            this.cbUsePopUp.Text = "Use Trouble Alarm PopUp";
-            this.cbUsePopUp.UseVisualStyleBackColor = true;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::FMSMonitoringUI.Properties.Resources.VerkorIcon;
@@ -114,13 +104,48 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(1657, 15);
+            this.pictureBox2.Location = new System.Drawing.Point(1657, 14);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(35, 34);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.LogIn_Click);
+            // 
+            // lbCurrentTime
+            // 
+            this.lbCurrentTime.AutoSize = true;
+            this.lbCurrentTime.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCurrentTime.ForeColor = System.Drawing.Color.White;
+            this.lbCurrentTime.Location = new System.Drawing.Point(1472, 26);
+            this.lbCurrentTime.Name = "lbCurrentTime";
+            this.lbCurrentTime.Size = new System.Drawing.Size(161, 19);
+            this.lbCurrentTime.TabIndex = 4;
+            this.lbCurrentTime.Text = "2022-12-20 09:12:30";
+            // 
+            // lbVersionInfo
+            // 
+            this.lbVersionInfo.AutoSize = true;
+            this.lbVersionInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.lbVersionInfo.ForeColor = System.Drawing.Color.White;
+            this.lbVersionInfo.LanguageID = "";
+            this.lbVersionInfo.Location = new System.Drawing.Point(1776, 45);
+            this.lbVersionInfo.Name = "lbVersionInfo";
+            this.lbVersionInfo.Size = new System.Drawing.Size(59, 12);
+            this.lbVersionInfo.TabIndex = 114;
+            this.lbVersionInfo.Text = "ctrlLabel1";
+            // 
+            // cbUsePopUp
+            // 
+            this.cbUsePopUp.AutoSize = true;
+            this.cbUsePopUp.ForeColor = System.Drawing.Color.White;
+            this.cbUsePopUp.LanguageID = "DEF_Use_Trouble_Alarm_Popup";
+            this.cbUsePopUp.Location = new System.Drawing.Point(1269, 27);
+            this.cbUsePopUp.Name = "cbUsePopUp";
+            this.cbUsePopUp.Size = new System.Drawing.Size(171, 16);
+            this.cbUsePopUp.TabIndex = 112;
+            this.cbUsePopUp.Text = "Use Trouble Alarm PopUp";
+            this.cbUsePopUp.UseVisualStyleBackColor = true;
             // 
             // lbUserName
             // 
@@ -129,7 +154,7 @@
             this.lbUserName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbUserName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(157)))), ((int)(((byte)(206)))));
             this.lbUserName.LanguageID = "DEF_User";
-            this.lbUserName.Location = new System.Drawing.Point(1697, 27);
+            this.lbUserName.Location = new System.Drawing.Point(1697, 21);
             this.lbUserName.Name = "lbUserName";
             this.lbUserName.Size = new System.Drawing.Size(45, 19);
             this.lbUserName.TabIndex = 6;
@@ -142,23 +167,12 @@
             this.barFormationHPC.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.barFormationHPC.ForeColor = System.Drawing.Color.White;
             this.barFormationHPC.LanguageID = "DEF_HPC";
-            this.barFormationHPC.Location = new System.Drawing.Point(695, 10);
+            this.barFormationHPC.Location = new System.Drawing.Point(696, 10);
             this.barFormationHPC.Margin = new System.Windows.Forms.Padding(4);
             this.barFormationHPC.Name = "barFormationHPC";
-            this.barFormationHPC.Size = new System.Drawing.Size(132, 50);
+            this.barFormationHPC.Size = new System.Drawing.Size(147, 50);
             this.barFormationHPC.TabIndex = 5;
             this.barFormationHPC.TitleText = "HPC";
-            // 
-            // lbCurrentTime
-            // 
-            this.lbCurrentTime.AutoSize = true;
-            this.lbCurrentTime.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCurrentTime.ForeColor = System.Drawing.Color.White;
-            this.lbCurrentTime.Location = new System.Drawing.Point(1472, 27);
-            this.lbCurrentTime.Name = "lbCurrentTime";
-            this.lbCurrentTime.Size = new System.Drawing.Size(161, 19);
-            this.lbCurrentTime.TabIndex = 4;
-            this.lbCurrentTime.Text = "2022-12-20 09:12:30";
             // 
             // barMain
             // 
@@ -168,10 +182,10 @@
             this.barMain.ForeColor = System.Drawing.Color.White;
             this.barMain.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.barMain.LanguageID = "DEF_Entire_Formation_Line";
-            this.barMain.Location = new System.Drawing.Point(212, 10);
+            this.barMain.Location = new System.Drawing.Point(200, 10);
             this.barMain.Margin = new System.Windows.Forms.Padding(4);
             this.barMain.Name = "barMain";
-            this.barMain.Size = new System.Drawing.Size(192, 50);
+            this.barMain.Size = new System.Drawing.Size(234, 50);
             this.barMain.TabIndex = 1;
             this.barMain.TitleText = "Entire Formation Line";
             // 
@@ -182,10 +196,10 @@
             this.barAging.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.barAging.ForeColor = System.Drawing.Color.White;
             this.barAging.LanguageID = "DEF_Aging";
-            this.barAging.Location = new System.Drawing.Point(424, 10);
+            this.barAging.Location = new System.Drawing.Point(426, 10);
             this.barAging.Margin = new System.Windows.Forms.Padding(4);
             this.barAging.Name = "barAging";
-            this.barAging.Size = new System.Drawing.Size(132, 50);
+            this.barAging.Size = new System.Drawing.Size(147, 50);
             this.barAging.TabIndex = 2;
             this.barAging.TitleText = "Aging";
             // 
@@ -196,10 +210,10 @@
             this.barFormationCHG.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.barFormationCHG.ForeColor = System.Drawing.Color.White;
             this.barFormationCHG.LanguageID = "DEF_Formation";
-            this.barFormationCHG.Location = new System.Drawing.Point(556, 10);
+            this.barFormationCHG.Location = new System.Drawing.Point(565, 10);
             this.barFormationCHG.Margin = new System.Windows.Forms.Padding(4);
             this.barFormationCHG.Name = "barFormationCHG";
-            this.barFormationCHG.Size = new System.Drawing.Size(132, 50);
+            this.barFormationCHG.Size = new System.Drawing.Size(147, 50);
             this.barFormationCHG.TabIndex = 3;
             this.barFormationCHG.TitleText = "Formation";
             // 
@@ -239,6 +253,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private Controlls.WindowsForms.CtrlCheckBox cbUsePopUp;
         private System.Windows.Forms.PictureBox AlarmOccur;
+        private Controlls.WindowsForms.CtrlLabel lbVersionInfo;
     }
 }
 

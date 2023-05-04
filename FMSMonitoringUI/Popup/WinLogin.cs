@@ -14,7 +14,7 @@ using System.Threading;
 using FMSMonitoringUI.Controlls.WindowsForms;
 using MonitoringUI.Controlls;
 using MonitoringUI.Controlls.CButton;
-//using AutoUpdaterDotNET;
+using AutoUpdaterDotNET;
 //using System.Windows.Input;
 
 namespace MonitoringUI.Popup
@@ -31,12 +31,12 @@ namespace MonitoringUI.Popup
 
             InitializeComponent();
 
-//#if (DEBUG == fasle)
-//            AutoUpdater.Start("http://ecs-1-spare/MonitoringUI/MonitoringUI.xml");
-//            AutoUpdater.DownloadPath = Environment.CurrentDirectory;
-//            AutoUpdater.Mandatory = true;
-//            AutoUpdater.UpdateMode = Mode.Forced;
-//#endif
+#if (DEBUG == fasle)
+            AutoUpdater.Start("http://ecs-1-spare/MonitoringUI/MonitoringUI.xml");
+            AutoUpdater.DownloadPath = Environment.CurrentDirectory;
+            AutoUpdater.Mandatory = true;
+            AutoUpdater.UpdateMode = Mode.Forced;
+#endif
         }
 
         #region WinLogin Load
@@ -95,13 +95,15 @@ namespace MonitoringUI.Popup
 
         private void TbPassword_DoubleClick(object sender, EventArgs e)
         {
-            if(m_bHotKey)
+#if (DEBUG)
+            if (m_bHotKey)
             {
-                tbLoginID.TextData  = "MSH";
+                tbLoginID.TextData  = "DEV";
                 tbPassword.TextData = "1";
 
                 BtConfirm_Click(sender, e);
             }
+#endif
         }
 
         private void TbPassword_KeyDown(object sender, KeyEventArgs e)

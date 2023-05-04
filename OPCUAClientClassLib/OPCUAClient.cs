@@ -696,11 +696,11 @@ namespace OPCUAClientClassLib
 
                     if (_EqpID == null) _EqpID = kv.Value[0].EqpID;
 
-                    if (_EqpType == "CNV")
+                    if (_EqpType == enEqpType.CNV.ToString())
                     {
                         ConveyorTag(kv.Value, dataList[0].Children[0]);
                     }
-                    else if (_EqpType == "STC")
+                    else   // if (_EqpType == "STC")
                     {
                         CraneTag(kv.Value, dataList[0].Children[1]);
                     }
@@ -741,7 +741,8 @@ namespace OPCUAClientClassLib
             {
                 for (int i = 0; i < trackList.Count; i++)
                 {
-                    //if (trackList[i].SiteNo > 300) continue;
+                    if (trackList[i].SiteNo == 1220 || trackList[i].SiteNo == 1400) continue;
+                    
                     //#if DEBUG
                     if (trackList[i].SiteNo == (int)enEqpType.RTV01)
                         trackno = enEqpType.RTV01.ToString();

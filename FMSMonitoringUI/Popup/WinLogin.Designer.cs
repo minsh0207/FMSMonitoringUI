@@ -107,7 +107,7 @@
             this.tbPassword.Margin = new System.Windows.Forms.Padding(30, 38, 30, 38);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.PasswordChar = '*';
-            this.tbPassword.Size = new System.Drawing.Size(260, 37);
+            this.tbPassword.Size = new System.Drawing.Size(260, 34);
             this.tbPassword.TabIndex = 54;
             this.tbPassword.TextData = "";
             this.tbPassword.TitleText = "Password";
@@ -122,7 +122,7 @@
             this.tbLoginID.Margin = new System.Windows.Forms.Padding(30, 35, 30, 35);
             this.tbLoginID.Name = "tbLoginID";
             this.tbLoginID.PasswordChar = '\0';
-            this.tbLoginID.Size = new System.Drawing.Size(260, 37);
+            this.tbLoginID.Size = new System.Drawing.Size(260, 34);
             this.tbLoginID.TabIndex = 53;
             this.tbLoginID.TextData = "";
             this.tbLoginID.TitleText = "Login ID";

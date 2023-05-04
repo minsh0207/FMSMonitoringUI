@@ -876,4 +876,16 @@
   <data name="DEF_RTV_To" xml:space="preserve">
     <value>FR-RTV To</value>
   </data>
+  <data name="DEF_Pallet_ID" xml:space="preserve">
+    <value>FR-Pallet ID</value>
+  </data>
+  <data name="DEF_Pallet_Info" xml:space="preserve">
+    <value>FR-Pallet Info</value>
+  </data>
+  <data name="DEF_Tray_Position" xml:space="preserve">
+    <value>FR-Tray Position</value>
+  </data>
+  <data name="DEF_Tracking_Destination" xml:space="preserve">
+    <value>FR-Tracking Destination</value>
+  </data>
 </root>

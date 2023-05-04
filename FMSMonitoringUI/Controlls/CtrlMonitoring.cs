@@ -454,7 +454,7 @@ namespace FMSMonitoringUI.Controlls
                     ItemInfo itemInfo = new ItemInfo()
                     {
                         CraneNo = crane.CraneID,
-                        ControlType = enEqpType.STC,
+                        ControlType = GetCraneEqpType(crane.CraneID),
                         GroupNo = crane.DeviceID,
                         EqpID = GetCraneEqpID(crane.CraneID)
                     };
@@ -686,6 +686,13 @@ namespace FMSMonitoringUI.Controlls
 
                     this.Invoke(new MethodInvoker(delegate ()
                     {
+                        LoadAgingRackData().GetAwaiter().GetResult();
+                    }));
+
+                    Thread.Sleep(2000);
+
+                    this.Invoke(new MethodInvoker(delegate ()
+                    {
                         LoadReworkTray().GetAwaiter().GetResult();
                     }));
 
@@ -703,14 +710,7 @@ namespace FMSMonitoringUI.Controlls
                         LoadAgingRackCount().GetAwaiter().GetResult();
                     }));
 
-                    Thread.Sleep(2000);
-
-                    this.Invoke(new MethodInvoker(delegate ()
-                    {
-                        LoadAgingRackData().GetAwaiter().GetResult();                        
-                    }));
-
-                    Thread.Sleep(2000);
+                    Thread.Sleep(2000);                    
                 }
             }
             catch (Exception ex)
@@ -929,9 +929,9 @@ namespace FMSMonitoringUI.Controlls
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.Print(string.Format("LoadEntireEqpList Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                System.Diagnostics.Debug.Print(string.Format("LoadReworkTray Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
 
-                string log = string.Format("LoadEntireEqpList Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+                string log = string.Format("LoadReworkTray Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
                 CLogger.WriteLog(enLogLevel.Error, this.Text, log);
             }
         }
@@ -1120,8 +1120,9 @@ namespace FMSMonitoringUI.Controlls
             CLogger.WriteLog(enLogLevel.Info, this.Text, $"Read OPC Config : {CDefine.CONFIG_FILENAME_OPCUA}");
 
             return csv_opc.Load<COPCUAConfig>();
-        }
+        }        
         #endregion
+
 
         #region [Mouse DBLCLK Event]
         //[DllImport("user32.dll", SetLastError = true)]
@@ -1481,29 +1482,36 @@ namespace FMSMonitoringUI.Controlls
         /// <returns></returns>
         private SiteTagInfo ReadSiteInfo(ItemInfo item)
         {
-            List<ReadValueId> cvInfo = _clientFMS[item.ServerNo].ConveyorNodeID[item.SiteNo];
-            List<DataValue> data = _clientFMS[item.ServerNo].ReadNodeID(cvInfo);
-
             SiteTagInfo tagInfo = new SiteTagInfo();
 
-            int tagIdx = GetTagIndex("ConveyorInformation.TrayIdL1", cvInfo);
-            tagInfo.TrayIdL1 = Convert.ToString(data[tagIdx].Value);
-            tagIdx = GetTagIndex("ConveyorInformation.TrayIdL2", cvInfo);
-            tagInfo.TrayIdL2 = Convert.ToString(data[tagIdx].Value);
+            if (_clientFMS[item.ServerNo].ConveyorNodeID.ContainsKey(item.SiteNo) == true)
+            {
+                List<ReadValueId> cvInfo = _clientFMS[item.ServerNo].ConveyorNodeID[item.SiteNo];
+                List<DataValue> data = _clientFMS[item.ServerNo].ReadNodeID(cvInfo);
+
+                string tagVal = GetTagValue("ConveyorInformation.TrayIdL1", data, cvInfo);
+                tagInfo.TrayIdL1 = tagVal;
+                tagVal = GetTagValue("ConveyorInformation.TrayIdL2", data, cvInfo);
+                tagInfo.TrayIdL2 = tagVal;
+            }            
 
             return tagInfo;
         }
         private SiteTagInfo ReadSiteInfo(int serverNo, int siteNo)
         {
-            List<ReadValueId> cvInfo = _clientFMS[serverNo].ConveyorNodeID[siteNo];
-            List<DataValue> data = _clientFMS[serverNo].ReadNodeID(cvInfo);
-
             SiteTagInfo tagInfo = new SiteTagInfo();
 
-            int tagIdx = GetTagIndex("ConveyorInformation.TrayIdL1", cvInfo);
-            tagInfo.TrayIdL1 = Convert.ToString(data[tagIdx].Value);
-            tagIdx = GetTagIndex("ConveyorInformation.TrayIdL2", cvInfo);
-            tagInfo.TrayIdL2 = Convert.ToString(data[tagIdx].Value);
+            if (_clientFMS[serverNo].ConveyorNodeID.ContainsKey(siteNo) == true)
+            {
+                List<ReadValueId> cvInfo = _clientFMS[serverNo].ConveyorNodeID[siteNo];
+                List<DataValue> data = _clientFMS[serverNo].ReadNodeID(cvInfo);
+
+
+                string tagVal = GetTagValue("ConveyorInformation.TrayIdL1", data, cvInfo);
+                tagInfo.TrayIdL1 = tagVal;
+                tagVal = GetTagValue("ConveyorInformation.TrayIdL2", data, cvInfo);
+                tagInfo.TrayIdL2 = tagVal;
+            }
 
             return tagInfo;
         }
@@ -1513,6 +1521,19 @@ namespace FMSMonitoringUI.Controlls
         private int GetTagIndex(string tagPath, List<ReadValueId> cvInfo)
         {
             return cvInfo.FindIndex(x => x.UserData.ToString().EndsWith(tagPath));
+        }
+        #endregion
+
+        #region GetTagValue
+        private string GetTagValue(string tagPath, List<DataValue> data, List<ReadValueId> cvInfo)
+        {
+            string val = string.Empty;
+            int idx = cvInfo.FindIndex(x => x.UserData.ToString().EndsWith(tagPath));
+
+            if (idx > -1)
+                val = Convert.ToString(data[idx].Value);
+
+            return val;
         }
         #endregion
 
@@ -1527,8 +1548,7 @@ namespace FMSMonitoringUI.Controlls
             List<ReadValueId> cvInfo = _clientFMS[item.ServerNo].ConveyorNodeID[item.SiteNo];
             List<DataValue> data = _clientFMS[item.ServerNo].ReadNodeID(cvInfo);
 
-            int tagIdx = GetTagIndex("EquipmentStatus.Trouble.ErrorNo", cvInfo);
-            string errorNo = data[tagIdx].Value.ToString();
+            string errorNo = GetTagValue("EquipmentStatus.Trouble.ErrorNo", data, cvInfo);
 
             if (trouble == false) errorNo = "0";
 
@@ -1847,7 +1867,7 @@ namespace FMSMonitoringUI.Controlls
                             //log = string.Format("[{0}-CNV{1:D4}] {2} = {3}",
                             //    item.ControlType, item.SiteNo, item.BrowseName, change.Value);
                         }
-                        else if (item.ControlType == enEqpType.STC)
+                        else if (item.ControlType == GetCraneEqpType(item.CraneNo))
                         {
                             StackerCraneDataChange(item, change.Value.ToString());
 
@@ -2013,7 +2033,7 @@ namespace FMSMonitoringUI.Controlls
                     //this.Invoke(new Action(() => Refresh()));
                 });
 
-                Thread.Sleep(20);
+                Thread.Sleep(10);
                 Application.DoEvents();
                 this.BeginInvoke(new Action(() => Refresh()));
             }
@@ -2080,9 +2100,8 @@ namespace FMSMonitoringUI.Controlls
 
             task = StatusConveyorAsync(item.GroupNo, item.SiteNo, _SubscribeInfo[groupNo].Item[siteNo]);
 
-            log = string.Format("[{0}-T{1:D4}] {2} = {3}", item.ControlType, siteNo, item.BrowseName, value);
-
-            CLogger.WriteLog(enLogLevel.Receive, this.Text, log);
+            //log = string.Format("[{0}-T{1:D4}] {2} = {3}", item.ControlType, siteNo, item.BrowseName, value);
+            //CLogger.WriteLog(enLogLevel.Receive, this.Text, log);
         }
         #endregion
 
@@ -2213,8 +2232,8 @@ namespace FMSMonitoringUI.Controlls
                 }
             }
 
-            log = string.Format("[{0}-CraneNo{1:D2}] {2} = {3}", item.ControlType, item.CraneNo + 1, item.BrowseName, value);
-            CLogger.WriteLog(enLogLevel.Receive, this.Text, log);
+            //log = string.Format("[{0}-CraneNo{1:D2}] {2} = {3}", item.ControlType, item.CraneNo + 1, item.BrowseName, value);
+            //CLogger.WriteLog(enLogLevel.Receive, this.Text, log);
         }
         #endregion
 
@@ -2254,9 +2273,8 @@ namespace FMSMonitoringUI.Controlls
                 //task = StatusConveyorAsync(item.SiteNo, trayExist);
             }
 
-            log = string.Format("[{0}-{1:D2}] {2} = {3}", item.ControlType, 1, item.BrowseName, value);
-
-            CLogger.WriteLog(enLogLevel.Receive, this.Text, log);
+            //log = string.Format("[{0}-{1:D2}] {2} = {3}", item.ControlType, 1, item.BrowseName, value);
+            //CLogger.WriteLog(enLogLevel.Receive, this.Text, log);
         }
         #endregion
 
@@ -2313,6 +2331,35 @@ namespace FMSMonitoringUI.Controlls
             }
 
             return eqp;
+        }
+        #endregion
+
+        #region GetCraneEqpType
+        // 20230502 msh : GetCraneEqpType 추가
+        private enEqpType GetCraneEqpType(int eqpIdx)
+        {
+            enEqpType eqpType = enEqpType.None;
+
+            switch (eqpIdx)
+            {
+                case 0:
+                    eqpType =  enEqpType.SCL;   // "F01STCL0010";
+                    break;
+                case 1:
+                    eqpType = enEqpType.SCL;   //"F01STCL0020";
+                    break;
+                case 2:
+                    eqpType = enEqpType.SCH;    //"F01STCH0010";
+                    break;
+                case 3:
+                    eqpType = enEqpType.SCF;    //"F01STCF0010";
+                    break;
+                default:
+                    CLogger.WriteLog(enLogLevel.Error, this.Text, "GetCraneEqpType is Empty");
+                    break;
+            }
+
+            return eqpType;
         }
         #endregion
 

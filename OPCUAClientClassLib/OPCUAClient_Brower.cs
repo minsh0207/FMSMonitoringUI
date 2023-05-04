@@ -187,9 +187,15 @@ namespace OPCUAClientClassLib
                     {
                         //string[] taglevel = browsePath[j].ToString().Replace("/2:", ".").Split('.');
 
-                        string[] taglevel = browsePath[j].UserData.ToString().Split('.');
+                        if (browerResult[j].Targets.Count == 0)
+                        {
+                            string log = $"Tag Matching Error : {browsePath[j].UserData}";
+                            _LOG_(LogLevel.Error, log);
+                            continue;
+                        }
 
                         string sNodeId = browerResult[j].Targets[0].TargetId.ToString();
+                        string[] taglevel = browsePath[j].UserData.ToString().Split('.');
                         //#if DEBUG
                         //string[] temp_no = taglevel[2].ToString().Split('_');
                         //int cv_no = int.Parse(temp_no[1]);
@@ -249,9 +255,16 @@ namespace OPCUAClientClassLib
 
                 for (int j = 0; j < browerResult.Count; j++)
                 {
+                    if (browerResult[j].Targets.Count == 0)
+                    {
+                        string log = $"Tag Matching Error : {browsePath[j].UserData}";
+                        _LOG_(LogLevel.Error, log);
+                        continue;
+                    }
+
                     string sNodeId = browerResult[j].Targets[0].TargetId.ToString();
-                    //string[] taglevel = browsePath[j].ToString().Replace("/2:", ".").Split('.');
                     string[] taglevel = browsePath[j].UserData.ToString().Split('.');
+                    //string[] taglevel = browsePath[j].ToString().Replace("/2:", ".").Split('.');
 
                     //string tagLevel1 = taglevel[taglevel.Count() - 2];
                     //string tagLevel2 = taglevel[taglevel.Count() - 1];

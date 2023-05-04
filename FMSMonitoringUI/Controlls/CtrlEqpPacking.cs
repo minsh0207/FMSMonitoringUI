@@ -140,8 +140,17 @@ namespace FMSMonitoringUI.Controlls
         #region DataGridView Event
         private void TrayInfoView_MouseCellDoubleClick(int col, int row, object value)
         {
-            WinTrayInfo form = new WinTrayInfo(EqpID, "", value.ToString());
-            form.ShowDialog();
+            if (row == 0)
+            {
+                WinTrayInfo form = new WinTrayInfo(EqpID, "", value.ToString());
+                form.ShowDialog();
+            }
+            else if (row == 2)
+            {
+                WinPackingInfo form = new WinPackingInfo(value.ToString());
+                form.ShowDialog();
+            }
+            
         }
         #endregion
 

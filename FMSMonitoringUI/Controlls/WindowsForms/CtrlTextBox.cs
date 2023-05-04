@@ -1,5 +1,4 @@
-﻿using Microsoft.Office.Interop.Excel;
-using MonitoringUI;
+﻿using MonitoringUI;
 using MonitoringUI.Controlls.CComboBox;
 using System;
 using System.Collections.Generic;
@@ -95,6 +94,7 @@ namespace FMSMonitoringUI.Controlls.WindowsForms
             set
             {
                 TextBoxData.PasswordChar = value;
+                
             }
         }
 
@@ -193,6 +193,30 @@ namespace FMSMonitoringUI.Controlls.WindowsForms
             }
 
             return strNumberic;
+        }
+        #endregion
+
+        #region SetTextBoxEnable
+        public void SetTextBoxEnable(bool enable)
+        {
+            //TextBoxData.Enabled = enable;
+
+            if (enable)
+            {
+                TextBoxData.BackColor = Color.White;
+                TextBoxData.ForeColor = Color.Black;
+                TextBoxData.BorderStyle = BorderStyle.Fixed3D;
+                TextBoxData.ReadOnly = false;
+                TextBoxData.Margin = new Padding(2, 2, 2, 2);
+            }
+            else
+            {
+                TextBoxData.BackColor = Color.FromArgb(27, 27, 27);
+                TextBoxData.ForeColor = Color.White;
+                TextBoxData.BorderStyle = BorderStyle.None;
+                TextBoxData.ReadOnly = true;
+                TextBoxData.Margin = new Padding(2, 6, 2, 2);
+            }
         }
         #endregion
 

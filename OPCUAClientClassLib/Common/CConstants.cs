@@ -11,7 +11,7 @@ namespace OPCUAClientClassLib
         /// <summary>
         /// None
         /// </summary>
-        //None = 0,
+        None = -1,
 
         /// <summary>
         /// Conveyor
@@ -20,19 +20,19 @@ namespace OPCUAClientClassLib
         /// <summary>
         /// StackerCrane
         /// </summary>
-        STC,
+        //STC,
         /// <summary>
         /// StackerCrane(LT)
         /// </summary>
-        //STL,
+        SCL,
         /// <summary>
         /// StackerCrane(HT)
         /// </summary>
-        //STH,
+        SCH,
         /// <summary>
         /// StackerCrane(FORMATION)
         /// </summary>
-        //STF,
+        SCF,
         /// <summary>
         /// RTV
         /// </summary>

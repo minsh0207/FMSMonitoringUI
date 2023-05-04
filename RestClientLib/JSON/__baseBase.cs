@@ -15,9 +15,11 @@ namespace RestClientLib
         public __baseRequest() { }
         ~__baseRequest() { }
 
-        public string ROW_COUNT { get; set; }
+        //public string ROW_COUNT { get; set; }
 
         public string ACTION_ID { get; set; }
+
+        public string ACTION_USER { get; set; }
 
         public string REQUEST_TIME { get; set; }
     }
@@ -519,6 +521,26 @@ namespace RestClientLib
         public string TROUBLE_REMARK { get; set; }
         public string USER_ACTION { get; set; }
         public DateTime USER_ACTION_TIME { get; set; }
+        public string UPDATE_USER { get; set; }
+        public DateTime UPDATE_TIME { get; set; }
+        public DateTime CREATE_TIME { get; set; }
+    }
+    #endregion
+    #region _dat_packing
+    /// <summary>
+    /// JSON base format : tb_dat_packing
+    /// </summary>
+    public class _dat_packing
+    {
+        public string CELL_ID { get; set; }
+        public string PALLET_ID { get; set; }
+        public int CELL_NO { get; set; }
+        public int TRAY_POSITION { get; set; }
+        public int CELL_POSITION { get; set; }
+        public string MODEL_ID { get; set; }
+        public string LOT_ID { get; set; }
+        public DateTime PACKING_TIME { get; set; }
+        public string GRADE { get; set; }
         public string UPDATE_USER { get; set; }
         public DateTime UPDATE_TIME { get; set; }
         public DateTime CREATE_TIME { get; set; }

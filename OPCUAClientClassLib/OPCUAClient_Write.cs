@@ -106,29 +106,48 @@ namespace OPCUAClientClassLib
             return results;     // Good = 0
         }
 
-        public void NodesToWriteValue(List<InfoData> dataList)
+        public bool NodesToWriteValue(List<InfoData> dataList)
         {
-            if (dataList.Count() == 0) return;
+            bool bResult = false;
 
-            List<WriteValue> nodesToWrite = new List<WriteValue>();
-
-            foreach (var item in dataList)
+            try
             {
-                DataValue dataValue = new DataValue
-                {
-                    Value = TypeUtils.Cast(item.Value, item.Type)
-                };
+                if (dataList.Count() == 0) return bResult;
 
-                nodesToWrite.Add(new WriteValue()
+                List<WriteValue> nodesToWrite = new List<WriteValue>();
+
+                foreach (var item in dataList)
                 {
-                    NodeId = item.Nodeid,
-                    Value = dataValue,
-                    AttributeId = Attributes.Value
-                });
+                    DataValue dataValue = new DataValue
+                    {
+                        Value = TypeUtils.Cast(item.Value, item.Type)
+                    };
+
+                    nodesToWrite.Add(new WriteValue()
+                    {
+                        NodeId = item.Nodeid,
+                        Value = dataValue,
+                        AttributeId = Attributes.Value
+                    });
+                }
+
+                // Call to ClientAPI.
+                List<StatusCode> results = _session.Write(nodesToWrite, null);
+
+                for (int i = 0; i < results.Count; i++)
+                {
+                    if (results[i].IsGood() == false)
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                return false;
             }
 
-            // Call to ClientAPI.
-            List<StatusCode> results = _session.Write(nodesToWrite, null);
+            return true;
         }
     }
 }

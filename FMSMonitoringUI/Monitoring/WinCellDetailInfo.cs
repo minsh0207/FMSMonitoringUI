@@ -28,6 +28,7 @@ namespace FMSMonitoringUI.Monitoring
     {
         private Point point = new Point();
         private string _TrayId = string.Empty;
+        private string _CellId = string.Empty;
 
         private List<_dat_cell> _CellInfo;
         private List<_cell_process_flow> _CellProcessFlow;
@@ -37,7 +38,7 @@ namespace FMSMonitoringUI.Monitoring
         private bool _TheadVisiable;
         #endregion
 
-        public WinCellDetailInfo(string trayId)
+        public WinCellDetailInfo(string trayId, string cellId)
         {
             InitializeComponent();
 
@@ -54,6 +55,7 @@ namespace FMSMonitoringUI.Monitoring
             InitLanguage();
 
             _TrayId = trayId;
+            _CellId = cellId;
         }
 
         #region WinCellDetailInfo Event
@@ -323,7 +325,7 @@ namespace FMSMonitoringUI.Monitoring
 
                     this.Invoke(new MethodInvoker(delegate ()
                     {
-                        LoadCellData(_TrayId).GetAwaiter().GetResult();
+                        LoadCellData(_TrayId, _CellId).GetAwaiter().GetResult();
                     }));
 
                     //Thread.Sleep(3000);
@@ -341,7 +343,7 @@ namespace FMSMonitoringUI.Monitoring
         #endregion
 
         #region LoadCellData
-        private async Task LoadCellData(string trayid)
+        private async Task LoadCellData(string trayId, string cellId)
         {
             try
             {
@@ -352,7 +354,10 @@ namespace FMSMonitoringUI.Monitoring
                 strSQL.Append(" SELECT *");
                 strSQL.Append(" FROM fms_v.tb_dat_cell");
                 //필수값
-                strSQL.Append($" WHERE tray_id = '{trayid}'");
+                if (trayId != "")
+                    strSQL.Append($" WHERE tray_id = '{trayId}'");
+                else
+                    strSQL.Append($" WHERE cell_id = '{cellId}'");
 
                 var jsonResult = await rest.GetJson(enActionType.SQL_SELECT, strSQL.ToString());
 

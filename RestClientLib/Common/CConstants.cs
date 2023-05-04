@@ -19,7 +19,7 @@ namespace RestClientLib
     #region REST Equipment Type
     public enum enRestEqpType
     {
-        BASE = 30011,
+        IMS = 30011,
         OCV = 30301,
         DCR = 30401,
         MIC = 30501,

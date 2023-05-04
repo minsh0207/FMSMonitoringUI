@@ -94,6 +94,7 @@ namespace MonitoringUI.Common
         //===================================================================
         public const int DEF_MAX_TRAYID_LENGTH = 16;
         public const int DEF_MAX_CELL_COUNT = 30;
+        public const int DEF_MAX_PALLET_CELL_COUNT = 25;
         public const int DEF_MAX_CELLID_LENGTH = 24;
 
         /////////////////////////////////////////////////////////////////////
@@ -181,6 +182,8 @@ namespace MonitoringUI.Common
         public const string DEF_MON_WIN_TRAY_INFO = "MON-016";                      //WinTrayInfo
         public const string DEF_MON_WIN_WATER_TANK = "MON-017";                     //WinWaterTank
         public const string DEF_MON_WIN_TROUBLE_INFO = "MON-018";                   //WinTroubleInfo
+        public const string DEF_MON_WIN_TRAY_BINDER = "MON-019";                    //TrayBinder
+        public const string DEF_MON_WIN_PACKING_INFO = "MON-020";                   //WinPackingInfo
     }
     #endregion
 }

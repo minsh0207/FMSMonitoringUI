@@ -8,6 +8,7 @@ using MonitoringUI.Controlls;
 using MonitoringUI.Monitoring;
 using MonitoringUI.Popup;
 using OPCUAClientClassLib;
+using Org.BouncyCastle.Asn1.Icao;
 using RestClientLib;
 using System;
 using System.Collections.Generic;
@@ -123,6 +124,9 @@ namespace FMSMonitoringUI
             LoadEqpName().GetAwaiter().GetResult();
 
             _MainFormText = "[FMS Monitoring System]";
+
+            //lbVersionInfo.Text = " Ver. " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            lbVersionInfo.Text = " Ver.2023.05.04.001";
 
             CLogger.WriteLog(enLogLevel.Info, "", "");
             CLogger.WriteLog(enLogLevel.Info, _MainFormText, "== Start the FMS Monitoring System ==");

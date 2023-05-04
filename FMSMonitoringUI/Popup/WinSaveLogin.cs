@@ -184,14 +184,16 @@ namespace MonitoringUI.Popup
         //===================================================================
         private void TbPassword_DoubleClick(object sender, EventArgs e)
         {
+#if (DEBUG)
             if (m_bHotKey)
             {
-                tbLoginID.TextData = "MSH";
+                tbLoginID.TextData = "DEV";
                 tbPassword.TextData = "1";
 
                 // Login
                 btnLogin_Click(sender, e);
             }
+#endif
         }
         #endregion
         #endregion

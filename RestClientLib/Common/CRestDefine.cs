@@ -21,10 +21,22 @@ namespace RestClientLib
 
         public const string POST_SQL = "ecs/SQL";
         public const string POST_MANUAL_COMMAND = "ecs/sendManualCommand";
+        public const string POST_USER_EVENT = "ecs/userEvent";
 
         //public const string BaseUrl = "http://localhost:30001";
         //public const string BaseUrl = "https://210.91.148.176:30011";
+
+        //public const string BaseUrl = "https://10.13.27.20";
+        public const string BaseUrl = "https://210.91.148.176";
+        public const string ECSUrl = "https://localhost";
+
         public const string LOG_PATH = @"D:\Logs\FMSSystem";
+
+
+        /////////////////////////////////////////////////////////////////////
+        //	RestServer List Define
+        //=================================================================== 
+        public const string CONFIG_FILENAME_REST = @".\Config\RestServerList.csv";
 
         //public const string status_eqp = "STATUS_EQP";
         //public const string status_unit = "STATUS_UNIT";

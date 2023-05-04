@@ -53,6 +53,11 @@ namespace FMSMonitoringUI.Controlls
                 lbPorcessStatus.Text = porcessStatus;
                 lbPorcessStatus.BackColor = porcessColor;
 
+                if (porcessStatus == "U")
+                    lbPorcessStatus.ForeColor = Color.White;
+                else
+                    lbPorcessStatus.ForeColor = Color.Black;
+
                 lbEqpMode.Text = eqpMode;
                 lbEqpMode.BackColor = eqpStatus;
             }
