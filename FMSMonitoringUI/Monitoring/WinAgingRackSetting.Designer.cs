@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WinAgingRackSetting));
             this.titBar = new MonitoringUI.Controlls.CtrlTitleBar();
             this.panel3 = new System.Windows.Forms.Panel();
             this.Exit = new MonitoringUI.Controlls.CButton.CtrlButton();
@@ -426,13 +427,13 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.titBar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "WinAgingRackSetting";
             this.Padding = new System.Windows.Forms.Padding(2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WinAgingRackSetting";
-            this.TopMost = true;
             this.WindowID = "WinAgingRackSetting";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.WinAgingRackSetting_FormClosed);
             this.Load += new System.EventHandler(this.WinAgingRackSetting_Load);

@@ -85,7 +85,7 @@ namespace MonitoringUI.Popup
             try
             {
                 // Init Timer
-                m_timer.Interval = TimeSpan.FromSeconds(2);
+                //m_timer.Interval = TimeSpan.FromSeconds(2);
                 m_timer.Tick += new EventHandler(OnTimer);
                 m_timer.Start();
                 CLogger.WriteLog(enLogLevel.LOG, DateTime.Now, this.ToString(), CDefine.m_strLoginID, "InitControl : m_timer Start");

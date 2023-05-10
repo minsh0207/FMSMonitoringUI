@@ -181,7 +181,7 @@ namespace FMSMonitoringUI.Controlls
             if (col == 1 && row == 0)
             {
                 WinTrayInfo form = new WinTrayInfo(EqpID, "", value.ToString());
-                form.ShowDialog();
+                form.Show();
             }
         }
         #endregion
@@ -301,7 +301,7 @@ namespace FMSMonitoringUI.Controlls
             if (((MouseEventArgs)e).Button == MouseButtons.Right)
             {
                 WinTroubleInfo winTroubleInfo = new WinTroubleInfo(EqpName, _EqpType, "", _unitD);
-                winTroubleInfo.ShowDialog();
+                winTroubleInfo.Show();
             }
         }
         #endregion

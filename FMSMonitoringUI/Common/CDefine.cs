@@ -29,12 +29,20 @@ namespace MonitoringUI.Common
         /////////////////////////////////////////////////////////////////////
         //	OPCServer List Define
         //=================================================================== 
+#if VERKOR
         public static string CONFIG_FILENAME_OPCUA = @".\Config\OPCUAList.csv";
+#else
+        public static string CONFIG_FILENAME_OPCUA = @".\Config\OPCUAList-KR.csv";
+#endif
 
         /////////////////////////////////////////////////////////////////////
         //	Tag List Define
         //=================================================================== 
+#if VERKOR
         public static string CONFIG_FILENAME_TAG = @"\TAGS_CLIENT_V1.xlsx";
+#else
+        public static string CONFIG_FILENAME_TAG = @"\TAGS_CLIENT_V1-KR.xlsx";
+#endif
 
         /////////////////////////////////////////////////////////////////////
         //	LogIn Define
@@ -55,8 +63,8 @@ namespace MonitoringUI.Common
             get { return Convert.ToInt16(m_strLoginClass); }
         }
 
-        public static string m_strLineID = "001";       // 1공장: "001" / 2공장 "002"
-        public static string m_strBizRestURI = @"http://192.168.110.5:9001/";       // 1공장: "001" / 2공장 "002"
+        //public static string m_strLineID = "001";       // 1공장: "001" / 2공장 "002"
+        //public static string m_strBizRestURI = @"http://192.168.110.5:9001/";       // 1공장: "001" / 2공장 "002"
 
         /////////////////////////////////////////////////////////////////////
         //	Log Path
@@ -112,7 +120,6 @@ namespace MonitoringUI.Common
 
         public const int DEF_FOR_BAYBOX_COUNT = 7;
 
-        //
         public const int DEF_SELECTING_RANK_COUNT = 6;
         public const int DEF_GRADING_RANK_COUNT = 10;
 
@@ -184,6 +191,8 @@ namespace MonitoringUI.Common
         public const string DEF_MON_WIN_TROUBLE_INFO = "MON-018";                   //WinTroubleInfo
         public const string DEF_MON_WIN_TRAY_BINDER = "MON-019";                    //TrayBinder
         public const string DEF_MON_WIN_PACKING_INFO = "MON-020";                   //WinPackingInfo
+        public const string DEF_MON_WIN_VERSION_HISOTRY = "MON-021";                //WinVersionHistory
+        
     }
-    #endregion
+#endregion
 }

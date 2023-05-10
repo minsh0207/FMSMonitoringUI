@@ -494,7 +494,7 @@ namespace FMSMonitoringUI.Monitoring
                 CLogger.WriteLog(enLogLevel.ButtonClick, this.WindowID, $"Tray Info : Eqp ID = {_EqpID}, Unit ID = {_RackID}, Tray ID = {value}");
 
                 WinTrayInfo form = new WinTrayInfo(_EqpID, _RackID, value.ToString());
-                form.ShowDialog();
+                form.Show();
             }
         }
         #endregion

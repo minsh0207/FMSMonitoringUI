@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WinCellDetailInfo));
             this.panel2 = new System.Windows.Forms.Panel();
             this.Exit = new MonitoringUI.Controlls.CButton.CtrlButton();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -109,12 +110,12 @@
             // gridRecipeInfo
             // 
             this.gridRecipeInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.gridRecipeInfo.ColumnCount = -1;
+            this.gridRecipeInfo.ColumnCount = 1;
             this.gridRecipeInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridRecipeInfo.Font = new System.Drawing.Font("돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.gridRecipeInfo.Location = new System.Drawing.Point(0, 34);
             this.gridRecipeInfo.Name = "gridRecipeInfo";
-            this.gridRecipeInfo.RowCount = -1;
+            this.gridRecipeInfo.RowCount = 1;
             this.gridRecipeInfo.Size = new System.Drawing.Size(336, 689);
             this.gridRecipeInfo.TabIndex = 7;
             this.gridRecipeInfo.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
@@ -135,12 +136,12 @@
             // gridProcessData
             // 
             this.gridProcessData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.gridProcessData.ColumnCount = -1;
+            this.gridProcessData.ColumnCount = 1;
             this.gridProcessData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridProcessData.Font = new System.Drawing.Font("돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.gridProcessData.Location = new System.Drawing.Point(0, 34);
             this.gridProcessData.Name = "gridProcessData";
-            this.gridProcessData.RowCount = -1;
+            this.gridProcessData.RowCount = 1;
             this.gridProcessData.Size = new System.Drawing.Size(319, 689);
             this.gridProcessData.TabIndex = 8;
             this.gridProcessData.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
@@ -207,12 +208,12 @@
             // gridCellInfo
             // 
             this.gridCellInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.gridCellInfo.ColumnCount = -1;
+            this.gridCellInfo.ColumnCount = 1;
             this.gridCellInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridCellInfo.Font = new System.Drawing.Font("돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.gridCellInfo.Location = new System.Drawing.Point(0, 34);
             this.gridCellInfo.Name = "gridCellInfo";
-            this.gridCellInfo.RowCount = -1;
+            this.gridCellInfo.RowCount = 1;
             this.gridCellInfo.Size = new System.Drawing.Size(377, 691);
             this.gridCellInfo.TabIndex = 3;
             this.gridCellInfo.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
@@ -233,12 +234,12 @@
             // gridProcessName
             // 
             this.gridProcessName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.gridProcessName.ColumnCount = -1;
+            this.gridProcessName.ColumnCount = 1;
             this.gridProcessName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridProcessName.Font = new System.Drawing.Font("돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.gridProcessName.Location = new System.Drawing.Point(0, 34);
             this.gridProcessName.Name = "gridProcessName";
-            this.gridProcessName.RowCount = -1;
+            this.gridProcessName.RowCount = 1;
             this.gridProcessName.Size = new System.Drawing.Size(246, 691);
             this.gridProcessName.TabIndex = 0;
             this.gridProcessName.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
@@ -271,12 +272,12 @@
             // gridCellIDLIst
             // 
             this.gridCellIDLIst.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.gridCellIDLIst.ColumnCount = -1;
+            this.gridCellIDLIst.ColumnCount = 1;
             this.gridCellIDLIst.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridCellIDLIst.Font = new System.Drawing.Font("돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.gridCellIDLIst.Location = new System.Drawing.Point(0, 34);
             this.gridCellIDLIst.Name = "gridCellIDLIst";
-            this.gridCellIDLIst.RowCount = -1;
+            this.gridCellIDLIst.RowCount = 1;
             this.gridCellIDLIst.Size = new System.Drawing.Size(276, 689);
             this.gridCellIDLIst.TabIndex = 5;
             this.gridCellIDLIst.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
@@ -305,13 +306,13 @@
             this.Controls.Add(this.splitContainer2);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "WinCellDetailInfo";
             this.Padding = new System.Windows.Forms.Padding(2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WinCellDetailInfo";
-            this.TopMost = true;
             this.WindowID = "WinCellDetailInfo";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.WinCellDetailInfo_FormClosed);
             this.Load += new System.EventHandler(this.WinCellDetailInfo_Load);

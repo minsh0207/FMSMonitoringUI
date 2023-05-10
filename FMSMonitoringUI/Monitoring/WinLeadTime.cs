@@ -442,7 +442,7 @@ namespace FMSMonitoringUI.Monitoring
                     CLogger.WriteLog(enLogLevel.ButtonClick, this.WindowID, $"WinTrayInfo : Eqp ID = {_EqpId}, Tray ID = {value}");
                 }
                 
-                form.ShowDialog();
+                form.Show();
             }
         }
         #endregion

@@ -1,5 +1,0 @@
-DeviceID,OPCServerName,PLCName,OPCServerURL,UserID,UserPW,FirstNodeID
-0,OPCServer01,ConveyorPLC_01,opc.tcp://10.13.27.91:4840,Binary,Sfa123,
-1,OPCServer02,ConveyorPLC_02,opc.tcp://10.13.27.61:4840,Binary,Sfa123,
-2,OPCServer03,ConveyorPLC_03,opc.tcp://10.13.27.81:4840,Binary,Sfa123,
-3,OPCServer04,ConveyorPLC_04,opc.tcp://10.13.27.45:4840,Binary,Sfa123,

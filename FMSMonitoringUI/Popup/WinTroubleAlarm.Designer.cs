@@ -95,7 +95,7 @@
             this.Name = "WinTroubleAlarm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WinTroubleAlarm";
-            this.TopMost = true;
+            this.TopMost = false;
             this.Click += new System.EventHandler(this.lblTrouble_MouseDown);
             this.panBack.ResumeLayout(false);
             this.panText.ResumeLayout(false);

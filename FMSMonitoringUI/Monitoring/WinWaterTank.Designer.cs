@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WinWaterTank));
             this.panel1 = new System.Windows.Forms.Panel();
             this.titBar = new MonitoringUI.Controlls.CtrlTitleBar();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -165,12 +166,12 @@
             // gridWaterTank
             // 
             this.gridWaterTank.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.gridWaterTank.ColumnCount = -1;
+            this.gridWaterTank.ColumnCount = 1;
             this.gridWaterTank.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.gridWaterTank.Location = new System.Drawing.Point(12, 146);
             this.gridWaterTank.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.gridWaterTank.Name = "gridWaterTank";
-            this.gridWaterTank.RowCount = -1;
+            this.gridWaterTank.RowCount = 1;
             this.gridWaterTank.Size = new System.Drawing.Size(232, 142);
             this.gridWaterTank.TabIndex = 57;
             this.gridWaterTank.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
@@ -391,13 +392,13 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "WinWaterTank";
             this.Padding = new System.Windows.Forms.Padding(2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WinWaterTank";
-            this.TopMost = true;
             this.WindowID = "WinWaterTank";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.WinWaterTank_FormClosed);
             this.Load += new System.EventHandler(this.WinWaterTank_Load);

@@ -23,11 +23,11 @@ namespace RestClientLib
         public const string POST_MANUAL_COMMAND = "ecs/sendManualCommand";
         public const string POST_USER_EVENT = "ecs/userEvent";
 
-        //public const string BaseUrl = "http://localhost:30001";
-        //public const string BaseUrl = "https://210.91.148.176:30011";
-
-        //public const string BaseUrl = "https://10.13.27.20";
+#if VERKOR
+        public const string BaseUrl = "https://10.13.27.20";
+#else
         public const string BaseUrl = "https://210.91.148.176";
+#endif
         public const string ECSUrl = "https://localhost";
 
         public const string LOG_PATH = @"D:\Logs\FMSSystem";
@@ -51,7 +51,7 @@ namespace RestClientLib
         //public const string manualTrayCellInput = "MANUAL_TRAY_CELL_INPUT";
         //public const string manualTrayCellOutput = "MANUAL_TRAY_CELL_OUTPUT";
     }
-    #endregion
+#endregion
 
 
 }

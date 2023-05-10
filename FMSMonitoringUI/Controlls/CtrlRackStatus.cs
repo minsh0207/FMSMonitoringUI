@@ -137,12 +137,12 @@ namespace FMSMonitoringUI.Controlls
                 if (((MouseEventArgs)e).Button == MouseButtons.Right)
                 {
                     WinTroubleInfo winTroubleInfo = new WinTroubleInfo(EqpName, _EqpType, "", UnitID);
-                    winTroubleInfo.ShowDialog();
+                    winTroubleInfo.Show();
                 }
                 else
                 {
                     WinFormationBox form = new WinFormationBox(EqpID, EqpType, UnitID);
-                    form.ShowDialog();
+                    form.Show();
                 }
             }
         }

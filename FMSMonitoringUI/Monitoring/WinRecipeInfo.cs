@@ -187,7 +187,7 @@ namespace FMSMonitoringUI.Monitoring
                 CLogger.WriteLog(enLogLevel.ButtonClick, this.WindowID, $"Cell Detail Info : Cell ID = {value}");
 
                 WinCellDetailInfo form = new WinCellDetailInfo(value.ToString(), "");
-                form.ShowDialog();
+                form.Show();
 
                 Refresh();
             }

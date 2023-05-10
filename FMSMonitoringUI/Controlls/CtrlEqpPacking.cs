@@ -143,12 +143,12 @@ namespace FMSMonitoringUI.Controlls
             if (row == 0)
             {
                 WinTrayInfo form = new WinTrayInfo(EqpID, "", value.ToString());
-                form.ShowDialog();
+                form.Show();
             }
             else if (row == 2)
             {
                 WinPackingInfo form = new WinPackingInfo(value.ToString());
-                form.ShowDialog();
+                form.Show();
             }
             
         }
@@ -158,7 +158,7 @@ namespace FMSMonitoringUI.Controlls
         private void lbEqpType_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             WinManageEqp form = new WinManageEqp(EqpID, "", EqpType, 2);
-            form.ShowDialog();
+            form.Show();
         }
         #endregion
 
@@ -168,7 +168,7 @@ namespace FMSMonitoringUI.Controlls
             if (((MouseEventArgs)e).Button == MouseButtons.Right)
             {
                 WinTroubleInfo winTroubleInfo = new WinTroubleInfo(EqpName, _EqpType, EqpID, "");
-                winTroubleInfo.ShowDialog();
+                winTroubleInfo.Show();
             }
         }
         #endregion

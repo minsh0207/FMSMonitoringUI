@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WinPackingInfo));
             this.panel2 = new System.Windows.Forms.Panel();
             this.Exit = new MonitoringUI.Controlls.CButton.CtrlButton();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -221,13 +222,13 @@
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "WinPackingInfo";
             this.Padding = new System.Windows.Forms.Padding(2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WinPackingInfo";
-            this.TopMost = true;
             this.WindowID = "WinPackingInfo";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.WinPackingInfo_FormClosed);
             this.Load += new System.EventHandler(this.WinPackingInfo_Load);

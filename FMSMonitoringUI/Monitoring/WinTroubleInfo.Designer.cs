@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WinTroubleInfo));
             this.panel1 = new System.Windows.Forms.Panel();
             this.titBar = new MonitoringUI.Controlls.CtrlTitleBar();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -137,11 +138,11 @@
             // gridTrayInfo
             // 
             this.gridTrayInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.gridTrayInfo.ColumnCount = -1;
+            this.gridTrayInfo.ColumnCount = 1;
             this.gridTrayInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.gridTrayInfo.Location = new System.Drawing.Point(0, 48);
             this.gridTrayInfo.Name = "gridTrayInfo";
-            this.gridTrayInfo.RowCount = -1;
+            this.gridTrayInfo.RowCount = 1;
             this.gridTrayInfo.Size = new System.Drawing.Size(1378, 605);
             this.gridTrayInfo.TabIndex = 1;
             this.gridTrayInfo.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
@@ -182,13 +183,13 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "WinTroubleInfo";
             this.Padding = new System.Windows.Forms.Padding(2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WinLeadTime";
-            this.TopMost = true;
             this.WindowID = "WinLeadTime";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.WinTroubleInfo_FormClosed);
             this.Load += new System.EventHandler(this.WinTroubleInfo_Load);

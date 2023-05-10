@@ -362,7 +362,7 @@ namespace ControlGallery
                     _siteBoxes[i].SiteNo = FirstSiteNo + i * SiteNoIncStep;
                 }
 
-                _siteBoxes[i].DeviceInfo.SetData(PLCNo, CVPLCListDeviceID, _siteBoxes[i].SiteNo);
+                _siteBoxes[i].DeviceInfo.SetData(PLCNo, CVPLCListDeviceID, _siteBoxes[i].SiteNo, CVType);
 
             }
         }
@@ -419,8 +419,21 @@ namespace ControlGallery
         {
             if (_siteBoxes == null || _siteBoxes.Length <= 0) return;
 
+            Rectangle rectangle;
+
             if (ShowSiteNo)
             {
+                Dictionary<int, string> siteTitle = new Dictionary<int, string>();
+
+                if (SiteTextDisp != null)
+                {
+                    foreach (var item in SiteTextDisp)
+                    {
+                        string[] title = item.Split('=');
+                        siteTitle.Add(int.Parse(title[0].ToString()), title[1].ToString());
+                    }
+                }
+
                 using (Pen p = new Pen(SiteBorderColor))
                 {
                     if (!_isControled) p.DashStyle = System.Drawing.Drawing2D.DashStyle.DashDot; // 내꺼 아님
@@ -428,13 +441,60 @@ namespace ControlGallery
                     {
                         using (SolidBrush b = new SolidBrush(GetStatusColor(sitebox.DeviceInfo.DeviceStatus, SiteBoxColor, sitebox.SiteNo)))
                         {
+                            int trayOn = sitebox.DeviceInfo.TrayOn;
+
                             g.FillRectangle(b, sitebox.Rect);
                             g.DrawRectangle(p, sitebox.Rect);
                             //g.DrawString((sitebox.SiteNo % 100).ToString(), this.Font, Brushes.Black, sitebox.Rect);
-                            if (sitebox.SiteNo > 0)
-                            {
-                                g.DrawString((sitebox.SiteNo).ToString(), this.Font, Brushes.Black, sitebox.Rect);
 
+                            if (sitebox.SiteNo > 1000)
+                            {
+                                rectangle = new Rectangle(sitebox.Rect.X, sitebox.Rect.Y + 2, 0, 0);
+
+                                if (sitebox.DeviceInfo.TrackPause == 1)
+                                    g.DrawString((sitebox.SiteNo).ToString(), this.Font, Brushes.Black, rectangle);
+                                else
+                                    g.DrawString((sitebox.SiteNo).ToString(), this.Font, (trayOn == 1 ? Brushes.Black : Brushes.Gray), rectangle);
+                            }
+
+                            if (siteTitle.ContainsKey(sitebox.SiteNo))
+                            {
+                                rectangle = new Rectangle();
+
+                                switch (SiteNoDirection)
+                                {
+                                    case SiteTrackDirection.LeftToRight:
+                                        rectangle = new Rectangle(sitebox.Rect.X + 6, sitebox.Rect.Y + 17, 0, 0);
+                                        break;
+
+                                    case SiteTrackDirection.RightToLeft:
+                                        rectangle = new Rectangle(sitebox.Rect.X, sitebox.Rect.Y, 0, 0);
+                                        break;
+
+                                    case SiteTrackDirection.TopToBottom:
+                                        rectangle = new Rectangle(6, sitebox.Rect.Y + 17, 0, 0);
+                                        break;
+
+                                    case SiteTrackDirection.BottomToTop:
+                                        rectangle = new Rectangle(sitebox.Rect.X, sitebox.Rect.Y, 0, 0);
+                                        break;
+                                }
+
+                                g.DrawString(siteTitle[sitebox.SiteNo], this.Font, (trayOn == 1 ? Brushes.Black : Brushes.White), rectangle);
+                            }
+
+                            if (sitebox.DeviceInfo.TrackPause == 1)
+                            {
+                                if (trayOn == 1)
+                                {
+                                    rectangle = new Rectangle(sitebox.Rect.X + 2, sitebox.Rect.Y + 17, 0, 0);
+                                    g.DrawString("P(T)", this.Font, Brushes.Black, rectangle);
+                                }
+                                else
+                                {
+                                    rectangle = new Rectangle(sitebox.Rect.X + 6, sitebox.Rect.Y + 17, 0, 0);
+                                    g.DrawString(" P", this.Font, Brushes.Black, rectangle);
+                                }
                             }
                         }
                     }
@@ -461,7 +521,7 @@ namespace ControlGallery
                     {
                         using (SolidBrush b = new SolidBrush(GetStatusColor(sitebox.DeviceInfo.DeviceStatus, SiteBoxColor, sitebox.SiteNo)))
                         {
-                            int trayOn = sitebox.DeviceInfo.TrayOn;
+                            int trayOn = sitebox.DeviceInfo.TrayOn;                            
 
                             g.FillRectangle(b, sitebox.Rect);
                             g.DrawRectangle(p, sitebox.Rect);
@@ -474,7 +534,7 @@ namespace ControlGallery
 
                             if (siteTitle.ContainsKey(sitebox.SiteNo))
                             {
-                                Rectangle rectangle = new Rectangle();
+                                rectangle = new Rectangle();
 
                                 switch (SiteNoDirection)
                                 {
@@ -483,6 +543,7 @@ namespace ControlGallery
                                         break;
 
                                     case SiteTrackDirection.RightToLeft:
+                                        rectangle = new Rectangle(sitebox.Rect.X, sitebox.Rect.Y, 0, 0);
                                         break;
 
                                     case SiteTrackDirection.TopToBottom:
@@ -490,6 +551,7 @@ namespace ControlGallery
                                         break;
 
                                     case SiteTrackDirection.BottomToTop:
+                                        rectangle = new Rectangle(sitebox.Rect.X, sitebox.Rect.Y, 0, 0);
                                         break;
                                 }
 
@@ -498,10 +560,6 @@ namespace ControlGallery
 
                             if (sitebox.DeviceInfo.TrackPause == 1)
                             {
-                                Rectangle rectangle = new Rectangle();                                
-
-                                // g.DrawString(" P", this.Font, (trayOn == 1 ? Brushes.Black : Brushes.White), rectangle);
-
                                 if (trayOn == 1)
                                 {
                                     rectangle = new Rectangle(sitebox.Rect.X + 2, sitebox.Rect.Y + 10, 0, 0);

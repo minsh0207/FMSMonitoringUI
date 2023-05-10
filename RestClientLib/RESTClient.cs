@@ -195,7 +195,7 @@ namespace RestClientLib
         //}
 
 
-        #region [IDisposable Impl.]
+#region [IDisposable Impl.]
         // Track whether Dispose has been called.
         private bool disposed = false;
 

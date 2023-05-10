@@ -10,14 +10,16 @@ namespace ControlGallery
         public EnumDeviceStatus DeviceStatus = EnumDeviceStatus.None;
         public int TrackPause;
         public int TrayOn;
+        public string ConveyorType;
         public short[] DataWordArray;
 
         public bool IsControled = true;
-        public void SetData(int plcno, int plc_reader_id, int siteno, EnumDeviceStatus status = EnumDeviceStatus.None, int pause = 0, int trayExist = 0, short[] data_arr = null)
+        public void SetData(int plcno, int plc_reader_id, int siteno, string conveyprType, EnumDeviceStatus status = EnumDeviceStatus.None, int pause = 0, int trayExist = 0, short[] data_arr = null)
         {
             PLCNo = plcno;
             CVPLCListDeviceID = plc_reader_id;
             SiteNo = siteno;
+            ConveyorType = conveyprType;
             DeviceStatus = status;
             TrackPause = pause;
             TrayOn = trayExist;

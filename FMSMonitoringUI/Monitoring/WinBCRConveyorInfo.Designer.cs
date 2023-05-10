@@ -28,9 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WinBCRConveyorInfo));
             this.panel2 = new System.Windows.Forms.Panel();
             this.Exit = new MonitoringUI.Controlls.CButton.CtrlButton();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.CmdMagazineCommand = new MonitoringUI.Controlls.CComboBox.CtrlComboBox2();
+            this.CmdMagazineCommand2 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlTextBox();
+            this.CmdRTVTo = new FMSMonitoringUI.Controlls.WindowsForms.CtrlTextBox();
+            this.CmdRTVFrom = new FMSMonitoringUI.Controlls.WindowsForms.CtrlTextBox();
             this.TrackingDestination = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
             this.Direction = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
             this.CmdDestination = new FMSMonitoringUI.Controlls.WindowsForms.CtrlTextBox();
@@ -38,7 +43,6 @@
             this.Write = new MonitoringUI.Controlls.CButton.CtrlButton();
             this.CmdTrayID1 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlTextBox();
             this.CmdTrayCount = new FMSMonitoringUI.Controlls.WindowsForms.CtrlTextBox();
-            this.MagazineCommand = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabelBox();
             this.ctrlLabel5 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.ledTrayExist = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
             this.ledCommandReady = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLED();
@@ -79,7 +83,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.Exit);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(2, 670);
+            this.panel2.Location = new System.Drawing.Point(2, 675);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(718, 60);
             this.panel2.TabIndex = 1;
@@ -104,6 +108,10 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.CmdMagazineCommand);
+            this.panel3.Controls.Add(this.CmdMagazineCommand2);
+            this.panel3.Controls.Add(this.CmdRTVTo);
+            this.panel3.Controls.Add(this.CmdRTVFrom);
             this.panel3.Controls.Add(this.TrackingDestination);
             this.panel3.Controls.Add(this.Direction);
             this.panel3.Controls.Add(this.CmdDestination);
@@ -111,7 +119,6 @@
             this.panel3.Controls.Add(this.Write);
             this.panel3.Controls.Add(this.CmdTrayID1);
             this.panel3.Controls.Add(this.CmdTrayCount);
-            this.panel3.Controls.Add(this.MagazineCommand);
             this.panel3.Controls.Add(this.ctrlLabel5);
             this.panel3.Controls.Add(this.ledTrayExist);
             this.panel3.Controls.Add(this.ledCommandReady);
@@ -140,8 +147,69 @@
             this.panel3.Location = new System.Drawing.Point(2, 62);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(718, 608);
+            this.panel3.Size = new System.Drawing.Size(718, 613);
             this.panel3.TabIndex = 2;
+            // 
+            // CmdMagazineCommand
+            // 
+            this.CmdMagazineCommand.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.CmdMagazineCommand.LanguageID = "DEF_Magazine_Command";
+            this.CmdMagazineCommand.Location = new System.Drawing.Point(386, 464);
+            this.CmdMagazineCommand.Name = "CmdMagazineCommand";
+            this.CmdMagazineCommand.SelectedIndex = -1;
+            this.CmdMagazineCommand.SelectedItem = null;
+            this.CmdMagazineCommand.SelectedKeyString = "";
+            this.CmdMagazineCommand.Size = new System.Drawing.Size(303, 33);
+            this.CmdMagazineCommand.TabIndex = 91;
+            this.CmdMagazineCommand.TitleText = "Magazine Command";
+            this.CmdMagazineCommand.TitleWidth = 150F;
+            // 
+            // CmdMagazineCommand2
+            // 
+            this.CmdMagazineCommand2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.CmdMagazineCommand2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CmdMagazineCommand2.Enabled = false;
+            this.CmdMagazineCommand2.LanguageID = "DEF_Magazine_Command";
+            this.CmdMagazineCommand2.Location = new System.Drawing.Point(386, 499);
+            this.CmdMagazineCommand2.Margin = new System.Windows.Forms.Padding(30, 66, 30, 66);
+            this.CmdMagazineCommand2.Name = "CmdMagazineCommand2";
+            this.CmdMagazineCommand2.PasswordChar = '\0';
+            this.CmdMagazineCommand2.Size = new System.Drawing.Size(303, 33);
+            this.CmdMagazineCommand2.TabIndex = 90;
+            this.CmdMagazineCommand2.TextData = "";
+            this.CmdMagazineCommand2.TitleText = "Magazine Command";
+            this.CmdMagazineCommand2.TitleWidth = 150F;
+            this.CmdMagazineCommand2.Visible = false;
+            // 
+            // CmdRTVTo
+            // 
+            this.CmdRTVTo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.CmdRTVTo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CmdRTVTo.LanguageID = "DEF_RTV_To";
+            this.CmdRTVTo.Location = new System.Drawing.Point(386, 429);
+            this.CmdRTVTo.Margin = new System.Windows.Forms.Padding(30, 61, 30, 61);
+            this.CmdRTVTo.Name = "CmdRTVTo";
+            this.CmdRTVTo.PasswordChar = '\0';
+            this.CmdRTVTo.Size = new System.Drawing.Size(303, 33);
+            this.CmdRTVTo.TabIndex = 89;
+            this.CmdRTVTo.TextData = "";
+            this.CmdRTVTo.TitleText = "RTVTo";
+            this.CmdRTVTo.TitleWidth = 150F;
+            // 
+            // CmdRTVFrom
+            // 
+            this.CmdRTVFrom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.CmdRTVFrom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CmdRTVFrom.LanguageID = "DEF_RTV_From";
+            this.CmdRTVFrom.Location = new System.Drawing.Point(386, 394);
+            this.CmdRTVFrom.Margin = new System.Windows.Forms.Padding(30, 56, 30, 56);
+            this.CmdRTVFrom.Name = "CmdRTVFrom";
+            this.CmdRTVFrom.PasswordChar = '\0';
+            this.CmdRTVFrom.Size = new System.Drawing.Size(303, 33);
+            this.CmdRTVFrom.TabIndex = 88;
+            this.CmdRTVFrom.TextData = "";
+            this.CmdRTVFrom.TitleText = "RTVFrom ";
+            this.CmdRTVFrom.TitleWidth = 150F;
             // 
             // TrackingDestination
             // 
@@ -155,7 +223,7 @@
             this.TrackingDestination.TabIndex = 87;
             this.TrackingDestination.TextData = "";
             this.TrackingDestination.TitleText = "Tracking Destination";
-            this.TrackingDestination.TitleWidth = 140F;
+            this.TrackingDestination.TitleWidth = 150F;
             // 
             // Direction
             // 
@@ -169,7 +237,7 @@
             this.Direction.TabIndex = 86;
             this.Direction.TextData = "";
             this.Direction.TitleText = "Direction";
-            this.Direction.TitleWidth = 140F;
+            this.Direction.TitleWidth = 150F;
             // 
             // CmdDestination
             // 
@@ -184,7 +252,7 @@
             this.CmdDestination.TabIndex = 85;
             this.CmdDestination.TextData = "";
             this.CmdDestination.TitleText = "Destination ";
-            this.CmdDestination.TitleWidth = 140F;
+            this.CmdDestination.TitleWidth = 150F;
             // 
             // CmdTrayID2
             // 
@@ -199,7 +267,7 @@
             this.CmdTrayID2.TabIndex = 84;
             this.CmdTrayID2.TextData = "";
             this.CmdTrayID2.TitleText = "Tray ID 2 ";
-            this.CmdTrayID2.TitleWidth = 140F;
+            this.CmdTrayID2.TitleWidth = 150F;
             // 
             // Write
             // 
@@ -211,9 +279,9 @@
             this.Write.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.Write.LabelText = "Write";
             this.Write.LanguageID = "DEF_Write";
-            this.Write.Location = new System.Drawing.Point(523, 480);
+            this.Write.Location = new System.Drawing.Point(519, 535);
             this.Write.Name = "Write";
-            this.Write.Size = new System.Drawing.Size(165, 40);
+            this.Write.Size = new System.Drawing.Size(170, 40);
             this.Write.TabIndex = 83;
             this.Write.Click += new System.EventHandler(this.Write_Click);
             // 
@@ -230,7 +298,7 @@
             this.CmdTrayID1.TabIndex = 82;
             this.CmdTrayID1.TextData = "";
             this.CmdTrayID1.TitleText = "Tray ID 1 ";
-            this.CmdTrayID1.TitleWidth = 140F;
+            this.CmdTrayID1.TitleWidth = 150F;
             // 
             // CmdTrayCount
             // 
@@ -245,21 +313,7 @@
             this.CmdTrayCount.TabIndex = 74;
             this.CmdTrayCount.TextData = "";
             this.CmdTrayCount.TitleText = "Tray Count ";
-            this.CmdTrayCount.TitleWidth = 140F;
-            // 
-            // MagazineCommand
-            // 
-            this.MagazineCommand.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.MagazineCommand.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.MagazineCommand.LanguageID = "DEF_Magazine_Command";
-            this.MagazineCommand.Location = new System.Drawing.Point(387, 394);
-            this.MagazineCommand.Margin = new System.Windows.Forms.Padding(30, 35, 30, 35);
-            this.MagazineCommand.Name = "MagazineCommand";
-            this.MagazineCommand.Size = new System.Drawing.Size(303, 33);
-            this.MagazineCommand.TabIndex = 78;
-            this.MagazineCommand.TextData = "";
-            this.MagazineCommand.TitleText = "Magazine Command ";
-            this.MagazineCommand.TitleWidth = 140F;
+            this.CmdTrayCount.TitleWidth = 150F;
             // 
             // ctrlLabel5
             // 
@@ -276,7 +330,7 @@
             // ledTrayExist
             // 
             this.ledTrayExist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ledTrayExist.Location = new System.Drawing.Point(222, 403);
+            this.ledTrayExist.Location = new System.Drawing.Point(226, 403);
             this.ledTrayExist.Name = "ledTrayExist";
             this.ledTrayExist.Size = new System.Drawing.Size(81, 18);
             this.ledTrayExist.TabIndex = 72;
@@ -285,7 +339,7 @@
             // ledCommandReady
             // 
             this.ledCommandReady.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.ledCommandReady.Location = new System.Drawing.Point(222, 367);
+            this.ledCommandReady.Location = new System.Drawing.Point(226, 367);
             this.ledCommandReady.Name = "ledCommandReady";
             this.ledCommandReady.Size = new System.Drawing.Size(81, 15);
             this.ledCommandReady.TabIndex = 69;
@@ -379,49 +433,49 @@
             this.FMSTroubleErrNo.TabIndex = 25;
             this.FMSTroubleErrNo.TextData = "";
             this.FMSTroubleErrNo.TitleText = "Trouble ErrorNo ";
-            this.FMSTroubleErrNo.TitleWidth = 140F;
+            this.FMSTroubleErrNo.TitleWidth = 150F;
             // 
             // TrayID2
             // 
             this.TrayID2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.TrayID2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TrayID2.LanguageID = "DEF_Tray_ID_2";
-            this.TrayID2.Location = new System.Drawing.Point(37, 530);
+            this.TrayID2.Location = new System.Drawing.Point(37, 532);
             this.TrayID2.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
             this.TrayID2.Name = "TrayID2";
-            this.TrayID2.Size = new System.Drawing.Size(303, 31);
+            this.TrayID2.Size = new System.Drawing.Size(303, 33);
             this.TrayID2.TabIndex = 24;
             this.TrayID2.TextData = "";
             this.TrayID2.TitleText = "Tray ID 2 ";
-            this.TrayID2.TitleWidth = 140F;
+            this.TrayID2.TitleWidth = 150F;
             // 
             // TrayID1
             // 
             this.TrayID1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.TrayID1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TrayID1.LanguageID = "DEF_Tray_ID_1";
-            this.TrayID1.Location = new System.Drawing.Point(37, 495);
+            this.TrayID1.Location = new System.Drawing.Point(37, 498);
             this.TrayID1.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
             this.TrayID1.Name = "TrayID1";
-            this.TrayID1.Size = new System.Drawing.Size(303, 31);
+            this.TrayID1.Size = new System.Drawing.Size(303, 33);
             this.TrayID1.TabIndex = 23;
             this.TrayID1.TextData = "";
             this.TrayID1.TitleText = "Tray ID 1 ";
-            this.TrayID1.TitleWidth = 140F;
+            this.TrayID1.TitleWidth = 150F;
             // 
             // TrayCount
             // 
             this.TrayCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.TrayCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TrayCount.LanguageID = "DEF_Tray_Count";
-            this.TrayCount.Location = new System.Drawing.Point(37, 462);
+            this.TrayCount.Location = new System.Drawing.Point(37, 463);
             this.TrayCount.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
             this.TrayCount.Name = "TrayCount";
-            this.TrayCount.Size = new System.Drawing.Size(303, 31);
+            this.TrayCount.Size = new System.Drawing.Size(303, 33);
             this.TrayCount.TabIndex = 22;
             this.TrayCount.TextData = "";
             this.TrayCount.TitleText = "Tray Count ";
-            this.TrayCount.TitleWidth = 140F;
+            this.TrayCount.TitleWidth = 150F;
             // 
             // TrayType
             // 
@@ -431,11 +485,11 @@
             this.TrayType.Location = new System.Drawing.Point(37, 428);
             this.TrayType.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
             this.TrayType.Name = "TrayType";
-            this.TrayType.Size = new System.Drawing.Size(303, 31);
+            this.TrayType.Size = new System.Drawing.Size(303, 33);
             this.TrayType.TabIndex = 21;
             this.TrayType.TextData = "";
             this.TrayType.TitleText = "Tray Type ";
-            this.TrayType.TitleWidth = 140F;
+            this.TrayType.TitleWidth = 150F;
             // 
             // TrayExist
             // 
@@ -449,7 +503,7 @@
             this.TrayExist.TabIndex = 20;
             this.TrayExist.TextData = "";
             this.TrayExist.TitleText = "Tray Exist ";
-            this.TrayExist.TitleWidth = 140F;
+            this.TrayExist.TitleWidth = 150F;
             // 
             // CommandReady
             // 
@@ -463,7 +517,7 @@
             this.CommandReady.TabIndex = 18;
             this.CommandReady.TextData = "";
             this.CommandReady.TitleText = "Command Ready ";
-            this.CommandReady.TitleWidth = 140F;
+            this.CommandReady.TitleWidth = 150F;
             // 
             // TroubleErrLevel
             // 
@@ -477,7 +531,7 @@
             this.TroubleErrLevel.TabIndex = 17;
             this.TroubleErrLevel.TextData = "";
             this.TroubleErrLevel.TitleText = "Trouble ErrorLevel ";
-            this.TroubleErrLevel.TitleWidth = 140F;
+            this.TroubleErrLevel.TitleWidth = 150F;
             // 
             // CVTroubleErrNo
             // 
@@ -491,7 +545,7 @@
             this.CVTroubleErrNo.TabIndex = 16;
             this.CVTroubleErrNo.TextData = "";
             this.CVTroubleErrNo.TitleText = "Trouble ErrorNo ";
-            this.CVTroubleErrNo.TitleWidth = 140F;
+            this.CVTroubleErrNo.TitleWidth = 150F;
             // 
             // ledTroubleStatus
             // 
@@ -563,7 +617,7 @@
             this.ctrlGroupBox1.LanguageID = "DEF_Conveyor";
             this.ctrlGroupBox1.Location = new System.Drawing.Point(14, 89);
             this.ctrlGroupBox1.Name = "ctrlGroupBox1";
-            this.ctrlGroupBox1.Size = new System.Drawing.Size(341, 513);
+            this.ctrlGroupBox1.Size = new System.Drawing.Size(341, 517);
             this.ctrlGroupBox1.TabIndex = 5;
             this.ctrlGroupBox1.TabStop = false;
             this.ctrlGroupBox1.Text = "Conveyor";
@@ -574,14 +628,14 @@
             this.StationStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.StationStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.StationStatus.LanguageID = "DEF_Station_Status";
-            this.StationStatus.Location = new System.Drawing.Point(23, 476);
+            this.StationStatus.Location = new System.Drawing.Point(23, 478);
             this.StationStatus.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
             this.StationStatus.Name = "StationStatus";
-            this.StationStatus.Size = new System.Drawing.Size(303, 31);
+            this.StationStatus.Size = new System.Drawing.Size(303, 33);
             this.StationStatus.TabIndex = 19;
             this.StationStatus.TextData = "";
             this.StationStatus.TitleText = "Station Status ";
-            this.StationStatus.TitleWidth = 140F;
+            this.StationStatus.TitleWidth = 150F;
             // 
             // ConveyorType
             // 
@@ -595,7 +649,7 @@
             this.ConveyorType.TabIndex = 4;
             this.ConveyorType.TextData = "InOutStation";
             this.ConveyorType.TitleText = "Conveyor Type";
-            this.ConveyorType.TitleWidth = 130F;
+            this.ConveyorType.TitleWidth = 140F;
             // 
             // ConveyorNo
             // 
@@ -609,7 +663,7 @@
             this.ConveyorNo.TabIndex = 3;
             this.ConveyorNo.TextData = "100";
             this.ConveyorNo.TitleText = "Track No";
-            this.ConveyorNo.TitleWidth = 130F;
+            this.ConveyorNo.TitleWidth = 140F;
             // 
             // titBar
             // 
@@ -631,17 +685,17 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(722, 753);
+            this.ClientSize = new System.Drawing.Size(722, 759);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.titBar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "WinBCRConveyorInfo";
             this.Padding = new System.Windows.Forms.Padding(2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WinBCRConveyorInfo";
-            this.TopMost = true;
             this.WindowID = "WinBCRConveyorInfo";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.WinBCRConveyorInfo_FormClosed);
             this.Load += new System.EventHandler(this.WinBCRConveyorInfo_Load);
@@ -691,7 +745,6 @@
         private Controlls.WindowsForms.CtrlRadioButton TrackPauseOff;
         private Controlls.WindowsForms.CtrlRadioButton TrackPauseOn;
         private Controlls.WindowsForms.CtrlLabel ctrlLabel5;
-        private Controlls.WindowsForms.CtrlLabelBox MagazineCommand;
         private Controlls.WindowsForms.CtrlTextBox CmdTrayCount;
         private Controlls.WindowsForms.CtrlTextBox CmdTrayID1;
         private MonitoringUI.Controlls.CButton.CtrlButton Write;
@@ -699,5 +752,9 @@
         private Controlls.WindowsForms.CtrlTextBox CmdDestination;
         private Controlls.WindowsForms.CtrlLabelBox Direction;
         private Controlls.WindowsForms.CtrlLabelBox TrackingDestination;
+        private Controlls.WindowsForms.CtrlTextBox CmdRTVFrom;
+        private Controlls.WindowsForms.CtrlTextBox CmdRTVTo;
+        private Controlls.WindowsForms.CtrlTextBox CmdMagazineCommand2;
+        private MonitoringUI.Controlls.CComboBox.CtrlComboBox2 CmdMagazineCommand;
     }
 }

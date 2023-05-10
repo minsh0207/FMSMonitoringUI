@@ -436,7 +436,7 @@ namespace FMSMonitoringUI.Monitoring
 
                 WinRecipeInfo form = new WinRecipeInfo(value.ToString());
                 form.SetData(_TrayProcessInfo[row]);
-                form.ShowDialog();
+                form.Show();
 
             }
         }
@@ -450,7 +450,7 @@ namespace FMSMonitoringUI.Monitoring
             WinCellDetailInfo form = new WinCellDetailInfo(_TrayId, "");
             form.StartPosition = FormStartPosition.Manual;  // 폼의 위치가 Location 의 속성에 의해서 결정
             form.Location = new Point(parentPoint.X, parentPoint.Y);
-            form.ShowDialog();
+            form.Show();
 
 
             //Point parentPoint = this.Location;

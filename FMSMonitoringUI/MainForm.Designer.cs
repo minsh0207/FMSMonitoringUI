@@ -30,14 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.scMainPanel = new System.Windows.Forms.SplitContainer();
+            this.lbVersionInfo = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.AlarmOccur = new System.Windows.Forms.PictureBox();
+            this.cbUsePopUp = new FMSMonitoringUI.Controlls.WindowsForms.CtrlCheckBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.lbCurrentTime = new System.Windows.Forms.Label();
-            this.lbVersionInfo = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
-            this.cbUsePopUp = new FMSMonitoringUI.Controlls.WindowsForms.CtrlCheckBox();
             this.lbUserName = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
             this.barFormationHPC = new MonitoringUI.Controlls.CtrlTitleBarLabel();
+            this.lbCurrentTime = new System.Windows.Forms.Label();
             this.barMain = new MonitoringUI.Controlls.CtrlTitleBarLabel();
             this.barAging = new MonitoringUI.Controlls.CtrlTitleBarLabel();
             this.barFormationCHG = new MonitoringUI.Controlls.CtrlTitleBarLabel();
@@ -81,6 +81,19 @@
             this.scMainPanel.SplitterDistance = 62;
             this.scMainPanel.TabIndex = 0;
             // 
+            // lbVersionInfo
+            // 
+            this.lbVersionInfo.AutoSize = true;
+            this.lbVersionInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.lbVersionInfo.ForeColor = System.Drawing.Color.White;
+            this.lbVersionInfo.LanguageID = "";
+            this.lbVersionInfo.Location = new System.Drawing.Point(1776, 45);
+            this.lbVersionInfo.Name = "lbVersionInfo";
+            this.lbVersionInfo.Size = new System.Drawing.Size(58, 12);
+            this.lbVersionInfo.TabIndex = 114;
+            this.lbVersionInfo.Text = "lbVersion";
+            this.lbVersionInfo.Click += new System.EventHandler(this.lbVersionInfo_Click);
+            // 
             // AlarmOccur
             // 
             this.AlarmOccur.Image = ((System.Drawing.Image)(resources.GetObject("AlarmOccur.Image")));
@@ -90,6 +103,18 @@
             this.AlarmOccur.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.AlarmOccur.TabIndex = 113;
             this.AlarmOccur.TabStop = false;
+            // 
+            // cbUsePopUp
+            // 
+            this.cbUsePopUp.AutoSize = true;
+            this.cbUsePopUp.ForeColor = System.Drawing.Color.White;
+            this.cbUsePopUp.LanguageID = "DEF_Use_Trouble_Alarm_Popup";
+            this.cbUsePopUp.Location = new System.Drawing.Point(1269, 27);
+            this.cbUsePopUp.Name = "cbUsePopUp";
+            this.cbUsePopUp.Size = new System.Drawing.Size(171, 16);
+            this.cbUsePopUp.TabIndex = 112;
+            this.cbUsePopUp.Text = "Use Trouble Alarm PopUp";
+            this.cbUsePopUp.UseVisualStyleBackColor = true;
             // 
             // pictureBox1
             // 
@@ -111,41 +136,6 @@
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.LogIn_Click);
-            // 
-            // lbCurrentTime
-            // 
-            this.lbCurrentTime.AutoSize = true;
-            this.lbCurrentTime.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCurrentTime.ForeColor = System.Drawing.Color.White;
-            this.lbCurrentTime.Location = new System.Drawing.Point(1472, 26);
-            this.lbCurrentTime.Name = "lbCurrentTime";
-            this.lbCurrentTime.Size = new System.Drawing.Size(161, 19);
-            this.lbCurrentTime.TabIndex = 4;
-            this.lbCurrentTime.Text = "2022-12-20 09:12:30";
-            // 
-            // lbVersionInfo
-            // 
-            this.lbVersionInfo.AutoSize = true;
-            this.lbVersionInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.lbVersionInfo.ForeColor = System.Drawing.Color.White;
-            this.lbVersionInfo.LanguageID = "";
-            this.lbVersionInfo.Location = new System.Drawing.Point(1776, 45);
-            this.lbVersionInfo.Name = "lbVersionInfo";
-            this.lbVersionInfo.Size = new System.Drawing.Size(59, 12);
-            this.lbVersionInfo.TabIndex = 114;
-            this.lbVersionInfo.Text = "ctrlLabel1";
-            // 
-            // cbUsePopUp
-            // 
-            this.cbUsePopUp.AutoSize = true;
-            this.cbUsePopUp.ForeColor = System.Drawing.Color.White;
-            this.cbUsePopUp.LanguageID = "DEF_Use_Trouble_Alarm_Popup";
-            this.cbUsePopUp.Location = new System.Drawing.Point(1269, 27);
-            this.cbUsePopUp.Name = "cbUsePopUp";
-            this.cbUsePopUp.Size = new System.Drawing.Size(171, 16);
-            this.cbUsePopUp.TabIndex = 112;
-            this.cbUsePopUp.Text = "Use Trouble Alarm PopUp";
-            this.cbUsePopUp.UseVisualStyleBackColor = true;
             // 
             // lbUserName
             // 
@@ -173,6 +163,17 @@
             this.barFormationHPC.Size = new System.Drawing.Size(147, 50);
             this.barFormationHPC.TabIndex = 5;
             this.barFormationHPC.TitleText = "HPC";
+            // 
+            // lbCurrentTime
+            // 
+            this.lbCurrentTime.AutoSize = true;
+            this.lbCurrentTime.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCurrentTime.ForeColor = System.Drawing.Color.White;
+            this.lbCurrentTime.Location = new System.Drawing.Point(1472, 26);
+            this.lbCurrentTime.Name = "lbCurrentTime";
+            this.lbCurrentTime.Size = new System.Drawing.Size(161, 19);
+            this.lbCurrentTime.TabIndex = 4;
+            this.lbCurrentTime.Text = "2022-12-20 09:12:30";
             // 
             // barMain
             // 
@@ -224,6 +225,7 @@
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(1904, 979);
             this.Controls.Add(this.scMainPanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Padding = new System.Windows.Forms.Padding(2);
             this.Text = "FMS Monitoring System";

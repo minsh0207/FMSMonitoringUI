@@ -888,4 +888,13 @@
   <data name="DEF_Tracking_Destination" xml:space="preserve">
     <value>FR-Tracking Destination</value>
   </data>
+  <data name="DEF_Tacking_Destination" xml:space="preserve">
+    <value>FR-Tacking Destination</value>
+  </data>
+  <data name="DEF_Version_History" xml:space="preserve">
+    <value>Version History</value>
+  </data>
+  <data name="DEF_Direction" xml:space="preserve">
+    <value>FR-Direction</value>
+  </data>
 </root>

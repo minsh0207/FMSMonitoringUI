@@ -230,7 +230,7 @@ namespace FMSMonitoringUI.Controlls
         private void lbEqpType_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             //WinManageEqp form = new WinManageEqp(EqpID, "", EqpType, 1);
-            //form.ShowDialog();
+            //form.Show();
         }
         #endregion
 

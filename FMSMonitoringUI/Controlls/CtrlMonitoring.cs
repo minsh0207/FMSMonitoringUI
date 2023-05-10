@@ -672,7 +672,7 @@ namespace FMSMonitoringUI.Controlls
             }
 
             WinLeadTime form = new WinLeadTime(eqpId, agingType, level);
-            form.ShowDialog();
+            form.Show();
         }
 
         #region ProcessThreadCallback
@@ -1139,6 +1139,8 @@ namespace FMSMonitoringUI.Controlls
                 int groupno = arg.DeviceInfo.CVPLCListDeviceID;
                 int trackno = arg.DeviceInfo.SiteNo;
 
+                string conveyorType = arg.DeviceInfo.ConveyorType;
+
                 _CVGroupNo = groupno;
                 _CVTrackNo = trackno;
 
@@ -1153,7 +1155,7 @@ namespace FMSMonitoringUI.Controlls
                     CtrlSiteTrack siteTrack = sender as CtrlSiteTrack;
 
                     WinWaterTank form = new WinWaterTank(_clientFMS[groupno], craneNo, _EqpName[siteTrack.Tag.ToString()], tankIdx);
-                    form.ShowDialog();
+                    form.Show();
 
                     form.GetTrayID(ref trayid1, ref trayid2);
                     CLogger.WriteLog(enLogLevel.ButtonClick, this.Text, $"WaterTank = {_EqpName[siteTrack.Tag.ToString()]}, TrayID L1 = {trayid1}, TrayID L2 = {trayid2}");
@@ -1182,16 +1184,16 @@ namespace FMSMonitoringUI.Controlls
                     {
                         if ((System.Windows.Forms.Control.ModifierKeys & Keys.Control) == Keys.Control)
                         {
-                            WinBCRConveyorInfo form = new WinBCRConveyorInfo(_clientFMS[groupno], trackno);
-                            form.ShowDialog();
+                            WinBCRConveyorInfo form = new WinBCRConveyorInfo(_clientFMS[groupno], trackno, conveyorType);
+                            form.Show();
 
                             form.GetTrayID(ref trayid1, ref trayid2);
                             CLogger.WriteLog(enLogLevel.ButtonClick, this.Text, $"Track No = {trackno}, TrayID L1 = {trayid1}, TrayID L2 = {trayid2}");
                         }
                         else
                         {
-                            WinConveyorInfo form = new WinConveyorInfo("Conveyor", _clientFMS[groupno], trackno);
-                            form.ShowDialog();
+                            WinConveyorInfo form = new WinConveyorInfo("Conveyor", _clientFMS[groupno], trackno, conveyorType);
+                            form.Show();
 
                             form.GetTrayID(ref trayid1, ref trayid2);
                             CLogger.WriteLog(enLogLevel.ButtonClick, this.Text, $"Track No = {trackno}, TrayID L1 = {trayid1}, TrayID L2 = {trayid2}");
@@ -1199,8 +1201,8 @@ namespace FMSMonitoringUI.Controlls
                     }
                     else
                     {
-                        WinBCRConveyorInfo form = new WinBCRConveyorInfo(_clientFMS[groupno], trackno);
-                        form.ShowDialog();
+                        WinBCRConveyorInfo form = new WinBCRConveyorInfo(_clientFMS[groupno], trackno, conveyorType);
+                        form.Show();
 
                         form.GetTrayID(ref trayid1, ref trayid2);
                         CLogger.WriteLog(enLogLevel.ButtonClick, this.Text, $"Track No = {trackno}, TrayID L1 = {trayid1}, TrayID L2 = {trayid2}");
@@ -1228,7 +1230,7 @@ namespace FMSMonitoringUI.Controlls
                 if (crane.EqpID != "")
                 {
                     WinTroubleInfo winTroubleInfo = new WinTroubleInfo(_EqpName[crane.EqpID], crane.EqpID.Substring(2, 3), crane.EqpID, "");
-                    winTroubleInfo.ShowDialog();
+                    winTroubleInfo.Show();
                 }
             }
         }
@@ -1272,7 +1274,7 @@ namespace FMSMonitoringUI.Controlls
                         WinCraneInfo form = new WinCraneInfo(_clientFMS[crane.DeviceID], crane.CraneID, _EqpName[crane.EqpID]);
                         form.StartPosition = FormStartPosition.Manual;  // 폼의 위치가 Location 의 속성에 의해서 결정
                         form.Location = new Point((this.ClientSize.Width - form.Width) / 2, parentPoint.Y + 90);
-                        form.ShowDialog();
+                        form.Show();
                         form.GetTrayID(ref trayid1, ref trayid2);
 
                         CLogger.WriteLog(enLogLevel.ButtonClick, this.Text, $"Crane No = {crane.CraneID}, TrayID L1 = {trayid1}, TrayID L2 = {trayid2}");
@@ -1299,8 +1301,8 @@ namespace FMSMonitoringUI.Controlls
                     //    Destination = int.Parse(data[(int)enCVTagList.Destination].Value.ToString())
                     //};
 
-                    WinConveyorInfo form = new WinConveyorInfo("RTV", _clientFMS[groupno], conveyorNo);
-                    form.ShowDialog();
+                    WinConveyorInfo form = new WinConveyorInfo("RTV", _clientFMS[groupno], conveyorNo, "Conveyor");
+                    form.Show();
 
                     form.GetTrayID(ref trayid1, ref trayid2);
                     CLogger.WriteLog(enLogLevel.ButtonClick, this.Text, $"RTV No = {conveyorNo}, TrayID L1 = {trayid1}, TrayID L2 = {trayid2}");
@@ -2256,7 +2258,7 @@ namespace FMSMonitoringUI.Controlls
 
             if (item.BrowseName == "ConveyorInformation.CarriagePos")
             {
-                pos = int.Parse(value);
+                pos = GetRTVPosition(value);
                 task = MoveCraneAsync(ctrlSCraneV1, pos, _SubscribeInfo[groupNo].Item[siteNo]);
             }
             else
@@ -2414,6 +2416,20 @@ namespace FMSMonitoringUI.Controlls
         }
         #endregion
 
+        private double GetRTVPosition(string pos)
+        {
+            if (pos == "") pos = "0";
+
+            int idx = int.Parse(pos);
+
+            // RTV 위치에 맞는 Position을 적어준다.
+            double[] rtvPos = { 0, 196, 178, 149, 114, 83, 58, 43, 22, 2 };
+
+            if (idx > rtvPos.Length - 1) idx = 0;
+
+            return rtvPos[idx];
+        }
+
         public bool CheckReworkTray(string trayId)
         {
             bool ret = false;
@@ -2499,19 +2515,22 @@ namespace FMSMonitoringUI.Controlls
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            string node = "ns=2;i=5013";
-            _clientFMS[0].GetBrowerName(node);
+            WinVersionHistory form = new WinVersionHistory();
+            form.Show();
+
+            //string node = "ns=2;i=5013";
+            //_clientFMS[0].GetBrowerName(node);
 
             //WinTroubleAlarm form = new WinTroubleAlarm();
-            //form.ShowDialog();
+            //form.Show();
 
             //WinAgingRackSetting form = new WinAgingRackSetting();
             //form.SetData();
-            //form.ShowDialog();
+            //form.Show();
 
             //WinLeadTime_old form = new WinLeadTime_old();
             //form.SetData("TVID00001");
-            //form.ShowDialog();
+            //form.Show();
 
 
 
@@ -2585,18 +2604,18 @@ namespace FMSMonitoringUI.Controlls
             //}
 
             //WinCellDetailInfo form = new WinCellDetailInfo();
-            //form.ShowDialog();
+            //form.Show();
 
             //WinLeadTime_old form = new WinLeadTime_old();
             //form.SetData("TVID00001");
-            //form.ShowDialog();
+            //form.Show();
         }
 
         //private void ctrlEqpHTAging1_DoubleClick(object sender, EventArgs e)
         //{
         //    WinLeadTime form = new WinLeadTime();
         //    form.SetData("TVID00001");
-        //    form.ShowDialog();
+        //    form.Show();
         //}
     }
 }

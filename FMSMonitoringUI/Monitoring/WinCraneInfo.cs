@@ -19,6 +19,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Windows.Threading;
 using UnifiedAutomation.UaBase;
 
 namespace FMSMonitoringUI.Monitoring
@@ -30,10 +31,13 @@ namespace FMSMonitoringUI.Monitoring
         private string _trayID1 = string.Empty;
         private string _trayID2 = string.Empty;
 
-        #region Working Thread
-        private Thread _ProcessThread;
-        private bool _TheadVisiable;
-        #endregion
+        //#region Working Thread
+        //private Thread _ProcessThread;
+        //private bool _TheadVisiable;
+        //#endregion
+
+        // Timer
+        DispatcherTimer m_timer;
 
         CtrlLED[] _LedMode;
         CtrlLED[] _LedStatus;
@@ -79,13 +83,20 @@ namespace FMSMonitoringUI.Monitoring
             //gridCraneCmd.MouseCellClick_Evnet += GridProcessFlow_MouseCellClick;
             #endregion
 
-            _TheadVisiable = true;
+            // Init Timer
+            m_timer = new DispatcherTimer();
 
-            this.BeginInvoke(new MethodInvoker(delegate ()
-            {
-                _ProcessThread = new Thread(() => ProcessThreadCallback());
-                _ProcessThread.IsBackground = true; _ProcessThread.Start();
-            }));
+            //m_timer.Interval = TimeSpan.FromSeconds(2);
+            m_timer.Tick += new EventHandler(OnTimer);
+            m_timer.Start();
+
+            //_TheadVisiable = true;
+
+            //this.BeginInvoke(new MethodInvoker(delegate ()
+            //{
+            //    _ProcessThread = new Thread(() => ProcessThreadCallback());
+            //    _ProcessThread.IsBackground = true; _ProcessThread.Start();
+            //}));
 
             this.WindowID = CAuthority.GetWindowsText(this.Text);
 
@@ -93,10 +104,12 @@ namespace FMSMonitoringUI.Monitoring
         }
         private void WinCraneInfo_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (this._ProcessThread.IsAlive)
-                this._TheadVisiable = false;
+            //if (this._ProcessThread.IsAlive)
+            //    this._TheadVisiable = false;
 
-            this._ProcessThread.Abort();
+            //this._ProcessThread.Abort();
+
+            m_timer.Stop();
         }
         #endregion
 
@@ -291,12 +304,48 @@ namespace FMSMonitoringUI.Monitoring
             gridCraneCmd.ColumnHeadersWidth(0, 100);
         }
 
+        #region [Timer Event]
+        /////////////////////////////////////////////////////////////////////
+        //	Timer Event
+        //===================================================================
+        private void OnTimer(object sender, EventArgs e)
+        {
+            try
+            {
+                //timer Stop And Start
+                m_timer.Stop();
+
+                _CraneInfo = _OPCUAClient.CraneNodeID[_CraneNo];
+                _CraneData = _OPCUAClient.ReadNodeID(_CraneInfo);
+
+                if (_CraneData.Count > 0)
+                {
+                    this.BeginInvoke(new Action(() => SetData()));
+                }
+
+                //Set Time interval
+                if (m_timer.Interval.Seconds.ToString() != "2")
+                    m_timer.Interval = TimeSpan.FromSeconds(2);
+
+                //timer Stop And Start
+                m_timer.Start();
+
+            }
+            catch (Exception ex)
+            {
+                // System Debug
+                System.Diagnostics.Debug.Print(string.Format("### WinCraneInfo Timer Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                CLogger.WriteLog(enLogLevel.Error, DateTime.Now, this.ToString(), CDefine.m_strLoginID, "OnTimer Error Exception : " + ex.Message);
+            }
+        }
+        #endregion
+
         #region ProcessThreadCallback
         private void ProcessThreadCallback()
         {
             try
             {
-                while (this._TheadVisiable == true)
+                //while (this._TheadVisiable == true)
                 {
                     GC.Collect();
 
@@ -308,7 +357,7 @@ namespace FMSMonitoringUI.Monitoring
                         this.BeginInvoke(new Action(() => SetData()));
                     }
 
-                    Thread.Sleep(2000);
+                    //Thread.Sleep(2000);
                 }
             }
             catch (Exception ex)
@@ -439,7 +488,7 @@ namespace FMSMonitoringUI.Monitoring
         //    {
         //        WinCellDetailInfo form = new WinCellDetailInfo();
         //        form.SetData();
-        //        form.ShowDialog();
+        //        form.Show();
         //    }
         //}
         #endregion
@@ -448,7 +497,7 @@ namespace FMSMonitoringUI.Monitoring
         //{
         //    WinCellDetailInfo form = new WinCellDetailInfo();
         //    form.SetData();
-        //    form.ShowDialog();
+        //    form.Show();
         //}
 
         #region GetTagValue
@@ -466,7 +515,7 @@ namespace FMSMonitoringUI.Monitoring
 
             if (tagIdx < 0) return 0;
 
-            return Convert.ToInt32(_CraneData[tagIdx].Value.ToString());
+            return Convert.ToInt16(_CraneData[tagIdx].Value.ToString());
         }
         private string GetTagValuetoString(object browerName)
         {

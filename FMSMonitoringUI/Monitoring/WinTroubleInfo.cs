@@ -368,7 +368,7 @@ namespace FMSMonitoringUI.Monitoring
         //            form = new WinTrayInfo(_EqpId, "", value.ToString());
         //        }
                 
-        //        form.ShowDialog();
+        //        form.Show();
         //    }
         //}
         #endregion

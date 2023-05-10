@@ -14,10 +14,12 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Threading;
 using UnifiedAutomation.UaBase;
 
 namespace FMSMonitoringUI.Monitoring
@@ -31,19 +33,24 @@ namespace FMSMonitoringUI.Monitoring
         private string _trayID2 = string.Empty;
 
         OPCUAClient _OPCUAClient = null;
-        int _ConveyorNo = 0;
+        private int _ConveyorNo = 0;
+        private string _ConveyorType = string.Empty;
 
-        #region Working Thread
-        private Thread _ProcessThread;
-        private bool _TheadVisiable;
-        #endregion
+        //#region Working Thread
+        //private Thread _ProcessThread;
+        //private bool _TheadVisiable;
+        //#endregion
 
-        public WinConveyorInfo(string barTitle, OPCUAClient opcua, int conveyorNo)
+        // Timer
+        DispatcherTimer m_timer;
+
+        public WinConveyorInfo(string barTitle, OPCUAClient opcua, int conveyorNo, string conveyorType)
         {
             InitializeComponent();
 
             _OPCUAClient = opcua;
             _ConveyorNo = conveyorNo;
+            _ConveyorType = conveyorType;
 
             _cvTitle = barTitle;
 
@@ -73,13 +80,20 @@ namespace FMSMonitoringUI.Monitoring
             //gridCVInfo.MouseCellDoubleClick_Evnet += GridCellInfo_MouseCellDoubleClick;
             //#endregion
 
-            _TheadVisiable = true;
+            // Init Timer
+            m_timer = new DispatcherTimer();
 
-            this.BeginInvoke(new MethodInvoker(delegate ()
-            {
-                _ProcessThread = new Thread(() => ProcessThreadCallback());
-                _ProcessThread.IsBackground = true; _ProcessThread.Start();
-            }));
+            //m_timer.Interval = TimeSpan.FromSeconds(2);
+            m_timer.Tick += new EventHandler(OnTimer);
+            m_timer.Start();
+
+            //_TheadVisiable = true;
+
+            //this.BeginInvoke(new MethodInvoker(delegate ()
+            //{
+            //    _ProcessThread = new Thread(() => ProcessThreadCallback());
+            //    _ProcessThread.IsBackground = true; _ProcessThread.Start();
+            //}));
 
             this.WindowID = CAuthority.GetWindowsText(this.Text);
 
@@ -88,10 +102,12 @@ namespace FMSMonitoringUI.Monitoring
 
         private void WinCVTrayInfo_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (this._ProcessThread.IsAlive)
-                this._TheadVisiable = false;
+            //if (this._ProcessThread.IsAlive)
+            //    this._TheadVisiable = false;
 
-            this._ProcessThread.Abort();
+            //this._ProcessThread.Abort();
+
+            m_timer.Stop();
         }
         #endregion
 
@@ -108,13 +124,6 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
-        #region MonitoringTimer
-        public void ShowForm()
-        {
-            this.Show();
-        }
-        #endregion
-
         #region InitControl
         private void InitControl()
         {
@@ -126,7 +135,7 @@ namespace FMSMonitoringUI.Monitoring
         #region InitLanguage
         private void InitLanguage()
         {
-            //titBar.CallLocalLanguage();
+            titBar.CallLocalLanguage();
 
             Exit.CallLocalLanguage();
         }
@@ -154,7 +163,7 @@ namespace FMSMonitoringUI.Monitoring
                     LocalLanguage.GetItemString("DEF_Tray_ID_1"),
                     LocalLanguage.GetItemString("DEF_Tray_ID_2"),
                     LocalLanguage.GetItemString("DEF_Station_Status"),
-                    LocalLanguage.GetItemString("DEF_Destination"),
+                    LocalLanguage.GetItemString("DEF_Tacking_Destination"),
                     LocalLanguage.GetItemString("DEF_Carriage_Position"),
                     LocalLanguage.GetItemString("DEF_RTV_From"),
                     LocalLanguage.GetItemString("DEF_RTV_To")
@@ -173,7 +182,7 @@ namespace FMSMonitoringUI.Monitoring
                     LocalLanguage.GetItemString("DEF_Tray_ID_1"),
                     LocalLanguage.GetItemString("DEF_Tray_ID_2"),
                     LocalLanguage.GetItemString("DEF_Station_Status"),
-                    LocalLanguage.GetItemString("DEF_Destination")
+                    LocalLanguage.GetItemString("DEF_Tacking_Destination")
                 };
             }
 
@@ -193,31 +202,67 @@ namespace FMSMonitoringUI.Monitoring
         }
         #endregion
 
-        #region ProcessThreadCallback
-        private void ProcessThreadCallback()
+        #region [Timer Event]
+        /////////////////////////////////////////////////////////////////////
+        //	Timer Event
+        //===================================================================
+        private void OnTimer(object sender, EventArgs e)
         {
             try
             {
-                while (this._TheadVisiable == true)
-                {
-                    GC.Collect();
+                //timer Stop And Start
+                m_timer.Stop();
 
-                    List<ReadValueId> cvInfo = _OPCUAClient.ConveyorNodeID[_ConveyorNo];
-                    List<DataValue> data = _OPCUAClient.ReadNodeID(cvInfo);
-                    this.BeginInvoke(new Action(() => SetData(data, cvInfo)));
+                List<ReadValueId> cvInfo = _OPCUAClient.ConveyorNodeID[_ConveyorNo];
+                List<DataValue> data = _OPCUAClient.ReadNodeID(cvInfo);
+                this.BeginInvoke(new Action(() => SetData(data, cvInfo)));
 
-                    Thread.Sleep(2000);
-                }
+                //Set Time interval
+                if (m_timer.Interval.Seconds.ToString() != "2")
+                    m_timer.Interval = TimeSpan.FromSeconds(2);
+
+                //timer Stop And Start
+                m_timer.Start();
+
             }
             catch (Exception ex)
             {
                 // System Debug
-                System.Diagnostics.Debug.Print(string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
-
-                string log = string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
-                CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
+                System.Diagnostics.Debug.Print(string.Format("### WinConveyorInfo Timer Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                CLogger.WriteLog(enLogLevel.Error, DateTime.Now, this.ToString(), CDefine.m_strLoginID, "OnTimer Error Exception : " + ex.Message);
             }
         }
+        #endregion
+
+        #region ProcessThreadCallback
+        //private void ProcessThreadCallback()
+        //{
+        //    try
+        //    {
+        //        if (this.InvokeRequired)
+        //        {
+        //            //while (this._TheadVisiable == true)
+        //            {
+        //                GC.Collect();
+
+        //                List<ReadValueId> cvInfo = _OPCUAClient.ConveyorNodeID[_ConveyorNo];
+        //                List<DataValue> data = _OPCUAClient.ReadNodeID(cvInfo);
+        //                this.BeginInvoke(new Action(() => SetData(data, cvInfo)));
+
+        //                //Thread.Sleep(2000);
+        //            }
+        //        }
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // System Debug
+        //        System.Diagnostics.Debug.Print(string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+        //        string log = string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+        //        CLogger.WriteLog(enLogLevel.Error, this.Name, log);
+        //    }
+        //}
         #endregion
 
         #region SetData
@@ -228,42 +273,41 @@ namespace FMSMonitoringUI.Monitoring
             int row = 0;
             int trackNo;
 
-            string tagValue = GetTagValue("ConveyorInformation.TrackNo", data, cvInfo);
+            string tagValue = GetTagValuetoString("ConveyorInformation.TrackNo", data, cvInfo);
             if (tagValue == "0")
                 trackNo = _ConveyorNo;
             else
                 trackNo = Convert.ToInt16(tagValue);
             gridCVInfo.SetValue(1, row, trackNo == (int)enEqpType.RTV01 ? 1 : trackNo); row++;
 
-            int cvTypeIdx = GetTagIndex("ConveyorInformation.ConveyorType", cvInfo);
+            int cvTypeIdx = GetTagValuetoInt("ConveyorInformation.ConveyorType", data, cvInfo);
             gridCVInfo.SetValue(1, row, GetConveyorType(data[cvTypeIdx].Value)); row++;
 
-            tagValue = GetTagValue("ConveyorInformation.Direction", data, cvInfo);
+            tagValue = GetTagValuetoString("ConveyorInformation.Direction", data, cvInfo);
             gridCVInfo.SetValue(1, row, GetDirection(tagValue)); row++;
 
-            tagValue = GetTagValue("ConveyorInformation.TrayExist", data, cvInfo);
-            bool trayExist = Convert.ToBoolean(tagValue);
+            bool trayExist = GetTagValuetoBool("ConveyorInformation.TrayExist", data, cvInfo);
             //gridCVInfo.SetValue(1, row, (trayExist == true ? "Exist" : "Not Exist")); row++;
             ledTrayExist.LedOnOff(trayExist); row++;
 
-            tagValue = GetTagValue("ConveyorInformation.TrayType", data, cvInfo);
+            tagValue = GetTagValuetoString("ConveyorInformation.TrayType", data, cvInfo);
             gridCVInfo.SetValue(1, row, GetTrayType(tagValue)); row++;
 
-            tagValue = GetTagValue("ConveyorInformation.TrayCount", data, cvInfo);
+            tagValue = GetTagValuetoString("ConveyorInformation.TrayCount", data, cvInfo);
             gridCVInfo.SetValue(1, row, tagValue); row++;
 
-            tagValue = GetTagValue("ConveyorInformation.TrayIdL1", data, cvInfo);
+            tagValue = GetTagValuetoString("ConveyorInformation.TrayIdL1", data, cvInfo);
             gridCVInfo.SetValue(1, row, tagValue); row++;
-            _trayID1 = Convert.ToString(tagValue);
+            _trayID1 = tagValue;
 
-            tagValue = GetTagValue("ConveyorInformation.TrayIdL2", data, cvInfo);
+            tagValue = GetTagValuetoString("ConveyorInformation.TrayIdL2", data, cvInfo);
             //if (Convert.ToString(data[tagIdx].Value) == "")
             //    gridCVInfo.RowsVisible(row, false);
             //else
             //    gridCVInfo.RowsVisible(row, true);
 
             gridCVInfo.SetValue(1, row, tagValue); row++;
-            _trayID2 = Convert.ToString(tagValue);            
+            _trayID2 = tagValue;            
 
             if (CheckStationStatus(data[cvTypeIdx].Value))
             {
@@ -272,26 +316,26 @@ namespace FMSMonitoringUI.Monitoring
             else
                 gridCVInfo.RowsVisible(row, false);
 
-            tagValue = GetTagValue("ConveyorInformation.StationStatus", data, cvInfo);
+            tagValue = GetTagValuetoString("ConveyorInformation.StationStatus", data, cvInfo);
             gridCVInfo.SetValue(1, row, GetStationStatus(tagValue)); row++;
 
             if (_cvTitle == "RTV")
             {
-                tagValue = GetTagValue("ConveyorCommand.Destination", data, cvInfo);
+                tagValue = GetTagValuetoString("ConveyorInformation.TrackingDestination", data, cvInfo);
                 gridCVInfo.SetValue(1, row, tagValue); row++;
 
-                tagValue = GetTagValue("ConveyorInformation.CarriagePos", data, cvInfo);
+                tagValue = GetTagValuetoString("ConveyorInformation.CarriagePos", data, cvInfo);
                 gridCVInfo.SetValue(1, row, tagValue); row++;
 
-                tagValue = GetTagValue("ConveyorCommand.RTVFrom", data, cvInfo);
+                tagValue = GetTagValuetoString("ConveyorCommand.RTVFrom", data, cvInfo);
                 gridCVInfo.SetValue(1, row, tagValue); row++;
 
-                tagValue = GetTagValue("ConveyorCommand.RTVTo", data, cvInfo);
+                tagValue = GetTagValuetoString("ConveyorCommand.RTVTo", data, cvInfo);
                 gridCVInfo.SetValue(1, row, tagValue);
             }
             else
             {
-                tagValue = GetTagValue("ConveyorCommand.Destination", data, cvInfo);
+                tagValue = GetTagValuetoString("ConveyorInformation.TrackingDestination", data, cvInfo);
                 gridCVInfo.SetValue(1, row, tagValue);
             }
         }
@@ -336,7 +380,7 @@ namespace FMSMonitoringUI.Monitoring
 
         //        //WinCellDetailInfo form = new WinCellDetailInfo();
         //        //form.SetData();
-        //        //form.ShowDialog();
+        //        //form.Show();
 
         //        //Refresh();
         //    }
@@ -353,6 +397,8 @@ namespace FMSMonitoringUI.Monitoring
         #region Tray Tag Value
         private string GetConveyorType(object idx)
         {
+            if (idx == null || idx.ToString() == "") return "";
+
             string ret = string.Empty;
 
             int cvType = Convert.ToInt32(idx);
@@ -396,6 +442,8 @@ namespace FMSMonitoringUI.Monitoring
 
         private string GetStationStatus(object idx)
         {
+            if (idx == null || idx.ToString() == "") return "";
+
             string ret = string.Empty;
 
             int cvStatus = Convert.ToInt32(idx);
@@ -418,6 +466,8 @@ namespace FMSMonitoringUI.Monitoring
 
         private string GetTrayType(object idx)
         {
+            if (idx == null || idx.ToString() == "") return "";
+
             string ret = string.Empty;
 
             int trayType = Convert.ToInt32(idx);
@@ -437,17 +487,19 @@ namespace FMSMonitoringUI.Monitoring
 
         private string GetDirection(object idx)
         {
-            string ret = string.Empty;
+            if (idx == null || idx.ToString() == "") return "";
+
+            string ret;
 
             bool mzCmd = Convert.ToBoolean(idx);
 
             if (mzCmd == true)
             {
-                ret = "Backward (Unloading)";                
+                ret = _ConveyorType == "Conveyor" ? "Backward (Unloading)" : "Dispenser";
             }
             else
             {
-                ret = "Forward (Loading)";
+                ret = _ConveyorType == "Conveyor" ? "Forward (Loading)" : "Magazine";
             }
 
             return ret;
@@ -476,18 +528,42 @@ namespace FMSMonitoringUI.Monitoring
         #region GetTagIndex
         private int GetTagIndex(string tagPath, List<ReadValueId> cvInfo)
         {
-            return cvInfo.FindIndex(x => x.UserData.ToString().EndsWith(tagPath));
+            int idx = cvInfo.FindIndex(x => x.UserData.ToString().EndsWith(tagPath));
+
+            return idx < 0 ? 0 : idx;
         }
         #endregion
 
         #region GetTagValue
-        private string GetTagValue(string tagPath, List<DataValue> data, List<ReadValueId> cvInfo)
+        private string GetTagValuetoString(string tagPath, List<DataValue> data, List<ReadValueId> cvInfo)
         {
             string val = string.Empty;
             int idx = cvInfo.FindIndex(x => x.UserData.ToString().EndsWith(tagPath));
 
             if (idx > -1)
                 val = Convert.ToString(data[idx].Value);
+
+            return val;
+        }
+
+        private bool GetTagValuetoBool(string tagPath, List<DataValue> data, List<ReadValueId> cvInfo)
+        {
+            bool val = false;
+            int idx = cvInfo.FindIndex(x => x.UserData.ToString().EndsWith(tagPath));
+
+            if (idx > -1)
+                val = Convert.ToBoolean(data[idx].Value);
+
+            return val;
+        }
+
+        private int GetTagValuetoInt(string tagPath, List<DataValue> data, List<ReadValueId> cvInfo)
+        {
+            int val = 0;
+            int idx = cvInfo.FindIndex(x => x.UserData.ToString().EndsWith(tagPath));
+
+            if (idx > -1)
+                val = Convert.ToInt16(data[idx].Value);
 
             return val;
         }

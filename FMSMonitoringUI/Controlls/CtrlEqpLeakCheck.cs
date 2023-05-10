@@ -139,7 +139,7 @@ namespace FMSMonitoringUI.Controlls
         private void TrayInfoView_MouseCellDoubleClick(int col, int row, object value)
         {
             WinTrayInfo form = new WinTrayInfo(EqpID, "", value.ToString());
-            form.ShowDialog();
+            form.Show();
         }
         #endregion
 
@@ -147,7 +147,7 @@ namespace FMSMonitoringUI.Controlls
         private void lbEqpType_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             WinManageEqp form = new WinManageEqp(EqpID, "", EqpType, 2);
-            form.ShowDialog();
+            form.Show();
         }
         #endregion
 
@@ -157,7 +157,7 @@ namespace FMSMonitoringUI.Controlls
             if (((MouseEventArgs)e).Button == MouseButtons.Right)
             {
                 WinTroubleInfo winTroubleInfo = new WinTroubleInfo(EqpName, _EqpType, EqpID, "");
-                winTroubleInfo.ShowDialog();
+                winTroubleInfo.Show();
             }
         }
         #endregion

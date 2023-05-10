@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WinCraneInfo));
             this.panel3 = new System.Windows.Forms.Panel();
             this.gbFMS = new FMSMonitoringUI.Controlls.WindowsForms.CtrlGroupBox();
             this.ctrlLabel18 = new FMSMonitoringUI.Controlls.WindowsForms.CtrlLabel();
@@ -220,10 +221,10 @@
             // gridCraneCmd
             // 
             this.gridCraneCmd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.gridCraneCmd.ColumnCount = -1;
+            this.gridCraneCmd.ColumnCount = 1;
             this.gridCraneCmd.Location = new System.Drawing.Point(16, 530);
             this.gridCraneCmd.Name = "gridCraneCmd";
-            this.gridCraneCmd.RowCount = -1;
+            this.gridCraneCmd.RowCount = 1;
             this.gridCraneCmd.Size = new System.Drawing.Size(313, 150);
             this.gridCraneCmd.TabIndex = 98;
             this.gridCraneCmd.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
@@ -847,13 +848,13 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "WinCraneInfo";
             this.Padding = new System.Windows.Forms.Padding(2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WinCraneInfo";
-            this.TopMost = true;
             this.WindowID = "WinCraneInfo";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.WinCraneInfo_FormClosed);
             this.Load += new System.EventHandler(this.WinCraneInfo_Load);

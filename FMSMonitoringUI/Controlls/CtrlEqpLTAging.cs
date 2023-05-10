@@ -95,7 +95,7 @@ namespace FMSMonitoringUI.Controlls
             if (((MouseEventArgs)e).Button == MouseButtons.Right)
             {
                 WinTroubleInfo winTroubleInfo = new WinTroubleInfo(EqpName, _EqpType, EqpID, "", _EqpLevel);
-                winTroubleInfo.ShowDialog();
+                winTroubleInfo.Show();
             }
         }
         #endregion

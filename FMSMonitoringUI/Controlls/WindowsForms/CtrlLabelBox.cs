@@ -1,5 +1,4 @@
-﻿using Microsoft.Office.Interop.Excel;
-using MonitoringUI;
+﻿using MonitoringUI;
 using MonitoringUI.Controlls.CComboBox;
 using System;
 using System.Collections.Generic;

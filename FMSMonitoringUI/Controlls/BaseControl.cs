@@ -191,6 +191,20 @@ namespace ControlGallery
             }
         }
 
+        string _CVType = "Conveyor";
+        [DisplayName("Conveyor Type"), Description("Conveyor, Dispenser, Magazine, DPMZ"), Category("UBI Property")]
+        public string CVType
+        {
+            get { return _CVType; }
+            set
+            {
+                if (_CVType != value)
+                {
+                    _CVType = value;
+                }
+            }
+        }
+
         #endregion
 
 

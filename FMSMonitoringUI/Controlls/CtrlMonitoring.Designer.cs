@@ -69,6 +69,7 @@
             this.ctrlTaggingName20 = new MonitoringUI.Controlls.CtrlTaggingName();
             this.ctrlTaggingName3 = new MonitoringUI.Controlls.CtrlTaggingName();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.bcrMarker36 = new ControlGallery.BCRMarker();
             this.lt024 = new AgingControls.AgingLineControl();
             this.lt021 = new AgingControls.AgingLineControl();
             this.lt022 = new AgingControls.AgingLineControl();
@@ -998,6 +999,7 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.bcrMarker36);
             this.panel2.Controls.Add(this.lt024);
             this.panel2.Controls.Add(this.lt021);
             this.panel2.Controls.Add(this.lt022);
@@ -1264,6 +1266,27 @@
             this.panel2.Size = new System.Drawing.Size(1707, 995);
             this.panel2.TabIndex = 332;
             // 
+            // bcrMarker36
+            // 
+            this.bcrMarker36.BCRLevel = 1;
+            this.bcrMarker36.BCRMarkColor = System.Drawing.Color.Plum;
+            this.bcrMarker36.BCRMarkPosition = ControlGallery.BCRMarkPosition.Right;
+            this.bcrMarker36.BCRMarkThickness = 4;
+            this.bcrMarker36.BCRUseYN = true;
+            this.bcrMarker36.BubbleText = "";
+            this.bcrMarker36.CVPLCListDeviceID = 0;
+            this.bcrMarker36.CVType = "Conveyor";
+            this.bcrMarker36.DisplayText = "";
+            this.bcrMarker36.Location = new System.Drawing.Point(326, 596);
+            this.bcrMarker36.Name = "bcrMarker36";
+            this.bcrMarker36.PLCNo = 1156;
+            this.bcrMarker36.ShowSiteNo = false;
+            this.bcrMarker36.ShowTroubleState = false;
+            this.bcrMarker36.SiteNo = 0;
+            this.bcrMarker36.Size = new System.Drawing.Size(3, 30);
+            this.bcrMarker36.TabIndex = 602;
+            this.bcrMarker36.TextRotateAngle = 0;
+            // 
             // lt024
             // 
             this.lt024.BackColor = System.Drawing.Color.Gray;
@@ -1278,7 +1301,7 @@
             this.lt024.EqpID = "F1LTA01";
             this.lt024.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lt024.LinePrefix = "L024";
-            this.lt024.Location = new System.Drawing.Point(1184, 656);
+            this.lt024.Location = new System.Drawing.Point(1184, 649);
             this.lt024.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lt024.Name = "lt024";
             this.lt024.RackCount = 5;
@@ -1301,7 +1324,7 @@
             this.lt021.EqpID = "F1LTA01";
             this.lt021.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lt021.LinePrefix = "L021";
-            this.lt021.Location = new System.Drawing.Point(1184, 526);
+            this.lt021.Location = new System.Drawing.Point(1184, 519);
             this.lt021.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lt021.Name = "lt021";
             this.lt021.RackCount = 5;
@@ -1324,7 +1347,7 @@
             this.lt022.EqpID = "F1LTA01";
             this.lt022.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lt022.LinePrefix = "L022";
-            this.lt022.Location = new System.Drawing.Point(1184, 555);
+            this.lt022.Location = new System.Drawing.Point(1184, 548);
             this.lt022.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lt022.Name = "lt022";
             this.lt022.RackCount = 5;
@@ -1347,7 +1370,7 @@
             this.lt023.EqpID = "F1LTA01";
             this.lt023.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lt023.LinePrefix = "L023";
-            this.lt023.Location = new System.Drawing.Point(1184, 628);
+            this.lt023.Location = new System.Drawing.Point(1184, 621);
             this.lt023.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lt023.Name = "lt023";
             this.lt023.RackCount = 5;
@@ -1370,7 +1393,7 @@
             this.lt014.EqpID = "F1LTA01";
             this.lt014.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lt014.LinePrefix = "L014";
-            this.lt014.Location = new System.Drawing.Point(1184, 452);
+            this.lt014.Location = new System.Drawing.Point(1184, 445);
             this.lt014.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lt014.Name = "lt014";
             this.lt014.RackCount = 5;
@@ -1393,7 +1416,7 @@
             this.lt011.EqpID = "F1LTA01";
             this.lt011.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lt011.LinePrefix = "L011";
-            this.lt011.Location = new System.Drawing.Point(1184, 322);
+            this.lt011.Location = new System.Drawing.Point(1184, 315);
             this.lt011.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lt011.Name = "lt011";
             this.lt011.RackCount = 5;
@@ -1416,7 +1439,7 @@
             this.lt012.EqpID = "F1LTA01";
             this.lt012.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lt012.LinePrefix = "L012";
-            this.lt012.Location = new System.Drawing.Point(1184, 351);
+            this.lt012.Location = new System.Drawing.Point(1184, 344);
             this.lt012.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lt012.Name = "lt012";
             this.lt012.RackCount = 5;
@@ -1439,7 +1462,7 @@
             this.lt013.EqpID = "F1LTA01";
             this.lt013.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lt013.LinePrefix = "L013";
-            this.lt013.Location = new System.Drawing.Point(1184, 424);
+            this.lt013.Location = new System.Drawing.Point(1184, 417);
             this.lt013.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lt013.Name = "lt013";
             this.lt013.RackCount = 5;
@@ -1462,7 +1485,7 @@
             this.ht014.EqpID = "F1HTA01";
             this.ht014.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ht014.LinePrefix = "H014";
-            this.ht014.Location = new System.Drawing.Point(1224, 249);
+            this.ht014.Location = new System.Drawing.Point(1224, 242);
             this.ht014.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ht014.Name = "ht014";
             this.ht014.RackCount = 5;
@@ -1485,7 +1508,7 @@
             this.ht013.EqpID = "F1HTA01";
             this.ht013.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ht013.LinePrefix = "H013";
-            this.ht013.Location = new System.Drawing.Point(1224, 221);
+            this.ht013.Location = new System.Drawing.Point(1224, 214);
             this.ht013.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ht013.Name = "ht013";
             this.ht013.RackCount = 5;
@@ -1508,7 +1531,7 @@
             this.ht012.EqpID = "F1HTA01";
             this.ht012.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ht012.LinePrefix = "H012";
-            this.ht012.Location = new System.Drawing.Point(1224, 153);
+            this.ht012.Location = new System.Drawing.Point(1224, 146);
             this.ht012.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ht012.Name = "ht012";
             this.ht012.RackCount = 5;
@@ -1531,7 +1554,7 @@
             this.ht011.EqpID = "F1HTA01";
             this.ht011.Font = new System.Drawing.Font("Segoe UI Emoji", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ht011.LinePrefix = "H011";
-            this.ht011.Location = new System.Drawing.Point(1224, 125);
+            this.ht011.Location = new System.Drawing.Point(1224, 118);
             this.ht011.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ht011.Name = "ht011";
             this.ht011.RackCount = 5;
@@ -1545,7 +1568,7 @@
             this.ctrlLabel17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
             this.ctrlLabel17.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel17.LanguageID = "DEF_INPUT";
-            this.ctrlLabel17.Location = new System.Drawing.Point(1162, 32);
+            this.ctrlLabel17.Location = new System.Drawing.Point(1162, 62);
             this.ctrlLabel17.Name = "ctrlLabel17";
             this.ctrlLabel17.Size = new System.Drawing.Size(72, 29);
             this.ctrlLabel17.TabIndex = 587;
@@ -1557,7 +1580,7 @@
             this.ctrlLabel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(25)))), ((int)(((byte)(45)))));
             this.ctrlLabel6.ForeColor = System.Drawing.Color.White;
             this.ctrlLabel6.LanguageID = "DEF_OUTPUT";
-            this.ctrlLabel6.Location = new System.Drawing.Point(1088, 32);
+            this.ctrlLabel6.Location = new System.Drawing.Point(1088, 62);
             this.ctrlLabel6.Name = "ctrlLabel6";
             this.ctrlLabel6.Size = new System.Drawing.Size(72, 29);
             this.ctrlLabel6.TabIndex = 586;
@@ -1572,7 +1595,7 @@
             this.ctrlEqpHPC2.EqpType = "HPC";
             this.ctrlEqpHPC2.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpHPC2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlEqpHPC2.Location = new System.Drawing.Point(1584, 763);
+            this.ctrlEqpHPC2.Location = new System.Drawing.Point(1584, 756);
             this.ctrlEqpHPC2.Name = "ctrlEqpHPC2";
             this.ctrlEqpHPC2.Size = new System.Drawing.Size(86, 116);
             this.ctrlEqpHPC2.TabIndex = 585;
@@ -1588,7 +1611,7 @@
             this.ctrlEqpCharger.EqpType = "CHG";
             this.ctrlEqpCharger.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpCharger.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlEqpCharger.Location = new System.Drawing.Point(1257, 745);
+            this.ctrlEqpCharger.Location = new System.Drawing.Point(1257, 738);
             this.ctrlEqpCharger.Name = "ctrlEqpCharger";
             this.ctrlEqpCharger.Size = new System.Drawing.Size(165, 134);
             this.ctrlEqpCharger.TabIndex = 584;
@@ -1603,7 +1626,7 @@
             this.ctrlEqpLTAging4.EqpType = "LTA2";
             this.ctrlEqpLTAging4.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpLTAging4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlEqpLTAging4.Location = new System.Drawing.Point(1532, 614);
+            this.ctrlEqpLTAging4.Location = new System.Drawing.Point(1532, 607);
             this.ctrlEqpLTAging4.Name = "ctrlEqpLTAging4";
             this.ctrlEqpLTAging4.Size = new System.Drawing.Size(142, 81);
             this.ctrlEqpLTAging4.TabIndex = 582;
@@ -1618,7 +1641,7 @@
             this.ctrlEqpLTAging3.EqpType = "LTA2";
             this.ctrlEqpLTAging3.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpLTAging3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlEqpLTAging3.Location = new System.Drawing.Point(1532, 518);
+            this.ctrlEqpLTAging3.Location = new System.Drawing.Point(1532, 511);
             this.ctrlEqpLTAging3.Name = "ctrlEqpLTAging3";
             this.ctrlEqpLTAging3.Size = new System.Drawing.Size(142, 81);
             this.ctrlEqpLTAging3.TabIndex = 581;
@@ -1633,7 +1656,7 @@
             this.ctrlEqpHTAging2.EqpType = "HTA";
             this.ctrlEqpHTAging2.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpHTAging2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlEqpHTAging2.Location = new System.Drawing.Point(1491, 210);
+            this.ctrlEqpHTAging2.Location = new System.Drawing.Point(1491, 203);
             this.ctrlEqpHTAging2.Name = "ctrlEqpHTAging2";
             this.ctrlEqpHTAging2.Size = new System.Drawing.Size(148, 82);
             this.ctrlEqpHTAging2.TabIndex = 580;
@@ -1648,7 +1671,7 @@
             this.ctrlEqpLTAging2.EqpType = "LTA1";
             this.ctrlEqpLTAging2.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpLTAging2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlEqpLTAging2.Location = new System.Drawing.Point(1531, 413);
+            this.ctrlEqpLTAging2.Location = new System.Drawing.Point(1531, 406);
             this.ctrlEqpLTAging2.Name = "ctrlEqpLTAging2";
             this.ctrlEqpLTAging2.Size = new System.Drawing.Size(142, 81);
             this.ctrlEqpLTAging2.TabIndex = 579;
@@ -1663,7 +1686,7 @@
             this.ctrlEqpLTAging1.EqpType = "LTA1";
             this.ctrlEqpLTAging1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpLTAging1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlEqpLTAging1.Location = new System.Drawing.Point(1532, 315);
+            this.ctrlEqpLTAging1.Location = new System.Drawing.Point(1532, 308);
             this.ctrlEqpLTAging1.Name = "ctrlEqpLTAging1";
             this.ctrlEqpLTAging1.Size = new System.Drawing.Size(142, 81);
             this.ctrlEqpLTAging1.TabIndex = 578;
@@ -1678,7 +1701,7 @@
             this.ctrlEqpHTAging1.EqpType = "HTA";
             this.ctrlEqpHTAging1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpHTAging1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlEqpHTAging1.Location = new System.Drawing.Point(1491, 113);
+            this.ctrlEqpHTAging1.Location = new System.Drawing.Point(1491, 106);
             this.ctrlEqpHTAging1.Name = "ctrlEqpHTAging1";
             this.ctrlEqpHTAging1.Size = new System.Drawing.Size(148, 82);
             this.ctrlEqpHTAging1.TabIndex = 574;
@@ -1692,7 +1715,7 @@
             this.ctrlSCraneH4.DisplayText = "";
             this.ctrlSCraneH4.EqpID = "F1SCF01";
             this.ctrlSCraneH4.Font = new System.Drawing.Font("Segoe UI Emoji", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctrlSCraneH4.Location = new System.Drawing.Point(1230, 882);
+            this.ctrlSCraneH4.Location = new System.Drawing.Point(1230, 875);
             this.ctrlSCraneH4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ctrlSCraneH4.MaxBayCount = 100;
             this.ctrlSCraneH4.Name = "ctrlSCraneH4";
@@ -1709,7 +1732,7 @@
             this.ctrlSCraneH3.DisplayText = "";
             this.ctrlSCraneH3.EqpID = "F1SCL02";
             this.ctrlSCraneH3.Font = new System.Drawing.Font("Segoe UI Emoji", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctrlSCraneH3.Location = new System.Drawing.Point(1153, 590);
+            this.ctrlSCraneH3.Location = new System.Drawing.Point(1153, 583);
             this.ctrlSCraneH3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ctrlSCraneH3.MaxBayCount = 100;
             this.ctrlSCraneH3.Name = "ctrlSCraneH3";
@@ -1726,7 +1749,7 @@
             this.ctrlSCraneH2.DisplayText = "";
             this.ctrlSCraneH2.EqpID = "F1SCL01";
             this.ctrlSCraneH2.Font = new System.Drawing.Font("Segoe UI Emoji", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctrlSCraneH2.Location = new System.Drawing.Point(1153, 387);
+            this.ctrlSCraneH2.Location = new System.Drawing.Point(1153, 380);
             this.ctrlSCraneH2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ctrlSCraneH2.MaxBayCount = 100;
             this.ctrlSCraneH2.Name = "ctrlSCraneH2";
@@ -1743,7 +1766,7 @@
             this.ctrlSCraneH1.DisplayText = "";
             this.ctrlSCraneH1.EqpID = "F1SCH01";
             this.ctrlSCraneH1.Font = new System.Drawing.Font("Segoe UI Emoji", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctrlSCraneH1.Location = new System.Drawing.Point(1189, 185);
+            this.ctrlSCraneH1.Location = new System.Drawing.Point(1189, 178);
             this.ctrlSCraneH1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ctrlSCraneH1.MaxBayCount = 100;
             this.ctrlSCraneH1.Name = "ctrlSCraneH1";
@@ -1760,9 +1783,10 @@
             this.bcrMarker35.BCRUseYN = true;
             this.bcrMarker35.BubbleText = "";
             this.bcrMarker35.CVPLCListDeviceID = 0;
+            this.bcrMarker35.CVType = "Conveyor";
             this.bcrMarker35.DisplayText = "";
             this.bcrMarker35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker35.Location = new System.Drawing.Point(151, 395);
+            this.bcrMarker35.Location = new System.Drawing.Point(151, 388);
             this.bcrMarker35.Name = "bcrMarker35";
             this.bcrMarker35.PLCNo = 1136;
             this.bcrMarker35.ShowSiteNo = false;
@@ -1781,9 +1805,10 @@
             this.bcrMarker34.BCRUseYN = true;
             this.bcrMarker34.BubbleText = "";
             this.bcrMarker34.CVPLCListDeviceID = 0;
+            this.bcrMarker34.CVType = "Conveyor";
             this.bcrMarker34.DisplayText = "";
             this.bcrMarker34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker34.Location = new System.Drawing.Point(34, 435);
+            this.bcrMarker34.Location = new System.Drawing.Point(34, 428);
             this.bcrMarker34.Name = "bcrMarker34";
             this.bcrMarker34.PLCNo = 1140;
             this.bcrMarker34.ShowSiteNo = false;
@@ -1802,9 +1827,10 @@
             this.bcrMarker33.BCRUseYN = true;
             this.bcrMarker33.BubbleText = "";
             this.bcrMarker33.CVPLCListDeviceID = 0;
+            this.bcrMarker33.CVType = "Conveyor";
             this.bcrMarker33.DisplayText = "";
             this.bcrMarker33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker33.Location = new System.Drawing.Point(645, 755);
+            this.bcrMarker33.Location = new System.Drawing.Point(645, 748);
             this.bcrMarker33.Name = "bcrMarker33";
             this.bcrMarker33.PLCNo = 1169;
             this.bcrMarker33.ShowSiteNo = false;
@@ -1823,9 +1849,10 @@
             this.bcrMarker32.BCRUseYN = true;
             this.bcrMarker32.BubbleText = "";
             this.bcrMarker32.CVPLCListDeviceID = 0;
+            this.bcrMarker32.CVType = "Conveyor";
             this.bcrMarker32.DisplayText = "";
             this.bcrMarker32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker32.Location = new System.Drawing.Point(569, 755);
+            this.bcrMarker32.Location = new System.Drawing.Point(569, 748);
             this.bcrMarker32.Name = "bcrMarker32";
             this.bcrMarker32.PLCNo = 1167;
             this.bcrMarker32.ShowSiteNo = false;
@@ -1844,9 +1871,10 @@
             this.bcrMarker31.BCRUseYN = true;
             this.bcrMarker31.BubbleText = "";
             this.bcrMarker31.CVPLCListDeviceID = 0;
+            this.bcrMarker31.CVType = "Conveyor";
             this.bcrMarker31.DisplayText = "";
             this.bcrMarker31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker31.Location = new System.Drawing.Point(491, 755);
+            this.bcrMarker31.Location = new System.Drawing.Point(491, 748);
             this.bcrMarker31.Name = "bcrMarker31";
             this.bcrMarker31.PLCNo = 1164;
             this.bcrMarker31.ShowSiteNo = false;
@@ -1865,9 +1893,10 @@
             this.bcrMarker30.BCRUseYN = true;
             this.bcrMarker30.BubbleText = "";
             this.bcrMarker30.CVPLCListDeviceID = 0;
+            this.bcrMarker30.CVType = "Conveyor";
             this.bcrMarker30.DisplayText = "";
             this.bcrMarker30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker30.Location = new System.Drawing.Point(415, 755);
+            this.bcrMarker30.Location = new System.Drawing.Point(415, 748);
             this.bcrMarker30.Name = "bcrMarker30";
             this.bcrMarker30.PLCNo = 1161;
             this.bcrMarker30.ShowSiteNo = false;
@@ -1886,9 +1915,10 @@
             this.bcrMarker29.BCRUseYN = true;
             this.bcrMarker29.BubbleText = "";
             this.bcrMarker29.CVPLCListDeviceID = 0;
+            this.bcrMarker29.CVType = "Conveyor";
             this.bcrMarker29.DisplayText = "";
             this.bcrMarker29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker29.Location = new System.Drawing.Point(149, 755);
+            this.bcrMarker29.Location = new System.Drawing.Point(149, 748);
             this.bcrMarker29.Name = "bcrMarker29";
             this.bcrMarker29.PLCNo = 1146;
             this.bcrMarker29.ShowSiteNo = false;
@@ -1907,9 +1937,10 @@
             this.bcrMarker28.BCRUseYN = true;
             this.bcrMarker28.BubbleText = "";
             this.bcrMarker28.CVPLCListDeviceID = 0;
+            this.bcrMarker28.CVType = "Conveyor";
             this.bcrMarker28.DisplayText = "";
             this.bcrMarker28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker28.Location = new System.Drawing.Point(720, 435);
+            this.bcrMarker28.Location = new System.Drawing.Point(720, 428);
             this.bcrMarker28.Name = "bcrMarker28";
             this.bcrMarker28.PLCNo = 1108;
             this.bcrMarker28.ShowSiteNo = false;
@@ -1928,11 +1959,12 @@
             this.bcrMarker27.BCRUseYN = true;
             this.bcrMarker27.BubbleText = "";
             this.bcrMarker27.CVPLCListDeviceID = 3;
+            this.bcrMarker27.CVType = "Conveyor";
             this.bcrMarker27.DisplayText = "";
             this.bcrMarker27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker27.Location = new System.Drawing.Point(1033, 880);
+            this.bcrMarker27.Location = new System.Drawing.Point(1033, 873);
             this.bcrMarker27.Name = "bcrMarker27";
-            this.bcrMarker27.PLCNo = 4217;
+            this.bcrMarker27.PLCNo = 4101;
             this.bcrMarker27.ShowSiteNo = false;
             this.bcrMarker27.ShowTroubleState = false;
             this.bcrMarker27.SiteNo = 0;
@@ -1949,11 +1981,12 @@
             this.bcrMarker26.BCRUseYN = true;
             this.bcrMarker26.BubbleText = "";
             this.bcrMarker26.CVPLCListDeviceID = 1;
+            this.bcrMarker26.CVType = "Conveyor";
             this.bcrMarker26.DisplayText = "";
             this.bcrMarker26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker26.Location = new System.Drawing.Point(1033, 548);
+            this.bcrMarker26.Location = new System.Drawing.Point(1033, 541);
             this.bcrMarker26.Name = "bcrMarker26";
-            this.bcrMarker26.PLCNo = 2212;
+            this.bcrMarker26.PLCNo = 2201;
             this.bcrMarker26.ShowSiteNo = false;
             this.bcrMarker26.ShowTroubleState = false;
             this.bcrMarker26.SiteNo = 0;
@@ -1970,11 +2003,12 @@
             this.bcrMarker25.BCRUseYN = true;
             this.bcrMarker25.BubbleText = "";
             this.bcrMarker25.CVPLCListDeviceID = 1;
+            this.bcrMarker25.CVType = "Conveyor";
             this.bcrMarker25.DisplayText = "";
             this.bcrMarker25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker25.Location = new System.Drawing.Point(1147, 459);
+            this.bcrMarker25.Location = new System.Drawing.Point(1147, 452);
             this.bcrMarker25.Name = "bcrMarker25";
-            this.bcrMarker25.PLCNo = 2211;
+            this.bcrMarker25.PLCNo = 2105;
             this.bcrMarker25.ShowSiteNo = false;
             this.bcrMarker25.ShowTroubleState = false;
             this.bcrMarker25.SiteNo = 0;
@@ -1991,11 +2025,12 @@
             this.bcrMarker24.BCRUseYN = true;
             this.bcrMarker24.BubbleText = "";
             this.bcrMarker24.CVPLCListDeviceID = 1;
+            this.bcrMarker24.CVType = "Conveyor";
             this.bcrMarker24.DisplayText = "";
             this.bcrMarker24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker24.Location = new System.Drawing.Point(1034, 346);
+            this.bcrMarker24.Location = new System.Drawing.Point(1034, 339);
             this.bcrMarker24.Name = "bcrMarker24";
-            this.bcrMarker24.PLCNo = 2207;
+            this.bcrMarker24.PLCNo = 2101;
             this.bcrMarker24.ShowSiteNo = false;
             this.bcrMarker24.ShowTroubleState = false;
             this.bcrMarker24.SiteNo = 0;
@@ -2012,11 +2047,12 @@
             this.bcrMarker23.BCRUseYN = true;
             this.bcrMarker23.BubbleText = "";
             this.bcrMarker23.CVPLCListDeviceID = 2;
+            this.bcrMarker23.CVType = "Conveyor";
             this.bcrMarker23.DisplayText = "";
             this.bcrMarker23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker23.Location = new System.Drawing.Point(1186, 258);
+            this.bcrMarker23.Location = new System.Drawing.Point(1186, 251);
             this.bcrMarker23.Name = "bcrMarker23";
-            this.bcrMarker23.PLCNo = 3206;
+            this.bcrMarker23.PLCNo = 3106;
             this.bcrMarker23.ShowSiteNo = false;
             this.bcrMarker23.ShowTroubleState = false;
             this.bcrMarker23.SiteNo = 0;
@@ -2028,15 +2064,16 @@
             // 
             this.bcrMarker22.BCRLevel = 2;
             this.bcrMarker22.BCRMarkColor = System.Drawing.Color.CornflowerBlue;
-            this.bcrMarker22.BCRMarkPosition = ControlGallery.BCRMarkPosition.Right;
+            this.bcrMarker22.BCRMarkPosition = ControlGallery.BCRMarkPosition.Left;
             this.bcrMarker22.BCRMarkThickness = 4;
             this.bcrMarker22.BCRUseYN = true;
             this.bcrMarker22.BubbleText = "";
             this.bcrMarker22.CVPLCListDeviceID = 0;
+            this.bcrMarker22.CVType = "Conveyor";
             this.bcrMarker22.DisplayText = "";
-            this.bcrMarker22.Location = new System.Drawing.Point(1218, 71);
+            this.bcrMarker22.Location = new System.Drawing.Point(1179, 103);
             this.bcrMarker22.Name = "bcrMarker22";
-            this.bcrMarker22.PLCNo = 1217;
+            this.bcrMarker22.PLCNo = 1218;
             this.bcrMarker22.ShowSiteNo = false;
             this.bcrMarker22.ShowTroubleState = false;
             this.bcrMarker22.SiteNo = 0;
@@ -2053,10 +2090,11 @@
             this.bcrMarker21.BCRUseYN = true;
             this.bcrMarker21.BubbleText = "";
             this.bcrMarker21.CVPLCListDeviceID = 0;
+            this.bcrMarker21.CVType = "Conveyor";
             this.bcrMarker21.DisplayText = "";
-            this.bcrMarker21.Location = new System.Drawing.Point(1105, 70);
+            this.bcrMarker21.Location = new System.Drawing.Point(1105, 102);
             this.bcrMarker21.Name = "bcrMarker21";
-            this.bcrMarker21.PLCNo = 1216;
+            this.bcrMarker21.PLCNo = 1215;
             this.bcrMarker21.ShowSiteNo = false;
             this.bcrMarker21.ShowTroubleState = false;
             this.bcrMarker21.SiteNo = 0;
@@ -2067,18 +2105,21 @@
             // ctrlSiteTrack50
             // 
             this.ctrlSiteTrack50.CVPLCListDeviceID = 3;
+            this.ctrlSiteTrack50.CVType = "Conveyor";
             this.ctrlSiteTrack50.DisplayText = "";
             this.ctrlSiteTrack50.FirstSiteNo = 31;
+            this.ctrlSiteTrack50.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack50.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack50.InterSitePadding = 2;
             this.ctrlSiteTrack50.IsControled = true;
             this.ctrlSiteTrack50.IsUpperStage = false;
-            this.ctrlSiteTrack50.Location = new System.Drawing.Point(1424, 844);
+            this.ctrlSiteTrack50.Location = new System.Drawing.Point(1424, 837);
             this.ctrlSiteTrack50.MainLoop = false;
             this.ctrlSiteTrack50.MarginHorizontal = 0;
             this.ctrlSiteTrack50.MarginVertical = 0;
             this.ctrlSiteTrack50.Name = "ctrlSiteTrack50";
             this.ctrlSiteTrack50.PLCNo = 50;
-            this.ctrlSiteTrack50.ShowSiteNo = false;
+            this.ctrlSiteTrack50.ShowSiteNo = true;
             this.ctrlSiteTrack50.ShowTroubleState = false;
             this.ctrlSiteTrack50.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack50.SiteBoxColor = System.Drawing.Color.Gray;
@@ -2100,12 +2141,15 @@
             // ctrlSiteTrack49
             // 
             this.ctrlSiteTrack49.CVPLCListDeviceID = 1;
+            this.ctrlSiteTrack49.CVType = "Conveyor";
             this.ctrlSiteTrack49.DisplayText = "";
             this.ctrlSiteTrack49.FirstSiteNo = 12;
+            this.ctrlSiteTrack49.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack49.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack49.InterSitePadding = 2;
             this.ctrlSiteTrack49.IsControled = true;
             this.ctrlSiteTrack49.IsUpperStage = false;
-            this.ctrlSiteTrack49.Location = new System.Drawing.Point(1497, 652);
+            this.ctrlSiteTrack49.Location = new System.Drawing.Point(1497, 645);
             this.ctrlSiteTrack49.MainLoop = false;
             this.ctrlSiteTrack49.MarginHorizontal = 0;
             this.ctrlSiteTrack49.MarginVertical = 0;
@@ -2133,12 +2177,15 @@
             // ctrlSiteTrack48
             // 
             this.ctrlSiteTrack48.CVPLCListDeviceID = 1;
+            this.ctrlSiteTrack48.CVType = "Conveyor";
             this.ctrlSiteTrack48.DisplayText = "";
             this.ctrlSiteTrack48.FirstSiteNo = 11;
+            this.ctrlSiteTrack48.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack48.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack48.InterSitePadding = 2;
             this.ctrlSiteTrack48.IsControled = true;
             this.ctrlSiteTrack48.IsUpperStage = false;
-            this.ctrlSiteTrack48.Location = new System.Drawing.Point(1497, 551);
+            this.ctrlSiteTrack48.Location = new System.Drawing.Point(1497, 544);
             this.ctrlSiteTrack48.MainLoop = false;
             this.ctrlSiteTrack48.MarginHorizontal = 0;
             this.ctrlSiteTrack48.MarginVertical = 0;
@@ -2166,12 +2213,15 @@
             // ctrlSiteTrack47
             // 
             this.ctrlSiteTrack47.CVPLCListDeviceID = 1;
+            this.ctrlSiteTrack47.CVType = "Conveyor";
             this.ctrlSiteTrack47.DisplayText = "";
             this.ctrlSiteTrack47.FirstSiteNo = 2;
+            this.ctrlSiteTrack47.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack47.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack47.InterSitePadding = 2;
             this.ctrlSiteTrack47.IsControled = true;
             this.ctrlSiteTrack47.IsUpperStage = false;
-            this.ctrlSiteTrack47.Location = new System.Drawing.Point(1496, 448);
+            this.ctrlSiteTrack47.Location = new System.Drawing.Point(1496, 441);
             this.ctrlSiteTrack47.MainLoop = false;
             this.ctrlSiteTrack47.MarginHorizontal = 0;
             this.ctrlSiteTrack47.MarginVertical = 0;
@@ -2199,12 +2249,15 @@
             // ctrlSiteTrack46
             // 
             this.ctrlSiteTrack46.CVPLCListDeviceID = 1;
+            this.ctrlSiteTrack46.CVType = "Conveyor";
             this.ctrlSiteTrack46.DisplayText = "";
             this.ctrlSiteTrack46.FirstSiteNo = 1;
+            this.ctrlSiteTrack46.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack46.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack46.InterSitePadding = 2;
             this.ctrlSiteTrack46.IsControled = true;
             this.ctrlSiteTrack46.IsUpperStage = false;
-            this.ctrlSiteTrack46.Location = new System.Drawing.Point(1497, 347);
+            this.ctrlSiteTrack46.Location = new System.Drawing.Point(1497, 340);
             this.ctrlSiteTrack46.MainLoop = false;
             this.ctrlSiteTrack46.MarginHorizontal = 0;
             this.ctrlSiteTrack46.MarginVertical = 0;
@@ -2232,12 +2285,15 @@
             // ctrlSiteTrack45
             // 
             this.ctrlSiteTrack45.CVPLCListDeviceID = 2;
+            this.ctrlSiteTrack45.CVType = "Conveyor";
             this.ctrlSiteTrack45.DisplayText = "W";
             this.ctrlSiteTrack45.FirstSiteNo = 22;
+            this.ctrlSiteTrack45.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack45.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack45.InterSitePadding = 2;
             this.ctrlSiteTrack45.IsControled = true;
             this.ctrlSiteTrack45.IsUpperStage = false;
-            this.ctrlSiteTrack45.Location = new System.Drawing.Point(1455, 246);
+            this.ctrlSiteTrack45.Location = new System.Drawing.Point(1455, 239);
             this.ctrlSiteTrack45.MainLoop = false;
             this.ctrlSiteTrack45.MarginHorizontal = 0;
             this.ctrlSiteTrack45.MarginVertical = 0;
@@ -2265,12 +2321,15 @@
             // ctrlSiteTrack44
             // 
             this.ctrlSiteTrack44.CVPLCListDeviceID = 2;
+            this.ctrlSiteTrack44.CVType = "Conveyor";
             this.ctrlSiteTrack44.DisplayText = "W";
             this.ctrlSiteTrack44.FirstSiteNo = 21;
+            this.ctrlSiteTrack44.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack44.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack44.InterSitePadding = 2;
             this.ctrlSiteTrack44.IsControled = true;
             this.ctrlSiteTrack44.IsUpperStage = false;
-            this.ctrlSiteTrack44.Location = new System.Drawing.Point(1455, 149);
+            this.ctrlSiteTrack44.Location = new System.Drawing.Point(1455, 142);
             this.ctrlSiteTrack44.MainLoop = false;
             this.ctrlSiteTrack44.MarginHorizontal = 0;
             this.ctrlSiteTrack44.MarginVertical = 0;
@@ -2298,7 +2357,7 @@
             // pictureBox14
             // 
             this.pictureBox14.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox14.Image")));
-            this.pictureBox14.Location = new System.Drawing.Point(159, 635);
+            this.pictureBox14.Location = new System.Drawing.Point(159, 628);
             this.pictureBox14.Name = "pictureBox14";
             this.pictureBox14.Size = new System.Drawing.Size(12, 4);
             this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2308,7 +2367,7 @@
             // pictureBox41
             // 
             this.pictureBox41.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox41.Image")));
-            this.pictureBox41.Location = new System.Drawing.Point(424, 635);
+            this.pictureBox41.Location = new System.Drawing.Point(424, 628);
             this.pictureBox41.Name = "pictureBox41";
             this.pictureBox41.Size = new System.Drawing.Size(12, 4);
             this.pictureBox41.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2318,7 +2377,7 @@
             // pictureBox6
             // 
             this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(501, 635);
+            this.pictureBox6.Location = new System.Drawing.Point(501, 628);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(12, 4);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2333,7 +2392,7 @@
             this.ctrlEqpLKC.EqpType = "LKC";
             this.ctrlEqpLKC.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpLKC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlEqpLKC.Location = new System.Drawing.Point(290, 312);
+            this.ctrlEqpLKC.Location = new System.Drawing.Point(290, 305);
             this.ctrlEqpLKC.Name = "ctrlEqpLKC";
             this.ctrlEqpLKC.Size = new System.Drawing.Size(202, 82);
             this.ctrlEqpLKC.TabIndex = 543;
@@ -2347,7 +2406,7 @@
             this.ctrlEqpHPC1.EqpType = "HPC";
             this.ctrlEqpHPC1.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpHPC1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlEqpHPC1.Location = new System.Drawing.Point(1493, 763);
+            this.ctrlEqpHPC1.Location = new System.Drawing.Point(1493, 756);
             this.ctrlEqpHPC1.Name = "ctrlEqpHPC1";
             this.ctrlEqpHPC1.Size = new System.Drawing.Size(86, 116);
             this.ctrlEqpHPC1.TabIndex = 542;
@@ -2362,7 +2421,7 @@
             this.ctrlEqpPAC.EqpType = "PAC";
             this.ctrlEqpPAC.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpPAC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlEqpPAC.Location = new System.Drawing.Point(109, 222);
+            this.ctrlEqpPAC.Location = new System.Drawing.Point(109, 215);
             this.ctrlEqpPAC.Name = "ctrlEqpPAC";
             this.ctrlEqpPAC.Size = new System.Drawing.Size(110, 154);
             this.ctrlEqpPAC.TabIndex = 541;
@@ -2375,7 +2434,7 @@
             this.ctrlEqpVSI.EqpType = "VSI";
             this.ctrlEqpVSI.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpVSI.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlEqpVSI.Location = new System.Drawing.Point(605, 550);
+            this.ctrlEqpVSI.Location = new System.Drawing.Point(605, 543);
             this.ctrlEqpVSI.Name = "ctrlEqpVSI";
             this.ctrlEqpVSI.Size = new System.Drawing.Size(300, 82);
             this.ctrlEqpVSI.TabIndex = 540;
@@ -2388,7 +2447,7 @@
             this.ctrlEqpNGS.EqpType = "NGS";
             this.ctrlEqpNGS.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpNGS.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlEqpNGS.Location = new System.Drawing.Point(48, 521);
+            this.ctrlEqpNGS.Location = new System.Drawing.Point(48, 514);
             this.ctrlEqpNGS.Name = "ctrlEqpNGS";
             this.ctrlEqpNGS.Size = new System.Drawing.Size(154, 112);
             this.ctrlEqpNGS.TabIndex = 539;
@@ -2401,7 +2460,7 @@
             this.ctrlEqpDGS.EqpType = "DGS";
             this.ctrlEqpDGS.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpDGS.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlEqpDGS.Location = new System.Drawing.Point(682, 192);
+            this.ctrlEqpDGS.Location = new System.Drawing.Point(682, 185);
             this.ctrlEqpDGS.Name = "ctrlEqpDGS";
             this.ctrlEqpDGS.Size = new System.Drawing.Size(184, 100);
             this.ctrlEqpDGS.TabIndex = 538;
@@ -2414,7 +2473,7 @@
             this.ctrlEqpMIC.EqpType = "MIC";
             this.ctrlEqpMIC.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpMIC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlEqpMIC.Location = new System.Drawing.Point(622, 315);
+            this.ctrlEqpMIC.Location = new System.Drawing.Point(622, 308);
             this.ctrlEqpMIC.Name = "ctrlEqpMIC";
             this.ctrlEqpMIC.Size = new System.Drawing.Size(143, 80);
             this.ctrlEqpMIC.TabIndex = 537;
@@ -2428,7 +2487,7 @@
             this.ctrlEqpDCR.EqpType = "DCR";
             this.ctrlEqpDCR.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpDCR.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlEqpDCR.Location = new System.Drawing.Point(472, 520);
+            this.ctrlEqpDCR.Location = new System.Drawing.Point(472, 513);
             this.ctrlEqpDCR.Name = "ctrlEqpDCR";
             this.ctrlEqpDCR.Size = new System.Drawing.Size(101, 114);
             this.ctrlEqpDCR.TabIndex = 536;
@@ -2441,7 +2500,7 @@
             this.ctrlEqpOCV.EqpType = "OCV";
             this.ctrlEqpOCV.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlEqpOCV.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.ctrlEqpOCV.Location = new System.Drawing.Point(369, 520);
+            this.ctrlEqpOCV.Location = new System.Drawing.Point(369, 513);
             this.ctrlEqpOCV.Name = "ctrlEqpOCV";
             this.ctrlEqpOCV.Size = new System.Drawing.Size(101, 114);
             this.ctrlEqpOCV.TabIndex = 535;
@@ -2449,18 +2508,21 @@
             // ctrlSiteTrack43
             // 
             this.ctrlSiteTrack43.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack43.CVType = "Conveyor";
             this.ctrlSiteTrack43.DisplayText = "";
             this.ctrlSiteTrack43.FirstSiteNo = 1106;
+            this.ctrlSiteTrack43.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack43.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack43.InterSitePadding = 6;
             this.ctrlSiteTrack43.IsControled = true;
             this.ctrlSiteTrack43.IsUpperStage = false;
-            this.ctrlSiteTrack43.Location = new System.Drawing.Point(871, 508);
+            this.ctrlSiteTrack43.Location = new System.Drawing.Point(871, 501);
             this.ctrlSiteTrack43.MainLoop = false;
             this.ctrlSiteTrack43.MarginHorizontal = 0;
             this.ctrlSiteTrack43.MarginVertical = 0;
             this.ctrlSiteTrack43.Name = "ctrlSiteTrack43";
             this.ctrlSiteTrack43.PLCNo = 43;
-            this.ctrlSiteTrack43.ShowSiteNo = false;
+            this.ctrlSiteTrack43.ShowSiteNo = true;
             this.ctrlSiteTrack43.ShowTroubleState = false;
             this.ctrlSiteTrack43.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack43.SiteBoxColor = System.Drawing.Color.Gray;
@@ -2480,18 +2542,21 @@
             // ctrlSiteTrack42
             // 
             this.ctrlSiteTrack42.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack42.CVType = "Conveyor";
             this.ctrlSiteTrack42.DisplayText = "";
             this.ctrlSiteTrack42.FirstSiteNo = 1111;
+            this.ctrlSiteTrack42.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack42.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack42.InterSitePadding = 6;
             this.ctrlSiteTrack42.IsControled = true;
             this.ctrlSiteTrack42.IsUpperStage = false;
-            this.ctrlSiteTrack42.Location = new System.Drawing.Point(682, 508);
+            this.ctrlSiteTrack42.Location = new System.Drawing.Point(682, 501);
             this.ctrlSiteTrack42.MainLoop = false;
             this.ctrlSiteTrack42.MarginHorizontal = 0;
             this.ctrlSiteTrack42.MarginVertical = 0;
             this.ctrlSiteTrack42.Name = "ctrlSiteTrack42";
             this.ctrlSiteTrack42.PLCNo = 42;
-            this.ctrlSiteTrack42.ShowSiteNo = false;
+            this.ctrlSiteTrack42.ShowSiteNo = true;
             this.ctrlSiteTrack42.ShowTroubleState = false;
             this.ctrlSiteTrack42.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack42.SiteBoxColor = System.Drawing.Color.Gray;
@@ -2511,18 +2576,21 @@
             // ctrlSiteTrack41
             // 
             this.ctrlSiteTrack41.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack41.CVType = "Conveyor";
             this.ctrlSiteTrack41.DisplayText = "";
             this.ctrlSiteTrack41.FirstSiteNo = 1125;
+            this.ctrlSiteTrack41.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack41.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack41.InterSitePadding = 6;
             this.ctrlSiteTrack41.IsControled = true;
             this.ctrlSiteTrack41.IsUpperStage = false;
-            this.ctrlSiteTrack41.Location = new System.Drawing.Point(338, 400);
+            this.ctrlSiteTrack41.Location = new System.Drawing.Point(338, 393);
             this.ctrlSiteTrack41.MainLoop = false;
             this.ctrlSiteTrack41.MarginHorizontal = 0;
             this.ctrlSiteTrack41.MarginVertical = 0;
             this.ctrlSiteTrack41.Name = "ctrlSiteTrack41";
             this.ctrlSiteTrack41.PLCNo = 41;
-            this.ctrlSiteTrack41.ShowSiteNo = false;
+            this.ctrlSiteTrack41.ShowSiteNo = true;
             this.ctrlSiteTrack41.ShowTroubleState = false;
             this.ctrlSiteTrack41.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack41.SiteBoxColor = System.Drawing.Color.Gray;
@@ -2542,18 +2610,21 @@
             // ctrlSiteTrack40
             // 
             this.ctrlSiteTrack40.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack40.CVType = "Conveyor";
             this.ctrlSiteTrack40.DisplayText = "";
             this.ctrlSiteTrack40.FirstSiteNo = 1169;
+            this.ctrlSiteTrack40.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack40.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack40.InterSitePadding = 6;
             this.ctrlSiteTrack40.IsControled = true;
             this.ctrlSiteTrack40.IsUpperStage = false;
-            this.ctrlSiteTrack40.Location = new System.Drawing.Point(643, 719);
+            this.ctrlSiteTrack40.Location = new System.Drawing.Point(643, 712);
             this.ctrlSiteTrack40.MainLoop = false;
             this.ctrlSiteTrack40.MarginHorizontal = 0;
             this.ctrlSiteTrack40.MarginVertical = 0;
             this.ctrlSiteTrack40.Name = "ctrlSiteTrack40";
             this.ctrlSiteTrack40.PLCNo = 40;
-            this.ctrlSiteTrack40.ShowSiteNo = false;
+            this.ctrlSiteTrack40.ShowSiteNo = true;
             this.ctrlSiteTrack40.ShowTroubleState = false;
             this.ctrlSiteTrack40.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack40.SiteBoxColor = System.Drawing.Color.Gray;
@@ -2574,7 +2645,7 @@
             // pictureBox20
             // 
             this.pictureBox20.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox20.Image")));
-            this.pictureBox20.Location = new System.Drawing.Point(1454, 863);
+            this.pictureBox20.Location = new System.Drawing.Point(1454, 856);
             this.pictureBox20.Name = "pictureBox20";
             this.pictureBox20.Size = new System.Drawing.Size(4, 12);
             this.pictureBox20.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2584,7 +2655,7 @@
             // pictureBox21
             // 
             this.pictureBox21.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox21.Image")));
-            this.pictureBox21.Location = new System.Drawing.Point(1454, 850);
+            this.pictureBox21.Location = new System.Drawing.Point(1454, 843);
             this.pictureBox21.Name = "pictureBox21";
             this.pictureBox21.Size = new System.Drawing.Size(4, 12);
             this.pictureBox21.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2594,7 +2665,7 @@
             // pictureBox23
             // 
             this.pictureBox23.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox23.Image")));
-            this.pictureBox23.Location = new System.Drawing.Point(1493, 863);
+            this.pictureBox23.Location = new System.Drawing.Point(1493, 856);
             this.pictureBox23.Name = "pictureBox23";
             this.pictureBox23.Size = new System.Drawing.Size(4, 12);
             this.pictureBox23.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2604,7 +2675,7 @@
             // pictureBox24
             // 
             this.pictureBox24.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox24.Image")));
-            this.pictureBox24.Location = new System.Drawing.Point(1493, 850);
+            this.pictureBox24.Location = new System.Drawing.Point(1493, 843);
             this.pictureBox24.Name = "pictureBox24";
             this.pictureBox24.Size = new System.Drawing.Size(4, 12);
             this.pictureBox24.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2614,7 +2685,7 @@
             // pictureBox85
             // 
             this.pictureBox85.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox85.Image")));
-            this.pictureBox85.Location = new System.Drawing.Point(904, 450);
+            this.pictureBox85.Location = new System.Drawing.Point(904, 443);
             this.pictureBox85.Name = "pictureBox85";
             this.pictureBox85.Size = new System.Drawing.Size(4, 12);
             this.pictureBox85.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2624,7 +2695,7 @@
             // pictureBox80
             // 
             this.pictureBox80.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox80.Image")));
-            this.pictureBox80.Location = new System.Drawing.Point(615, 544);
+            this.pictureBox80.Location = new System.Drawing.Point(615, 537);
             this.pictureBox80.Name = "pictureBox80";
             this.pictureBox80.Size = new System.Drawing.Size(12, 4);
             this.pictureBox80.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2634,7 +2705,7 @@
             // pictureBox78
             // 
             this.pictureBox78.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox78.Image")));
-            this.pictureBox78.Location = new System.Drawing.Point(696, 544);
+            this.pictureBox78.Location = new System.Drawing.Point(696, 537);
             this.pictureBox78.Name = "pictureBox78";
             this.pictureBox78.Size = new System.Drawing.Size(12, 4);
             this.pictureBox78.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2644,7 +2715,7 @@
             // pictureBox77
             // 
             this.pictureBox77.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox77.Image")));
-            this.pictureBox77.Location = new System.Drawing.Point(882, 544);
+            this.pictureBox77.Location = new System.Drawing.Point(882, 537);
             this.pictureBox77.Name = "pictureBox77";
             this.pictureBox77.Size = new System.Drawing.Size(12, 4);
             this.pictureBox77.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2654,7 +2725,7 @@
             // pictureBox73
             // 
             this.pictureBox73.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox73.Image")));
-            this.pictureBox73.Location = new System.Drawing.Point(807, 544);
+            this.pictureBox73.Location = new System.Drawing.Point(807, 537);
             this.pictureBox73.Name = "pictureBox73";
             this.pictureBox73.Size = new System.Drawing.Size(12, 4);
             this.pictureBox73.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2664,7 +2735,7 @@
             // pictureBox11
             // 
             this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
-            this.pictureBox11.Location = new System.Drawing.Point(867, 229);
+            this.pictureBox11.Location = new System.Drawing.Point(867, 222);
             this.pictureBox11.Name = "pictureBox11";
             this.pictureBox11.Size = new System.Drawing.Size(4, 12);
             this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2674,7 +2745,7 @@
             // pictureBox5
             // 
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(842, 292);
+            this.pictureBox5.Location = new System.Drawing.Point(842, 285);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(12, 4);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2684,7 +2755,7 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(844, 185);
+            this.pictureBox4.Location = new System.Drawing.Point(844, 178);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(12, 4);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2694,7 +2765,7 @@
             // pictureBox71
             // 
             this.pictureBox71.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox71.Image")));
-            this.pictureBox71.Location = new System.Drawing.Point(500, 514);
+            this.pictureBox71.Location = new System.Drawing.Point(500, 507);
             this.pictureBox71.Name = "pictureBox71";
             this.pictureBox71.Size = new System.Drawing.Size(12, 4);
             this.pictureBox71.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2704,7 +2775,7 @@
             // pictureBox88
             // 
             this.pictureBox88.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox88.Image")));
-            this.pictureBox88.Location = new System.Drawing.Point(426, 515);
+            this.pictureBox88.Location = new System.Drawing.Point(426, 508);
             this.pictureBox88.Name = "pictureBox88";
             this.pictureBox88.Size = new System.Drawing.Size(12, 4);
             this.pictureBox88.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2714,7 +2785,7 @@
             // pictureBox86
             // 
             this.pictureBox86.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox86.Image")));
-            this.pictureBox86.Location = new System.Drawing.Point(82, 514);
+            this.pictureBox86.Location = new System.Drawing.Point(82, 507);
             this.pictureBox86.Name = "pictureBox86";
             this.pictureBox86.Size = new System.Drawing.Size(12, 4);
             this.pictureBox86.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2724,7 +2795,7 @@
             // pictureBox70
             // 
             this.pictureBox70.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox70.Image")));
-            this.pictureBox70.Location = new System.Drawing.Point(159, 514);
+            this.pictureBox70.Location = new System.Drawing.Point(159, 507);
             this.pictureBox70.Name = "pictureBox70";
             this.pictureBox70.Size = new System.Drawing.Size(12, 4);
             this.pictureBox70.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2734,7 +2805,7 @@
             // pictureBox12
             // 
             this.pictureBox12.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox12.Image")));
-            this.pictureBox12.Location = new System.Drawing.Point(82, 635);
+            this.pictureBox12.Location = new System.Drawing.Point(82, 628);
             this.pictureBox12.Name = "pictureBox12";
             this.pictureBox12.Size = new System.Drawing.Size(12, 4);
             this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2768,7 +2839,7 @@
             // pictureBox38
             // 
             this.pictureBox38.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox38.Image")));
-            this.pictureBox38.Location = new System.Drawing.Point(235, 354);
+            this.pictureBox38.Location = new System.Drawing.Point(235, 347);
             this.pictureBox38.Name = "pictureBox38";
             this.pictureBox38.Size = new System.Drawing.Size(12, 4);
             this.pictureBox38.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2778,18 +2849,21 @@
             // ctrlSiteTrack39
             // 
             this.ctrlSiteTrack39.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack39.CVType = "Conveyor";
             this.ctrlSiteTrack39.DisplayText = "";
             this.ctrlSiteTrack39.FirstSiteNo = 1211;
+            this.ctrlSiteTrack39.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack39.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack39.InterSitePadding = 0;
             this.ctrlSiteTrack39.IsControled = true;
             this.ctrlSiteTrack39.IsUpperStage = false;
-            this.ctrlSiteTrack39.Location = new System.Drawing.Point(950, 149);
+            this.ctrlSiteTrack39.Location = new System.Drawing.Point(950, 142);
             this.ctrlSiteTrack39.MainLoop = false;
             this.ctrlSiteTrack39.MarginHorizontal = 0;
             this.ctrlSiteTrack39.MarginVertical = 0;
             this.ctrlSiteTrack39.Name = "ctrlSiteTrack39";
             this.ctrlSiteTrack39.PLCNo = 39;
-            this.ctrlSiteTrack39.ShowSiteNo = false;
+            this.ctrlSiteTrack39.ShowSiteNo = true;
             this.ctrlSiteTrack39.ShowTroubleState = false;
             this.ctrlSiteTrack39.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack39.SiteBoxColor = System.Drawing.Color.Gray;
@@ -2809,7 +2883,7 @@
             // pictureBox19
             // 
             this.pictureBox19.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox19.Image")));
-            this.pictureBox19.Location = new System.Drawing.Point(986, 309);
+            this.pictureBox19.Location = new System.Drawing.Point(986, 302);
             this.pictureBox19.Name = "pictureBox19";
             this.pictureBox19.Size = new System.Drawing.Size(4, 12);
             this.pictureBox19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2819,18 +2893,21 @@
             // ctrlSiteTrack38
             // 
             this.ctrlSiteTrack38.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack38.CVType = "Dispenser";
             this.ctrlSiteTrack38.DisplayText = "";
             this.ctrlSiteTrack38.FirstSiteNo = 2;
+            this.ctrlSiteTrack38.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack38.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack38.InterSitePadding = 0;
             this.ctrlSiteTrack38.IsControled = true;
             this.ctrlSiteTrack38.IsUpperStage = false;
-            this.ctrlSiteTrack38.Location = new System.Drawing.Point(950, 297);
+            this.ctrlSiteTrack38.Location = new System.Drawing.Point(950, 290);
             this.ctrlSiteTrack38.MainLoop = false;
             this.ctrlSiteTrack38.MarginHorizontal = 0;
             this.ctrlSiteTrack38.MarginVertical = 0;
             this.ctrlSiteTrack38.Name = "ctrlSiteTrack38";
             this.ctrlSiteTrack38.PLCNo = 38;
-            this.ctrlSiteTrack38.ShowSiteNo = false;
+            this.ctrlSiteTrack38.ShowSiteNo = true;
             this.ctrlSiteTrack38.ShowTroubleState = false;
             this.ctrlSiteTrack38.SiteBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ctrlSiteTrack38.SiteBoxColor = System.Drawing.Color.Gray;
@@ -2852,18 +2929,21 @@
             // ctrlSiteTrack37
             // 
             this.ctrlSiteTrack37.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack37.CVType = "DPMZ";
             this.ctrlSiteTrack37.DisplayText = "";
             this.ctrlSiteTrack37.FirstSiteNo = 402;
+            this.ctrlSiteTrack37.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack37.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack37.InterSitePadding = 0;
             this.ctrlSiteTrack37.IsControled = true;
             this.ctrlSiteTrack37.IsUpperStage = false;
-            this.ctrlSiteTrack37.Location = new System.Drawing.Point(149, 399);
+            this.ctrlSiteTrack37.Location = new System.Drawing.Point(149, 392);
             this.ctrlSiteTrack37.MainLoop = false;
             this.ctrlSiteTrack37.MarginHorizontal = 0;
             this.ctrlSiteTrack37.MarginVertical = 0;
             this.ctrlSiteTrack37.Name = "ctrlSiteTrack37";
             this.ctrlSiteTrack37.PLCNo = 37;
-            this.ctrlSiteTrack37.ShowSiteNo = false;
+            this.ctrlSiteTrack37.ShowSiteNo = true;
             this.ctrlSiteTrack37.ShowTroubleState = false;
             this.ctrlSiteTrack37.SiteBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ctrlSiteTrack37.SiteBoxColor = System.Drawing.Color.Gray;
@@ -2885,18 +2965,21 @@
             // ctrlSiteTrack36
             // 
             this.ctrlSiteTrack36.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack36.CVType = "Conveyor";
             this.ctrlSiteTrack36.DisplayText = "";
             this.ctrlSiteTrack36.FirstSiteNo = 1101;
+            this.ctrlSiteTrack36.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack36.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack36.InterSitePadding = 0;
             this.ctrlSiteTrack36.IsControled = true;
             this.ctrlSiteTrack36.IsUpperStage = false;
-            this.ctrlSiteTrack36.Location = new System.Drawing.Point(950, 439);
+            this.ctrlSiteTrack36.Location = new System.Drawing.Point(950, 432);
             this.ctrlSiteTrack36.MainLoop = false;
             this.ctrlSiteTrack36.MarginHorizontal = 0;
             this.ctrlSiteTrack36.MarginVertical = 0;
             this.ctrlSiteTrack36.Name = "ctrlSiteTrack36";
             this.ctrlSiteTrack36.PLCNo = 36;
-            this.ctrlSiteTrack36.ShowSiteNo = false;
+            this.ctrlSiteTrack36.ShowSiteNo = true;
             this.ctrlSiteTrack36.ShowTroubleState = false;
             this.ctrlSiteTrack36.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack36.SiteBoxColor = System.Drawing.Color.Gray;
@@ -2916,18 +2999,21 @@
             // ctrlSiteTrack35
             // 
             this.ctrlSiteTrack35.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack35.CVType = "Conveyor";
             this.ctrlSiteTrack35.DisplayText = "";
             this.ctrlSiteTrack35.FirstSiteNo = 1175;
+            this.ctrlSiteTrack35.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack35.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack35.InterSitePadding = 0;
             this.ctrlSiteTrack35.IsControled = true;
             this.ctrlSiteTrack35.IsUpperStage = false;
-            this.ctrlSiteTrack35.Location = new System.Drawing.Point(950, 678);
+            this.ctrlSiteTrack35.Location = new System.Drawing.Point(950, 671);
             this.ctrlSiteTrack35.MainLoop = false;
             this.ctrlSiteTrack35.MarginHorizontal = 0;
             this.ctrlSiteTrack35.MarginVertical = 0;
             this.ctrlSiteTrack35.Name = "ctrlSiteTrack35";
             this.ctrlSiteTrack35.PLCNo = 35;
-            this.ctrlSiteTrack35.ShowSiteNo = false;
+            this.ctrlSiteTrack35.ShowSiteNo = true;
             this.ctrlSiteTrack35.ShowTroubleState = false;
             this.ctrlSiteTrack35.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack35.SiteBoxColor = System.Drawing.Color.Gray;
@@ -2947,7 +3033,7 @@
             // pictureBox13
             // 
             this.pictureBox13.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox13.Image")));
-            this.pictureBox13.Location = new System.Drawing.Point(105, 450);
+            this.pictureBox13.Location = new System.Drawing.Point(105, 443);
             this.pictureBox13.Name = "pictureBox13";
             this.pictureBox13.Size = new System.Drawing.Size(4, 12);
             this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2957,7 +3043,7 @@
             // pictureBox10
             // 
             this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
-            this.pictureBox10.Location = new System.Drawing.Point(921, 292);
+            this.pictureBox10.Location = new System.Drawing.Point(921, 285);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(12, 4);
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2967,7 +3053,7 @@
             // pictureBox9
             // 
             this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
-            this.pictureBox9.Location = new System.Drawing.Point(867, 309);
+            this.pictureBox9.Location = new System.Drawing.Point(867, 302);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(4, 12);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2977,7 +3063,7 @@
             // pictureBox8
             // 
             this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(986, 160);
+            this.pictureBox8.Location = new System.Drawing.Point(986, 153);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(4, 12);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2987,7 +3073,7 @@
             // pictureBox7
             // 
             this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
-            this.pictureBox7.Location = new System.Drawing.Point(865, 160);
+            this.pictureBox7.Location = new System.Drawing.Point(865, 153);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(4, 12);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2997,7 +3083,7 @@
             // pictureBox142
             // 
             this.pictureBox142.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox142.Image")));
-            this.pictureBox142.Location = new System.Drawing.Point(660, 714);
+            this.pictureBox142.Location = new System.Drawing.Point(660, 707);
             this.pictureBox142.Name = "pictureBox142";
             this.pictureBox142.Size = new System.Drawing.Size(12, 4);
             this.pictureBox142.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3007,7 +3093,7 @@
             // pictureBox143
             // 
             this.pictureBox143.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox143.Image")));
-            this.pictureBox143.Location = new System.Drawing.Point(645, 714);
+            this.pictureBox143.Location = new System.Drawing.Point(645, 707);
             this.pictureBox143.Name = "pictureBox143";
             this.pictureBox143.Size = new System.Drawing.Size(12, 4);
             this.pictureBox143.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3017,7 +3103,7 @@
             // pictureBox140
             // 
             this.pictureBox140.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox140.Image")));
-            this.pictureBox140.Location = new System.Drawing.Point(584, 714);
+            this.pictureBox140.Location = new System.Drawing.Point(584, 707);
             this.pictureBox140.Name = "pictureBox140";
             this.pictureBox140.Size = new System.Drawing.Size(12, 4);
             this.pictureBox140.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3027,7 +3113,7 @@
             // pictureBox141
             // 
             this.pictureBox141.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox141.Image")));
-            this.pictureBox141.Location = new System.Drawing.Point(569, 714);
+            this.pictureBox141.Location = new System.Drawing.Point(569, 707);
             this.pictureBox141.Name = "pictureBox141";
             this.pictureBox141.Size = new System.Drawing.Size(12, 4);
             this.pictureBox141.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3037,7 +3123,7 @@
             // pictureBox138
             // 
             this.pictureBox138.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox138.Image")));
-            this.pictureBox138.Location = new System.Drawing.Point(506, 714);
+            this.pictureBox138.Location = new System.Drawing.Point(506, 707);
             this.pictureBox138.Name = "pictureBox138";
             this.pictureBox138.Size = new System.Drawing.Size(12, 4);
             this.pictureBox138.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3047,7 +3133,7 @@
             // pictureBox139
             // 
             this.pictureBox139.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox139.Image")));
-            this.pictureBox139.Location = new System.Drawing.Point(491, 714);
+            this.pictureBox139.Location = new System.Drawing.Point(491, 707);
             this.pictureBox139.Name = "pictureBox139";
             this.pictureBox139.Size = new System.Drawing.Size(12, 4);
             this.pictureBox139.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3057,7 +3143,7 @@
             // pictureBox52
             // 
             this.pictureBox52.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox52.Image")));
-            this.pictureBox52.Location = new System.Drawing.Point(432, 715);
+            this.pictureBox52.Location = new System.Drawing.Point(432, 708);
             this.pictureBox52.Name = "pictureBox52";
             this.pictureBox52.Size = new System.Drawing.Size(12, 4);
             this.pictureBox52.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3067,7 +3153,7 @@
             // pictureBox53
             // 
             this.pictureBox53.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox53.Image")));
-            this.pictureBox53.Location = new System.Drawing.Point(417, 715);
+            this.pictureBox53.Location = new System.Drawing.Point(417, 708);
             this.pictureBox53.Name = "pictureBox53";
             this.pictureBox53.Size = new System.Drawing.Size(12, 4);
             this.pictureBox53.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3077,7 +3163,7 @@
             // pictureBox50
             // 
             this.pictureBox50.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox50.Image")));
-            this.pictureBox50.Location = new System.Drawing.Point(241, 714);
+            this.pictureBox50.Location = new System.Drawing.Point(241, 707);
             this.pictureBox50.Name = "pictureBox50";
             this.pictureBox50.Size = new System.Drawing.Size(12, 4);
             this.pictureBox50.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3087,7 +3173,7 @@
             // pictureBox51
             // 
             this.pictureBox51.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox51.Image")));
-            this.pictureBox51.Location = new System.Drawing.Point(226, 714);
+            this.pictureBox51.Location = new System.Drawing.Point(226, 707);
             this.pictureBox51.Name = "pictureBox51";
             this.pictureBox51.Size = new System.Drawing.Size(12, 4);
             this.pictureBox51.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3097,7 +3183,7 @@
             // pictureBox46
             // 
             this.pictureBox46.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox46.Image")));
-            this.pictureBox46.Location = new System.Drawing.Point(165, 714);
+            this.pictureBox46.Location = new System.Drawing.Point(165, 707);
             this.pictureBox46.Name = "pictureBox46";
             this.pictureBox46.Size = new System.Drawing.Size(12, 4);
             this.pictureBox46.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3107,7 +3193,7 @@
             // pictureBox42
             // 
             this.pictureBox42.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox42.Image")));
-            this.pictureBox42.Location = new System.Drawing.Point(150, 714);
+            this.pictureBox42.Location = new System.Drawing.Point(150, 707);
             this.pictureBox42.Name = "pictureBox42";
             this.pictureBox42.Size = new System.Drawing.Size(12, 4);
             this.pictureBox42.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3117,7 +3203,7 @@
             // pictureBox136
             // 
             this.pictureBox136.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox136.Image")));
-            this.pictureBox136.Location = new System.Drawing.Point(1186, 840);
+            this.pictureBox136.Location = new System.Drawing.Point(1186, 833);
             this.pictureBox136.Name = "pictureBox136";
             this.pictureBox136.Size = new System.Drawing.Size(12, 4);
             this.pictureBox136.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3127,7 +3213,7 @@
             // pictureBox137
             // 
             this.pictureBox137.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox137.Image")));
-            this.pictureBox137.Location = new System.Drawing.Point(1200, 840);
+            this.pictureBox137.Location = new System.Drawing.Point(1200, 833);
             this.pictureBox137.Name = "pictureBox137";
             this.pictureBox137.Size = new System.Drawing.Size(12, 4);
             this.pictureBox137.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3137,7 +3223,7 @@
             // pictureBox134
             // 
             this.pictureBox134.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox134.Image")));
-            this.pictureBox134.Location = new System.Drawing.Point(1216, 863);
+            this.pictureBox134.Location = new System.Drawing.Point(1216, 856);
             this.pictureBox134.Name = "pictureBox134";
             this.pictureBox134.Size = new System.Drawing.Size(4, 12);
             this.pictureBox134.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3147,7 +3233,7 @@
             // pictureBox135
             // 
             this.pictureBox135.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox135.Image")));
-            this.pictureBox135.Location = new System.Drawing.Point(1216, 850);
+            this.pictureBox135.Location = new System.Drawing.Point(1216, 843);
             this.pictureBox135.Name = "pictureBox135";
             this.pictureBox135.Size = new System.Drawing.Size(4, 12);
             this.pictureBox135.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3157,7 +3243,7 @@
             // pictureBox133
             // 
             this.pictureBox133.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox133.Image")));
-            this.pictureBox133.Location = new System.Drawing.Point(1027, 863);
+            this.pictureBox133.Location = new System.Drawing.Point(1027, 856);
             this.pictureBox133.Name = "pictureBox133";
             this.pictureBox133.Size = new System.Drawing.Size(4, 12);
             this.pictureBox133.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3167,7 +3253,7 @@
             // pictureBox60
             // 
             this.pictureBox60.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox60.Image")));
-            this.pictureBox60.Location = new System.Drawing.Point(1150, 257);
+            this.pictureBox60.Location = new System.Drawing.Point(1150, 250);
             this.pictureBox60.Name = "pictureBox60";
             this.pictureBox60.Size = new System.Drawing.Size(12, 4);
             this.pictureBox60.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3177,7 +3263,7 @@
             // pictureBox75
             // 
             this.pictureBox75.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox75.Image")));
-            this.pictureBox75.Location = new System.Drawing.Point(1164, 257);
+            this.pictureBox75.Location = new System.Drawing.Point(1164, 250);
             this.pictureBox75.Name = "pictureBox75";
             this.pictureBox75.Size = new System.Drawing.Size(12, 4);
             this.pictureBox75.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3187,7 +3273,7 @@
             // pictureBox130
             // 
             this.pictureBox130.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox130.Image")));
-            this.pictureBox130.Location = new System.Drawing.Point(1110, 547);
+            this.pictureBox130.Location = new System.Drawing.Point(1110, 540);
             this.pictureBox130.Name = "pictureBox130";
             this.pictureBox130.Size = new System.Drawing.Size(12, 4);
             this.pictureBox130.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3197,7 +3283,7 @@
             // pictureBox131
             // 
             this.pictureBox131.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox131.Image")));
-            this.pictureBox131.Location = new System.Drawing.Point(1124, 547);
+            this.pictureBox131.Location = new System.Drawing.Point(1124, 540);
             this.pictureBox131.Name = "pictureBox131";
             this.pictureBox131.Size = new System.Drawing.Size(12, 4);
             this.pictureBox131.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3207,7 +3293,7 @@
             // pictureBox128
             // 
             this.pictureBox128.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox128.Image")));
-            this.pictureBox128.Location = new System.Drawing.Point(1141, 569);
+            this.pictureBox128.Location = new System.Drawing.Point(1141, 562);
             this.pictureBox128.Name = "pictureBox128";
             this.pictureBox128.Size = new System.Drawing.Size(4, 12);
             this.pictureBox128.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3217,7 +3303,7 @@
             // pictureBox129
             // 
             this.pictureBox129.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox129.Image")));
-            this.pictureBox129.Location = new System.Drawing.Point(1142, 556);
+            this.pictureBox129.Location = new System.Drawing.Point(1142, 549);
             this.pictureBox129.Name = "pictureBox129";
             this.pictureBox129.Size = new System.Drawing.Size(4, 12);
             this.pictureBox129.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3227,7 +3313,7 @@
             // pictureBox126
             // 
             this.pictureBox126.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox126.Image")));
-            this.pictureBox126.Location = new System.Drawing.Point(1141, 368);
+            this.pictureBox126.Location = new System.Drawing.Point(1141, 361);
             this.pictureBox126.Name = "pictureBox126";
             this.pictureBox126.Size = new System.Drawing.Size(4, 12);
             this.pictureBox126.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3237,7 +3323,7 @@
             // pictureBox127
             // 
             this.pictureBox127.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox127.Image")));
-            this.pictureBox127.Location = new System.Drawing.Point(1142, 355);
+            this.pictureBox127.Location = new System.Drawing.Point(1142, 348);
             this.pictureBox127.Name = "pictureBox127";
             this.pictureBox127.Size = new System.Drawing.Size(4, 12);
             this.pictureBox127.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3247,7 +3333,7 @@
             // pictureBox124
             // 
             this.pictureBox124.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox124.Image")));
-            this.pictureBox124.Location = new System.Drawing.Point(1179, 239);
+            this.pictureBox124.Location = new System.Drawing.Point(1179, 232);
             this.pictureBox124.Name = "pictureBox124";
             this.pictureBox124.Size = new System.Drawing.Size(4, 12);
             this.pictureBox124.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3257,7 +3343,7 @@
             // pictureBox125
             // 
             this.pictureBox125.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox125.Image")));
-            this.pictureBox125.Location = new System.Drawing.Point(1180, 226);
+            this.pictureBox125.Location = new System.Drawing.Point(1180, 219);
             this.pictureBox125.Name = "pictureBox125";
             this.pictureBox125.Size = new System.Drawing.Size(4, 12);
             this.pictureBox125.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3267,7 +3353,7 @@
             // pictureBox120
             // 
             this.pictureBox120.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox120.Image")));
-            this.pictureBox120.Location = new System.Drawing.Point(1027, 569);
+            this.pictureBox120.Location = new System.Drawing.Point(1027, 562);
             this.pictureBox120.Name = "pictureBox120";
             this.pictureBox120.Size = new System.Drawing.Size(4, 12);
             this.pictureBox120.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3277,7 +3363,7 @@
             // pictureBox121
             // 
             this.pictureBox121.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox121.Image")));
-            this.pictureBox121.Location = new System.Drawing.Point(1028, 556);
+            this.pictureBox121.Location = new System.Drawing.Point(1028, 549);
             this.pictureBox121.Name = "pictureBox121";
             this.pictureBox121.Size = new System.Drawing.Size(4, 12);
             this.pictureBox121.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3287,7 +3373,7 @@
             // pictureBox118
             // 
             this.pictureBox118.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox118.Image")));
-            this.pictureBox118.Location = new System.Drawing.Point(1027, 368);
+            this.pictureBox118.Location = new System.Drawing.Point(1027, 361);
             this.pictureBox118.Name = "pictureBox118";
             this.pictureBox118.Size = new System.Drawing.Size(4, 12);
             this.pictureBox118.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3297,7 +3383,7 @@
             // pictureBox119
             // 
             this.pictureBox119.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox119.Image")));
-            this.pictureBox119.Location = new System.Drawing.Point(1028, 355);
+            this.pictureBox119.Location = new System.Drawing.Point(1028, 348);
             this.pictureBox119.Name = "pictureBox119";
             this.pictureBox119.Size = new System.Drawing.Size(4, 12);
             this.pictureBox119.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3307,7 +3393,7 @@
             // pictureBox116
             // 
             this.pictureBox116.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox116.Image")));
-            this.pictureBox116.Location = new System.Drawing.Point(1027, 239);
+            this.pictureBox116.Location = new System.Drawing.Point(1027, 232);
             this.pictureBox116.Name = "pictureBox116";
             this.pictureBox116.Size = new System.Drawing.Size(4, 12);
             this.pictureBox116.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3317,7 +3403,7 @@
             // pictureBox117
             // 
             this.pictureBox117.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox117.Image")));
-            this.pictureBox117.Location = new System.Drawing.Point(1028, 226);
+            this.pictureBox117.Location = new System.Drawing.Point(1028, 219);
             this.pictureBox117.Name = "pictureBox117";
             this.pictureBox117.Size = new System.Drawing.Size(4, 12);
             this.pictureBox117.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3327,7 +3413,7 @@
             // pictureBox115
             // 
             this.pictureBox115.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox115.Image")));
-            this.pictureBox115.Location = new System.Drawing.Point(1027, 169);
+            this.pictureBox115.Location = new System.Drawing.Point(1027, 162);
             this.pictureBox115.Name = "pictureBox115";
             this.pictureBox115.Size = new System.Drawing.Size(4, 12);
             this.pictureBox115.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3337,7 +3423,7 @@
             // pictureBox114
             // 
             this.pictureBox114.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox114.Image")));
-            this.pictureBox114.Location = new System.Drawing.Point(1141, 162);
+            this.pictureBox114.Location = new System.Drawing.Point(1141, 155);
             this.pictureBox114.Name = "pictureBox114";
             this.pictureBox114.Size = new System.Drawing.Size(4, 12);
             this.pictureBox114.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3347,7 +3433,7 @@
             // pictureBox111
             // 
             this.pictureBox111.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox111.Image")));
-            this.pictureBox111.Location = new System.Drawing.Point(1028, 156);
+            this.pictureBox111.Location = new System.Drawing.Point(1028, 149);
             this.pictureBox111.Name = "pictureBox111";
             this.pictureBox111.Size = new System.Drawing.Size(4, 12);
             this.pictureBox111.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3357,7 +3443,7 @@
             // pictureBox110
             // 
             this.pictureBox110.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox110.Image")));
-            this.pictureBox110.Location = new System.Drawing.Point(288, 531);
+            this.pictureBox110.Location = new System.Drawing.Point(288, 524);
             this.pictureBox110.Name = "pictureBox110";
             this.pictureBox110.Size = new System.Drawing.Size(4, 12);
             this.pictureBox110.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3367,7 +3453,7 @@
             // pictureBox106
             // 
             this.pictureBox106.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox106.Image")));
-            this.pictureBox106.Location = new System.Drawing.Point(986, 801);
+            this.pictureBox106.Location = new System.Drawing.Point(986, 794);
             this.pictureBox106.Name = "pictureBox106";
             this.pictureBox106.Size = new System.Drawing.Size(4, 12);
             this.pictureBox106.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3377,7 +3463,7 @@
             // pictureBox107
             // 
             this.pictureBox107.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox107.Image")));
-            this.pictureBox107.Location = new System.Drawing.Point(986, 785);
+            this.pictureBox107.Location = new System.Drawing.Point(986, 778);
             this.pictureBox107.Name = "pictureBox107";
             this.pictureBox107.Size = new System.Drawing.Size(4, 12);
             this.pictureBox107.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3387,7 +3473,7 @@
             // pictureBox105
             // 
             this.pictureBox105.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox105.Image")));
-            this.pictureBox105.Location = new System.Drawing.Point(258, 690);
+            this.pictureBox105.Location = new System.Drawing.Point(258, 683);
             this.pictureBox105.Name = "pictureBox105";
             this.pictureBox105.Size = new System.Drawing.Size(4, 12);
             this.pictureBox105.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3397,7 +3483,7 @@
             // pictureBox98
             // 
             this.pictureBox98.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox98.Image")));
-            this.pictureBox98.Location = new System.Drawing.Point(68, 700);
+            this.pictureBox98.Location = new System.Drawing.Point(68, 693);
             this.pictureBox98.Name = "pictureBox98";
             this.pictureBox98.Size = new System.Drawing.Size(4, 12);
             this.pictureBox98.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3407,7 +3493,7 @@
             // pictureBox99
             // 
             this.pictureBox99.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox99.Image")));
-            this.pictureBox99.Location = new System.Drawing.Point(106, 690);
+            this.pictureBox99.Location = new System.Drawing.Point(106, 683);
             this.pictureBox99.Name = "pictureBox99";
             this.pictureBox99.Size = new System.Drawing.Size(4, 12);
             this.pictureBox99.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3417,7 +3503,7 @@
             // pictureBox100
             // 
             this.pictureBox100.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox100.Image")));
-            this.pictureBox100.Location = new System.Drawing.Point(182, 690);
+            this.pictureBox100.Location = new System.Drawing.Point(182, 683);
             this.pictureBox100.Name = "pictureBox100";
             this.pictureBox100.Size = new System.Drawing.Size(4, 12);
             this.pictureBox100.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3427,7 +3513,7 @@
             // pictureBox101
             // 
             this.pictureBox101.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox101.Image")));
-            this.pictureBox101.Location = new System.Drawing.Point(333, 690);
+            this.pictureBox101.Location = new System.Drawing.Point(333, 683);
             this.pictureBox101.Name = "pictureBox101";
             this.pictureBox101.Size = new System.Drawing.Size(4, 12);
             this.pictureBox101.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3437,7 +3523,7 @@
             // pictureBox94
             // 
             this.pictureBox94.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox94.Image")));
-            this.pictureBox94.Location = new System.Drawing.Point(409, 692);
+            this.pictureBox94.Location = new System.Drawing.Point(409, 685);
             this.pictureBox94.Name = "pictureBox94";
             this.pictureBox94.Size = new System.Drawing.Size(4, 12);
             this.pictureBox94.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3447,7 +3533,7 @@
             // pictureBox95
             // 
             this.pictureBox95.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox95.Image")));
-            this.pictureBox95.Location = new System.Drawing.Point(486, 692);
+            this.pictureBox95.Location = new System.Drawing.Point(486, 685);
             this.pictureBox95.Name = "pictureBox95";
             this.pictureBox95.Size = new System.Drawing.Size(4, 12);
             this.pictureBox95.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3457,7 +3543,7 @@
             // pictureBox96
             // 
             this.pictureBox96.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox96.Image")));
-            this.pictureBox96.Location = new System.Drawing.Point(562, 692);
+            this.pictureBox96.Location = new System.Drawing.Point(562, 685);
             this.pictureBox96.Name = "pictureBox96";
             this.pictureBox96.Size = new System.Drawing.Size(4, 12);
             this.pictureBox96.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3467,7 +3553,7 @@
             // pictureBox97
             // 
             this.pictureBox97.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox97.Image")));
-            this.pictureBox97.Location = new System.Drawing.Point(985, 689);
+            this.pictureBox97.Location = new System.Drawing.Point(985, 682);
             this.pictureBox97.Name = "pictureBox97";
             this.pictureBox97.Size = new System.Drawing.Size(4, 12);
             this.pictureBox97.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3477,7 +3563,7 @@
             // pictureBox93
             // 
             this.pictureBox93.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox93.Image")));
-            this.pictureBox93.Location = new System.Drawing.Point(637, 692);
+            this.pictureBox93.Location = new System.Drawing.Point(637, 685);
             this.pictureBox93.Name = "pictureBox93";
             this.pictureBox93.Size = new System.Drawing.Size(4, 12);
             this.pictureBox93.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3487,7 +3573,7 @@
             // pictureBox92
             // 
             this.pictureBox92.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox92.Image")));
-            this.pictureBox92.Location = new System.Drawing.Point(751, 692);
+            this.pictureBox92.Location = new System.Drawing.Point(751, 685);
             this.pictureBox92.Name = "pictureBox92";
             this.pictureBox92.Size = new System.Drawing.Size(4, 12);
             this.pictureBox92.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3497,7 +3583,7 @@
             // pictureBox91
             // 
             this.pictureBox91.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox91.Image")));
-            this.pictureBox91.Location = new System.Drawing.Point(865, 692);
+            this.pictureBox91.Location = new System.Drawing.Point(865, 685);
             this.pictureBox91.Name = "pictureBox91";
             this.pictureBox91.Size = new System.Drawing.Size(4, 12);
             this.pictureBox91.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3518,7 +3604,7 @@
             // pictureBox90
             // 
             this.pictureBox90.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox90.Image")));
-            this.pictureBox90.Location = new System.Drawing.Point(1027, 850);
+            this.pictureBox90.Location = new System.Drawing.Point(1027, 843);
             this.pictureBox90.Name = "pictureBox90";
             this.pictureBox90.Size = new System.Drawing.Size(4, 12);
             this.pictureBox90.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3528,7 +3614,7 @@
             // pictureBox89
             // 
             this.pictureBox89.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox89.Image")));
-            this.pictureBox89.Location = new System.Drawing.Point(303, 595);
+            this.pictureBox89.Location = new System.Drawing.Point(303, 588);
             this.pictureBox89.Name = "pictureBox89";
             this.pictureBox89.Size = new System.Drawing.Size(12, 4);
             this.pictureBox89.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3538,7 +3624,7 @@
             // pictureBox87
             // 
             this.pictureBox87.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox87.Image")));
-            this.pictureBox87.Location = new System.Drawing.Point(303, 556);
+            this.pictureBox87.Location = new System.Drawing.Point(303, 549);
             this.pictureBox87.Name = "pictureBox87";
             this.pictureBox87.Size = new System.Drawing.Size(12, 4);
             this.pictureBox87.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3549,7 +3635,7 @@
             // 
             this.pictureBox84.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.pictureBox84.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox84.Image")));
-            this.pictureBox84.Location = new System.Drawing.Point(827, 450);
+            this.pictureBox84.Location = new System.Drawing.Point(827, 443);
             this.pictureBox84.Name = "pictureBox84";
             this.pictureBox84.Size = new System.Drawing.Size(4, 12);
             this.pictureBox84.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3559,7 +3645,7 @@
             // pictureBox83
             // 
             this.pictureBox83.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox83.Image")));
-            this.pictureBox83.Location = new System.Drawing.Point(713, 450);
+            this.pictureBox83.Location = new System.Drawing.Point(713, 443);
             this.pictureBox83.Name = "pictureBox83";
             this.pictureBox83.Size = new System.Drawing.Size(4, 12);
             this.pictureBox83.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3569,7 +3655,7 @@
             // pictureBox82
             // 
             this.pictureBox82.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox82.Image")));
-            this.pictureBox82.Location = new System.Drawing.Point(599, 450);
+            this.pictureBox82.Location = new System.Drawing.Point(599, 443);
             this.pictureBox82.Name = "pictureBox82";
             this.pictureBox82.Size = new System.Drawing.Size(4, 12);
             this.pictureBox82.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3579,7 +3665,7 @@
             // pictureBox81
             // 
             this.pictureBox81.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox81.Image")));
-            this.pictureBox81.Location = new System.Drawing.Point(615, 474);
+            this.pictureBox81.Location = new System.Drawing.Point(615, 467);
             this.pictureBox81.Name = "pictureBox81";
             this.pictureBox81.Size = new System.Drawing.Size(12, 4);
             this.pictureBox81.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3589,7 +3675,7 @@
             // pictureBox79
             // 
             this.pictureBox79.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox79.Image")));
-            this.pictureBox79.Location = new System.Drawing.Point(692, 474);
+            this.pictureBox79.Location = new System.Drawing.Point(692, 467);
             this.pictureBox79.Name = "pictureBox79";
             this.pictureBox79.Size = new System.Drawing.Size(12, 4);
             this.pictureBox79.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3599,7 +3685,7 @@
             // pictureBox76
             // 
             this.pictureBox76.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox76.Image")));
-            this.pictureBox76.Location = new System.Drawing.Point(881, 474);
+            this.pictureBox76.Location = new System.Drawing.Point(881, 467);
             this.pictureBox76.Name = "pictureBox76";
             this.pictureBox76.Size = new System.Drawing.Size(12, 4);
             this.pictureBox76.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3609,7 +3695,7 @@
             // pictureBox72
             // 
             this.pictureBox72.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox72.Image")));
-            this.pictureBox72.Location = new System.Drawing.Point(805, 474);
+            this.pictureBox72.Location = new System.Drawing.Point(805, 467);
             this.pictureBox72.Name = "pictureBox72";
             this.pictureBox72.Size = new System.Drawing.Size(12, 4);
             this.pictureBox72.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3619,7 +3705,7 @@
             // pictureBox66
             // 
             this.pictureBox66.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox66.Image")));
-            this.pictureBox66.Location = new System.Drawing.Point(985, 450);
+            this.pictureBox66.Location = new System.Drawing.Point(985, 443);
             this.pictureBox66.Name = "pictureBox66";
             this.pictureBox66.Size = new System.Drawing.Size(4, 12);
             this.pictureBox66.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3629,7 +3715,7 @@
             // pictureBox67
             // 
             this.pictureBox67.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox67.Image")));
-            this.pictureBox67.Location = new System.Drawing.Point(257, 450);
+            this.pictureBox67.Location = new System.Drawing.Point(257, 443);
             this.pictureBox67.Name = "pictureBox67";
             this.pictureBox67.Size = new System.Drawing.Size(4, 12);
             this.pictureBox67.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3639,7 +3725,7 @@
             // pictureBox68
             // 
             this.pictureBox68.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox68.Image")));
-            this.pictureBox68.Location = new System.Drawing.Point(288, 610);
+            this.pictureBox68.Location = new System.Drawing.Point(288, 603);
             this.pictureBox68.Name = "pictureBox68";
             this.pictureBox68.Size = new System.Drawing.Size(4, 12);
             this.pictureBox68.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3649,7 +3735,7 @@
             // pictureBox69
             // 
             this.pictureBox69.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox69.Image")));
-            this.pictureBox69.Location = new System.Drawing.Point(259, 610);
+            this.pictureBox69.Location = new System.Drawing.Point(259, 603);
             this.pictureBox69.Name = "pictureBox69";
             this.pictureBox69.Size = new System.Drawing.Size(4, 12);
             this.pictureBox69.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3659,7 +3745,7 @@
             // pictureBox65
             // 
             this.pictureBox65.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox65.Image")));
-            this.pictureBox65.Location = new System.Drawing.Point(523, 450);
+            this.pictureBox65.Location = new System.Drawing.Point(523, 443);
             this.pictureBox65.Name = "pictureBox65";
             this.pictureBox65.Size = new System.Drawing.Size(4, 12);
             this.pictureBox65.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3669,7 +3755,7 @@
             // pictureBox64
             // 
             this.pictureBox64.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox64.Image")));
-            this.pictureBox64.Location = new System.Drawing.Point(333, 450);
+            this.pictureBox64.Location = new System.Drawing.Point(333, 443);
             this.pictureBox64.Name = "pictureBox64";
             this.pictureBox64.Size = new System.Drawing.Size(4, 12);
             this.pictureBox64.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3679,7 +3765,7 @@
             // pictureBox63
             // 
             this.pictureBox63.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox63.Image")));
-            this.pictureBox63.Location = new System.Drawing.Point(485, 450);
+            this.pictureBox63.Location = new System.Drawing.Point(485, 443);
             this.pictureBox63.Name = "pictureBox63";
             this.pictureBox63.Size = new System.Drawing.Size(4, 12);
             this.pictureBox63.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3689,7 +3775,7 @@
             // pictureBox62
             // 
             this.pictureBox62.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox62.Image")));
-            this.pictureBox62.Location = new System.Drawing.Point(447, 450);
+            this.pictureBox62.Location = new System.Drawing.Point(447, 443);
             this.pictureBox62.Name = "pictureBox62";
             this.pictureBox62.Size = new System.Drawing.Size(4, 12);
             this.pictureBox62.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3710,7 +3796,7 @@
             // pictureBox59
             // 
             this.pictureBox59.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox59.Image")));
-            this.pictureBox59.Location = new System.Drawing.Point(259, 531);
+            this.pictureBox59.Location = new System.Drawing.Point(259, 524);
             this.pictureBox59.Name = "pictureBox59";
             this.pictureBox59.Size = new System.Drawing.Size(4, 12);
             this.pictureBox59.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3720,7 +3806,7 @@
             // pictureBox58
             // 
             this.pictureBox58.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox58.Image")));
-            this.pictureBox58.Location = new System.Drawing.Point(68, 684);
+            this.pictureBox58.Location = new System.Drawing.Point(68, 677);
             this.pictureBox58.Name = "pictureBox58";
             this.pictureBox58.Size = new System.Drawing.Size(4, 12);
             this.pictureBox58.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3740,7 +3826,7 @@
             // pictureBox57
             // 
             this.pictureBox57.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox57.Image")));
-            this.pictureBox57.Location = new System.Drawing.Point(235, 554);
+            this.pictureBox57.Location = new System.Drawing.Point(235, 547);
             this.pictureBox57.Name = "pictureBox57";
             this.pictureBox57.Size = new System.Drawing.Size(12, 4);
             this.pictureBox57.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3750,7 +3836,7 @@
             // pictureBox56
             // 
             this.pictureBox56.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox56.Image")));
-            this.pictureBox56.Location = new System.Drawing.Point(235, 474);
+            this.pictureBox56.Location = new System.Drawing.Point(235, 467);
             this.pictureBox56.Name = "pictureBox56";
             this.pictureBox56.Size = new System.Drawing.Size(12, 4);
             this.pictureBox56.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3760,7 +3846,7 @@
             // pictureBox54
             // 
             this.pictureBox54.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox54.Image")));
-            this.pictureBox54.Location = new System.Drawing.Point(235, 594);
+            this.pictureBox54.Location = new System.Drawing.Point(235, 587);
             this.pictureBox54.Name = "pictureBox54";
             this.pictureBox54.Size = new System.Drawing.Size(12, 4);
             this.pictureBox54.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3770,7 +3856,7 @@
             // pictureBox36
             // 
             this.pictureBox36.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox36.Image")));
-            this.pictureBox36.Location = new System.Drawing.Point(684, 396);
+            this.pictureBox36.Location = new System.Drawing.Point(684, 389);
             this.pictureBox36.Name = "pictureBox36";
             this.pictureBox36.Size = new System.Drawing.Size(12, 4);
             this.pictureBox36.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3780,7 +3866,7 @@
             // pictureBox37
             // 
             this.pictureBox37.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox37.Image")));
-            this.pictureBox37.Location = new System.Drawing.Point(698, 396);
+            this.pictureBox37.Location = new System.Drawing.Point(698, 389);
             this.pictureBox37.Name = "pictureBox37";
             this.pictureBox37.Size = new System.Drawing.Size(12, 4);
             this.pictureBox37.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3790,7 +3876,7 @@
             // pictureBox35
             // 
             this.pictureBox35.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox35.Image")));
-            this.pictureBox35.Location = new System.Drawing.Point(1121, 63);
+            this.pictureBox35.Location = new System.Drawing.Point(1121, 93);
             this.pictureBox35.Name = "pictureBox35";
             this.pictureBox35.Size = new System.Drawing.Size(12, 4);
             this.pictureBox35.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3800,7 +3886,7 @@
             // pictureBox31
             // 
             this.pictureBox31.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox31.Image")));
-            this.pictureBox31.Location = new System.Drawing.Point(416, 395);
+            this.pictureBox31.Location = new System.Drawing.Point(416, 388);
             this.pictureBox31.Name = "pictureBox31";
             this.pictureBox31.Size = new System.Drawing.Size(12, 4);
             this.pictureBox31.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3810,7 +3896,7 @@
             // pictureBox32
             // 
             this.pictureBox32.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox32.Image")));
-            this.pictureBox32.Location = new System.Drawing.Point(430, 395);
+            this.pictureBox32.Location = new System.Drawing.Point(430, 388);
             this.pictureBox32.Name = "pictureBox32";
             this.pictureBox32.Size = new System.Drawing.Size(12, 4);
             this.pictureBox32.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3820,7 +3906,7 @@
             // pictureBox29
             // 
             this.pictureBox29.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox29.Image")));
-            this.pictureBox29.Location = new System.Drawing.Point(235, 435);
+            this.pictureBox29.Location = new System.Drawing.Point(235, 428);
             this.pictureBox29.Name = "pictureBox29";
             this.pictureBox29.Size = new System.Drawing.Size(12, 4);
             this.pictureBox29.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3830,7 +3916,7 @@
             // pictureBox28
             // 
             this.pictureBox28.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox28.Image")));
-            this.pictureBox28.Location = new System.Drawing.Point(341, 395);
+            this.pictureBox28.Location = new System.Drawing.Point(341, 388);
             this.pictureBox28.Name = "pictureBox28";
             this.pictureBox28.Size = new System.Drawing.Size(12, 4);
             this.pictureBox28.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3840,7 +3926,7 @@
             // pictureBox27
             // 
             this.pictureBox27.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox27.Image")));
-            this.pictureBox27.Location = new System.Drawing.Point(355, 395);
+            this.pictureBox27.Location = new System.Drawing.Point(355, 388);
             this.pictureBox27.Name = "pictureBox27";
             this.pictureBox27.Size = new System.Drawing.Size(12, 4);
             this.pictureBox27.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3850,7 +3936,7 @@
             // pictureBox22
             // 
             this.pictureBox22.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox22.Image")));
-            this.pictureBox22.Location = new System.Drawing.Point(236, 675);
+            this.pictureBox22.Location = new System.Drawing.Point(236, 668);
             this.pictureBox22.Name = "pictureBox22";
             this.pictureBox22.Size = new System.Drawing.Size(12, 4);
             this.pictureBox22.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3860,7 +3946,7 @@
             // pictureBox18
             // 
             this.pictureBox18.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox18.Image")));
-            this.pictureBox18.Location = new System.Drawing.Point(1194, 63);
+            this.pictureBox18.Location = new System.Drawing.Point(1194, 93);
             this.pictureBox18.Name = "pictureBox18";
             this.pictureBox18.Size = new System.Drawing.Size(12, 4);
             this.pictureBox18.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3870,7 +3956,7 @@
             // pictureBox17
             // 
             this.pictureBox17.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox17.Image")));
-            this.pictureBox17.Location = new System.Drawing.Point(167, 434);
+            this.pictureBox17.Location = new System.Drawing.Point(167, 427);
             this.pictureBox17.Name = "pictureBox17";
             this.pictureBox17.Size = new System.Drawing.Size(12, 4);
             this.pictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3880,7 +3966,7 @@
             // pictureBox16
             // 
             this.pictureBox16.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox16.Image")));
-            this.pictureBox16.Location = new System.Drawing.Point(83, 435);
+            this.pictureBox16.Location = new System.Drawing.Point(83, 428);
             this.pictureBox16.Name = "pictureBox16";
             this.pictureBox16.Size = new System.Drawing.Size(12, 4);
             this.pictureBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3890,7 +3976,7 @@
             // pictureBox15
             // 
             this.pictureBox15.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox15.Image")));
-            this.pictureBox15.Location = new System.Drawing.Point(83, 355);
+            this.pictureBox15.Location = new System.Drawing.Point(83, 348);
             this.pictureBox15.Name = "pictureBox15";
             this.pictureBox15.Size = new System.Drawing.Size(12, 4);
             this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3900,7 +3986,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(152, 434);
+            this.pictureBox3.Location = new System.Drawing.Point(152, 427);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(12, 4);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3910,7 +3996,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(1194, 144);
+            this.pictureBox2.Location = new System.Drawing.Point(1194, 137);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(12, 4);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3920,7 +4006,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(1121, 143);
+            this.pictureBox1.Location = new System.Drawing.Point(1121, 136);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(12, 4);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -3936,9 +4022,10 @@
             this.bcrMarker20.BCRUseYN = true;
             this.bcrMarker20.BubbleText = "";
             this.bcrMarker20.CVPLCListDeviceID = 0;
+            this.bcrMarker20.CVType = "Conveyor";
             this.bcrMarker20.DisplayText = "";
             this.bcrMarker20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker20.Location = new System.Drawing.Point(377, 715);
+            this.bcrMarker20.Location = new System.Drawing.Point(377, 708);
             this.bcrMarker20.Name = "bcrMarker20";
             this.bcrMarker20.PLCNo = 1160;
             this.bcrMarker20.ShowSiteNo = false;
@@ -3955,7 +4042,7 @@
             this.label25.CausesValidation = false;
             this.label25.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
             this.label25.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label25.Location = new System.Drawing.Point(1185, 625);
+            this.label25.Location = new System.Drawing.Point(1185, 618);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(310, 63);
             this.label25.TabIndex = 404;
@@ -3969,7 +4056,7 @@
             this.label24.CausesValidation = false;
             this.label24.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
             this.label24.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label24.Location = new System.Drawing.Point(1183, 421);
+            this.label24.Location = new System.Drawing.Point(1183, 414);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(311, 63);
             this.label24.TabIndex = 403;
@@ -3983,7 +4070,7 @@
             this.label23.CausesValidation = false;
             this.label23.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
             this.label23.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label23.Location = new System.Drawing.Point(1221, 220);
+            this.label23.Location = new System.Drawing.Point(1221, 213);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(231, 63);
             this.label23.TabIndex = 402;
@@ -3999,9 +4086,10 @@
             this.bcrMarker19.BCRUseYN = true;
             this.bcrMarker19.BubbleText = "";
             this.bcrMarker19.CVPLCListDeviceID = 0;
+            this.bcrMarker19.CVType = "Conveyor";
             this.bcrMarker19.DisplayText = "";
             this.bcrMarker19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker19.Location = new System.Drawing.Point(530, 715);
+            this.bcrMarker19.Location = new System.Drawing.Point(530, 708);
             this.bcrMarker19.Name = "bcrMarker19";
             this.bcrMarker19.PLCNo = 1165;
             this.bcrMarker19.ShowSiteNo = false;
@@ -4020,9 +4108,10 @@
             this.bcrMarker18.BCRUseYN = true;
             this.bcrMarker18.BubbleText = "";
             this.bcrMarker18.CVPLCListDeviceID = 0;
+            this.bcrMarker18.CVType = "Conveyor";
             this.bcrMarker18.DisplayText = "";
             this.bcrMarker18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker18.Location = new System.Drawing.Point(453, 715);
+            this.bcrMarker18.Location = new System.Drawing.Point(453, 708);
             this.bcrMarker18.Name = "bcrMarker18";
             this.bcrMarker18.PLCNo = 1162;
             this.bcrMarker18.ShowSiteNo = false;
@@ -4041,9 +4130,10 @@
             this.bcrMarker17.BCRUseYN = true;
             this.bcrMarker17.BubbleText = "";
             this.bcrMarker17.CVPLCListDeviceID = 0;
+            this.bcrMarker17.CVType = "Conveyor";
             this.bcrMarker17.DisplayText = "";
             this.bcrMarker17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker17.Location = new System.Drawing.Point(73, 715);
+            this.bcrMarker17.Location = new System.Drawing.Point(73, 708);
             this.bcrMarker17.Name = "bcrMarker17";
             this.bcrMarker17.PLCNo = 1143;
             this.bcrMarker17.ShowSiteNo = false;
@@ -4062,8 +4152,9 @@
             this.bcrMarker16.BCRUseYN = true;
             this.bcrMarker16.BubbleText = "";
             this.bcrMarker16.CVPLCListDeviceID = 0;
+            this.bcrMarker16.CVType = "Conveyor";
             this.bcrMarker16.DisplayText = "";
-            this.bcrMarker16.Location = new System.Drawing.Point(220, 521);
+            this.bcrMarker16.Location = new System.Drawing.Point(220, 514);
             this.bcrMarker16.Name = "bcrMarker16";
             this.bcrMarker16.PLCNo = 1152;
             this.bcrMarker16.ShowSiteNo = false;
@@ -4082,8 +4173,9 @@
             this.bcrMarker15.BCRUseYN = true;
             this.bcrMarker15.BubbleText = "";
             this.bcrMarker15.CVPLCListDeviceID = 0;
+            this.bcrMarker15.CVType = "Conveyor";
             this.bcrMarker15.DisplayText = "";
-            this.bcrMarker15.Location = new System.Drawing.Point(182, 641);
+            this.bcrMarker15.Location = new System.Drawing.Point(182, 634);
             this.bcrMarker15.Name = "bcrMarker15";
             this.bcrMarker15.PLCNo = 1138;
             this.bcrMarker15.ShowSiteNo = false;
@@ -4102,8 +4194,9 @@
             this.bcrMarker14.BCRUseYN = true;
             this.bcrMarker14.BubbleText = "";
             this.bcrMarker14.CVPLCListDeviceID = 0;
+            this.bcrMarker14.CVType = "Conveyor";
             this.bcrMarker14.DisplayText = "";
-            this.bcrMarker14.Location = new System.Drawing.Point(106, 402);
+            this.bcrMarker14.Location = new System.Drawing.Point(106, 395);
             this.bcrMarker14.Name = "bcrMarker14";
             this.bcrMarker14.PLCNo = 1133;
             this.bcrMarker14.ShowSiteNo = false;
@@ -4122,8 +4215,9 @@
             this.bcrMarker13.BCRUseYN = true;
             this.bcrMarker13.BubbleText = "";
             this.bcrMarker13.CVPLCListDeviceID = 0;
+            this.bcrMarker13.CVType = "Conveyor";
             this.bcrMarker13.DisplayText = "";
-            this.bcrMarker13.Location = new System.Drawing.Point(264, 435);
+            this.bcrMarker13.Location = new System.Drawing.Point(264, 428);
             this.bcrMarker13.Name = "bcrMarker13";
             this.bcrMarker13.PLCNo = 1126;
             this.bcrMarker13.ShowSiteNo = false;
@@ -4142,8 +4236,9 @@
             this.bcrMarker12.BCRUseYN = true;
             this.bcrMarker12.BubbleText = "";
             this.bcrMarker12.CVPLCListDeviceID = 0;
+            this.bcrMarker12.CVType = "Conveyor";
             this.bcrMarker12.DisplayText = "";
-            this.bcrMarker12.Location = new System.Drawing.Point(529, 435);
+            this.bcrMarker12.Location = new System.Drawing.Point(529, 428);
             this.bcrMarker12.Name = "bcrMarker12";
             this.bcrMarker12.PLCNo = 1115;
             this.bcrMarker12.ShowSiteNo = false;
@@ -4162,8 +4257,9 @@
             this.bcrMarker11.BCRUseYN = true;
             this.bcrMarker11.BubbleText = "";
             this.bcrMarker11.CVPLCListDeviceID = 0;
+            this.bcrMarker11.CVType = "Conveyor";
             this.bcrMarker11.DisplayText = "";
-            this.bcrMarker11.Location = new System.Drawing.Point(871, 435);
+            this.bcrMarker11.Location = new System.Drawing.Point(871, 428);
             this.bcrMarker11.Name = "bcrMarker11";
             this.bcrMarker11.PLCNo = 1103;
             this.bcrMarker11.ShowSiteNo = false;
@@ -4182,9 +4278,10 @@
             this.bcrMarker10.BCRUseYN = true;
             this.bcrMarker10.BubbleText = "";
             this.bcrMarker10.CVPLCListDeviceID = 0;
+            this.bcrMarker10.CVType = "Conveyor";
             this.bcrMarker10.DisplayText = "";
             this.bcrMarker10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker10.Location = new System.Drawing.Point(872, 715);
+            this.bcrMarker10.Location = new System.Drawing.Point(872, 708);
             this.bcrMarker10.Name = "bcrMarker10";
             this.bcrMarker10.PLCNo = 1173;
             this.bcrMarker10.ShowSiteNo = false;
@@ -4203,11 +4300,12 @@
             this.bcrMarker9.BCRUseYN = true;
             this.bcrMarker9.BubbleText = "";
             this.bcrMarker9.CVPLCListDeviceID = 3;
+            this.bcrMarker9.CVType = "Conveyor";
             this.bcrMarker9.DisplayText = "";
             this.bcrMarker9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker9.Location = new System.Drawing.Point(1184, 880);
+            this.bcrMarker9.Location = new System.Drawing.Point(1184, 873);
             this.bcrMarker9.Name = "bcrMarker9";
-            this.bcrMarker9.PLCNo = 4221;
+            this.bcrMarker9.PLCNo = 4105;
             this.bcrMarker9.ShowSiteNo = false;
             this.bcrMarker9.ShowTroubleState = false;
             this.bcrMarker9.SiteNo = 0;
@@ -4224,11 +4322,12 @@
             this.bcrMarker8.BCRUseYN = true;
             this.bcrMarker8.BubbleText = "";
             this.bcrMarker8.CVPLCListDeviceID = 1;
+            this.bcrMarker8.CVType = "Conveyor";
             this.bcrMarker8.DisplayText = "";
             this.bcrMarker8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker8.Location = new System.Drawing.Point(1147, 548);
+            this.bcrMarker8.Location = new System.Drawing.Point(1147, 541);
             this.bcrMarker8.Name = "bcrMarker8";
-            this.bcrMarker8.PLCNo = 2216;
+            this.bcrMarker8.PLCNo = 2205;
             this.bcrMarker8.ShowSiteNo = false;
             this.bcrMarker8.ShowTroubleState = false;
             this.bcrMarker8.SiteNo = 0;
@@ -4245,11 +4344,12 @@
             this.bcrMarker7.BCRUseYN = true;
             this.bcrMarker7.BubbleText = "";
             this.bcrMarker7.CVPLCListDeviceID = 1;
+            this.bcrMarker7.CVType = "Conveyor";
             this.bcrMarker7.DisplayText = "";
             this.bcrMarker7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker7.Location = new System.Drawing.Point(1148, 346);
+            this.bcrMarker7.Location = new System.Drawing.Point(1148, 339);
             this.bcrMarker7.Name = "bcrMarker7";
-            this.bcrMarker7.PLCNo = 2210;
+            this.bcrMarker7.PLCNo = 2104;
             this.bcrMarker7.ShowSiteNo = false;
             this.bcrMarker7.ShowTroubleState = false;
             this.bcrMarker7.SiteNo = 0;
@@ -4266,11 +4366,12 @@
             this.bcrMarker6.BCRUseYN = true;
             this.bcrMarker6.BubbleText = "";
             this.bcrMarker6.CVPLCListDeviceID = 2;
+            this.bcrMarker6.CVType = "Conveyor";
             this.bcrMarker6.DisplayText = "";
             this.bcrMarker6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker6.Location = new System.Drawing.Point(1032, 257);
+            this.bcrMarker6.Location = new System.Drawing.Point(1032, 250);
             this.bcrMarker6.Name = "bcrMarker6";
-            this.bcrMarker6.PLCNo = 3201;
+            this.bcrMarker6.PLCNo = 3101;
             this.bcrMarker6.ShowSiteNo = false;
             this.bcrMarker6.ShowTroubleState = false;
             this.bcrMarker6.SiteNo = 0;
@@ -4287,9 +4388,10 @@
             this.bcrMarker5.BCRUseYN = true;
             this.bcrMarker5.BubbleText = "";
             this.bcrMarker5.CVPLCListDeviceID = 0;
+            this.bcrMarker5.CVType = "Conveyor";
             this.bcrMarker5.DisplayText = "";
             this.bcrMarker5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker5.Location = new System.Drawing.Point(953, 819);
+            this.bcrMarker5.Location = new System.Drawing.Point(953, 812);
             this.bcrMarker5.Name = "bcrMarker5";
             this.bcrMarker5.PLCNo = 1200;
             this.bcrMarker5.ShowSiteNo = false;
@@ -4308,9 +4410,10 @@
             this.bcrMarker4.BCRUseYN = true;
             this.bcrMarker4.BubbleText = "";
             this.bcrMarker4.CVPLCListDeviceID = 0;
+            this.bcrMarker4.CVType = "Conveyor";
             this.bcrMarker4.DisplayText = "";
             this.bcrMarker4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker4.Location = new System.Drawing.Point(952, 714);
+            this.bcrMarker4.Location = new System.Drawing.Point(952, 707);
             this.bcrMarker4.Name = "bcrMarker4";
             this.bcrMarker4.PLCNo = 1175;
             this.bcrMarker4.ShowSiteNo = false;
@@ -4329,8 +4432,9 @@
             this.bcrMarker3.BCRUseYN = true;
             this.bcrMarker3.BubbleText = "";
             this.bcrMarker3.CVPLCListDeviceID = 0;
+            this.bcrMarker3.CVType = "Conveyor";
             this.bcrMarker3.DisplayText = "";
-            this.bcrMarker3.Location = new System.Drawing.Point(912, 333);
+            this.bcrMarker3.Location = new System.Drawing.Point(912, 326);
             this.bcrMarker3.Name = "bcrMarker3";
             this.bcrMarker3.PLCNo = 1202;
             this.bcrMarker3.ShowSiteNo = false;
@@ -4349,10 +4453,11 @@
             this.bcrMarker2.BCRUseYN = true;
             this.bcrMarker2.BubbleText = "";
             this.bcrMarker2.CVPLCListDeviceID = 0;
+            this.bcrMarker2.CVType = "Conveyor";
             this.bcrMarker2.DisplayText = "";
-            this.bcrMarker2.Location = new System.Drawing.Point(833, 145);
+            this.bcrMarker2.Location = new System.Drawing.Point(871, 138);
             this.bcrMarker2.Name = "bcrMarker2";
-            this.bcrMarker2.PLCNo = 1208;
+            this.bcrMarker2.PLCNo = 1209;
             this.bcrMarker2.ShowSiteNo = false;
             this.bcrMarker2.ShowTroubleState = false;
             this.bcrMarker2.SiteNo = 0;
@@ -4369,9 +4474,10 @@
             this.bcrMarker1.BCRUseYN = true;
             this.bcrMarker1.BubbleText = "";
             this.bcrMarker1.CVPLCListDeviceID = 0;
+            this.bcrMarker1.CVType = "Conveyor";
             this.bcrMarker1.DisplayText = "";
             this.bcrMarker1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
-            this.bcrMarker1.Location = new System.Drawing.Point(951, 145);
+            this.bcrMarker1.Location = new System.Drawing.Point(951, 138);
             this.bcrMarker1.Name = "bcrMarker1";
             this.bcrMarker1.PLCNo = 1211;
             this.bcrMarker1.ShowSiteNo = false;
@@ -4385,19 +4491,21 @@
             // 
             this.ctrlSiteTrack34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlSiteTrack34.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack34.CVType = "DPMZ";
             this.ctrlSiteTrack34.DisplayText = "";
             this.ctrlSiteTrack34.FirstSiteNo = 1;
+            this.ctrlSiteTrack34.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ctrlSiteTrack34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(83)))), ((int)(((byte)(83)))));
             this.ctrlSiteTrack34.InterSitePadding = 0;
             this.ctrlSiteTrack34.IsControled = true;
             this.ctrlSiteTrack34.IsUpperStage = false;
-            this.ctrlSiteTrack34.Location = new System.Drawing.Point(951, 782);
+            this.ctrlSiteTrack34.Location = new System.Drawing.Point(951, 775);
             this.ctrlSiteTrack34.MainLoop = false;
             this.ctrlSiteTrack34.MarginHorizontal = 0;
             this.ctrlSiteTrack34.MarginVertical = 0;
             this.ctrlSiteTrack34.Name = "ctrlSiteTrack34";
             this.ctrlSiteTrack34.PLCNo = 34;
-            this.ctrlSiteTrack34.ShowSiteNo = false;
+            this.ctrlSiteTrack34.ShowSiteNo = true;
             this.ctrlSiteTrack34.ShowTroubleState = false;
             this.ctrlSiteTrack34.SiteBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ctrlSiteTrack34.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4419,18 +4527,21 @@
             // ctrlSiteTrack31
             // 
             this.ctrlSiteTrack31.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack31.CVType = "Magazine";
             this.ctrlSiteTrack31.DisplayText = "";
             this.ctrlSiteTrack31.FirstSiteNo = 406;
+            this.ctrlSiteTrack31.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack31.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack31.InterSitePadding = 0;
             this.ctrlSiteTrack31.IsControled = true;
             this.ctrlSiteTrack31.IsUpperStage = false;
-            this.ctrlSiteTrack31.Location = new System.Drawing.Point(910, 149);
+            this.ctrlSiteTrack31.Location = new System.Drawing.Point(910, 142);
             this.ctrlSiteTrack31.MainLoop = false;
             this.ctrlSiteTrack31.MarginHorizontal = 0;
             this.ctrlSiteTrack31.MarginVertical = 0;
             this.ctrlSiteTrack31.Name = "ctrlSiteTrack31";
             this.ctrlSiteTrack31.PLCNo = 31;
-            this.ctrlSiteTrack31.ShowSiteNo = false;
+            this.ctrlSiteTrack31.ShowSiteNo = true;
             this.ctrlSiteTrack31.ShowTroubleState = false;
             this.ctrlSiteTrack31.SiteBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.ctrlSiteTrack31.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4452,19 +4563,21 @@
             // ctrlSiteTrack30
             // 
             this.ctrlSiteTrack30.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack30.CVType = "Dispenser";
             this.ctrlSiteTrack30.DisplayText = "";
             this.ctrlSiteTrack30.FirstSiteNo = 102;
-            this.ctrlSiteTrack30.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack30.Font = new System.Drawing.Font("돋움", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack30.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack30.InterSitePadding = 0;
             this.ctrlSiteTrack30.IsControled = true;
             this.ctrlSiteTrack30.IsUpperStage = false;
-            this.ctrlSiteTrack30.Location = new System.Drawing.Point(910, 439);
+            this.ctrlSiteTrack30.Location = new System.Drawing.Point(910, 432);
             this.ctrlSiteTrack30.MainLoop = false;
             this.ctrlSiteTrack30.MarginHorizontal = 0;
             this.ctrlSiteTrack30.MarginVertical = 0;
             this.ctrlSiteTrack30.Name = "ctrlSiteTrack30";
             this.ctrlSiteTrack30.PLCNo = 30;
-            this.ctrlSiteTrack30.ShowSiteNo = false;
+            this.ctrlSiteTrack30.ShowSiteNo = true;
             this.ctrlSiteTrack30.ShowTroubleState = false;
             this.ctrlSiteTrack30.SiteBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ctrlSiteTrack30.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4479,25 +4592,28 @@
         1102};
             this.ctrlSiteTrack30.SiteTextDisp = null;
             this.ctrlSiteTrack30.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack30.Size = new System.Drawing.Size(35, 35);
+            this.ctrlSiteTrack30.Size = new System.Drawing.Size(33, 35);
             this.ctrlSiteTrack30.TabIndex = 375;
             this.ctrlSiteTrack30.TextRotateAngle = 0;
             // 
             // ctrlSiteTrack29
             // 
             this.ctrlSiteTrack29.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack29.CVType = "Magazine";
             this.ctrlSiteTrack29.DisplayText = "";
             this.ctrlSiteTrack29.FirstSiteNo = 403;
+            this.ctrlSiteTrack29.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack29.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack29.InterSitePadding = 0;
             this.ctrlSiteTrack29.IsControled = true;
             this.ctrlSiteTrack29.IsUpperStage = false;
-            this.ctrlSiteTrack29.Location = new System.Drawing.Point(910, 678);
+            this.ctrlSiteTrack29.Location = new System.Drawing.Point(910, 671);
             this.ctrlSiteTrack29.MainLoop = false;
             this.ctrlSiteTrack29.MarginHorizontal = 0;
             this.ctrlSiteTrack29.MarginVertical = 0;
             this.ctrlSiteTrack29.Name = "ctrlSiteTrack29";
             this.ctrlSiteTrack29.PLCNo = 29;
-            this.ctrlSiteTrack29.ShowSiteNo = false;
+            this.ctrlSiteTrack29.ShowSiteNo = true;
             this.ctrlSiteTrack29.ShowTroubleState = false;
             this.ctrlSiteTrack29.SiteBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.ctrlSiteTrack29.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4531,18 +4647,21 @@
             // 
             this.ctrlSiteTrack1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlSiteTrack1.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack1.CVType = "Conveyor";
             this.ctrlSiteTrack1.DisplayText = "";
             this.ctrlSiteTrack1.FirstSiteNo = 1;
+            this.ctrlSiteTrack1.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack1.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack1.InterSitePadding = 6;
             this.ctrlSiteTrack1.IsControled = true;
             this.ctrlSiteTrack1.IsUpperStage = false;
-            this.ctrlSiteTrack1.Location = new System.Drawing.Point(72, 439);
+            this.ctrlSiteTrack1.Location = new System.Drawing.Point(72, 432);
             this.ctrlSiteTrack1.MainLoop = false;
             this.ctrlSiteTrack1.MarginHorizontal = 0;
             this.ctrlSiteTrack1.MarginVertical = 0;
             this.ctrlSiteTrack1.Name = "ctrlSiteTrack1";
             this.ctrlSiteTrack1.PLCNo = 1;
-            this.ctrlSiteTrack1.ShowSiteNo = false;
+            this.ctrlSiteTrack1.ShowSiteNo = true;
             this.ctrlSiteTrack1.ShowTroubleState = false;
             this.ctrlSiteTrack1.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack1.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4585,18 +4704,21 @@
             // 
             this.ctrlSiteTrack2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.ctrlSiteTrack2.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack2.CVType = "Conveyor";
             this.ctrlSiteTrack2.DisplayText = "";
             this.ctrlSiteTrack2.FirstSiteNo = 1;
+            this.ctrlSiteTrack2.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack2.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack2.InterSitePadding = 6;
             this.ctrlSiteTrack2.IsControled = true;
             this.ctrlSiteTrack2.IsUpperStage = false;
-            this.ctrlSiteTrack2.Location = new System.Drawing.Point(34, 679);
+            this.ctrlSiteTrack2.Location = new System.Drawing.Point(34, 672);
             this.ctrlSiteTrack2.MainLoop = false;
             this.ctrlSiteTrack2.MarginHorizontal = 0;
             this.ctrlSiteTrack2.MarginVertical = 0;
             this.ctrlSiteTrack2.Name = "ctrlSiteTrack2";
             this.ctrlSiteTrack2.PLCNo = 2;
-            this.ctrlSiteTrack2.ShowSiteNo = false;
+            this.ctrlSiteTrack2.ShowSiteNo = true;
             this.ctrlSiteTrack2.ShowTroubleState = false;
             this.ctrlSiteTrack2.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack2.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4639,18 +4761,21 @@
             // ctrlSiteTrack28
             // 
             this.ctrlSiteTrack28.CVPLCListDeviceID = 3;
+            this.ctrlSiteTrack28.CVType = "Conveyor";
             this.ctrlSiteTrack28.DisplayText = "";
             this.ctrlSiteTrack28.FirstSiteNo = 4108;
+            this.ctrlSiteTrack28.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack28.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack28.InterSitePadding = 2;
             this.ctrlSiteTrack28.IsControled = true;
             this.ctrlSiteTrack28.IsUpperStage = false;
-            this.ctrlSiteTrack28.Location = new System.Drawing.Point(1458, 844);
+            this.ctrlSiteTrack28.Location = new System.Drawing.Point(1458, 837);
             this.ctrlSiteTrack28.MainLoop = false;
             this.ctrlSiteTrack28.MarginHorizontal = 0;
             this.ctrlSiteTrack28.MarginVertical = 0;
             this.ctrlSiteTrack28.Name = "ctrlSiteTrack28";
             this.ctrlSiteTrack28.PLCNo = 28;
-            this.ctrlSiteTrack28.ShowSiteNo = false;
+            this.ctrlSiteTrack28.ShowSiteNo = true;
             this.ctrlSiteTrack28.ShowTroubleState = false;
             this.ctrlSiteTrack28.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack28.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4670,18 +4795,21 @@
             // ctrlSiteTrack26
             // 
             this.ctrlSiteTrack26.CVPLCListDeviceID = 3;
+            this.ctrlSiteTrack26.CVType = "Conveyor";
             this.ctrlSiteTrack26.DisplayText = "";
             this.ctrlSiteTrack26.FirstSiteNo = 1;
+            this.ctrlSiteTrack26.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack26.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack26.InterSitePadding = 6;
             this.ctrlSiteTrack26.IsControled = true;
             this.ctrlSiteTrack26.IsUpperStage = false;
-            this.ctrlSiteTrack26.Location = new System.Drawing.Point(1031, 844);
+            this.ctrlSiteTrack26.Location = new System.Drawing.Point(1031, 837);
             this.ctrlSiteTrack26.MainLoop = false;
             this.ctrlSiteTrack26.MarginHorizontal = 0;
             this.ctrlSiteTrack26.MarginVertical = 0;
             this.ctrlSiteTrack26.Name = "ctrlSiteTrack26";
             this.ctrlSiteTrack26.PLCNo = 26;
-            this.ctrlSiteTrack26.ShowSiteNo = false;
+            this.ctrlSiteTrack26.ShowSiteNo = true;
             this.ctrlSiteTrack26.ShowTroubleState = false;
             this.ctrlSiteTrack26.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack26.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4707,18 +4835,21 @@
             // ctrlSiteTrack24
             // 
             this.ctrlSiteTrack24.CVPLCListDeviceID = 1;
+            this.ctrlSiteTrack24.CVType = "Conveyor";
             this.ctrlSiteTrack24.DisplayText = "";
             this.ctrlSiteTrack24.FirstSiteNo = 2105;
+            this.ctrlSiteTrack24.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack24.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack24.InterSitePadding = 2;
             this.ctrlSiteTrack24.IsControled = true;
             this.ctrlSiteTrack24.IsUpperStage = false;
-            this.ctrlSiteTrack24.Location = new System.Drawing.Point(1146, 422);
+            this.ctrlSiteTrack24.Location = new System.Drawing.Point(1146, 415);
             this.ctrlSiteTrack24.MainLoop = false;
             this.ctrlSiteTrack24.MarginHorizontal = 0;
             this.ctrlSiteTrack24.MarginVertical = 0;
             this.ctrlSiteTrack24.Name = "ctrlSiteTrack24";
             this.ctrlSiteTrack24.PLCNo = 24;
-            this.ctrlSiteTrack24.ShowSiteNo = false;
+            this.ctrlSiteTrack24.ShowSiteNo = true;
             this.ctrlSiteTrack24.ShowTroubleState = false;
             this.ctrlSiteTrack24.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack24.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4738,18 +4869,21 @@
             // ctrlSiteTrack23
             // 
             this.ctrlSiteTrack23.CVPLCListDeviceID = 1;
+            this.ctrlSiteTrack23.CVType = "Conveyor";
             this.ctrlSiteTrack23.DisplayText = "";
             this.ctrlSiteTrack23.FirstSiteNo = 1;
+            this.ctrlSiteTrack23.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack23.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack23.InterSitePadding = 6;
             this.ctrlSiteTrack23.IsControled = true;
             this.ctrlSiteTrack23.IsUpperStage = false;
-            this.ctrlSiteTrack23.Location = new System.Drawing.Point(1032, 552);
+            this.ctrlSiteTrack23.Location = new System.Drawing.Point(1032, 545);
             this.ctrlSiteTrack23.MainLoop = false;
             this.ctrlSiteTrack23.MarginHorizontal = 0;
             this.ctrlSiteTrack23.MarginVertical = 0;
             this.ctrlSiteTrack23.Name = "ctrlSiteTrack23";
             this.ctrlSiteTrack23.PLCNo = 23;
-            this.ctrlSiteTrack23.ShowSiteNo = false;
+            this.ctrlSiteTrack23.ShowSiteNo = true;
             this.ctrlSiteTrack23.ShowTroubleState = false;
             this.ctrlSiteTrack23.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack23.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4773,18 +4907,21 @@
             // ctrlSiteTrack22
             // 
             this.ctrlSiteTrack22.CVPLCListDeviceID = 1;
+            this.ctrlSiteTrack22.CVType = "Conveyor";
             this.ctrlSiteTrack22.DisplayText = "";
             this.ctrlSiteTrack22.FirstSiteNo = 1;
+            this.ctrlSiteTrack22.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack22.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack22.InterSitePadding = 6;
             this.ctrlSiteTrack22.IsControled = true;
             this.ctrlSiteTrack22.IsUpperStage = false;
-            this.ctrlSiteTrack22.Location = new System.Drawing.Point(1032, 350);
+            this.ctrlSiteTrack22.Location = new System.Drawing.Point(1032, 343);
             this.ctrlSiteTrack22.MainLoop = false;
             this.ctrlSiteTrack22.MarginHorizontal = 0;
             this.ctrlSiteTrack22.MarginVertical = 0;
             this.ctrlSiteTrack22.Name = "ctrlSiteTrack22";
             this.ctrlSiteTrack22.PLCNo = 22;
-            this.ctrlSiteTrack22.ShowSiteNo = false;
+            this.ctrlSiteTrack22.ShowSiteNo = true;
             this.ctrlSiteTrack22.ShowTroubleState = false;
             this.ctrlSiteTrack22.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack22.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4812,7 +4949,7 @@
             this.label16.CausesValidation = false;
             this.label16.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
             this.label16.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label16.Location = new System.Drawing.Point(1183, 525);
+            this.label16.Location = new System.Drawing.Point(1183, 518);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(309, 63);
             this.label16.TabIndex = 365;
@@ -4826,7 +4963,7 @@
             this.label15.CausesValidation = false;
             this.label15.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
             this.label15.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label15.Location = new System.Drawing.Point(1183, 321);
+            this.label15.Location = new System.Drawing.Point(1183, 314);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(311, 64);
             this.label15.TabIndex = 364;
@@ -4840,7 +4977,7 @@
             this.label14.CausesValidation = false;
             this.label14.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
             this.label14.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label14.Location = new System.Drawing.Point(1221, 123);
+            this.label14.Location = new System.Drawing.Point(1221, 116);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(232, 63);
             this.label14.TabIndex = 363;
@@ -4850,18 +4987,21 @@
             // ctrlSiteTrack20
             // 
             this.ctrlSiteTrack20.CVPLCListDeviceID = 2;
+            this.ctrlSiteTrack20.CVType = "Conveyor";
             this.ctrlSiteTrack20.DisplayText = "";
             this.ctrlSiteTrack20.FirstSiteNo = 1;
+            this.ctrlSiteTrack20.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack20.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack20.InterSitePadding = 6;
             this.ctrlSiteTrack20.IsControled = true;
             this.ctrlSiteTrack20.IsUpperStage = false;
-            this.ctrlSiteTrack20.Location = new System.Drawing.Point(1032, 221);
+            this.ctrlSiteTrack20.Location = new System.Drawing.Point(1032, 214);
             this.ctrlSiteTrack20.MainLoop = false;
             this.ctrlSiteTrack20.MarginHorizontal = 0;
             this.ctrlSiteTrack20.MarginVertical = 0;
             this.ctrlSiteTrack20.Name = "ctrlSiteTrack20";
             this.ctrlSiteTrack20.PLCNo = 20;
-            this.ctrlSiteTrack20.ShowSiteNo = false;
+            this.ctrlSiteTrack20.ShowSiteNo = true;
             this.ctrlSiteTrack20.ShowTroubleState = false;
             this.ctrlSiteTrack20.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack20.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4886,18 +5026,21 @@
             // ctrlSiteTrack19
             // 
             this.ctrlSiteTrack19.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack19.CVType = "Conveyor";
             this.ctrlSiteTrack19.DisplayText = "";
             this.ctrlSiteTrack19.FirstSiteNo = 1;
+            this.ctrlSiteTrack19.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack19.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack19.InterSitePadding = 6;
             this.ctrlSiteTrack19.IsControled = true;
             this.ctrlSiteTrack19.IsUpperStage = false;
-            this.ctrlSiteTrack19.Location = new System.Drawing.Point(1032, 149);
+            this.ctrlSiteTrack19.Location = new System.Drawing.Point(1032, 142);
             this.ctrlSiteTrack19.MainLoop = false;
             this.ctrlSiteTrack19.MarginHorizontal = 0;
             this.ctrlSiteTrack19.MarginVertical = 0;
             this.ctrlSiteTrack19.Name = "ctrlSiteTrack19";
             this.ctrlSiteTrack19.PLCNo = 19;
-            this.ctrlSiteTrack19.ShowSiteNo = false;
+            this.ctrlSiteTrack19.ShowSiteNo = true;
             this.ctrlSiteTrack19.ShowTroubleState = false;
             this.ctrlSiteTrack19.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack19.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4922,18 +5065,21 @@
             // ctrlSiteTrack18
             // 
             this.ctrlSiteTrack18.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack18.CVType = "Conveyor";
             this.ctrlSiteTrack18.DisplayText = "";
             this.ctrlSiteTrack18.FirstSiteNo = 108;
+            this.ctrlSiteTrack18.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack18.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack18.InterSitePadding = 6;
             this.ctrlSiteTrack18.IsControled = true;
             this.ctrlSiteTrack18.IsUpperStage = false;
-            this.ctrlSiteTrack18.Location = new System.Drawing.Point(832, 149);
+            this.ctrlSiteTrack18.Location = new System.Drawing.Point(832, 142);
             this.ctrlSiteTrack18.MainLoop = false;
             this.ctrlSiteTrack18.MarginHorizontal = 0;
             this.ctrlSiteTrack18.MarginVertical = 0;
             this.ctrlSiteTrack18.Name = "ctrlSiteTrack18";
             this.ctrlSiteTrack18.PLCNo = 18;
-            this.ctrlSiteTrack18.ShowSiteNo = false;
+            this.ctrlSiteTrack18.ShowSiteNo = true;
             this.ctrlSiteTrack18.ShowTroubleState = false;
             this.ctrlSiteTrack18.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack18.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4955,18 +5101,21 @@
             // ctrlSiteTrack17
             // 
             this.ctrlSiteTrack17.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack17.CVType = "Conveyor";
             this.ctrlSiteTrack17.DisplayText = "";
             this.ctrlSiteTrack17.FirstSiteNo = 104;
+            this.ctrlSiteTrack17.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack17.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack17.InterSitePadding = 6;
             this.ctrlSiteTrack17.IsControled = true;
             this.ctrlSiteTrack17.IsUpperStage = false;
-            this.ctrlSiteTrack17.Location = new System.Drawing.Point(872, 217);
+            this.ctrlSiteTrack17.Location = new System.Drawing.Point(872, 210);
             this.ctrlSiteTrack17.MainLoop = false;
             this.ctrlSiteTrack17.MarginHorizontal = 0;
             this.ctrlSiteTrack17.MarginVertical = 0;
             this.ctrlSiteTrack17.Name = "ctrlSiteTrack17";
             this.ctrlSiteTrack17.PLCNo = 17;
-            this.ctrlSiteTrack17.ShowSiteNo = false;
+            this.ctrlSiteTrack17.ShowSiteNo = true;
             this.ctrlSiteTrack17.ShowTroubleState = false;
             this.ctrlSiteTrack17.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack17.SiteBoxColor = System.Drawing.Color.Gray;
@@ -4978,7 +5127,7 @@
             this.ctrlSiteTrack17.SiteNoIncStep = 1;
             this.ctrlSiteTrack17.SiteNoList = new int[] {
         1204,
-        1205};
+        -1};
             this.ctrlSiteTrack17.SiteTextDisp = null;
             this.ctrlSiteTrack17.SiteTrayDirection = ControlGallery.TrayMovingDirection.RightToLeft;
             this.ctrlSiteTrack17.Size = new System.Drawing.Size(76, 35);
@@ -4988,18 +5137,21 @@
             // ctrlSiteTrack16
             // 
             this.ctrlSiteTrack16.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack16.CVType = "Conveyor";
             this.ctrlSiteTrack16.DisplayText = "";
             this.ctrlSiteTrack16.FirstSiteNo = 1203;
+            this.ctrlSiteTrack16.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack16.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack16.InterSitePadding = 6;
             this.ctrlSiteTrack16.IsControled = true;
             this.ctrlSiteTrack16.IsUpperStage = false;
-            this.ctrlSiteTrack16.Location = new System.Drawing.Point(910, 257);
+            this.ctrlSiteTrack16.Location = new System.Drawing.Point(910, 250);
             this.ctrlSiteTrack16.MainLoop = false;
             this.ctrlSiteTrack16.MarginHorizontal = 0;
             this.ctrlSiteTrack16.MarginVertical = 0;
             this.ctrlSiteTrack16.Name = "ctrlSiteTrack16";
             this.ctrlSiteTrack16.PLCNo = 16;
-            this.ctrlSiteTrack16.ShowSiteNo = false;
+            this.ctrlSiteTrack16.ShowSiteNo = true;
             this.ctrlSiteTrack16.ShowTroubleState = false;
             this.ctrlSiteTrack16.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack16.SiteBoxColor = System.Drawing.Color.Gray;
@@ -5019,18 +5171,21 @@
             // ctrlSiteTrack15
             // 
             this.ctrlSiteTrack15.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack15.CVType = "Conveyor";
             this.ctrlSiteTrack15.DisplayText = "";
             this.ctrlSiteTrack15.FirstSiteNo = 1;
+            this.ctrlSiteTrack15.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack15.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack15.InterSitePadding = 6;
             this.ctrlSiteTrack15.IsControled = true;
             this.ctrlSiteTrack15.IsUpperStage = false;
-            this.ctrlSiteTrack15.Location = new System.Drawing.Point(834, 297);
+            this.ctrlSiteTrack15.Location = new System.Drawing.Point(834, 290);
             this.ctrlSiteTrack15.MainLoop = false;
             this.ctrlSiteTrack15.MarginHorizontal = 0;
             this.ctrlSiteTrack15.MarginVertical = 0;
             this.ctrlSiteTrack15.Name = "ctrlSiteTrack15";
             this.ctrlSiteTrack15.PLCNo = 15;
-            this.ctrlSiteTrack15.ShowSiteNo = false;
+            this.ctrlSiteTrack15.ShowSiteNo = true;
             this.ctrlSiteTrack15.ShowTroubleState = false;
             this.ctrlSiteTrack15.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack15.SiteBoxColor = System.Drawing.Color.Gray;
@@ -5053,18 +5208,21 @@
             // ctrlSiteTrack14
             // 
             this.ctrlSiteTrack14.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack14.CVType = "Conveyor";
             this.ctrlSiteTrack14.DisplayText = "";
             this.ctrlSiteTrack14.FirstSiteNo = 1110;
+            this.ctrlSiteTrack14.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack14.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack14.InterSitePadding = 2;
             this.ctrlSiteTrack14.IsControled = true;
             this.ctrlSiteTrack14.IsUpperStage = false;
-            this.ctrlSiteTrack14.Location = new System.Drawing.Point(680, 400);
+            this.ctrlSiteTrack14.Location = new System.Drawing.Point(680, 393);
             this.ctrlSiteTrack14.MainLoop = false;
             this.ctrlSiteTrack14.MarginHorizontal = 0;
             this.ctrlSiteTrack14.MarginVertical = 0;
             this.ctrlSiteTrack14.Name = "ctrlSiteTrack14";
             this.ctrlSiteTrack14.PLCNo = 14;
-            this.ctrlSiteTrack14.ShowSiteNo = false;
+            this.ctrlSiteTrack14.ShowSiteNo = true;
             this.ctrlSiteTrack14.ShowTroubleState = false;
             this.ctrlSiteTrack14.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack14.SiteBoxColor = System.Drawing.Color.Gray;
@@ -5091,7 +5249,7 @@
             this.ctrlSCraneV1.DisplayText = "";
             this.ctrlSCraneV1.EqpID = "";
             this.ctrlSCraneV1.Font = new System.Drawing.Font("Segoe UI Emoji", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctrlSCraneV1.Location = new System.Drawing.Point(992, 130);
+            this.ctrlSCraneV1.Location = new System.Drawing.Point(992, 123);
             this.ctrlSCraneV1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.ctrlSCraneV1.MaxBayCount = 200;
             this.ctrlSCraneV1.Name = "ctrlSCraneV1";
@@ -5101,18 +5259,21 @@
             // ctrlSiteTrack13
             // 
             this.ctrlSiteTrack13.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack13.CVType = "Conveyor";
             this.ctrlSiteTrack13.DisplayText = "";
             this.ctrlSiteTrack13.FirstSiteNo = 1105;
+            this.ctrlSiteTrack13.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack13.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack13.InterSitePadding = 6;
             this.ctrlSiteTrack13.IsControled = true;
             this.ctrlSiteTrack13.IsUpperStage = false;
-            this.ctrlSiteTrack13.Location = new System.Drawing.Point(795, 508);
+            this.ctrlSiteTrack13.Location = new System.Drawing.Point(795, 501);
             this.ctrlSiteTrack13.MainLoop = false;
             this.ctrlSiteTrack13.MarginHorizontal = 0;
             this.ctrlSiteTrack13.MarginVertical = 0;
             this.ctrlSiteTrack13.Name = "ctrlSiteTrack13";
             this.ctrlSiteTrack13.PLCNo = 13;
-            this.ctrlSiteTrack13.ShowSiteNo = false;
+            this.ctrlSiteTrack13.ShowSiteNo = true;
             this.ctrlSiteTrack13.ShowTroubleState = false;
             this.ctrlSiteTrack13.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack13.SiteBoxColor = System.Drawing.Color.Gray;
@@ -5132,18 +5293,21 @@
             // ctrlSiteTrack12
             // 
             this.ctrlSiteTrack12.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack12.CVType = "Conveyor";
             this.ctrlSiteTrack12.DisplayText = "";
             this.ctrlSiteTrack12.FirstSiteNo = 1112;
+            this.ctrlSiteTrack12.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack12.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack12.InterSitePadding = 6;
             this.ctrlSiteTrack12.IsControled = true;
             this.ctrlSiteTrack12.IsUpperStage = false;
-            this.ctrlSiteTrack12.Location = new System.Drawing.Point(605, 508);
+            this.ctrlSiteTrack12.Location = new System.Drawing.Point(605, 501);
             this.ctrlSiteTrack12.MainLoop = false;
             this.ctrlSiteTrack12.MarginHorizontal = 0;
             this.ctrlSiteTrack12.MarginVertical = 0;
             this.ctrlSiteTrack12.Name = "ctrlSiteTrack12";
             this.ctrlSiteTrack12.PLCNo = 12;
-            this.ctrlSiteTrack12.ShowSiteNo = false;
+            this.ctrlSiteTrack12.ShowSiteNo = true;
             this.ctrlSiteTrack12.ShowTroubleState = false;
             this.ctrlSiteTrack12.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack12.SiteBoxColor = System.Drawing.Color.Gray;
@@ -5167,7 +5331,7 @@
             this.label10.CausesValidation = false;
             this.label10.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
             this.label10.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label10.Location = new System.Drawing.Point(605, 480);
+            this.label10.Location = new System.Drawing.Point(605, 473);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(32, 23);
             this.label10.TabIndex = 351;
@@ -5180,7 +5344,7 @@
             this.label9.CausesValidation = false;
             this.label9.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
             this.label9.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label9.Location = new System.Drawing.Point(682, 480);
+            this.label9.Location = new System.Drawing.Point(682, 473);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(32, 23);
             this.label9.TabIndex = 350;
@@ -5193,7 +5357,7 @@
             this.label8.CausesValidation = false;
             this.label8.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
             this.label8.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label8.Location = new System.Drawing.Point(795, 480);
+            this.label8.Location = new System.Drawing.Point(795, 473);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(32, 23);
             this.label8.TabIndex = 349;
@@ -5206,7 +5370,7 @@
             this.label7.CausesValidation = false;
             this.label7.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
             this.label7.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label7.Location = new System.Drawing.Point(871, 480);
+            this.label7.Location = new System.Drawing.Point(871, 473);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(32, 23);
             this.label7.TabIndex = 348;
@@ -5215,18 +5379,21 @@
             // ctrlSiteTrack11
             // 
             this.ctrlSiteTrack11.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack11.CVType = "Conveyor";
             this.ctrlSiteTrack11.DisplayText = "";
             this.ctrlSiteTrack11.FirstSiteNo = 1167;
+            this.ctrlSiteTrack11.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack11.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack11.InterSitePadding = 6;
             this.ctrlSiteTrack11.IsControled = true;
             this.ctrlSiteTrack11.IsUpperStage = false;
-            this.ctrlSiteTrack11.Location = new System.Drawing.Point(567, 719);
+            this.ctrlSiteTrack11.Location = new System.Drawing.Point(567, 712);
             this.ctrlSiteTrack11.MainLoop = false;
             this.ctrlSiteTrack11.MarginHorizontal = 0;
             this.ctrlSiteTrack11.MarginVertical = 0;
             this.ctrlSiteTrack11.Name = "ctrlSiteTrack11";
             this.ctrlSiteTrack11.PLCNo = 11;
-            this.ctrlSiteTrack11.ShowSiteNo = false;
+            this.ctrlSiteTrack11.ShowSiteNo = true;
             this.ctrlSiteTrack11.ShowTroubleState = false;
             this.ctrlSiteTrack11.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack11.SiteBoxColor = System.Drawing.Color.Gray;
@@ -5238,7 +5405,7 @@
             this.ctrlSiteTrack11.SiteNoIncStep = 1;
             this.ctrlSiteTrack11.SiteNoList = new int[0];
             this.ctrlSiteTrack11.SiteTextDisp = new string[] {
-        "1167=G3"};
+        "1167=G1"};
             this.ctrlSiteTrack11.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack11.Size = new System.Drawing.Size(33, 35);
             this.ctrlSiteTrack11.TabIndex = 347;
@@ -5247,18 +5414,21 @@
             // ctrlSiteTrack10
             // 
             this.ctrlSiteTrack10.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack10.CVType = "Conveyor";
             this.ctrlSiteTrack10.DisplayText = "";
             this.ctrlSiteTrack10.FirstSiteNo = 1;
+            this.ctrlSiteTrack10.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack10.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack10.InterSitePadding = 6;
             this.ctrlSiteTrack10.IsControled = true;
             this.ctrlSiteTrack10.IsUpperStage = false;
-            this.ctrlSiteTrack10.Location = new System.Drawing.Point(490, 479);
+            this.ctrlSiteTrack10.Location = new System.Drawing.Point(490, 472);
             this.ctrlSiteTrack10.MainLoop = false;
             this.ctrlSiteTrack10.MarginHorizontal = 0;
             this.ctrlSiteTrack10.MarginVertical = 0;
             this.ctrlSiteTrack10.Name = "ctrlSiteTrack10";
             this.ctrlSiteTrack10.PLCNo = 10;
-            this.ctrlSiteTrack10.ShowSiteNo = false;
+            this.ctrlSiteTrack10.ShowSiteNo = true;
             this.ctrlSiteTrack10.ShowTroubleState = false;
             this.ctrlSiteTrack10.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack10.SiteBoxColor = System.Drawing.Color.Gray;
@@ -5286,19 +5456,21 @@
             // ctrlSiteTrack9
             // 
             this.ctrlSiteTrack9.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack9.CVType = "Conveyor";
             this.ctrlSiteTrack9.DisplayText = "";
             this.ctrlSiteTrack9.FirstSiteNo = 1;
-            this.ctrlSiteTrack9.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack9.Font = new System.Drawing.Font("돋움", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack9.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack9.InterSitePadding = 6;
             this.ctrlSiteTrack9.IsControled = true;
             this.ctrlSiteTrack9.IsUpperStage = false;
-            this.ctrlSiteTrack9.Location = new System.Drawing.Point(414, 479);
+            this.ctrlSiteTrack9.Location = new System.Drawing.Point(414, 472);
             this.ctrlSiteTrack9.MainLoop = false;
             this.ctrlSiteTrack9.MarginHorizontal = 0;
             this.ctrlSiteTrack9.MarginVertical = 0;
             this.ctrlSiteTrack9.Name = "ctrlSiteTrack9";
             this.ctrlSiteTrack9.PLCNo = 9;
-            this.ctrlSiteTrack9.ShowSiteNo = false;
+            this.ctrlSiteTrack9.ShowSiteNo = true;
             this.ctrlSiteTrack9.ShowTroubleState = false;
             this.ctrlSiteTrack9.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack9.SiteBoxColor = System.Drawing.Color.Gray;
@@ -5317,7 +5489,7 @@
         -1,
         1161};
             this.ctrlSiteTrack9.SiteTextDisp = new string[] {
-        "1161=G1"};
+        "1161=G3"};
             this.ctrlSiteTrack9.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
             this.ctrlSiteTrack9.Size = new System.Drawing.Size(33, 275);
             this.ctrlSiteTrack9.TabIndex = 345;
@@ -5326,18 +5498,21 @@
             // ctrlSiteTrack8
             // 
             this.ctrlSiteTrack8.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack8.CVType = "Conveyor";
             this.ctrlSiteTrack8.DisplayText = "";
             this.ctrlSiteTrack8.FirstSiteNo = 1121;
+            this.ctrlSiteTrack8.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack8.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack8.InterSitePadding = 6;
             this.ctrlSiteTrack8.IsControled = true;
             this.ctrlSiteTrack8.IsUpperStage = false;
-            this.ctrlSiteTrack8.Location = new System.Drawing.Point(414, 400);
+            this.ctrlSiteTrack8.Location = new System.Drawing.Point(414, 393);
             this.ctrlSiteTrack8.MainLoop = false;
             this.ctrlSiteTrack8.MarginHorizontal = 0;
             this.ctrlSiteTrack8.MarginVertical = 0;
             this.ctrlSiteTrack8.Name = "ctrlSiteTrack8";
             this.ctrlSiteTrack8.PLCNo = 8;
-            this.ctrlSiteTrack8.ShowSiteNo = false;
+            this.ctrlSiteTrack8.ShowSiteNo = true;
             this.ctrlSiteTrack8.ShowTroubleState = false;
             this.ctrlSiteTrack8.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack8.SiteBoxColor = System.Drawing.Color.Gray;
@@ -5361,7 +5536,7 @@
             this.label4.CausesValidation = false;
             this.label4.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
             this.label4.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label4.Location = new System.Drawing.Point(264, 599);
+            this.label4.Location = new System.Drawing.Point(264, 592);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(23, 34);
             this.label4.TabIndex = 343;
@@ -5374,7 +5549,7 @@
             this.label3.CausesValidation = false;
             this.label3.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F);
             this.label3.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label3.Location = new System.Drawing.Point(264, 520);
+            this.label3.Location = new System.Drawing.Point(264, 513);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(23, 34);
             this.label3.TabIndex = 342;
@@ -5383,18 +5558,21 @@
             // ctrlSiteTrack7
             // 
             this.ctrlSiteTrack7.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack7.CVType = "Conveyor";
             this.ctrlSiteTrack7.DisplayText = "";
             this.ctrlSiteTrack7.FirstSiteNo = 54;
+            this.ctrlSiteTrack7.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack7.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack7.InterSitePadding = 6;
             this.ctrlSiteTrack7.IsControled = true;
             this.ctrlSiteTrack7.IsUpperStage = false;
-            this.ctrlSiteTrack7.Location = new System.Drawing.Point(292, 520);
+            this.ctrlSiteTrack7.Location = new System.Drawing.Point(292, 513);
             this.ctrlSiteTrack7.MainLoop = false;
             this.ctrlSiteTrack7.MarginHorizontal = 0;
             this.ctrlSiteTrack7.MarginVertical = 0;
             this.ctrlSiteTrack7.Name = "ctrlSiteTrack7";
             this.ctrlSiteTrack7.PLCNo = 7;
-            this.ctrlSiteTrack7.ShowSiteNo = false;
+            this.ctrlSiteTrack7.ShowSiteNo = true;
             this.ctrlSiteTrack7.ShowTroubleState = false;
             this.ctrlSiteTrack7.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack7.SiteBoxColor = System.Drawing.Color.Gray;
@@ -5417,18 +5595,21 @@
             // ctrlSiteTrack6
             // 
             this.ctrlSiteTrack6.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack6.CVType = "Conveyor";
             this.ctrlSiteTrack6.DisplayText = "";
             this.ctrlSiteTrack6.FirstSiteNo = 1;
+            this.ctrlSiteTrack6.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack6.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack6.InterSitePadding = 6;
             this.ctrlSiteTrack6.IsControled = true;
             this.ctrlSiteTrack6.IsUpperStage = false;
-            this.ctrlSiteTrack6.Location = new System.Drawing.Point(148, 479);
+            this.ctrlSiteTrack6.Location = new System.Drawing.Point(148, 472);
             this.ctrlSiteTrack6.MainLoop = false;
             this.ctrlSiteTrack6.MarginHorizontal = 0;
             this.ctrlSiteTrack6.MarginVertical = 0;
             this.ctrlSiteTrack6.Name = "ctrlSiteTrack6";
             this.ctrlSiteTrack6.PLCNo = 6;
-            this.ctrlSiteTrack6.ShowSiteNo = false;
+            this.ctrlSiteTrack6.ShowSiteNo = true;
             this.ctrlSiteTrack6.ShowTroubleState = false;
             this.ctrlSiteTrack6.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack6.SiteBoxColor = System.Drawing.Color.Gray;
@@ -5456,18 +5637,21 @@
             // ctrlSiteTrack5
             // 
             this.ctrlSiteTrack5.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack5.CVType = "Conveyor";
             this.ctrlSiteTrack5.DisplayText = "";
             this.ctrlSiteTrack5.FirstSiteNo = 1;
+            this.ctrlSiteTrack5.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack5.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack5.InterSitePadding = 6;
             this.ctrlSiteTrack5.IsControled = true;
             this.ctrlSiteTrack5.IsUpperStage = false;
-            this.ctrlSiteTrack5.Location = new System.Drawing.Point(224, 319);
+            this.ctrlSiteTrack5.Location = new System.Drawing.Point(224, 312);
             this.ctrlSiteTrack5.MainLoop = false;
             this.ctrlSiteTrack5.MarginHorizontal = 0;
             this.ctrlSiteTrack5.MarginVertical = 0;
             this.ctrlSiteTrack5.Name = "ctrlSiteTrack5";
             this.ctrlSiteTrack5.PLCNo = 5;
-            this.ctrlSiteTrack5.ShowSiteNo = false;
+            this.ctrlSiteTrack5.ShowSiteNo = true;
             this.ctrlSiteTrack5.ShowTroubleState = false;
             this.ctrlSiteTrack5.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack5.SiteBoxColor = System.Drawing.Color.Gray;
@@ -5498,18 +5682,21 @@
             // ctrlSiteTrack4
             // 
             this.ctrlSiteTrack4.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack4.CVType = "Conveyor";
             this.ctrlSiteTrack4.DisplayText = "";
             this.ctrlSiteTrack4.FirstSiteNo = 1;
+            this.ctrlSiteTrack4.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack4.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack4.InterSitePadding = 6;
             this.ctrlSiteTrack4.IsControled = true;
             this.ctrlSiteTrack4.IsUpperStage = false;
-            this.ctrlSiteTrack4.Location = new System.Drawing.Point(72, 319);
+            this.ctrlSiteTrack4.Location = new System.Drawing.Point(72, 312);
             this.ctrlSiteTrack4.MainLoop = false;
             this.ctrlSiteTrack4.MarginHorizontal = 0;
             this.ctrlSiteTrack4.MarginVertical = 0;
             this.ctrlSiteTrack4.Name = "ctrlSiteTrack4";
             this.ctrlSiteTrack4.PLCNo = 4;
-            this.ctrlSiteTrack4.ShowSiteNo = false;
+            this.ctrlSiteTrack4.ShowSiteNo = true;
             this.ctrlSiteTrack4.ShowTroubleState = false;
             this.ctrlSiteTrack4.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack4.SiteBoxColor = System.Drawing.Color.Gray;
@@ -5538,18 +5725,21 @@
             // ctrlSiteTrack21
             // 
             this.ctrlSiteTrack21.CVPLCListDeviceID = 2;
+            this.ctrlSiteTrack21.CVType = "Conveyor";
             this.ctrlSiteTrack21.DisplayText = "";
             this.ctrlSiteTrack21.FirstSiteNo = 3105;
+            this.ctrlSiteTrack21.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack21.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack21.InterSitePadding = 2;
             this.ctrlSiteTrack21.IsControled = true;
             this.ctrlSiteTrack21.IsUpperStage = false;
-            this.ctrlSiteTrack21.Location = new System.Drawing.Point(1147, 262);
+            this.ctrlSiteTrack21.Location = new System.Drawing.Point(1147, 255);
             this.ctrlSiteTrack21.MainLoop = false;
             this.ctrlSiteTrack21.MarginHorizontal = 0;
             this.ctrlSiteTrack21.MarginVertical = 0;
             this.ctrlSiteTrack21.Name = "ctrlSiteTrack21";
             this.ctrlSiteTrack21.PLCNo = 21;
-            this.ctrlSiteTrack21.ShowSiteNo = false;
+            this.ctrlSiteTrack21.ShowSiteNo = true;
             this.ctrlSiteTrack21.ShowTroubleState = false;
             this.ctrlSiteTrack21.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack21.SiteBoxColor = System.Drawing.Color.Gray;
@@ -5569,84 +5759,89 @@
             // ctrlSiteTrack33
             // 
             this.ctrlSiteTrack33.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack33.CVType = "Conveyor";
             this.ctrlSiteTrack33.DisplayText = "";
-            this.ctrlSiteTrack33.FirstSiteNo = 117;
+            this.ctrlSiteTrack33.FirstSiteNo = 1218;
+            this.ctrlSiteTrack33.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack33.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack33.InterSitePadding = 6;
             this.ctrlSiteTrack33.IsControled = true;
             this.ctrlSiteTrack33.IsUpperStage = false;
-            this.ctrlSiteTrack33.Location = new System.Drawing.Point(1184, 68);
+            this.ctrlSiteTrack33.Location = new System.Drawing.Point(1184, 100);
             this.ctrlSiteTrack33.MainLoop = false;
             this.ctrlSiteTrack33.MarginHorizontal = 0;
             this.ctrlSiteTrack33.MarginVertical = 0;
             this.ctrlSiteTrack33.Name = "ctrlSiteTrack33";
             this.ctrlSiteTrack33.PLCNo = 33;
-            this.ctrlSiteTrack33.ShowSiteNo = false;
+            this.ctrlSiteTrack33.ShowSiteNo = true;
             this.ctrlSiteTrack33.ShowTroubleState = false;
             this.ctrlSiteTrack33.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack33.SiteBoxColor = System.Drawing.Color.Gray;
             this.ctrlSiteTrack33.SiteBoxHeight = 34;
             this.ctrlSiteTrack33.SiteBoxWidth = 32;
-            this.ctrlSiteTrack33.SiteCount = 2;
+            this.ctrlSiteTrack33.SiteCount = 1;
             this.ctrlSiteTrack33.SiteNo = 0;
-            this.ctrlSiteTrack33.SiteNoDirection = ControlGallery.SiteTrackDirection.TopToBottom;
+            this.ctrlSiteTrack33.SiteNoDirection = ControlGallery.SiteTrackDirection.LeftToRight;
             this.ctrlSiteTrack33.SiteNoIncStep = 1;
-            this.ctrlSiteTrack33.SiteNoList = new int[] {
-        1217,
-        1218};
+            this.ctrlSiteTrack33.SiteNoList = new int[0];
             this.ctrlSiteTrack33.SiteTextDisp = null;
             this.ctrlSiteTrack33.SiteTrayDirection = ControlGallery.TrayMovingDirection.TopToBottom;
-            this.ctrlSiteTrack33.Size = new System.Drawing.Size(33, 80);
+            this.ctrlSiteTrack33.Size = new System.Drawing.Size(33, 35);
             this.ctrlSiteTrack33.TabIndex = 378;
             this.ctrlSiteTrack33.TextRotateAngle = 0;
             // 
             // ctrlSiteTrack32
             // 
             this.ctrlSiteTrack32.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack32.CVType = "Conveyor";
             this.ctrlSiteTrack32.DisplayText = "";
-            this.ctrlSiteTrack32.FirstSiteNo = 115;
+            this.ctrlSiteTrack32.FirstSiteNo = 1215;
+            this.ctrlSiteTrack32.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack32.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack32.InterSitePadding = 6;
             this.ctrlSiteTrack32.IsControled = true;
             this.ctrlSiteTrack32.IsUpperStage = false;
-            this.ctrlSiteTrack32.Location = new System.Drawing.Point(1109, 68);
+            this.ctrlSiteTrack32.Location = new System.Drawing.Point(1109, 100);
             this.ctrlSiteTrack32.MainLoop = false;
             this.ctrlSiteTrack32.MarginHorizontal = 0;
             this.ctrlSiteTrack32.MarginVertical = 0;
             this.ctrlSiteTrack32.Name = "ctrlSiteTrack32";
             this.ctrlSiteTrack32.PLCNo = 32;
-            this.ctrlSiteTrack32.ShowSiteNo = false;
+            this.ctrlSiteTrack32.ShowSiteNo = true;
             this.ctrlSiteTrack32.ShowTroubleState = false;
             this.ctrlSiteTrack32.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack32.SiteBoxColor = System.Drawing.Color.Gray;
             this.ctrlSiteTrack32.SiteBoxHeight = 34;
             this.ctrlSiteTrack32.SiteBoxWidth = 32;
-            this.ctrlSiteTrack32.SiteCount = 2;
+            this.ctrlSiteTrack32.SiteCount = 1;
             this.ctrlSiteTrack32.SiteNo = 0;
-            this.ctrlSiteTrack32.SiteNoDirection = ControlGallery.SiteTrackDirection.BottomToTop;
+            this.ctrlSiteTrack32.SiteNoDirection = ControlGallery.SiteTrackDirection.LeftToRight;
             this.ctrlSiteTrack32.SiteNoIncStep = 1;
-            this.ctrlSiteTrack32.SiteNoList = new int[] {
-        1215,
-        1216};
+            this.ctrlSiteTrack32.SiteNoList = new int[0];
             this.ctrlSiteTrack32.SiteTextDisp = null;
-            this.ctrlSiteTrack32.SiteTrayDirection = ControlGallery.TrayMovingDirection.BottomToTop;
-            this.ctrlSiteTrack32.Size = new System.Drawing.Size(33, 80);
+            this.ctrlSiteTrack32.SiteTrayDirection = ControlGallery.TrayMovingDirection.TopToBottom;
+            this.ctrlSiteTrack32.Size = new System.Drawing.Size(33, 35);
             this.ctrlSiteTrack32.TabIndex = 377;
             this.ctrlSiteTrack32.TextRotateAngle = 0;
             // 
             // ctrlSiteTrack25
             // 
             this.ctrlSiteTrack25.CVPLCListDeviceID = 1;
+            this.ctrlSiteTrack25.CVType = "Conveyor";
             this.ctrlSiteTrack25.DisplayText = "";
             this.ctrlSiteTrack25.FirstSiteNo = 2204;
+            this.ctrlSiteTrack25.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack25.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack25.InterSitePadding = 2;
             this.ctrlSiteTrack25.IsControled = true;
             this.ctrlSiteTrack25.IsUpperStage = false;
-            this.ctrlSiteTrack25.Location = new System.Drawing.Point(1108, 511);
+            this.ctrlSiteTrack25.Location = new System.Drawing.Point(1108, 504);
             this.ctrlSiteTrack25.MainLoop = false;
             this.ctrlSiteTrack25.MarginHorizontal = 0;
             this.ctrlSiteTrack25.MarginVertical = 0;
             this.ctrlSiteTrack25.Name = "ctrlSiteTrack25";
             this.ctrlSiteTrack25.PLCNo = 25;
-            this.ctrlSiteTrack25.ShowSiteNo = false;
+            this.ctrlSiteTrack25.ShowSiteNo = true;
             this.ctrlSiteTrack25.ShowTroubleState = false;
             this.ctrlSiteTrack25.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack25.SiteBoxColor = System.Drawing.Color.Gray;
@@ -5666,18 +5861,21 @@
             // ctrlSiteTrack27
             // 
             this.ctrlSiteTrack27.CVPLCListDeviceID = 3;
+            this.ctrlSiteTrack27.CVType = "Conveyor";
             this.ctrlSiteTrack27.DisplayText = "";
             this.ctrlSiteTrack27.FirstSiteNo = 4106;
+            this.ctrlSiteTrack27.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack27.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack27.InterSitePadding = 2;
             this.ctrlSiteTrack27.IsControled = true;
             this.ctrlSiteTrack27.IsUpperStage = false;
-            this.ctrlSiteTrack27.Location = new System.Drawing.Point(1183, 804);
+            this.ctrlSiteTrack27.Location = new System.Drawing.Point(1183, 797);
             this.ctrlSiteTrack27.MainLoop = false;
             this.ctrlSiteTrack27.MarginHorizontal = 0;
             this.ctrlSiteTrack27.MarginVertical = 0;
             this.ctrlSiteTrack27.Name = "ctrlSiteTrack27";
             this.ctrlSiteTrack27.PLCNo = 27;
-            this.ctrlSiteTrack27.ShowSiteNo = false;
+            this.ctrlSiteTrack27.ShowSiteNo = true;
             this.ctrlSiteTrack27.ShowTroubleState = false;
             this.ctrlSiteTrack27.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack27.SiteBoxColor = System.Drawing.Color.Gray;
@@ -5697,18 +5895,21 @@
             // ctrlSiteTrack3
             // 
             this.ctrlSiteTrack3.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack3.CVType = "DPMZ";
             this.ctrlSiteTrack3.DisplayText = "";
             this.ctrlSiteTrack3.FirstSiteNo = 402;
+            this.ctrlSiteTrack3.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack3.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack3.InterSitePadding = 0;
             this.ctrlSiteTrack3.IsControled = true;
             this.ctrlSiteTrack3.IsUpperStage = false;
-            this.ctrlSiteTrack3.Location = new System.Drawing.Point(33, 439);
+            this.ctrlSiteTrack3.Location = new System.Drawing.Point(33, 432);
             this.ctrlSiteTrack3.MainLoop = false;
             this.ctrlSiteTrack3.MarginHorizontal = 0;
             this.ctrlSiteTrack3.MarginVertical = 0;
             this.ctrlSiteTrack3.Name = "ctrlSiteTrack3";
             this.ctrlSiteTrack3.PLCNo = 3;
-            this.ctrlSiteTrack3.ShowSiteNo = false;
+            this.ctrlSiteTrack3.ShowSiteNo = true;
             this.ctrlSiteTrack3.ShowTroubleState = false;
             this.ctrlSiteTrack3.SiteBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ctrlSiteTrack3.SiteBoxColor = System.Drawing.Color.Gray;
@@ -5723,14 +5924,14 @@
         1140};
             this.ctrlSiteTrack3.SiteTextDisp = new string[0];
             this.ctrlSiteTrack3.SiteTrayDirection = ControlGallery.TrayMovingDirection.LeftToRight;
-            this.ctrlSiteTrack3.Size = new System.Drawing.Size(33, 35);
+            this.ctrlSiteTrack3.Size = new System.Drawing.Size(34, 36);
             this.ctrlSiteTrack3.TabIndex = 333;
             this.ctrlSiteTrack3.TextRotateAngle = 0;
             // 
             // label2
             // 
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Location = new System.Drawing.Point(1182, 320);
+            this.label2.Location = new System.Drawing.Point(1182, 313);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(346, 165);
             this.label2.TabIndex = 575;
@@ -5738,7 +5939,7 @@
             // label22
             // 
             this.label22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label22.Location = new System.Drawing.Point(1182, 524);
+            this.label22.Location = new System.Drawing.Point(1182, 517);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(346, 165);
             this.label22.TabIndex = 576;
@@ -5746,7 +5947,7 @@
             // label29
             // 
             this.label29.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label29.Location = new System.Drawing.Point(1219, 122);
+            this.label29.Location = new System.Drawing.Point(1219, 115);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(269, 162);
             this.label29.TabIndex = 577;
@@ -5754,8 +5955,11 @@
             // ctrlSiteTrack51
             // 
             this.ctrlSiteTrack51.CVPLCListDeviceID = 0;
+            this.ctrlSiteTrack51.CVType = "Conveyor";
             this.ctrlSiteTrack51.DisplayText = "RTV";
             this.ctrlSiteTrack51.FirstSiteNo = 999;
+            this.ctrlSiteTrack51.Font = new System.Drawing.Font("굴림", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ctrlSiteTrack51.ForeColor = System.Drawing.Color.White;
             this.ctrlSiteTrack51.InterSitePadding = 0;
             this.ctrlSiteTrack51.IsControled = true;
             this.ctrlSiteTrack51.IsUpperStage = false;
@@ -5765,7 +5969,7 @@
             this.ctrlSiteTrack51.MarginVertical = 0;
             this.ctrlSiteTrack51.Name = "ctrlSiteTrack51";
             this.ctrlSiteTrack51.PLCNo = 51;
-            this.ctrlSiteTrack51.ShowSiteNo = false;
+            this.ctrlSiteTrack51.ShowSiteNo = true;
             this.ctrlSiteTrack51.ShowTroubleState = false;
             this.ctrlSiteTrack51.SiteBorderColor = System.Drawing.Color.DimGray;
             this.ctrlSiteTrack51.SiteBoxColor = System.Drawing.Color.Gray;
@@ -6273,5 +6477,6 @@
         private ControlGallery.CtrlSiteTrack ctrlSiteTrack51;
         private WindowsForms.CtrlLabel ctrlLabel18;
         private System.Windows.Forms.PictureBox pictureBox39;
+        private ControlGallery.BCRMarker bcrMarker36;
     }
 }

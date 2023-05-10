@@ -1,4 +1,5 @@
 ﻿using ExcelDataReader.Log;
+using FMSMonitoringUI.Common;
 using FMSMonitoringUI.Controlls;
 using FMSMonitoringUI.Controlls.WindowsForms;
 using FMSMonitoringUI.Monitoring;
@@ -32,6 +33,8 @@ using System.Windows.Threading;
 using UnifiedAutomation.GettingStarted;
 using UnifiedAutomation.UaBase;
 using UnifiedAutomation.UaClient;
+using IWshRuntimeLibrary;       // 바탕화면 바로가기 Icon
+using System.Windows.Shapes;
 
 namespace FMSMonitoringUI
 {
@@ -73,6 +76,8 @@ namespace FMSMonitoringUI
         private Thread _LogOutThread;
         private int _LogOutCount = 0;
         #endregion
+
+        //static WshShell wsh = new WshShell();
 
         public MainForm(ApplicationInstance applicationInstance)
         {
@@ -117,6 +122,8 @@ namespace FMSMonitoringUI
             FormBorderStyle = FormBorderStyle.Sizable;
             WindowState = FormWindowState.Maximized;
 
+            AlarmOccur.Visible = false;
+
             CDefine.m_strLanguage = enLoginLanguage.English.ToString();
 
             CheckLogin();
@@ -126,10 +133,10 @@ namespace FMSMonitoringUI
             _MainFormText = "[FMS Monitoring System]";
 
             //lbVersionInfo.Text = " Ver. " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            lbVersionInfo.Text = " Ver.2023.05.04.001";
+            lbVersionInfo.Text = CVersionHistory.GetVersion();  // " Ver.2023.05.08.001";
 
             CLogger.WriteLog(enLogLevel.Info, "", "");
-            CLogger.WriteLog(enLogLevel.Info, _MainFormText, "== Start the FMS Monitoring System ==");
+            CLogger.WriteLog(enLogLevel.Info, _MainFormText, $"== Start the FMS Monitoring System : {CVersionHistory.GetVersion()}==");
         }
 
         protected override void OnHandleCreated(EventArgs e)
@@ -155,6 +162,28 @@ namespace FMSMonitoringUI
                 return;
             }
 
+            // 바로가기 경로 설정
+            //string Desktop_Dir = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+            //DirectoryInfo DirInfo = new DirectoryInfo(Desktop_Dir);
+            //string LinkFileName = Desktop_Dir.ToString() + @"\FMS Monitoring.exe";
+            //FileInfo LinkFile = new FileInfo(LinkFileName);
+
+            //// 이미 존재하는 경우 return
+            //if (LinkFile.Exists)
+            //{ return; }
+
+            // 바로가기 생성
+            //WshShell wsh = new WshShell();
+            //IWshShortcut Link = wsh.CreateShortcut(@"C:\Users\msh\Desktop.lnk");
+
+            //// 원본 파일의 경로 
+            //StringBuilder SB = new StringBuilder();
+            //SB.Append(Application.ExecutablePath);
+            ////SB.Append(@"\FMSMonitoringUI.exe");
+            //Link.TargetPath = SB.ToString();
+            //Link.IconLocation = Application.StartupPath + @"\res\Verkor_icon_x48.ico";
+            //Link.Save();
+
             CLogger.WriteLog(enLogLevel.Info, _MainFormText, $"LoginID : {CDefine.m_strLoginID}, UserName : {CDefine.m_strLoginName}");
 
             #region CurrentTimer
@@ -172,12 +201,14 @@ namespace FMSMonitoringUI
             }));
 
 
-            // 현장가서 활성화 시킴. 
-            this.BeginInvoke(new MethodInvoker(delegate ()
-            {
-                _LogOutThread = new Thread(() => LogOutThreadCallback());
-                _LogOutThread.IsBackground = true; _LogOutThread.Start();
-            }));
+            // 현장가서 활성화 시킴. 자동 Logout
+            //this.BeginInvoke(new MethodInvoker(delegate ()
+            //{
+            //    _LogOutThread = new Thread(() => LogOutThreadCallback());
+            //    _LogOutThread.IsBackground = true; _LogOutThread.Start();
+            //}));
+
+            CreateDesktopIcon();
         }
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -190,7 +221,39 @@ namespace FMSMonitoringUI
         }
         #endregion
 
-        #region InitLanguage
+        #region CreateDesktopIcon
+        /// <summary>
+        /// 바탕화면 바로가기 Icon 생성
+        /// </summary>
+        private void CreateDesktopIcon()
+        {
+            // 바로가기 생성
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+#if DEBUG
+            string IconName = "FMS MonitoringD";
+#else
+            string IconName = "FMS Monitoring";
+#endif
+
+            string LinkFileName = path + $"/{IconName}.lnk";
+            FileInfo LinkFile = new FileInfo(LinkFileName);
+
+            if (LinkFile.Exists == false)
+            {
+                WshShell wsh = new WshShell();
+                IWshShortcut myShotCut;
+
+                myShotCut = (IWshShortcut)wsh.CreateShortcut(path + $"/{IconName}.lnk");
+                myShotCut.TargetPath = Application.ExecutablePath;
+                myShotCut.WorkingDirectory = Application.StartupPath;
+                myShotCut.Description = $"{IconName}";
+                myShotCut.IconLocation = Application.StartupPath + @"\Verkor_icon_x48.ico";
+                myShotCut.Save();
+            }
+        }
+#endregion
+
+#region InitLanguage
         private void InitLanguage()
         {
             // CtrlTaggingName 언어 변환 호출
@@ -205,16 +268,16 @@ namespace FMSMonitoringUI
 
             cbUsePopUp.CallLocalLanguage();
 
-            #region FMS MonitoringUI
+#region FMS MonitoringUI
             _CtrlMonitoring.Text = CAuthority.GetWindowsText(_CtrlMonitoring.ToString());
             _CtrlAging.Text = CAuthority.GetWindowsText(_CtrlAging.ToString());
             _CtrlFormationCHG.Text = CAuthority.GetWindowsText(_CtrlFormationCHG.ToString());
             _CtrlFormationHPC.Text = CAuthority.GetWindowsText(_CtrlFormationHPC.ToString());
-            #endregion
+#endregion
         }
-        #endregion
+#endregion
 
-        #region SetSystemTime
+#region SetSystemTime
         private bool SetSystemTime()
         {
             try
@@ -252,9 +315,9 @@ namespace FMSMonitoringUI
                 return false;
             }
         }
-        #endregion
+#endregion
 
-        #region CheckLogin
+#region CheckLogin
         private void CheckLogin()
         {
             WinLogin winLogIn = new WinLogin();
@@ -267,9 +330,9 @@ namespace FMSMonitoringUI
                 SetLocalizaion(CDefine.m_enLanguage);
             }
         }
-        #endregion
+#endregion
 
-        #region SetWindowAuthority
+#region SetWindowAuthority
         private void SetWindowAuthority()
         {
             bool bView;
@@ -286,7 +349,7 @@ namespace FMSMonitoringUI
             bView = CAuthority.CheckAuthority(enAuthority.View, CDefine.m_strLoginID, _CtrlFormationHPC.ToString());
             barFormationHPC.Enabled = bView;
         }
-        #endregion
+#endregion
 
         /// <summary>
         /// Title 선택 시 해당 화면으로 전환시킨다.
@@ -348,7 +411,7 @@ namespace FMSMonitoringUI
             CLogger.WriteLog(enLogLevel.Info, _MainFormText, $"FMSMonitoringUI - {this.Text}");
         }
 
-        #region Application_UntrustedCertificate
+#region Application_UntrustedCertificate
         public void Application_UntrustedCertificate(object sender, UntrustedCertificateEventArgs e)
         {
             if (InvokeRequired)
@@ -386,7 +449,7 @@ namespace FMSMonitoringUI
                 CLogger.WriteLog(enLogLevel.Error, _MainFormText, log);
             }
         }        
-        #endregion
+#endregion
 
         //private void button1_Click(object sender, EventArgs e)
         //{
@@ -401,7 +464,7 @@ namespace FMSMonitoringUI
         //    //_clientFMS.Write(info);
         //}
 
-        #region language세팅
+#region language세팅
         private void SetLocalizaion(enLoginLanguage enLanguage)
         {
             switch (enLanguage)
@@ -419,9 +482,9 @@ namespace FMSMonitoringUI
 
             LocalLanguage.resxLanguage = new ResourceManager("MonitoringUI.WinFormRoot", typeof(WinFormRoot).Assembly);
         }
-        #endregion
+#endregion
 
-        #region 날짜 표시 Thread
+#region 날짜 표시 Thread
         private void updateTime()
         {
             string strCurrentTime = "";
@@ -455,9 +518,9 @@ namespace FMSMonitoringUI
                 return;
             }
         }
-        #endregion
+#endregion
 
-        #region ProcessThreadCallback
+#region ProcessThreadCallback
         private void ProcessThreadCallback()
         {
             try
@@ -499,9 +562,9 @@ namespace FMSMonitoringUI
                 CLogger.WriteLog(enLogLevel.Error, _MainFormText, log);
             }
         }
-        #endregion
+#endregion
 
-        #region LoadTroubleEqpAlarm
+#region LoadTroubleEqpAlarm
         private async Task LoadTroubleEqpAlarm()
         {
             //// Set Query
@@ -561,9 +624,9 @@ namespace FMSMonitoringUI
                 CLogger.WriteLog(enLogLevel.Error, _MainFormText, log);
             }
         }
-        #endregion
+#endregion
 
-        #region LoadTroubleAgingAlarm
+#region LoadTroubleAgingAlarm
         private async Task LoadTroubleAgingAlarm()
         {
             try
@@ -617,9 +680,9 @@ namespace FMSMonitoringUI
                 CLogger.WriteLog(enLogLevel.Error, _MainFormText, log);
             }
         }
-        #endregion
+#endregion
 
-        #region ReadTroubleName
+#region ReadTroubleName
         private async Task ReadTroubleName(string eqpType, int controlNo, string troubleCode)
         {
             try
@@ -629,8 +692,6 @@ namespace FMSMonitoringUI
                     _TroubleConveyorList.Remove(controlNo.ToString());
                     return;
                 }
-
-                //eqpType = "DCR";
 
                 RESTClient rest = new RESTClient();
                 //// Set Query
@@ -649,10 +710,28 @@ namespace FMSMonitoringUI
 
                     if (result != null)
                     {
-                        result.DATA[0].ID = controlNo;
-                        result.DATA[0].EQP_ID = eqpType + controlNo;
-                        result.DATA[0].EQP_NAME = "CNV" + controlNo;
-                        result.DATA[0].EQP_NAME_LOCAL = "CNV" + controlNo;
+                        if (result.DATA.Count > 0)
+                        {
+                            result.DATA[0].ID = controlNo;
+                            result.DATA[0].EQP_ID = eqpType + controlNo;
+                            result.DATA[0].EQP_NAME = eqpType + controlNo;
+                            result.DATA[0].EQP_NAME_LOCAL = eqpType + controlNo;
+                        }
+                        else
+                        {
+                            _trouble_conveyor_list cvItem = new _trouble_conveyor_list();
+                            cvItem.EQP_STATUS = "T";
+                            cvItem.EQP_TROUBLE_CODE = troubleCode;
+                            cvItem.TROUBLE_NAME = $"Trouble Code : {troubleCode}";
+                            cvItem.TROUBLE_NAME_LOCAL = $"Trouble Code : {troubleCode}";
+
+                            result.DATA.Add(cvItem);
+
+                            result.DATA[0].ID = controlNo;
+                            result.DATA[0].EQP_ID = eqpType + controlNo;
+                            result.DATA[0].EQP_NAME = eqpType + controlNo;
+                            result.DATA[0].EQP_NAME_LOCAL = eqpType + controlNo;
+                        }
 
                         SetData(result.DATA);
 
@@ -681,9 +760,9 @@ namespace FMSMonitoringUI
                 CLogger.WriteLog(enLogLevel.Error, _MainFormText, log);
             }
         }
-        #endregion
+#endregion
 
-        #region SetData
+#region SetData
         public void SetData(List<_trouble_equipment_list> data)
         {
             if (data == null || data.Count == 0)
@@ -831,10 +910,10 @@ namespace FMSMonitoringUI
                 }
             }
         }
-        #endregion
+#endregion
 
 
-        #region Trouble List Add
+#region Trouble List Add
         /////////////////////////////////////////////////////////////////////
         //	Trouble Equipment List Add
         //===================================================================
@@ -942,9 +1021,9 @@ namespace FMSMonitoringUI
                 CLogger.WriteLog(enLogLevel.Error, _MainFormText, log);
             }
         }
-        #endregion
+#endregion
 
-        #region [Trouble WIndow Show]
+#region [Trouble WIndow Show]
         /////////////////////////////////////////////////////////////////////
         //	Trouble WIndow Show
         //===================================================================
@@ -1084,9 +1163,9 @@ namespace FMSMonitoringUI
             }
         }
 
-        #endregion
+#endregion
 
-        #region LoadEqpName
+#region LoadEqpName
         private async Task LoadEqpName()
         {
             try
@@ -1130,9 +1209,9 @@ namespace FMSMonitoringUI
                 CLogger.WriteLog(enLogLevel.Error, _MainFormText, log);
             }
         }
-        #endregion
+#endregion
 
-        #region SetData
+#region SetData
         public void SetData(List<_mst_eqp> data)
         {
             if (data == null || data.Count == 0) return;
@@ -1155,9 +1234,9 @@ namespace FMSMonitoringUI
             _CtrlFormationCHG._EqpName = dict;
             _CtrlFormationHPC._EqpName = dict;
         }
-        #endregion
+#endregion
 
-        #region Event
+#region Event
         private void TroubleAlarm_TroubleCloseEvent(string troubleTitle)
         {
             _TroublePopupList.Remove(troubleTitle);
@@ -1174,9 +1253,9 @@ namespace FMSMonitoringUI
 
 
         }
-        #endregion
+#endregion
 
-        #region LogOutThreadCallback
+#region LogOutThreadCallback
         private void LogOutThreadCallback()
         {
             try
@@ -1202,9 +1281,9 @@ namespace FMSMonitoringUI
                 CLogger.WriteLog(enLogLevel.Error, _MainFormText, log);
             }
         }
-        #endregion
+#endregion
 
-        #region LogOut
+#region LogOut
         public void LogOut()
         {
             try
@@ -1232,9 +1311,9 @@ namespace FMSMonitoringUI
                 CLogger.WriteLog(enLogLevel.Error, _MainFormText, log);
             }
         }
-        #endregion
+#endregion
 
-        #region 윈도우 프로시저 처리하기 - WndProc(message)
+#region 윈도우 프로시저 처리하기 - WndProc(message)
         /// <summary>
         /// 윈도우 프로시저 처리하기
         /// </summary>
@@ -1251,7 +1330,7 @@ namespace FMSMonitoringUI
 
         //    base.WndProc(ref message);
         //}
-        #endregion
+#endregion
 
         private void ProgramRestart()
         {
@@ -1270,7 +1349,7 @@ namespace FMSMonitoringUI
             }
         }
 
-        #region LogIn_Click
+#region LogIn_Click
         private void LogIn_Click(object sender, EventArgs e)
         {
             CheckLogin();
@@ -1297,6 +1376,14 @@ namespace FMSMonitoringUI
                 }
             //}));
         }
-        #endregion
+#endregion
+
+#region lbVersionInfo_Click
+        private void lbVersionInfo_Click(object sender, EventArgs e)
+        {
+            WinVersionHistory form = new WinVersionHistory();
+            form.Show();
+        }
+#endregion
     }
 }

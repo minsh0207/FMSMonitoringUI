@@ -322,7 +322,7 @@ namespace FMSMonitoringUI
         //    CLogger.WriteLog(enLogLevel.ButtonClick, this.Text, $"Charger : Eqp ID = {unit.EqpID}, Unit ID = {unit.UnitID}");
 
         //    WinFormationBox form = new WinFormationBox(unit.EqpID, unit.EqpType, unit.UnitID);
-        //    form.ShowDialog();
+        //    form.Show();
         //}
 
         private void button1_Click_1(object sender, EventArgs e)

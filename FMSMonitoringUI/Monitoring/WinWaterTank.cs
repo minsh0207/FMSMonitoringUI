@@ -16,6 +16,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
+using System.Windows.Threading;
 using UnifiedAutomation.UaBase;
 
 namespace FMSMonitoringUI.Monitoring
@@ -27,10 +28,13 @@ namespace FMSMonitoringUI.Monitoring
         private string _trayID1 = string.Empty;
         private string _trayID2 = string.Empty;
 
-        #region Working Thread
-        private Thread _ProcessThread;
-        private bool _TheadVisiable;
-        #endregion
+        //#region Working Thread
+        //private Thread _ProcessThread;
+        //private bool _TheadVisiable;
+        //#endregion
+
+        // Timer
+        DispatcherTimer m_timer;
 
         CtrlLED[] _LedMode;
 
@@ -78,13 +82,20 @@ namespace FMSMonitoringUI.Monitoring
             //gridWaterTank.MouseCellDoubleClick_Evnet += GridCellInfo_MouseCellDoubleClick;
             //#endregion
 
-            _TheadVisiable = true;
+            // Init Timer
+            m_timer = new DispatcherTimer();
 
-            this.BeginInvoke(new MethodInvoker(delegate ()
-            {
-                _ProcessThread = new Thread(() => ProcessThreadCallback());
-                _ProcessThread.IsBackground = true; _ProcessThread.Start();
-            }));
+            //m_timer.Interval = TimeSpan.FromSeconds(2);
+            m_timer.Tick += new EventHandler(OnTimer);
+            m_timer.Start();
+
+            //_TheadVisiable = true;
+
+            //this.BeginInvoke(new MethodInvoker(delegate ()
+            //{
+            //    _ProcessThread = new Thread(() => ProcessThreadCallback());
+            //    _ProcessThread.IsBackground = true; _ProcessThread.Start();
+            //}));
 
             this.WindowID = CAuthority.GetWindowsText(this.Text);
 
@@ -92,10 +103,12 @@ namespace FMSMonitoringUI.Monitoring
         }
         private void WinWaterTank_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (this._ProcessThread.IsAlive)
-                this._TheadVisiable = false;
+            //if (this._ProcessThread.IsAlive)
+            //    this._TheadVisiable = false;
 
-            this._ProcessThread.Abort();
+            //this._ProcessThread.Abort();
+
+            m_timer.Stop();
         }
         #endregion
 
@@ -210,35 +223,71 @@ namespace FMSMonitoringUI.Monitoring
             gridWaterTank.ColumnHeadersWidth(0, 110);            
         }
 
-        #region ProcessThreadCallback
-        private void ProcessThreadCallback()
+        #region [Timer Event]
+        /////////////////////////////////////////////////////////////////////
+        //	Timer Event
+        //===================================================================
+        private void OnTimer(object sender, EventArgs e)
         {
             try
             {
-                while (this._TheadVisiable == true)
+                //timer Stop And Start
+                m_timer.Stop();
+
+                _CraneInfo = _OPCUAClient.CraneNodeID[_CraneNo];
+                _CraneData = _OPCUAClient.ReadNodeID(_CraneInfo);
+
+                if (_CraneData.Count > 0)
                 {
-                    GC.Collect();
-
-                    _CraneInfo = _OPCUAClient.CraneNodeID[_CraneNo];
-                    _CraneData = _OPCUAClient.ReadNodeID(_CraneInfo);
-
-                    if (_CraneData.Count > 0)
-                    {
-                        this.BeginInvoke(new Action(() => SetData()));
-                    }
-
-                    Thread.Sleep(2000);
+                    this.BeginInvoke(new Action(() => SetData()));
                 }
+
+                //Set Time interval
+                if (m_timer.Interval.Seconds.ToString() != "2")
+                    m_timer.Interval = TimeSpan.FromSeconds(2);
+
+                //timer Stop And Start
+                m_timer.Start();
+
             }
             catch (Exception ex)
             {
                 // System Debug
-                System.Diagnostics.Debug.Print(string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
-
-                string log = string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
-                CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
+                System.Diagnostics.Debug.Print(string.Format("### WinCraneInfo Timer Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+                CLogger.WriteLog(enLogLevel.Error, DateTime.Now, this.ToString(), CDefine.m_strLoginID, "OnTimer Error Exception : " + ex.Message);
             }
         }
+        #endregion
+
+        #region ProcessThreadCallback
+        //private void ProcessThreadCallback()
+        //{
+        //    try
+        //    {
+        //        //while (this._TheadVisiable == true)
+        //        {
+        //            GC.Collect();
+
+        //            _CraneInfo = _OPCUAClient.CraneNodeID[_CraneNo];
+        //            _CraneData = _OPCUAClient.ReadNodeID(_CraneInfo);
+
+        //            if (_CraneData.Count > 0)
+        //            {
+        //                this.BeginInvoke(new Action(() => SetData()));
+        //            }
+
+        //            //Thread.Sleep(2000);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // System Debug
+        //        System.Diagnostics.Debug.Print(string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message));
+
+        //        string log = string.Format("ProcessThreadCallback Exception : {0}\r\n{1}", ex.GetType(), ex.Message);
+        //        CLogger.WriteLog(enLogLevel.Error, this.WindowID, log);
+        //    }
+        //}
         #endregion
 
         #region SetData
@@ -325,7 +374,7 @@ namespace FMSMonitoringUI.Monitoring
 
         //        //WinCellDetailInfo form = new WinCellDetailInfo();
         //        //form.SetData();
-        //        //form.ShowDialog();
+        //        //form.Show();
 
         //        //Refresh();
         //    }
@@ -347,7 +396,7 @@ namespace FMSMonitoringUI.Monitoring
 
             if (tagIdx < 0) return 0;
 
-            return Convert.ToInt32(_CraneData[tagIdx].Value.ToString());
+            return Convert.ToInt16(_CraneData[tagIdx].Value.ToString());
         }
         private string GetTagValuetoString(object browerName)
         {

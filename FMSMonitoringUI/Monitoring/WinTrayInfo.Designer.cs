@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WinTrayInfo));
             this.panel1 = new System.Windows.Forms.Panel();
             this.titBar = new MonitoringUI.Controlls.CtrlTitleBar();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -162,10 +163,10 @@
             // gridTrayInfo
             // 
             this.gridTrayInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.gridTrayInfo.ColumnCount = -1;
+            this.gridTrayInfo.ColumnCount = 1;
             this.gridTrayInfo.Location = new System.Drawing.Point(0, 34);
             this.gridTrayInfo.Name = "gridTrayInfo";
-            this.gridTrayInfo.RowCount = -1;
+            this.gridTrayInfo.RowCount = 1;
             this.gridTrayInfo.Size = new System.Drawing.Size(325, 617);
             this.gridTrayInfo.TabIndex = 0;
             this.gridTrayInfo.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
@@ -185,10 +186,10 @@
             // gridProcessFlow
             // 
             this.gridProcessFlow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.gridProcessFlow.ColumnCount = -1;
+            this.gridProcessFlow.ColumnCount = 1;
             this.gridProcessFlow.Location = new System.Drawing.Point(0, 34);
             this.gridProcessFlow.Name = "gridProcessFlow";
-            this.gridProcessFlow.RowCount = -1;
+            this.gridProcessFlow.RowCount = 1;
             this.gridProcessFlow.Size = new System.Drawing.Size(1161, 617);
             this.gridProcessFlow.TabIndex = 1;
             this.gridProcessFlow.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
@@ -201,13 +202,13 @@
             this.ClientSize = new System.Drawing.Size(1500, 805);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "WinTrayInfo";
             this.Padding = new System.Windows.Forms.Padding(2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WinTrayInfo";
-            this.TopMost = true;
             this.WindowID = "WinTrayInfo";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.WinTrayInfo_FormClosed);
             this.Load += new System.EventHandler(this.WinTrayInfo_Load);

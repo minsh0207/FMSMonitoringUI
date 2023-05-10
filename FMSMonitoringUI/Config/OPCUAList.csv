@@ -1,5 +1,5 @@
 DeviceID,OPCServerName,PLCName,OPCServerURL,UserID,UserPW,FirstNodeID
-0,OPCServer01,ConveyorPLC_01,opc.tcp://210.91.148.176:30106,,,
-1,OPCServer02,ConveyorPLC_02,opc.tcp://210.91.148.176:30107,,,
-2,OPCServer03,ConveyorPLC_03,opc.tcp://210.91.148.176:30108,,,
-3,OPCServer04,ConveyorPLC_04,opc.tcp://210.91.148.176:30109,,,
+0,OPCServer01,ConveyorPLC_01,opc.tcp://10.13.27.91:4840,Binary,Sfa123,ns=2;s=Address Space
+1,OPCServer02,ConveyorPLC_02,opc.tcp://10.13.27.61:4840,Binary,Sfa123,ns=2;s=Address Space
+2,OPCServer03,ConveyorPLC_03,opc.tcp://10.13.27.81:4840,Binary,Sfa123,ns=2;s=Address Space
+3,OPCServer04,ConveyorPLC_04,opc.tcp://10.13.27.45:4840,Binary,Sfa123,ns=2;s=Address Space

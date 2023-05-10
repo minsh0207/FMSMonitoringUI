@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WinRecipeInfo));
             this.panel1 = new System.Windows.Forms.Panel();
             this.titBar = new MonitoringUI.Controlls.CtrlTitleBar();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -96,10 +97,10 @@
             // 
             this.gridRecipeInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.gridRecipeInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.gridRecipeInfo.ColumnCount = -1;
+            this.gridRecipeInfo.ColumnCount = 1;
             this.gridRecipeInfo.Location = new System.Drawing.Point(0, 37);
             this.gridRecipeInfo.Name = "gridRecipeInfo";
-            this.gridRecipeInfo.RowCount = -1;
+            this.gridRecipeInfo.RowCount = 1;
             this.gridRecipeInfo.Size = new System.Drawing.Size(462, 620);
             this.gridRecipeInfo.TabIndex = 1;
             this.gridRecipeInfo.TagColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
@@ -140,13 +141,13 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "WinRecipeInfo";
             this.Padding = new System.Windows.Forms.Padding(2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WinRecipeInfo";
-            this.TopMost = true;
             this.WindowID = "WinRecipeInfo";
             this.Load += new System.EventHandler(this.WinRecipeInfo_Load);
             this.Controls.SetChildIndex(this.panel1, 0);

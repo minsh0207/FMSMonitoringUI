@@ -217,6 +217,9 @@ namespace MonitoringUI.Common
                 case "WinPackingInfo":
                     strWindowID = CDefine.DEF_MON_WIN_PACKING_INFO;
                     break;
+                case "WinVersionHistory":
+                    strWindowID = CDefine.DEF_MON_WIN_VERSION_HISOTRY;
+                    break;
                 default:
                     break;
             }
